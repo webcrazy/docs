@@ -1,4 +1,4 @@
-z# Artisan CLI
+## Artisan CLI
 
 - [Introduction](#introduction)
 - [အသုုံးျပဳပုုံ](#အသုုံးျပဳပုုံ)
