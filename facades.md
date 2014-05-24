@@ -1,29 +1,29 @@
 # Facades
 
-- [Introduction](#introduction)
-- [Explanation](#explanation)
-- [Practical Usage](#practical-usage)
+- [မိတ္ဆက္](#introduction)
+- [ရွင္းလင္းခ်က္](#explanation)
+- [လက္ေတြ့အသံုးခ်ျခင္း](#practical-usage)
 - [Creating Facades](#creating-facades)
 - [Mocking Facades](#mocking-facades)
 - [Facade Class Reference](#facade-class-reference)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ္ဆက္
 
-Facades provide a "static" interface to classes that are available in the application's [IoC container](/docs/ioc). Laravel ships with many facades, and you have probably been using them without even knowing it! Laravel "facades" serve as "static proxies" to underlying classes in the IoC container, providing the benefit of a terse, expressive syntax while maintaining more testability and flexibility than traditional static methods.
+Facades (ဖေဆာ့စ္ ဟုအသံထြက္ပါ) က Application ရဲ႕ [IoC container](/docs/ioc) ထဲမွာရွိတဲ့ Class ေတြကို static ပံုစံမ်ိဳးသံုးႏိုင္ေအာင္ လုပ္ေပးပါတယ္။ Laravel မွာလဲ Facades ေတြအမ်ားႀကီးပါဝင္ၿပီးေတာ့ အဲဒီ Facade ေတြကိုလည္း သံုးဖူးပါလိမ့္မယ္။ သင္သံုးဖူးေပမယ့္လည္း သံုးဖူးမွန္းမသိျဖစ္ေနတက္ပါတယ္။ Laravel "facades" ေတြက Static Proxy ေတြအေနနဲ႔ ကူညီေပးပါတယ္။ ၄င္းက သာမာန္ Static method ေတြမဟုတ္ဘဲ ၊ ဖတ္/မွတ္လို႔ေကာင္းၿပီး ပိုၿပီးတိုေတာင္းတဲ့ Syntax ပံုစံေတြျဖစ္ေစတဲ့အျပင္ Test လုပ္လို႔အဆင္ေျပၿပီး ေျပာင္းလြယ္ျပင္လြယ္ျဖစ္ေစပါတယ္။
 
-Occasionally, You may wish to create your own facades for your applications and packages, so let's explore the concept, development and usage of these classes.
+အခါအားေလ်ာက္စြာ သင့္ Application နဲ႔ Package ေတြ အတြက္ သင့္ကိုယ္ပိုင္ Facades ေတြတည္ေဆာက္ႏိုင္ပါတယ္။ ဒါ့ေၾကာင့္ ဒီ Class ေတြရဲ႕ အသံုးျပဳပံုေတြ နဲ႔ အယူအစေတြကို ေမႊေႏွာက္ၾကည့္ၾကရေအာင္။
 
-> **Note:** Before digging into facades, it is strongly recommended that you become very familiar with the Laravel [IoC container](/docs/ioc).
+> **မွတ္ခ်က္:** Facades ကိုမေလ့လာခင္ ၊ Laravel ရဲ႕ [IoC container](/docs/ioc) နဲ႔ေသခ်ာရင္းႏွီးေနဖို႔ အႀကံျပဳခ်င္ပါတယ္။
 
 <a name="explanation"></a>
-## Explanation
+## ရွင္းလင္းခ်က္
 
-In the context of a Laravel application, a facade is a class that provides access to an object from the container. The machinery that makes this work is in the `Facade` class. Laravel's facades, and any custom facades you create, will extend the base `Facade` class.
+Facade ဆိုတာ Class တစ္ခုျဖစ္ၿပီး Container ထဲက Object ကို ေခၚအသံုးျပဳခြင့္ေပးပါတယ္။ ဒီလိုေခၚသံုးႏိုင္တာ `Facade` class ေၾကာင့္ျဖစ္ပါတယ္။ Laravel ရဲ႕ Facade ေတြ နဲ႔ သင္ကိုယ္ပိုင္ေဆာက္ထားတဲ့ Facade ေတြအားလံုးဟာ `Facade` class ကို Extend ျပဳလုပ္ရပါတယ္။
 
-Your facade class only needs to implement a single method: `getFacadeAccessor`. It's the `getFacadeAccessor` method's job to define what to resolve from the container. The `Facade` base class makes use of the `__callStatic()` magic-method to defer calls from your facade to the resolved object.
+သင့္ကိုယ္ပိုင္ Facade class ေဆာက္ေတာ့မယ္ဆိုရင္ `getFacadeAccessor` ဆိုတဲ့ method ကိုပဲ implement လုပ္ဖို႔လိုပါမယ္။ `getFacadeAccessor` က Container ထဲကေန ဘယ္ဟာကိုသံုးရမယ္လို႔ ဆံုးျဖတ္ေပးပါတယ္။ သင့္ကိုယ္ပိုင္ Facade ကေန Resolved လုပ္ၿပီးသား object ထဲကိုေရႊ႕ေျပာင္းဖို႔အတြက္ အေျခခံ `Facade` class မွာေတာ့ `__callStatic()` ဆိုတဲ့ magic-method ကိုသံုးထားပါတယ္။
 
-So, when you make a facade call like `Cache::get`, Laravel resolves the Cache manager class out of the IoC container and calls the `get` method on the class. In technical terms, Laravel Facades are a convenient syntax for using the Laravel IoC container as a service locator.
+ဒါ့ေၾကာင့္ သင့္အေနနဲ႔ `Cache::get` လိုမ်ိဳး Facade တစ္ခုကို ေခၚမယ္ဆိုရင္ Laravel က Cache manager class ကို IoC container ထဲကေနဆြဲထုတ္ၿပီး သူထဲက `get` method ကိုေခၚေပးပါတယ္။ နည္းပညာအေခၚအေဝၚအရဆိုရင္ေတာ Laravel Facades ေတြဆိုတာ Ioc container ေတြကို service locator တစ္ခုအေနနဲ႔အသံုးျပဳႏိုင္တဲ့ ေရး/ဖတ္/မွတ္ရလြယ္ကူေသာ syntax ျဖစ္ပါတယ္။
 
 <a name="practical-usage"></a>
 ## Practical Usage
