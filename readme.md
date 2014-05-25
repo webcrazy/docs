@@ -1,6 +1,5 @@
 ﻿docs
 ====
-
   
 
 > Laravel Framework Documentation ျမန္မာဘာသာ
@@ -10,7 +9,7 @@
 > Laravel နိဒါန္း
 
 - [Laravel မိတ္ဆက္][1]
-- [Laravel  အေၾကာင္းအၿခံဳ][2] 
+- [Laravel  အေၾကာင္းအခ်ံဳ][2] 
 - [Release Notes][3]
 - [Upgrade Guide][4]
 
