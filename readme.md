@@ -17,49 +17,50 @@
 
 - [Laravel Installation][5]
 - [Configuration][6]
-- [Request Lifecycle][7]
-- [Routiing][8]
-- [Requests & Input][9]
-- [Views & Responses][10]
-- [Controllers][11]
-- [Errors & Logging][12]
+- [Homestead][7]
+- [Request Lifecycle][8]
+- [Routiing][9]
+- [Requests & Input][10]
+- [Views & Responses][11]
+- [Controllers][12]
+- [Errors & Logging][13]
 
 >Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
 
-- [Authentication][13]
-- [Billing][14]
-- [Cache][15]
-- [Core Extension][16]
-- [Events][17]
-- [Facades][18]
-- [Forms & HTML][19]
-- [Helpers][20]
-- [IoC Container][21]
-- [Localization][22]
-- [Mail][23]
-- [Package Development][24]
-- [Pagination][25]
-- [Queues][26]
-- [Security][27]
-- [Session][28]
-- [SSH][29]
-- [Templates][30]
-- [Unit Testing][31]
-- [Validation][32]
+- [Authentication][14]
+- [Billing][15]
+- [Cache][16]
+- [Core Extension][17]
+- [Events][18]
+- [Facades][19]
+- [Forms & HTML][20]
+- [Helpers][21]
+- [IoC Container][22]
+- [Localization][23]
+- [Mail][24]
+- [Package Development][25]
+- [Pagination][26]
+- [Queues][27]
+- [Security][28]
+- [Session][29]
+- [SSH][30]
+- [Templates][31]
+- [Unit Testing][32]
+- [Validation][33]
 
 >Database
 
-- [Basic Usage][33]
-- [Query Builder][34]
-- [Eloquent ORM][35]
-- [Schema Builder][36]
-- [Migrations & Seeding][37]
-- [Redis][38]
+- [Basic Usage][34]
+- [Query Builder][35]
+- [Eloquent ORM][36]
+- [Schema Builder][37]
+- [Migrations & Seeding][38]
+- [Redis][39]
 
 > Artisan CLI
 
-- [Overview][39]
-- [Development][40]
+- [Overview][40]
+- [Development][41]
 
 >ရည္ရြယ္ခ်က္
 
@@ -76,37 +77,38 @@
   [4]: upgrade.md
   [5]: installation.md
   [6]: configuration.md
-  [7]: lifecycle.md
-  [8]: routing.md
-  [9]: requests.md
-  [10]: responses.md
-  [11]: controllers.md
-  [12]: errors.md
-  [13]: security.md
-  [14]: billing.md
-  [15]: cache.md
-  [16]: extending.md
-  [17]: events.md
-  [18]: facades.md
-  [19]: html.md
-  [20]: helpers.md
-  [21]: ioc.md
-  [22]: localization.md
-  [23]: mail.md
-  [24]: packages.md
-  [25]: pagination.md
-  [26]: queues.md
-  [27]: security.md
-  [28]: session.md
-  [29]: ssh.md
-  [30]: templates.md
-  [31]: testing.md
-  [32]: validation.md
-  [33]: database.md
-  [34]: queries.md
-  [35]: eloquent.md
-  [36]: schema.md
-  [37]: migrations.md
-  [38]: redis.md
-  [39]: artisan.md
-  [40]: commands.md
+  [7]: homestead.md
+  [8]: lifecycle.md
+  [9]: routing.md
+  [10]: requests.md
+  [11]: responses.md
+  [12]: controllers.md
+  [13]: errors.md
+  [14]: security.md
+  [15]: billing.md
+  [16]: cache.md
+  [17]: extending.md
+  [18]: events.md
+  [19]: facades.md
+  [20]: html.md
+  [21]: helpers.md
+  [22]: ioc.md
+  [23]: localization.md
+  [24]: mail.md
+  [25]: packages.md
+  [26]: pagination.md
+  [27]: queues.md
+  [28]: security.md
+  [29]: session.md
+  [30]: ssh.md
+  [31]: templates.md
+  [32]: testing.md
+  [33]: validation.md
+  [34]: database.md
+  [35]: queries.md
+  [36]: eloquent.md
+  [37]: schema.md
+  [38]: migrations.md
+  [39]: redis.md
+  [40]: artisan.md
+  [41]: commands.md
