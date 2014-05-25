@@ -34,7 +34,7 @@ Applicastion run-time ကာလမွာ သတ္မွတ္ထားတဲ့
 
 Application run ေနတဲ့ environment အေပၚအေျခခံပီး configuration ဖိုင္ေတြ သတ္မွတ္ထားျခင္းဟာ အေထာက္အကူ အမ်ားႀကီးျဖစ္ေစပါတယ္။ ဥပမာ - ကုိယ့္ရဲ့ local machine ေပၚမွာ မတူညီတဲ့ cache driver ေတြအသံုးျပဳခ်င္တယ္ဆိုရင္ ဒီ environment based configuration ကိုအသံုးျပဳရံုနဲ႔ လြယ္ကူ ၿပီးေျမာက္ေစႏိုင္ပါတယ္။ 
 
-'config' ဖိုဒါထဲမွာ ကိုယ့္ရဲ့ environment နဲ႔လိုက္ဖက္မဲ့ ဖိုင္ဒါတစ္ခုကိုေဆာက္လိုက္ပါ။ ဥပမာ - 'local'။ ၿပီးရင္ အဲ့ဒီ environment အတြက္ override လုပ္သြားမဲ့ config ေတြ၊ ထပ္မံသတ္မွတ္ခ်င္တဲ့ options ေတြကို configuration ဖိုင္ေတြျပဳလုပ္ပီးသတ္မွတ္ႏိုင္ပါပီ။ ဥပမာ - local environment အတြက္ cache driver ကို override လုပ္ခ်င္တယ္ဆိုရင္၊ 'app/config/local' ဖိုဒါထဲမွာ 'cache.php' ဖိုင္ေဆာက္ပီး ေအာက္မွာေပးထားတဲ့ code ေတြနဲ႔ ျပဳလုပ္လိုက္ပါ။ 
+`config` ဖိုဒါထဲမွာ ကိုယ့္ရဲ့ environment နဲ႔လိုက္ဖက္မဲ့ ဖိုင္ဒါတစ္ခုကိုေဆာက္လိုက္ပါ။ ဥပမာ - `local`။ ၿပီးရင္ အဲ့ဒီ environment အတြက္ override လုပ္သြားမဲ့ config ေတြ၊ ထပ္မံသတ္မွတ္ခ်င္တဲ့ options ေတြကို configuration ဖိုင္ေတြျပဳလုပ္ပီးသတ္မွတ္ႏိုင္ပါပီ။ ဥပမာ - local environment အတြက္ cache driver ကို override လုပ္ခ်င္တယ္ဆိုရင္၊ `app/config/local` ဖိုဒါထဲမွာ `cache.php` ဖိုင္ေဆာက္ပီး ေအာက္မွာေပးထားတဲ့ code ေတြနဲ႔ ျပဳလုပ္လိုက္ပါ။ 
 
 	<?php
 
@@ -44,11 +44,11 @@ Application run ေနတဲ့ environment အေပၚအေျခခံပီ
 
 	);
 
-> **သတိျပဳရန္** 'testing' ဆိုတဲ့ အမည္နဲ႔ environment name ကို မသတ္မွတ္ပါနဲ႔။ အဲ့ဒီအမည္မွာ unit testing အတြက္ သီးသန္႔သတ္မွတ္ထားတဲ့ အမည္ျဖစ္ပါတယ္။
+> **သတိျပဳရန္:** `testing` ဆိုတဲ့ အမည္နဲ႔ environment name ကို မသတ္မွတ္ပါနဲ႔။ အဲ့ဒီအမည္မွာ unit testing အတြက္ သီးသန္႔သတ္မွတ္ထားတဲ့ အမည္ျဖစ္ပါတယ္။
 
 ကိုယ့္အေနနဲ႔ override လုပ္ခ်င္တဲ့ option ေတြကိုသာသတ္မွတ္ေပးရန္ လိုအပ္ပီး base configuration ဖိုင္မွာပါတဲ့ option အားလံုးကို ျပန္လည္သတ္မွတ္ေပးဖို႔ မလိုအပ္ပါ။ Base configuration files ေတြကို environment configuration files ေတြက "cascade” လုပ္သြားပါလိမ့္မယ္။
 
-ၿပီးရင္ေတာ့ ဘယ္ environment မွာ run ေနတယ္ဆိုတာ framework ကေန သိႏိုင္ဖို႔အတြက္ သတ္မွတ္ထားေပးရမွာပါ။ Default environment ကေတာ့ 'production' ျဖစ္ပါတယ္။ အျခား environment ေတြအတြက္ setup ျပဳလုပ္ရမဲ့ ေနရာက root directory ေအာက္မွာရွိတဲ့ 'bootstrap/start.php' ဖိုင္ထဲမွာျပဳလုပ္ေပးရပါမယ္။ အဲ့ဒီဖိုင္ထဲမွာရွိတဲ့ '$app->detectEnvironment' ဆိုတဲ့  method ထဲကို သတ္မွတ္ထားတဲ့ environment ေတြပါတဲ့ array တစ္ခု passing လုပ္ထားပါတယ္။ အဲ့ဒီ array ကိုအသံုးျပဳၿပီး လက္ရွိ environment ကို ဆံုးျဖတ္တာျဖစ္ပါတယ္။ လိုအပ္လာလို႔ရွိရင္ အဲ့ဒီ array ထဲကို ေနာက္ထပ္ environment ေတြ ထပ္ထည့္ႏိုင္ပါတယ္။
+ၿပီးရင္ေတာ့ ဘယ္ environment မွာ run ေနတယ္ဆိုတာ framework ကေန သိႏိုင္ဖို႔အတြက္ သတ္မွတ္ထားေပးရမွာပါ။ Default environment ကေတာ့ `production` ျဖစ္ပါတယ္။ အျခား environment ေတြအတြက္ setup ျပဳလုပ္ရမဲ့ ေနရာက root directory ေအာက္မွာရွိတဲ့ `bootstrap/start.php` ဖိုင္ထဲမွာျပဳလုပ္ေပးရပါမယ္။ အဲ့ဒီဖိုင္ထဲမွာရွိတဲ့ `$app->detectEnvironment` ဆိုတဲ့  method ထဲကို သတ္မွတ္ထားတဲ့ environment ေတြပါတဲ့ array တစ္ခု passing လုပ္ထားပါတယ္။ အဲ့ဒီ array ကိုအသံုးျပဳၿပီး လက္ရွိ environment ကို ဆံုးျဖတ္တာျဖစ္ပါတယ္။ လိုအပ္လာလို႔ရွိရင္ အဲ့ဒီ array ထဲကို ေနာက္ထပ္ environment ေတြ ထပ္ထည့္ႏိုင္ပါတယ္။
 
     <?php
 
@@ -58,7 +58,7 @@ Application run ေနတဲ့ environment အေပၚအေျခခံပီ
 
     ));
 
-အေပၚမွာျပထားတဲ့ ဥပမာမွာ 'local' က environment အမည္ျဖစ္ၿပီး 'your-machine-name' က server ရဲ့ hostname ျဖစ္ပါတယ္။ Linux နဲ႔ Mac ကြန္ပ်ဴတာေတြမွာဆိုရင္ 'hostname' ဆိုတဲ့ terminal command ကိုအသံုးျပဳၿပီး hostname ကိုသတ္မွတ္ေပးႏိုင္ပါတယ္။
+အေပၚမွာျပထားတဲ့ ဥပမာမွာ `local` က environment အမည္ျဖစ္ၿပီး `your-machine-name` က server ရဲ့ hostname ျဖစ္ပါတယ္။ Linux နဲ႔ Mac ကြန္ပ်ဴတာေတြမွာဆိုရင္ `hostname` ဆိုတဲ့ terminal command ကိုအသံုးျပဳၿပီး hostname ကိုသတ္မွတ္ေပးႏိုင္ပါတယ္။
 
 If you need more flexible environment detection, you may pass a `Closure` to the `detectEnvironment` method, allowing you to implement environment detection however you wish:
 
@@ -67,13 +67,13 @@ If you need more flexible environment detection, you may pass a `Closure` to the
 		return $_SERVER['MY_LARAVEL_ENV'];
 	});
 
-#### Accessing The Current Application Environment
+#### Application ရဲ့ လက္ရွိ Environment ကိုအသံုးျပဳျခင္း။
 
-You may access the current application environment via the `environment` method:
+Application ရဲ့ လက္ရွိအသံုးျပဳေနတဲ့ environment ကို `environment` method ကိုအသံုးျပဳၿပီး ရယူႏိုင္ပါတယ္။
 
 	$environment = App::environment();
 
-You may also pass arguments to the `environment` method to check if the environment matches a given value:
+ကိုယ္အသံုးျပဳခ်င္တဲ့ environment ဟုတ္/မဟုတ္ ကိုလည္း `environment` method ထဲကို arguments ေတြ passing ေပးၿပီး စစ္ၾကည့္ႏိုင္ပါတယ္။
 
 	if (App::environment('local'))
 	{
@@ -88,7 +88,7 @@ You may also pass arguments to the `environment` method to check if the environm
 <a name="provider-configuration"></a>
 ### Provider Configuration
 
-When using environment configuration, you may want to "append" environment [service providers](/docs/ioc#service-providers) to your primary `app` configuration file. However, if you try this, you will notice the environment `app` providers are overriding the providers in your primary `app` configuration file. To force the providers to be appended, use the `append_config` helper method in your environment `app` configuration file:
+Environment configuration ကို အသံုးျပဳၿပီဆိုလို႔ရွိရင္၊ ကိုယ့္ရဲ့ ပင္မ `app` configuration ဖိုင္ထဲမွာ environment [service providers](/docs/ioc#service-providers) ကိုထည့္ေပါင္းထည့္ဖို႔ လုိအပ္လာတဲ့ အေျခအေနေတြ ရွိလာႏိုင္ပါတယ္။ အကယ္၍ ကိုယ္က ထပ္ေပါင္းထည့္ထားတယ္ဆိုလို႔ရွိရင္, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုၿပီး သတိေပးပါလိမ့္မယ္။ အဲ့လိုအေျခအေနမ်ိဳးမွာ providers ကို မရမကထပ္ေပါင္းထည့္ေစဖို႔အတြက္ `'append_config` ဆိုတဲ့ helper method ကို ကိုယ့္ရဲ့ environment `app` configuration ဖိုင္ထဲမွာ အသံုးျပဳႏိုင္ပါတယ္။
 
 	'providers' => append_config(array(
 		'LocalOnlyServiceProvider',
@@ -97,9 +97,9 @@ When using environment configuration, you may want to "append" environment [serv
 <a name="protecting-sensitive-configuration"></a>
 ## Protecting Sensitive Configuration
 
-For "real" applications, it is advisable to keep all of your sensitive configuration out of your configuration files. Things such as database passwords, Stripe API keys, and encryption keys should be kept out of your configuration files whenever possible. So, where should we place them? Thankfully, Laravel provides a very simple solution to protecting these types of configuration items using "dot" files.
+အမွန္တကယ္အသံုးျပဳမဲ့ application ေတြအတြက္၊ ကိုယ့္ရဲ့ အမွားမခံ၊ အသိခံလို႔မရတဲ့ configuration ေတြကို configuration ဖိုင္ထဲမွာ မသိမ္းပဲနဲ႔ အျခားတစ္ေနရာမွာထားတာက ပိုၿပီးသင့္ေတာ္ပါတယ္။ ဘယ္လိုအမ်ိဳးအစားေတြလဲဆိုေတာ့ database passwords, Stripe API keys, and encryption keys စတာေတြကို ျဖစ္ႏိုင္လို႔ရွိရင္ configuration ဖိုင္ထဲမွာမသိမ္းသင့္ပါဘူး။ ဒါဆိုဘယ္ေနရာမွာသိမ္းမလဲ? အဲ့ဒီအတြက္ Laravel ကေျဖရွင္းေပးၿပီးသားျဖစ္ပါတယ္။ အဲ့ဒီလို configuration အမ်ိဳးအစားေတြအတြက္ "dot" files ေတြကိုအသံုးျပဳၿပီး ကာကြယ္ထားႏိုင္ပါတယ္။
 
-First, [configure your application](/docs/configuration#environment-configuration) to recognize your machine as being in the `local` environment. Next, create a `.env.local.php` file within the root of your project, which is usually the same directory that contains your `composer.json` file. The `.env.local.php` should return an array of key-value pairs, much like a typical Laravel configuration file:
+ပထမဆံုးအေနနဲ႔ ကိုယ့္ရဲ့စက္ဟာ local မွာ run ေနတာပါဆိုတာကို application ကသိေအာင္ [configure](/docs/configuration#environment-configuration) လုပ္ေပးရပါမယ္။ ၿပီးရင္ `.env.local.php` ဆိုတဲ့ ဖိုင္အသစ္ကို `composer.json` ဖိုင္ရွိတဲ့ ဖိုဒါေအာက္မွာ ေဆာက္ေပးလိုက္ပါ။ အဲ့ဒီ `.env.local.php` ဖိုင္ဟာ အျခား laravel configuration ဖိုင္ေတြလိုပဲ key-value pairs ျဖစ္တဲ့ array တစ္ခု return ျပန္ရပါမယ္။ 
 
 	<?php
 
@@ -109,38 +109,38 @@ First, [configure your application](/docs/configuration#environment-configuratio
 
 	);
 
-All of the key-value pairs returned by this file will automatically be available via the `$_ENV` and `$_SERVER` PHP "superglobals". You may now reference these globals from within your configuration files:
+အဲ့ဒီ ဖိုင္ထဲကေန return ျပန္လာတဲ့ key-value pairs ေတြဟာ PHP "superglobals" ေတြျဖစ္တဲ့ `$_ENV` နဲ႔ `$_SERVER` ေတြဆီကို auto ေရာက္သြားပါလိမ့္မယ္။ အဲ့ဒီ "superglobals" ေတြကေနတစ္ဆင့္ ကိုယ့္ရဲ့ configuration ဖိုင္ထဲမွာ ျပန္လည္အသံုးျပဳႏိုင္ၿပီျဖစ္ပါတယ္။ 
 
 	'key' => $_ENV['TEST_STRIPE_KEY']
 
-Be sure to add the `.env.local.php` file to your `.gitignore` file. This will allow other developers on your team to create their own local environment configuration, as well as hide your sensitive configuration items from source control.
+ေသခ်ာေအာင္လုပ္ဖို႔လိုအပ္တာတစ္ခုက အဲ့ဒီ `.env.local.php` ဖိုင္ကို `.gitignore` ဖိုင္ထဲကို ထည့္ထားေပးရပါမယ္။ အဲ့ဒီေတာ့မွ ကိုယ့္ရဲ့ team မွာရွိတဲ့က်န္တဲ့ developers ေတြဟာ သူတို႔ရဲ့ ကိုယ္ပိုင္ local configuration ေတြကိုျပဳလုပ္ႏုိင္မည့္အျပင္ ကိုယ့္ရဲ့ sensitive configuration ေတြကိုလဲ source control မွာမပါေအာင္ ကာကြယ္ၿပီးသားျဖစ္မွာပါ။
 
-Now, on your production server, create a `.env.php` file in your project root that contains the corresponding values for your production environment. Like the `.env.local.php` file, the production `.env.php` file should never be included in source control.
+Production environment အတြက္လည္း လိုအပ္တဲ့ configuration ေတြပါတဲ့ `.env.php` ဖိုင္ကို project root ဖိုဒါထဲမွာ ေဆာက္လိုက္ပါ။ `.env.local.php` ဖိုင္လိုပဲ production environment မွာ အသံုးျပဳမဲ့`.env.php` ဖိုင္ဟာ source control ထဲမွာ မပါသင့္ပါဘူး။
 
-> **Note:** You may create a file for each environment supported by your application. For example, the `development` environment will load the `.env.development.php` file if it exists.
+> **သတိျပဳရန္:** Application ကေန support လုပ္တဲ့ environment တစ္ခုခ်င္းစီအတြက္ `.env` ဖိုင္ေတြ တည္ေဆာက္လာႏိုင္ပါတယ္။ ဥပမာ - `development` environment အတြက္ဆိုရင္ `.env.development.php` ဖိုင္က ရွိေနလို႔ရွိရင္ load လုပ္သြားပါလိမ့္မယ္။ 
 
 <a name="maintenance-mode"></a>
 ## Maintenance Mode
 
-When your application is in maintenance mode, a custom view will be displayed for all routes into your application. This makes it easy to "disable" your application while it is updating or when you are performing maintenance. A call to the `App::down` method is already present in your `app/start/global.php` file. The response from this method will be sent to users when your application is in maintenance mode.
+Application ဟာ maintenance mode မွာ ရွိေနမယ္ဆိုရင္၊ application မွာရွိတဲ့ route အားလံုးအတြက္ custom view ကိုျပေပးပါလိမ့္မယ္။ Maintenance လုပ္ေနရင္ပဲျဖစ္ျဖစ္၊ update လုပ္ေနရင္ပဲျဖစ္ျဖစ္ application ကို လြယ္လြယ္ကူကူပဲ disable လုပ္ထားႏိုင္ပါတယ္။ `app/start/global.php` ဖိုင္ထဲမွာရွိၿပီးသားျဖစ္တဲ့ `App::down` ဆိုတဲ့ method ကိုေခၚသံုးလိုက္ရံုပဲ။ Application ဟာ maintenance mode မွာ ရွိေနၿပီဆိုရင္ အဲ့ဒီ method ကေနျပန္လာတဲ့ response ကို users ေတြဆီကိုပို႔ေပးပါလိမ့္မယ္။
 
-To enable maintenance mode, simply execute the `down` Artisan command:
+Maintenance mode ျပဳလုပ္ခ်င္တယ္ဆိုရင္ `down` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
 
 	php artisan down
 
-To disable maintenance mode, use the `up` command:
+Maintenance mode ကို disable လုပ္ခ်င္တယ္ဆိုရင္ေတာ့ `up` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
 
 	php artisan up
 
-To show a custom view when your application is in maintenance mode, you may add something like the following to your application's `app/start/global.php` file:
+Maintenance mode အတြက္ custom view သတ္မွတ္ခ်င္တယ္ဆိုရင္ေတာ့ ေအာက္မွာျပထားသလိုပဲ ႏွစ္သက္သလို `app/start/global.php` ဖိုင္ထဲမွာသြားေရာက္ျပင္ဆင္ႏိုင္ပါတယ္။
 
 	App::down(function()
 	{
 		return Response::view('maintenance', array(), 503);
 	});
 
-If the Closure passed to the `down` method returns `NULL`, maintenance mode will be ignored for that request.
+အကယ္၍ `down` method ထဲကို Closure တစ္ခု passing ေပးလိုက္ရင္ေတာ့ `NULL` ပဲ return ျပန္လာၿပီး အဲ့ဒီ request မွာပါတဲ့ maintenance mode ကို ignore လုပ္သြားပါလိမ့္မယ္။
 
 ### Maintenance Mode & Queues
 
-While your application is in maintenance mode, no [queue jobs](/docs/queues) will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.
+Application ဟာ maintenance mode မွာ ရွိေနစဥ္အတြင္း [queue jobs](/docs/queues) ေတြကို ကိုင္တြယ္ေျဖရွင္းမွာမဟုတ္ပါဘူး။ Application ဟာ normal mode ကိုျပန္ေရာက္ပီဆိုေတာ့မွ ျပန္လည္ကိုင္တြယ္ေျဖရွင္းေပးမွာျဖစ္ပါတယ္။
