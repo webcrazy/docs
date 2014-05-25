@@ -11,9 +11,8 @@
 
 သင္႕ရဲ႕ PHP Development environment  ကို local development environment မွာပါ ၾကည္ႏူးသာယာဖြယ္ေကာင္းေအာင္Laravel က အေကာင္းဆံုးႀကိဳးစားအားထုတ္မွူတစ္ခုလုပ္ခဲ႕ပါတယ္။ [Vagrant](http://vagrantup.com) ကသင္႕ရဲ႕ Virtual Machine ေတြကို လြယ္လြယ္ကူကူ ထိန္းသိမ္း ႏိုင္ေအာင္ သင္႕ကိုေထာက္ပံ့ ေပးထားပါတယ္။
 
-Laravel Homestead is an official, pre-packaged Vagrant "box" that provides you a wonderful development environment without requiring you to install PHP, a web server, and any other server software on your local machine. No more worrying about messing up your operating system! Vagrant boxes are completely disposable. If something goes wrong, you can destroy and re-create the box in minutes!
 
-Laravel Homestead က official ပါ၊ Vagrant  "box" မွာ ႀကိဳဳ ၿပီး package လုပ္ထားတာပါ... ေနာက္ အဲဒါကသင္႕ကို development environment တစ္ခု တည္ေဆာက္တဲ႕ေနရာမွာ PHP, a web server, နဲ႕ အျခား 
+Laravel Homestead က official ပါ၊ Vagrant  "box" မွာ ႀကိဳဳ ၿပီး package လုပ္ထားတာပါ... ေနာက္ အဲဒါကသင္႕ကို development environment တစ္ခု တည္ေဆာက္တဲ႕ေနရာမွာ PHP, a web server, နဲ႕ အျခားအသံုးဝင္တဲ႕  tools ေတြကို သင္႕ရဲ႕ local machine မွာ install လုပ္စရာမလိုပါဘူး။ ဘယ္ Opearting System ကိုသံုးတယ္ဆိုတာကိုလည္း worry မ်ားစရာမလိုေတာ႕ပါဘူး။ Vagrant boxes ေတြနဲ႕ဘဲ အသံုးျပဳလို႕ရပါတယ္။ တကယ္လို႕တစ္ခုခုမွားသြားတယ္ဆိုရင္ vagrant boxes ေတြကိုမိနစ္အနည္းငယ္အတြင္း destory လုပ္ၿပီးေတာ႕ ျပန္ၿပီး create လုပ္ႏိုင္ပါတယ္။
 
 Homestead က မည္သည္႕ Window, Mac, Linux မွာမဆို run ပါတယ္။ Homesead မွာ Nginx web server, PHP 5.5, MySQL, Postgres, Redis, Memcached နဲ႕ အျခား Laravel application အတြက္ အသံုးဝင္တာေတြပါဝင္ပါတယ္။
 
@@ -69,7 +68,7 @@ Windows မွာဆိုရင္ သင္အေနနဲ႕ [Git](http://git
 
 ### Configure Your Nginx Sites
 
-Not familiar with Nginx? No problem. The `sites` property allows you to easily map a "domain" to a folder on your Homestead environment. A sample site configuration is included in the `Homestead.yaml` file. Again, you may add as many sites to your Homestead environemnt as necessary.Homestead can serve as a convenient, virtualized environemnt for every Laravel project you are working on!
+Nginx နဲ႕သိပ္မရင္းႏွီးဘူးမဟုတ္လား ျပသနာမရွိပါဘူး။ `sites` ေတြကသင္႕ရဲ႕ Homestead environment က Folders ေတြကို "domain" ဆီကိုလြယ္ကူစြာ map ေပးပါလိမ္႕မယ္။ Site configuration တစ္ခုကို `Homestead.yaml` မွာေတြ႕ႏိုင္ပါတယ္။ သင္႕အေနနဲ႕ sites အမ်ားႀကီးကိုသင္႕ရဲ႕ Homestead မွာထည္႕ခ်င္ပါလိမ္႕မယ္၊ Homestad က သင္႕virtualized Laravel Projects ေတြရဲ႕ environment ေတြကို အဆင္ေျပေစပါလိမ္႕မယ္။
 
 ### Bash Aliases
 
@@ -77,13 +76,13 @@ To add Bash aliases to your Homestead box, simply add to the `aliases` file in t
 
 ### VagrantBox ကိုစတင္ျခင္း
 
-Once you have edited the `Homestead.yaml` to your liking, run the `vagrant up` command from the Homestead directory in your terminal. Vagrant will boot the virtual machine, and configure your shared folders and Nginx sites automatically!
+`Homestead.yaml` file မွာသင္႕ရဲ႕ link ေတြကို edit လုပ္ၿပီးၿပီဆိုရင္ သင္႕ရဲ႕ `Homestead` directory ထဲမွာ `vagrant up` ဆိုၿပီး terminal ကေန run လိုက္ပါ။ Vagrant က Virtual Machine ကို boot လုပ္ပါ႕လိမ္႕မယ္ ၿပီးရင္ေတာ႕ သင္႕ရဲ႕ share folders နဲ႕ Nginx sites ေတြကို auto configure လုပ္သြားပါလိမ္႕မယ္။
 
-Don't forget to add the "domains" for your Nginx sites to the `hosts` file on your machine! The `hosts` file will redirect your requests for the local domains into your Homestead environment. On Mac and Linux, this file is located at `/etc/hosts`. On Windows, it is located at `C:\Windows\System32\drivers\etc\hosts`. The lines you add to this file will look like the following:
+သင္႕ရဲ႕ Nginx sites ေတြအတြက္ "domain" ေတြကို သင္ရဲ႕ local machine က hosts မွာထက္ေပါင္းထည္႕ဖို႕မေမ႕ပါနဲ႕ဦး။ hosts file ကသင့္ local machine က requests ေတြကို Homestead ဆီကို redirect လုပ္ေပးပါလိမ္႕မယ္။ Mac နဲ႕ linux မွာ ဆိုရင္ hosts file က `/etc/hosts` ထဲမွာျပင္လို႕ရပါတယ္။ Window မွာဆိုရင္ေတာ႕ `C:\Windows\System32\drivers\etc\hosts` မွာရွိပါတယ္။ သင္ထက္ေပါင္းထည္႕ရမယ္႕ line က ေအာက္ကလိုျဖစ္ပါလိမ္႕မယ္၊
 
 	127.0.0.1  homestead.app
 
-Once you have added the domain to your `hosts` file, you can access the site via your web browser on port 8000!
+သင့္ရဲ႕ domain ကိုသင္႕ရဲ႕ `hosts` file ထဲကိုေပါင္းထည့္ၿပီးၿပီဆိုရင္ သင္ရဲ႕ browser ကေနသင့္ domain ေနာက္က port နံပါတ္နဲ႕ဆိုရင္သင့္ရဲ႕ဆိုက္ကို access လုပ္လို႕ရပါၿပီ။
 
 	http://homestead.app:8000
 
