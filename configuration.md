@@ -58,7 +58,7 @@ Application run ေနတဲ့ environment အေပၚအေျခခံပီ
 
     ));
 
-အေပၚက ဥပမာမွာ 'local' က environment အမည္ျဖစ္ၿပီး 'your-machine-name' က server ရဲ့ hostname ျဖစ္ပါတယ္။ Linux နဲ႔ Mac ကြန္ပ်ဴတာေတြမွာဆိုရင္ 'hostname' ဆိုတဲ့ terminal command ကိုအသံုးျပဳၿပီး hostname ကိုသတ္မွတ္ေပးႏိုင္ပါတယ္။
+အေပၚမွာျပထားတဲ့ ဥပမာမွာ 'local' က environment အမည္ျဖစ္ၿပီး 'your-machine-name' က server ရဲ့ hostname ျဖစ္ပါတယ္။ Linux နဲ႔ Mac ကြန္ပ်ဴတာေတြမွာဆိုရင္ 'hostname' ဆိုတဲ့ terminal command ကိုအသံုးျပဳၿပီး hostname ကိုသတ္မွတ္ေပးႏိုင္ပါတယ္။
 
 If you need more flexible environment detection, you may pass a `Closure` to the `detectEnvironment` method, allowing you to implement environment detection however you wish:
 
