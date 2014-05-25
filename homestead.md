@@ -94,25 +94,25 @@ Once you have added the domain to your `hosts` file, you can access the site via
 
 ### SSH ကို connect လုပ္ျခင္း
 
-To connect to your Homestead environment via SSH, you should connect to `127.0.0.1` on port 2222 using the SSH key you specified in your `Homestead.yaml` file. You may also simply run the `vagrant ssh` command from your `Homestead` directory.
+သင္႕ရဲ႕ Homestead environment ကို SSH ကေန ခ်ိတ္ဆက္ဝင္ဖို႕ သင္႕အေနနဲ႕ `127.0.0.1` port ကေတာ႕ 2222 ျဖစ္ၿပီး SSH key ကေတာ႕ သင္ရဲ႕`Homestead.yaml`မွာ သင္သတ္မွတ္ခဲ႕တဲ႕ key ဘဲျဖစ္ပါတယ္။ `vagrant ssh` ဆိုၿပီးသင္႕ရဲ႕ Homestead Folder ကေနလည္း ဝင္လို႕ရပါတယ္။
 
-If you want even more convenience, it can be helpful to add the following alias to your `~/.bash_aliases` or `~/.bash_profile`:
+သင္အေနနဲ႕ ဒါ႕ထက္အဆင္ေျပမွဴ လိုခ်င္ေသးတယ္ဆိုရင္ေတာ႕ ေအာက္မွာေဖာ္ျပထားတဲ႕ alias ကို သင္႕ရဲ႕ `~/.bash_aliases` ဒါမွမဟုတ္ `~/.bash_profile` မွာေပါင္းထည္႕လိုက္တာက ပိုၿပီးအသံုးဝင္ပါမယ္၊ 
 
 	alias vm='ssh vagrant@127.0.0.1 -p 2222'
 
 ### သင့္ရဲ႕ Databases မ်ားကို connect လုပ္ျခင္း
 
-A `homestead` database is configured for both MySQL and Postgres out of the box. For even more convenience, Laravel's `local` database configuration is set to use this database by default.
+`homestead` ရဲ႕ databases ေတြျဖစ္တဲ႕ MySQL နဲ႕ Postgres ႏွစ္ခုလံုးကို box ေတြရဲ႕အျပင္မွာ configuration လုပ္ထားပါတယ္။ ဒါထက္ပိုၿပီးအဆင္ေျပဖို႕ Laravel ရဲ႕ `local` database ကို default configure လုပ္ထားပါတယ္။
 
-To connect to your MySQL or Postgres database from your main machine via Navicat or Sequel Pro, you should connect to `127.0.0.1` and port 33060 (MySQL) or 54320 (Postgres). The username and password for both databases is `homestead` / `secret`.
+သင္႕ရဲ႕ database MySQL ဒါမွမဟုတ္ Postgres ကို Navicat (သို႕) Sequel Pro ကေနသင္႕ရဲ႕ main machine နဲ႕ connect လုပ္ခ်င္တယ္ဆိုရင္ သင္႕အေနနဲ႕  MySQL အတြက္ `127.0.0.1` နဲ႕ port 33060 နဲ႕Postgres အတြက္ port 54320 ျဖစ္ပါတယ္။ Database ႏွစ္ခုလံုးအတြက္ username နဲ႕ password က  `homestead`/ `secreat` ျဖစ္ပါတယ္။
 
 > **Note:** You should only use these non-standard ports when connecting to the databases from your main machine. You will use the default 3306 and 5432 ports in your Laravel database configuration file since Laravel is running _within_ the Virtual Machine.
 
 ### ေနာက္ထက္ဆိုက္တစ္ခု ထပ္ထည္႕ျခင္း
 
-Once your Homestead environment is provisioned and running, you may want to add additional Nginx sites for your Laravel applications. You can run as many Laravel installation as you wish on a single Homestead environment. There are two ways to do this. First, you may simply add the sites to your `Homestead.yaml` file, `vagrant destroy` the box, and then `vagrant up` again.
+သင့္ရဲ႕ Homestead environment ကသင္ထည္႕ခ်င္တာေတြထည္႕ၿပီးသြားၿပီ run လည္း run ေနၿပီဆိုရင္ သင္႕အေနနဲ႕ Laravel applications ေတြကို သင္႕ရဲ႕ Nginx sites မွာထပ္ထည္႕ခ်င္မွာေပါ႕။ Homestead environment တစ္ခုမွာ သင္ႀကိဳက္သေလာက္ Laravel installation လုပ္ႏိုင္ပါတယ္။ Laravel application ထက္ေပါင္းထည္႕ တဲ႕ေနရာမွာ နည္းႏွစ္ခုရွိပါတယ္။ ပထမတစ္ခုကသင္႕ရဲ႕ `Homestead.yaml` files မွာထက္ေပါင္းထည္႕ပါ  ၿပီးရင္ `vagrant destory` နဲ႕ box ေတြကို ဖ်က္ပါ၊ ၿပီးရင္ `vagrant up` ျပန္လုပ္ပါ။ 
 
-Alternatively, you may use the `serve` script that is available on your Homestead environment. To use the `serve` script, SSH into your Homestead environment and run the following command:
+ေနာက္ထက္နည္းတစ္ခုကေတာ႕ သင္႕ရဲ႕ Homestead environment မွာ `serve` script ကိုသံုးၿပီး Laravel application ေတြကိုထက္ထည္႕ႏိုင္ပါတယ္။ `serve` script ကိုအသံုးျပဳခ်င္တယ္ဆိုရင္ေတာ႕ သင္႕ရဲ႕ Homestead environment ထဲကိုဝင္ၿပီးေတာ႕ ေအာက္က command ကို run လိုက္ပါ
 
 	serve domain.app /home/vagrant/Code/path/to/public/directory
 
