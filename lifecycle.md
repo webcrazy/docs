@@ -8,9 +8,9 @@
 <a name="overview"></a>
 ## Overview
 
-When using any tool in the "real world", you feel more confidence if you understand how that tool works. Application development is no different. When you understand how your development tools function, you feel more comfortable and confident using them. The goal of this document is to give you a good, high-level overview of how the Laravel framework "works". By getting to know the overall framework better, everything feels less "magical" and you will be more confident building your applications. In addition to a high-level overview of the request lifecycle, we'll cover "start" files and application events.
+သင္ tools တစ္ခုကို တကယ္လက္ေတြ႕သံုးၿပီဆိုရင္ အဲ႕ဒီ tool က ဘယ္လိုအလုပ္လုပ္တယ္ဆိုတာကိုသိရင္ သင္ပိုၿပီး ယံုၾကည္မွူရွိလာပါလိမ္႕မယ္။ development tools ေတြရဲ႕ function ေတြဘယ္လိုအလုပ္လုပ္လဲသင္သိလာတဲ႕အခါမွာ သင္အဲဒါေတြကိုအသံုးျပဳတဲ႕အခါပိုၿပီးေတာ႕ အဆင္ေျပ ယံုၾကည္လာပါလိမ္႕မယ္။ ဒီ document ရဲ႕ အဓိကရည္ရြယ္ခ်က္က  Laravel Framework ဘယ္လိုအလုပ္လုပ္လဲဆိုတာကို ေကာင္းမြန္တဲ႕ hight-level overview တစ္ခုေပးဖို႕ပါ။ Framework အေၾကာင္း overview ေကာင္းေကာင္းသိသြားတဲ႕အခ်ိန္မွာ "magical" လုိ႕ထင္တာေတြနည္းသြားၿပီးေတာ႕ သင္ application တည္ေဆာက္ရာမွာပိုၿပီးေတာ႕ confident ရွိလာပါလိမ္႕မယ္။ Request Lifecycle  ရဲ႕ hight level overview ရဲ႕ျဖည္႕စြတ္ခ်က္မွာေတာ႕ "start" files နဲ႕ application events ကိုပါ cover လုပ္ထားပါတယ္။
 
-If you don't understand all of the terms right away, don't lose heart! Just try to get a basic grasp of what is going on, and your knowledge will grow as you explore other sections of the documentation.
+တကယ္လို႕သင္႕အေနနဲ႕ terms အားလံုးကိုနားမလည္ဘူးဆိုရင္စိတ္ထဲမထားပါနဲ႕ ။ အေျခခံအားျဖင္႕ ဘယ္လိုလုပ္ေနလဲဆိုတာကို ႀကိဳးစားၾကည္႕ၿပီး documencation ရဲ႕တစ္ျခား အပိုင္းေတြကို ဖတ္ၿပီး သင္႕ပိုၿပီးသိလာပါလိမ္႕မယ္။
 
 <a name="request-lifecycle"></a>
 ## Request Lifecycle
