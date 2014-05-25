@@ -9,7 +9,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-All of the configuration files for the Laravel framework are stored in the `app/config` directory. Each option in every file is documented, so feel free to look through the files and get familiar with the options available to you.
+Laravel framework မွာရွိတဲ့ configuration ဖိုင္အားလံုးကို 'app/config' လမ္းေၾကာင္းေအာက္မွာသိမ္းထားပါတယ္။ ဖိုင္အားလံုးမွာပါတဲ့ option တစ္ခုခ်င္းစီအတြက္ documentation မွာ ေရးထားပီးသားပါ။ အသံုးျပဳႏိုင္တဲ့ options ေတြကို documentation နဲ႔တြဲပီးေလ့လာ ႏိုင္ပါတယ္။
 
 Sometimes you may need to access configuration values at run-time. You may do so using the `Config` class:
 
