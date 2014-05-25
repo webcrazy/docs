@@ -11,30 +11,30 @@
 
 Laravel framework မွာရွိတဲ့ configuration ဖိုင္အားလံုးကို 'app/config' လမ္းေၾကာင္းေအာက္မွာသိမ္းထားပါတယ္။ ဖိုင္အားလံုးမွာပါတဲ့ option တစ္ခုခ်င္းစီအတြက္ documentation မွာ ေရးထားပီးသားပါ။ အသံုးျပဳႏိုင္တဲ့ options ေတြကို documentation နဲ႔တြဲပီးေလ့လာ ႏိုင္ပါတယ္။
 
-Sometimes you may need to access configuration values at run-time. You may do so using the `Config` class:
+Application run ေနတဲ့အခ်ိန္ေတြမွာ configuration values ေတြကို အသံုးျပဳဖို႔လိုအပ္လာရင္ 'Config' class ကိုအသံုးျပဳၿပီး ဆြဲယူႏိုင္ပါတယ္။
 
-#### Accessing A Configuration Value
+#### Configuration Value ေတြကို အသံုးျပဳျခင္း
 
 	Config::get('app.timezone');
 
-You may also specify a default value to return if the configuration option does not exist:
+ဆြဲယူအသံုးျပဳလိုက္တဲ့ configuration option မရွိတဲ့အေျခအေနအတြက္ default value ကို return ျပန္ေအာင္ သတ္မွတ္ေပးထားႏိုင္ပါတယ္။
 
 	$timezone = Config::get('app.timezone', 'UTC');
 
-#### Setting A Configuration Value
+#### Configuration value သတ္မွတ္ျခင္း
 
-Notice that "dot" style syntax may be used to access values in the various files. You may also set configuration values at run-time:
+Configuration ဖိုင္ေတြထဲမွာရွိတဲ့ value ေတြကို "dot” ကိုအသံုးျပဳၿပီး (eg. filename.value) access လုပ္ႏိုင္ပါတယ္။ Application run-time ကာလမွာ configuration ေတြသတ္မွတ္ဖို႔အတြက္လည္း အသံုးျပဳႏိုင္ပါတယ္။
 
 	Config::set('database.default', 'sqlite');
 
-Configuration values that are set at run-time are only set for the current request, and will not be carried over to subsequent requests.
+Applicastion run-time ကာလမွာ သတ္မွတ္ထားတဲ့ configuration values ေတြဟာ app ရဲ့ လက္ရွိ request အေပၚမွာပဲသက္ေရာက္မႈရွိပါတယ္။ ေနာက္ပိုင္းထပ္ျဖစ္လာမဲ့ requests ေတြအထိ ယူေဆာင္သြားမွာမဟုတ္ပါဘူး
 
 <a name="environment-configuration"></a>
 ## Environment Configuration
 
-It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver on your local development machine than on the production server. It is easy to accomplish this using environment based configuration.
+Application run ေနတဲ့ environment အေပၚအေျခခံပီး configuration ဖိုင္ေတြ သတ္မွတ္ထားျခင္းဟာ အေထာက္အကူ အမ်ားႀကီးျဖစ္ေစပါတယ္။ ဥပမာ - ကုိယ့္ရဲ့ local machine ေပၚမွာ မတူညီတဲ့ cache driver ေတြအသံုးျပဳခ်င္တယ္ဆိုရင္ ဒီ environment based configuration ကိုအသံုးျပဳရံုနဲ႔ လြယ္ကူ ၿပီးေျမာက္ေစႏိုင္ပါတယ္။ 
 
-Simply create a folder within the `config` directory that matches your environment name, such as `local`. Next, create the configuration files you wish to override and specify the options for that environment. For example, to override the cache driver for the local environment, you would create a `cache.php` file in `app/config/local` with the following content:
+'config' ဖိုဒါထဲမွာ ကိုယ့္ရဲ့ environment နဲ႔လိုက္ဖက္မဲ့ ဖိုင္ဒါတစ္ခုကိုေဆာက္လိုက္ပါ။ ဥပမာ - 'local'။ ၿပီးရင္ အဲ့ဒီ environment အတြက္ override လုပ္သြားမဲ့ config ေတြ၊ ထပ္မံသတ္မွတ္ခ်င္တဲ့ options ေတြကို configuration ဖိုင္ေတြျပဳလုပ္ပီးသတ္မွတ္ႏိုင္ပါပီ။ ဥပမာ - local environment အတြက္ cache driver ကို override လုပ္ခ်င္တယ္ဆိုရင္၊ 'app/config/local' ဖိုဒါထဲမွာ 'cache.php' ဖိုင္ေဆာက္ပီး ေအာက္မွာေပးထားတဲ့ code ေတြနဲ႔ ျပဳလုပ္လိုက္ပါ။ 
 
 	<?php
 
@@ -44,11 +44,11 @@ Simply create a folder within the `config` directory that matches your environme
 
 	);
 
-> **Note:** Do not use 'testing' as an environment name. This is reserved for unit testing.
+> **သတိျပဳရန္** 'testing' ဆိုတဲ့ အမည္နဲ႔ environment name ကို မသတ္မွတ္ပါနဲ႔။ အဲ့ဒီအမည္မွာ unit testing အတြက္ သီးသန္႔သတ္မွတ္ထားတဲ့ အမည္ျဖစ္ပါတယ္။
 
-Notice that you do not have to specify _every_ option that is in the base configuration file, but only the options you wish to override. The environment configuration files will "cascade" over the base files.
+ကိုယ့္အေနနဲ႔ override လုပ္ခ်င္တဲ့ option ေတြကိုသာသတ္မွတ္ေပးရန္ လိုအပ္ပီး base configuration ဖိုင္မွာပါတဲ့ option အားလံုးကို ျပန္လည္သတ္မွတ္ေပးဖို႔ မလိုအပ္ပါ။ Base configuration files ေတြကို environment configuration files ေတြက "cascade” လုပ္သြားပါလိမ့္မယ္။
 
-Next, we need to instruct the framework how to determine which environment it is running in. The default environment is always `production`. However, you may setup other environments within the `bootstrap/start.php` file at the root of your installation. In this file you will find an `$app->detectEnvironment` call. The array passed to this method is used to determine the current environment. You may add other environments and machine names to the array as needed.
+ၿပီးရင္ေတာ့ ဘယ္ environment မွာ run ေနတယ္ဆိုတာ framework ကေန သိႏိုင္ဖို႔အတြက္ သတ္မွတ္ထားေပးရမွာပါ။ Default environment ကေတာ့ 'production' ျဖစ္ပါတယ္။ အျခား environment ေတြအတြက္ setup ျပဳလုပ္ရမဲ့ ေနရာက root directory ေအာက္မွာရွိတဲ့ 'bootstrap/start.php' ဖိုင္ထဲမွာျပဳလုပ္ေပးရပါမယ္။ အဲ့ဒီဖိုင္ထဲမွာရွိတဲ့ '$app->detectEnvironment' ဆိုတဲ့  method ထဲကို သတ္မွတ္ထားတဲ့ environment ေတြပါတဲ့ array တစ္ခု passing လုပ္ထားပါတယ္။ အဲ့ဒီ array ကိုအသံုးျပဳၿပီး လက္ရွိ environment ကို ဆံုးျဖတ္တာျဖစ္ပါတယ္။ လိုအပ္လာလို႔ရွိရင္ အဲ့ဒီ array ထဲကို ေနာက္ထပ္ environment ေတြ ထပ္ထည့္ႏိုင္ပါတယ္။
 
     <?php
 
@@ -58,7 +58,7 @@ Next, we need to instruct the framework how to determine which environment it is
 
     ));
 
-In this example, 'local' is the name of the environment and 'your-machine-name' is the hostname of your server. On Linux and Mac, you may determine your hostname using the `hostname` terminal command.
+အေပၚက ဥပမာမွာ 'local' က environment အမည္ျဖစ္ၿပီး 'your-machine-name' က server ရဲ့ hostname ျဖစ္ပါတယ္။ Linux နဲ႔ Mac ကြန္ပ်ဴတာေတြမွာဆိုရင္ 'hostname' ဆိုတဲ့ terminal command ကိုအသံုးျပဳၿပီး hostname ကိုသတ္မွတ္ေပးႏိုင္ပါတယ္။
 
 If you need more flexible environment detection, you may pass a `Closure` to the `detectEnvironment` method, allowing you to implement environment detection however you wish:
 
