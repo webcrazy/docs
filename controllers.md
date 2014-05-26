@@ -11,15 +11,9 @@
 
 Application ရဲ့  Route ပိုင္းဆိုင္ရာအားလံုးကုိ 'routes.php' တဖုိင္တည္းမွာ အားလံုး သတ္မွတ္ထားသလို ၊ အဲဒီ route ေတြရဲ့  Action အားလံုးကုိ Controller က Class ေတြနဲ့ ထိန္းခ်ဳပ္ႏိုင္မွာပါ။ Controllers က routes မွာသတ္မွတ္တဲ့ Action ေတြကုိ ထိန္းခ်ဳပ္ေပးယံု သာမက Framework တခုအတြက္ အားသာခ်က္တခုျဖစ္တဲ့ Automatic dependency injection(/docs/ioc) ေတြပါအသံုးျပဳႏိုင္မွာပါ။
 
-Instead of defining all of your route-level logic in a single `routes.php` file, you may wish to organize this behavior using Controller classes. Controllers can group related route logic into a class, as well as take advantage of more advanced framework features such as automatic [dependency injection](/docs/ioc).
-
 Controllers ဖုိင္ေတြကုိ ပံုမွန္အားျဖင့္ 'app/controllers ေအာက္မွာ သိမ္းဆည္းထားပါတယ္။ အဲဒီ Controller ဖိုင္ေတြကုိ  'Composer.json' မွာ 'Classmap' စနစ္ျဖင့္အသံုးျပဳထားပါတယ္။ဘယ္လိုပဲျဖစ္ျဖစ္ Controllers ေတြက Application ရဲ့ ဘယ္ေနရာမွာ မဆို အလုပ္လုပ္ႏုိင္ပါတယ္။ Route မွာ Controllers ကုိ သိမ္းဆန္းထားတဲ့ေနရာအတြက္ သတ္မွတ္ခ်က္ေတြက မရွိပါ။ဘာလုိ့လဲဆိုေတာ့ Composer က Classmap autoload သံုးျပဳထားတဲ့ controller class ကုိ အလုိလုိ သိမွတ္ျပဳျပီးသားျဖစ္ေနလုိ့ပါ။Controllers ဖိုင္ေတြကို ႏွစ္သက္ရာ ေနရာမွာ သိမ္းဆည္းျပီး အလုပ္လုပ္ႏုိင္ပါတယ္။
 
 အေျခခံအားျဖင့္ Controller Class တခုရဲ့ ပံုစံက ေအာက္ပါအတုိင္းေရးသားပါတယ္:
-
-Controllers are typically stored in the `app/controllers` directory, and this directory is registered in the `classmap` option of your `composer.json` file by default. However, controllers can technically live in any directory or any sub-directory. Route declarations are not dependent on the location of the controller class file on disk. So, as long as Composer knows how to autoload the controller class, it may be placed anywhere you wish.
-
-Here is an example of a basic controller class:
 
 	class UserController extends BaseController {
 
