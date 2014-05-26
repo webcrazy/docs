@@ -54,16 +54,17 @@ Framework ကုိ install ျပဳလုပ္ျပီးေနာက္ သ
 ထုိေနာက္ web browser ေပၚတြင္ `/users` ဟူေသာ route ျဖင့္ စမ္းၾကည့္ပါက သင့္အေနျဖင့္ `Users!` တုံ ့ျပန္သည္ကို ျမင္ေတြ ့ရမည္ ျဖစ္သည္။ 
 ေကာင္းေလစြ! သင့္အေနျဖင့္ ပထမဦးစြာ route တစ္ခုကို ဖန္တီးလုိက္ျပီ ျဖစ္သည္။
 
-Routes can also be attached to controller classes. For example:
+
+Route မ်ားမွာ controller မ်ားႏွင့္လည္း ခ်ိတ္ဆက္ အလုပ္လုပ္ႏိုင္သည္။ ဥပမာ
 
 	Route::get('users', 'UserController@getIndex');
 
-This route informs the framework that requests to the `/users` route should call the `getIndex` method on the `UserController` class. For more information on controller routing, check out the [controller documentation](/docs/controllers).
+အဆုိပါ route တြင္ 	`/users` ဟုေခၚယူလုိက္ပါက `UserController` class အတြင္းရွိ `getIndex` method  ကုိ အလုပ္လုပ္မည္ ျဖစ္သည္။ Controller routing ႏွင့္ ပတ္သတ္၍ အေသးစိတ္ကုိ [controller documentation](/docs/controllers) တြင္ၾကည့္ရႈႏုိင္သည္။
 
 <a name="creating-a-view"></a>
-## Creating A View
+## View တစ္ခု တည္ေဆာက္ျခင္း
 
-Next, we'll create a simple view to display our user data. Views live in the `app/views` directory and contain the HTML of your application. We're going to place two new views in this directory: `layout.blade.php` and `users.blade.php`. First, let's create our `layout.blade.php` file:
+ထုိေနာက္ user data မ်ားကို ေဖာ္ျပရန္ ရုိးရွင္းသည့္ view တစ္ခုကို တည္ေဆာက္ရန္ လုိေပမည္။  view file မ်ားသည္ `app/views` directory  ထဲတြင္ တည္ရွိမည္ ျဖစ္သည္။  View တြင္ သင့္ application တြင္ ေဖာ္ျပလုိသည့္  HTML ျဖင့္ ေဖာ္ျပသြားမည္ ျဖစ္သည္။  `layout.blade.php` ႏွင့္ `users.blade.php` ဟု၍ file ႏွစ္ခုကို တည္ေဆာက္လုိက္ပါ။ `layout.blade.php` ဟုသည့္ file တြင္ ေအာက္ပါ အတုိင္း ေရးသားလုိက္ပါ။
 
 	<html>
 		<body>
@@ -73,7 +74,7 @@ Next, we'll create a simple view to display our user data. Views live in the `ap
 		</body>
 	</html>
 
-Next, we'll create our `users.blade.php` view:
+ထုိေနာက္ `users.blade.php` ဟုေသာ view တစ္ခုကို တည္ေဆာက္ လတၱံ ့။ 
 
 	@extends('layout')
 
@@ -81,31 +82,34 @@ Next, we'll create our `users.blade.php` view:
 		Users!
 	@stop
 
-Some of this syntax probably looks quite strange to you. That's because we're using Laravel's templating system: Blade. Blade is very fast, because it is simply a handful of regular expressions that are run against your templates to compile them to pure PHP. Blade provides powerful functionality like template inheritance, as well as some syntax sugar on typical PHP control structures such as `if` and `for`. Check out the [Blade documentation](/docs/templates) for more details.
+တခ်ိဳ  ့ေသာ syntax မ်ားမွ သင့္အတြက္ နည္းနည္း စိမ္းေနမည္ ျဖစ္သည္။ အဘယ္ေၾကာင့္ဆုိေသာ္ ယခု အသုံးျပဳထားသည္မွာ Laravel ၏ templating system ျဖစ္သည့္ Blade ကုိ အသုံးျပဳထားျခင္း ေၾကာင့္ ျဖစ္သည္။ Blade သည္ အလြန္ျမန္ဆန္ လွေပသည္။ အေၾကာင္းမွာ ရုိးရွင္းလြယ္ကူ regular expression မ်ားကုိ အသုံးျပဳကာ PHP အျဖစ္သုိ ့ compile ျပဳလုပ္ထားျခင္းေၾကာင့္ျဖစ္သည္။ Blade အေနျဖင့္ အလြန္တရာ စြမ္းအင္ၾကီးမားလွေသာ template inheritance ကဲ့သို ့ေသာ feature မ်ားကို support ေပးရုံသာမက  PHP တြင္ ေရးသားႏုိင္သည့္ `if` ႏွင့္ `for` သုိ ့ေသာ Conditional statement မ်ားကိုပါ ေသသပ္လွပစြာ ေရးသားႏိုင္ေသာေၾကာင့္ျဖစ္သည္။ အေသးစိတ္ကို  [Blade documentation](/docs/templates) ၾကည့္ရႈႏုိင္ေပမည္။ 
 
-Now that we have our views, let's return it from our `/users` route. Instead of returning `Users!` from the route, return the view instead:
+ယခု ကြ်န္ေတာ္တုိ ့ views အပုိင္းကို ဖန္တီးျပီး ျဖစ္၍ `/users` ဟုေသာ route ဘက္ကုိ ျပန္လွည့္ၾကပါစုိ ့။ Route မွ `Users!` ဟု return ျပန္ျခင္းထက္ 
+view ကို ျပန္ေပးဖုိ ့လုိေပမည္။ 
 
 	Route::get('users', function()
 	{
 		return View::make('users');
 	});
 
-Wonderful! Now you have setup a simple view that extends a layout. Next, let's start working on our database layer.
+အံၾသဖြယ္ေကာင္းေလစြ။ သင့္အေနျဖင့္ layout တစ္ခုကို extends ျပဳလုပ္ထားေသာ view တစ္ခုကုိ တည္ေဆာက္ျပီးေပသည္။ ဆက္၍ database layer တြင္ ဆက္၍ လႈပ္ရွားၾကပါစုိ ့။
 
 <a name="creating-a-migration"></a>
-## Creating A Migration
+## Migration တစ္ခုဖန္တီးျခင္း
 
-To create a table to hold our data, we'll use the Laravel migration system. Migrations let you expressively define modifications to your database, and easily share them with the rest of your team.
+Table တစ္ခုတည္ေဆာက္ျပီး data ေတြကုိ handle ႏုိင္ရန္ Laravel migration system ကုိ အသုံးျပဳရန္လုိေပမည္။ Migration အေနျဖင့္ သင့္ database ၏ modification ကုိ အလြယ္တကူ သတ္မွတ္ႏုိင္ျပီး သင့္အဖြဲ  ့သားမ်ားႏွင့္ မွ်ေဝႏုိင္ေပမည္။
 
-First, let's configure a database connection. You may configure all of your database connections from the `app/config/database.php` file. By default, Laravel is configured to use MySQL, and you will need to supply connection credentials within the database configuration file. If you wish, you may change the `driver` option to `sqlite` and it will use the SQLite database included in the `app/database` directory.
+ေရွးဦးစြာ database ႏွင့္ ခ်ိတ္ဆက္ရန္ လုိေပမည္။ database ျဖင့္ခ်ိတ္ဆက္ရန္ အတြက္ `app/config/database.php` တြင္ ျပင္ဆင္ရန္လုိေပမည္။ ပုံမွန္အားျဖင့္ Laravel သည္ MySQL ျဖင့္ အသုံးျပဳရန္ သတ္မွတ္ထားသည္။ သင့္အေနျဖင့္ လုိအပ္ေသာ credential မ်ားကုိ config file တြင္ ျဖည့္သြင္းရန္လုိေပမည္။ သင့္အေနျဖင့္ အလုိရွိပါက စိတ္ၾကိဳက္ `driver` option ကုိ `sqlite` ျဖစ္ေစေျပာင္းလဲႏုိင္ျပီ။ ၄င္းအေနျဖင့္ `app/database` directory ေအာက္တြင္ တည္ရွိမည့္ SQLite database ကို အလုပ္လုပ္မည္ ျဖစ္သည္။
 
-Next, to create the migration, we'll use the [Artisan CLI](/docs/artisan). From the root of your project, run the following from your terminal:
+ထုိေနာက္ migration တစ္ခု ဖန္တီးရန္ [Artisan CLI](/docs/artisan) ကုိ အသုံးျပဳမည္ ျဖစ္သည္။ project ၏ root တြင္ ေအာက္ပါ အတုိင္း terminal မွ run ရန္ လုိေပမည္။
 
 	php artisan migrate:make create_users_table
 
-Next, find the generated migration file in the `app/database/migrations` folder. This file contains a class with two methods: `up` and `down`. In the `up` method, you should make the desired changes to your database tables, and in the `down` method you simply reverse them.
+ဆက္၍ `app/database/migrations` တည္ရွိသည့္ migration file ကုိ ရွာရန္ လုိေပမည္။ ထုိထဲတြင္ `up` ႏွင့္`down`ဟူေသာ method ႏွစ္ခုပါဝင္မည္ ျဖစ္သည္။
 
-Let's define a migration that looks like this:
+
+`up` method တြင္ database တြင္ ေျပာင္းလဲခ်င္သည္မ်ားကို ထည့္သြင္းေရးသား၍  `down` method ေျပာင္းျပန္ေရးသားရမည္ ျဖစ္သည္။
+ေအာက္ပါအတုိင္း migration ကုိ တည္ေဆာက္လုိက္ပါ။
 
 	public function up()
 	{
@@ -123,26 +127,27 @@ Let's define a migration that looks like this:
 		Schema::drop('users');
 	}
 
-Next, we can run our migrations from our terminal using the `migrate` command. Simply execute this command from the root of your project:
+ဆက္၍ migrate ျပဳလုပ္လုိပါက terminal တြင္`migrate` ဟုရုိက္ရန္လုိေပမည္။ 
 
 	php artisan migrate
 
-If you wish to rollback a migration, you may issue the `migrate:rollback` command. Now that we have a database table, let's start pulling some data!
+migration တစ္ခုကို rollback (ေနာက္ျပန္လွည့္) လုိပါက သင့္အေနျဖင့္ `migrate:rollback` ဟူ၍  ရုိက္ရုံသာ ျဖစ္သည္။ ယခု database table ရွိျပီ ျဖစ္၍ 
+data ေလးနည္းနည္းျဖင့္ စလုိက္ၾကပါစို ့။
 
 <a name="eloquent-orm"></a>
 ## Eloquent ORM
 
-Laravel ships with a superb ORM: Eloquent. If you have used the Ruby on Rails framework, you will find Eloquent familiar, as it follows the ActiveRecord ORM style of database interaction.
+Eloquent ORM သည္ Laravel ၏ အလွတရား တစ္ရပ္ပင္ျဖစ္သည္။ သင့္အေနျဖင့္ Ruby on Rails framework ကုိ အသုံးျပဳဖူးပါက ၄င္းကဲ့သုိ ့ database interaction ျပဳလုပ္ရာတြင္ ActiveRecord ORM style သုံးထားသာ Eloquent ႏွင့္ရင္းႏွီးေနမည္ ျဖစ္သည္။  
 
-First, let's define a model. An Eloquent model can be used to query an associated database table, as well as represent a given row within that table. Don't worry, it will all make sense soon! Models are typically stored in the `app/models` directory. Let's define a `User.php` model in that directory like so:
+ပထမဦးဆုံး model တစ္ခုကို သတ္မွတ္ၾကပါစို ့။ Eloquent model တစ္ခုသည္ ဆက္စပ္ေနေသာ database table မ်ား၏ query ကုိပါ အသုံးျပဳႏုိင္သည္။ သိပ္မ်ား နားရႈပ္သြားသလား မသိ။ အခုလာမယ့္ အပုိင္းမွာ တျဖည္းျဖည္း နားလည္လာမွာပါ။ Model ေတြဟာ `app/models` ဆုိတဲ့ directory အတြင္းမွာ တည္ရွိပါတယ္။ အဆုိပါ directory ထဲမွာ ေအာက္ပါအတုိင္း `User.php` ဆုိတဲ့ model တစ္ခုကုိ တည္ေဆာက္လုိက္ပါ။
 
 	class User extends Eloquent {}
 
-Note that we do not have to tell Eloquent which table to use. Eloquent has a variety of conventions, one of which is to use the plural form of the model name as the model's database table. Convenient!
+သတိျပဳရမည္မွာ ကြ်န္ေတာ္တုိ ့အေနျဖင့္ Eloquent ကုိ မည္သည့္ table အသုံးျပဳရန္ မညြန္းဆုိရေသးေခ်။ Eloquent တြင္ အသုံးျပဳနည္း မ်ားစြာ ရွိသည့္ အနက္တစ္ခုမွာ Model အမည္၏ အမ်ားကိန္းမွာ database table အျဖစ္ အလုိအေလ်ာက္ သိရွိေနမည္ ျဖစ္သည္။ အဆင္ေျပေလစြ!
 
-Using your preferred database administration tool, insert a few rows into your `users` table, and we'll use Eloquent to retrieve them and pass them to our view.
+သင့္အေနျဖင့္ ၾကိဳက္သည့္ database administration tool ကို အသုံးျပဳျပီး `users` table တြင္ row အနည္းငယ္ data သြင္းလုိက္ပါ။  ထုိေနာက္ Eloquent ကုိ အသုံးျပဳ၍  data မ်ားကို ထုတ္ယူျပီး view သုိ ့လြဲေျပာင္းေပးလုိက္မည္။
 
-Now let's modify our `/users` route to look like this:
+ယခု `/users` route ကုိ ေအာက္ပါပုံစံေျပာင္းလဲလုိက္ပါ။
 
 	Route::get('users', function()
 	{
@@ -151,14 +156,14 @@ Now let's modify our `/users` route to look like this:
 		return View::make('users')->with('users', $users);
 	});
 
-Let's walk through this route. First, the `all` method on the `User` model will retrieve all of the rows in the `users` table. Next, we're passing these records to the view via the `with` method. The `with` method accepts a key and a value, and is used to make a piece of data available to a view.
+အထက္ပါ route ကုိၾကည့္ပါ။ ေရွးဦးစြာ `User` model မွ `all` method မွာ `users` table မွ rows အားလုံးကုိ ထုတ္ေပးမည္ ျဖစ္သည္။ ထုိေနာက္ ထုိ record မ်ားကုိ `with` method အသုံးျပဳ၍ view သုိ ့ passing ေပးလုိက္ျခင္း ျဖစ္သည္။ ထုိ `with` method  သည္ key ႏွင့္ value အေနျဖင့္ data မ်ားကို လက္ခံမည္ ျဖစ္သည္။ ထုိအခါ view သုိ ့ data မ်ားေရာက္သြားမည္ ျဖစ္သည္။
 
-Awesome. Now we're ready to display the users in our view!
+ေကာင္းေလးစြ။ ယခု ကြ်န္ေတာ္တုိ ့ user ကုိ data မ်ား ျပသႏုိင္ရန္ အဆင္သင့္ျဖစ္ေခ်ျပီ။
 
 <a name="displaying-data"></a>
-## Displaying Data
+## Data မ်ား ျပသျခင္း
 
-Now that we have made the `users` available to our view, we can display them like so:
+ယခုအခါ `users` ကုိ view တြင္ ျမင္သာေစရန္ ျပဳလုပ္ျပီးျပီျဖစ္သည္။ ကြ်န္ေတာ္တုိ ့ ေအာက္ပါ အတုိင္း ျပသႏုိင္ေလျပီ။
 
 	@extends('layout')
 
@@ -168,6 +173,6 @@ Now that we have made the `users` available to our view, we can display them lik
 		@endforeach
 	@stop
 
-You may be wondering where to find our `echo` statements. When using Blade, you may echo data by surrounding it with double curly braces. It's a cinch. Now, you should be able to hit the `/users` route and see the names of your users displayed in the response.
+သင့္အေနျဖင့္ `echo` statements ကုိရွာေနလား မသိ။ Blade ကုိ အသုံးျပဳရာတြင္ data မ်ားကို တြန္ ့ကြင္း ႏွစ္ခု အၾကား ထည့္သြင္းျခင္းျဖင့္ data မ်ားကို echo အစား ျပသေပးႏုိင္သည္။ ဘယ္ေလာက္မ်ား လြယ္ကူေပသလဲ။ ယခုအခါ သင့္အေနျဖင့္ `/users` route ကုိ လွမ္းေခၚလုိက္ျခင္းျဖင့္ သင့္ users မ်ားကုိ ျပသႏုိင္ေလျပီ။
 
-This is just the beginning. In this tutorial, you've seen the very basics of Laravel, but there are so many more exciting things to learn. Keep reading through the documentation and dig deeper into the powerful features available to you in [Eloquent](/docs/eloquent) and [Blade](/docs/templates). Or, maybe you're more interested in [Queues](/docs/queues) and [Unit Testing](/docs/testing). Then again, maybe you want to flex your architecture muscles with the [IoC Container](/docs/ioc). The choice is yours!
+အထက္ပါ ဥပမာဟာ အစသာရွိပါေသးသည္။ ထုိ tutorial တြင္ သင့္အေနျဖင့္ laravel ၏ အေျခခံကို ေတြ ့ျမင္ႏုိင္မည္ ျဖစ္သည္။ သုိ ့ေသာ္လည္း ပုိမုိ၍ စိတ္လႈပ္ရွားစရာ အခ်က္မ်ားစြာ စီတန္း၍ ေလ့လာရန္ က်န္ရွိေနပါေသးသည္။ documentation ကုိ ဖတ္ရႈျခင္းျဖင့္  စြမ္းအားၾကီးမားလွသည့္  [Eloquent](/docs/eloquent) ႏွင့္ [Blade](/docs/templates) ကဲ့သုိ ့ေသာ သုိ ့မဟုတ္ သင့္ပုိစိတ္ဝင္စားႏုိင္သည့္  [Queues](/docs/queues) ႏွင့္ [Unit Testing](/docs/testing) ကဲ့သုိ ့ေသာ အေၾကာင္းအရာမ်ားကို ေလ့လာႏုိင္သည္။ ထပ္၍ သင့္ application ၏ architecture ကုိ သက္ေတာင့္သက္သာ ျဖစ္ေစမည့္  [IoC Container](/docs/ioc) မ်ားလည္း ပါဝင္ပါေသးသည္။ ေရြးခ်ယ္ပါေလာ့။

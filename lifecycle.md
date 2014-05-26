@@ -1,4 +1,4 @@
-# Request Lifecycle
+﻿# Request Lifecycle
 
 - [Overview](#overview)
 - [Request Lifecycle](#request-lifecycle)
@@ -8,41 +8,42 @@
 <a name="overview"></a>
 ## Overview
 
-When using any tool in the "real world", you feel more confidence if you understand how that tool works. Application development is no different. When you understand how your development tools function, you feel more comfortable and confident using them. The goal of this document is to give you a good, high-level overview of how the Laravel framework "works". By getting to know the overall framework better, everything feels less "magical" and you will be more confident building your applications. In addition to a high-level overview of the request lifecycle, we'll cover "start" files and application events.
+သင္ tools တစ္ခုကို တကယ္လက္ေတြ႕သံုးၿပီဆိုရင္ အဲ႕ဒီ tool က ဘယ္လိုအလုပ္လုပ္တယ္ဆိုတာကိုသိရင္ သင္ပိုၿပီး ယံုၾကည္မွူရွိလာပါလိမ္႕မယ္။ development tools ေတြရဲ႕ function ေတြဘယ္လိုအလုပ္လုပ္လဲသင္သိလာတဲ႕အခါမွာ သင္အဲဒါေတြကိုအသံုးျပဳတဲ႕အခါပိုၿပီးေတာ႕ အဆင္ေျပ ယံုၾကည္လာပါလိမ္႕မယ္။ ဒီ document ရဲ႕ အဓိကရည္ရြယ္ခ်က္က  Laravel Framework ဘယ္လိုအလုပ္လုပ္လဲဆိုတာကို ေကာင္းမြန္တဲ႕ hight-level overview တစ္ခုေပးဖို႕ပါ။ Framework အေၾကာင္း overview ေကာင္းေကာင္းသိသြားတဲ႕အခ်ိန္မွာ "magical" လုိ႕ထင္တာေတြနည္းသြားၿပီးေတာ႕ သင္ application တည္ေဆာက္ရာမွာပိုၿပီးေတာ႕ confident ရွိလာပါလိမ္႕မယ္။ Request Lifecycle  ရဲ႕ hight level overview ရဲ႕ျဖည္႕စြတ္ခ်က္မွာေတာ႕ "start" files နဲ႕ application events ကိုပါ cover လုပ္ထားပါတယ္။
 
-If you don't understand all of the terms right away, don't lose heart! Just try to get a basic grasp of what is going on, and your knowledge will grow as you explore other sections of the documentation.
+တကယ္လို႕သင္႕အေနနဲ႕ terms အားလံုးကိုနားမလည္ဘူးဆိုရင္စိတ္ထဲမထားပါနဲ႕ ။ အေျခခံအားျဖင္႕ ဘယ္လိုလုပ္ေနလဲဆိုတာကို ႀကိဳးစားၾကည္႕ၿပီး documencation ရဲ႕တစ္ျခား အပိုင္းေတြကို ဖတ္ၿပီး သင္႕ပိုၿပီးသိလာပါလိမ္႕မယ္။
 
 <a name="request-lifecycle"></a>
 ## Request Lifecycle
 
-All requests into your application are directed through the `public/index.php` script. When using Apache, the `.htaccess` file that ships with Laravel handles the passing of all requests to `index.php`. From here, Laravel begins the process of handling the requests and returning a response to the client. Getting a general idea for the Laravel bootstrap process will be useful, so we'll cover that now!
+သင္႔ application ရဲ႕ Request အားလံုးကို `public/index.php` ဆီကို redirect လုပ္ပါတယ္။  Apache ကိုအသံုးျပဳတဲ႔အခါမွာ `.htaccess` files က request အားလံုးကို `index.php` စီ redirect လုပ္ေပးပါတယ္။ အဲ႔ဒီ႔ကေနစၿပီးေတာ႔ Laravel က request ေတြကိုလက္ခံတာ  response ေတြကို client ဆီျပန္ေပးတာေတြကို handles လုပ္ေပးသြားတာပါ၊ Laravel ရဲ႕  bootstrap general idea က အသံုးဝင္ပါလိမ္႔မယ္ ၊ ဒါေၾကာင္႔ကြ်န္ေတာ္တို႔အခု ေအာက္မွာရွင္းျပပါ႔မယ္။
 
-By far, the most important concept to grasp when learning about Laravel's bootstrap process is **Service Providers**. You can find a list of service providers by opening your `app/config/app.php` configuration file and finding the `providers` array. These providers serve as the primary bootstrapping mechanism for Laravel. But, before we dig into service providers, let's go back to `index.php`. After a request enters your `index.php` file, the `bootstrap/start.php` file will be loaded. This file creates the new Laravel `Application` object, which also serves as an [IoC container](/docs/ioc).
+Laravel ရဲ႕ bootstrap process ေလ႔လာတဲ႔ေနရာမွာ **Service Providers**  ကအဓိကျဖစ္ပါတယ္။ Services Providers ေတြရဲ႕  Lists ေတြကို  `app/config/app.php` ကိုဖြင္႔ၿပီး `providers` arrays မွာရွာေတြ႔ႏိုင္ပါတယ္။ ဒီ providers ေတြက Laravel ကို bootstrap လုပ္ဖို႔ အဓိက ျဖစ္ပါတယ္။ သင္႔ `index.php` file ကို request တစ္ခုလုပ္လိုက္တာနဲ႔ `bootstrap/start.php` က load လုပ္ပါမယ္။ အဲ႔ဒီ႔ file က Laravel `Application` object ေတြကို create လုပ္ပါ႔မယ္၊ ေနာက္ [Ioc container](/docs/ioc) ကိုလည္း serve လုပ္ပါတယ္။
 
-After creating the `Application` object, a few project paths will be set and [environment detection](/docs/configuration#environment-configuration) will be performed. Then, an internal Laravel bootstrap script will be called. This file lives deep within the Laravel source, and sets a few more settings based on your configuration files, such as timezone, error reporting, etc. But, in addition to setting these rather trivial configuration options, it also does something very important: registers all of the service providers configured for your application.
+`Application` ရဲ႕ object ေတြကို create လုပ္ၿပီးၿပီဆိုရင္ေတာ႔ project ရဲ႕ paths အခ်ိဳ႕ကိုစတင္ၿပီး တပ္ဆင္ပါ႔မယ္၊ ေနာက္ [environment detection](/docs/configuration#environment-configuration) ေတြကိုဆက္လက္လုပ္ေဆာင္ပါတယ္။ ဒါၿပီးရင္ေတာ႔ Laravel bootstrap script ေတြကို call လုပ္ပါ႔မယ္။ Laravel source ရဲ႕တြင္းပိုင္း File ေတြထိ live ျဖစ္သြားၿပီဆိုရင္ သင္႕ရဲ႕ configuration ေပၚမူတည္ၿပီး setting ေတြကို တပ္ဆင္ပါလိမ္႔မယ္။ timezoneတို႔၊ error reporting နဲ႔ အျခား လိုအပ္တဲ႔ setting ေတြေပါ႔။ ဒါေပမယ္႕ သင့္ Application လိုအပ္တဲ့ Service Provider မ်ားအားလုံးကို register လုပ္ထားဖို႔ကလည္း အျခား configuration ေတြအားလုံးလိုပဲ အေရးႀကီးပါတယ္။
 
 Simple service providers only have one method: `register`. This `register` method is called when the service provider is registered with the application object via the application's own `register` method. Within this method, service providers register things with the [IoC container](/docs/ioc). Essentially, each service provider binds one or more [closures](http://us3.php.net/manual/en/functions.anonymous.php) into the container, which allows you to access those bound services within your application. So, for example, the `QueueServiceProvider` registers closures that resolve the various [Queue](/docs/queues) related classes. Of course, service providers may be used for any bootstrapping task, not just registering things with the IoC container. A service provider may register event listeners, view composers, Artisan commands, and more.
 
-After all of the service providers have been registered, your `app/start` files will be loaded. Lastly, your `app/routes.php` file will be loaded. Once your `routes.php` file has been loaded, the Request object is sent to the application so that it may be dispatched to a route.
+Service Providers ေတြအကုန္လံုး register လုပ္ၿပီးရင္ သင္႕ရဲ႕ `app/start` file loadလုပ္ပါလိမ္႔မယ္။ ေနာက္ဆံုးအေနနဲ႔သင္႔ရဲ႕ `app/routes.php` ကို load လုပ္ပါ႔မယ္။ ေနာက္တစ္ခါသင္႕ application ရဲ႕ `route.php` load လုပ္ၿပီးရင္ request objects ေတြသင္႔ application ဆီကိုပို႔ပါမယ္၊ ဒါက route ေတြကိုေစလႊတ္ျခင္းျဖစ္ပါလိမ္႔မယ္။
 
-So, let's summarize:
+ကဲဒါဆိုရင္အတိုခ်ဳပ္လိုက္ၾကရေအာင္:
 
-1. Request enters `public/index.php` file.
-2. `bootstrap/start.php` file creates Application and detects environment.
-3. Internal `framework/start.php` file configures settings and loads service providers.
-4. Application `app/start` files are loaded.
-5. Application `app/routes.php` file is loaded.
-6. Request object sent to Application, which returns Response object.
-7. Response object sent back to client.
+1.  Request ေတြက `public/index.php` file ဆီကို ဝင္ေရာက္လာတယ္
+2.  `bootstrap/start.php` file က  Application ကို create လုပ္ၿပီးေတာ႔ environment ကို detect လုပ္တယ္
+3. အတြင္းပိုင္း `framework/start.php` file က setting ေတြကို configure လုပ္တယ္ေနာက္ေတာ႔ service providers ေတြကို load လုပ္တယ္
+4. Application ရဲ႕ `app/start` file ေတြ load လုပ္တယ္
+5. Application ရဲ႕ `app/route` file load လုပ္တယ္
+6. Request objects ေတြကို application ဆီကို ပို႔တယ္၊ အဲဒီ႔ကေန object ေတြ Response ျပန္လာတယ္
+7. ျပန္လာတဲ႔ Response ေတြကို client ဆီကိုျပန္ပို႔တယ္
 
-Now that you have a good idea of how a request to a Laravel application is handled, let's take a closer look at "start" files!
+အခု Laravel က application ရဲ႕ Request  ေတြကိုဘယ္လိုေျဖရွင္းသြားတယ္ဆိုတာသိၿပီးသြားၿပီ `start`  file အေၾကာင္းကို နည္းနည္းအေသးစိတ္ဆက္ေလ႔လာလိုက္ၾကေအာင္။
 
 <a name="start-files"></a>
 ## Start Files
 
-Your application's start files are stored at `app/start`. By default, three are included with your application: `global.php`, `local.php`, and `artisan.php`. For more information about `artisan.php`, refer to the documentation on the [Artisan command line](/docs/commands#registering-commands).
+သင္႔ Application ရဲ႕ Start Files ေတြက `app/start` ထဲမွာပါ။ Default အရဆိုရင္ သင္႔ application ရဲ႕ `global.php`,`local.php` နဲ႔ `artisan.php` တို႔ပါဝင္ပါတယ္။ artisan အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔ [Artisan command line](/docs/command#registering-commands) ကိုဖတ္ဖို႔ညႊန္းပရေစ။
 
-The `global.php` start file contains a few basic items by default, such as the registration of the [Logger](/docs/errors) and the inclusion of your `app/filters.php` file. However, you are free to add anything to this file that you wish. It will be automatically included on _every_ request to your application, regardless of environment. The `local.php` file, on the other hand, is only called when the application is executing in the `local` environment. For more information on environments, check out the [configuration](/docs/configuration) documentation.
+Default အရ`global.php` မွာ basic items ေတြပါဝင္ပါတယ္၊ registration ေတြရဲ႕ [logger](/docs/errors) တို႔... ေနာက္  `app/filters.php` တို႔လည္းပါဝင္ပါေသးတယ္။ ဒါေပမယ္႔လည္း ဒီ `global.php` မွာ သင္ႀကိဳက္တဲ႔ File ေတြထက္ထည္႔လို႔ရပါတယ္။ တကယ္လို႔ထက္ထည္႔လိုက္ရင္ အဲ႔ဒီ႔ File က  သင္႔ application ရဲ႕ request တိုင္းမွာ auto ပါဝင္ေနမွာပါ။ `local.php` file ကေတာ႔ `local` environment မွာမွ call လုပ္မွာပါ၊
+Environment configuration အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔  [configuration](/docs/configuration) ကိုဖတ္ဖို႔ ညႊန္းပရေစ။
 
 Of course, if you have other environments in addition to `local`, you may create start files for those environments as well. They will be automatically included when your application is running in that environment. So, for example, if you have a `development` environment configured in your `bootstrap/start.php` file, you may create a `app/start/development.php` file, which will be included when any requests enter the application in that environment.
 
