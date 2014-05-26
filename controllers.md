@@ -1,4 +1,4 @@
-# Controllers
+﻿# Controllers
 
 - [Basic Controllers](#basic-controllers)
 - [Controller Filters](#controller-filters)
@@ -9,9 +9,9 @@
 <a name="basic-controllers"></a>
 ## Basic Controllers
 
-Application ရဲ့  Route ပိုင္းဆိုင္ရာအားလံုးကုိ 'routes.php' တဖုိင္တည္းမွာ အားလံုး သတ္မွတ္ထားသလို ၊ အဲဒီ route ေတြရဲ့  Action အားလံုးကုိ Controller က Class ေတြနဲ့ ထိန္းခ်ဳပ္ႏိုင္မွာပါ။ Controllers က routes မွာသတ္မွတ္တဲ့ Action ေတြကုိ ထိန္းခ်ဳပ္ေပးယံု သာမက Framework တခုအတြက္ အားသာခ်က္တခုျဖစ္တဲ့ Automatic dependency injection(/docs/ioc) ေတြပါအသံုးျပဳႏိုင္မွာပါ။
+Application ရဲ့  Route ပိုင္းဆိုင္ရာအာလံုးကုိ `routes.php` တဖုိင္တည္းမွာ အားလံုး သတ္မွတ္ထားသလို ၊ အဲဒီ route ေတြရဲ့  Action အားလံုးကုိ Controller က Class ေတြနဲ့ ထိန္းခ်ဳပ္ႏိုင္မွာပါ။ Controllers က routes မွာသတ္မွတ္တဲ့ Action ေတြကုိ ထိန္းခ်ဳပ္ေပးယံု သာမက Framework တခုအတြက္ အားသာခ်က္တခုျဖစ္တဲ့ [Automatic dependency injection][1] ေတြပါအသံုးျပဳႏိုင္မွာပါ။
 
-Controllers ဖုိင္ေတြကုိ ပံုမွန္အားျဖင့္ 'app/controllers ေအာက္မွာ သိမ္းဆည္းထားပါတယ္။ အဲဒီ Controller ဖိုင္ေတြကုိ  'Composer.json' မွာ 'Classmap' စနစ္ျဖင့္အသံုးျပဳထားပါတယ္။ဘယ္လိုပဲျဖစ္ျဖစ္ Controllers ေတြက Application ရဲ့ ဘယ္ေနရာမွာ မဆို အလုပ္လုပ္ႏုိင္ပါတယ္။ Route မွာ Controllers ကုိ သိမ္းဆန္းထားတဲ့ေနရာအတြက္ သတ္မွတ္ခ်က္ေတြက မရွိပါ။ဘာလုိ့လဲဆိုေတာ့ Composer က Classmap autoload သံုးျပဳထားတဲ့ controller class ကုိ အလုိလုိ သိမွတ္ျပဳျပီးသားျဖစ္ေနလုိ့ပါ။Controllers ဖိုင္ေတြကို ႏွစ္သက္ရာ ေနရာမွာ သိမ္းဆည္းျပီး အလုပ္လုပ္ႏုိင္ပါတယ္။
+Controllers ဖုိင္ေတြကုိ ပံုမွန္အားျဖင့္ `app/controllers` ေအာက္မွာ သိမ္းဆည္းထားပါတယ္။ အဲဒီ Controller ဖိုင္ေတြကုိ  `Composer.json` မွာ `Classmap စနစ္ျဖင့္အသံုးျပဳထားပါတယ္။ဘယ္လိုပဲျဖစ္ျဖစ္ Controllers ေတြက Application ရဲ့ ဘယ္ေနရာမွာ မဆို အလုပ္လုပ္ႏုိင္ပါတယ္။ Route မွာ Controllers ကုိ သိမ္းဆန္းထားတဲ့ေနရာအတြက္ သတ္မွတ္ခ်က္ေတြက မရွိပါ။ဘာလုိ့လဲဆိုေတာ့ Composer က Classmap autoload သံုးျပဳထားတဲ့ controller class ကုိ အလုိလုိ သိမွတ္ျပဳျပီးသားျဖစ္ေနလုိ့ပါ။Controllers ဖိုင္ေတြကို ႏွစ္သက္ရာ ေနရာမွာ သိမ္းဆည္းျပီး အလုပ္လုပ္ႏုိင္ပါတယ္။
 
 အေျခခံအားျဖင့္ Controller Class တခုရဲ့ ပံုစံက ေအာက္ပါအတုိင္းေရးသားပါတယ္။
 
@@ -30,7 +30,7 @@ Controllers ဖုိင္ေတြကုိ ပံုမွန္အားျ�
 	}
 
 
-Controllers ေတြအားလံုးက 'BaseController' Class ကုိ ထပ္ကြန့္ အသံုးျပဳရမွာပါ။ 'BaseController' ကုိလဲ 'app/controllers' မွာ သိမ္းဆည္းထားျပီး ျပန္လည္အသံုးျပဳႏုိင္တဲ့ ဖုိင္အေနနဲ့သိမ္းဆည္းထားပါတယ္။'BaseContoller' ဆိုတာက Laravel framework ရဲ့  'Controller' Class ကုိ ထပ္ကြန့္ အသံုးျပဳထားပါတယ္။အခုဆိုရင္ေတာ့ Route ဖုိင္မွ တဆင့္ အသံုးျပဳလိုတဲ့ Controller action ကုိ ေအာက္ပါအတုိင္းသတ္မွတ္ႏုိင္ပါျပီ။
+Controllers ေတြအားလံုးက `BaseController` Class ကုိ ထပ္ကြန့္ အသံုးျပဳရမွာပါ။ `BaseController` ကုိလဲ `app/controllers` မွာ သိမ္းဆည္းထားျပီး ျပန္လည္အသံုးျပဳႏုိင္တဲ့ ဖုိင္အေနနဲ့သိမ္းဆည္းထားပါတယ္။`BaseContoller` ဆိုတာက Laravel framework ရဲ့  `Controller` Class ကုိ ထပ္ကြန့္ အသံုးျပဳထားပါတယ္။အခုဆိုရင္ေတာ့ Route ဖုိင္မွ တဆင့္ အသံုးျပဳလိုတဲ့ Controller action ကုိ ေအာက္ပါအတုိင္းသတ္မွတ္ႏုိင္ပါျပီ။
 
 	Route::get('user/{id}', 'UserController@showProfile');
 
@@ -46,7 +46,7 @@ Controller ကုိ သတ္မွတ္ထားတဲ့ Route ကုိ ေ
 
 	Route::get('foo', array('uses' => 'FooController@method','as' => 'name'));
 
-Controller Action ပါတဲ့ URL ( Link ) တခု ဖန္တီးဖို့အတြက္ 'URL::action' ဆုိျပီးသံုးျပဳႏုိင္သလို 'action' helper function ကုိလဲ ေအာက္ပါအတုိင္းသံုးျပဳႏုိင္ပါတယ္။
+Controller Action ပါတဲ့ URL ( Link ) တခု ဖန္တီးဖို့အတြက္ `URL::action` ဆုိျပီးသံုးျပဳႏုိင္သလို `action` helper function ကုိလဲ ေအာက္ပါအတုိင္းသံုးျပဳႏုိင္ပါတယ္။
 
 	$url = URL::action('FooController@method');
 
@@ -101,7 +101,7 @@ You may also specify controller filters inline using a Closure:
 
 	}
 
-Controller တစ္ခုအတြက္ Filter ကုိ သီးျခားအသံုးျပဳခ်င္ရင္ေတာ့ '@' ဆိုတဲ့ syntax ကုိ အသံုးျပဳျပီး ေအာက္ပါအတုိင္း သတ္မွတ္ေပးရပါတယ္။
+Controller တစ္ခုအတြက္ Filter ကုိ သီးျခားအသံုးျပဳခ်င္ရင္ေတာ့ `@` ဆိုတဲ့ syntax ကုိ အသံုးျပဳျပီး ေအာက္ပါအတုိင္း သတ္မွတ္ေပးရပါတယ္။
 
 	class UserController extends BaseController {
 
@@ -131,7 +131,7 @@ Laravel တြင္ Controller ေတြရဲ့  Action အားလံုး
 
 	Route::controller('users', 'UserController');
 
-'controller' method တြင္ arguments ႏွစ္ခု လက္ခံပါတယ္။ ပထမတခုက Base URL controller handles( ဥပမာ. create, index ) ျဖစ္ျပီး ၊ ဒုတိယတခုကေတာ့ Controller ရဲ့ နာမည္ျဖစ္ပါတယ္။ ေနာက္တစ္ခုက Controller တြင္ Method(getindex/postprofile)ေတြကုိ HTTP verb အလိုက္ ထည့္ေပးရပါမယ္။
+`controller` method တြင္ arguments ႏွစ္ခု လက္ခံပါတယ္။ ပထမတခုက Base URL controller handles( ဥပမာ. create, index ) ျဖစ္ျပီး ၊ ဒုတိယတခုကေတာ့ Controller ရဲ့ နာမည္ျဖစ္ပါတယ္။ ေနာက္တစ္ခုက Controller တြင္ Method(getindex/postprofile)ေတြကုိ HTTP verb အလိုက္ ထည့္ေပးရပါမယ္။
 
 	class UserController extends BaseController {
 
@@ -147,16 +147,16 @@ Laravel တြင္ Controller ေတြရဲ့  Action အားလံုး
 
 	}
 
-'index' method က route မွာေပးထားတဲ့ index ကုိ အလုပ္လုပ္ပါတယ္။ ကြ်န္ေတာ္တုိ့ အေပၚမွာဆို route name ကုိ users ဆိုျပီးေပးခဲ့ပါတယ္။ အဲဒါဆိုရင္ users လုိ့ေခၚရင္ Controller ထဲက index က အလုပ္လုပ္သြားမွာပါ။
+`index` method က route မွာေပးထားတဲ့ index ကုိ အလုပ္လုပ္ပါတယ္။ ကြ်န္ေတာ္တုိ့ အေပၚမွာဆို route name ကုိ users ဆိုျပီးေပးခဲ့ပါတယ္။ အဲဒါဆိုရင္ users လုိ့ေခၚရင္ Controller ထဲက index က အလုပ္လုပ္သြားမွာပါ။
 
-Controller action မွာ စကားစုအမ်ားၾကီးပါလာသံုးခဲ့ရင္ "dash" syntax သံုးနည္းနဲ့ Mathod ကုိ သတ္မွတ္ေပးရပါတယ္။ ဥပမာ "OurController" ထဲက method တစ္ခု ကုိ getAdminProfile လုိ့ေပးထားရင္ url ကုိ "users/admin-profile" လုိ့ေခၚလုိ့ရသြားမွာပါ။
+Controller action မွာ စကားစုအမ်ားၾကီးပါလာသံုးခဲ့ရင္ `dash` syntax သံုးနည္းနဲ့ Mathod ကုိ သတ္မွတ္ေပးရပါတယ္။ ဥပမာ "OurController" ထဲက method တစ္ခု ကုိ getAdminProfile လုိ့ေပးထားရင္ url ကုိ `users/admin-profile` လုိ့ေခၚလုိ့ရသြားမွာပါ။
 
 	public function getAdminProfile() {}
 
 <a name="resource-controllers"></a>
 ## Resource Controllers
 
-Resource controllers က sources ေတြ အသံုးျပဳျပီး Restful controller ေတြ ဖန္တီးတဲ့အခါ အလြယ္တကူအသံုးျပဳႏုိင္ေအာင္လုပ္ေဆာင္ေပးပါတယ္။ ဥပမာ ဓါတ္ပံု စီမံတဲ့ controller တစ္တခု ျပဳလုပ္မယ္ဆုိပါစို ့။ Terminal(CMD) ကေန တစ္ဆင့္ Artisan command ျဖင့္ "controller:make" ကုိအသံုးျပဳျပီးေတာ့ "Route::resource" ဆိုျပီး route သတ္မွတ္ေပးလုိက္ရင္ resoure controller တစ္ခု အလြယ္တကူရရွိမွာျဖစ္ပါတယ္။
+Resource controllers က sources ေတြ အသံုးျပဳျပီး Restful controller ေတြ ဖန္တီးတဲ့အခါ အလြယ္တကူအသံုးျပဳႏုိင္ေအာင္လုပ္ေဆာင္ေပးပါတယ္။ ဥပမာ ဓါတ္ပံု စီမံတဲ့ controller တစ္တခု ျပဳလုပ္မယ္ဆုိပါစို ့။ Terminal(CMD) ကေန တစ္ဆင့္ Artisan command ျဖင့္ `controller:make` ကုိအသံုးျပဳျပီးေတာ့ `Route::resource` ဆိုျပီး route သတ္မွတ္ေပးလုိက္ရင္ resoure controller တစ္ခု အလြယ္တကူရရွိမွာျဖစ္ပါတယ္။
 
 Controller တစ္ခုကုိ Terminal(cmd) ကေန ဖန္တီးဖုိ့အတြက္ ေအာက္က ကြန္မန္းျဖင့္ စမ္းၾကည့္ပါ။
 
@@ -203,7 +203,7 @@ DELETE    | /resource/{resource}        | destroy      | resource.destroy
 
 #### Adding Additional Routes To Resource Controllers
 
-တကယ္လုိ့ resource controller မွာ ပံုမွန္ routes ေတြနဲ့ မလံုေလာက္လုိ့ အသစ္ထပ္ထည့္လုိ့ရႏုိင္ပါေသးတယ္။ အဲဒီ route name ကိုေတာ့ "Route::resource" ကုိ မေရးခင္မွာေအာက္က ပံုစံအတုိင္း ေရးေပးရပါမယ္။
+တကယ္လုိ့ resource controller မွာ ပံုမွန္ routes ေတြနဲ့ မလံုေလာက္လုိ့ အသစ္ထပ္ထည့္လုိ့ရႏုိင္ပါေသးတယ္။ အဲဒီ route name ကိုေတာ့ `Route::resource` ကုိ မေရးခင္မွာေအာက္က ပံုစံအတုိင္း ေရးေပးရပါမယ္။
 
 	Route::get('photos/popular');
 	Route::resource('photos', 'PhotoController');
@@ -219,3 +219,6 @@ DELETE    | /resource/{resource}        | destroy      | resource.destroy
 	{
 		//
 	}
+
+
+  [1]: /docs/ioc
