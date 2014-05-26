@@ -15,7 +15,7 @@
 <a name="request-lifecycle"></a>
 ## Request Lifecycle
 
-All requests into your application are directed through the `public/index.php` script. When using Apache, the `.htaccess` file that ships with Laravel handles the passing of all requests to `index.php`. From here, Laravel begins the process of handling the requests and returning a response to the client. Getting a general idea for the Laravel bootstrap process will be useful, so we'll cover that now!
+သင္႔ application ရဲ႕ Request အားလံုးက `public/index.php` ဆီကို redirect လုပ္ပါတယ္။  Apache ကိုအသံုးျပဳတဲ႔အခါမွာ `.htaccess` files က request အားလံုးကို `index.php` စီ redirect လုပ္ေပးပါတယ္။ အဲ႔ဒီ႔ကေနစၿပီးေတာ႔ Laravel က request ေတြကိုလက္ခံတာ  response ေတြကို client ဆီျပန္ေပးတာေတြကို handles လုပ္ေပးသြားတာပါ၊ Laravel ရဲ႕  bootstrap general idea က အသံုးဝင္ပါလိမ္႔မယ္ ၊ ဒါေၾကာင္႔ကြ်န္ေတာ္တို႔အခု cover  လုပ္ပါ႔မယ္။
 
 By far, the most important concept to grasp when learning about Laravel's bootstrap process is **Service Providers**. You can find a list of service providers by opening your `app/config/app.php` configuration file and finding the `providers` array. These providers serve as the primary bootstrapping mechanism for Laravel. But, before we dig into service providers, let's go back to `index.php`. After a request enters your `index.php` file, the `bootstrap/start.php` file will be loaded. This file creates the new Laravel `Application` object, which also serves as an [IoC container](/docs/ioc).
 
