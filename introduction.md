@@ -10,11 +10,11 @@ Framework အသစ္တစ္ခုကို ေလ႕လာရတာကို
 
 - [Installation](/docs/installation) and [Configuration](/docs/configuration)
 - [Routing](/docs/routing)
-- [Requests & Input](/docs/requests)
+- [Requests & Input](/docs/requests)si
 - [Views & Responses](/docs/responses)
 - [Controllers](/docs/controllers)
 
-အေပၚက Documention Link ေတြကိုဖတ္ၿပီးၿပီဆိုရင္ သင့္ အေနနဲ႕ Laravel ရဲ႕ request/response ေတြကို ေကာင္းေကာင္း ကိုယ္တြယ္ေျဖရွင္းႏိုင္သင္႕ပါတယ္။ ေနာက္ၿပီး သင္အေနနဲ႕ [Database Configuration](/docs/database) / [Eloquent ORM](/docs/eloquent) ဖတ္ဖို႕ဆုေတာင္းေကာင္းဆုေတာင္းေနမယ္လို႕ထင္ပါတယ္ အဲ႕ဒီလိုမွမဟုတ္ဘူးဆိုရင္ [authentication and security](/docs/security) ကိုေပါ႕ ဒါမွလူေတြကို သင္႕ရဲ႕ application ထဲကို singing ဝင္ခိုင္းလို႕ရမွာကိုး။
+အေပၚက Documention Link ေတြကိုဖတ္ၿပီးၿပီဆိုရင္ သင့္ အေနနဲ႕ Laravel ရဲ႕ request/response ေတြကို ေကာင္းေကာင္း ကိုယ္တြယ္ေျဖရွင္းႏိုင္သင္႕ပါတယ္။ ေနာက္ၿပီး သင္အေနနဲ႕ [Database Configuration](/docs/database) / [Eloquent ORM](/docs/eloquent) ဖတ္ဖို႕ဆုေတာင္းေကာင္းဆုေတာင္းေနမယ္လို႕ထင္ပါတယ္ အဲ႕ဒီလိုမွမဟုတ္ဘူးဆိုရင္ [authentication and security](/docs/security) ကိုေပါ႕ ဒါမွလူေတြကို သင္႕ရဲ႕ application ထဲကို  sign in ဝင္ခိုင္းလို႕ရမွာကိုး။
 
 <a name="laravel-philosophy"></a>
 ## Laravel သေဘာတရား
