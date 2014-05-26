@@ -25,17 +25,17 @@ Simple service providers only have one method: `register`. This `register` metho
 
 Service Providers ေတြအကုန္လံုး register လုပ္ၿပီးရင္ သင္႕ရဲ႕ `app/start` file loadလုပ္ပါလိမ္႔မယ္။ ေနာက္ဆံုးအေနနဲ႔သင္႔ရဲ႕ `app/routes.php` ကို load လုပ္ပါ႔မယ္။ ေနာက္တစ္ခါသင္႕ application ရဲ႕ `route.php` load လုပ္ၿပီးရင္ request objects ေတြသင္႔ application ဆီကိုပို႔ပါမယ္၊ ဒါက route ေတြကိုေစလႊတ္ျခင္းျဖစ္ပါလိမ္႔မယ္။
 
-So, let's summarize:
+ကဲဒါဆိုရင္အတိုခ်ဳပ္လိုက္ၾကရေအာင္:
 
-1. Request enters `public/index.php` file.
-2. `bootstrap/start.php` file creates Application and detects environment.
-3. Internal `framework/start.php` file configures settings and loads service providers.
-4. Application `app/start` files are loaded.
-5. Application `app/routes.php` file is loaded.
-6. Request object sent to Application, which returns Response object.
-7. Response object sent back to client.
+1.  Request ေတြက `public/index.php` file ဆီကို ဝင္ေရာက္လာတယ္
+2.  `bootstrap/start.php` file က  Application ကို create လုပ္ၿပီးေတာ႔ environment ကို detect လုပ္တယ္
+3. အတြင္းပိုင္း `framework/start.php` file က setting ေတြကို configure လုပ္တယ္ေနာက္ေတာ႔ service providers ေတြကို load လုပ္တယ္
+4. Application ရဲ႕ `app/start` file ေတြ load လုပ္တယ္
+5. Application ရဲ႕ `app/route` file load လုပ္တယ္
+6. Request objects ေတြကို application ဆီကို ပို႔တယ္၊ အဲဒီ႔ကေန object ေတြ Response ျပန္လာတယ္
+7. ျပန္လာတဲ႔ Response ေတြကို client ဆီကိုျပန္ပို႔တယ္
 
-Now that you have a good idea of how a request to a Laravel application is handled, let's take a closer look at "start" files!
+အခု Laravel က application ရဲ႕ Request  ေတြကိုဘယ္လိုေျဖရွင္းသြားတယ္ဆိုတာသိၿပီးသြားၿပီ `start`  file အေၾကာင္းကို နည္းနည္းအေသးစိတ္ဆက္ေလ႔လာလိုက္ၾကေအာင္။
 
 <a name="start-files"></a>
 ## Start Files
