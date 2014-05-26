@@ -1,88 +1,88 @@
 # Cache
 
-- [Configuration](#configuration)
-- [Cache Usage](#cache-usage)
+- [ျပင္ဆင္ျခင္း](#configuration)
+- [Cache အသံုးျပဳသည့္ပံုစံ](#cache-usage)
 - [Increments & Decrements](#increments-and-decrements)
 - [Cache Tags](#cache-tags)
 - [Database Cache](#database-cache)
 
 <a name="configuration"></a>
-## Configuration
+## ျပင္ဆင္ျခင္း
 
-Laravel provides a unified API for various caching systems. The cache configuration is located at `app/config/cache.php`. In this file you may specify which cache driver you would like used by default throughout your application. Laravel supports popular caching backends like [Memcached](http://memcached.org) and [Redis](http://redis.io) out of the box.
+Caching ျပဳလုပ္နည္းပံုစံမ်ိဳးစံုတြက္ Laravel မွ API ထုတ္ေပးၿပီးသားျဖစ္ပါတယ္။ Cache configuration အတြက္ `app/config/cache.php` ဖိုင္ထဲမွာသြားျပင္ရမွာပါ။ Application တစ္ခုလံုးအတြက္အသံုးျပဳမဲ့ cache driver ကို အဲ့ဒီဖိုင္ထဲမွာ သတ္မွတ္ေပးရမွာပါ။  [Memcached](http://memcached.org) ႏွင့္ [Redis](http://redis.io) ကဲ့သိုေသာ လူသံုးမ်ားၿပီး popular ျဖစ္တဲ့ caching methods ေတြကို laravel မွာ အေထာက္အပံ့ေပးထားပါတယ္။ 
 
-The cache configuration file also contains various other options, which are documented within the file, so make sure to read over these options. By default, Laravel is configured to use the `file` cache driver, which stores the serialized, cached objects in the filesystem. For larger applications, it is recommended that you use an in-memory cache such as Memcached or APC.
+အဲ့ဒီ cache configuration ဖိုင္ထဲမွာ က်န္တဲ့ options ေတြလဲ အမ်ားႀကီးရွိပါေသးတယ္။ အဲ့ဒီအတြက္လဲ ဖိုင္ထဲမွာ တစ္ခါတည္း လမ္းညႊန္ခ်က္ေရးေပးထားၿပီးသားပါ။ အကယ္၍ အဲ့ဒီ options ေတြကိုအသံုးျပဳမယ္ဆိုရင္ေတာ့ option နဲ႔ပတ္သက္တဲ့လမ္းညႊန္ခ်က္ကို ေသေသခ်ာခ်ာဖတ္ၿပီးမွ အသံုးျပဳဖို႔လိုအပ္ပါတယ္။ ပံုမွန္အတိုင္းဆိုရင္ေတာ့ laravel ဟာ `file` cache driver အတြက္ ျပင္ဆင္ေပးထားပါတယ္။ အဲ့ဒီ cache ဖိုင္ objects ေတြကို နံပါတ္စဥ္အတိုင္း filesystem ထဲမွာသြားသိမ္းထားပါတယ္။ Application အႀကီးေတြအတြက္ဆိုရင္ေတာ့ Memcached သို႔မဟုတ္ APC (Alternative PHP Cache) ကဲ့သို႔ေသာ in-memory cache ေတြကိုအသံုးျပဳသင့္ပါတယ္။ 
 
 <a name="cache-usage"></a>
-## Cache Usage
+## Cache အသံုးျပဳသည့္ပံုစံ
 
-#### Storing An Item In The Cache
+#### အခ်က္အလက္ကို Cache ထဲတြင္သိမ္းဆည္းျခင္း
 
 	Cache::put('key', 'value', $minutes);
 
-#### Using Carbon Objects To Set Expire Time
+#### အခ်ိန္ကန္႔သတ္ဖို႔အတြက္ Carbon Objects အသံုးျပဳျခင္း
 
 	$expiresAt = Carbon::now()->addMinutes(10);
 
 	Cache::put('key', 'value', $expiresAt);
 
-#### Storing An Item In The Cache If It Doesn't Exist
+#### အခ်က္အလက္သည္ Cache ထဲတြင္ ရွိမေနလၽွင္ ထပ္ထည့္ျခင္း
 
 	Cache::add('key', 'value', $minutes);
 
-The `add` method will return `true` if the item is actually **added** to the cache. Otherwise, the method will return `false`.
+အကယ္၍ အခ်က္အလက္ဟာ cache ထဲမွာ **ရွိေနလၽွင္** `add` method ဟာ `true` return ျပန္မွာျဖစ္ၿပီး၊ အဲ့လိုမဟုတ္ရင္ေတာ့ `false` return ျပန္မွာျဖစ္ပါတယ္။
 
-#### Checking For Existence In Cache
+#### Cache ရွိမရွိ စစ္ေဆးျခင္း
 
 	if (Cache::has('key'))
 	{
 		//
 	}
 
-#### Retrieving An Item From The Cache
+#### Cache ထဲမွ အခ်က္အလက္ကို ရယူျခင္း
 
 	$value = Cache::get('key');
 
-#### Retrieving An Item Or Returning A Default Value
+#### အခ်က္အလက္ရယူျခင္း (သို႔မဟုတ္) Default Value တစ္ခု return ျပန္ျခင္း
 
 	$value = Cache::get('key', 'default');
 
 	$value = Cache::get('key', function() { return 'default'; });
 
-#### Storing An Item In The Cache Permanently
+#### အခ်က္အလက္ကို Cache ထဲသို႔ ထာဝရသိမ္းဆည္းျခင္း
 
 	Cache::forever('key', 'value');
 
-Sometimes you may wish to retrieve an item from the cache, but also store a default value if the requested item doesn't exist. You may do this using the `Cache::remember` method:
+တစ္ခါတစ္ရံမွာ cache ထဲက အခ်က္အလက္ကိုလဲ ယူခ်င္တယ္၊ အကယ္၍ အဲ့ဒီအခ်က္အလက္ရွိမေနဘူးဆိုရင္လည္း cache ထဲကို default value တစ္ခု ထည့္ထားခဲ့ခ်င္တဲ့ အေျခအေနေတြရွိလာႏိုင္ပါတယ္။ အဲ့ဒီလို အေျခအေနမ်ိဳးအတြက္ `Cache::remember` method ကိုအသံုးျပဳႏိုင္ပါတယ္။   
 
 	$value = Cache::remember('users', $minutes, function()
 	{
 		return DB::table('users')->get();
 	});
 
-You may also combine the `remember` and `forever` methods:
+`remember` နဲ႔ `forever` method ႏွစ္ခုလံုးကို ေပါင္းစပ္ၿပီး အသံုးျပဳႏိုင္ပါေသးတယ္။
 
 	$value = Cache::rememberForever('users', function()
 	{
 		return DB::table('users')->get();
 	});
 
-Note that all items stored in the cache are serialized, so you are free to store any type of data.
+Cache ထဲမွာသိမ္းဆည္းလိုက္တဲ့ အခ်က္အလက္ေတြဟာ နံပါတ္စဥ္အလိုက္သိမ္းဆည္းတာျဖစ္တဲ့အတြက္ သင့္အေနနဲ႔ ဘယ္လို အခ်က္အလက္အမ်ိဳးအစားကိုမဆို လြတ္လပ္စြာ သိမ္းဆည္းႏိုင္ေၾကာင္း သတိျပဳပါေလ။
 
-#### Pulling An Item From The Cache
+#### Cache ထဲရွိ အခ်က္အလက္ကို ဆြဲထုတ္ျခင္း
 
-If you need to retrieve an item from the cache and then delete it, you may use the `pull` method:
+Cache ထဲမွ အခ်က္အလက္ကို ရယူအသံုးျပဳၿပီးတာနဲ႔ ဖ်က္ျပစ္လိုက္ခ်င္တယ္ဆိုရင္ေတာ့၊ `pull` method ကိုအသံုးျပဳႏိုင္ပါတယ္။
 
 	$value = Cache::pull('key');
 
-#### Removing An Item From The Cache
+#### Cache ထဲမွ အခ်က္အလက္ကို ပယ္ဖ်က္ျခင္း
 
 	Cache::forget('key');
 
 <a name="increments-and-decrements"></a>
 ## Increments & Decrements
 
-All drivers except `file` and `database` support the `increment` and `decrement` operations:
+`file` နဲ႔ `database`မွလြဲ၍ က်န္တဲ့ cache drivers ေတြအားလံုးကို `increment` နဲ႔ `decrement`လုပ္ေဆာင္ခ်က္ေတြအတြက္ အေထာက္အပံ့ေပးထားပါတယ္။
 
 #### Incrementing A Value
 
@@ -99,7 +99,7 @@ All drivers except `file` and `database` support the `increment` and `decrement`
 <a name="cache-tags"></a>
 ## Cache Tags
 
-> **Note:** Cache tags are not supported when using the `file` or `database` cache drivers. Furthermore, when using multiple tags with caches that are stored "forever", performance will be best with a driver such as `memcached`, which automatically purges stale records.
+> **သတိျပဳရန္:** `file` သို႔မဟုတ္ `database` cache driver သံုးထားရင္ေတာ့ Cache tags ကို အေထာက္အပံ့ေပးမွာမဟုတ္ပါဘူး။ ၎အျပင္ cache ကို tags ေတြနဲ႔တြဲသံုးမယ္ဆိုရင္ အဲ့ဒီ cache ကို အၿမဲတမ္းသိမ္းဆည္းထားမွာျဖစ္တဲ့အတြက္ `memcached` ကဲသို႔ေသာ driver ကိုအသံုးျပဳမွသာ permormance အတြက္ပိုၿပီးအဆင္ေျပေစမွာပါ။ အဲ့ဒီေတာ့မွ အသံုးမလိုေတာ့တဲ့ အခ်က္အလက္ေတြကို အလိုအေလၽွာက္ ပယ္ဖ်က္ေပးမွာျဖစ္ပါတယ္။
 
 #### Accessing A Tagged Cache
 
