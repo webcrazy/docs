@@ -40,7 +40,7 @@ Service Providers ေတြအကုန္လံုး register လုပ္ၿ�
 <a name="start-files"></a>
 ## Start Files
 
-Your application's start files are stored at `app/start`. By default, three are included with your application: `global.php`, `local.php`, and `artisan.php`. For more information about `artisan.php`, refer to the documentation on the [Artisan command line](/docs/commands#registering-commands).
+သင္႔ Application ရဲ႕ Start Files ေတြက `app/start` ထဲမွာပါ။ Default အရဆိုရင္ သင္႔ application ရဲ႕ `global.php`,`local.php` နဲ႔ `artisan.php` တို႔ပါဝင္ပါတယ္။ artisan အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔ [Artisan command line](/docs/command#registering-commands) ကိုဖတ္ဖို႔ညႊန္းပရေစ။
 
 The `global.php` start file contains a few basic items by default, such as the registration of the [Logger](/docs/errors) and the inclusion of your `app/filters.php` file. However, you are free to add anything to this file that you wish. It will be automatically included on _every_ request to your application, regardless of environment. The `local.php` file, on the other hand, is only called when the application is executing in the `local` environment. For more information on environments, check out the [configuration](/docs/configuration) documentation.
 
