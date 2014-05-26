@@ -13,7 +13,7 @@ Application ရဲ့  Route ပိုင္းဆိုင္ရာအားလ
 
 Controllers ဖုိင္ေတြကုိ ပံုမွန္အားျဖင့္ 'app/controllers ေအာက္မွာ သိမ္းဆည္းထားပါတယ္။ အဲဒီ Controller ဖိုင္ေတြကုိ  'Composer.json' မွာ 'Classmap' စနစ္ျဖင့္အသံုးျပဳထားပါတယ္။ဘယ္လိုပဲျဖစ္ျဖစ္ Controllers ေတြက Application ရဲ့ ဘယ္ေနရာမွာ မဆို အလုပ္လုပ္ႏုိင္ပါတယ္။ Route မွာ Controllers ကုိ သိမ္းဆန္းထားတဲ့ေနရာအတြက္ သတ္မွတ္ခ်က္ေတြက မရွိပါ။ဘာလုိ့လဲဆိုေတာ့ Composer က Classmap autoload သံုးျပဳထားတဲ့ controller class ကုိ အလုိလုိ သိမွတ္ျပဳျပီးသားျဖစ္ေနလုိ့ပါ။Controllers ဖိုင္ေတြကို ႏွစ္သက္ရာ ေနရာမွာ သိမ္းဆည္းျပီး အလုပ္လုပ္ႏုိင္ပါတယ္။
 
-အေျခခံအားျဖင့္ Controller Class တခုရဲ့ ပံုစံက ေအာက္ပါအတုိင္းေရးသားပါတယ္:
+အေျခခံအားျဖင့္ Controller Class တခုရဲ့ ပံုစံက ေအာက္ပါအတုိင္းေရးသားပါတယ္။
 
 	class UserController extends BaseController {
 
@@ -35,14 +35,14 @@ Controllers ေတြအားလံုးက 'BaseController' Class ကုိ �
 	Route::get('user/{id}', 'UserController@showProfile');
 
 
-PHP ရဲ့  magic function namespaces ကုိ အသံုးျပဳျပီး Controller ကုိ သတ္မွတ္မယ္ဆုိရင္ေတာ့ ေအာက္ကပံုစံအတုိင္း Route ေပးတဲ့အခ်ိန္မွာ သတ္မွတ္ႏုိင္ပါတယ္:
+PHP ရဲ့  magic function namespaces ကုိ အသံုးျပဳျပီး Controller ကုိ သတ္မွတ္မယ္ဆုိရင္ေတာ့ ေအာက္ကပံုစံအတုိင္း Route ေပးတဲ့အခ်ိန္မွာ သတ္မွတ္ႏုိင္ပါတယ္။
 
 	Route::get('foo', 'Namespace\FooController@method');
 
 > **Note::** အခုခ်ိန္မွာ ကြ်န္ေတာ္တုိ့က PHP classes ေတြ ကုိ autoload အသံုးျပဳႏုိင္ရန္အတြက္ [Composer](http://getcomposer.org) ကုိ အသံုးျပဳထားပါတယ္။ ဒါေၾကာင့္ Controller file ကို System ရဲ့ ဘယ္ေနရာမွာပဲထားထား ၊ Composer က အဲဒီ ဖုိင္ကုိ သိေနသ၍ အသံုးျပဳႏုိင္မွာပါ။ Controllers ဖုိင္ရဲ့ တည္ေနရာကုိ အတည္တက် အေသ သတ္မွတ္ထားသလိုမ်ိဳးမရွိပါဘူး။Routing to controllers is entirely de-coupled from the file system.
 
 
-Controller ကုိ သတ္မွတ္ထားတဲ့ Route ကုိ ေအာက္ကပံုစံအတုိင္း သတ္မွတ္ႏုိင္ပါတယ္:
+Controller ကုိ သတ္မွတ္ထားတဲ့ Route ကုိ ေအာက္ကပံုစံအတုိင္း သတ္မွတ္ႏုိင္ပါတယ္။
 
 	Route::get('foo', array('uses' => 'FooController@method','as' => 'name'));
 
@@ -101,7 +101,7 @@ You may also specify controller filters inline using a Closure:
 
 	}
 
-Controller တစ္ခုအတြက္ Filter ကုိ သီးျခားအသံုးျပဳခ်င္ရင္ေတာ့ '@' ဆိုတဲ့ syntax ကုိ အသံုးျပဳျပီး ေအာက္ပါအတုိင္း သတ္မွတ္ေပးရပါတယ္။r:
+Controller တစ္ခုအတြက္ Filter ကုိ သီးျခားအသံုးျပဳခ်င္ရင္ေတာ့ '@' ဆိုတဲ့ syntax ကုိ အသံုးျပဳျပီး ေအာက္ပါအတုိင္း သတ္မွတ္ေပးရပါတယ္။
 
 	class UserController extends BaseController {
 
