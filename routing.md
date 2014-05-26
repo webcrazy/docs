@@ -240,8 +240,6 @@ Controller action အတြဲမ်ား အတြက္ လည္း လမ�
 
 	Route::get('user/profile', array('as' => 'profile', 'uses' => 'UserController@showProfile'));
 
-Now, you may use the route's name when generating URLs or redirects:
-
 အထက္ပါအတုိင္းသတ္မွတ္ျပီးပါက ေပးထားေသာ လမ္းေျကာင္းနာမည္ျဖင့္ URL မ်ား ထုတ္ရာ၌ ျဖစ္ေစ လမ္းေျကာင္းလြွဲမ်ား အသုံးျပု ရာ ၌ ျဖစ္ေစ သုံးနုိင္ပါျပီ။
 
 	$url = URL::route('profile');
@@ -280,8 +278,6 @@ Now, you may use the route's name when generating URLs or redirects:
 <a name="sub-domain-routing"></a>
 ## Sub-Domain မ်ား အသုံးျပု ၍ လမ္းေျကာင္းေပးျခင္း
 
-Laravel routes are also able to handle wildcard sub-domains, and pass you wildcard parameters from the domain:
-
 Laravel လမ္းေျကာင္းမ်ားတြင္ သံခိတ္သုံး sub-domain မ်ားကုိ ေကာင္းမြန္စြာ စီမံအသုံးခ်နုိင္ျပီး domain မွ သံခိတ္ ထိန္းကြပ္ကိန္းမ်ား ကုိ ေပးပုိ့နုိင္ပါသည္။
 
 #### Sub-domain လမ္းေျကာင္းမ်ား မွတ္ပံုတင္ျခင္း
@@ -298,8 +294,6 @@ Laravel လမ္းေျကာင္းမ်ားတြင္ သံခိ�
 
 <a name="route-prefixing"></a>
 ## လမ္းေျကာင္းေရွ့ ဆြယ္ေပးျခင္း
-
-A group of routes may be prefixed by using the `prefix` option in the attributes array of a group:
 
 လမ္းေျကာင္း အုပ္စု တစ္ခု အား `prefix` ထိန္းကြပ္ကိန္းအား `group` array တြင္ ထည့္သြင္း၍ ေရွ့ ဆြယ္ လမ္းေျကာင္းတစ္ခုေပးနုိင္ပါသည္။
 
