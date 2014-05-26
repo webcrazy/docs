@@ -9,11 +9,11 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravel framework မွာရွိတဲ့ configuration ဖိုင္အားလံုးကို 'app/config' လမ္းေၾကာင္းေအာက္မွာသိမ္းထားပါတယ္။ ဖိုင္အားလံုးမွာပါတဲ့ option တစ္ခုခ်င္းစီအတြက္ documentation မွာ ေရးထားပီးသားပါ။ အသံုးျပဳႏိုင္တဲ့ options ေတြကို documentation နဲ႔တြဲပီးေလ့လာ ႏိုင္ပါတယ္။
+Laravel framework မွာရွိတဲ့ configuration ဖိုင္အားလံုးကို `app/config` လမ္းေၾကာင္းေအာက္မွာသိမ္းထားပါတယ္။ ဖိုင္အားလံုးမွာပါတဲ့ option တစ္ခုခ်င္းစီအတြက္ documentation မွာ ေရးထားပီးသားပါ။ အသံုးျပဳႏိုင္တဲ့ options ေတြကို documentation နဲ႔တြဲပီးေလ့လာ ႏိုင္ပါတယ္။
 
-Application run ေနတဲ့အခ်ိန္ေတြမွာ configuration values ေတြကို အသံုးျပဳဖို႔လိုအပ္လာရင္ 'Config' class ကိုအသံုးျပဳၿပီး ဆြဲယူႏိုင္ပါတယ္။
+Application run ေနတဲ့အခ်ိန္ေတြမွာ configuration values ေတြကို အသံုးျပဳဖို႔လိုအပ္လာရင္ `Config` class ကိုအသံုးျပဳၿပီး ဆြဲယူႏိုင္ပါတယ္။
 
-#### Configuration Value ေတြကို အသံုးျပဳျခင္း
+#### Configuration Value မ်ားကို အသံုးျပဳျခင္း
 
 	Config::get('app.timezone');
 
@@ -34,7 +34,7 @@ Applicastion run-time ကာလမွာ သတ္မွတ္ထားတဲ့
 
 Application run ေနတဲ့ environment အေပၚအေျခခံပီး configuration ဖိုင္ေတြ သတ္မွတ္ထားျခင္းဟာ အေထာက္အကူ အမ်ားႀကီးျဖစ္ေစပါတယ္။ ဥပမာ - ကုိယ့္ရဲ့ local machine ေပၚမွာ မတူညီတဲ့ cache driver ေတြအသံုးျပဳခ်င္တယ္ဆိုရင္ ဒီ environment based configuration ကိုအသံုးျပဳရံုနဲ႔ လြယ္ကူ ၿပီးေျမာက္ေစႏိုင္ပါတယ္။ 
 
-`config` ဖိုဒါထဲမွာ ကိုယ့္ရဲ့ environment နဲ႔လိုက္ဖက္မဲ့ ဖိုင္ဒါတစ္ခုကိုေဆာက္လိုက္ပါ။ ဥပမာ - `local`။ ၿပီးရင္ အဲ့ဒီ environment အတြက္ override လုပ္သြားမဲ့ config ေတြ၊ ထပ္မံသတ္မွတ္ခ်င္တဲ့ options ေတြကို configuration ဖိုင္ေတြျပဳလုပ္ပီးသတ္မွတ္ႏိုင္ပါပီ။ ဥပမာ - local environment အတြက္ cache driver ကို override လုပ္ခ်င္တယ္ဆိုရင္၊ `app/config/local` ဖိုဒါထဲမွာ `cache.php` ဖိုင္ေဆာက္ပီး ေအာက္မွာေပးထားတဲ့ code ေတြနဲ႔ ျပဳလုပ္လိုက္ပါ။ 
+`config` ဖိုဒါထဲမွာ ကိုယ့္ရဲ့ environment နဲ႔လိုက္ဖက္မဲ့ ဖိုင္ဒါတစ္ခုကိုေဆာက္လိုက္ပါ။ ဥပမာ - `local`။ ၿပီးရင္ အဲ့ဒီ environment အတြက္ override လုပ္သြားမဲ့ config ေတြ၊ ထပ္မံသတ္မွတ္ခ်င္တဲ့ options ေတြကို configuration ဖိုင္ေတြျပဳလုပ္ပီးသတ္မွတ္ႏိုင္ပါၿပီ။ ဥပမာ - local environment အတြက္ cache driver ကို override လုပ္ခ်င္တယ္ဆိုရင္၊ `app/config/local` ဖိုဒါထဲမွာ `cache.php` ဖိုင္ေဆာက္ပီး ေအာက္မွာေပးထားတဲ့ code ေတြနဲ႔ ျပဳလုပ္လိုက္ပါ။ 
 
 	<?php
 
@@ -44,7 +44,7 @@ Application run ေနတဲ့ environment အေပၚအေျခခံပီ
 
 	);
 
-> **သတိျပဳရန္:** `testing` ဆိုတဲ့ အမည္နဲ႔ environment name ကို မသတ္မွတ္ပါနဲ႔။ အဲ့ဒီအမည္မွာ unit testing အတြက္ သီးသန္႔သတ္မွတ္ထားတဲ့ အမည္ျဖစ္ပါတယ္။
+> **သတိျပဳရန္:** `testing` ဆိုတဲ့ အမည္နဲ႔ environment name ကို မသတ္မွတ္ပါနဲ႔။ အဲ့ဒီအမည္ဟာ unit testing အတြက္ သီးသန္႔သတ္မွတ္ထားတဲ့ အမည္ျဖစ္ပါတယ္။
 
 ကိုယ့္အေနနဲ႔ override လုပ္ခ်င္တဲ့ option ေတြကိုသာသတ္မွတ္ေပးရန္ လိုအပ္ပီး base configuration ဖိုင္မွာပါတဲ့ option အားလံုးကို ျပန္လည္သတ္မွတ္ေပးဖို႔ မလိုအပ္ပါ။ Base configuration files ေတြကို environment configuration files ေတြက "cascade” လုပ္သြားပါလိမ့္မယ္။
 
@@ -60,7 +60,7 @@ Application run ေနတဲ့ environment အေပၚအေျခခံပီ
 
 အေပၚမွာျပထားတဲ့ ဥပမာမွာ `local` က environment အမည္ျဖစ္ၿပီး `your-machine-name` က server ရဲ့ hostname ျဖစ္ပါတယ္။ Linux နဲ႔ Mac ကြန္ပ်ဴတာေတြမွာဆိုရင္ `hostname` ဆိုတဲ့ terminal command ကိုအသံုးျပဳၿပီး hostname ကိုသတ္မွတ္ေပးႏိုင္ပါတယ္။
 
-If you need more flexible environment detection, you may pass a `Closure` to the `detectEnvironment` method, allowing you to implement environment detection however you wish:
+အကယ္၍ ပိုၿပီးထိေရာက္တဲ့ environment သိရွိမႈကို လိုအပ္တယ္ဆိုရင္ေတာ့ `detectEnvironment` method ထဲကို ကိုယ္လိုအပ္သလိုအသံုးျပဳႏိုင္တဲ့ environment သိရွိမႈေတြကိုျပဳလုပ္ေပးႏိုင္မဲ့ `Closure` တစ္ခုကို passing ေပးဖို႔လိုအပ္ပါတယ္။
 
 	$env = $app->detectEnvironment(function()
 	{
@@ -77,12 +77,12 @@ Application ရဲ့ လက္ရွိအသံုးျပဳေနတဲ့ 
 
 	if (App::environment('local'))
 	{
-		// The environment is local
+		// Local environment ျဖစ္တယ္
 	}
 
 	if (App::environment('local', 'staging'))
 	{
-		// The environment is either local OR staging...
+		//Local သို႔မဟုတ္ staging environment ျဖစ္တယ္
 	}
 
 <a name="provider-configuration"></a>
@@ -113,7 +113,7 @@ Environment configuration ကို အသံုးျပဳၿပီဆို�
 
 	'key' => $_ENV['TEST_STRIPE_KEY']
 
-ေသခ်ာေအာင္လုပ္ဖို႔လိုအပ္တာတစ္ခုက အဲ့ဒီ `.env.local.php` ဖိုင္ကို `.gitignore` ဖိုင္ထဲကို ထည့္ထားေပးရပါမယ္။ အဲ့ဒီေတာ့မွ ကိုယ့္ရဲ့ team မွာရွိတဲ့က်န္တဲ့ developers ေတြဟာ သူတို႔ရဲ့ ကိုယ္ပိုင္ local configuration ေတြကိုျပဳလုပ္ႏုိင္မည့္အျပင္ ကိုယ့္ရဲ့ sensitive configuration ေတြကိုလဲ source control မွာမပါေအာင္ ကာကြယ္ၿပီးသားျဖစ္မွာပါ။
+ေသခ်ာေအာင္လုပ္ဖို႔လိုအပ္တာတစ္ခုက အဲ့ဒီ `.env.local.php` ဖိုင္ကို `.gitignore` လုပ္ထားေပးရပါမယ္။ အဲ့ဒီေတာ့မွ ကိုယ့္ရဲ့ team မွာရွိတဲ့က်န္တဲ့ developers ေတြဟာ သူတို႔ရဲ့ ကိုယ္ပိုင္ local configuration ေတြကိုျပဳလုပ္ႏုိင္မည့္အျပင္ ကိုယ့္ရဲ့ sensitive configuration ေတြကိုလဲ source control မွာမပါေအာင္ ကာကြယ္ၿပီးသားျဖစ္မွာပါ။
 
 Production environment အတြက္လည္း လိုအပ္တဲ့ configuration ေတြပါတဲ့ `.env.php` ဖိုင္ကို project root ဖိုဒါထဲမွာ ေဆာက္လိုက္ပါ။ `.env.local.php` ဖိုင္လိုပဲ production environment မွာ အသံုးျပဳမဲ့`.env.php` ဖိုင္ဟာ source control ထဲမွာ မပါသင့္ပါဘူး။
 
@@ -132,7 +132,7 @@ Maintenance mode ကို disable လုပ္ခ်င္တယ္ဆိုရ
 
 	php artisan up
 
-Maintenance mode အတြက္ custom view သတ္မွတ္ခ်င္တယ္ဆိုရင္ေတာ့ ေအာက္မွာျပထားသလိုပဲ ႏွစ္သက္သလို `app/start/global.php` ဖိုင္ထဲမွာသြားေရာက္ျပင္ဆင္ႏိုင္ပါတယ္။
+Maintenance mode အတြက္ custom view သတ္မွတ္ခ်င္တယ္ဆိုရင္ေတာ့ ေအာက္မွာျပထားသလိုပဲ `app/start/global.php` ဖိုင္ထဲမွာ ႏွစ္သက္သလို သြားေရာက္ျပင္ဆင္ႏိုင္ပါတယ္။
 
 	App::down(function()
 	{
