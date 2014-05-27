@@ -1,4 +1,4 @@
-# Helper Functions
+# အကူ Function မ်ား
 
 - [Arrays](#arrays)
 - [Paths](#paths)
@@ -11,7 +11,7 @@
 
 ### array_add
 
-The `array_add` function adds a given key / value pair to the array if the given key doesn't already exist in the array.
+`array_add` function သည္ အကယ္၍ ပထမ argument array တြင္ထပ္မံေပး လုိက္ေသာ key နွင့္ တန္ဖုိး အတြဲ ရွိျပီးသား မဟုတ္ခဲ့ပါက ထုိ key နွင့္ တန္ဖုိးအတြဲအား ထပ္မံေပါင္းထည့္ေပးပါသည္။
 
 	$array = array('foo' => 'bar');
 
@@ -19,7 +19,7 @@ The `array_add` function adds a given key / value pair to the array if the given
 
 ### array_divide
 
-The `array_divide` function returns two arrays, one containing the keys, and the other containing the values of the original array.
+`array_divide` function သည္ မူလ array အား key မ်ားပါ၀င္ေသာ array နွင့္ တန္ဖုိးမ်ား ပါ ၀င္ေသာ array နွစ္ခု ပါ၀င္ေသာ array အျဖစ္ return ျပန္ေပးပါသည္။
 
 	$array = array('foo' => 'bar');
 
@@ -27,23 +27,23 @@ The `array_divide` function returns two arrays, one containing the keys, and the
 
 ### array_dot
 
-The `array_dot` function flattens a multi-dimensional array into a single level array that uses "dot" notation to indicate depth.
+`array_dot` function သည္ dimension တစ္ခုထက္ပုိ၍ ပါ၀င္ေသာ array တစ္ခုကုိ "." သေကၤတသုံးေရးနည္းျဖင့္ အဆင့္ဆင့္ေခါ္ယူနုိင္ေသာ dimension တစ္ခုတည္း ရွိ array တစ္ခု အျဖစ္ေျပာင္းလဲေပးပါသည္။
 
 	$array = array('foo' => array('bar' => 'baz'));
-
+ၡ
 	$array = array_dot($array);
 
 	// array('foo.bar' => 'baz');
 
 ### array_except
 
-The `array_except` method removes the given key / value pairs from the array.
+`array_except` method သည္ ေပးလုိက္ေသာ key နွင့္ တန္ဖုိး အတြဲကုိ ပထမ argument array ထံမွ ဖယ္ရွားေပးပါသည္။
 
 	$array = array_except($array, array('keys', 'to', 'remove'));
 
 ### array_fetch
 
-The `array_fetch` method returns a flattened array containing the selected nested element.
+`array_fetch` method သည္ ပထမ argument array အတြင္းတြင္ အဆင့္ဆင့္ ညွပ္သုံးထားေသာ ေပးထားသည့္ ဒုတိယ argument နွင့္ ကုိက္ညီသည့္ nested array element မ်ားအား တစ္ဆင့္တည္း flattened လုပ္ထားေသာ array အျဖစ္ျဖင့္ return ျပန္ေပးပါသည္။ 
 
 	$array = array(
 		array('developer' => array('name' => 'Taylor')),
@@ -56,7 +56,7 @@ The `array_fetch` method returns a flattened array containing the selected neste
 
 ### array_first
 
-The `array_first` method returns the first element of an array passing a given truth test.
+`array_first` method သည္ ေပးထားေသာ array အတြင္း မွ ေပးထားေသာ truth test ကုိ ေျပလည္ ေစ မည့္  ပထမဆုံး element အား return ျပန္ေပးပါသည္။
 
 	$array = array(100, 200, 300);
 
@@ -65,13 +65,13 @@ The `array_first` method returns the first element of an array passing a given t
 		return $value >= 150;
 	});
 
-A default value may also be passed as the third parameter:
+default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ parameter အျဖစ္ ထည့္သြင္းေပးနုိင္ပါသည္။
 
 	$value = array_first($array, $callback, $default);
 
 ### array_last
 
-The `array_last` method returns the last element of an array passing a given truth test.
+`array_last` method သည္ ေပးထားေသာ array အတြင္းမွ ေပးထားေသာ truth test ကုိ ေျပလည္ေစမည့္ ေနာက္ဆုံး element အား return ျပန္ေပးပါသည္။
 
 	$array = array(350, 400, 500, 300, 200, 100);
 
@@ -82,13 +82,13 @@ The `array_last` method returns the last element of an array passing a given tru
 
 	// 500
 
-A default value may also be passed as the third parameter:
+default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ parameter အျဖစ္ ထည့္သြင္းေပးနုိင္ပါသည္။
 
 	$value = array_last($array, $callback, $default);
 
 ### array_flatten
 
-The `array_flatten` method will flatten a multi-dimensional array into a single level.
+`array_flatten` method သည္ ေပးထားေသာ dimension တစ္ခုထက္ပုိသည့္ array တစ္ခုကို တစ္ဆင့္တည္း ရွိေသာ array တစ္ခု အျဖစ္ return ျပန္ေပးပါသည္။
 
 	$array = array('name' => 'Joe', 'languages' => array('PHP', 'Ruby'));
 
@@ -98,7 +98,7 @@ The `array_flatten` method will flatten a multi-dimensional array into a single 
 
 ### array_forget
 
-The `array_forget` method will remove a given key / value pair from a deeply nested array using "dot" notation.
+`array_forget` method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ deeply nested array တစ္ခုမွ  "." သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ေပးရင္း key နွင့္ တန္ဖုိး အတြဲကုိ ဖယ္ရွားေပးပါသည္။
 
 	$array = array('names' => array('joe' => array('programmer')));
 
@@ -106,17 +106,17 @@ The `array_forget` method will remove a given key / value pair from a deeply nes
 
 ### array_get
 
-The `array_get` method will retrieve a given value from a deeply nested array using "dot" notation.
+`array_get` method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ deeply nested array တစ္ခုမွ  "." သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ေပးရင္း key နွင့္ တန္ဖုိး အတြဲကုိ ထုတ္ယူေပးပါသည္။
 
 	$array = array('names' => array('joe' => array('programmer')));
 
 	$value = array_get($array, 'names.joe');
 
-> **Note:** Want something like `array_get` but for objects instead? Use `object_get`.
+>**မွတ္ခ်က္** အကယ္၍ `array_get` ၏ အလုပ္လုပ္ပုံမ်  ိုး ကုိ object မ်ားတြင္ သုံးလုိပါက `object_get` အားသုံးနုိင္ပါသည္။
 
 ### array_only
 
-The `array_only` method will return only the specified key / value pairs from the array.
+`array_only` method သည္ ပထမ argument array အတြင္းမွ ေပးထားေသာ key သုိ့မဟုတ္ တန္ဖုိးမ်ား ပါ၀င္သည့္ အတြဲမ်ားကုိသာ return ျပန္ေပးပါသည္။
 
 	$array = array('name' => 'Joe', 'age' => 27, 'votes' => 1);
 
@@ -124,7 +124,7 @@ The `array_only` method will return only the specified key / value pairs from th
 
 ### array_pluck
 
-The `array_pluck` method will pluck a list of the given key / value pairs from the array.
+`array_pluck` method သည္ ပထမ argument array ထံမွ ေပးထားေသာ key သို့ မဟုတ္ တန္ဖုိး ပါ၀င္သည့္ အတြဲကုိသာ return ျပန္ေပးပါသည္။
 
 	$array = array(array('name' => 'Taylor'), array('name' => 'Dayle'));
 
@@ -134,7 +134,7 @@ The `array_pluck` method will pluck a list of the given key / value pairs from t
 
 ### array_pull
 
-The `array_pull` method will return a given key / value pair from the array, as well as remove it.
+`array_pull` method သည္ ပထမ argument array ထံမွ ေပးထားေသာ key သုိ့ မဟုတ္ တန္ဖုိးပါ၀င္သည့္ အတြဲ ကုိ return ျပန္ျပီး ထုိ အတြဲအား မူလ array ထံမွလည္း ဖယ္ရွားေပးပါသည္။
 
 	$array = array('name' => 'Taylor', 'age' => 27);
 
@@ -142,7 +142,7 @@ The `array_pull` method will return a given key / value pair from the array, as 
 
 ### array_set
 
-The `array_set` method will set a value within a deeply nested array using "dot" notation.
+`array_set` method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ array တစ္ခုအတြင္းမွ  "." သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ဒုတိယ argument နွင့္ကုိက္ညီသည့္ တန္ဖုိးအား ျပု ျပင္ထည့္သြင္းေပးပါသည္။
 
 	$array = array('names' => array('programmer' => 'Joe'));
 
@@ -150,7 +150,7 @@ The `array_set` method will set a value within a deeply nested array using "dot"
 
 ### array_sort
 
-The `array_sort` method sorts the array by the results of the given Closure.
+`array_sort` method သည္ ေပးထားေသာ array အား ေပးထားေသာ Closure function ၏ ရလဒ္ကုိ အသုံးျပု ၍ စီေပးပါသည္။
 
 	$array = array(
 		array('name' => 'Jill'),
@@ -164,7 +164,7 @@ The `array_sort` method sorts the array by the results of the given Closure.
 
 ### array_where
 
-Filter the array using the given Closure.
+`array_where` သည္ ေပးထားေသာ array အား ေပးထားေသာ Closure function တစ္ခုျဖင့္ filter လုပ္ေပးပါသည္။
 
 	$array = array(100, '200', 300, '400', 500);
 
@@ -177,13 +177,13 @@ Filter the array using the given Closure.
 
 ### head
 
-Return the first element in the array. Useful for method chaining in PHP 5.3.x.
+array တစ္ခု၏ ပထမဆုံး element ကုိ return ျပန္ေပးပါသည္။ PHP 5.3.x တြင္ အသုံးျပုနုိင္ေသာ method chaining အတြက္ အသုံး၀င္ပါသည္။
 
 	$first = head($this->returnsArray('foo'));
 
 ### last
 
-Return the last element in the array. Useful for method chaining.
+array တစ္ခု၏ ေနာက္ဆုံး element ကို return ျပန္ေပးပါသည္။ method chaining အတြက္ အသုံး၀င္ပါသည္။
 
 	$last = last($this->returnsArray('foo'));
 
@@ -192,28 +192,28 @@ Return the last element in the array. Useful for method chaining.
 
 ### app_path
 
-Get the fully qualified path to the `app` directory.
+`app` directory၏ path အျပည့္အစုံကုိ ေပးပါသည္။
 
 	$path = app_path();
 
 ### base_path
 
-Get the fully qualified path to the root of the application install.
+application ကုိ install လုပ္ထားေသာ root directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။
 
 ### public_path
 
-Get the fully qualified path to the `public` directory.
+`public` directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။
 
 ### storage_path
 
-Get the fully qualified path to the `app/storage` directory.
+`app/storage` directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။
 
 <a name="strings"></a>
 ## Strings
 
 ### camel_case
 
-Convert the given string to `camelCase`.
+ေပးထားေသာ string အား `camelCase` ေရးဟန္သုိ့ ေျပာင္းလဲေပးပါသည္။
 
 	$camel = camel_case('foo_bar');
 
@@ -221,7 +221,7 @@ Convert the given string to `camelCase`.
 
 ### class_basename
 
-Get the class name of the given class, without any namespace names.
+ေပးထားေသာ class ၏  အမည္ကုိ namespace အမည္မ်ား မပါ၀င္ပဲ ေပးပါသည္။
 
 	$class = class_basename('Foo\Bar\Baz');
 
@@ -229,19 +229,19 @@ Get the class name of the given class, without any namespace names.
 
 ### e
 
-Run `htmlentities` over the given string, with UTF-8 support.
+`htmlentities` function အား ေပးထားေသာ string ျဖင့္ run ပါသည္။ UTF-8 support ပါ၀င္ပါသည္။
 
 	$entities = e('<html>foo</html>');
 
 ### ends_with
 
-Determine if the given haystack ends with a given needle.
+ပထမ argument တြင္ ေပးထားေသာ string တစ္ခုသည္ ေပးထားေသာ string နွင့္ အဆုံးသတ္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။
 
 	$value = ends_with('This is my name', 'name');
 
 ### snake_case
 
-Convert the given string to `snake_case`.
+ေပးထားေသာ string အား `snake_case` ေရးဟန္ သုိ့ ေျပာင္းလဲေပးပါသည္။
 
 	$snake = snake_case('fooBar');
 
@@ -249,11 +249,11 @@ Convert the given string to `snake_case`.
 
 ### str_limit
 
-Limit the number of characters in a string.
+string တစ္ခု အတြင္းရွိ အကၡရာအေရအတြက္ကုိ ကန့္သတ္ေပးပါသည္။
 
 	str_limit($value, $limit = 100, $end = '...')
 
-Example:
+ဥပမာ
 
 	$value = str_limit('The PHP framework for web artisans.', 7);
 
@@ -261,19 +261,19 @@ Example:
 
 ### starts_with
 
-Determine if the given haystack begins with the given needle.
+ပထမ argument တြင္ ေပးထားေသာ string တစ္ခုသည္ ေပးထားေသာ string နွင့္ စတင္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။
 
 	$value = starts_with('This is my name', 'This');
 
 ### str_contains
 
-Determine if the given haystack contains the given needle.
+ပထမ argument တြင္ ေပးထားေသာ string တြင္ ေပးထားေသာ string ပါ၀င္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။
 
 	$value = str_contains('This is my name', 'my');
 
 ### str_finish
 
-Add a single instance of the given needle to the haystack. Remove any extra instances.
+ပထမ argument တြင္ေပးထားေသာ string ၏ အဆုံးတြင္ ေပးထားေသာ string အားေပါင္းထည့္ေပးပါသည္။
 
 	$string = str_finish('this/string', '/');
 
@@ -281,31 +281,31 @@ Add a single instance of the given needle to the haystack. Remove any extra inst
 
 ### str_is
 
-Determine if a given string matches a given pattern. Asterisks may be used to indicate wildcards.
+ေပးထားေသာ pattern တစ္ခုသည္ ေပးထားေသာ string နွင့္ ကုိက္ညီ မကုိက္ညီ ဆုံးျဖတ္ေပးပါသည္။ ခေရပြင့္အကၡရာ "*" မ်ားအား wildcard အကၡရာအျဖစ္သုံးနုိင္ပါသည္။
 
 	$value = str_is('foo*', 'foobar');
 
 ### str_plural
 
-Convert a string to its plural form (English only).
+ေပးထားေသာ string တစ္ခုအား English ဘာသာ ျဖင့္ အမ်ားကိန္း (plural) ပုံစံသုိ့ ေျပာင္းလဲေပးပါသည္။
 
 	$plural = str_plural('car');
 
 ### str_random
 
-Generate a random string of the given length.
+ေပးထားေသာ အေရအတြက္အတုိင္း အတိအက် ရွိသည့္ က်ပန္း string တစ္ခုကုိ ထုတ္ေပးပါသည္။
 
 	$string = str_random(40);
 
 ### str_singular
 
-Convert a string to its singular form (English only).
+ေပးထားေသာ string တစ္ခုအား English ဘာသာ ျဖင့္ အနည္းကိန္း (singular) ပုံစံသုိ့ ေျပာင္းလဲေပးပါသည္။
 
 	$singular = str_singular('cars');
 
 ### studly_case
 
-Convert the given string to `StudlyCase`.
+ေပးထားေသာ string အား `StudlyCase` ေရးဟန္သုိ့ ေျပာင္းလဲေပးပါသည္။
 
 	$value = studly_case('foo_bar');
 
@@ -313,13 +313,13 @@ Convert the given string to `StudlyCase`.
 
 ### trans
 
-Translate a given language line. Alias of `Lang::get`.
+ေပးထားေသာ string တစ္ေျကာင္းအား ဘာသာျပန္ေပးပါသည္။ `Lang::get` method ၏ အမည္ေျပာင္း method တစ္ခုျဖစ္ပါသည္။
 
 	$value = trans('validation.required'):
 
 ### trans_choice
 
-Translate a given language line with inflection. Alias of `Lang::choice`.
+ေပးထားေသာ string တစ္ေျကာင္းအား ေပးထားေသာ နံပါတ္ အလုိက္ ဘာသာျပန္ message ကုိ အသုံးျပု၍ ဘာသာျပန္ေပးပါသည္။ `Lang::choice` method ၏ အမည္ေျပာင္း method တစ္ခုျဖစ္ပါသည္။
 
 	$value = trans_choice('foo.bar', $count);
 
@@ -328,61 +328,61 @@ Translate a given language line with inflection. Alias of `Lang::choice`.
 
 ### action
 
-Generate a URL for a given controller action.
+ေပးထားေသာ controller action တစ္စုံအတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။
 
 	$url = action('HomeController@getIndex', $params);
 
 ### route
 
-Generate a URL for a given named route.
+ေပးထားေသာ အမည္ရွိ လမ္းေျကာင္း တစ္ခုအတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။
 
 	$url = route('routeName', $params);
 
 ### asset
 
-Generate a URL for an asset.
+ေပးထားေသာ asset အတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။
 
 	$url = asset('img/photo.jpg');
 
 ### link_to
 
-Generate a HTML link to the given URL.
+ေပးထားေသာ URL အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
 
 	echo link_to('foo/bar', $title, $attributes = array(), $secure = null);
 
 ### link_to_asset
 
-Generate a HTML link to the given asset.
+ေပးထားေသာ asset အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
 
 	echo link_to_asset('foo/bar.zip', $title, $attributes = array(), $secure = null);
 
 ### link_to_route
 
-Generate a HTML link to the given route.
+ေပးထားေသာ လမ္းေျကာင္း တစ္ခု အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
 
 	echo link_to_route('route.name', $title, $parameters = array(), $attributes = array());
 
 ### link_to_action
 
-Generate a HTML link to the given controller action.
+ေပးထားေသာ controller action တစ္စုံအတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
 
 	echo link_to_action('HomeController@getIndex', $title, $parameters = array(), $attributes = array());
 
 ### secure_asset
 
-Generate a HTML link to the given asset using HTTPS.
+ေပးထားေသာ asset အတြက္ HTTPS သုံးထားေသာ HTML link တစ္ခု ထုတ္ေပးပါသည္။
 
 	echo secure_asset('foo/bar.zip', $title, $attributes = array());
 
 ### secure_url
 
-Generate a fully qualified URL to a given path using HTTPS.
+ေပးထားေသာ path တစ္ခု အတြက္ URL အျပည့္အစုံ တစ္ခု ထုတ္ေပးပါသည္။
 
 	echo secure_url('foo/bar', $parameters = array());
 
 ### url
 
-Generate a fully qualified URL to the given path.
+ေပးထားေသာ path တစ္ခု အတြက္ URL အျပည့္အစုံ ထုတ္ေပးပါသည္။
 
 	echo url('foo/bar', $parameters = array(), $secure = null);
 
@@ -391,24 +391,24 @@ Generate a fully qualified URL to the given path.
 
 ### csrf_token
 
-Get the value of the current CSRF token.
+လက္ရွိ CSRF token တန္ဖုိးကုိ ေပးပါသည္။
 
 	$token = csrf_token();
 
 ### dd
 
-Dump the given variable and end execution of the script.
+ေပးထားေသာ variable ကုိ dump လုပ္၍ script execution ကုိ ရပ္ေစပါသည္။
 
 	dd($value);
 
 ### value
 
-If the given value is a `Closure`, return the value returned by the `Closure`. Otherwise, return the value.
+ေပးထားေသာ တန္ဖုိးသည္ `Closure` တစ္ခု ျဖစ္ပါက `Closure` မွတစ္ဆင့္ return ျပန္လာေသာ value ကုိ return ျပန္ေပး၍ `Closure` မဟုတ္ပါက တန္ဖုိးအတုိင္း return ျပန္ေပးပါသည္။
 
 	$value = value(function() { return 'bar'; });
 
 ### with
 
-Return the given object. Useful for method chaining constructors in PHP 5.3.x.
+ေပးထားေသာ object ကုိ return ျပန္ေပးပါသည္။ PHP 5.3.x တြင္ method chaining constructor မ်ား အတြက္ အသုံး၀င္ပါသည္။
 
 	$value = with(new Foo)->doWork();
