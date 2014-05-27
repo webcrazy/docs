@@ -3,14 +3,14 @@
 - [အၾကမ္းဖ်င္း](#အၾကမ္းဖ်င္း)
 - [အေျခခံအသုုံးျပဳပုုံ](#အေျခခံအသုုံးျပဳပုုံ)
 - [Mass Assignment](#mass-assignment)
-- [Insert, Update, Delete](#insert-update-delete)
+- [ထည့္သြင္း ၊ ျပင္ဆင္ ၊ ဖ်က္ပစ္](#insert-update-delete)
 - [Soft Deleting](#soft-deleting)
 - [Timestamps](#timestamps)
 - [Query Scopes](#query-scopes)
 - [Relationships](#relationships)
 - [Querying Relations](#querying-relations)
 - [Eager Loading](#eager-loading)
-- [Inserting Related Models](#inserting-related-models)
+- [ဆက္စပ္ေနသည့္ Model မ်ားတြင္ data ထည့္သြင္းျခင္း](#inserting-related-models)
 - [Touching Parent Timestamps](#touching-parent-timestamps)
 - [Working With Pivot Tables](#working-with-pivot-tables)
 - [Collections](#collections)
@@ -18,7 +18,7 @@
 - [Date Mutators](#date-mutators)
 - [Model Events](#model-events)
 - [Model Observers](#model-observers)
-- [Converting To Arrays / JSON](#converting-to-arrays-or-json)
+- [Arrays ႏွင့္ JSON သုိ ့ေျပာင္းလဲျခင္း](#converting-to-arrays-or-json)
 
 <a name="introduction"></a>
 ## အၾကမ္းဖ်င္း
@@ -846,9 +846,9 @@ $books = Book::all();
 $books->load('author', 'publisher');
 
 <a name="inserting-related-models"></a>
-## Inserting Related Models
+## ဆက္စပ္ေနသည့္ Model မ်ားတြင္ data ထည့္သြင္းျခင္း
 
-#### ဆက္စပ္ေနသည့္ Model တစ္ခုႏွင့္ ခ်ိတ္ဆက္ျခင္း
+#### ဆက္စပ္ေနသည့္ Model ျဖင့္ ခ်ိတ္ဆက္ျခင္း
 
 တခါတရံ ဆက္စပ္ေနသည့္ model မ်ားအား insert ျပဳလုပ္ရန္လည္း လုိေပမည္။ ဥပမာ သင့္အေနျဖင့္ post တစ္ခုတြင္ comment တစ္ခုကုိ ထည့္သြင္းမည္ ဆုိပါစုိ ့။  Model တစ္ခု၏ `post_id` foreign key ကုိ manually ထည့္သြင္းေနမည့္ အစား `Post` model ဖက္မွ တုိက္ရုိက္ထည့္သြင္း၍လည္း ရေပသည္။
 
@@ -860,10 +860,9 @@ $comment = $post->comments()->save($comment);
 
 အထက္က ဥပမာတြင္ `post_id` field ကုိ အလုိအေလ်ာက္ ထည့္သြင္းသြားမည္ ျဖစ္သည္။
 
-### Associating Models (Belongs To)
+### Models မ်ား ဆက္စပ္ျခင္း(Belongs To)
 
-
-When updating a `belongsTo` relationship, you may use the `associate` method. This method will set the foreign key on the child model:
+`belongsTo` relationship ျဖင့္ Method မ်ားကို data မ်ား update လုပ္ေစလုိပါက `associate` method ကုိ အသုံးျပဳႏုိင္သည္။ ထုိ method သည္ လက္ေအာက္ခံ model ၏ foregin key ကုိပါ ထည့္သြင္းေပးသြားမည္ ျဖစ္သည္။
 
 $account = Account::find(10);
 
@@ -871,9 +870,9 @@ $user->account()->associate($account);
 
 $user->save();
 
-### Inserting Related Models (Many To Many)
+### ဆက္စပ္ေနသည့္ Model တြင္ data ထည့္သြင္းျခင္း (Many To Many)
 
-You may also insert related models when working with many-to-many relations. Let's continue using our `User` and `Role` models as examples. We can easily attach new roles to a user using the `attach` method:
+သင့္အေနျဖင့္ many-to-many relations ရွိေနသည့္ model မ်ားတြင္လည္း data ျဖည့္သြင္းလုိေပမည္။  ထုံးစံ ဥပမာ တစ္ခုျဖစ္သည့္ `User` ႏွင့္ `Role` model မ်ားျဖင့္ ေရွ  ့ဆက္ၾကစုိ ့။ user ၏ roles မ်ားကုိ `attach` method ျဖင့္ ခ်ိတ္ဆက္ႏုိင္သည္။
 
 #### Attaching Many To Many Models
 
@@ -1170,9 +1169,9 @@ You may register an observer instance using the `observe` method:
 User::observe(new UserObserver);
 
 <a name="converting-to-arrays-or-json"></a>
-## Arrays / JSON သုိ ့ေျပာင္းလဲ အသုံးျပဳျခင္း
+## Arrays ႏွင့္ JSON သုိ ့ေျပာင္းလဲျခင္း
 
-#### Converting A Model To An Array
+#### Model တစ္ခုကို Array သုိ ့ေျပာင္းလဲျခင္း
 
 JSON APIs မ်ား တည္ေဆာက္ရာတြင္ ၊ သင့္ အေနျဖင့္ model ႏွင့္ ဆက္စပ္ပတ္သတ္သည္မ်ားကို array အေနျဖင့္ေသာ လည္းေကာင္း JSON အေနျဖင့္ေသာ္ လည္းေကာင္း ထုတ္ေပးလုိသည့္ အခ်ိန္ကာလ မ်ား ရွိေပမည္။ Eloquent အေနျဖင့္ ထုိသုိ ့ျပဳလုပ္ႏုိင္ရန္ ေထာက္ပံ့ေပးေသာ method မ်ားလည္း ရွိေပသည္။ ထုိသုိ ့ ၄င္းႏွင့္ တကြ ဆက္စပ္ပတ္သတ္ေနသည္မ်ားကိုပါက array အျဖစ္ေျပာင္းလဲ ႏုိင္ရန္ `toArray` method ကုိ အသုံးျပဳႏုိင္သည္။
 

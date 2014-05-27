@@ -1,17 +1,19 @@
-# Session
+﻿# ဆက္ရွင္
 
-- [Configuration](#configuration)
+- [ျပင္ဆင္ျခင္း](#configuration)
 - [Session Usage](#session-usage)
 - [Flash Data](#flash-data)
 - [Database Sessions](#database-sessions)
 - [Session Drivers](#session-drivers)
 
 <a name="configuration"></a>
-## Configuration
+## ျပင္ဆင္ျခင္း
 
-Since HTTP driven applications are stateless, sessions provide a way to store information about the user across requests. Laravel ships with a variety of session back-ends available for use through a clean, unified API. Support for popular back-ends such as [Memcached](http://memcached.org), [Redis](http://redis.io), and databases is included out of the box.
+HTTP မွာ Stateless protocol ျဖစ္ေသာေၾကာင့္ request တစ္ခုႏွင့္တစ္ခု ၾကားထဲတြင္ Session ထဲတြင္ အခ်က္အလက္မ်ားကုိ သိမ္းဆည္းကာ ပုိ ့ေဆာင္ရေပသည္။ Laravel တြင္ session ကုိ နည္းလမ္းမ်ိဳးစုံျဖင့္ အသုံးျပဳႏုိင္ရန္ API တစ္ခုကို ဖန္တီးကာ စုစည္းထားသည္။ အျခားေသာ ေက်ာ္ၾကားသည့္  
+[Memcached](http://memcached.org) ႏွင့္ [Redis](http://redis.io), Session အျဖစ္အသုံးျပဳႏုိင္သည့္ နည္းလမ္းမ်ားကို ပံ့ပုိးထားသည္။
 
-The session configuration is stored in `app/config/session.php`. Be sure to review the well documented options available to you in this file. By default, Laravel is configured to use the `file` session driver, which will work well for the majority of applications.
+Session ႏွင့္ပတ္သတ္သည့္ အခ်က္အလက္မ်ားကုိ `app/config/session.php` တြင္ လုိအပ္သလုိ ေျပာင္းလဲ ရမည္ ျဖစ္သည္။ ပုံမွန္အားျဖင့္ application အေတာ္မ်ားမ်ားတြင္ အဆင္ေျပမည့္ `file` session driver ကုိ အသုံးျပဳထားသည္။
+
 
 #### Reserved Keys
 
@@ -38,52 +40,53 @@ The Laravel framework uses the `flash` session key internally, so you should not
 
 	$value = Session::get('key', function() { return 'default'; });
 
-#### Retrieving An Item And Forgetting It
+#### Session မွ value တစ္ခု ထုတ္ယူကာ ဖယ္ထုတ္ျခင္း
 
 	$value = Session::pull('key', 'default');
 
-#### Retrieving All Data From The Session
+#### Session မွ value မ်ားအားလုံး ေခၚယူျခင္း
 
 	$data = Session::all();
 
-#### Determining If An Item Exists In The Session
+#### Session မွ item ရွိမရွိ စစ္ေဆးျခင္း
 
 	if (Session::has('users'))
 	{
 		//
 	}
 
-#### Removing An Item From The Session
+#### Session မွ item တစ္ခုကို ထုတ္ပယ္ျခင္း
 
 	Session::forget('key');
 
-#### Removing All Items From The Session
+#### Session တစ္ခုလုံး ရွင္းပစ္ျခင္း
 
 	Session::flush();
 
-#### Regenerating The Session ID
+#### Session ID အသစ္ထုတ္ယူျခင္း
 
 	Session::regenerate();
 
 <a name="flash-data"></a>
 ## Flash Data
 
-Sometimes you may wish to store items in the session only for the next request. You may do so using the `Session::flash` method:
+တခါတရံ  တစ္ခ်ိဳ  ့ေသာ data မ်ားကုိ ေနာက္ထပ္ request တစ္ခါစာသာ သိမ္းဆည္းလုိေပမည္။ ထုိသုိ ့ျပဳလုပ္ႏုိင္ရန္ `Session::flash` method ကုိ အသုံးျပဳႏုိင္သည္။
 
 	Session::flash('key', 'value');
 
-#### Reflashing The Current Flash Data For Another Request
+#### ေနာက္ထပ္ request တစ္ခုစာ သက္တမ္းတုိးျခင္း
 
 	Session::reflash();
 
-#### Reflashing Only A Subset Of Flash Data
+#### ေနာက္ထပ္ request တစ္ခုစာ သက္တမ္းတုိးျခင္း  (ေရြးခ်ယ္ထားေသာ data မ်ားသာ) 
 
 	Session::keep(array('username', 'email'));
 
 <a name="database-sessions"></a>
 ## Database Sessions
 
-When using the `database` session driver, you will need to setup a table to contain the session items. Below is an example `Schema` declaration for the table:
+
+`database` session driver ကုိ အသုံးျပဳပါက Session item မ်ားကို သိမ္းဆည္းရန္ table တစ္ခု တည္ေဆာက္ရန္လုိေပမည္။ ေအာက္တြင္  table အတြက္ `Schema` တည္ေဆာက္ပုံကုိ ေဖာ္ျပထားပါသည္။
 
 	Schema::create('sessions', function($table)
 	{
@@ -92,7 +95,9 @@ When using the `database` session driver, you will need to setup a table to cont
 		$table->integer('last_activity');
 	});
 
-Of course, you may use the `session:table` Artisan command to generate this migration for you!
+	
+Table ကုိ အသုံးျပဳထားေသာေၾကာင့္ `session:table` ဟူသည့္ Artisan command ကုိ အသုံးျပဳျပီး migration ျပဳလုပ္ႏုိင္သည္။
+
 
 	php artisan session:table
 
@@ -103,12 +108,13 @@ Of course, you may use the `session:table` Artisan command to generate this migr
 <a name="session-drivers"></a>
 ## Session Drivers
 
-The session "driver" defines where session data will be stored for each request. Laravel ships with several great drivers out of the box:
+session "driver" မွ session data မ်ား မည္သည့္ေနရာတြင္း သိမ္းဆည္းမည္ကုိ သတ္မွတ္ထားသည္။  Laravel အေနျဖင့္ အေတာ္ေလးေကာင္းမြန္ေသာ driver အမ်ိဳးအစားမ်ားကို ပံပုိးထားသည္။
 
-- `file` - sessions will be stored in `app/storage/sessions`.
-- `cookie` - sessions will be stored in secure, encrypted cookies.
-- `database` - sessions will be stored in a database used by your application.
-- `memcached` / `redis` - sessions will be stored in one of these fast, cached based stores.
-- `array` - sessions will be stored in a simple PHP array and will not be persisted across requests.
+- `file` - sessions သည္ `app/storage/sessions` တြင္ သိမ္းဆည္းထားမည္။
+- `cookie` - sessions သည္ encrypted cookies အေနျဖင့္ သိမ္းဆည္းထားမည္ ျဖစ္သည္။
+- `database` session သည့္ application ၏ database ထဲတြင္ သိမ္းဆည္းထားမည္ ျဖစ္သည္။
+- `memcached` / `redis` တုိ ့သည္ ျမန္ဆန္သြက္လက္သည့္ cache based session engine မ်ားျဖစ္ၾကသည္။
+- `array` - sessions သည္ PHP array အျဖစ္ သိမ္းဆည္းမည္ျဖစ္ျပီး ေနာက္ထပ္ request မ်ားအတြက္ သိမ္းဆည္းထားႏုိင္မည္ မဟုတ္ေပ။
 
-> **Note:** The array driver is typically used for running [unit tests](/docs/testing), so no session data will be persisted.
+
+> **မွတ္ခ်က္:**  array driver သည္ [unit tests](/docs/testing) အတြက္ အသုံးျပဳျခင္း ျဖစ္ျပီး တကယ့္ session data အတြက္ အသုံးျပဳျခင္း မဟုတ္ေပ။
