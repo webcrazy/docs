@@ -15,9 +15,10 @@ HTTP မွာ Stateless protocol ျဖစ္ေသာေၾကာင့္ req
 Session ႏွင့္ပတ္သတ္သည့္ အခ်က္အလက္မ်ားကုိ `app/config/session.php` တြင္ လုိအပ္သလုိ ေျပာင္းလဲ ရမည္ ျဖစ္သည္။ ပုံမွန္အားျဖင့္ application အေတာ္မ်ားမ်ားတြင္ အဆင္ေျပမည့္ `file` session driver ကုိ အသုံးျပဳထားသည္။
 
 
-#### Reserved Keys
+#### Reserved Keys (သီးသန္႕ key မ်ား)
 
-The Laravel framework uses the `flash` session key internally, so you should not add an item to the session by that name.
+
+`flash` ဆက္ရွင္ကီးကို Laravel Farmework အတြင္းပိုင္းတြင္သံုးထားပါသည္၊ ထို႕ေၾကာင္႕  သင္႕အေနနဲ႕အဲ႕ဒီ႕ `flash` ဆိုတဲ႕အမည္နဲ႕  session ထဲကို item တစ္ခုမွ မထည္႕သင္႕ပါ။
 
 <a name="session-usage"></a>
 ## Session Usage
