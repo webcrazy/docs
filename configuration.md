@@ -1,13 +1,13 @@
 # Configuration
 
-- [Introduction](#introduction)
-- [Environment Configuration](#environment-configuration)
-- [Provider Configuration](#provider-configuration)
-- [Protecting Sensitive Configuration](#protecting-sensitive-configuration)
-- [Maintenance Mode](#maintenance-mode)
+- [မိတ္ဆက္](#introduction)
+- [Environment ျပင္ဆင္ျခင္း](#environment-configuration)
+- [Provider ျပင္ဆင္ျခင္း](#provider-configuration)
+- [အမွားခံ၊ အသိခံ၍ မရေသာ အခ်က္အလက္မ်ားအား ကာကြယ္ျခင္း](#protecting-sensitive-configuration)
+- [Application အားျပဳျပင္ထိန္းသိမ္းမႈ အေျခအေန](#maintenance-mode)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ္ဆက္
 
 Laravel framework မွာရွိတဲ့ configuration ဖိုင္အားလံုးကို `app/config` လမ္းေၾကာင္းေအာက္မွာသိမ္းထားပါတယ္။ ဖိုင္အားလံုးမွာပါတဲ့ option တစ္ခုခ်င္းစီအတြက္ documentation မွာ ေရးထားပီးသားပါ။ အသံုးျပဳႏိုင္တဲ့ options ေတြကို documentation နဲ႔တြဲျပီး ေလ့လာ ႏိုင္ပါတယ္။
 
@@ -30,7 +30,7 @@ Configuration ဖိုင္ေတြထဲမွာရွိတဲ့ value �
 Applicastion run-time ကာလမွာ သတ္မွတ္ထားတဲ့ configuration values ေတြဟာ app ရဲ့ လက္ရွိ request အေပၚမွာပဲသက္ေရာက္မႈရွိပါတယ္။ ေနာက္ပိုင္းထပ္ျဖစ္လာမဲ့ requests ေတြအထိ ယူေဆာင္သြားမွာမဟုတ္ပါဘူး
 
 <a name="environment-configuration"></a>
-## Environment Configuration
+## Environment ျပင္ဆင္ျခင္း
 
 Application run ေနတဲ့ environment အေပၚအေျခခံပီး configuration ဖိုင္ေတြ သတ္မွတ္ထားျခင္းဟာ အေထာက္အကူ အမ်ားႀကီးျဖစ္ေစပါတယ္။ ဥပမာ - ကုိယ့္ရဲ့ local machine ေပၚမွာ မတူညီတဲ့ cache driver ေတြအသံုးျပဳခ်င္တယ္ဆိုရင္ ဒီ environment based configuration ကိုအသံုးျပဳရံုနဲ႔ လြယ္ကူ ၿပီးေျမာက္ေစႏိုင္ပါတယ္။ 
 
@@ -86,7 +86,7 @@ Application ရဲ့ လက္ရွိအသံုးျပဳေနတဲ့ 
 	}
 
 <a name="provider-configuration"></a>
-### Provider Configuration
+### Provider ျပင္ဆင္ျခင္း
 
 Environment configuration ကို အသံုးျပဳၿပီဆိုလို႔ရွိရင္၊ ကိုယ့္ရဲ့ ပင္မ `app` configuration ဖိုင္ထဲမွာ environment [service providers](/docs/ioc#service-providers) ကိုထည့္ေပါင္းထည့္ဖို႔ လုိအပ္လာတဲ့ အေျခအေနေတြ ရွိလာႏိုင္ပါတယ္။ အကယ္၍ ကိုယ္က ထပ္ေပါင္းထည့္ထားတယ္ဆိုလို႔ရွိရင္, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုၿပီး သတိေပးပါလိမ့္မယ္။ အဲ့လိုအေျခအေနမ်ိဳးမွာ providers ကို မရမကထပ္ေပါင္းထည့္ေစဖို႔အတြက္ `'append_config` ဆိုတဲ့ helper method ကို ကိုယ့္ရဲ့ environment `app` configuration ဖိုင္ထဲမွာ အသံုးျပဳႏိုင္ပါတယ္။
 
@@ -95,7 +95,7 @@ Environment configuration ကို အသံုးျပဳၿပီဆို�
 	))
 
 <a name="protecting-sensitive-configuration"></a>
-## Protecting Sensitive Configuration
+## အမွားခံ၊ အသိခံလို႔ မရေသာ အခ်က္အလက္မ်ားအား ကာကြယ္ျခင္း
 
 အမွန္တကယ္အသံုးျပဳမဲ့ application ေတြအတြက္၊ ကိုယ့္ရဲ့ အမွားမခံ၊ အသိခံလို႔မရတဲ့ configuration ေတြကို configuration ဖိုင္ထဲမွာ မသိမ္းပဲနဲ႔ အျခားတစ္ေနရာမွာထားတာက ပိုၿပီးသင့္ေတာ္ပါတယ္။ ဘယ္လိုအမ်ိဳးအစားေတြလဲဆိုေတာ့ database passwords, Stripe API keys, and encryption keys စတာေတြကို ျဖစ္ႏိုင္လို႔ရွိရင္ configuration ဖိုင္ထဲမွာမသိမ္းသင့္ပါဘူး။ ဒါဆိုဘယ္ေနရာမွာသိမ္းမလဲ? အဲ့ဒီအတြက္ Laravel ကေျဖရွင္းေပးၿပီးသားျဖစ္ပါတယ္။ အဲ့ဒီလို configuration အမ်ိဳးအစားေတြအတြက္ "dot" files ေတြကိုအသံုးျပဳၿပီး ကာကြယ္ထားႏိုင္ပါတယ္။
 
@@ -120,19 +120,19 @@ Production environment အတြက္လည္း လိုအပ္တဲ့ c
 > **သတိျပဳရန္:** Application ကေန support လုပ္တဲ့ environment တစ္ခုခ်င္းစီအတြက္ `.env` ဖိုင္ေတြ တည္ေဆာက္လာႏိုင္ပါတယ္။ ဥပမာ - `development` environment အတြက္ဆိုရင္ `.env.development.php` ဖိုင္က ရွိေနလို႔ရွိရင္ load လုပ္သြားပါလိမ့္မယ္။ 
 
 <a name="maintenance-mode"></a>
-## Maintenance Mode
+## Application အားျပဳျပင္ထိန္းသိမ္းမႈအေျခအေန
 
-Application ဟာ maintenance mode မွာ ရွိေနမယ္ဆိုရင္၊ application မွာရွိတဲ့ route အားလံုးအတြက္ custom view ကိုျပေပးပါလိမ့္မယ္။ Maintenance လုပ္ေနရင္ပဲျဖစ္ျဖစ္၊ update လုပ္ေနရင္ပဲျဖစ္ျဖစ္ application ကို လြယ္လြယ္ကူကူပဲ disable လုပ္ထားႏိုင္ပါတယ္။ `app/start/global.php` ဖိုင္ထဲမွာရွိၿပီးသားျဖစ္တဲ့ `App::down` ဆိုတဲ့ method ကိုေခၚသံုးလိုက္ရံုပဲ။ Application ဟာ maintenance mode မွာ ရွိေနၿပီဆိုရင္ အဲ့ဒီ method ကေနျပန္လာတဲ့ response ကို users ေတြဆီကိုပို႔ေပးပါလိမ့္မယ္။
+Application ဟာ ျပဳျပင္ထိန္းသိမ္းမႈ ျပဳလုပ္တဲ့ အေျခအေနမွာ ရွိေနမယ္ဆိုရင္ application မွာရွိတဲ့ route အားလံုးအတြက္ ႀကိဳတင္ျပဳလုပ္ထားႏိုင္တဲ့ စိတ္ႀကိဳက္ ျမင္ကြင္း(view) ကိုျပေပးပါလိမ့္မယ္။ ျပဳျပင္ထိန္းသိမ္းမႈျပဳလုပ္ေနရင္ပဲျဖစ္ျဖစ္၊ update လုပ္ေနရင္ပဲျဖစ္ျဖစ္ application ကို လြယ္လြယ္ကူကူပဲ disable လုပ္ထားႏိုင္ပါတယ္။ `app/start/global.php` ဖိုင္ထဲမွာရွိၿပီးသားျဖစ္တဲ့ `App::down` ဆိုတဲ့ method ကိုေခၚသံုးလိုက္ရံုပဲ။ အဲ့ဒီ method ကေနျပန္လာတဲ့ response ကို users ေတြဆီကိုပို႔ေပးပါလိမ့္မယ္။
 
-Maintenance mode ျပဳလုပ္ခ်င္တယ္ဆိုရင္ `down` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
+ျပဳျပင္ထိန္းသိမ္းမႈျပဳလုပ္ေနပါတယ္ဆိုတဲ့ အေျခအေနကို ျပဳလုပ္ထားခ်င္တယ္ဆိုရင္ `down` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
 
 	php artisan down
 
-Maintenance mode ကို disable လုပ္ခ်င္တယ္ဆိုရင္ေတာ့ `up` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
+ထိန္းသိမ္းမႈျပဳလုပ္ၿပီးသြားလို႔ application ကိုျပန္ၿပီး အသက္သြင္းခ်င္ရင္ `up` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
 
 	php artisan up
 
-Maintenance mode အတြက္ custom view သတ္မွတ္ခ်င္တယ္ဆိုရင္ေတာ့ ေအာက္မွာျပထားသလိုပဲ `app/start/global.php` ဖိုင္ထဲမွာ ႏွစ္သက္သလို သြားေရာက္ျပင္ဆင္ႏိုင္ပါတယ္။
+ထိန္းသိမ္းမႈျပဳလုပ္ေနတဲ့အေျခအေနအတြက္ စိတ္ႀကိဳက္ ျမင္ကြင္း (view) သတ္မွတ္ခ်င္တယ္ဆိုရင္ေတာ့ ေအာက္မွာျပထားသလိုပဲ `app/start/global.php` ဖိုင္ထဲမွာ ႏွစ္သက္သလို သြားေရာက္ျပင္ဆင္ႏိုင္ပါတယ္။
 
 	App::down(function()
 	{
@@ -143,4 +143,4 @@ Maintenance mode အတြက္ custom view သတ္မွတ္ခ်င္�
 
 ### Maintenance Mode & Queues
 
-Application ဟာ maintenance mode မွာ ရွိေနစဥ္အတြင္း [queue jobs](/docs/queues) ေတြကို ကိုင္တြယ္ေျဖရွင္းမွာမဟုတ္ပါဘူး။ Application ဟာ normal mode ကိုျပန္ေရာက္ပီဆိုေတာ့မွ ျပန္လည္ကိုင္တြယ္ေျဖရွင္းေပးမွာျဖစ္ပါတယ္။
+Application ဟာ maintenance mode မွာ ရွိေနစဥ္အတြင္း [queue jobs](/docs/queues) ေတြကို ကိုင္တြယ္ေျဖရွင္းမွာမဟုတ္ပါဘူး။ Application ဟာ ပံုမွန္အေျခအေန ကိုျပန္ေရာက္ပီဆိုေတာ့မွ ျပန္လည္ကိုင္တြယ္ေျဖရွင္းေပးမွာျဖစ္ပါတယ္။
