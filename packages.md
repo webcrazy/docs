@@ -17,7 +17,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravelတြင္ တျခား functions ေတြ အသစ္ထည့္တဲ့အခါမွာ Packages ေတြခြဲျပီးအသစ္ထပ္ထည့္တဲ့နည္းက သမရုိးက် နည္းလမ္းေကာင္းတခုျဖစ္ပါတယ္။ လူအမ်ားစုေဆာင္းျပီး project ေတြကုိ ဖန္တီးရာတဲ့အခါမွာ အရမ္းအသံုးတည့္တဲ့နည္းလမ္းျဖစ္ပါတယ္။ ဥပမာ [Carbon](https://github.com/briannesbitt/Carbon), or an entire BDD testing framework like [Behat](https://github.com/Behat/Behat).
+Laravelတြင္ တျခား functions ေတြ အသစ္ထည့္တဲ့အခါမွာ Packages ေတြခြဲျပီးအသစ္ထပ္ထည့္တဲ့နည္းက သမရုိးက် နည္းလမ္းေကာင္းတခုျဖစ္ပါတယ္။ လူအမ်ားစုေဆာင္းျပီး project ေတြကုိ ဖန္တီးရာတဲ့အခါမွာ အရမ္းအသံုးတည့္တဲ့နည္းလမ္းျဖစ္ပါတယ္။ ဥပမာ [Carbon](https://github.com/briannesbitt/Carbon), or  [Behat](https://github.com/Behat/Behat).
 
 ေသခ်ာတာေပါ့ဗ်ာ ၊ Packages ေတြကုိ အသံုးျပဳရာမွာ ပံုစံမ်ိဳးစံုရွိပါတယ္။ တခ်ိဳဟာေတြက Laravel တစ္ခုတည္းမဟုတ္ပဲ အျခားျခားေသာ Framework ေတြမွာပါ အလုပ္လုပ္တဲ့ stand-alone packages ေတြျဖစ္တယ္။ အေပၚက CarBon နဲ့ Behat လုိ packages ေတြကေတာ့ Stand-alon ေတြျဖစ္ပါတယ္ ။ အဲဒီလိုဖန္တီးထားတဲ့ packages ေတြကုိ Laravel မွာသံုးမယ္ဆုိရင္ေတာ့ ထံုးစံတုိင္း "composer.json" ဖုိင္မွာ သြားထည့့္ေပးလုိက္တာနဲ့ သံုးျပဳႏုိင္မွာပါ။
 
@@ -78,9 +78,7 @@ Service providers ဖိုင္ေတြကေတာ့ packages ေတြရ�
 
 ဒီ method က laravel ကုိ packages ထဲက views,config, other resource ေတြကုိ အသံုးျပဳႏုိင္ေအာင္လုပ္ေပးပါတယ္။ ပံုမွန္အားျဖင့္ေတာ့ အဲဒီ ကုတ္ကုိ ျပဳျပင္ဖုိ့မလိုအပ္ပါဘူး။
 
-ပံုမွန္အားျဖင့္ package တစ္ခုတည္ေဆာက္ျပီးတဲ့အခါ အဲဒီ packages ရဲ့  resource ေတြက 'vendor/package' ေအာက္မွာရွိပါတယ္။ဘယ္လုိျဖစ္ျဖစ္  package method ကုိ argument ေနာက္တစ္ခု ကုိ ေအာက္ပါအတုိင္းထပ္ျဖည့္ထည့္ လုိက္ပါတယ္။
-
-By default, after registering a package, its resources will be available using the "package" half of `vendor/package`. However, you may pass a second argument into the `package` method to override this behavior. For example:
+ပံုမွန္အားျဖင့္ package တစ္ခုတည္ေဆာက္ျပီးတဲ့အခါ အဲဒီ packages ရဲ့  resource ေတြက 'vendor/package' ေအာက္မွာရွိပါတယ္။ဘယ္လုိျဖစ္ျဖစ္  package method ကုိ argument ေနာက္တစ္ခု ထပ္ထည့္ျပီး package resource ေနရာေတြကုိ လုိအပ္သလို ေအာက္ကပံုစံအတုိင္း ေျပာင္းလဲႏုိင္ပါေသးတယ္။
 
 	// Passing custom namespace to package method
 	$this->package('vendor/package', 'custom-namespace');
@@ -88,14 +86,15 @@ By default, after registering a package, its resources will be available using t
 	// Package resources now accessed via custom-namespace
 	$view = View::make('custom-namespace::foo');
 
-There is not a "default location" for service provider classes. You may put them anywhere you like, perhaps organizing them in a `Providers` namespace within your `app` directory. The file may be placed anywhere, as long as Composer's [auto-loading facilities](http://getcomposer.org/doc/01-basic-usage.md#autoloading) know how to load the class.
+Service provider classes ေတြအတြက္ app directory ထဲမွာ ေနရာအတည္တစ္က် သတ္မွတ္ထားတာမ်ိဳးလဲမရွိပါဘူး။ 'app' ထဲမွ  'Providers' namespace ေပးျပီး ထားခ်င္တဲ့ေနရာမွာ ထားႏုိင္ပါတယ္။ ဒဲဒီ class ဖိုင္ေတြကုိ Composer's [auto-loading facilities](http://getcomposer.org/doc/01-basic-usage.md#autoloading) က သိမွတ္ျပဳေနသ၍ အဲဒီ class ဖုိင္ထဲက class ေတြကုိ app က ယူသံုးႏုိင္မွာပါ။
 
-If you have changed the location of your package's resources, such as configuration files or views, you should pass a third argument to the `package` method which specifies the location of your resources:
+'Package ထဲက resources ( ဥပမာ Configuration ၊ Views ) ေနရာေတြကုိ ေျပာင္းလုိက္ျပီဆိုရင္ ေျပာင္းလိုက္တဲ့ေနရာကုိ 'package' methord မွာ တတိယေျမာက္ argument တစ္ခုအျဖစ္ ေအာက္ပါအတုိင္းထည့္သင့္ေပးသင့္ပါတယ္။
 
 	$this->package('vendor/package', null, '/path/to/resources');
 
 <a name="deferred-providers"></a>
 ## Deferred Providers
+
 
 If you are writing a service provider that does not register any resources such as configuration or views, you may choose to make your provider "deferred". A deferred service provider is only loaded and registered when one of the services it provides is actually needed by the application IoC container. If none of the provider's services are needed for a given request cycle, the provider is never loaded.
 
@@ -113,6 +112,7 @@ Next you should override the `provides` method from the base `Illuminate\Support
 <a name="package-conventions"></a>
 ## Package Conventions
 
+
 When utilizing resources from a package, such as configuration items or views, a double-colon syntax will generally be used:
 
 #### Loading A View From A Package
@@ -127,6 +127,7 @@ When utilizing resources from a package, such as configuration items or views, a
 
 <a name="development-workflow"></a>
 ## Development Workflow
+
 
 When developing a package, it is useful to be able to develop within the context of an application, allowing you to easily view and experiment with your templates, etc. So, to get started, install a fresh copy of the Laravel framework, then use the `workbench` command to create your package structure.
 
@@ -217,6 +218,7 @@ You may easily create and run migrations for any of your packages. To create a m
 
 #### Running Migrations For An Installed Package
 
+Packages ထဲမွာ database migrate လုပ္ဖို့အတြက္ workbench ထဲမွာ 
 To run migrations for a finished package that was installed via Composer into the `vendor` directory, you may use the `--package` directive:
 
 	php artisan migrate --package="vendor/package"
@@ -225,23 +227,23 @@ To run migrations for a finished package that was installed via Composer into th
 ## Package Assets
 
 #### Moving Package Assets To Public
-
-Some packages may have assets such as JavaScript, CSS, and images. However, we are unable to link to assets in the `vendor` or `workbench` directories, so we need a way to move these assets into the `public` directory of our application. The `asset:publish` command will take care of this for you:
+'packages' ေတြမွာ 'Javascript, Css, images လုိ assets ေတြပါေကာင္းပါႏုိင္ပါတယ္။ အဲဒီ assets ေတြကုိ app မွ တဆင့္တန္းဆြဲေခၚသံုးဖုိ့မျဖစ္ႏုိင္ပါဘူး  ။ အဲဒီအတြက္ 'package' ထဲက assets ေတြကုိ public ေအာက္ကုိ ေျပာင္းထည့္ေပးဖုိ့လိုအပ္ပါတယ္။ အဲဒီအတြက္ `asset:publish`  ကြန္မန္း ကုိ  ေအာက္ကအတုိင္း အသံုးျပဳျပီး ေျပာင္းထည့္ေပးႏုိင္ပါတယ္။
 
 	php artisan asset:publish
 
 	php artisan asset:publish vendor/package
 
-If the package is still in the `workbench`, use the `--bench` directive:
+တကယ္လုိ တည္ေဆာက္ထားတဲ့ 'package' က 'workbench' ေအာက္မွာပဲရွိေသးရင္ေတာ့ ' --bench ' ကုိေအာက္ပါအတုိင္းထပ္ထည့္ျပီးေရးေပးရပါတယ္။
 
 	php artisan asset:publish --bench="vendor/package"
 
-This command will move the assets into the `public/packages` directory according to the vendor and package name. So, a package named `userscape/kudos` would have its assets moved to `public/packages/userscape/kudos`. Using this asset publishing convention allows you to safely code asset paths in your package's views.
+ဒီကြန္မန္းက package ထဲမွ assets ေတြကုိ 'public/packages' ထဲကုိ သက္ဆိုင္ရင္ package နဲ့ vendor နာမည္ေတြအလုိက္ဖိုဒါေတြ အလိုေလ်ာက္ေဆာက္ျပီး သိမ္းဆည္းေပးသြားမွာပါ။ ဥပမာ 'workbench' ေအာက္မွာ 'usersape/kusod' ဆိုျပီး packages ေဆာက္ထားရင္ 'public/packages/userscape/kudos' ဆိုျပီး ေရာက္သြားမွာပါ။ ဒီလိုလုပ္ျခင္းအားျဖင့္ asset ေတြနဲ့ပက္သက္ျပီး  လံုျခံဳေရးဆုိင္ရာ အားသာခ်က္မ်ား ရရွိႏုိင္ပါတယ္။
 
 <a name="publishing-packages"></a>
 ## Publishing Packages
 
-When your package is ready to publish, you should submit the package to the [Packagist](http://packagist.org) repository. If the package is specific to Laravel, consider adding a `laravel` tag to your package's `composer.json` file.
+ကုိယ္တည္ေဆာက္ထားတဲ့'Package' က အသံုးျပဳဖို ့အားလံုးျပင္ဆင္ျပီးသြားရင္ေတာ့ [Packagist](http://packagist.org) ကုိ တျခားသူေတြပါသံုးျပဳႏုိင္ေအာင္ တင္ထားေပးသင့္ပါတယ္။ တကယ္လုိ့ ကုိယ္ တည္ေဆာက္လုိက္တဲ့ 'package' က laravel အတြက္ပဲ သီးသန့္တည္ေဆာက္ထားရင္ေတာ့ 'composer.json' မွာ 'laravel' ဆိုျပီး tag ထည့္ေပးဖုိ့လိုအပ္ပါတယ္။
+
 
 Also, it is courteous and helpful to tag your releases so that developers can depend on stable versions when requesting your package in their `composer.json` files. If a stable version is not ready, consider using the `branch-alias` Composer directive.
 
