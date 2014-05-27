@@ -34,7 +34,6 @@ Laravel မွာသံုးျပဳဖုိ့အတြက္ packages တ�
 
 	php artisan workbench vendor/package --resources
 
-
 အေပၚက command ထဲမွာ vendor ဆိုတာက package တစ္ခုကုိ authors ေတြခြဲေရးတဲ့အခါမွာ package name ကုိ ခြဲခြဲျခားျခားသိႏုိင္ေအာင္ေပးထားတဲ့နာမည္ျဖစ္ပါတယ္။ Vendor ဆုိတာက အဲဒီ package ကုိ ဖန္တီးတဲ့လူျဖစ္ျပီး package ဆိုတာကေတာ့ ကုိယ္လုပ္တဲ့ package name ျဖစ္ပါတယ္။ ဥပမာ ကြ်န္ေတာ္ Taylar Otwell က "Zapper" ဆိုတဲ့ package တစ္ခုတည္ေဆာက္လုိက္ရင္ Package name က 'Zapper' ျဖစ္ျပး Vendor name က Taylar ျဖစ္ပါတယ္။ပံုမွန္အားျဖင့္ေတာ့ workbench က framework package တခုတည္ေဆာက္ပါတယ္။ "--resources" command က workbench ကုိ `migrations`, `views`, `config`, စသျဖင့္လိုအပ္တဲ့ ဖုိင္ေတြကုိ ဖန္တီးေပးဖို ့ေျပာပါတယ္။
 
 အေပၚက 'Workbench' ကုိ run ျပီးျပီဆိုရင္ေတာ့ ၊ ကိုယ္ေပးထားတဲ့ နာမည္အတုိင္းပဲ 'workbench' ဆိုတဲ့ဖိုဒါထဲမွာ vendor name နဲ့ ဖိုဒါေတြေရာက္လာျပီး အထဲမွာ package နာမည္နဲ့ လိုအပ္တဲ့ဖုိင္ေတြအကုန္ အလုိေလ်ာက္ရွိေနပါလိမ့္မယ္။ ျပီးရင္ေတာ့ တည္ေဆာက္လုိက္တဲ့ package ကုိ laravel ကေန သံုးျပဳႏုိင္ရန္အတြက္ 'ServiceProvider' ေၾကာ္ျငာေပးရပါတယ္။ Service Provider ကုိ 'app/config/app.php' မွာ သြားထည့္ေပးရပါတယ္။အဲဒီမွာ သြားထည့္ေပးလုိက္ရင္ workbench ထဲက package ေတြကုိ laravel ကေန အသံုးျပဳႏုိင္ပါျပီ။ Service Provider က '[Package]ServiceProvider' ကိုအသံုးျပဳပါတယ္။ဥပမာအရဆုိရင္ 'app/config/app.php' က Provider မွာ 'Taylor\Zapper\ZapperServiceProvider' ဆိုျပီး array ထဲမွာ သြားထည့္ေပးရမွာပါ။
