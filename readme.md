@@ -19,7 +19,7 @@
 - [Configuration][6]
 - [Homestead][7]
 - [Request Lifecycle][8]
-- [Routiing][9]
+- [Routing][9]
 - [Requests & Input][10]
 - [Views & Responses][11]
 - [Controllers][12]
