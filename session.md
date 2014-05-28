@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿# ဆက္ရွင္
-=======
 # ဆက္ရွင္
->>>>>>> b118bf55b9a1b7f9e80d1438f007d28584ddc7be
 
 - [ျပင္ဆင္ျခင္း](#configuration)
 - [Session Usage](#session-usage)
@@ -130,6 +126,4 @@ session "driver" မွ session data မ်ား မည္သည့္ေနရ
 
 <<<<<<< HEAD
 > **မွတ္ခ်က္:**  array driver သည္ [unit tests](/docs/testing) အတြက္ အသုံးျပဳျခင္း ျဖစ္ျပီး တကယ့္ session data အတြက္ အသုံးျပဳျခင္း မဟုတ္ေပ။
-=======
-> **မွတ္ခ်က္:**  array driver သည္ [unit tests](/docs/testing) အတြက္ အသုံးျပဳျခင္း ျဖစ္ျပီး တကယ့္ session data အတြက္ အသုံးျပဳျခင္း မဟုတ္ေပ။
->>>>>>> b118bf55b9a1b7f9e80d1438f007d28584ddc7be
+
