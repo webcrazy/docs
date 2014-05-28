@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿# ဆက္ရွင္
+=======
+# ဆက္ရွင္
+>>>>>>> b118bf55b9a1b7f9e80d1438f007d28584ddc7be
 
 - [ျပင္ဆင္ျခင္း](#configuration)
 - [Session Usage](#session-usage)
@@ -11,13 +15,20 @@
 
 HTTP မွာ Stateless protocol ျဖစ္ေသာေၾကာင့္ request တစ္ခုႏွင့္တစ္ခု ၾကားထဲတြင္ Session ထဲတြင္ အခ်က္အလက္မ်ားကုိ သိမ္းဆည္းကာ ပုိ ့ေဆာင္ရေပသည္။ Laravel တြင္ session ကုိ နည္းလမ္းမ်ိဳးစုံျဖင့္ အသုံးျပဳႏုိင္ရန္ API တစ္ခုကို ဖန္တီးကာ စုစည္းထားသည္။ အျခားေသာ ေက်ာ္ၾကားသည့္  
 [Memcached](http://memcached.org) ႏွင့္ [Redis](http://redis.io), Session အျဖစ္အသုံးျပဳႏုိင္သည့္ နည္းလမ္းမ်ားကို ပံ့ပုိးထားသည္။
+<<<<<<< HEAD
 
 Session ႏွင့္ပတ္သတ္သည့္ အခ်က္အလက္မ်ားကုိ `app/config/session.php` တြင္ လုိအပ္သလုိ ေျပာင္းလဲ ရမည္ ျဖစ္သည္။ ပုံမွန္အားျဖင့္ application အေတာ္မ်ားမ်ားတြင္ အဆင္ေျပမည့္ `file` session driver ကုိ အသုံးျပဳထားသည္။
 
+=======
 
-#### Reserved Keys
+Session ႏွင့္ပတ္သတ္သည့္ အခ်က္အလက္မ်ားကုိ `app/config/session.php` တြင္ လုိအပ္သလုိ ေျပာင္းလဲ ရမည္ ျဖစ္သည္။ ပုံမွန္အားျဖင့္ application အေတာ္မ်ားမ်ားတြင္ အဆင္ေျပမည့္ `file` session driver ကုိ အသုံးျပဳထားသည္။
+>>>>>>> b118bf55b9a1b7f9e80d1438f007d28584ddc7be
 
-The Laravel framework uses the `flash` session key internally, so you should not add an item to the session by that name.
+
+#### Reserved Keys (သီးသန္႕ key)
+
+
+`flash` ဆက္ရွင္ကီးကို Laravel Farmework အတြင္းပိုင္းတြင္သံုးထားပါသည္၊ ထို႕ေၾကာင္႕  သင္႕အေနနဲ႕အဲ႕ဒီ႕ `flash` ဆိုတဲ႕အမည္နဲ႕  session ထဲကို item တစ္ခုမွ မထည္႕သင္႕ပါ။
 
 <a name="session-usage"></a>
 ## Session Usage
@@ -117,4 +128,8 @@ session "driver" မွ session data မ်ား မည္သည့္ေနရ
 - `array` - sessions သည္ PHP array အျဖစ္ သိမ္းဆည္းမည္ျဖစ္ျပီး ေနာက္ထပ္ request မ်ားအတြက္ သိမ္းဆည္းထားႏုိင္မည္ မဟုတ္ေပ။
 
 
+<<<<<<< HEAD
 > **မွတ္ခ်က္:**  array driver သည္ [unit tests](/docs/testing) အတြက္ အသုံးျပဳျခင္း ျဖစ္ျပီး တကယ့္ session data အတြက္ အသုံးျပဳျခင္း မဟုတ္ေပ။
+=======
+> **မွတ္ခ်က္:**  array driver သည္ [unit tests](/docs/testing) အတြက္ အသုံးျပဳျခင္း ျဖစ္ျပီး တကယ့္ session data အတြက္ အသုံးျပဳျခင္း မဟုတ္ေပ။
+>>>>>>> b118bf55b9a1b7f9e80d1438f007d28584ddc7be

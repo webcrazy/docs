@@ -45,18 +45,18 @@ Service Providers ေတြအကုန္လံုး register လုပ္ၿ�
 Default အရ`global.php` မွာ basic items ေတြပါဝင္ပါတယ္၊ registration ေတြရဲ႕ [logger](/docs/errors) တို႔... ေနာက္  `app/filters.php` တို႔လည္းပါဝင္ပါေသးတယ္။ ဒါေပမယ္႔လည္း ဒီ `global.php` မွာ သင္ႀကိဳက္တဲ႔ File ေတြထက္ထည္႔လို႔ရပါတယ္။ တကယ္လို႔ထက္ထည္႔လိုက္ရင္ အဲ႔ဒီ႔ File က  သင္႔ application ရဲ႕ request တိုင္းမွာ auto ပါဝင္ေနမွာပါ။ `local.php` file ကေတာ႔ `local` environment မွာမွ call လုပ္မွာပါ၊
 Environment configuration အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔  [configuration](/docs/configuration) ကိုဖတ္ဖို႔ ညႊန္းပရေစ။
 
-Of course, if you have other environments in addition to `local`, you may create start files for those environments as well. They will be automatically included when your application is running in that environment. So, for example, if you have a `development` environment configured in your `bootstrap/start.php` file, you may create a `app/start/development.php` file, which will be included when any requests enter the application in that environment.
+ဟုတ္တာေပါ႕ သင္႕မွာ `local` environment တစ္ခုအျပင္အျခား environment တစ္ခုရွိတယ္ဆိုရင္ အဲ႕ဒီ႕ environment အတြက္ start file တစ္ခု create လုပ္ရမွာေပါ႕။ ေနာက္အဲ႕ဒီ႕ start မွာပါတာေတြက သင္အဲ႕ဒီ႕ environment မွာအလုပ္လုပ္တဲ႕အခါမွာ အလိုလိုပါလာမွပါ။ ဒါေၾကာင့္ ..... ဥပမာ- သင္႕မွာ `developemt` environment တစ္ခုရွၿပီးေတာ႕ `bootstrap/start.php` မွာ configre လုပ္ၿပီးၿပီဆိုရင္ သင္အေနနဲ႕ `app/start/development.php` file တစ္ခု create လုပ္ထားတယ္ဆိုရင္ သင္႕ application က အဲ႕ဒီ႕ environment မွာ run ရင္ `app/start/development.php` ကအလိုလိုပါဝင္ေနမွာပါ။
 
 ### What To Place In Start Files
 
-Start files serve as a simple place to place any "bootstrapping" code. For example, you could register a View composer, configure your logging preferences, set some PHP settings, etc. It's totally up to you. Of course, throwing all of your bootstrapping code into your start files can get messy. For large applications, or if you feel your start files are getting messy, consider moving some bootstrapping code into [service providers](/docs/ioc#service-providers).
+Start files ကရိုးရိုးေနရာပါဘဲ...."bootstrapping" code ေတြထည္႕ရတဲ႕ေနရာေပါ႕ ။ ဥပမာ၊  View composerတို႕၊ logging preferences ေတြကို configure လုပ္တာတို႕ PHP Setting ေတြေျပာင္းတာ..နဲ႕အျခားလိုအပ္တာေတြကို သင္႕ register လုပ္ခ်င္ရင္လဲလုပ္ႏိုင္ပါတယ္။ ဘာေတြကို register လုပ္ခ်င္လဲဆိုတာကေတာ႕ သင္႕အေပၚမွာဘဲမူတည္ပါတယ္။ ဟုတ္တာေပါ႕ "bootstrapping code" ေတြအကုန္လံုးကိုသင္႕ရဲ႕ start file ထဲကိုထည္႕လိုက္ရင္  သင္႕ရဲ႕ start file ေတြရွုပ္ပြကုန္မွာေပါ႕။Application နည္းနည္းႀကီးလာၿပီဆိုရင္ ဒါမွမဟုတ္ သင္႕ရဲ႕ start files နည္းနည္းရွုပ္လာၿပီလို႕ခံစားရၿပီဆိုရင္... bootstrapping code ေတြကို [service providers](/docs/ioc#service-providers) ေတြဆီေရႊ႕လိုက္ပါ။
 
 <a name="application-events"></a>
 ## Application Events
 
 #### Registering Application Events
 
-You may also do pre and post request processing by registering `before`, `after`, `finish`, and `shutdown` application events:
+သင့္အေနနဲ႕ pre request ၊ post request ေတြစနစ္တစ္က်သြားဖို႕အတြက္ before, after, finish, and shutdown application events ေတြကိုသံုးရပါ႕မယ္
 
 	App::before(function($request)
 	{
@@ -68,13 +68,13 @@ You may also do pre and post request processing by registering `before`, `after`
 		//
 	});
 
-Listeners to these events will be run `before` and `after` each request to your application. These events can be helpful for global filtering or global modification of responses. You may register them in one of your `start` files or in a [service provider](/docs/ioc#service-providers).
+အဲ႕ဒီ႕ event ေတြေပၚမူတည္ၿပီးေတာ႕ `before` နဲ႕  `after` request ေတြကို တစ္လွည္႕ဆီသင္႕ application က run မွာပါ။ ဒီ events ေတြက global filtering နဲ႕ global modification ေတြရဲ႕ responses ေတြအတြက္အလြန္အသံုးဝင္ပါလိမ္႕မယ္။ သင္႕အေနနဲ႕ အဲ႕ဒါေတြကို `start` files ဒါမွမဟုတ္ [service provider](/docs/ioc#service-providers) မွာ register လုပ္ထားႏိုင္ပါတယ္။
 
-You may also register a listener on the `matched` event, which is fired when an incoming request has been matched to a route but that route has not yet been executed:
+`matched` event ေပၚက listener တစ္ခုကိုလည္း register လုပ္ႏိုင္ပါတယ္၊ request အဝင္တစ္ခုနဲ႕ route တစ္ခုနဲ႕  matched ျဖစ္သြားၿပီဆိုရင္ အဲဒါက fired လုပ္လိုက္တယ္ ဒါေပမယ္႔ အဲ႕ဒီ႕ route က excute ျဖစ္မသြားပါဘူး။
 
 	Route::matched(function($route, $request)
 	{
 		//
 	});
 
-The `finish` event is called after the response from your application has been sent back to the client. This is a good place to do any last minute processing your application requires. The `shutdown` event is called immediately after all of the `finish` event handlers finish processing, and is the last opportunity to do any work before the script terminates. Most likely, you will not have a need to use either of these events.
+သင္ application က client ဆီကို sent လုပ္ၿပီးသြားၿပီဆိုရင္  ေနာက္ဆံုး `finish` event ကို call လုပ္ပါတယ္။ သင္ application ရဲ႕ေနာက္ဆံုးမိနစ္လိုအပ္ခ်က္ေတြကိုလုပ္ဖို႕ဒါကေနရာေကာင္းတစ္ခုပါ။ `finish` event handlers က အားလံုးၿပီးသြားၿပီဆိုရင္ `shutdown` event ကိုခ်က္ခ်င္းေခၚလိုက္ပါတယ္၊ ဒါကေနာက္ဆံုး script အလုပ္မလုပ္ခင္  လုပ္စရာရွိတာလုပ္ထားဖို႕ ေနာက္ဆံုးအခြင္႕အေရးပါ။

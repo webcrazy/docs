@@ -17,35 +17,35 @@
 <a name="introduction"></a>
 ## Introduction
 
-Packages are the primary way of adding functionality to Laravel. Packages might be anything from a great way to work with dates like [Carbon](https://github.com/briannesbitt/Carbon), or an entire BDD testing framework like [Behat](https://github.com/Behat/Behat).
+Laravelတြင္ တျခား functions ေတြ အသစ္ထည့္တဲ့အခါမွာ Packages ေတြခြဲျပီးအသစ္ထပ္ထည့္တဲ့နည္းက သမရုိးက် နည္းလမ္းေကာင္းတခုျဖစ္ပါတယ္။ လူအမ်ားစုေဆာင္းျပီး project ေတြကုိ ဖန္တီးရာတဲ့အခါမွာ အရမ္းအသံုးတည့္တဲ့နည္းလမ္းျဖစ္ပါတယ္။ ဥပမာ [Carbon](https://github.com/briannesbitt/Carbon), or  [Behat](https://github.com/Behat/Behat).
 
-Of course, there are different types of packages. Some packages are stand-alone, meaning they work with any framework, not just Laravel. Both Carbon and Behat are examples of stand-alone packages. Any of these packages may be used with Laravel by simply requesting them in your `composer.json` file.
+ေသခ်ာတာေပါ့ဗ်ာ ၊ Packages ေတြကုိ အသံုးျပဳရာမွာ ပံုစံမ်ိဳးစံုရွိပါတယ္။ တခ်ိဳဟာေတြက Laravel တစ္ခုတည္းမဟုတ္ပဲ အျခားျခားေသာ Framework ေတြမွာပါ အလုပ္လုပ္တဲ့ stand-alone packages ေတြျဖစ္တယ္။ အေပၚက CarBon နဲ့ Behat လုိ packages ေတြကေတာ့ Stand-alon ေတြျဖစ္ပါတယ္ ။ အဲဒီလိုဖန္တီးထားတဲ့ packages ေတြကုိ Laravel မွာသံုးမယ္ဆုိရင္ေတာ့ ထံုးစံတုိင္း "composer.json" ဖုိင္မွာ သြားထည့့္ေပးလုိက္တာနဲ့ သံုးျပဳႏုိင္မွာပါ။
 
-On the other hand, other packages are specifically intended for use with Laravel. In previous versions of Laravel, these types of packages were called "bundles". These packages may have routes, controllers, views, configuration, and migrations specifically intended to enhance a Laravel application. As no special process is needed to develop stand-alone packages, this guide primarily covers the development of those that are Laravel specific.
+တျခားတခ်က္ကေတာ့ တျခား packages ေတြက Laravel အတြက္ပဲလို့ အေသသတ္မွတ္ပီး ထုတ္လုပ္ထားတဲ့ packages ေတြလဲ ရွိပါတယ္ ။ ဥပမာ အရင္ laravel version ေတြမွာ တုန္းက "bundles" လို packages ေတြမ်ိဳးပါ။ အဲဒီ packages ေတြမွာ  routes, controllers, views, configuration, နဲ့ migrations ဖြဲ့စည္းထားျပီး laravel ရဲ့  လုပ္ေဆာင္ႏုိင္မူေတြကုိ တိုးခ်ဲ့ အသံုးျပဳႏုိင္ပါတယ္။ Stan-alone packages တစ္ခု ဖန္တီးဖို့ဆိုတာ အရမ္းခက္တဲ့ ကိစၥေတာ့မဟုတ္ပါဘူး ၊ အခုေအာက္မွာ ထပ္ေဖာ္ျပမယ့္ နည္းလမ္းေတြအတုိင္း ဖန္တီးၾကည့္ႏုိင္ပါတယ္။
 
-All Laravel packages are distributed via [Packagist](http://packagist.org) and [Composer](http://getcomposer.org), so learning about these wonderful PHP package distribution tools is essential.
+Laravel အတြက္ Packages ေတြကုိ  [Packagist](http://packagist.org)မွာတင္ျပီး ျဖန့္ခ်ီႏုိင္ျပီး [Composer](http://getcomposer.org) လို အရမ္းမိုက္တဲ့ Package destributuin tool ေတြသံုးျပဳ ျပီး ဖန္တီးရမွာပါ။
 
 <a name="creating-a-package"></a>
 ## Creating A Package
 
-The easiest way to create a new package for use with Laravel is the `workbench` Artisan command. First, you will need to set a few options in the `app/config/workbench.php` file. In that file, you will find a `name` and `email` option. These values will be used to generate a `composer.json` file for your new package. Once you have supplied those values, you are ready to build a workbench package!
+Laravel မွာသံုးျပဳဖုိ့အတြက္ packages တစ္ခုတည္ေဆာက္ဖုိ့အတြက္ကေတာ့ 'workbench' Artisan command ကုိ အသံုးျပဳျပီးလြယ္လြယ္ကူကူကုိဖန္တီးႏုိင္ပါတယ္။ အဲလိုလုပ္ဖုိ့အတြက္ ပထမဆံုး 'app/config/workbench.php' မွာ name နဲ့ email ေလးအရင္သြားျဖည့္ေပးရပါတယ္။ အဲဒီ name နဲ့ email ကုိ အသစ္ေဆာက္မယ့္ packages ေတြ က 'composer.json' မွာ ျပန္အသံုးျပဳဖုိ့အတြက္ျဖစ္ပါတယ္။ကဲ့ ဒီေလာက္ျပင္ဆင္ျပီးရင္ package တစ္ခု တည္ေဆာက္ဖုိ့ အဆင္သင့္ျဖစ္ေနပါျပီ။ေအာက္က ကြန္မန္းကုိ Terminal(cmd) မွာ ထည့္ run လုိက္ပါ။
 
 #### Issuing The Workbench Artisan Command
 
 	php artisan workbench vendor/package --resources
 
-The vendor name is a way to distinguish your package from other packages of the same name from different authors. For example, if I (Taylor Otwell) were to create a new package named "Zapper", the vendor name could be `Taylor` while the package name would be `Zapper`. By default, the workbench will create framework agnostic packages; however, the `resources` command tells the workbench to generate the package with Laravel specific directories such as `migrations`, `views`, `config`, etc.
+အေပၚက command ထဲမွာ vendor ဆိုတာက package တစ္ခုကုိ authors ေတြခြဲေရးတဲ့အခါမွာ package name ကုိ ခြဲခြဲျခားျခားသိႏုိင္ေအာင္ေပးထားတဲ့နာမည္ျဖစ္ပါတယ္။ Vendor ဆုိတာက အဲဒီ package ကုိ ဖန္တီးတဲ့လူျဖစ္ျပီး package ဆိုတာကေတာ့ ကုိယ္လုပ္တဲ့ package name ျဖစ္ပါတယ္။ ဥပမာ ကြ်န္ေတာ္ Taylar Otwell က "Zapper" ဆိုတဲ့ package တစ္ခုတည္ေဆာက္လုိက္ရင္ Package name က 'Zapper' ျဖစ္ျပး Vendor name က Taylar ျဖစ္ပါတယ္။ပံုမွန္အားျဖင့္ေတာ့ workbench က framework package တခုတည္ေဆာက္ပါတယ္။ "--resources" command က workbench ကုိ `migrations`, `views`, `config`, စသျဖင့္လိုအပ္တဲ့ ဖုိင္ေတြကုိ ဖန္တီးေပးဖို ့ေျပာပါတယ္။
 
-Once the `workbench` command has been executed, your package will be available within the `workbench` directory of your Laravel installation. Next, you should register the `ServiceProvider` that was created for your package. You may register the provider by adding it to the `providers` array in the `app/config/app.php` file. This will instruct Laravel to load your package when your application starts. Service providers use a `[Package]ServiceProvider` naming convention. So, using the example above, you would add `Taylor\Zapper\ZapperServiceProvider` to the `providers` array.
+အေပၚက 'Workbench' ကုိ run ျပီးျပီဆိုရင္ေတာ့ ၊ ကိုယ္ေပးထားတဲ့ နာမည္အတုိင္းပဲ 'workbench' ဆိုတဲ့ဖိုဒါထဲမွာ vendor name နဲ့ ဖိုဒါေတြေရာက္လာျပီး အထဲမွာ package နာမည္နဲ့ လိုအပ္တဲ့ဖုိင္ေတြအကုန္ အလုိေလ်ာက္ရွိေနပါလိမ့္မယ္။ ျပီးရင္ေတာ့ တည္ေဆာက္လုိက္တဲ့ package ကုိ laravel ကေန သံုးျပဳႏုိင္ရန္အတြက္ 'ServiceProvider' ေၾကာ္ျငာေပးရပါတယ္။ Service Provider ကုိ 'app/config/app.php' မွာ သြားထည့္ေပးရပါတယ္။အဲဒီမွာ သြားထည့္ေပးလုိက္ရင္ workbench ထဲက package ေတြကုိ laravel ကေန အသံုးျပဳႏုိင္ပါျပီ။ Service Provider က '[Package]ServiceProvider' ကိုအသံုးျပဳပါတယ္။ဥပမာအရဆုိရင္ 'app/config/app.php' က Provider မွာ 'Taylor\Zapper\ZapperServiceProvider' ဆိုျပီး array ထဲမွာ သြားထည့္ေပးရမွာပါ။
 
-Once the provider has been registered, you are ready to start developing your package! However, before diving in, you may wish to review the sections below to get more familiar with the package structure and development workflow.
+အခုလို Provider မွာ သြားထည့္ေပးျပီးရင္ေတာ့ packages ကုိ လုိအပ္သလိုမ်ိဳး စတင္ အသံုးျပဳႏုိပ္ပါျပီ။ ပထမဆံုး package structure နဲ ့ development workflow ကို အရင္ေလ့လာသင့္ပါတယ္။
 
-> **Note:** If your service provider cannot be found, run the `php artisan dump-autoload` command from your application's root directory
+> **Note:** Service Provider cannot be found ဆိုျပီး error ျပေနရင္ `php artisan dump-autoload` ကုိ root directory မွာ terminal(cmd) မွ တစ္ဆင့္ run ျပီး ျပန္စမ္းၾကည့္ပါ။
 
 <a name="package-structure"></a>
 ## Package Structure
 
-When using the `workbench` command, your package will be setup with conventions that allow the package to integrate well with other parts of the Laravel framework:
+'workbench' command ကုိ အသံုးျပဳျပီးတဲ့အခါမွာ အဲဒီ command က ကိုယ္ဖန္တီးလိုက္တဲ့ packages ကုိ laravel ႏွင့္ တြဲဖက္အသံုးျပဳႏုိင္ေအာင္ အကုန္အလိုေလ်ာက္ျပဳလုပ္ေပးပါတယ္။
 
 #### Basic Package Directory Structure
 
@@ -60,22 +60,24 @@ When using the `workbench` command, your package will be setup with conventions 
 	/tests
 	/public
 
-Let's explore this structure further. The `src/Vendor/Package` directory is the home of all of your package's classes, including the `ServiceProvider`. The `config`, `lang`, `migrations`, and `views` directories, as you might guess, contain the corresponding resources for your package. Packages may have any of these resources, just like "regular" applications.
+အေပၚက file structure ကုိအရင္ေလ့လာၾကည့္ရေအာင္။ 'src/Vendor/Package' က ေတာ့ 'ServiceProvider' ပါဝင္တဲ့အတြက္ package's classes ေတြရဲ့  အဓိကေနရာလုိ့ေျပာရမွာပါ။ `config`, `lang`, `migrations`, နဲ့ `views' ေတြကေတာ့ packages အတြက္ လိုအပ္တဲ့ resources ေတြပါဝင္မယ့္ဖုိင္ေတြျဖစ္ပါတယ္။
+Packages တစ္ခုမွာလဲ Laravel မွာရွိတဲ့ resources ေတြ အတုိင္း တည္ရွိေနမွာပါ။
 
 <a name="service-providers"></a>
 ## Service Providers
 
-Service providers are simply bootstrap classes for packages. By default, they contain two methods: `boot` and `register`. Within these methods you may do anything you like: include a routes file, register bindings in the IoC container, attach to events, or anything else you wish to do.
+Service providers ဖိုင္ေတြကေတာ့ packages ေတြရဲ့ အသက္ဖုိင္လုိ့ေျပာရမွာပါ။ပံုမွန္အားျဖင့္ Service Provider မွာ 'boot' နဲ့ 'register' ဆိုတဲ့ methodsႏွစ္ခုပါဝင္ပါတယ္။
+ဒီ methods ႏွစ္ခုမွာပဲ အကုန္လံုးျပဳလုပ္ႏုိင္ပါတယ္။ ဥပမာ routes ဖိုင္ခ်ိတ္ဖုိ့ ၊IoC Container ေတြ register bindings လုပ္ဖုိ့ ၊ events ေတြထည့္ဖုိ့ ၊ အကုန္လံုးနည္းပါးကုိ ဒီ method ႏွစ္ခုတစ္ဆင့္ အလုပ္လုပ္သြားမွာပါ။
 
-The `register` method is called immediately when the service provider is registered, while the `boot` command is only called right before a request is routed. So, if actions in your service provider rely on another service provider already being registered, or you are overriding services bound by another provider, you should use the `boot` method.
+"register" method က Service Provider ကုိ register ျပဳလုပ္ျပီးတာနဲ့ အလုပ္လုပ္မယ့္ method ျဖစ္ပါတယ္။ 'boot' method ကေတာ့ request အသက္မဝင္ခင္အခ်ိန္ထိပဲ အလုပ္လုပ္မွာျဖစ္ပါတယ္။ ဒါဆိုရင္ေတာ့ service provider ထဲက actions ေတြ registe လုပ္ျပီးတဲ့အခ်ိန္ (သို ့) တျခား provider တစ္ခုရဲ့  service ကုိ ေက်ာ္လြန္(override)အသံုးျပဳလိုပါက 'boot' method ကုိ အသံုးျပဳသင့္ပါတယ္။
 
-When creating a package using the `workbench`, the `boot` command will already contain one action:
+'workbench' command ႏွင့္ package တစ္ခုတည္ေဆာက္လုိက္တာနဲ့ 'boot' method မွာ ေအာက္ေဖာ္ျပပါအတုိင္း action တစ္ခု ပါဝင္ေနပါတယ္။
 
 	$this->package('vendor/package');
 
-This method allows Laravel to know how to properly load the views, configuration, and other resources for your application. In general, there should be no need for you to change this line of code, as it will setup the package using the workbench conventions.
+ဒီ method က laravel ကုိ packages ထဲက views,config, other resource ေတြကုိ အသံုးျပဳႏုိင္ေအာင္လုပ္ေပးပါတယ္။ ပံုမွန္အားျဖင့္ေတာ့ အဲဒီ ကုတ္ကုိ ျပဳျပင္ဖုိ့မလိုအပ္ပါဘူး။
 
-By default, after registering a package, its resources will be available using the "package" half of `vendor/package`. However, you may pass a second argument into the `package` method to override this behavior. For example:
+ပံုမွန္အားျဖင့္ package တစ္ခုတည္ေဆာက္ျပီးတဲ့အခါ အဲဒီ packages ရဲ့  resource ေတြက 'vendor/package' ေအာက္မွာရွိပါတယ္။ဘယ္လုိျဖစ္ျဖစ္  package method ကုိ argument ေနာက္တစ္ခု ထပ္ထည့္ျပီး package resource ေနရာေတြကုိ လုိအပ္သလို ေအာက္ကပံုစံအတုိင္း ေျပာင္းလဲႏုိင္ပါေသးတယ္။
 
 	// Passing custom namespace to package method
 	$this->package('vendor/package', 'custom-namespace');
@@ -83,14 +85,15 @@ By default, after registering a package, its resources will be available using t
 	// Package resources now accessed via custom-namespace
 	$view = View::make('custom-namespace::foo');
 
-There is not a "default location" for service provider classes. You may put them anywhere you like, perhaps organizing them in a `Providers` namespace within your `app` directory. The file may be placed anywhere, as long as Composer's [auto-loading facilities](http://getcomposer.org/doc/01-basic-usage.md#autoloading) know how to load the class.
+Service provider classes ေတြအတြက္ app directory ထဲမွာ ေနရာအတည္တစ္က် သတ္မွတ္ထားတာမ်ိဳးလဲမရွိပါဘူး။ 'app' ထဲမွ  'Providers' namespace ေပးျပီး ထားခ်င္တဲ့ေနရာမွာ ထားႏုိင္ပါတယ္။ ဒဲဒီ class ဖိုင္ေတြကုိ Composer's [auto-loading facilities](http://getcomposer.org/doc/01-basic-usage.md#autoloading) က သိမွတ္ျပဳေနသ၍ အဲဒီ class ဖုိင္ထဲက class ေတြကုိ app က ယူသံုးႏုိင္မွာပါ။
 
-If you have changed the location of your package's resources, such as configuration files or views, you should pass a third argument to the `package` method which specifies the location of your resources:
+'Package ထဲက resources ( ဥပမာ Configuration ၊ Views ) ေနရာေတြကုိ ေျပာင္းလုိက္ျပီဆိုရင္ ေျပာင္းလိုက္တဲ့ေနရာကုိ 'package' methord မွာ တတိယေျမာက္ argument တစ္ခုအျဖစ္ ေအာက္ပါအတုိင္းထည့္သင့္ေပးသင့္ပါတယ္။
 
 	$this->package('vendor/package', null, '/path/to/resources');
 
 <a name="deferred-providers"></a>
 ## Deferred Providers
+
 
 If you are writing a service provider that does not register any resources such as configuration or views, you may choose to make your provider "deferred". A deferred service provider is only loaded and registered when one of the services it provides is actually needed by the application IoC container. If none of the provider's services are needed for a given request cycle, the provider is never loaded.
 
@@ -108,6 +111,7 @@ Next you should override the `provides` method from the base `Illuminate\Support
 <a name="package-conventions"></a>
 ## Package Conventions
 
+
 When utilizing resources from a package, such as configuration items or views, a double-colon syntax will generally be used:
 
 #### Loading A View From A Package
@@ -122,6 +126,7 @@ When utilizing resources from a package, such as configuration items or views, a
 
 <a name="development-workflow"></a>
 ## Development Workflow
+
 
 When developing a package, it is useful to be able to develop within the context of an application, allowing you to easily view and experiment with your templates, etc. So, to get started, install a fresh copy of the Laravel framework, then use the `workbench` command to create your package structure.
 
@@ -212,6 +217,7 @@ You may easily create and run migrations for any of your packages. To create a m
 
 #### Running Migrations For An Installed Package
 
+Packages ထဲမွာ database migrate လုပ္ဖို့အတြက္ workbench ထဲမွာ 
 To run migrations for a finished package that was installed via Composer into the `vendor` directory, you may use the `--package` directive:
 
 	php artisan migrate --package="vendor/package"
@@ -220,23 +226,23 @@ To run migrations for a finished package that was installed via Composer into th
 ## Package Assets
 
 #### Moving Package Assets To Public
-
-Some packages may have assets such as JavaScript, CSS, and images. However, we are unable to link to assets in the `vendor` or `workbench` directories, so we need a way to move these assets into the `public` directory of our application. The `asset:publish` command will take care of this for you:
+'packages' ေတြမွာ 'Javascript, Css, images လုိ assets ေတြပါေကာင္းပါႏုိင္ပါတယ္။ အဲဒီ assets ေတြကုိ app မွ တဆင့္တန္းဆြဲေခၚသံုးဖုိ့မျဖစ္ႏုိင္ပါဘူး  ။ အဲဒီအတြက္ 'package' ထဲက assets ေတြကုိ public ေအာက္ကုိ ေျပာင္းထည့္ေပးဖုိ့လိုအပ္ပါတယ္။ အဲဒီအတြက္ `asset:publish`  ကြန္မန္း ကုိ  ေအာက္ကအတုိင္း အသံုးျပဳျပီး ေျပာင္းထည့္ေပးႏုိင္ပါတယ္။
 
 	php artisan asset:publish
 
 	php artisan asset:publish vendor/package
 
-If the package is still in the `workbench`, use the `--bench` directive:
+တကယ္လုိ တည္ေဆာက္ထားတဲ့ 'package' က 'workbench' ေအာက္မွာပဲရွိေသးရင္ေတာ့ ' --bench ' ကုိေအာက္ပါအတုိင္းထပ္ထည့္ျပီးေရးေပးရပါတယ္။
 
 	php artisan asset:publish --bench="vendor/package"
 
-This command will move the assets into the `public/packages` directory according to the vendor and package name. So, a package named `userscape/kudos` would have its assets moved to `public/packages/userscape/kudos`. Using this asset publishing convention allows you to safely code asset paths in your package's views.
+ဒီကြန္မန္းက package ထဲမွ assets ေတြကုိ 'public/packages' ထဲကုိ သက္ဆိုင္ရင္ package နဲ့ vendor နာမည္ေတြအလုိက္ဖိုဒါေတြ အလိုေလ်ာက္ေဆာက္ျပီး သိမ္းဆည္းေပးသြားမွာပါ။ ဥပမာ 'workbench' ေအာက္မွာ 'usersape/kusod' ဆိုျပီး packages ေဆာက္ထားရင္ 'public/packages/userscape/kudos' ဆိုျပီး ေရာက္သြားမွာပါ။ ဒီလိုလုပ္ျခင္းအားျဖင့္ asset ေတြနဲ့ပက္သက္ျပီး  လံုျခံဳေရးဆုိင္ရာ အားသာခ်က္မ်ား ရရွိႏုိင္ပါတယ္။
 
 <a name="publishing-packages"></a>
 ## Publishing Packages
 
-When your package is ready to publish, you should submit the package to the [Packagist](http://packagist.org) repository. If the package is specific to Laravel, consider adding a `laravel` tag to your package's `composer.json` file.
+ကုိယ္တည္ေဆာက္ထားတဲ့'Package' က အသံုးျပဳဖို ့အားလံုးျပင္ဆင္ျပီးသြားရင္ေတာ့ [Packagist](http://packagist.org) ကုိ တျခားသူေတြပါသံုးျပဳႏုိင္ေအာင္ တင္ထားေပးသင့္ပါတယ္။ တကယ္လုိ့ ကုိယ္ တည္ေဆာက္လုိက္တဲ့ 'package' က laravel အတြက္ပဲ သီးသန့္တည္ေဆာက္ထားရင္ေတာ့ 'composer.json' မွာ 'laravel' ဆိုျပီး tag ထည့္ေပးဖုိ့လိုအပ္ပါတယ္။
+
 
 Also, it is courteous and helpful to tag your releases so that developers can depend on stable versions when requesting your package in their `composer.json` files. If a stable version is not ready, consider using the `branch-alias` Composer directive.
 

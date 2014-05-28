@@ -1,13 +1,13 @@
-# Migrations & Seeding
+﻿# Migrations & Seeding
 
-- [Introduction](#introduction)
-- [Creating Migrations](#creating-migrations)
-- [Running Migrations](#running-migrations)
-- [Rolling Back Migrations](#rolling-back-migrations)
+- [အစပ်ိဳး](#introduction)
+- [Migrations ဖန္တီးျခင္း](#creating-migrations)
+- [Migrations ျပဳလုပ္ျခင္း](#running-migrations)
+- [Migrations ေနာက္ျပန္လည္ျခင္း](#rolling-back-migrations)
 - [Database Seeding](#database-seeding)
 
 <a name="introduction"></a>
-## Introduction
+## အစပ်ိဳး
 
 Migrations are a type of version control for your database. They allow a team to modify the database schema and stay up to date on the current schema state. Migrations are typically paired with the [Schema Builder](/docs/schema) to easily manage your application's scheme.
 
