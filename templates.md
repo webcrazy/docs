@@ -71,39 +71,39 @@ Laravel မွာပါတဲ့ template ပံုစံေနာက္တစ�
 	@yield('section', 'Default Content');
 
 <a name="other-blade-control-structures"></a>
-## Other Blade Control Structures
+## Other Blade ႏွင့္ အသံုးျပဳႏိုင္ေသာ အျခား 
 
-#### Echoing Data
+#### အခ်က္အလက္ထုတ္ျပျခင္း
 
 	Hello, {{{ $name }}}.
 
 	The current UNIX timestamp is {{{ time() }}}.
 
-#### Echoing Data After Checking For Existence
+#### အခ်က္အလက္ ရွိ/မရွိ စစ္ေဆးၿပီးမွ ထုတ္ျပျခင္း 
 
-Sometimes you may wish to echo a variable, but you aren't sure if the variable has been set. Basically, you want to do this:
+တစ္ခါတစ္ရံမွာ အခ်က္အလက္တစ္ခုကိုထုတ္ျပခ်င္ေသာ္လည္း အဲ့ဒီ အခ်က္အလက္ထည့္ထားတဲ့ variable ကို အသံုးျပဳထားျခင္း ရွိ/မရွိ မေသခ်ာတဲ့ အေျခအေနမ်ိဳးမွာ ပံုမွန္ဆိုရင္ ေအာက္ပါအတိုင္း အသံုးျပဳၾကပါတယ္။
 
 	{{{ isset($name) ? $name : 'Default' }}}
 
-However, instead of writing a ternary statement, Blade allows you to use the following convenient short-cut:
+အဲ့ဒီပံုစံကို Blade နဲ႔လြယ္လြယ္ကူကူပဲေရးႏိုင္ပါတယ္... ေအာက္မွာေရးထားတဲ့ပံုစံကိုၾကည့္လုိက္ပါ။
 
 	{{{ $name or 'Default' }}}
 
-#### Displaying Raw Text With Curly Braces
+#### တြန္႔ကြင္း (Curly Braces) ႏွင့္အုပ္ထားေသာ စာသားမ်ားအတိုင္း ထုတ္ျပျခင္း
 
-If you need to display a string that is wrapped in curly braces, you may escape the Blade behavior by prefixing your text with an `@` symbol:
+တြန္႔ကြင္း (curly braces) အုပ္ထားတဲ့ စာသားမ်ားကို ထုတ္ျပဖို႔ လိုအပ္လွၽင္ေတာ့ blade ပံုစံကို ေရွ႔မွာ `@` သကၤတ နဲ႔ခံျပီး အသံုးျပဳႏိုင္ပါတယ္။
 
 	@{{ This will not be processed by Blade }}
 
-Of course, all user supplied data should be escaped or purified. To escape the output, you may use the triple curly brace syntax:
+အသံုးျပဳသူဆီက ဝင္လာမဲ့ အခ်က္အလက္ေတြကို escape သို႔မဟုတ္ purified လုပ္သင့္ပါတယ္။ အဲ့လိုျပဳလုပ္ဖို႔အတြက္ တြန္႔ကြင္းသံုးခု (triple curly brace) ကိုအသံုးျပဳႏိုင္ပါတယ္။ 
 
 	Hello, {{{ $name }}}.
 
-If you don't want the data to be escaped, you may use double curly-braces:
+အကယ္၍ escape မလုပ္ခ်င္ဘူးဆုိရင္ေတာ့ တြန္႔ကြင္း ႏွစ္ခု (double curly braces) ကိုအသံုးျပဳႏိုင္ပါတယ္။
 
 	Hello, {{ $name }}.
 
-> **Note:** Be very careful when echoing content that is supplied by users of your application. Always use the triple curly brace syntax to escape any HTML entities in the content.
+> **သတိျပဳရန္:** Application ကိုအသံုးျပဳဳသူဆီကလာမဲ့ အခ်က္အလက္ေတြကိုထုတ္ျပတဲ့ကိစၥကို အထူးဂရုစိုက္ဖို႔ လိုအပ္ပါတယ္။ အဲ့ဒါေၾကာင့္ HTML entities ေတြကို escape ျပဳလုပ္ဖို႔အတြက္ တြန္႔ကြင္းသံုးခု (triple curly brace) ကိုအၿမဲတမ္းအသံုးျပဳသင့္ပါတယ္။
 
 #### If Statements
 
