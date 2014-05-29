@@ -3,9 +3,9 @@
 - [မိတ္ဆက္](#introduction)
 - [ရွင္းလင္းခ်က္](#explanation)
 - [လက္ေတြ့အသံုးခ်ျခင္း](#practical-usage)
-- [Creating Facades](#creating-facades)
-- [Mocking Facades](#mocking-facades)
-- [Facade Class Reference](#facade-class-reference)
+- [ကိုယ္ပိုင္ Facades တည္ေဆာက္ျခင္း](#creating-facades)
+- [Facades ေတြကို Mock ျပဳလုပ္ေပးျခင္း](#mocking-facades)
+- [Facade Class ကိုကား](#facade-class-reference)
 
 <a name="introduction"></a>
 ## မိတ္ဆက္
@@ -26,13 +26,13 @@ Facade ဆိုတာ Class တစ္ခုျဖစ္ၿပီး Container �
 ဒါ့ေၾကာင့္ သင့္အေနနဲ႔ `Cache::get` လိုမ်ိဳး Facade တစ္ခုကို ေခၚမယ္ဆိုရင္ Laravel က Cache manager class ကို IoC container ထဲကေနဆြဲထုတ္ၿပီး သူထဲက `get` method ကိုေခၚေပးပါတယ္။ နည္းပညာအေခၚအေဝၚအရဆိုရင္ေတာ Laravel Facades ေတြဆိုတာ Ioc container ေတြကို service locator တစ္ခုအေနနဲ႔အသံုးျပဳႏိုင္တဲ့ ေရး/ဖတ္/မွတ္ရလြယ္ကူေသာ syntax ျဖစ္ပါတယ္။
 
 <a name="practical-usage"></a>
-## Practical Usage
+## လက္ေတြ႕အသံုးခ်ျခင္း
 
-In the example below, a call is made to the Laravel cache system. By glancing at this code, one might assume that the static method `get` is being called on the `Cache` class.
+ေအာက္ကအတိုင္းဆိုရင္ ၊ Laravel cache system ကို ေခၚတာပါ။ သာမာန္အေပၚယံအတိုင္း ၾကည့္လိုက္မယ္ဆိုရင္ေတာ့ `Cache` class ထဲက `get` ဆိုတဲ့ static method တစ္ခုကို ေခၚလိုက္တယ္လို႔ထင္ရပါတယ္။
 
 	$value = Cache::get('key');
 
-However, if we look at that `Illuminate\Support\Facades\Cache` class, you'll see that there is no static method `get`:
+ဒါေပမယ့္ `Illuminate\Support\Facades\Cache` class  ကိုၾကည့္လိုက္မယ္ဆိုရင္ `get` ဆိုတဲ့ static method လံုးဝမရွိပါဘူး
 
 	class Cache extends Facade {
 
@@ -45,24 +45,25 @@ However, if we look at that `Illuminate\Support\Facades\Cache` class, you'll see
 
 	}
 
-The Cache class extends the base `Facade` class and defines a method `getFacadeAccessor()`. Remember, this method's job is to return the name of an IoC binding.
+Cache class က `Facade` class ကို extend လုပ္ထားၿပီး `getFacadeAccessor()` ဆိုတာပဲရွိပါတယ္။ အဲဒီ Method ရဲ႕တာဝန္က IoC နာမည္ကို return လုပ္ေပးယံုပါပဲ။
 
-When a user references any static method on the `Cache` facade, Laravel resolves the `cache` binding from the IoC container and runs the requested method (in this case, `get`) against that object.
+User က `Cache` facade ထဲက ဘယ္ static method ကိုမဆို သံုးလိုက္မယ္ဆိုတာနဲ႔ ၊ Laravel က IoC container ထဲကေန `cache` ကိုေခၚၿပီး ၊ ကိုယ္လိုခ်င္တဲ့ method (အခုအတိုင္းဆို `get`) ကို run ေပးပါတယ္။
 
-So, our `Cache::get` call could be re-written like so:
+ဒါ့ေၾကာင့္ ၊ ကၽြန္ေတာ္တို႔သံုးထားတဲ့ `Cache::get` ရဲ႕ ေနာက္ကြယ္မွာက ေအာက္ကအတိုင္းရွိေနပါမယ္။
 
 	$value = $app->make('cache')->get('key');
 
 <a name="creating-facades"></a>
-## Creating Facades
+## ကိုယ္ပိုင္ Facades တည္ေဆာက္ျခင္း
 
 Creating a facade for your own application or package is simple. You only need 3 things:
+ကိုယ့္ application (ဒါမွမဟုတ္) package အတြက္ ကိုယ္ပိုင္ facade ေဆာက္ရတာလြယ္ကူပါတယ္။ အဆင့္ ၃ ဆင့္ပဲလိုပါတယ္ :
 
 - An IoC binding
-- A facade class.
-- A facade alias configuration.
+- facade class တစ္ခု
+- facade ကိုယ္ ေခၚမယ့္ Alia သတ္မွတ္ေပးရန္
 
-Let's look at an example. Here, we have a class defined as `PaymentGateway\Payment`.
+ဥပမာတစ္ခုေလာက္ ၾကည့္ၾကပါမယ္။ ကၽြန္ေတာ္တို႔မွာ `PaymentGateway\Payment` ဆိုတဲ့ class တစ္ခုရွိမယ္ဆိုၾကပါစို႔
 
 	namespace PaymentGateway;
 
@@ -75,18 +76,19 @@ Let's look at an example. Here, we have a class defined as `PaymentGateway\Payme
 
 	}
 
-This class might live in your `app/models` directory, or any other directory that Composer knows how to auto-load.
+ဒီ class က `app/models` directory ထဲမွာျဖစ္ျဖစ္ (ဒါမွမဟုတ္) တစ္ျခား Composer က auto-load ျပဳလုပ္ႏုိင္တဲ့ မည္သည့္ေနရာတြင္မဆို တည္ရွိႏိုင္ပါတယ္။
 
-We need to be able to resolve this class from the IoC container. So, let's add a binding:
+IoC container ထဲအဲဒီ class ကို ထည့္ေပးဖို႔အတြက္ bind လုပ္ဖို႔လုိပါမယ္။
 
 	App::bind('payment', function()
 	{
 		return new \PaymentGateway\Payment;
 	});
 
-A great place to register this binding would be to create a new [service provider](/docs/ioc#service-providers) named `PaymentServiceProvider`, and add this binding to the `register` method. You can then configure Laravel to load your service provider from the `app/config/app.php` configuration file.
+ဒီ bind လုပ္ထားတာကို Register လုပ္ဖို႔အတြက္ အေကာင္းဆံုးနည္းကေတာ့ `PaymentServiceProvider` ဆိုၿပီး [service provider](/docs/ioc#service-providers) တစ္ခုေဆာက္ၿပီးေတာ့ အေပၚက bind လုပ္ထားတာကို `register` ဆိုတဲ့ method ထဲ ထည့္ေပးလိုက္တာပါ။ အခုေဆာက္ထားတဲ့ Service Provider ကို Laravel က load လုပ္ဖို႔ဆိုရင္ေတာ့ `app/config/app.php` ထဲမွာ သတ္မွတ္ေပးဖို႔လိုပါမယ္။
 
 Next, we can create our own facade class:
+ေနာက္တစ္ဆင့္မွာေတာ့ ကိုယ္ပိုင္ facade class ေဆာက္ႏိုင္ပါၿပီ -
 
 	use Illuminate\Support\Facades\Facade;
 
@@ -96,23 +98,23 @@ Next, we can create our own facade class:
 
 	}
 
-Finally, if we wish, we can add an alias for our facade to the `aliases` array in the `app/config/app.php` configuration file. Now, we can call the `process` method on an instance of the `Payment` class.
+ေနာက္ဆံုးအေနနဲ႔ ကၽြန္ေတာ္တို႔ရဲ႕ Facade ကို Alia (Shortcut) အေနနဲ႔ေခၚသံုးခ်င္တယ္ဆိုရင္ေတာ့ `app/config/app.php` ထဲက `aliases` array ထဲမွာ သတ္မွတ္ေပးရပါမယ္။ အခုဆိုရင္ေတာ့ `Payment` class ရဲ႕ `process` method ကို ေအာက္ကအတိုင္း လြယ္လြယ္ကူကူပဲ ေခၚႏိုင္ပါၿပီ-
 
 	Payment::process();
 
-### A Note On Auto-Loading Aliases
+### Aliases ေတြကို Auto-Load လုပ္တဲ့အခါ သတိထားစရာမ်ား
 
-Classes in the `aliases` array are not available in some instances because [PHP will not attempt to autoload undefined type-hinted classes](https://bugs.php.net/bug.php?id=39003). If `\ServiceWrapper\ApiTimeoutException` is aliased to `ApiTimeoutException`, a `catch(ApiTimeoutException $e)` outside of the namespace `\ServiceWrapper` will never catch the exception, even if one is thrown. A similar problem is found in Models which have type hints to aliased classes. The only workaround is to forego aliasing and `use` the classes you wish to type hint at the top of each file which requires them.
+[PHP က type hint မသက္မွတ္ေပးထားတဲ့ class ေတြကို autload လုပ္ေပးမွာမဟုတ္တဲ့အတြက္](https://bugs.php.net/bug.php?id=39003)  `Aliases` array ထဲမွာ ရွိတဲ့ Class ေတြကို တစ္ခ်ိဳ႕ေသာ instance ေတြမွာ သံုးလို႔မရပါဘူး။ `\ServiceWrapper\ApiTimeoutException` ကို `ApiTimeoutException` လို႔ Alia လုပ္ထားလိုက္မယ္ဆိုရင္ `\ServiceWrapper` namespace ရဲ႕အျပင္ဖက္မွာ `catch(ApiTimeoutException $e)` လို႔ေခၚမယ္ဆိုရင္ thrown လုပ္လိုက္ေပမယ့္ ဘယ္ေတာ့မွ catch လုပ္လို႔မရပါဘူး။ ဒီလိုျပႆနာမ်ိဳးကိုပဲ Model ေတြမွာလဲ ႀကံဳေတြ႕ႏိုင္ပါတယ္။ တစ္ခုတည္းေသာ ေျဖရွင္းနည္းကေတာ့ Alias ေတြမသတ္မွတ္ဘဲ file ရဲ႕အေပၚဆံုးမွာ `use` ဆိုၿပီးသတ္မွတ္ၿပီးသံုးတာပါပဲ။
+
 
 <a name="mocking-facades"></a>
-## Mocking Facades
-
-Unit testing is an important aspect of why facades work the way that they do. In fact, testability is the primary reason for facades to even exist. For more information, check out the [mocking facades](/docs/testing#mocking-facades) section of the documentation.
+## Facades ေတြကို Mock ျပဳလုပ္ေပးျခင္း
+Facade ေတြ အဓိကရွိေနရျခင္းရဲ႕အေၾကာင္းရင္းကေတာ့ Test လြယ္လြယ္ကူကူလုပ္ႏုိင္ဖို႔ပဲျဖစ္ပါတယ္။ Mock လုပ္တဲ့အပိုင္းကိုေတာ့ [mocking facades](/docs/testing#mocking-facades) မွာ ျပည့္ျပည့္စံုစံု ေဖာ္ျပေပးထားပါတယ္။
 
 <a name="facade-class-reference"></a>
-## Facade Class Reference
+## Facade Class ကိုကား
 
-Below you will find every facade and its underlying class. This is a useful tool for quickly digging into the API documentation for a given facade root. The [IoC binding](/docs/ioc) key is also included where applicable.
+ေအာက္ကဇယားမွာေတာ့ ရွိသမွ် Facade ေတြနဲ႔ သူရဲ႕ေနာက္ကြယ္က class ေတြကို ေဖာ္ျပေပးထားပါတယ္။ API Documentation ထဲကို သက္ဆိုင္ရာ ေနရာလိုက္လဲ ခ်ိတ္ေပးထားပါတယ္။ [IoC binding](/docs/ioc) key ရွိတဲ့ Facade ေတြကိုလဲ သူ႕ key ေတြေရးေပးထားပါတယ္။
 
 Facade  |  Class  |  IoC Binding
 ------------- | ------------- | -------------
