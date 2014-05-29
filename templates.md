@@ -8,9 +8,9 @@
 <a name="controller-layouts"></a>
 ## Controller Layouts
 
-One method of using templates in Laravel is via controller layouts. By specifying the `layout` property on the controller, the view specified will be created for you and will be the assumed response that should be returned from actions.
+Laravel မွာအသံုးျပဳေသာ templates ပံုစံမ်ားထဲကတစ္ခုကေတာ့ controller layouts ကေနအသံုးျပဳတဲ့ပံုစံျဖစ္ပါတယ္။ `layout` property ကို controller မွာသတ္မွတ္လိုက္တာနဲ႔ view ဖိုဒါထဲမွာ ႀကိဳတင္သတ္မွတ္ျပင္ဆင္ထားတဲ့ view ဖိုင္ကို သင့္အတြက္ယူေဆာင္ေပးပါလိမ့္မယ္။ ၿပီးရင္ေတာ့ controller ကေနညႊန္ၾကားလာတဲ့တဲ့ ညႊန္ၾကားခ်က္တြကို လက္ခံေဆာင္ရြက္ေပးမွာျဖစ္ပါတယ္။
 
-#### Defining A Layout On A Controller
+#### Controller တြင္ Layout ကိုသတ္မွတ္ျခင္း
 
 	class UserController extends BaseController {
 
@@ -32,9 +32,9 @@ One method of using templates in Laravel is via controller layouts. By specifyin
 <a name="blade-templating"></a>
 ## Blade Templating
 
-Blade is a simple, yet powerful templating engine provided with Laravel. Unlike controller layouts, Blade is driven by _template inheritance_ and _sections_. All Blade templates should use the `.blade.php` extension.
+Laravel မွာပါတဲ့ template ပံုစံေနာက္တစ္ခုျဖစ္တဲ့ Blade ဆိုတာကေတာ့ ရိုးရွင္းၿပီး၊ စြမ္းေဆာင္ရည္ျပည့္ဝတဲ့ လုပ္ေဆာင္ခ်က္ေတြအမ်ားႀကီးပါတဲ့ template engine တစ္ခုျဖစ္ပါတယ္။ Blade ရဲ့ပံုစံက ပင္မ _template_ မွာတည္ေဆာက္ထားတဲ့ပံုစံကို ထပ္ပြားယူၿပီး(_inheritance_) အေျပာင္းအလဲလုပ္ခ်င္တဲ့ေနရာေတြထဲကို (_section_) လိုအပ္သလို ျပဳျပင္ေျပာင္းလဲႏိုင္တဲ့ ပံုစံျဖစ္ပါတယ္။ Blade template ကိုအသံုးျပဳခ်င္ရင္ေတာ့ `.blade.php` extension နဲ႔အသံုးျပဳရမွာပါ။ 
 
-#### Defining A Blade Layout
+#### Blade ပံုစံသတ္မွတ္ျခင္း
 
 	<!-- Stored in app/views/layouts/master.blade.php -->
 
@@ -50,7 +50,7 @@ Blade is a simple, yet powerful templating engine provided with Laravel. Unlike 
 		</body>
 	</html>
 
-#### Using A Blade Layout
+#### Blade ပံုစံကို အသံုးျပဳျခင္း
 
 	@extends('layouts.master')
 
@@ -64,9 +64,9 @@ Blade is a simple, yet powerful templating engine provided with Laravel. Unlike 
 		<p>This is my body content.</p>
 	@stop
 
-Note that views which `extend` a Blade layout simply override sections from the layout. Content of the layout can be included in a child view using the `@parent` directive in a section, allowing you to append to the contents of a layout section such as a sidebar or footer.
+အေပၚမွာျပထားတဲ့ဥပမာမွာ ပင္မ template ပံုစံကို `extend` လုပ္ယူၿပီး ပင္မ layout ထဲက section ေနရာကို ထပ္ထည့္ထားတာကို သတိျပဳပါ။ ပင္မ layout ထဲမွာ ႀကိဳတင္သတ္မွတ္ထားတဲ့ အခ်က္အလက္ေတြကို chile view ထဲမွာ ထပ္သံုးခ်င္ရင္ `@parent` ဆိုတဲ့ ညႊန္ၾကားခ်က္ကိုအသံုးျပဳႏိုင္ပါတယ္။ Sidebar နဲ႔ footer ကဲ့သို႔ေသာ အပိုင္းေတြအတြက္ လိုအပ္တဲ့ အခ်က္အလက္ေတြကို ထပ္ထည့္ႏိုင္တဲ့ လုပ္ေဆာင္ခ်က္တစ္ခုျဖစ္ပါတယ္။ 
 
-Sometimes, such as when you are not sure if a section has been defined, you may wish to pass a default value to the `@yield` directive. You may pass the default value as the second argument:
+တစ္ခါတစ္ရံ `@section` သတ္မွတ္ထား / မထား မေသခ်ာဘူး `@yield` နဲ႔ဆြဲယူထားတဲ့ ေနရာထဲကိုလဲ default value တစ္ခု ထည့္ခ်င္တယ္ဆိုရင္ ဒုတိယ argument အေနနဲ႔ ထည့္ေပးလိုက္ရင္ ရပါတယ္။ 
 
 	@yield('section', 'Default Content');
 

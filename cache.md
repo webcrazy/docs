@@ -2,8 +2,8 @@
 
 - [ျပင္ဆင္ျခင္း](#configuration)
 - [Cache အသံုးျပဳသည့္ပံုစံ](#cache-usage)
-- [Increments & Decrements](#increments-and-decrements)
-- [Cache Tags](#cache-tags)
+- [တန္ဖိုး ထပ္တိုးျခင္း ႏွင့္ ေလ်ာ႔ခ်ျခင္း](#increments-and-decrements)
+- [Cache မ်ားအား အုပ္စုဖြဲ႔ျခင္း](#cache-tags)
 - [Database Cache](#database-cache)
 
 <a name="configuration"></a>
@@ -49,7 +49,7 @@ Caching ျပဳလုပ္နည္းပံုစံမ်ိဳးစံု
 
 	$value = Cache::get('key', function() { return 'default'; });
 
-#### အခ်က္အလက္ကို Cache ထဲသို႔ ထာဝရသိမ္းဆည္းျခင္း
+#### အခ်က္အလက္ကို Cache ထဲသို႔ အကန္႔မသတ္မရွိသိမ္းဆည္းျခင္း
 
 	Cache::forever('key', 'value');
 
@@ -80,59 +80,59 @@ Cache ထဲမွ အခ်က္အလက္ကို ရယူအသံုး
 	Cache::forget('key');
 
 <a name="increments-and-decrements"></a>
-## Increments & Decrements
+## တန္ဖိုး ထပ္တိုးျခင္း ႏွင့္ ေလ်ာ႔ခ်ျခင္း
 
-`file` နဲ႔ `database`မွလြဲ၍ က်န္တဲ့ cache drivers ေတြအားလံုးကို `increment` နဲ႔ `decrement`လုပ္ေဆာင္ခ်က္ေတြအတြက္ အေထာက္အပံ့ေပးထားပါတယ္။
+`file` နဲ႔ `database` driver မွလြဲ၍ က်န္တဲ့ cache drivers ေတြအားလံုးကို `increment` နဲ႔ `decrement`လုပ္ေဆာင္ခ်က္ေတြအတြက္ အေထာက္အပံ့ေပးထားပါတယ္။
 
-#### Incrementing A Value
+#### အခ်က္အလက္တန္ဖိုး ထပ္တိုးျခင္း
 
 	Cache::increment('key');
 
 	Cache::increment('key', $amount);
 
-#### Decrementing A Value
+#### အခ်က္အလက္တန္ဖိုးေလ်ာ႔ခ်ျခင္း
 
 	Cache::decrement('key');
 
 	Cache::decrement('key', $amount);
 
 <a name="cache-tags"></a>
-## Cache Tags
+## Cache မ်ားအား အုပ္စုဖြဲ႔ျခင္း
 
 > **သတိျပဳရန္:** `file` သို႔မဟုတ္ `database` cache driver သံုးထားရင္ေတာ့ Cache tags ကို အေထာက္အပံ့ေပးမွာမဟုတ္ပါဘူး။ ၎အျပင္ cache ကို tags ေတြနဲ႔တြဲသံုးမယ္ဆိုရင္ အဲ့ဒီ cache ကို အၿမဲတမ္းသိမ္းဆည္းထားမွာျဖစ္တဲ့အတြက္ `memcached` ကဲသို႔ေသာ driver ကိုအသံုးျပဳမွသာ permormance အတြက္ပိုၿပီးအဆင္ေျပေစမွာပါ။ အဲ့ဒီေတာ့မွ အသံုးမလိုေတာ့တဲ့ အခ်က္အလက္ေတြကို အလိုအေလၽွာက္ ပယ္ဖ်က္ေပးမွာျဖစ္ပါတယ္။
 
-#### Accessing A Tagged Cache
+#### Cache မ်ားအား အုပ္စုဖြဲ႔ျခင္း
 
-Cache tags allow you to tag related items in the cache, and then flush all caches tagged with a given name. To access a tagged cache, use the `tags` method.
+Cache ထဲမွာရွိတဲ့ ဆက္စပ္ေနတဲ့ အခ်က္အလက္ေတြကို အတူတကြအုပ္စုဖြဲ႔ေပးျခင္းကို cache tags ကျပဳလုပ္ေပးႏိုင္ပါတယ္။ ၿပီးရင္ေတာ့ ေပးထားခဲ့တဲနာမည္အတိုင္းျပန္ၿပီး လြယ္လြယ္ကူကူပဲ ျပန္လည္ပယ္ဖ်က္ႏိုင္ပါတယ္။  Cache ေတြကို တစ္ခုတစည္းထဲ အုပ္စုဖြဲ႔ထားဖို႔အတြက္ `tags` method ကိုအသံုးျပဳရပါမယ္။
 
-You may store a tagged cache by passing in an ordered list of tag names as arguments, or as an ordered array of tag names:
+Cache ေတြကို တြဲစပ္ဖို႔အတြက္ `tags` method ထဲသို႔ အမည္မ်ားကို `,` ခံ၍ေသာ္လည္းေကာင္း၊ array အေနႏွင့္ passing ေပး၍ေသာ္လည္းေကာင္း သိမ္းဆည္းႏိုင္ပါတယ္။
 
 	Cache::tags('people', 'authors')->put('John', $john, $minutes);
 
 	Cache::tags(array('people', 'artists'))->put('Anne', $anne, $minutes);
 
-You may use any cache storage method in combination with tags, including `remember`, `forever`, and `rememberForever`. You may also access cached items from the tagged cache, as well as use the other cache methods such as `increment` and `decrement`.
+Cache ေတြကိုတစ္ခုတစည္းထဲ အုပ္စုဖြဲ႔ထားဖို႔အတြက္ ႏွစ္သက္ရာ caching method ကိုအသံုးျပဳႏိုင္ပါတယ္။ `remember`, `forever` ႏွင့္ `rememberForever` စတာေတြအပါအဝင္ေပါ့။ `increment` နဲ႔ `decrement` method ေတြကိုေတာ့ အသံုးျပဳလုိ႔ရမွာမဟုတ္ပါဘူး။
 
-#### Accessing Items In A Tagged Cache
+#### အုပ္စုဖြဲ႔ထားေသာ Cache ထဲမွ အခ်က္အလက္ကို ရယူျခင္း
 
-To access a tagged cache, pass the same ordered list of tags used to save it.
+အုပ္စုဖြဲ႔ထားေသာ cache ထဲမွ အခ်က္အလက္ကုိ ျပန္လည္ရယူဖို႔အတြက္ အုပ္စုဖြဲ႔ျခင္းျပဳလုပ္စဥ္က ေပးထားခဲ့ေသာ အမည္မ်ားအတိုင္းအစဥ္လိုက္ျပန္လည္ passing ေပးၿပီး ရယူႏိုင္ပါတယ္။ 
 
 	$anne = Cache::tags('people', 'artists')->get('Anne');
 
 	$john = Cache::tags(array('people', 'authors'))->get('John');
 
-You may flush all items tagged with a name or list of names. For example, this statement would remove all caches tagged with either `people`, `authors`, or both. So, both "Anne" and "John" would be removed from the cache:
+ျပန္လည္ပယ္ဖ်က္ခ်င္တယ္ဆိုလ်င္လဲ အုပ္စုဖြဲ႔ျခင္းျပဳလုပ္စဥ္ကေပးထားခဲ့ေသာ နာမည္တစ္ခု သို႔မဟုတ္ တစ္ခုထက္ပိုေသာ အမည္မ်ားကို အသံုးျပဳၿပီးပယ္ဖ်က္ႏိုင္ပါတယ္။ ေအာက္မွာေပးထားတဲ့ ဥပမာကို ၾကည့္မယ္ဆိုရင္ `people` အုပ္စုေကာ `author` အုပ္စုကိုေကာ ပယ္ဖ်က္လိုက္တာျဖစ္ပါတယ္။ အဲ့ဒီအတြက္ အဲ့ဒီအုပ္စုႏွစ္ခုထဲမွာပါတဲ့ "Anne" နဲ႔ "John" ကို cache ထဲကေန ဖ်က္သြားမွာျဖစ္ပါတယ္။ 
 
 	Cache::tags('people', 'authors')->flush();
 
-In contrast, this statement would remove only caches tagged with `authors`, so "John" would be removed, but not "Anne".
+ေအာက္မွာျပထားတဲ့ ဥပမာအရဆိုရင္ `authors` အုပ္စုကိုပဲပယ္ဖ်က္လိုက္တာျဖစ္ပါတယ္။ အဲ့ဒါေၾကာင့္ `authors` အုပ္စုထဲမွာပါတဲ့ "John" ကိုပဲဖ်က္သြားမွာျဖစ္ၿပီး "Anne" ကိုဖ်က္သြားမွာမဟုတ္ပါဘူး။ အေပၚကဥပမာနဲ႔ ေအာက္က ဥပမာကို ယွဥ္ၾကည့္ပါ။ 
 
 	Cache::tags('authors')->flush();
 
 <a name="database-cache"></a>
 ## Database Cache
 
-When using the `database` cache driver, you will need to setup a table to contain the cache items. You'll find an example `Schema` declaration for the table below:
+`database` cache driver ကိုအသံုးျပဳမယ္ဆိုရင္ေတာ့ cache အခ်က္အလက္ေတြကိုသိမ္းဆည္းဖို႔အတြက္ table တစ္ခုျပဳလုပ္ေပးဖို႔ လိုပါတယ္။ ေအာက္မွာ `Schema` နဲ႔ cache table ျပဳလုပ္ထားပံုကို ဥပမာအေနနဲ႔ျပေပးထားပါတယ္။ 
 
 	Schema::create('cache', function($table)
 	{

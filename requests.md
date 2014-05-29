@@ -11,32 +11,35 @@
 
 You may access all user input with a few simple methods. You do not need to worry about the HTTP verb used for the request, as input is accessed in the same way for all verbs.
 
-#### Retrieving An Input Value
+Http verb ေတြအားလံုးက input ဆီကို ဝင္ေရာက္လာတဲ႕အခ်ိန္မွာ Simple methods ေတြနဲ႕ users အားလံုးရဲ႕ input ေတြကို access လုပ္ႏိုင္ပါတယ္။ Request ေတြအတြက္ HTTP verb ေတြကိုစိုးရိမ္စရာမလိုပါဘူး။
+
+#### Input Value တစ္ခုကိုျပန္လည္ရခ်င္ရင္
 
 	$name = Input::get('name');
 
-#### Retrieving A Default Value If The Input Value Is Absent
+#### Input မွာ Value မရွိေသးဘဲ Default Value ျပခ်င္ရင္ -
 
 	$name = Input::get('name', 'Sally');
 
-#### Determining If An Input Value Is Present
+#### Input Value ရွိတာကိုဆံုးျဖတ္ဖို႕-
 
 	if (Input::has('name'))
 	{
 		//
 	}
 
-#### Getting All Input For The Request
+#### Input အားလံုးရဲ႕ Request ကိုရခ်င္ရင္-
 
 	$input = Input::all();
 
-#### Getting Only Some Of The Request Input
+#### Input တစ္ခ်ိဳ႕ရဲ႕ Request အားလံုးကိုရခ်င္ရင္-
 
 	$input = Input::only('username', 'password');
 
 	$input = Input::except('credit_card');
 
 When working on forms with "array" inputs, you may use dot notation to access the arrays:
+Form ေတြကို arrays input ေတြနဲ႕အသံုးျပဳတဲ႕အခါမွာ arrays ေတြကို access လုပ္ဖို႕ "." သေကၤတကိုအသံုးျပဳရပါမယ္။
 
 	$input = Input::get('products.0.name');
 
@@ -45,21 +48,20 @@ When working on forms with "array" inputs, you may use dot notation to access th
 <a name="cookies"></a>
 ## Cookies
 
-All cookies created by the Laravel framework are encrypted and signed with an authentication code, meaning they will be considered invalid if they have been changed by the client.
+Cookies အားလံုးကို Laravel Framework က authernication code နဲ႕ encrypted လုပ္ထားပါတယ္၊ ဒါကဘာကိုဆိုလိုတာလဲဆိုရင္ cookie ေတြကို client ကေျပာင္းလိုက္ၿပီဆိုရင္ သူတို႕တရားမဝင္တာကိုနားလည္လိမ္႕မယ္။
 
-#### Retrieving A Cookie Value
+#### Cookie တစ္ခုရဲ႕ Value ကိုရခ်င္ရင္
 
 	$value = Cookie::get('name');
 
-#### Attaching A New Cookie To A Response
+#### Response တစ္ခုဆီကို Cookie အသစ္တစ္ခု attach လုပ္ခ်င္ရင္ -
 
 	$response = Response::make('Hello World');
 
 	$response->withCookie(Cookie::make('name', 'value', $minutes));
 
-#### Queueing A Cookie For The Next Response
-
-If you would like to set a cookie before a response has been created, use the `Cookie::queue()` method. The cookie will automatically be attached to the final response from your application.
+#### ေနာက္ Response တစ္ခုအတြက္ Cookie တစ္ခုကို Queue လုပ္ျခင္း
+Response မလုပ္ခင္မွာ cookie တစ္ခုကို set ခ်င္တယ္ဆို႔င္ရင္ `Cookie::queue()` method ကိုသံုးပါ။ သင္႕ application မွ ေနာက္ဆံုး response ကို cookie က အလိုလို attach လုပ္သြားပါလိမ္႕မယ္။
 
 	Cookie::queue($name, $value, $minutes);
 
@@ -70,7 +72,7 @@ If you would like to set a cookie before a response has been created, use the `C
 <a name="old-input"></a>
 ## Old Input
 
-You may need to keep input from one request until the next request. For example, you may need to re-populate a form after checking it for validation errors.
+သင္႕အေနနဲ႕ request တစ္ခုကေန တစ္ခု အကူးအေျပာင္းအထိ input ေတြကိုထိမ္းသိမ္းထားခ်င္ပါလိမ္႕မယ္... ဥပမာ သင္႕အေနနဲ႕ form input ေတြကို validation လုပ္ၿပီး errors message နဲ႕အတူ input ေတြကိုျပန္ျပတဲ႕ အခ်ိန္မ်ိဳးေပါ႕။
 
 #### Flashing Input To The Session
 
@@ -90,18 +92,18 @@ Since you often will want to flash input in association with a redirect to the p
 
 > **Note:** You may flash other data across requests using the [Session](/docs/session) class.
 
-#### Retrieving Old Data
+#### Input Data အေဟာင္းေတြကိုျပန္ၾကည္႕ခ်င္ရင္ -
 
 	Input::old('username');
 
 <a name="files"></a>
 ## Files
 
-#### Retrieving An Uploaded File
+#### File Upload တစ္ခုကိုျပန္ၾကည္႕ခ်င္ရင္ -
 
 	$file = Input::file('photo');
 
-#### Determining If A File Was Uploaded
+#### File upload လုပ္သြားလား မသြားလား ဆံုးျဖတ္ျခင္ရင္
 
 	if (Input::hasFile('photo'))
 	{
@@ -110,36 +112,36 @@ Since you often will want to flash input in association with a redirect to the p
 
 The object returned by the `file` method is an instance of the `Symfony\Component\HttpFoundation\File\UploadedFile` class, which extends the PHP `SplFileInfo` class and provides a variety of methods for interacting with the file.
 
-#### Determining If An Uploaded File Is Valid
+#### File Upload လုပ္တာမွားလားစစ္ခ်င္ရင္ -
 
 	if (Input::file('photo')->isValid())
 	{
 		//
 	}
 
-#### Moving An Uploaded File
+#### Upload File ကို Move လုပ္ခ်င္ရင္
 
 	Input::file('photo')->move($destinationPath);
 
 	Input::file('photo')->move($destinationPath, $fileName);
 
-#### Retrieving The Path To An Uploaded File
+#### File Upload လုပ္သြားတဲ႕ လမ္းေၾကာင္းရခ်င္ရင္ -
 
 	$path = Input::file('photo')->getRealPath();
 
-#### Retrieving The Original Name Of An Uploaded File
+#### Upload File ရဲ႕ မူလအမည္ကိုရခ်င္ရင္ -
 
 	$name = Input::file('photo')->getClientOriginalName();
 
-#### Retrieving The Extension Of An Uploaded File
+#### Upload File ရဲ႕ extension ကိုသိခ်င္ရင္
 
 	$extension = Input::file('photo')->getClientOriginalExtension();
 
-#### Retrieving The Size Of An Uploaded File
+#### Upload လုပ္လိုက္တဲ႕ File Size ကိုသိခ်င္ရင္
 
 	$size = Input::file('photo')->getSize();
 
-#### Retrieving The MIME Type Of An Uploaded File
+#### Upload File ရဲ႕ MIME Type ကိုသိခ်င္ရင္
 
 	$mime = Input::file('photo')->getMimeType();
 
@@ -148,11 +150,11 @@ The object returned by the `file` method is an instance of the `Symfony\Componen
 
 The `Request` class provides many methods for examining the HTTP request for your application and extends the `Symfony\Component\HttpFoundation\Request` class. Here are some of the highlights.
 
-#### Retrieving The Request URI
+#### Request URI ရဲ႕ လမ္းေၾကာင္းကိုသိခ်င္ရင္
 
 	$uri = Request::path();
 
-#### Retrieving The Request Method
+#### Request Method ကို retrieving လုပ္ခ်င္ရင္
 
 	$method = Request::method();
 
@@ -161,22 +163,22 @@ The `Request` class provides many methods for examining the HTTP request for you
 		//
 	}
 
-#### Determining If The Request Path Matches A Pattern
+#### Request လမ္းေၾကာင္းက pattern တစ္ခုနဲ႕ mathces ျဖစ္လားဆိုတာကိုဆံုးျဖတ္ခ်င္ရင္ -
 
 	if (Request::is('admin/*'))
 	{
 		//
 	}
 
-#### Get The Request URL
+#### Request URL ကိုရယူျခင္ရင္
 
 	$url = Request::url();
 
-#### Retrieve A Request URI Segment
+#### Request URI segment ကို retrieve လုပ္ခ်င္ရင္
 
 	$segment = Request::segment(1);
 
-#### Retrieving A Request Header
+#### Request Header ကိုရခ်င္ရင္ -
 
 	$value = Request::header('Content-Type');
 
@@ -184,35 +186,35 @@ The `Request` class provides many methods for examining the HTTP request for you
 
 	$value = Request::server('PATH_INFO');
 
-#### Determining If The Request Is Over HTTPS
+#### Request က HTTPS ကလားဆိုတာကိုစစ္ခ်င္ရင္ -
 
 	if (Request::secure())
 	{
 		//
 	}
 
-#### Determine If The Request Is Using AJAX
+#### Request က AJAX သံုးထားလားဆိုတာကိုစစ္ခ်င္ရင္
 
 	if (Request::ajax())
 	{
 		//
 	}
 
-#### Determine If The Request Has JSON Content Type
+#### Request မွာ JSON Content Type ရွိလားဆိုတာကိုစစ္ခ်င္ရင္
 
 	if (Request::isJson())
 	{
 		//
 	}
 
-#### Determine If The Request Is Asking For JSON
+#### Request က JSON ကို ေတာင္းလားဆိုတာကိုစစ္ခ်င္ရင္
 
 	if (Request::wantsJson())
 	{
 		//
 	}
 
-#### Checking The Requested Response Format
+#### Request ရဲ႕ Response ကို Check လုပ္ခ်င္ရင္
 
 The `Request::format` method will return the requested response format based on the HTTP Accept header:
 

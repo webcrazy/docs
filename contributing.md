@@ -1,3 +1,25 @@
 # ပူးေပါင္းပါဝင္မႈ လမ္းညြန္
 
-If you are submitting documentation for the **current stable release**, submit it to the corresponding branch. For example, documentation for Laravel 4.1 would be submitted to the `4.1` branch. Documentation intended for the next release of Laravel should be submitted to the `master` branch.
+###ဘာသာျပန္ျခင္း
+
+ - ကြ်န္ေတာ္တို႕ကို ပူးေပါင္းပါဝင္ ကူညီၿပီးဘာသာျပန္ခ်င္တယ္ဆိုရင္
+   [docs][1] ကိုဦးစြာ Fork လုပ္ပါ၊
+
+ - ဘယ္အပိုင္းကို ဘာသာျပန္မည္ဆိုတာကို [Facebook][2] မွာေျပာေပးပါ။ (Fork
+   လုပ္ၿပီးဘာသာျပန္ေနတုန္းအျခားတစ္ေယာက္ေယာက္ကပါဘာသာျပန္ေနတာမ်ိဳးျဖစ္မွာစိုးလို႕ပါ)
+
+ - သင္ဘာသာျပန္မည္႕ File ကိုဘာသာျပန္ပါ။  ဘာသာျပန္ၿပီးရင္ မူရင္း repo ဆီက
+   [pull request][3] ေတာင္းပါ။  (pull request ေတာင္းတာကို ျမန္ျမန္ accept
+   လုပ္ေစခ်င္တယ္ဆိုရင္[Facebook][4] မွာပါတင္ေပးပါ)
+
+###ဘာသာျပန္အဆင္ေျပမွူႏွင္႕ စာလံုးေပါင္းအမွား
+
+ဘာသာျပန္ထားတာေတြ ကိုဦးစြာဖတ္ပါ။ ဘာသာျပန္အဆင္ေျပမွူ နဲ႕ စာလံုးေပါင္း အမွားေတြကို စစ္ပါ။ ဘာသာျပန္အဆင္ေျပမွူမရွိတာတို႕ စာလံုးေပါင္းအမွားေတြေတြ႕ရင္ GitHub မွာ [issue][5] တင္ေပးပါ။(အမွားေတြကို အျမန္ဆံုး စစ္ေပးဖို႕ [Facebook][6] မွာပါတင္ေပးပါ)
+
+
+  [1]: https://github.com/Laravel-Myanmar/docs
+  [2]: https://www.facebook.com/groups/250409601822202/
+  [3]: https://github.com/Laravel-Myanmar/docs/pulls
+  [4]: https://www.facebook.com/groups/250409601822202/
+  [5]: https://github.com/Laravel-Myanmar/docs/issues
+  [6]: https://www.facebook.com/groups/250409601822202/
