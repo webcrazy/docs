@@ -71,7 +71,7 @@ Laravel မွာပါတဲ့ template ပံုစံေနာက္တစ�
 	@yield('section', 'Default Content');
 
 <a name="other-blade-control-structures"></a>
-## Other Blade ႏွင့္ အသံုးျပဳႏိုင္ေသာ အျခား 
+## Blade တြင္အသံုးျပဳႏိုင္ေသာ အျခား control structures မ်ား
 
 #### အခ်က္အလက္ထုတ္ျပျခင္း
 
@@ -170,7 +170,7 @@ Blade compiler မွာ `createMatcher` နဲ႔ `create:lainMatcher` ဆိ�
 
 `createPlainMatcher` method ကို `@endif` တို႔ `@stop` တို႔လို arguments ေတြမပါတာအတြက္ အသံုးျပဳၿပီး၊ `createMatcher` method ကိုေတာ့ arguments ပါတာေတြျပဳလုပ္ဖို႔အတြက္ အသံုးျပဳပါတယ္။
 
-The following example creates a `@datetime($var)` directive which simply calls `->format()` on `$var`:
+ေအာက္ပါ ဥပမာကေတာ့ `@datatime($var)` ကို ျပဳလုပ္ထားတာပါ။ အဲ့ဒီ directive မွာပါတဲ့ `$var` ရဲ့ တန္ဖိုးကို `->format()` အသံုးျပဳၿပီး အလြယ္တကူ ေခၚသံုးႏိုင္ပါတယ္။ 
 
 	Blade::extend(function($view, $compiler)
 	{
