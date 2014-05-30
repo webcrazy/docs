@@ -137,13 +137,13 @@ Laravel မွာပါတဲ့ template ပံုစံေနာက္တစ�
 
 	@include('view.name')
 
-You may also pass an array of data to the included view:
+Include လုပ္ထားတဲ့ view ေတြဆီကိုလဲ အခ်က္အလက္ေတြကို passing လုပ္လို႔ရပါတယ္။
 
 	@include('view.name', array('some'=>'data'))
 
 #### Overwriting Sections
 
-By default, sections are appended to any previous content that exists in the section. To overwrite a section entirely, you may use the `overwrite` statement:
+ပံုမွန္ဆိုရင္ sections ဟာ ယခင္ရွိပီးသား အခ်က္အလက္ေတြနဲ႔အတူ ေနာက္ထပ္ ထပ္ထည့္လာတဲ့ အခ်က္အလက္ေတြကို ေပါင္းထည့္လိုက္တာျဖစ္ပါတယ္။ အကယ္၍ ယခင္အခ်က္အလက္ေတြကို ဖ်က္ျပစ္ပီး ေနာက္ထပ္ ထပ္ထည့္လိုက္တဲ့ အခ်က္အလက္ကိုပဲ အသံုးျပဳခ်င္ရင္ေတာ့ `overwrite` ကိုအသံုးျပဳႏိုင္ပါတယ္။
 
 	@extends('list.item.container')
 
@@ -164,11 +164,11 @@ By default, sections are appended to any previous content that exists in the sec
 <a name="extending-blade"></a>
 ## Extending Blade
 
-Blade even allows you to define your own custom control structures. When a Blade file is compiled, each custom extension is called with the view contents, allowing you to do anything from simple `str_replace` manipulations to more complex regular expressions.
+Blade ကိုအသံုးျပဳျပီး စိတ္ႀကိဳက္ control structure ေတြကိုျပဳလုပ္ႏိုင္ပါတယ္။ blade file ကို compile လုပ္ပီးတဲ့အခါ၊ သတ္မွတ္ထားတဲ့ စိတ္ႀကိဳက္ control structure ေတြကို view အတြက္ အခ်က္အလက္ေတြနဲ႔အတူ ေခၚယူသံုးစြဲပါတယ္။ allowing you to do anything from simple `str_replace` manipulations to more complex regular expressions.
 
-The Blade compiler comes with the helper methods `createMatcher` and `createPlainMatcher`, which generate the expression you need to build your own custom directives.
+Blade compiler မွာ `createMatcher` နဲ႔ `create:lainMatcher` ဆိုၿပီး helper methods ႏွစ္ခု ရွိပါတယ္။ အဲ့ဒီ methods ေတြကေန စိတ္ႀကိဳက္ control structure ေတြျပဳလုပ္ဖို႔ လိုအပ္တဲ့ အရာေတြကိုျပဳလုပ္ေပးပါတယ္။ 
 
-The `createPlainMatcher` method is used for directives with no arguments like `@endif` and `@stop`, while `createMatcher` is used for directives with arguments.
+`createPlainMatcher` method ကို `@endif` တို႔ `@stop` တို႔လို arguments ေတြမပါတာအတြက္ အသံုးျပဳၿပီး၊ `createMatcher` method ကိုေတာ့ arguments ပါတာေတြျပဳလုပ္ဖို႔အတြက္ အသံုးျပဳပါတယ္။
 
 The following example creates a `@datetime($var)` directive which simply calls `->format()` on `$var`:
 
