@@ -1,46 +1,46 @@
 # Errors & Logging
 
 - [Configuration](#configuration)
-- [Handling Errors](#handling-errors)
+- [Error ေတြကို ထိန္းခ်ဳပ္ျခင္း](#handling-errors)
 - [HTTP Exceptions](#http-exceptions)
-- [Handling 404 Errors](#handling-404-errors)
+- [404 Errors မ်ားကို ထိန္းခ်ဳပ္ျခင္း](#handling-404-errors)
 - [Logging](#logging)
 
 <a name="configuration"></a>
 ## Configuration
 
-The logging handler for your application is registered in the `app/start/global.php` [start file](/docs/lifecycle#start-files). By default, the logger is configured to use a single log file; however, you may customize this behavior as needed. Since Laravel uses the popular [Monolog](https://github.com/Seldaek/monolog) logging library, you can take advantage of the variety of handlers that Monolog offers.
+Application ရဲ႕ Logging Handler ကို `app/start/global.php` [start file](/docs/lifecycle#start-files) ထဲမွာ Registered လုပ္ထားပါတယ္။ နဂိုအတိုင္းကေတာ့ File တစ္ဖိုင္ထဲကိုပဲ အသံုးျပဳခိုင္းထားပါတယ္။ သို႔ေသာ္လည္း သင့္စိတ္ႀကိဳက္ ျပင္ဆင္ႏိုင္ပါတယ္။ Laravel က နာမည္ႀကီး  Loggin Library တစ္ခုျဖစ္တဲ့ [Monolog](https://github.com/Seldaek/monolog) ကိုသံုးထားတဲ့အတြက္  Monolog မွာပါဝင္တဲ့ အမ်ိဳးအမ်ိဳးေသာ handler မ်ားကိုအသံုးျပဳႏိုင္ပါတယ္။
 
-For example, if you wish to use daily log files instead of a single, large file, you can make the following change to your start file:
+ဥပမာ - Log File တစ္ခုတည္းမထားဘဲ ေန႔စဥ္အလိုက္ Log file ေတြခြဲထားခ်င္တယ္ဆိုရင္ ၊ start file မွာေအာက္ကအတိုင္း ေျပာင္းေရးလိုက္လို႔ရပါတယ္
 
 	$logFile = 'laravel.log';
 
 	Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
-### Error Detail
+### Error အေသးစိတ္
 
-By default, error detail is enabled for your application. This means that when an error occurs you will be shown an error page with a detailed stack trace and error message. You may turn off error details by setting the `debug` option in your `app/config/app.php` file to `false`.
+အရင္အတိုင္းဆို ၊ Error ရဲ႕အေသးစိတ္ကို ေဖာ္ျပပါလိမ့္မယ္။ ဆိုလိုတာက Application မွာ Error တစ္ခုတက္ေနမယ္ဆိုရင္ ၊ အဲဒီ Error ရဲ႕အေသးစိတ္နဲ႔ ၊ အဲဒီ Error နဲ႔ပတ္သက္ေနတဲ့ ဖိုင္ေတြနဲ႔ အေသးစိတ္အခ်က္အလက္ေတြကို ေဖာ္ျပေပးပါလိမ့္မယ္။ ဒီ Error အေသးစိတ္ျပတဲ့ Feature ကို ပိတ္ခ်င္တယ္ဆိုရင္ေတာ့ `app/config/app.php` ထဲမွာ `debug` option ကို `false` လို႔ လုပ္ေပးလိုက္ရံုပါပဲ။
 
-> **Note:** It is strongly recommended that you turn off error detail in a production environment.
+> **မွတ္ခ်က္:** Application တကယ္ Run ၿပီဆိုရင္ေတာ့ ဒီ Feature ကို ပိတ္ထားဖို႔အတြက္ အႀကံျပဳခ်င္ပါတယ္။
 
 <a name="handling-errors"></a>
-## Handling Errors
+## Error ေတြကို ထိန္းခ်ဳပ္ျခင္း
 
-By default, the `app/start/global.php` file contains an error handler for all exceptions:
+Default အေနနဲ႔က `app/start/global.php` ထဲမွာ Exception ေတြတိုင္းအတြက္ Error Handler တစ္ခုပါရွိပါတယ္။
 
 	App::error(function(Exception $exception)
 	{
 		Log::error($exception);
 	});
 
-This is the most basic error handler. However, you may specify more handlers if needed. Handlers are called based on the type-hint of the Exception they handle. For example, you may create a handler that only handles `RuntimeException` instances:
+ဒါကေတာ့ အရမ္းရိုးရွင္းတဲ့ Error Handler တစ္ခုပဲျဖစ္ပါတယ္။ တကယ္လို႔ လိုအပ္မယ္ဆိုရင္ေတာ့ ရႈပ္ေထြးတဲ့ Handler ေတြကို သတ္မွတ္ေပးႏိုင္ပါတယ္။ Exception ေတြရဲ႕နာမည္ေပၚမူတည္ၿပီး Handler ေတြကိုေခၚပါတယ္။ ဥပမာေပးရမယ္ဆိုရင္ ၊ `RunetimeException` အတြက္ပဲ handle လုပ္တဲ့ handler ကို ေအာက္ကအတိုင္း ေရးရပါမယ္။
 
 	App::error(function(RuntimeException $exception)
 	{
 		// Handle the exception...
 	});
 
-If an exception handler returns a response, that response will be sent to the browser and no other error handlers will be called:
+Exception Handler တစ္ခုက Response တစ္ခု Return ျပန္မယ္ဆိုရင္ အဲဒီ Response ကိုပဲ Browser မွာေဖာ္ျပမွာျဖစ္ၿပီး ၊ တစ္ျခားေသာ Error Handler ေတြကိုေခၚမွာမဟုတ္ပါဘူး
 
 	App::error(function(InvalidUserException $exception)
 	{
@@ -49,36 +49,36 @@ If an exception handler returns a response, that response will be sent to the br
 		return 'Sorry! Something is wrong with this account!';
 	});
 
-To listen for PHP fatal errors, you may use the `App::fatal` method:
+PHP fatal error ျဖစ္တဲ့အခ်ိန္ကို ေစာင့္ဖမ္းခ်င္ရင္ေတာ့ `App::fatal` method ကိုသံုးရပါမယ္
 
 	App::fatal(function($exception)
 	{
 		//
 	});
 
-If you have several exception handlers, they should be defined from most generic to most specific. So, for example, a handler that handles all exceptions of type `Exception` should be defined before a custom exception type such as `Illuminate\Encryption\DecryptException`.
+Handler ေတြအမ်ားႀကီးရွိတယ္ဆိုရင္ေတာ့ General ၾကတဲ့ Handler ေတြမွ အေသးစိတ္က်တဲ့ handler ေတြအထိအစဥ္လိုက္ သတ္မွတ္ေပးသင့္ပါတယ္။ ဥပမာ - `Exception` ေတြအားလံုးကို handler လုပ္တဲ့ handler ေတြကိုအရင္ဆံုး သတ္မွတ္ပါ၊ ၿပီးမွ `Illuminate\Encryption\DecryptException` လိုမ်ိဳး အေသးစိတ္ exception ကိုေတာ့ ေနာက္မွသတ္မွတ္ေပးပါ။
 
-### Where To Place Error Handlers
+### Error Handlers ေတြကို ဘယ္မွာေရးရမလဲ
 
-There is no default "home" for error handler registrations. Laravel offers you freedom in this area. One option is to define the handlers in your `start/global.php` file. In general, this is a convenient location to place any "bootstrapping" code. If that file is getting crowded, you could create an `app/errors.php` file, and `require` that file from your `start/global.php` script. A third option is to create a [service provider](/docs/ioc#service-providers) that registers the handlers. Again, there is no single "correct" answer. Choose a location that you are comfortable with.
+Error Handler ေတြကို သတ္မွတ္ေပးရမယ့္ ေနရာဆိုၿပီးမသတ္မွတ္ထားပါဘူး။ ဒါနဲ႔ပတ္သက္ၿပီးလို႔ကေတာ့ Laravel က လြတ္လပ္ခြင့္ေပးထားပါတယ္။ နည္းလမ္းတစ္ခုကေတာ့ `start/global.php` ထဲမွာ ထည့္ေရးႏိုင္ပါတယ္။ အဲဒီေနရာက Application စစ Run ခ်င္း Code ေတြထည့္ေရးသင့္တဲ့ အေကာင္းဆံုးေနရာပါဘဲ။ အဲဒီဖိုင္ထဲမွာ တစ္ျခားေရးထားတာေတြ မ်ားေနတယ္ဆိုရင္ေတာ့ `app/errors.php` ဆိုၿပီး ဖိုင္ေဆာက္လိုက္ၿပီးေတာ့ `start/global.php` ထဲမွာ `require` လုပ္ၿပီးေရးလို႔ရပါတယ္။ တတိယနည္းလမ္းကေတာ့ Handler ေတြအားလံုးကို ထိန္းခ်ဳပ္ေပးမယ့္ [service provider](/docs/ioc#service-providers) တစ္ခု ဖန္းတီးလိုက္ပါ။ ေနာက္ထပ္တစ္ေခါက္ထပ္ေျပာခ်င္ပါတယ္ ၊ အေျဖမွန္ဆိုၿပီးရယ္လို႔ မရွိပါဘူး။ သင္နဲ႔အကိုက္ညီဆံုးပံုစံအသံုးျပဳပါ။
 
 <a name="http-exceptions"></a>
 ## HTTP Exceptions
 
-Some exceptions describe HTTP error codes from the server. For example, this may be a "page not found" error (404), an "unauthorized error" (401) or even a developer generated 500 error. In order to return such a response, use the following:
+အခ်ိဳ႕ Exception ေတြက Server ကေနၿပီးေတာ့ HTTP error code ေတြေဖာ္ျပေပးပါတယ္။ ဥပမာ - "page not found" error (404), "unauthorized error" (401) သို႔မဟုတ္ 500 error လိုမ်ိဳးျဖစ္ပါတယ္။ ဒီလို Response အတြက္ေတြဆို ေအာက္ကအတိုင္းသံုးပါ။
 
 	App::abort(404);
 
-Optionally, you may provide a response:
+ကိုယ္ပိုင္ message နဲ႔ response လုပ္ေပးခ်င္လဲရပါတယ္။
 
 	App::abort(403, 'Unauthorized action.');
 
-This method may be used at any time during the request's lifecycle.
+အဲဒီ method ကို Application တစ္ခုလံုးရဲ႕ request ေတြအားလံုးမွာ အသံုးျပဳမွာပါ။
 
 <a name="handling-404-errors"></a>
-## Handling 404 Errors
+## 404 Errors မ်ားကို ထိန္းခ်ဳပ္ျခင္း
 
-You may register an error handler that handles all "404 Not Found" errors in your application, allowing you to easily return custom 404 error pages:
+"404 Not Found" error ေတြအားလံုးကို ထိန္းခ်ဳပ္ေပးမယ့္ handler ကိုလဲ ကိုယ့္စိတ္ႀကိဳက္ပံုစံနဲ႔ အလြယ္တကူသတ္မွတ္ေပးႏိုင္ပါတယ္။
 
 	App::missing(function($exception)
 	{
@@ -88,7 +88,7 @@ You may register an error handler that handles all "404 Not Found" errors in you
 <a name="logging"></a>
 ## Logging
 
-The Laravel logging facilities provide a simple layer on top of the powerful [Monolog](http://github.com/seldaek/monolog) library. By default, Laravel is configured to create a single log file for your application, and this file is stored in `app/storage/logs/laravel.log`. You may write information to the log like so:
+အရမ္းလန္းတဲ့ [Monolog](http://github.com/seldaek/monolog) library ကို သံုးရပိုလြယ္ေအာင္လို႔ Laravel logging အေထာက္အပံ့ေတြက ကူညီေပးပါတယ္။ Default အေနနဲ႔ Log File တစ္ခုတည္းကိုပဲ သံုးေအာင္လို႔ သတ္မွတ္ေပးထားပါတယ္။ အဲဒီဖိုင္က `app/storage/logs/laravel.log` ျဖစ္ပါတယ္။ Log file ထဲကို ေအာက္ကအတိုင္း Log ေတြရိုက္ထည့္ႏုိင္ပါတယ္
 
 	Log::info('This is some useful information.');
 
@@ -96,17 +96,18 @@ The Laravel logging facilities provide a simple layer on top of the powerful [Mo
 
 	Log::error('Something is really going wrong.');
 
-The logger provides the seven logging levels defined in [RFC 5424](http://tools.ietf.org/html/rfc5424): **debug**, **info**, **notice**, **warning**, **error**, **critical**, and **alert**.
+Logger အေနနဲ႔  [RFC 5424](http://tools.ietf.org/html/rfc5424) ကသတ္မွတ္ေပးထားတဲ့အတိုင္း **debug**, **info**, **notice**, **warning**, **error**, **critical**, and **alert** ဆိုၿပီး level ၇ ခုရွိပါတယ္။
 
-An array of contextual data may also be passed to the log methods:
+
+Array ပံုစံနဲ႔လည္း ထည့္ေပးလိုက္လို႔ရပါတယ္
 
 	Log::info('Log message', array('context' => 'Other helpful information'));
 
-Monolog has a variety of additional handlers you may use for logging. If needed, you may access the underlying Monolog instance being used by Laravel:
+Monolog မွာ တစ္ျခား handler ေတြ အမ်ားႀကီးပါဝင္ပါတယ္။ လိုအပ္ရင္ Laravel သံုးထားတဲံ Monolog instance ကိုသံုးႏိုင္ပါတယ္။
 
 	$monolog = Log::getMonolog();
 
-You may also register an event to catch all messages passed to the log:
+Log ဖိုင္ထဲကို ထည့္သမွ် message ေတြအားလံုးကို ေစာင့္ဖမ္းဖို႔အတြက္လဲ event ေရးထားလို႔ရပါတယ္။
 
 #### Registering A Log Listener
 
