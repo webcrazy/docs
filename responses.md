@@ -10,7 +10,7 @@
 <a name="basic-responses"></a>
 ## Basic Responses
 
-#### Returning Strings From Routes
+#### String တစ္ခုကို Routes ကေန return ျပန္ခ်င္ရင္ -
 
 	Route::get('/', function()
 	{
@@ -19,7 +19,7 @@
 
 #### Creating Custom Responses
 
-A `Response` instance inherits from the `Symfony\Component\HttpFoundation\Response` class, providing a variety of methods for building HTTP responses.
+Symfony\Component\HttpFoundation\Response` class ကေန Response` တစ္ခုကျဖစ္လာတယ္၊  HTTPS responses ေတြကို တည္ေဆာက္ဖို႕ရာအတြက္ မ်ားစြာေသာ methods ေတြကေန စီစဥ္ေပးပါတယ္။
 
 	$response = Response::make($contents, $statusCode);
 
@@ -27,38 +27,39 @@ A `Response` instance inherits from the `Symfony\Component\HttpFoundation\Respon
 
 	return $response;
 
-If you need access to the `Response` class methods, but want to return a view as the response content, you may use the `Response::view` method for convenience:
+သင္က `Response` class တစ္ခုရဲ႕ method ကိုလည္းလိုခ်င္တယ္... ဒါေပမယ္႕ response content အျဖစ္ return ျပန္ခ်င္တယ္ ဆိုရင္ေတာ႕`Response::view` method ကအဆင္ေျပပါလိမ္႕မယ္-
 
 	return Response::view('hello')->header('Content-Type', $type);
 
-#### Attaching Cookies To Responses
+#### Cookies ေတြကို Responses ေတြဆီျပန္ခ်င္တယ္ဆိုရင္
 
 	$cookie = Cookie::make('name', 'value');
 
 	return Response::make($content)->withCookie($cookie);
 
 <a name="redirects"></a>
-## Redirects
+## ျပန္လည္လမ္းေၾကာင္းညႊန္ၾကားမွူ႔
 
-#### Returning A Redirect
+#### Redirect လုပ္ခ်င္တယ္ဆိုရင္ -
 
 	return Redirect::to('user/login');
 
-#### Returning A Redirect With Flash Data
+#### Flash Data နဲ႕ Redirect လုပ္ရင္ -
 
 	return Redirect::to('user/login')->with('message', 'Login Failed');
 
 > **Note:** Since the `with` method flashes data to the session, you may retrieve the data using the typical `Session::get` method.
 
-#### Returning A Redirect To A Named Route
+#### Nmaed Route ႏွင္႕ Redirect လုပ္ရင္-
 
 	return Redirect::route('login');
 
-#### Returning A Redirect To A Named Route With Parameters
+#### Route Parameters တစ္ခုနဲ႕ Redirect လုပ္ရင္ -
+
 
 	return Redirect::route('profile', array(1));
 
-#### Returning A Redirect To A Named Route Using Named Parameters
+#### Route ထဲမွာ name parameters ပါတာကို Redirect လုပ္ရင္
 
 	return Redirect::route('profile', array('user' => 1));
 
