@@ -91,7 +91,7 @@ Laravel မွာပါတဲ့ template ပံုစံေနာက္တစ�
 
 #### တြန္႔ကြင္း (Curly Braces) ႏွင့္အုပ္ထားေသာ စာသားမ်ားအတိုင္း ထုတ္ျပျခင္း
 
-တြန္႔ကြင္း (curly braces) အုပ္ထားတဲ့ စာသားမ်ားကို ထုတ္ျပဖို႔ လိုအပ္လွၽင္ေတာ့ blade ပံုစံကို ေရွ႔မွာ `@` သကၤတ နဲ႔ခံျပီး အသံုးျပဳႏိုင္ပါတယ္။
+တြန္႔ကြင္း (curly braces) အုပ္ထားတဲ့ စာသားမ်ားကို ထုတ္ျပဖို႔ လိုအပ္လွၽင္ေတာ့ blade ပံုစံကို ေရွ႔မွာ `@` သေကၤတ နဲ႔ခံျပီး အသံုးျပဳႏိုင္ပါတယ္။
 
 	@{{ This will not be processed by Blade }}
 
@@ -164,7 +164,7 @@ Include လုပ္ထားတဲ့ view ေတြဆီကိုလဲ အ�
 <a name="extending-blade"></a>
 ## Extending Blade
 
-Blade ကိုအသံုးျပဳျပီး စိတ္ႀကိဳက္ control structure ေတြကိုျပဳလုပ္ႏိုင္ပါတယ္။ blade file ကို compile လုပ္ပီးတဲ့အခါ၊ သတ္မွတ္ထားတဲ့ စိတ္ႀကိဳက္ control structure ေတြကို view အတြက္ အခ်က္အလက္ေတြနဲ႔အတူ ေခၚယူသံုးစြဲပါတယ္။ allowing you to do anything from simple `str_replace` manipulations to more complex regular expressions.
+Blade ကိုအသံုးျပဳျပီး စိတ္ႀကိဳက္ control structure ေတြကိုျပဳလုပ္ႏိုင္ပါတယ္။ blade file ကို compile လုပ္ပီးတဲ့အခါ၊ သတ္မွတ္ထားတဲ့ စိတ္ႀကိဳက္ control structure ေတြကို view အတြက္ အခ်က္အလက္ေတြနဲ႔အတူ ေခၚယူသံုးစြဲပါတယ္။ ရိုးရွင္းလြယ္ကူတဲ့ `str_replace` လိုကိစၥေတြတင္မက ပိုၿပီးရႈပ္ေထြးတဲ့ ကိစၥေတြအထိ ကိုင္တြယ္ေျဖရွင္းႏိုင္ပါတယ္။
 
 Blade compiler မွာ `createMatcher` နဲ႔ `create:lainMatcher` ဆိုၿပီး helper methods ႏွစ္ခု ရွိပါတယ္။ အဲ့ဒီ methods ေတြကေန စိတ္ႀကိဳက္ control structure ေတြျပဳလုပ္ဖို႔ လိုအပ္တဲ့ အရာေတြကိုျပဳလုပ္ေပးပါတယ္။ 
 
