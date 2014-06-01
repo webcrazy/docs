@@ -193,17 +193,17 @@ View **creators** ေတြက view composers ေတြလုပ္သလို�
 	});
 
 <a name="special-responses"></a>
-## Special Responses
+## Special Responses 
 
-#### Creating A JSON Response
+#### JSON Response တစ္ခုျပဳလုပ္ျခင္း
 
 	return Response::json(array('name' => 'Steve', 'state' => 'CA'));
 
-#### Creating A JSONP Response
+#### JSON Response တစ္ခုျပဳလုပ္ျခင္း
 
 	return Response::json(array('name' => 'Steve', 'state' => 'CA'))->setCallback(Input::get('callback'));
 
-#### Creating A File Download Response
+#### File Download Response တစ္ခုျပဳလုပ္ျခင္း
 
 	return Response::download($pathToFile);
 
