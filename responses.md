@@ -138,29 +138,29 @@ paraent view က sub-view ဆီကေန render လုပ္ႏိုင္ပ�
 <a name="view-composers"></a>
 ## View Composers
 
-View composers are callbacks or class methods that are called when a view is rendered. If you have data that you want bound to a given view each time that view is rendered throughout your application, a view composer can organize that code into a single location. Therefore, view composers may function like "view models" or "presenters".
+View က rendered ျဖစ္တဲ႕အခ်ိန္မွာ View composers ေတြက callbacks ဒါမွမဟုတ္ရင္ class methods ေတြကို ေခၚခဲ႕တယ္ ။ သင္႕ application မွ render လုပ္ၿပီးေတာ႕ သင့္ရဲ႕ view ကိုအခ်ိန္တိုင္း ေသခ်ာေပါက္ေပးရမယ္႕ data ရွိတဲ႕အခါမ်ိဳးဆိုရင္  ... အဲ႕ဒီ႕ code ကို location တစ္ခုထဲကေန View Composer တစ္ခုက organize လုပ္ႏိုင္တယ္ ။
 
-#### Defining A View Composer
+#### View Composer တစ္ခု သတ္မွတ္ျခင္း
 
 	View::composer('profile', function($view)
 	{
 		$view->with('count', User::count());
 	});
 
-Now each time the `profile` view is rendered, the `count` data will be bound to the view.
+အခု `profile` view က rendered ျဖစ္တဲ႕အခ်ိန္တိုင္းမွာ  `count` data က view ဆီကို bound ပါလိမ္႕မယ္
 
-You may also attach a view composer to multiple views at once:
+View composer တစ္ခုကေန Multiple Views ကိုတစ္ႀကိမ္တည္းသင္႕အေနနဲ႕ attach လုပ္ႏိုင္ပါတယ္
 
     View::composer(array('profile','dashboard'), function($view)
     {
         $view->with('count', User::count());
     });
 
-If you would rather use a class based composer, which will provide the benefits of being resolved through the application [IoC Container](/docs/ioc), you may do so:
+If you would rather use a class based composer, which will provide the benefits of being resolved through the application [IoC Container](/docs/ioc), you may do so: 
 
 	View::composer('profile', 'ProfileComposer');
 
-A view composer class should be defined like so:
+View Composer Class တစ္ခုကို ေအာက္ကလုိ define လုပ္ႏိုင္ပါတယ္ :
 
 	class ProfileComposer {
 
@@ -171,9 +171,10 @@ A view composer class should be defined like so:
 
 	}
 
-#### Defining Multiple Composers
+#### Composer ႏွစ္ခုသတ္မွတ္ျခင္း
 
-You may use the `composers` method to register a group of composers at the same time:
+တစ္ခ်ိန္တည္းမွာဘဲ Composers Group ေတြကို Register လုပ္ဖို႕သင္႕အေနနဲ႕ `composers` method ကိုသံုးႏိုင္ပါတယ္။
+
 
 	View::composers(array(
 		'AdminComposer' => array('admin.index', 'admin.profile'),
@@ -182,9 +183,9 @@ You may use the `composers` method to register a group of composers at the same 
 
 > **Note:** There is no convention on where composer classes may be stored. You are free to store them anywhere as long as they can be autoloaded using the directives in your `composer.json` file.
 
-### View Creators
+### View Creators ( View ဖန္တီးသူမ်ား)
 
-View **creators** work almost exactly like view composers; however, they are fired immediately when the view is instantiated. To register a view creator, simple use the `creator` method:
+View **creators** ေတြက view composers ေတြလုပ္သလိုမ်ိဳးတစ္ပံုစံတည္းလုပ္တာပါ။ သို႕ေပမယ္႕လည္း...view ေတြ instantiated ျဖစ္ၿပီးၿပီဆိုမွ သူတို႕က ခ်က္ခ်င္း fired လုပ္တာပါ။ View creator တစ္ခုလုပ္ဖို႕ Register လုပ္ခ်င္တယ္ဆိုရင္ `creator` method ကိုသံုးပါ။
 
 	View::creator('profile', function($view)
 	{
