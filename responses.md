@@ -78,9 +78,10 @@ Symfony\Component\HttpFoundation\Response` class ကေန Response` တစ္�
 <a name="views"></a>
 ## Views 
 
-Views typically contain the HTML of your application and provide a convenient way of separating your controller and domain logic from your presentation logic. Views are stored in the `app/views` directory.
+သင္႕ရဲ႕ presentation logic ကေန controller နဲ႕ domain logic ေတြ ခြဲျခားဖို႕ရာအတြက္ Views က အဆင္ေျပဆံုးျဖစ္ေအာင္စီစဥ္ေပးပါတယ္။
+Views Files ေတြက `app/views` directory ထဲမွာ ရွိပါတယ္။ Views မွာ ထံုးစံအတိုင္း သင္႔ application ရဲ႕ HTML ေတြပါဝင္ပါတယ္ ။
 
-A simple view could look something like this:
+ေအာက္မွာေဖာ္ျပထားတာကေတာ႕ Views နမူနာတစ္ခုပါ:
 
 	<!-- View stored in app/views/greeting.php -->
 
@@ -90,7 +91,7 @@ A simple view could look something like this:
 		</body>
 	</html>
 
-This view may be returned to the browser like so:
+အဲ႕ဒီ႕အထက္က View ကို browser ကိုေအာက္ကလို retun ျပန္ခဲ႕ပါတယ္
 
 	Route::get('/', function()
 	{
@@ -99,7 +100,7 @@ This view may be returned to the browser like so:
 
 The second argument passed to `View::make` is an array of data that should be made available to the view.
 
-#### Passing Data To Views
+#### Data ေတြကို View ဆီကို pass လုပ္ျခင္း
 
 	// Using conventional approach
 	$view = View::make('greeting')->with('name', 'Steve');
@@ -107,25 +108,25 @@ The second argument passed to `View::make` is an array of data that should be ma
 	// Using Magic Methods
 	$view = View::make('greeting')->withName('steve');
 
-In the example above the variable `$name` would be accessible from the view, and would contain `Steve`.
+အထက္ကဥပမာမွာ `$name` variable ကို view ကေနၿပီးေတာ႕ access လုပ္ႏုိင္ပါတယ္၊ ေနာက္ `Steve` ေကာေပါ႕။
 
-If you wish, you may pass an array of data as the second parameter given to the `make` method:
+သင္႕အေနနဲ႕ data ထဲက array ေတြကို `make` method ရဲ႕ second partameter မွာ array ျဖစ္တဲ႕ data ကို pass လုပ္ႏိုင္ပါတယ္။ သင္လုပ္ခ်င္ရင္ေပါ႕
 
 	$view = View::make('greetings', $data);
 
-You may also share a piece of data across all views:
+သင္႕အေနနဲ႕ data နည္းနည္း ေလးကို views အားလံုးကို share ႏိုင္ပါတယ္၊
 
 	View::share('name', 'Steve');
 
-#### Passing A Sub-View To A View
+#### View တစ္ခုမွ Sub-View တစ္ခုကို pass လုပ္ျခင္း
 
-Sometimes you may wish to pass a view into another view. For example, given a sub-view stored at `app/views/child/view.php`, we could pass it to another view like so:
+တစ္ခါတစ္ေလသင္႕အေနနဲ႕ veiw တစ္ခုကေန တစ္ခုေျပာင္းခ်င္ပါလိမ္႕မယ္။ ဥပမာ၊ ဒုတိယ view တစ္ခုကို `app/views/child/view.php` မွာ stored လုပ္ထားတယ္၊ ကြ်န္ေတာ္တို႕ ေနာက္ထက္ View တစ္ခုကို Pass လုပ္ခ်င္တယ္ဆိုရင္... like so:
 
 	$view = View::make('greeting')->nest('child', 'child.view');
 
 	$view = View::make('greeting')->nest('child', 'child.view', $data);
 
-The sub-view can then be rendered from the parent view:
+paraent view က sub-view ဆီကေန render လုပ္ႏိုင္ပါၿပီ-
 
 	<html>
 		<body>
