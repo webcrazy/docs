@@ -63,20 +63,20 @@ Symfony\Component\HttpFoundation\Response` class ကေန Response` တစ္�
 
 	return Redirect::route('profile', array('user' => 1));
 
-#### Returning A Redirect To A Controller Action
+#### Controller ရဲ႕ Action တစ္ခုကေန Redirect တစ္ခု return လုပ္ခ်င္ရင္
 
 	return Redirect::action('HomeController@index');
 
-#### Returning A Redirect To A Controller Action With Parameters
+#### Paramater ပါတဲ႕ Controller တစ္ခုကို Redirect တစ္ခု return လုပ္ျခင္း
 
 	return Redirect::action('UserController@profile', array(1));
 
-#### Returning A Redirect To A Controller Action Using Named Parameters
+#### Name Parameters တစ္ခုပါတဲ႕ Controller Action တစ္ခုကေန Redirect  တစ္ခု return လုပ္ျခင္း
 
 	return Redirect::action('UserController@profile', array('user' => 1));
 
 <a name="views"></a>
-## Views
+## Views 
 
 Views typically contain the HTML of your application and provide a convenient way of separating your controller and domain logic from your presentation logic. Views are stored in the `app/views` directory.
 
