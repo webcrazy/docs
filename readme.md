@@ -1,19 +1,22 @@
-﻿docs
+﻿Docs
 ====
   
-
-> Laravel Framework Documentation ျမန္မာဘာသာ
+Laravel Framework Documentation ျမန္မာဘာသာ
+--------------------------------------
 
 -
 
-> Laravel နိဒါန္း
+Laravel နိဒါန္း
+-------------
 
 - [Laravel မိတ္ဆက္][1]
 - [Laravel အက်ဥ္းခ်ဳပ္][2] 
 - [Release Notes][3]
 - [Upgrade Guide][4]
 
->Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
+
+Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
+-----------------------
 
 - [Laravel Installation][5]
 - [Configuration][6]
@@ -25,7 +28,8 @@
 - [Controllers][12]
 - [Errors & Logging][13]
 
->Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
+Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
+-----------------------
 
 - [Authentication][14]
 - [Billing][15]
@@ -48,7 +52,8 @@
 - [Unit Testing][32]
 - [Validation][33]
 
->Database
+Database
+---------
 
 - [အေျခခံ အသုံးျပဳပုံ][34]
 - [Query Builder][35]
@@ -57,20 +62,24 @@
 - [Migrations & Seeding][38]
 - [Redis][39]
 
-> Artisan CLI
+Artisan CLI
+------------
 
 - [Overview][40]
 - [Development][41]
 
->ရည္ရြယ္ခ်က္
+ရည္ရြယ္ခ်က္
+---------
 
 ကြ်န္ေတာ္တို႕ အခုမွစၿပီး ဘာသာျပန္ေနတုံးပါ၊ ရည္ရြယ္ခ်က္ ကေတာ႕ Laravel PHP Framework Documencation ကို ျမန္မာလို ဖတ္ၿပီး Laravel Framework ကို အလြယ္တကူ ေလ႕လာႏိုင္ဖို႕ပါ၊
 
-> ဒီဘာသာျပန္မွုမွာ ဘယ္လို ဘာဝင္ကူညီႏိုင္လဲ
+ဒီဘာသာျပန္မွုမွာ ဘယ္လို ဘာဝင္ကူညီႏိုင္လဲ
+--------------------
 
 ဟုတ္ကဲ႕ ကြ်န္ေတာ္တို႕လည္းအလုပ္နဲ႕ပါ အားတဲ႕အခ်ိန္ေလးဘာသာျပန္ၿပီးေတာ႕ဒီမွာတင္တာပါ။ တကယ္လို႕ကြ်န္ေတာ္တို႕ကို ကူညီၿပီးဘာသာျပန္ခ်င္တယ္ဆိုရင္ဒီ Repo မွာ pull request လုပ္ၿပီး contribute လုပ္ႏိုင္ပါတယ္။ ကြ်န္ေတာ္တို႕ဘာသာျပန္ၿပီးသားေတြကိုလည္း စာလံုးေပါင္းအမွားေတြကို git issue ေတြေပးႏိုင္ပါတယ္။
 
-> ဆက္သြယ္ရန္ 
+ဆက္သြယ္ရန္ 
+-------
 
 - [Laravel Myanmar Facebook Group][42]
 
