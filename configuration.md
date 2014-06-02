@@ -46,7 +46,7 @@ Application run ေနတဲ့ environment အေပၚအေျခခံပီ
 
 > **သတိျပဳရန္:** `testing` ဆိုတဲ့ အမည္နဲ႔ environment name ကို မသတ္မွတ္ပါနဲ႔။ အဲ့ဒီအမည္ဟာ unit testing အတြက္ သီးသန္႔သတ္မွတ္ထားတဲ့ အမည္ျဖစ္ပါတယ္။
 
-ကိုယ့္အေနနဲ႔ override လုပ္ခ်င္တဲ့ option ေတြကိုသာသတ္မွတ္ေပးရန္ လိုအပ္ပီး base configuration ဖိုင္မွာပါတဲ့ option အားလံုးကို ျပန္လည္သတ္မွတ္ေပးဖို႔ မလိုအပ္ပါ။ Base configuration files ေတြကို environment configuration files ေတြက "cascade” လုပ္သြားပါလိမ့္မယ္။
+base configuration ဖိုင္မွာပါတဲ့ option အားလံုးကို ျပန္လည္သတ္မွတ္ေပးဖို႔ မလိုအပ္ပါ လိုအပ္ၿပီး ကိုယ့္အေနနဲ႔ override လုပ္ခ်င္တဲ့ option ေတြကိုသာသတ္မွတ္ေပးရန္။ Base configuration files ေတြကို environment configuration files ေတြက "cascade” လုပ္သြားပါလိမ့္မယ္။
 
 ၿပီးရင္ေတာ့ ဘယ္ environment မွာ run ေနတယ္ဆိုတာ framework ကေန သိႏိုင္ဖို႔အတြက္ သတ္မွတ္ထားေပးရမွာပါ။ Default environment ကေတာ့ `production` ျဖစ္ပါတယ္။ အျခား environment ေတြအတြက္ setup ျပဳလုပ္ရမဲ့ ေနရာက root directory ေအာက္မွာရွိတဲ့ `bootstrap/start.php` ဖိုင္ထဲမွာျပဳလုပ္ေပးရပါမယ္။ အဲ့ဒီဖိုင္ထဲမွာရွိတဲ့ `$app->detectEnvironment` ဆိုတဲ့  method ထဲကို သတ္မွတ္ထားတဲ့ environment ေတြပါတဲ့ array တစ္ခု passing လုပ္ထားပါတယ္။ အဲ့ဒီ array ကိုအသံုးျပဳၿပီး လက္ရွိ environment ကို ဆံုးျဖတ္တာျဖစ္ပါတယ္။ လိုအပ္လာလို႔ရွိရင္ အဲ့ဒီ array ထဲကို ေနာက္ထပ္ environment ေတြ ထပ္ထည့္ႏိုင္ပါတယ္။
 
@@ -88,7 +88,7 @@ Application ရဲ့ လက္ရွိအသံုးျပဳေနတဲ့ 
 <a name="provider-configuration"></a>
 ### Provider ျပင္ဆင္ျခင္း
 
-Environment configuration ကို အသံုးျပဳၿပီဆိုလို႔ရွိရင္၊ ကိုယ့္ရဲ့ ပင္မ `app` configuration ဖိုင္ထဲမွာ environment [service providers](/docs/ioc#service-providers) ကိုထည့္ေပါင္းထည့္ဖို႔ လုိအပ္လာတဲ့ အေျခအေနေတြ ရွိလာႏိုင္ပါတယ္။ အကယ္၍ ကိုယ္က ထပ္ေပါင္းထည့္ထားတယ္ဆိုလို႔ရွိရင္, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုၿပီး သတိေပးပါလိမ့္မယ္။ အဲ့လိုအေျခအေနမ်ိဳးမွာ providers ကို မရမကထပ္ေပါင္းထည့္ေစဖို႔အတြက္ `'append_config` ဆိုတဲ့ helper method ကို ကိုယ့္ရဲ့ environment `app` configuration ဖိုင္ထဲမွာ အသံုးျပဳႏိုင္ပါတယ္။
+Environment configuration ကို အသံုးျပဳၿပီဆိုလို႔ရွိရင္၊ ကိုယ့္ရဲ့ ပင္မ `app` configuration ဖိုင္ထဲမွာ environment [service providers](/docs/ioc#service-providers) ကိုထည့္ေပါင္းထည့္ဖို႔ လုိအပ္လာတဲ့ အေျခအေနေတြ ရွိလာႏိုင္ပါတယ္။ အကယ္၍ ကိုယ္က ထပ္ေပါင္းထည့္ထားတယ္ဆိုလို႔ရွိရင္, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုၿပီး သတိေပးပါလိမ့္မယ္။ အဲ့လိုအေျခအေနမ်ိဳးမွာ providers ကို မရမကထပ္ေပါင္းထည့္ေစဖို႔အတြက္ `append_config` ဆိုတဲ့ helper method ကို ကိုယ့္ရဲ့ environment `app` configuration ဖိုင္ထဲမွာ အသံုးျပဳႏိုင္ပါတယ္။
 
 	'providers' => append_config(array(
 		'LocalOnlyServiceProvider',
@@ -97,7 +97,7 @@ Environment configuration ကို အသံုးျပဳၿပီဆို�
 <a name="protecting-sensitive-configuration"></a>
 ## အမွားခံ၊ အသိခံ၍ မရေသာ အခ်က္အလက္မ်ားအား ကာကြယ္ျခင္း
 
-အမွန္တကယ္အသံုးျပဳမဲ့ application ေတြအတြက္၊ ကိုယ့္ရဲ့ အမွားမခံ၊ အသိခံလို႔မရတဲ့ configuration ေတြကို configuration ဖိုင္ထဲမွာ မသိမ္းပဲနဲ႔ အျခားတစ္ေနရာမွာထားတာက ပိုၿပီးသင့္ေတာ္ပါတယ္။ ဘယ္လိုအမ်ိဳးအစားေတြလဲဆိုေတာ့ database passwords, Stripe API keys, and encryption keys စတာေတြကို ျဖစ္ႏိုင္လို႔ရွိရင္ configuration ဖိုင္ထဲမွာမသိမ္းသင့္ပါဘူး။ ဒါဆိုဘယ္ေနရာမွာသိမ္းမလဲ? အဲ့ဒီအတြက္ Laravel ကေျဖရွင္းေပးၿပီးသားျဖစ္ပါတယ္။ အဲ့ဒီလို configuration အမ်ိဳးအစားေတြအတြက္ "dot" files ေတြကိုအသံုးျပဳၿပီး ကာကြယ္ထားႏိုင္ပါတယ္။
+အမွန္တကယ္အသံုးျပဳမဲ့ application ေတြအတြက္၊ ကိုယ့္ရဲ့ အမွားမခံ၊ အသိခံလို႔ မရတဲ့ configuration ေတြကို configuration ဖိုင္ထဲမွာ မသိမ္းပဲနဲ႔ အျခားတစ္ေနရာမွာထားတာက ပိုၿပီးသင့္ေတာ္ပါတယ္။ ဘယ္လိုအမ်ိဳးအစားေတြလဲဆိုေတာ့ database passwords, Stripe API keys, and encryption keys စတာေတြကို ျဖစ္ႏိုင္လို႔ရွိရင္ configuration ဖိုင္ထဲမွာမသိမ္းသင့္ပါဘူး။ ဒါဆိုဘယ္ေနရာမွာသိမ္းမလဲ? အဲ့ဒီအတြက္ Laravel ကေျဖရွင္းေပးၿပီးသားျဖစ္ပါတယ္။ အဲ့ဒီလို configuration အမ်ိဳးအစားေတြအတြက္ "dot" files ေတြကိုအသံုးျပဳၿပီး ကာကြယ္ထားႏိုင္ပါတယ္။
 
 ပထမဆံုးအေနနဲ႔ ကိုယ့္ရဲ့စက္ဟာ local မွာ run ေနတာပါဆိုတာကို application ကသိေအာင္ [configure](/docs/configuration#environment-configuration) လုပ္ေပးရပါမယ္။ ၿပီးရင္ `.env.local.php` ဆိုတဲ့ ဖိုင္အသစ္ကို `composer.json` ဖိုင္ရွိတဲ့ ဖိုဒါေအာက္မွာ ေဆာက္ေပးလိုက္ပါ။ အဲ့ဒီ `.env.local.php` ဖိုင္ဟာ အျခား laravel configuration ဖိုင္ေတြလိုပဲ key-value pairs ျဖစ္တဲ့ array တစ္ခု return ျပန္ရပါမယ္။ 
 
@@ -141,6 +141,6 @@ Application ဟာ ျပဳျပင္ထိန္းသိမ္းမႈ ျ
 
 အကယ္၍ `down` method ထဲကို Closure တစ္ခု passing ေပးလိုက္ရင္ေတာ့ `NULL` ပဲ return ျပန္လာၿပီး အဲ့ဒီ request မွာပါတဲ့ maintenance mode ကို ignore လုပ္သြားပါလိမ့္မယ္။
 
-### Maintenance Mode & Queues
+### Maintenance Mode ႏွင္႕ Queues
 
 Application ဟာ maintenance mode မွာ ရွိေနစဥ္အတြင္း [queue jobs](/docs/queues) ေတြကို ကိုင္တြယ္ေျဖရွင္းမွာမဟုတ္ပါဘူး။ Application ဟာ ပံုမွန္အေျခအေန ကိုျပန္ေရာက္ပီဆိုေတာ့မွ ျပန္လည္ကိုင္တြယ္ေျဖရွင္းေပးမွာျဖစ္ပါတယ္။
