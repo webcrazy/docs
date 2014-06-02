@@ -1,4 +1,4 @@
-# Views & Responses
+# Views ႏွင္႕ Responses မ်ားအေၾကာင္း
 
 - [Basic Responses](#basic-responses)
 - [Redirects](#redirects)

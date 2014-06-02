@@ -16,15 +16,15 @@ Laravel နိဒါန္း
 Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
 -----------------------
 
-- [Laravel Installation][5]
-- [Configuration][6]
-- [Homestead][7]
-- [Request Lifecycle][8]
-- [Routing][9]
-- [Requests & Input][10]
-- [Views & Responses][11]
-- [Controllers][12]
-- [Errors & Logging][13]
+- [Laravel install လုပ္ျခင္း][5]
+- [Configuration လုပ္ျခင္း][6]
+- [Laravel ရဲ႕ Official Development Homestead အေၾကာင္း][7]
+- [Request Lifecycle ][8]
+- [Route လုပ္ျခင္းအေၾကာင္း][9]
+- [Requests ႏွင္႕ Input မ်ားအေၾကာင္း ][10]
+- [Views ႏွင္႕ Responses မ်ားအေၾကာင္း][11]
+- [Controllers မ်ားအေၾကာင္း][12]
+- [Errors ႏွင္႕ Logging မ်ားအေၾကာင္း][13]
 
 Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
 -----------------------

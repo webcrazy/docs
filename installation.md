@@ -1,4 +1,4 @@
-# Installation
+# Laravel install လုပ္ျခင္း
 
 - [Install Composer](#install-composer)
 - [Install Laravel](#install-laravel)

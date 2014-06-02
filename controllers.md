@@ -1,4 +1,4 @@
-﻿# Controllers
+﻿# Controllers မ်ားအေၾကာင္း
 
 - [Basic Controllers](#basic-controllers)
 - [Controller Filters](#controller-filters)

@@ -1,4 +1,4 @@
-# Configuration
+# Configuration လုပ္ျခင္း
 
 - [မိတ္ဆက္](#introduction)
 - [Environment ျပင္ဆင္ျခင္း](#environment-configuration)
