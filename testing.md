@@ -12,16 +12,18 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravel is built with unit testing in mind. In fact, support for testing with PHPUnit is included out of the box, and a `phpunit.xml` file is already setup for your application. In addition to PHPUnit, Laravel also utilizes the Symfony HttpKernel, DomCrawler, and BrowserKit components to allow you to inspect and manipulate your views while testing, allowing to simulate a web browser.
+Laravel ဟာ unit testing ကို အဓိကအေျခခံထားၿပီး တည္ေဆာက္ထားတာ ျဖစ္ပါတယ္။ ဒါ့အျပင္ testing framework ျဖစ္တဲ့ PHPUnit support လည္း ပါဝင္ပါတဲ့အတြက္ application ကို စ setup လုပ္ကတည္းက `phpunit.xml` ဖိုင္ကို တစ္ခါတည္း setup လုပ္ေပးထားမွာ ျဖစ္ပါတယ္။ PHPUnit အျပင္ Laravel မွာ Symfony ရဲ႕ HttpKernel, DomCrawler ႏွင့္ BrowserKit တို႔ ပါဝင္တဲ့အတြက္ testing လုပ္ရာမွာ application ရဲ႕ views ေတြကို web browser တစ္ခုကဲ့သို႔ simulate လုပ္ႏိုင္ၿပီး စစ္ေဆးျပဳျပင္ႏိုင္မွာျဖစ္ပါတယ္။
 
-An example test file is provided in the `app/tests` directory. After installing a new Laravel application, simply run `phpunit` on the command line to run your tests.
+ဥပမာ အေနျဖင့္ test ဖိုင္တစ္ခုလည္း `app/tests` folder ထဲမွာပါဝင္ပါတယ္။ Laravel appilcation တစ္ခုကို install လုပ္ၿပီးပါက `phpunit` command ကို run ယံုျဖင့္ application ရဲ႕ tests မ်ားကို run ႏိုင္မွာျဖစ္ပါတယ္။
+
 
 <a name="defining-and-running-tests"></a>
-## Defining & Running Tests
+## Defining & Running Tests (Tests မ်ား သတ္မွတ္ျခင္းနွင့္ Run ျခင္း)
 
-To create a test case, simply create a new test file in the `app/tests` directory. The test class should extend `TestCase`. You may then define test methods as you normally would when using PHPUnit.
+Test case ကိုဖန္တီးဖို႔ `app/tests` folder ထဲမွာ file အသစ္တစ္ခု ျပဳလုပ္ပါ။ class ကေတာ့ `TestCase` class ကို extend ရမွာျဖစ္ပါတယ္။ ထုိ႔ေနာက္မွာေတာ့ သင္ႏွစ္သက္သလို test methods မ်ားကို PHPUnit ကိုအသံုးျပဳၿပီး ဖန္တီးႏိုင္ၿပီ ျဖစ္ပါတယ္။
 
-#### An Example Test Class
+
+#### Test Class ဥပမာ
 
 	class FooTest extends TestCase {
 
@@ -32,53 +34,54 @@ To create a test case, simply create a new test file in the `app/tests` director
 
 	}
 
-You may run all of the tests for your application by executing the `phpunit` command from your terminal.
+သင့္ application မွ tests မ်ားကို terminal မွ `phpunit` command ရိုက္ၿပီး run ႏိုင္ပါတယ္။
 
-> **Note:** If you define your own `setUp` method, be sure to call `parent::setUp`.
+
+> **သတိ:** ကိုယ့္ဟာကို `setUp` method ေရးထားပါက `parent::setUp` ကို ေခၚဖို႔ သတိရပါ။
 
 <a name="test-environment"></a>
 ## Test Environment
 
-When running unit tests, Laravel will automatically set the configuration environment to `testing`. Also, Laravel includes configuration files for `session` and `cache` in the test environment. Both of these drivers are set to `array` while in the test environment, meaning no session or cache data will be persisted while testing. You are free to create other testing environment configurations as necessary.
+unit tests မ်ားကို run ေနစဥ္ Laravel က configuration environment ကို `testing` သို႔ အလိုအေလ်ာက္ ေျပာင္းထားမွာျဖစ္ပါတယ္။ ထို႔အျပင္ Laravel ရဲ႕ test environment ထဲမွာ  `session` ႏွင့္ `cache` တို႔ရဲ႕ configuration files မ်ားပါ ပါဝင္မွာျဖစ္ပါတယ္။ ဒီ drivers ႏွစ္ခုစလံုးကို test environment ထဲမွာ `array` အျဖစ္ set ထားမွာျဖစ္ပါတဲ့အတြက္ testing လုပ္ၿပီးရင္ေတာ့ testing နဲ႔ပတ္သက္တဲ့ session သို႔မဟုတ္ cache data ေတြေတာ့ ပ်က္သြားမွာျဖစ္ပါတယ္။ လိုအပ္ရင္လိုအပ္သလို တျခား testing environments ေတြကို ဆက္လက္ဖန္တီးလို႔လည္း ရပါတယ္။
 
 <a name="calling-routes-from-tests"></a>
-## Calling Routes From Tests
 
-#### Calling A Route From A Test
+## Calling Routes From Tests (Tests မ်ားမွ Routes ကိုေခၚျခင္း)
 
-You may easily call one of your routes for a test using the `call` method:
+#### Test တစ္ခုမွ Route ကိုေခၚျခင္း
+`call` method ကိုအသုံးျပဳ၍ route တစ္ခုခုကို test ကေန အလြယ္တကူ ေခၚႏိုင္ပါတယ္၊
 
 	$response = $this->call('GET', 'user/profile');
 
 	$response = $this->call($method, $uri, $parameters, $files, $server, $content);
-
-You may then inspect the `Illuminate\Http\Response` object:
+	
+ထို႔ေနာက္ `Illuminate\Http\Response` object ကို စစ္ေဆးႏိုင္ပါတယ္။
 
 	$this->assertEquals('Hello World', $response->getContent());
 
-#### Calling A Controller From A Test
+#### Test တစ္ခုမွ Controller ကိုေခၚျခင္း
 
-You may also call a controller from a test:
+test ကေန controller ကိုလည္းေခၚႏိုင္ပါတယ္။
 
 	$response = $this->action('GET', 'HomeController@index');
 
 	$response = $this->action('GET', 'UserController@profile', array('user' => 1));
-
-The `getContent` method will return the evaluated string contents of the response. If your route returns a `View`, you may access it using the `original` property:
+	
+ဒီ `getContent` method ဟာ response ကေန evaluated string contents ေတြကို ျပန္ေပးမွာျဖစ္ပါတယ္။ သင့္၏ route မွ `View` return ရင္ေတာ့ `original` property ကို အသံုးျပဳ၍ access လုပ္ႏိုင္ပါတယ္၊
 
 	$view = $response->original;
 
 	$this->assertEquals('John', $view['name']);
 
-To call a HTTPS route, you may use the `callSecure` method:
+HTTPS route တစ္ခုကိုေခၚလိုပါက `callSecure` method ကို အသံုးျပဳႏိုင္ပါတယ္။
 
 	$response = $this->callSecure('GET', 'foo/bar');
 
-> **Note:** Route filters are disabled when in the testing environment. To enable them, add `Route::enableFilters()` to your test.
+> **သတိ:** testing environment ေတြထဲမွာ route filters ေတြကို disable ထားပါတယ္။. ျပန္လည္ enable ခ်င္ရင္ေတာ့, test ထဲမွာ `Route::enableFilters()` ထည့္လိုက္ပါ။
 
 ### DOM Crawler
 
-You may also call a route and receive a DOM Crawler instance that you may use to inspect the content:
+Route ကိုေခၚ၍ DOM Crawler ကိုလက္ခံၿပီး ရလာတဲ့ content ကိုစစ္ေဆးႏိုင္ပါတယ္။ 
 
 	$crawler = $this->client->request('GET', '/');
 
@@ -86,12 +89,12 @@ You may also call a route and receive a DOM Crawler instance that you may use to
 
 	$this->assertCount(1, $crawler->filter('h1:contains("Hello World!")'));
 
-For more information on how to use the crawler, refer to its [official documentation](http://symfony.com/doc/master/components/dom_crawler.html).
+Crawler အသံုးျပဳပံုႏွင့္ပတ္သက္ၿပီး ပိုသိလိုပါက ၎ရဲ႕[official documentation](http://symfony.com/doc/master/components/dom_crawler.html) ကို ကိုးကားပါ၊
 
 <a name="mocking-facades"></a>
-## Mocking Facades
+## Mocking Facades (Facades မ်ား အတုျပဳလုပ္ျခင္း)
 
-When testing, you may often want to mock a call to a Laravel static facade. For example, consider the following controller action:
+Testing လုပ္ေနစဥ္ ရံဖန္ရံခါမွ Laravel ၏ static facade call ေတြကို အတုျပဳလုပ္ (mock) လိုတတ္ပါတယ္။ ဥပမာအေနျဖင့္ ေအာက္ပါ controller action ကိုၾကည့္ပါ။ 
 
 	public function getIndex()
 	{
@@ -99,10 +102,10 @@ When testing, you may often want to mock a call to a Laravel static facade. For 
 
 		return 'All done!';
 	}
+	
+`Event` class သို႔ ေခၚထားေသာ call အား  facade မွာရွိတဲ့ `shouldReceive` method ျဖင့္ အတုျပဳလုပ္ႏိုင္ပါတယ္။ [Mockery](https://github.com/padraic/mockery) mock instance တစ္ခု ျပန္လည္ return မွာ ျဖစ္ပါတယ္။
 
-We can mock the call to the `Event` class by using the `shouldReceive` method on the facade, which will return an instance of a [Mockery](https://github.com/padraic/mockery) mock.
-
-#### Mocking A Facade
+#### Facade တစ္ခု အတုျပဳလုပ္ျခင္း
 
 	public function testGetIndex()
 	{
@@ -111,14 +114,14 @@ We can mock the call to the `Event` class by using the `shouldReceive` method on
 		$this->call('GET', '/');
 	}
 
-> **Note:** You should not mock the `Request` facade. Instead, pass the input you desire into the `call` method when running your test.
+> **သတိ:** `Request` facade ကိုေတာ့ မ mock သင့္ပါဘူး။ အဲဒီအစား pass ခ်င္တဲ့ input  အား `call` method သို႔ pass ၿပီး test ကို run ပါ။
 
 <a name="framework-assertions"></a>
-## Framework Assertions
+## Framework Assertions (Framework စစ္ေဆးျခင္းမ်ား)
 
-Laravel ships with several `assert` methods to make testing a little easier:
+Laravel တြင္ testing လုပ္ဖို႔ အနည္းငယ္ ပိုမိုလြယ္ကူသက္သာေစရန္ `assert` methods မ်ားပါဝင္ပါတယ္။
 
-#### Asserting Responses Are OK
+#### Respones မ်ား HTTP status OK ျဖစ္ေၾကာင္း စစ္ေဆးျခင္း
 
 	public function testMethod()
 	{
@@ -127,11 +130,11 @@ Laravel ships with several `assert` methods to make testing a little easier:
 		$this->assertResponseOk();
 	}
 
-#### Asserting Response Statuses
+#### အျခား response statuses မ်ားအား စစ္ေဆးျခင္း
 
 	$this->assertResponseStatus(403);
 
-#### Asserting Responses Are Redirects
+#### responses မ်ား HTTP Redirects မ်ား ျဖစ္ေၾကာင္း စစ္ေဆးျခင္း
 
 	$this->assertRedirectedTo('foo');
 
@@ -139,7 +142,7 @@ Laravel ships with several `assert` methods to make testing a little easier:
 
 	$this->assertRedirectedToAction('Controller@method');
 
-#### Asserting A View Has Some Data
+#### View တြင္ data ရွိေၾကာင္း စစ္ေဆးျခင္း
 
 	public function testMethod()
 	{
@@ -149,7 +152,7 @@ Laravel ships with several `assert` methods to make testing a little easier:
 		$this->assertViewHas('age', $value);
 	}
 
-#### Asserting The Session Has Some Data
+#### Session တြင္ data ရွိေၾကာင္း စစ္ေဆးျခင္း
 
 	public function testMethod()
 	{
@@ -159,7 +162,7 @@ Laravel ships with several `assert` methods to make testing a little easier:
 		$this->assertSessionHas('age', $value);
 	}
 
-#### Asserting The Session Has Errors
+#### Session တြင္ Errors မ်ား စစ္ေဆးျခင္း
 
     public function testMethod()
     {
@@ -174,7 +177,7 @@ Laravel ships with several `assert` methods to make testing a little easier:
         $this->assertSessionHasErrors(array('name', 'age'));
     }
 
-#### Asserting Old Input Has Some Data
+#### Input အေဟာင္းမ်ား Data စစ္ေဆးျခင္း
 
 	public function testMethod()
 	{
@@ -184,35 +187,36 @@ Laravel ships with several `assert` methods to make testing a little easier:
 	}
 
 <a name="helper-methods"></a>
-## Helper Methods
+## Helper Methods (အေထာက္အကူ Methods မ်ား)
 
-The `TestCase` class contains several helper methods to make testing your application easier.
+Application test လုပ္ရာတြင္ ပိုမိုလြယ္ကူေစရန္ `TestCase` class တြင္ helper methods မ်ားပါဝင္ပါတယ္။
 
-#### Setting And Flushing Sessions From Tests
+#### Tests မွ Sessisons data မ်ား ဖန္တီ ျခင္း flush ျခင္း
 
 	$this->session(['foo' => 'bar']);
 
 	$this->flushSession();
 
-#### Setting The Currently Authenticated User
+#### လက္ရွိ authenticated ျဖစ္ၿပီးေသာ User တစ္ေယာက္ဖန္တီးျခင္း
 
-You may set the currently authenticated user using the `be` method:
+`be` method အား အသံုးျပဳ၍ လက္ရွိ authenticated ျဖစ္ၿပီးေသာ user တစ္ေယာက္ဖန္တီးႏိုင္ပါတယ္။
 
 	$user = new User(array('name' => 'John'));
 
 	$this->be($user);
 
-You may re-seed your database from a test using the `seed` method:
+Database အား `seed` method အသံုးျပဳ၍ re-seed ျပဳလုပ္ႏိုင္ပါတယ္။
 
-#### Re-Seeding Database From Tests
+#### Test မွ Database အား Re-seed ျပဳလုပ္ျခင္း
 
 	$this->seed();
 
 	$this->seed($connection);
 
-More information on creating seeds may be found in the [migrations and seeding](/docs/migrations#database-seeding) section of the documentation.
+Database seeds မ်ားျပဳလုပ္ျခင္းႏွင့္ ပတ္သက္၍ documentation ရဲ႕ [migrations and seeding](/docs/migrations#database-seeding) အခန္းမွာ သြားၾကည့္ႏိုင္ပါတယ္။
+
 
 <a name="refreshing-the-application"></a>
-## Refreshing The Application
+## Application အား refresh ျပဳလုပ္ျခင္း
 
-As you may already know, you can access your Laravel `Application` / IoC Container via `$this->app` from any test method. This Application instance is refreshed for each test class. If you wish to manually force the Application to be refreshed for a given method, you may use the `refreshApplication` method from your test method. This will reset any extra bindings, such as mocks, that have been placed in the IoC container since the test case started running.
+သင္၏ Laravel `Application/IoC Container` အား `$this->app` မွတစ္ဆင့္ မည္သည့္ test method မွမဆို access ႏိုင္ပါတယ္။ ဒီ Application instance ဟာ test case တစ္ခုစီ အတြက္ ျပန္လည္ refresh သြားမွာျဖစ္ပါတယ္။ Application အား သင္ သတ္မွတ္ထားေသာ method တစ္ခုအတြက္သာ refresh ျပဳလုပ္ခ်င္ပါက test method မွ `refreshApplication` method ကို အသံုးျပဳႏိုင္ပါတယ္။ ဒါဟာ test cases မ်ား စ run ကတည္းက IoC container ထဲမွာရွိေတသာ အပို bindings မ်ား၊ အတုျပဳလုပ္ျခင္း (mocks) မ်ားအား reset ျပဳလုပ္သြားမွာ ျဖစ္ပါတယ္။
