@@ -1,32 +1,32 @@
 # Localization
 
-- [Introduction](#introduction)
+- [မိတ္ဆက္](#introduction)
 - [Language Files](#language-files)
-- [Basic Usage](#basic-usage)
+- [အေျခခံအသံုးျပဳျခင္း](#basic-usage)
 - [Pluralization](#pluralization)
 - [Validation Localization](#validation)
 - [Overriding Package Language Files](#overriding-package-language-files)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ္ဆက္
 
-The Laravel `Lang` class provides a convenient way of retrieving strings in various languages, allowing you to easily support multiple languages within your application.
+Laravel မွာပါတဲ့ `Lang` class ဟာ languages ဖိုင္ေတြထဲမွာသတ္မွတ္ထားတဲ့ စကားစုေတြကို လြယ္ကူ အဆင္ေျပေသာ နည္းလမ္းေတြနဲ႔ လက္ခံေဆာင္ရြက္ေပးႏိုင္ပါတယ္။ သင့္ application အတြက္ ဘာသာစကားမ်ိဳးစံုကို လြယ္ကူစြာ အသံုးျပဳႏိုင္ေအာင္အေထာက္အပံ့ေပးထားပါတယ္။ 
 
 <a name="language-files"></a>
 ## Language Files
 
-Language strings are stored in files within the `app/lang` directory. Within this directory there should be a subdirectory for each language supported by the application.
+`app/lang` လမ္းေၾကာင္းေအာက္မွာ ဘာသာစကား စကားစုေတြကို သိမ္းဆည္းပါတယ္။ အဲ့ဒီလမ္းေၾကာင္းေအာက္မွာေတာ့ သတ္မွတ္ခ်င္တဲ့ ဘာသာစကားတစ္ခုခ်င္းစီအတြက္ ဖိုဒါတစ္ခုခ်င္းစီ ေဆာက္ၿပီးအသံုးျပဳရမွာပါ။
 
 	/app
 		/lang
 			/en
 				messages.php
-			/es
+			/mm
 				messages.php
 
 #### Example Language File
 
-Language files simply return an array of keyed strings. For example:
+ဘာသာစကားသတ္မွတ္ထားတဲ့ ဖိုင္ဆီကေန keyed strings ေတြပါတဲ့ array return ျပန္လာပါတယ္။ ဥပမာ -
 
 	<?php
 
@@ -36,38 +36,38 @@ Language files simply return an array of keyed strings. For example:
 
 #### Changing The Default Language At Runtime
 
-The default language for your application is stored in the `app/config/app.php` configuration file. You may change the active language at any time using the `App::setLocale` method:
+Application ရဲ့ ပံုမွန္ ဘာသာစကားကိုေတာ့ `app/config/app.php` configuration ဖိုင္ထဲမွာ သတ္မွတ္ထားပါတယ္။ ဘာသာစကားမ်ား တစ္ခုနဲ႔တစ္ခု ေျပာင္းလဲ အသံုးျပဳခ်င္ရင္ေတာ့ `App::setLocale` method ကိုအသံုးျပဳႏိုင္ပါတယ္။ 
 
-	App::setLocale('es');
+	App::setLocale('mm');
 
 #### Setting The Fallback Language
 
-You may also configure a "fallback language", which will be used when the active language does not contain a given language line. Like the default language, the fallback language is also configured in the `app/config/app.php` configuration file:
+"fallback language" အတြက္လည္း ျပင္ဆင္ထားႏိုင္ပါတယ္။ "fallback language" ဆိုတာကေတာ့ လက္ရွိ သတ္မွတ္ထားတဲ့ ဘာသာစကား (language) ဖိုင္မွာ လိုအပ္ေနတဲ့ စကားစု (language line) မပါလာတဲ့ အေျခအေနမ်ိဳးမွာ အသံုးျပဳဖို႔အတြက္ျဖစ္ပါတယ္။ ပံုမွန္သတ္မွတ္ေနက်အတိုင္းပဲ "fallback language" ကို `app/config/app.php` configuration ဖိုင္ထဲမွာသတ္မွတ္ႏိုင္ပါတယ္။ 
 
 	'fallback_locale' => 'en',
 
 <a name="basic-usage"></a>
 ## Basic Usage
 
-#### Retrieving Lines From A Language File
+#### ဘာသာစကားသတ္မွတ္ထားေသာ ဖိုင္မွ စကားစုမ်ား ရယူျခင္း
 
 	echo Lang::get('messages.welcome');
 
-The first segment of the string passed to the `get` method is the name of the language file, and the second is the name of the line that should be retrieved.
+`get`method ထဲကို passed လုပ္ထားတဲ့ string ႏွစ္ခုထဲမွ ပထမတစ္ခုကေတာ့ ဘာသာစကား (language) သတ္မွတ္ထားတဲ့ ဖိုင္ရဲ့ အမည္ျဖစ္ျပီး၊ ဒုတိယ တစ္ခုကေတာ့ array ထဲမွာသတ္မွတ္ထား စကားစုေတြရဲ့ key ျဖစ္ပါတယ္။ 
 
-> **Note**: If a language line does not exist, the key will be returned by the `get` method.
+> **သတိျပဳရန္**: အကယ္၍ `get` နဲ႔ ယူထားတဲ့ key အတြက္ စကားစုဟာ ရွိမေနဘူးဆိုရင္ေတာ့ key တစ္ခုပဲ return ျပန္လာပါလိမ့္မယ္။
 
-You may also use the `trans` helper function, which is an alias for the `Lang::get` method.
+`trans` ဆိုတဲ့ helper function ကိုလည္း အသံုးျပဳႏိုင္ပါတယ္။ အဲ့ဒီ function ကေတာ့ `Lang::get` ဆိုတဲ့ method ကိုပဲ နာမည္ေျပာင္းၿပီးထပ္လုပ္ထားတာပါ။ 
 
 	echo trans('messages.welcome');
 
-#### Making Replacements In Lines
+#### စကားစုမ်ား အစားထိုး ျပဳလုပ္ျခင္း
 
-You may also define place-holders in your language lines:
+စကားစုေတြမွာ အစားထိုးဖို႔ စကားလံုးေတြအတြက္ place-holders လဲသတ္မွတ္ႏိုင္ပါေသးတယ္။
 
 	'welcome' => 'Welcome, :name',
 
-Then, pass a second argument of replacements to the `Lang::get` method:
+ၿပီးရင္ေတာ့ `Lang::get` method ရဲ့ ဒုတိယ argument မွာ အစားထိုးခ်င္တဲ့ စကားလံုးကို passing ေပးလိုက္ပါ။ 
 
 	echo Lang::get('messages.welcome', array('name' => 'Dayle'));
 
