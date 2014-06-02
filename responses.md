@@ -214,15 +214,15 @@ View **creators** ေတြက view composers ေတြလုပ္သလို�
 <a name="response-macros"></a>
 ## Response Macros
 
-If you would like to define a custom response that you can re-use in a variety of your routes and controllers, you may use the `Response::macro` method:
+သင္႕အေနနဲ႕ကိုယ္ပိုင္ response တစ္ခုျပဳလုပ္ၿပီးေတာ႕ routes နဲ႕ controllers ေတြကေနျပန္ၿပီးေတာ႕အသံုးျပဳခ်င္တယ္ဆိုရင္... သင္႕အေနနဲ႕ `Response::macro` method ကိုသံုးႏိုင္ပါတယ္
 
 	Response::macro('caps', function($value)
 	{
 		return Response::make(strtoupper($value));
 	});
 
-The `macro` function accepts a name as its first argument, and a Closure as its second. The macro's Closure will be executed when calling the macro name on the `Response` class:
+`micro` function ကသူ႕ရဲ႕  name တစ္ခုကို first argument အျဖစ္လက္ခံထားတယ္၊ ေနာက္ Closure ကေတာ႕ သူ႕ရဲ႕ဒုတိယတစ္ခုပါ။ micro name က `Response` class ကို ေခၚတဲ႕အခ်ိန္မွာ macro closure က execute ျဖစ္သြားပါတယ္ :
 
 	return Response::caps('foo');
 
-You may define your macros in one of your `app/start` files. Alternatively, you may organize your macros into a separate file which is included from one of your `start` files.
+micros ေတြကို သင္႕ရဲ႕ `app/start`  files ထဲမွာ define လုပ္ထားရပါမယ္။  တစ္နည္းအားျဖင္႕ သင္႕ separate လုပ္ထားတဲ႕ macros ေတြကို `start` files မွာသင္ျပန္ organize လုပ္ရပါမယ္။
