@@ -1,18 +1,18 @@
 # Laravel install လုပ္ျခင္း
 
-- [Install Composer](#install-composer)
-- [Install Laravel](#install-laravel)
-- [Server Requirements](#server-requirements)
-- [Configuration](#configuration)
+- [Composer ကို Install လုပ္ျခင္း](#install-composer)
+- [Laravel ကို Install လုပ္ျခင္း](#install-laravel)
+- [Server လိုအပ္ခ်က္မ်ာ](#server-requirements)
+- [Configuration လုပ္ျခင္း](#configuration)
 - [URL လွလွေလးလိုခ်င္တယ္](#pretty-urls)
 
 <a name="install-composer"></a>
-## Install Composer
+## Composer ကို Install လုပ္ျခင္း
 
 Laravel ရဲ႕အသံုးဝင္တဲ႕tool .... [Composer](http://getcomposer.org), သူ႕ရဲ႕ depenedencies ေတြကို Manage လုပ္ဖို႕။ ပထမဆံုး `composer.phar` copy ကိုိ download လုပ္လိုက္ပါ။ download လုပ္ၿပီးသြားၿပီဆိုရင္ သင္႕မွာ PHAR ဆိုတဲ႕file ေလးရွိသြားပါၿပီ၊ အဲဒီ႕ file ကိုသင္႕ရဲ႕local project မွာဒီတိုင္းထားခ်င္ရင္လည္းရပါတယ္ တကယ္လို႕သင္က `usr/local/bin` ထဲကိုေရႊ႕ၿပီးေတာ႕သင္႕ရဲ႕  System အတြက္ Global လုပ္မယ္ဆိုလည္းလုပ္ႏိုင္ပါတယ္။ Window မွာဆိုရင္ေတာ႕ [Windows installer](https://getcomposer.org/Composer-Setup.exe) ကိုသံုးၿပီး install လုပ္ႏိုင္ပါတယ္။
 
 <a name="install-laravel"></a>
-## Install Laravel
+## Laravel ကို Install လုပ္ျခင္း
 
 ### Laravel Installer မွတစ္ဆင့္
 
@@ -24,12 +24,12 @@ Laravel ရဲ႕အသံုးဝင္တဲ႕tool .... [Composer](http://ge
 
 ### Download မွတစ္ဆင္႕
 
-Composer ကို install လုပ္ၿပီးသြားၿပီဆိုရင္ Laravel Framework [latest version](https://github.com/laravel/laravel/archive/master.zip) ကို download လုပ္လိုက္ပါ၊  သင္႕ရဲ႕ web server ထဲမွာ  zip ကို extra လုပ္လိုက္ပါ၊ extra လုပ္ထားတဲ႕  framework folder ထဲကို command line ကဝင္ၿပီးေတာ႕  `php composer.phar install` (or `composer install`) ဆိုၿပီး run လိုက္ပါ။ ဒီ command က framework ရဲ႕ dependencies ေတြကို install လုပ္ခိုင္းလိုက္တာပါ။ ဒီ installation လုပ္တဲ႕ေနရာမွာ webserver မွာ git install လုပ္ထားမွ successfully complete ျဖစ္မွာပါ။
+Composer ကို install လုပ္ၿပီးသြားၿပီဆိုရင္ Laravel Framework [latest version](https://github.com/laravel/laravel/archive/master.zip) ကို download လုပ္လိုက္ပါ၊  သင္႕ရဲ႕ web server ထဲမွာ  zip ကို extra လုပ္လိုက္ပါ၊ extra လုပ္ထားတဲ႕  framework folder ထဲကို command line ကဝင္ၿပီးေတာ႕  `php composer.phar install` ဒါမွမဟုတ္ (`composer install`) ဆိုၿပီး run လိုက္ပါ။ ဒီ command က framework ရဲ႕ dependencies ေတြကို install လုပ္ခိုင္းလိုက္တာပါ။ ဒီ installation လုပ္တဲ႕ေနရာမွာ webserver မွာ git install လုပ္ထားမွ successfully complete ျဖစ္မွာပါ။
 
 တကယ္လို႕သင္ Framework ကို update လုပ္ခ်င္တယ္ဆိုရင္`php composer.phar update` command ကို run ေပးရပါ႕မယ္။
 
 <a name="server-requirements"></a>
-## Server Requirements
+## Server လိုအပ္ခ်က္မ်ား
 Laravel Framework မွာ system requirements တစ္ခ်ိဳ႕ရွိပါတယ္။ ဘာေတြလည္းဆိုရင္
 
 - PHP >= 5.3.7
@@ -40,16 +40,16 @@ Laravel Framework မွာ system requirements တစ္ခ်ိဳ႕ရွ�
 PHP 5.5 မွာ တစ္ခ်ိဳ႔ OS ေတြက PHP JSON extension ကို manullly install လုပ္ေပးရပါတယ္။ တကယ္လို႕ Ubuntu သံုးတယ္ဆိုရင္ `apt-get install php5-json` ဆိုၿပီး terminal ကေန run လိုက္တာနဲ႕အဆင္ေျပပါတယ္။
 
 <a name="configuration"></a>
-## Configuration
+## Configuration လုပ္ျခင္း
 
-Laravel က configuration ဆိုတာမရွိသေလာက္ပါဘဲ။ သင္စၿပီး develop ဖို႕ရာအဆင္သင္႕ပါဘဲ။ဘယ္လိုဘဲေျပာေျပာ သင္႕အေနနဲ႕ `app/config/app.php` file နဲ႕သူ႕ရဲ႕ Documencation ကိုျပန္ၾကည္႕ခ်င္မွာပါဘဲ။ `app/config/app.php`မွာဘာေတြပါသလဲဆိုရင္ေတာ႕ `timezone` ေနာက္ `locale`တို႕ပါပါတယ္၊သင္႕ရဲ႕ application နဲ႕အဆင္ေျပမယ္႕ configure လုပ္ႏိုင္ပါတယ္။
+Laravel က configuration ဆိုတာမရွိသေလာက္ပါဘဲ။ သင္စၿပီး develop ဖို႕ရာအဆင္သင္႕ပါဘဲ။ဘယ္လိုဘဲေျပာေျပာ သင္႕အေနနဲ႕ `app/config/app.php` file နဲ႕သူ႕ရဲ႕ Documencation ကိုျပန္ၾကည္႕ခ်င္မွာပါဘဲ။ `app/config/app.php`မွာဘာေတြပါသလဲဆိုရင္ေတာ႕ `timezone` ေနာက္ `locale`တို႕ပါပါတယ္၊သင္႕ရဲ႕ application နဲ႕အဆင္ေျပတာေတြကို configure လုပ္ႏိုင္ပါတယ္။
 
-Laravel တစ္ခါ Install လုပ္တိုင္း [သင္႕ရဲ႕ local environmet](/docs/configuration#environment-configuration) ကို Configure ျပန္လုပ္သင္႕ပါတယ္။ local machine မွာ     develop လုပ္တဲ႕အခါ erros ကိုျမင္ရမယ္။ မူလကေတာ႕ error reporting က သင္႕ရဲ႕ development production မွာ disable လုပ္ထားပါတယ္။
+Laravel ကိုတစ္ခါ Install လုပ္တိုင္း [သင္႕ရဲ႕ local environmet](/docs/configuration#environment-configuration) ကို Configure ျပန္လုပ္သင္႕ပါတယ္။ local machine မွာ     develop လုပ္တဲ႕အခါ erros ကိုျမင္ရမယ္။ မူလကေတာ႕ error reporting က သင္႕ရဲ႕ development production မွာ disable လုပ္ထားပါတယ္။
 
 > **မွတ္ခ်က္:** `app.debug` ကို production မွာဘယ္ေတာ႕မွ true မေပးသင္႕ပါဘူး။ဘယ္ေတာ႕မွ မလုပ္ပါနဲ႕။
 
 <a name="permissions"></a>
-### Permissions
+### Permissions မ်ား
 
 Laravel က   `app/storage` ကို web server အတြက္ permission write ေပးရပါမယ္။
 
@@ -59,7 +59,7 @@ Laravel က   `app/storage` ကို web server အတြက္ permission writ
 Framework ရဲ႕ လမ္းေၾကာင္းေတြကေျပာင္းလဲႏိုင္ပါတယ္၊ ဒီ location ေတြကိုေျပာင္းခ်င္တယ္ဆိုရင္ `bootstrap/paths.php` မွာၾကည္႕ရွူေျပာင္းလည္းႏိုင္ပါတယ္။
 
 <a name="pretty-urls"></a>
-## Pretty URLs
+## URL လွလွေလးလိုခ်င္တယ္
 
 ### Apache
 
