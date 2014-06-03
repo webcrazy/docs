@@ -11,8 +11,7 @@
 <a name="basic-usage"></a>
 ## အေျခခံအသုံးျပဳပုံ
 
-Laravel အေနျဖင့္ data မ်ားကုိ စိစစ္ရာတြင္ ရုိးရွင္း အဆင္ေျပေသာ 
-Laravel ships with a simple, convenient facility for validating data and retrieving validation error messages via the `Validation` class.
+Laravel အေနျဖင့္ data မ်ားကုိ စိစစ္ရာတြင္ ရုိးရွင္း အဆင္ေျပေသာ နည္းလမ္းမ်ားကုိ အသုံးျပဳထားသည္။ error message မ်ားကုိ `Validation` class မွ တဆင့္ ထုတ္ယူႏုိင္သည္။
 
 #### အေျခခံအသုံးျပဳပုံ ဥပမာ
 
@@ -21,18 +20,19 @@ Laravel ships with a simple, convenient facility for validating data and retriev
 		array('name' => 'required|min:5')
 	);
 
-The first argument passed to the `make` method is the data under validation. The second argument is the validation rules that should be applied to the data.
+Validation ျပဳလုပ္ရာတြင္  `make` method ဟုသည့္ method ကုိ အသုံးျပဳျပီး array တြင္းပါရွိမည့္ ပထမ argument မွာ data ျဖစ္ျပီး ဒုတိယ argument မွာ ထုိ data မ်ားကုိ စိစစ္မည့္ rule မ်ားကို ထည့္သြင္းရမည္။
 
-#### Using Arrays To Specify Rules
 
-Multiple rules may be delimited using either a "pipe" character, or as separate elements of an array.
+#### Array ကုိ အသုံးျပဳ၍ Rule မ်ား သတ္မွတ္ျခင္း
+
+တခုထက္ပုိေသာ rule မ်ားကို သတ္မွတ္လုိပါက "pipe" character ကုိျဖစ္ေစ array အတြင္း ျခား၍ျဖစ္ေစ ထည့္သြင္းႏုိင္သည္။
 
 	$validator = Validator::make(
 		array('name' => 'Dayle'),
 		array('name' => array('required', 'min:5'))
 	);
 
-#### Validating Multiple Fields
+#### Fields မ်ားစြာကုိ စိစစ္ျခင္း
 
     $validator = Validator::make(
         array(
@@ -47,62 +47,66 @@ Multiple rules may be delimited using either a "pipe" character, or as separate 
         )
     );
 
-Once a `Validator` instance has been created, the `fails` (or `passes`) method may be used to perform the validation.
+`Validator` instance ကုိ ျပဳလုပ္ျပီးပါက `fails` သုိ ့မဟုတ္ `passes` method ကုိ အသုံးျပဳ၍ အခ်က္အလက္မ်ား စိစစ္ႏုိင္သည္။
+
 
 	if ($validator->fails())
 	{
 		// The given data did not pass validation
 	}
 
-If validation has failed, you may retrieve the error messages from the validator.
+စိစစ္ျခင္း မေအာင္ျမင္ပါက validator မွ error message ကုိ ရယူႏုိင္ေပသည္။
 
 	$messages = $validator->messages();
 
-You may also access an array of the failed validation rules, without messages. To do so, use the `failed` method:
+္fail ျဖစ္သည့္ rule မ်ားကုိသာ ရယူလုိျပီး message မ်ား မပါဝင္ေစလုိပါက `failed` method ကုိ အသုံးျပဳႏုိင္သည္။
 
 	$failed = $validator->failed();
 
-#### Validating Files
+#### Files မ်ားစိစစ္ျခင္း
 
-The `Validator` class provides several rules for validating files, such as `size`, `mimes`, and others. When validating files, you may simply pass them into the validator with your other data.
+`Validator` class အေနျဖင့္ `size` ႏွင့္ `mimes` အပါအဝင္ မ်ားေျမာင္လွေသာ validation method မ်ားကုိ အေထာက္အပံ့ေပးထားျပီး file မ်ား validate ျပဳလုပ္လုိပါက ထုိထဲ့သုိ ့ ထည့္သြင္းရန္သာ လုိေပမည္။
+
 
 <a name="working-with-error-messages"></a>
-## Working With Error Messages
+## Error Messages မ်ားႏွင့္ လႈပ္ရွားျခင္း
 
-After calling the `messages` method on a `Validator` instance, you will receive a `MessageBag` instance, which has a variety of convenient methods for working with error messages.
 
-#### Retrieving The First Error Message For A Field
+After calling the  on a 
+`Validator` instance မွ `messages` method ကုိ ေခၚျပီးပါက Error message မ်ားျဖင့္ အလုပ္လုပ္ရာတြင္ လြယ္ကူေစမည့္ method မ်ားစြာပါဝင္မည့္ `MessageBag` ပါဝင္မည္ ျဖစ္သည္။
+
+#### Field တစ္ခုမွ ပထမဆုံး Error Message ကုိ ထုတ္ယူျခင္း
 
 	echo $messages->first('email');
 
-#### Retrieving All Error Messages For A Field
+#### Field တစ္ခုမွ Error Message မ်ားထုတ္ယူျခင္း
 
 	foreach ($messages->get('email') as $message)
 	{
 		//
 	}
 
-#### Retrieving All Error Messages For All Fields
+#### Field အားလုံးမွ Error Message မ်ားထုတ္ယူျခင္း
 
 	foreach ($messages->all() as $message)
 	{
 		//
 	}
 
-#### Determining If Messages Exist For A Field
+#### Field တစ္ခုမွ message ရွိမရွိ စစ္ေဆးျခင္း
 
 	if ($messages->has('email'))
 	{
 		//
 	}
 
-#### Retrieving An Error Message With A Format
+#### Error Message မ်ားအား Format ေျပာင္း၍ ထုတ္ယူျခင္း
 
 	echo $messages->first('email', '<p>:message</p>');
+	
+> **မွတ္ခ်က္:**  ပုံမွန္အားျဖင့္ messages မ်ားကုိ Bootstrap ျဖင့္ အဆင္ေျပမည့္ ပုံစံမ်ားအေနျဖင့္ သတ္မွတ္ထားပါသည္။
 
-> **Note:** By default, messages are formatted using Bootstrap compatible syntax.
-
-#### Retrieving All Error Messages With A Format
+#### Error Messages မ်ားအား Format တစ္ခု သတ္မွတ္၍ ထုတ္ယူျခင္း
 
 	foreach ($messages->all('<li>:message</li>') as $message)
 	{
@@ -110,9 +114,9 @@ After calling the `messages` method on a `Validator` instance, you will receive 
 	}
 
 <a name="error-messages-and-views"></a>
-## Error Messages & Views
+## Error Message မ်ားႏွင့္ View မ်ား
 
-Once you have performed validation, you will need an easy way to get the error messages back to your views. This is conveniently handled by Laravel. Consider the following routes as an example:
+Validation ကုိ ေဆာင္ရြက္ျပီးသည္ႏွင့္ Error message မ်ားကုိ လြယ္လင့္တကူ ျပန္လည္ျပသႏုိင္ရန္ လုိအပ္ေပသည္။ ထုိလုိအပ္ခ်က္မ်ားကုိ Laravel မွ အဆင္ေျပလြယ္ကူစြာ ျဖည့္စြမ္းထားသည္။ ေအာက္ပါ route မ်ားကုိ ဥပမာ အေနျဖင့္ၾကည့္ပါ။
 
 	Route::get('register', function()
 	{
@@ -131,28 +135,29 @@ Once you have performed validation, you will need an easy way to get the error m
 		}
 	});
 
-Note that when validation fails, we pass the `Validator` instance to the Redirect using the `withErrors` method. This method will flash the error messages to the session so that they are available on the next request.
+	
+Note that when စိစစ္ျခင္း မေအာင္ျမင္ပါက `Validator` instance ကုိ `withErrors` method ျဖင့္ Error မ်ားကို passing ေပးလုိက္ျပီး Redirect ျပဳလုပ္လုိက္သည္ ကုိ ေတြ ့ရေပမည္။ အဆုိပါ method ကုိ အသုံးျပဳျခင္းျဖင့္ error message မ်ားကို လြယ္လင့္တကူ ျဖတ္ကနဲ  ျပသရာတြင္ သုံးႏုိင္ရင္ next request ၏ Session ထဲတြင္ ထည့္သြင္းထားပါသည္။
 
-However, notice that we do not have to explicitly bind the error messages to the view in our GET route. This is because Laravel will always check for errors in the session data, and automatically bind them to the view if they are available. **So, it is important to note that an `$errors` variable will always be available in all of your views, on every request**, allowing you to conveniently assume the `$errors` variable is always defined and can be safely used. The `$errors` variable will be an instance of `MessageBag`.
+သုိ ့ပင္ေသာ္ညား GET route နဲ ့ Error Message မ်ားကုိ အေသခ်ည္ေႏွာင္ထားရန္ မလုိသည္ကို သတိျပဳရမည္။ အဘယ္ေၾကာင့္ဆုိေသာ္ Laravel သည္ Session data မ်ားမွ Error မ်ားကုိ စစ္ေဆးျပီး view ဆီသုိ ့ အဆင္ေျပသည္ႏွင့္ တျပိဳင္နက္ ျပသႏုိင္ရန္ ျပင္ဆင္ထားသည္ကုိ သတိျပဳရမည္။ **ထုိေၾကာင့္ အေရးၾကီးသည့္ အခ်က္မွာ`$errors` ဟုသည္ variable မွာ သင့္ view ၏ request တုိင္းတြင္ ျပင္ဆင္ထားေသာေၾကာင့္ အျမဲတမ္း အဆင္သင့္ ျဖစ္ေနသည္ကုိ မွတ္ထားရန္လုိသည္။ `$errors` variable မွာ `MessageBag` ၏ instance ျဖစ္သည္။
 
-So, after redirection, you may utilize the automatically bound `$errors` variable in your view:
+ထုိေၾကာင့္ redirect ျပဳလုပ္ျပီးေနာက္ `$errors` variable ႏွင့္ သင့္ view မွာ အလုိအေလ်ာက္ ခ်ည္ေႏွာင္ျပီးသား ျဖစ္ေပသည္။
 
 	<?php echo $errors->first('email'); ?>
 
-### Named Error Bags
+### အမည္ေပးထားေသာ Error Bag မ်ား
 
-If you have multiple forms on a single page, you may wish to name the `MessageBag` of errors. This will allow you to retrieve the error messages for a specific form. Simply pass a name as the second argument to `withErrors`:
+သင့္အေနျဖင့္ Page တစ္ခုတည္းတြင္ မ်ားျပားလွေသာ form မ်ားသည္ရွိသည္ ဆုိပါစုိ ့။ ထုိအခါ သင့္အေနျဖင့္ Error မ်ား၏ `MessageBag` မ်ားကုိ ကြဲျပားျခားနား ေစရန္ အမည္နာမ ေပးလုိေပမည္။ ထုိအခါတြင္ သင့္အေနျဖင့္ `withErrors` ဟုသည့္ method ၏ ဒုတိယ argument အေနျဖင့္ မိမိေပးလုိသည့္ အမည္ကုိ ထည့္သြင္းႏုိင္သည္။
 
 	return Redirect::to('register')->withErrors($validator, 'login');
 
-You may then access the named `MessageBag` instance from the `$errors` variable:
+ထုိေနာက္ သင့္အေနျဖင့္ `$errors` variable မွ `MessageBag` instance ကုိ ေအာက္ပါအတုိင္း ဆြဲထုတ္ႏုိင္သည္။
 
 	<?php echo $errors->login->first('email'); ?>
 
 <a name="available-validation-rules"></a>
-## Available Validation Rules
+## အသုံးျပဳႏုိင္သည့္ စိစစ္ျခင္း Rule မ်ား
 
-Below is a list of all available validation rules and their function:
+ေအာက္တြင္ ေဖာ္ျပထားသည္မွာ အသုံးျပဳႏုိင္ေသာ စိစစ္ေရး rule မ်ားႏွင့္ ၄င္းတုိ ့၏ function မ်ားျဖစ္ၾကသည္။
 
 - [Accepted](#rule-accepted)
 - [Active URL](#rule-active-url)
@@ -195,82 +200,83 @@ Below is a list of all available validation rules and their function:
 <a name="rule-accepted"></a>
 #### accepted
 
-The field under validation must be _yes_, _on_, or _1_. This is useful for validating "Terms of Service" acceptance.
+အဆုိပါ field တြင္ စိစစ္သည္မွာ  _yes_, _on_, သုိ ့မဟုတ္  _1_  တုိ ့ျဖစ္သည္။ "Terms of Service" ကဲ့သုိ ့ တခုသာ ေရြးမေရြး စိစစ္ရာေနရာမ်ားတြင္ ၄င္းကုိ အသုံးျပဳႏုိင္သည္။
+
 
 <a name="rule-active-url"></a>
 #### active_url
 
-The field under validation must be a valid URL according to the `checkdnsrr` PHP function.
+အဆုိပါ field တြင္ စိစစ္သည္မွာ `checkdnsrr` ဟုသည္ PHP function ကုိ အသုံးျပဳ၍ အင္ထုထားသည့္ URL ဟုတ္မဟုတ္ကို စစ္ေဆးသြားမည္ ျဖစ္သည္။
 
 <a name="rule-after"></a>
 #### after:_date_
 
-The field under validation must be a value after a given date. The dates will be passed into the PHP `strtotime` function.
+အဆုိပါ field တြင္ စိစစ္သည္မွာ သတ္မွတ္ထားေသာ date အတြင္းတြင္သာ ထည့္သြင္းေစရႏ္ ျဖစ္သည္။ date မ်ားကုိ  PHP ၏ `strtotime` function ကုိ အသုံးျပဳ၍ ေျပာင္းလဲကာ စိစစ္သြားမည္ ျဖစ္သည္။
 
 <a name="rule-alpha"></a>
 #### alpha
-
-The field under validation must be entirely alphabetic characters.
+အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ မ်ားသာ ျဖစ္ရမည္ ျဖစ္သည္။ ဥပမာ ကိန္းဂဏန္းမ်ားကို လက္ခံသြားမည္ မဟုတ္။
 
 <a name="rule-alpha-dash"></a>
 #### alpha_dash
 
-The field under validation may have alpha-numeric characters, as well as dashes and underscores.
+အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ ႏွင့္ ကိန္းဂဏန္းမ်ားသာ မက dash ႏွင့္ underscore ကုိပါ လက္ခံသြားမည္ ျဖစ္သည္။
 
 <a name="rule-alpha-num"></a>
 #### alpha_num
 
-The field under validation must be entirely alpha-numeric characters.
+အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ ႏွင့္ ကိန္းဂဏန္းမ်ားသာ လက္ခံသြားမည္။
 
 <a name="rule-array"></a>
 #### array
 
-The field under validation must be of type array.
+အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ array အမ်ိဳးအစားကိုသာ လက္ခံသြားမည္။
 
 <a name="rule-before"></a>
 #### before:_date_
 
-The field under validation must be a value preceding the given date. The dates will be passed into the PHP `strtotime` function.
+အဆုိပါ field တြင္ပါဝင္ေသာ အခ်က္အလက္မ်ားကို date ျဖင့္ စိစစ္သတ္မွတ္ျခင္း ျဖစ္သည္။ dates မ်ားကုိ PHP မွ `strtotime` function ကုိ အသုံးျပဳ၍ passing ေပးသြားမည္ ျဖစ္သည္။
 
 <a name="rule-between"></a>
 #### between:_min_,_max_
 
-The field under validation must have a size between the given _min_ and _max_. Strings, numerics, and files are evaluated in the same fashion as the `size` rule.
+အဆုိပါ field တြင္ထည့္သြင္းေသာ အခ်က္အလက္မ်ား ၏ အမ်ားဆုံးႏွင့္ အနည္းဆုံး တန္ဖုိးမ်ားကုိ သတ္မွတ္ျခင္း ျဖစ္ျပီး String ၊ numeric ႏွင့္ file မ်ားကို `size` rule ကုိ အသုံးျပဳသကဲ့သုိ ့ ဆင္တင္တင္ပင္ ျဖစ္သည္။
 
 <a name="rule-confirmed"></a>
 #### confirmed
 
-The field under validation must have a matching field of `foo_confirmation`. For example, if the field under validation is `password`, a matching `password_confirmation` field must be present in the input.
+အဆုိပါ field ၏ အခ်က္အလက္သည္ ရည္ညြန္း field ၏ အခ်က္အလက္ ဥပမာ `foo_confirmation`  ႏွင့္ တူညီရမည္ ျဖစ္သည္။ ဥပမာ ျပဳရေသာ္ `password` field သည္ `password_confirmation` field ႏွင့္ ထပ္တူညီရမည္ ျဖစ္သည္။
 
 <a name="rule-date"></a>
 #### date
 
-The field under validation must be a valid date according to the `strtotime` PHP function.
+တိက် မွန္ကန္ေသာ date ျဖစ္ေစရန္ စိစစ္ေပးျပီး `strtotime` ဟူေသာ PHP function ကုိ အသုံးျပဳထားသည္။
 
 <a name="rule-date-format"></a>
 #### date_format:_format_
 
-The field under validation must match the _format_ defined according to the `date_parse_from_format` PHP function.
+အဆုိပါ field မွ format ႏွင့္ တူညီရမည္ ျဖစ္ျပီး `date_parse_from_format` ဟူသည္ PHP function ကုိ အသုံးျပဳထားသည္။
 
 <a name="rule-different"></a>
 #### different:_field_
 
+အဆုိပါ field သည္ အျခား ရည္ညြန္း field ႏွင့္ လုံးဝ ကြဲျပားျခားရမည္ ျဖစ္သည္။
 The given _field_ must be different than the field under validation.
 
 <a name="rule-digits"></a>
 #### digits:_value_
 
-The field under validation must be _numeric_ and must have an exact length of _value_.
+အဆုိပါ file တြင္ numeric value ျဖစ္ျပီး တိက်ေသခ်ာေသာ ဂဏန္း အလုံးအေရအတြက္ ကုိသာ ထည့္သြင္းရမည္ျဖစ္သည္။
 
 <a name="rule-digits-between"></a>
 #### digits_between:_min_,_max_
 
-The field under validation must have a length between the given _min_ and _max_.
+အဆုိ field တြင္ _min_ and _max_ အၾကား ထည့္သြင္းရေသာ ဂဏန္းအလုံးအေရအတြက္ကုိသာ ထည့္သြင္းခြင့္ရမည္ျဖစ္သည္။
 
 <a name="rule-email"></a>
 #### email
 
-The field under validation must be formatted as an e-mail address.
+အဆုိပါ field တြင္ email address format အတုိင္း ထည့္သြင္းထားျခင္း ရွိမရွိ စစ္ေဆးသြားမည္ ျဖစ္သည္။
 
 <a name="rule-exists"></a>
 #### exists:_table_,_column_
