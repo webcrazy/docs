@@ -101,9 +101,9 @@ Since the Laravel translator is powered by the Symfony Translation component, yo
 <a name="validation"></a>
 ## Validation
 
-For localization for validation errors and messages, take a look at the <a href="/docs/validation#localization">documentation on Validation</a>.
+Localization အတြက္ အသံုးျပဳႏိုင္တဲ့ validation errors နဲ႔ messages ေတြကိုေတာ့ အသံုးျပဳနည္း လမ္းညႊန္ရဲ့<a href="/docs/validation#localization">Validation</a> မွာ ၾကည့္ႏိုင္ပါတယ္။
 
 <a name="overriding-package-language-files"></a>
 ## Overriding Package Language Files
 
-Many packages ship with their own language lines. Instead of hacking the package's core files to tweak these lines, you may override them by placing files in the `app/lang/packages/{locale}/{package}` directory. So, for example, if you need to override the English language lines in `messages.php` for a package named `skyrim/hearthfire`, you would place a language file at: `app/lang/packages/en/hearthfire/messages.php`. In this file you would define only the language lines you wish to override. Any language lines you don't override will still be loaded from the package's language files.
+Laravel နဲ႔အတူ တြဲစပ္အသံုးျပဳႏိုင္တဲ့ packages ေတြမွာ သူတို႔ရဲ့ ကုိယ္ပိုင္ ဘာသာစကားဖိုင္ေတြတစ္ပါတည္းပါလာပါတယ္။ အဲ့ဒီဖိုင္ေတြကို change ဖို႔ packages ေတြရဲ့ မူရင္းဖိုင္ေတြကို သြားျပင္ေနမဲ့အစား `app/lang/packages/{locale}/{package}` လမ္းေၾကာင္းေအာက္ကေနတစ္ဆင့္ override ျပဳလုပ္ႏိုင္ပါတယ္။ ဥပမာ `skyrim/hearthfire` လို႔ အမည္တြင္တဲ့ package အတြက္ `messages.php` ဖိုင္ထဲမွာရွိတဲ့ English Language ကို override လုပ္ခ်င္တယ္ဆိုရင္ `app/lang/packages/en/hearthfire/messages.php` ဖိုင္ကေနတစ္ဆင့္ ျပဳလုပ္ႏိုင္ပါတယ္။ Override လုပ္ဖို႔လိုအပ္တဲ့ စကားစုေတြကိုပဲ အဲ့ဒီဖိုင္ထဲမွာသတ္မွတ္ထားဖို႔လိုအပ္ပါတယ္။ က်န္တဲ့စကားစုအားလံုးကိုေတာ့ package ရဲ့ language ဖိုင္ထဲက ေနပဲ အလုပ္လုပ္သြားမွာျဖစ္ပါတယ္။ 
