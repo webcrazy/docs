@@ -22,21 +22,21 @@ Laravel Cashier provides an expressive, fluent interface to [Stripe's](https://s
 
 #### Composer
 
-First, add the Cashier package to your `composer.json` file:
+ပထမဆံုး သင္႕ရဲ႕ Composer File မွာ Casher package ကိုထည္႕ေပးပါ၊
 
 	"laravel/cashier": "~2.0"
 
 #### Service Provider
 
-Next, register the `Laravel\Cashier\CashierServiceProvider` in your `app` configuration file.
+ေနာက္... သင္ရဲ႕ `app` configuration file ထဲမွာ `Laravel\Cashier\CashierServiceProvider` ကို regiter လုပ္ပါ၊
 
 #### Migration
 
-Before using Cashier, we'll need to add several columns to your database. Don't worry, you can use the `cashier:table` Artisan command to create a migration to add the necessary column. Once the migration has been created, simply run the `migrate` command.
+Chashier ကိုမသံုးခင္မွာ... columns တစ္ခ်ိဳ႕ကို သင္႕ရဲ႕ database ထဲကို add လုပ္ဖို႕လိုပါမယ္။ မစိုးရိမ္ပါနဲ႕... လိုအပ္တဲ႕ column ေတြကိုထက္ထည္႕ဖို႕  `cashier:table` Artisan command ကိုသံုးႏိုင္ပါတယ္။
 
 #### Model Setup
 
-Next, add the BillableTrait and appropriate date mutators to your model definition:
+ေနာက္... သင္႕ရဲ႕ model definition မွာ BillableTrait နဲ႕ appropriate date mutators ေတြကို add လုိက္ပါ:
 
 	use Laravel\Cashier\BillableTrait;
 	use Laravel\Cashier\BillableInterface;
@@ -51,28 +51,27 @@ Next, add the BillableTrait and appropriate date mutators to your model definiti
 
 #### Stripe Key
 
-Finally, set your Stripe key in one of your bootstrap files:
+ေနာက္ဆံုးမွာေတာ႕ သင္႕ရဲ႕ Stripe key ကိုသင္႕ရဲ႕ bootstrap files တစ္ခုထဲမွာ set လုပ္လိုက္ပါ
 
 	User::setStripeKey('stripe-key');
 
 <a name="subscribing-to-a-plan"></a>
 ## Subscribing To A Plan
 
-Once you have a model instance, you can easily subscribe that user to a given Stripe plan:
-
+user ကို Stripe plan တစ္ခုေပးဖို႕ သင္႕မွာ model instance တစ္ခုရွိတယ္ဆိုရင္ လြယ္လြယ္ကူကူ subscribe လုပ္ႏိုင္ပါတယ္
 	$user = User::find(1);
 
 	$user->subscription('monthly')->create($creditCardToken);
 
-If you would like to apply a coupon when creating the subscription, you may use the `withCoupon` method:
+subscription ကို create လုပ္ၿပီးသြားၿပီဆိုရင္ သင္႕အေနနဲ႕ cupon ကို apply လုပ္ဖို႕ `withCoupon` ကိုသံုးႏိုင္ပါတယ္
 
 	$user->subscription('monthly')
 	     ->withCoupon('code')
 	     ->create($creditCardToken);
 
-The `subscription` method will automatically create the Stripe subscription, as well as update your database with Stripe customer ID and other relevant billing information.
+Stripe subscription ကို `subscription` method က automatically create လုပ္သြားလိမ္႕မယ္... သင္႕ရဲ႕ Strip customer ID နဲ႕ အျခား billing information နဲ႕ပတ္သတ္တဲ႕ database ေတြေကာ update လုပ္သြားပါလိမ္႕မယ္။
 
-If your plan has a trial period, make sure to set the trial end date on your model after subscribing:
+သင္႕မွာ trail period ရွိတယ္ဆိုရင္ သင္႕ရဲ႕ model မွာ trial end date ကို subscribing လုပ္ၿပီးမွာ set လုပ္ထားရဲ႕လားဆိုတာကိုေသခ်ာ make sure လုပ္ပါ။
 
 	$user->trial_ends_at = Carbon::now()->addDays(14);
 
@@ -80,12 +79,11 @@ If your plan has a trial period, make sure to set the trial end date on your mod
 
 <a name="no-card-up-front"></a>
 ## No Card Up Front
-
-If your application offers a free-trial with no credit-card up front, set the `cardUpFront` property on your model to `false`:
+သင္႕ရဲ႕ application က ပထမဆံုး free-trial တစ္ခုကို credit-card မပါဘဲ လက္ခံမယ္ဆိုရင္ `cardUpFront` ကိုသင္႕ရဲ႕ modle မွာ `false` ဆိုၿပီး set လုပ္ပါ...
 
 	protected $cardUpFront = false;
 
-On account creation, be sure to set the trial end date on the model:
+Account creation မွာ trial ေနာက္ဆံုးရက္ကို model မွာ set လုပ္ထားရဲ႕လားဆိုတာကို make sure လုပ္ပါ...
 
 	$user->trial_ends_at = Carbon::now()->addDays(14);
 
@@ -94,16 +92,16 @@ On account creation, be sure to set the trial end date on the model:
 <a name="swapping-subscriptions"></a>
 ## Swapping Subscriptions
 
-To swap a user to a new subscription, use the `swap` method:
+Subscription အသစ္တစ္ခုမွာ user တစ္ေယာက္ ကို swap လုပ္ခ်င္တယ္ဆိုရင္  `swap` method ကိုသံုးပါ...
 
 	$user->subscription('premium')->swap();
 
-If the user is on trial, the trial will be maintained as normal. Also, if a "quantity" exists for the subscription, that quantity will also be maintained.
+တကယ္လို႕ user က trial မွာဘဲရွိေနတယ္ ဆိုရင္ trial က ပံုမွန္ maintained လုပ္သြားပါ႕မယ္။ ေနာက္ subscription အတြက္ "quantity" တစ္ခုရွိတယ္ဆိုရင္ အဲ႕ဒီ႕ quantity ကိုလည္း maintain လုပ္သြားပါ႕မယ္။
 
 <a name="subscription-quantity"></a>
 ## Subscription Quantity
 
-Sometimes subscriptions are affected by "quantity". For example, your application might charge $10 per month per user on an account. To easily increment or decrement your subscription quantity, use the `increment` and `decrement` methods:
+တစ္ခါတစ္ေလမွာ subscriptions ေတြက "quantity" ကေနၿပီးေတာ႕ affect ျဖစ္တယ္။ ဥပမာ... သင္႕ရဲ႕ application က user account တစ္ခုအတြက္ တစ္လ ကို $10 charge လုပ္တယ္ဆိုပါေတာ႕။ သင္႕ရဲ႕ subscription quantity ကို တိုးခ်င္တာဘဲျဖစ္ျဖစ္၊ ေလ်ာ႕ခ်င္တာဘဲျဖစ္ျဖစ္ လြယ္လြယ္ကူကူ လုပ္ခ်င္တယ္ဆိုရင္ `increment` နဲ႕ `decrement` methods ကိုသံုးႏိုင္ပါတယ္
 
 	$user = User::find(1);
 
@@ -120,7 +118,7 @@ Sometimes subscriptions are affected by "quantity". For example, your applicatio
 <a name="cancelling-a-subscription"></a>
 ## Cancelling A Subscription
 
-Cancelling a subscription is a walk in the park:
+Subscription တစ္ခုကို Cancel လုပ္တာ ပန္ၿခံထဲမွာ လမ္းေလွ်ာက္သလိုပါဘဲ...
 
 	$user->subscription()->cancel();
 
