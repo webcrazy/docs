@@ -3,7 +3,7 @@
 - [မိတ္ဆက္](#introduction)
 - [Language Files](#language-files)
 - [အေျခခံအသံုးျပဳျခင္း](#basic-usage)
-- [Pluralization](#pluralization)
+- [အမ်ားကိန္းျပဳျခင္း](#pluralization)
 - [Validation Localization](#validation)
 - [Overriding Package Language Files](#overriding-package-language-files)
 
@@ -47,7 +47,7 @@ Application ရဲ့ ပံုမွန္ ဘာသာစကားကိုေ
 	'fallback_locale' => 'en',
 
 <a name="basic-usage"></a>
-## Basic Usage
+## အေျခခံအသံုးျပဳနည္း
 
 #### ဘာသာစကားသတ္မွတ္ထားေသာ ဖိုင္မွ စကားစုမ်ား ရယူျခင္း
 
@@ -79,21 +79,21 @@ Application ရဲ့ ပံုမွန္ ဘာသာစကားကိုေ
 	}
 
 <a name="pluralization"></a>
-## Pluralization
+## အမ်ားကိန္းျပဳလုပ္ျခင္း
 
-Pluralization is a complex problem, as different languages have a variety of complex rules for pluralization. You may easily manage this in your language files. By using a "pipe" character, you may separate the singular and plural forms of a string:
+အမ်ားကိန္းျပဳလုပ္ျခင္းကိစၥ ဟာ နည္းနည္းေတာ့ ရႈပ္ေထြးပါတယ္။ မတူညီတဲ့ languages ေတြအတြက္ မတူညီတဲ့ အမ်ားကိန္းျပဳလုပ္နည္းေတြ ရွိပါတယ္။ Laravel မွာေတာ့ အမ်ားကိန္းျပဳလုပ္ဖို႔အတြက္ "pipe" character ကို အနည္းကိန္းအတြက္ ျပဳလုပ္ထားတဲ့ စကားစုနဲ႔ အမ်ားကိန္းအတြက္သတ္မွတ္မဲ့ စကားစုၾကားမွာ ခံျပီးအသံုးျပဳႏိုင္ပါတယ္။ အမ်ားကိန္းျပဳလုပ္တာကိုနားလည္ဖို႔အတြက္ ေအာက္ပါ ဥပမာကိုၾကည့္ပါ။ 
 
 	'apples' => 'There is one apple|There are many apples',
 
-You may then use the `Lang::choice` method to retrieve the line:
+စကားစုေတြကို ယူသံုးဖို႔အတြက္ေတာ့ `Lang::choice` mehtod ကိုအသံုးျပဳႏိုင္ပါတယ္။
 
 	echo Lang::choice('messages.apples', 10);
 
-You may also supply a locale argument to specify the language. For example, if you want to use the Russian (ru) language:
+Local အတြက္သတ္မွတ္ထားတဲ့ စကားလံုးကိုလဲ သတ္မွတ္ေပးလိုက္ႏိုင္ပါတယ္။ ဥပမာ - Russian (ru) language ကိုအသံုးျပဳခ်င္တယ္ဆိုရင္ -
 
 	echo Lang::choice('товар|товара|товаров', $count, array(), 'ru');
 
-Since the Laravel translator is powered by the Symfony Translation component, you may also create more explicit pluralization rules easily:
+Laravel translator ဟာ Symfony Translation component ကိုအသံုးျပဳထားတဲ့အတြက္ေၾကာင့္ သင့္အေနနဲ႔ ပိုၿပီး ရွင္းလင္းတိက်တဲ့ အမ်ားကိန္းျပဳနည္း သတ္မွတ္ခ်က္ကို ျပဳလုပ္ႏိုင္ပါတယ္။ 
 
 	'apples' => '{0} There are none|[1,19] There are some|[20,Inf] There are many',
 
