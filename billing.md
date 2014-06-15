@@ -15,7 +15,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravel Cashier provides an expressive, fluent interface to [Stripe's](https://stripe.com) subscription billing services. It handles almost all of the boilerplate subscription billing code you are dreading writing. In addition to basic subscription management, Cashier can handle coupons, swapping subscription, subscription "quantites", cancellation grace periods, and even generate invoice PDFs.
+Laravel Cashier က Subscription Billing Service တစ္ခုျဖစ္တဲ့ Stripe သံုးတဲ့အခါ ပိုၿပီးလြယ္ကူေစေအာင္လို႔ လုပ္ေပးထားပါတယ္။ Stripe သံုးဖို႔အတြက္ အစအဆံုး ျပန္ေရးေနစရာမလိုေတာ့ေအာင္လို႔ အေျခခံ Code ေတြ ေရးထားၿပီးသားျဖစ္ပါတယ္။ အေျခခံ Subscription Management အျပင္ , Coupons, Subscription ကို Upgrade လုပ္တဲ့ Feature (Swap), Subscription Quantities, Subscription ကို သတ္မွတ္ထားတဲ့ ကာလအတြင္း Subscription ကို Cancel လုပ္လို႔ရမယ့္ Feature နဲ႔ Invoice ကို PDF ထုတ္လို႔ရေအာင္လဲ ကူညီေပးပါတယ္။
 
 <a name="configuration"></a>
 ## Configuration
