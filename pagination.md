@@ -1,22 +1,22 @@
 # Pagination
 
-- [Configuration](#configuration)
-- [Usage](#usage)
+- [ျပင္ဆင္ျခင္း](#configuration)
+- [အသံုးအႏႈန္း](#usage)
 - [Appending To Pagination Links](#appending-to-pagination-links)
 - [Converting To JSON](#converting-to-json)
 - [Custom Presenters](#custom-presenters)
 
 <a name="configuration"></a>
-## Configuration
+## ျပင္ဆင္ျခင္း
 
-In other frameworks, pagination can be very painful. Laravel makes it a breeze. There is a single configuration option in the `app/config/view.php` file. The `pagination` option specifies which view should be used to create pagination links. By default, Laravel includes two views.
+Frameworks ေတာ္ေတာ္မ်ားမ်ားအတြက္ေတာ့ pagination ျပဳလုပ္ဖို႔အတြက္ စိတ္ပ်က္စရာ ကိစၥေတြ ႀကံဳေတြ႔ႏိုင္ပါတယ္။ Laravel ကေတာ့ ဒီကိစၥကို လြယ္လြယ္ကူကူ ပဲျပဳလုပ္ႏိုင္ေအာင္ အဆင္သင့္ ျပင္ဆင္ထားေပးပါတယ္။`app/config/view.php` ဖိုင္ထဲမွာ pagination အတြက္ option တစ္ခု ပါရွိပါတယ္။ အဲ့ဒီ `pagination` option မွာ pagination links ေတြအတြက္ ဘယ္ view ကိုအသံုးျပဳသင့္တယ္ဆိုတာကို သတ္မွတ္ေပးထားႏိုင္ပါတယ္။ ပံုမွန္အတိုင္းဆိုရင္ေတာ့ Laravel မွာ pagination အတြက္ view ႏွစ္ခုကို သတ္မွတ္ေပးထားပါတယ္။ 
 
-The `pagination::slider` view will show an intelligent "range" of links based on the current page, while the `pagination::simple` view will simply show "previous" and "next" buttons. **Both views are compatible with Twitter Bootstrap out of the box.**
+`pagination::slider` ကိုအသံုးျပဳမယ္ဆိုရင္ လက္ရွိ view မွာေဖာ္ျပထားတဲ့ items အေရအတြက္ကိုအေျခခံပီးေတာ့ links ေတြထုတ္ေပးပါတယ္။ `pagination::simple` view ကေတာ့ "previous" နဲ႔ "next" button ႏွစ္ခုထုတ္ေပးပါတယ္။ အဲ့ဒီ view ႏွစ္ခုစလံုးဟာ Twitter Bootstrap နဲ႔ အဆင္ေျပေျပတြဲဖက္အသံုးျပဳႏိုင္ပါတယ္။ 
 
 <a name="usage"></a>
-## Usage
+## အသံုးအႏႈန္း
 
-There are several ways to paginate items. The simplest is by using the `paginate` method on the query builder or an Eloquent model.
+အခ်က္အလက္ေတြကို paginate လုပ္လုပ္ဖို႔အတြက္ နည္းနည္းေတြ အမ်ားႀကီးရွိပါတယ္။ အဲ့ဒီအထဲကမွ `paginate` method ကို Laravel ရဲ့ Query Builder သို႔မဟုတ္ Eloquent Model ေတြနဲ႔တဲသံုးတဲ့နည္းကေတာ့ အရိုးရွင္းဆံုးနည္းလမ္းျဖစ္ပါတယ္။ 
 
 #### Paginating Database Results
 
@@ -24,13 +24,13 @@ There are several ways to paginate items. The simplest is by using the `paginate
 
 #### Paginating An Eloquent Model
 
-You may also paginate [Eloquent](/docs/eloquent) models:
+[Eloquent](/docs/eloquent) models ေတြကိုလည္း paginate လုပ္ႏိုင္ပါတယ္ -
 
 	$allUsers = User::paginate(15);
 
 	$someUsers = User::where('votes', '>', 100)->paginate(15);
 
-The argument passed to the `paginate` method is the number of items you wish to display per page. Once you have retrieved the results, you may display them on your view, and create the pagination links using the `links` method:
+`paginate` method ကို passing ေပးလိုက္တဲ့ argument(number) ဟာ စာမ်က္ႏွာတစ္ခုေပၚမွာ အခ်က္အလက္ ဘယ္ေလာက္ေပၚမယ္ဆိုတဲ့ အေရအတြက္ျဖစ္ပါတယ္။ Pagination links ေတြကို view မွာျပန္ျပဖို႔အတြက္ေတာ့ `links` method ကိုအသံုးျပဳႏိုင္ပါတယ္။ 
 
 	<div class="container">
 		<?php foreach ($users as $user): ?>
@@ -40,13 +40,13 @@ The argument passed to the `paginate` method is the number of items you wish to 
 
 	<?php echo $users->links(); ?>
 
-This is all it takes to create a pagination system! Note that we did not have to inform the framework of the current page. Laravel will determine this for you automatically.
+လက္ရွိ စာမ်က္ႏွာနဲ႔ပတ္သက္ၿပီး framework ကို ဘာျပင္ဆင္မႈမွ မလုပ္ခဲ့တာကို သတိျပဳမိမွာပါ။ အဲ့ဒီအတြက္ laravel က အလိုအေလ်ာက္ဆံုးျဖတ္ေပးပါတယ္။ 
 
-If you would like to specify a custom view to use for pagination, you may pass a view to the `links` method:
+Pagination အတြက္ custom view ကိုအသံုးျပဳခ်င္ရင္ေတာ့ `links` method ထဲမွာ view ကို passing ေပးလိုက္ရံုပါပဲ။
 
 	<?php echo $users->links('view.name'); ?>
 
-You may also access additional pagination information via the following methods:
+Pagination information ေတြကိုလဲ ေအာက္ပါ methods ေတြကိုအသံုးျပဳၿပီး ရယူႏိုင္ပါတယ္။ 
 
 - `getCurrentPage`
 - `getLastPage`
@@ -59,28 +59,29 @@ You may also access additional pagination information via the following methods:
 
 #### "Simple Pagination"
 
-If you are only showing "Next" and "Previous" links in your pagination view, you have the option of using the `simplePaginate` method to perform a more efficient query. This is useful for larger datasets when you do not require the display of exact page numbers on your view:
+အကယ္၍ pagination view မွာ "next" နဲ႔ "previous" links ေတြကိုပဲျပခ်င္ရင္ေတာ့ ပိုၿပီးအဆင္ေျပတဲ့ query ကုိျပဳလုပ္ေပးႏိုင္တဲ့ `simplePaginate` method ကိုအသံုးျပဳႏိုင္ပါတယ္။ view မွာ page numbers ေတြအတိအက်ေဖာ္ျပစရာမလိုတဲ့အတြက္ data ေတြအမ်ားႀကီးကို paginate လုပ္ရာမွာ ပိုမို အဆင္ေျပေစပါတယ္။ 
 
 	$someUsers = User::where('votes', '>', 100)->simplePaginate(15);
 
 #### Creating A Paginator Manually
 
-Sometimes you may wish to create a pagination instance manually, passing it an array of items. You may do so using the `Paginator::make` method:
+အကယ္၍ pagination ကို manually ျပဳလုပ္ခ်င္ရင္ `Paginator::make` method ကိုအသံုးျပဳႏိုင္ပါတယ္။ 
 
 	$paginator = Paginator::make($items, $totalItems, $perPage);
 
 #### Customizing The Paginator URI
 
-You may also customize the URI used by the paginator via the `setBaseUrl` method:
+Paginator ကအသံုးျပဳတဲ့ URI ကိုလဲ `setBaseUrl` method ကိုအသံုးျပဳၿပီး ျပင္ဆင္ႏိုင္ပါတယ္။ 
 
 	$users = User::paginate();
 
 	$users->setBaseUrl('custom/url');
 
-The example above will create URLs like the following: http://example.com/custom/url?page=2
+အေပၚမွာျပထားတဲ့ ဥပမာအရဆိုရင္ pagination URLs ဟာ http://example.com/custom/url?page=2 ပံုစံျဖစ္သြားမွာပါ။
 
 <a name="appending-to-pagination-links"></a>
 ## Appending To Pagination Links
+
 
 You can add to the query string of pagination links using the `appends` method on the Paginator:
 
