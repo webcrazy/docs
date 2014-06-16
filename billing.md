@@ -15,7 +15,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravel Cashier က Subscription Billing Service တစ္ခုျဖစ္တဲ့ Stripe သံုးတဲ့အခါ ပိုၿပီးလြယ္ကူေစေအာင္လို႔ လုပ္ေပးထားပါတယ္။ Stripe သံုးဖို႔အတြက္ အစအဆံုး ျပန္ေရးေနစရာမလိုေတာ့ေအာင္လို႔ အေျခခံ Code ေတြ ေရးထားၿပီးသားျဖစ္ပါတယ္။ အေျခခံ Subscription Management အျပင္ , Coupons, Subscription ကို Upgrade လုပ္တဲ့ Feature (Swap), Subscription Quantities, Subscription ကို သတ္မွတ္ထားတဲ့ ကာလအတြင္း Subscription ကို Cancel လုပ္လို႔ရမယ့္ Feature နဲ႔ Invoice ကို PDF ထုတ္လို႔ရေအာင္လဲ ကူညီေပးပါတယ္။
+Laravel Cashier က Subscription Billing Service တစ္ခုျဖစ္တဲ့ Stripe သံုးတဲ့အခါ ပိုၿပီးလြယ္ကူေစေအာင္လို႔ လုပ္ေပးထားပါတယ္။ Stripe သံုးဖို႔အတြက္ အစအဆံုး ျပန္ေရးေနစရာမလိုေတာ့ေအာင္လို႔ အေျခခံ Code ေတြ ေရးထားၿပီးသားျဖစ္ပါတယ္။ အေျခခံ Subscription Management အျပင္ , Coupons, Subscription ကို Upgrade လုပ္တဲ့ Feature (Swap), Subscription Quantities, Subscription ကို သတ္မွတ္ထားတဲ့ ကာလအတြင္း Subscription ကို Cancel လုပ္လို႔ရမယ့္ Feature လည္းပါဝင္ပါတယ္။ ေနာက္ Invoice ကို PDF ထုတ္လို႔ရေအာင္လဲ ကူညီေပးပါတယ္။
 
 <a name="configuration"></a>
 ## Configuration
@@ -118,32 +118,33 @@ Subscription အသစ္တစ္ခုမွာ user တစ္ေယာက္ 
 <a name="cancelling-a-subscription"></a>
 ## Cancelling A Subscription
 
-Subscription တစ္ခုကို Cancel လုပ္တာ ပန္ၿခံထဲမွာ လမ္းေလွ်ာက္သလိုပါဘဲ...
+Subscription တစ္ခုကို Cancel လုပ္တာ ပန္ၿခံထဲမွာ လမ္းေလွ်ာက္ရသလိုပါဘဲ...
 
 	$user->subscription()->cancel();
 
-When a subscription is cancelled, Cashier will automatically set the `subscription_ends_at` column on your database. This column is used to know when the `subscribed` method should begin returning `false`. For example, if a customer cancels a subscription on March 1st, but the subscription was not scheduled to end until March 5th, the `subscribed` method will continue to return `true` until March 5th.
+Subscription တစ္ခု cancel လုပ္သြားတဲ႕အခ်ိန္မွာ Casher က  `subscription_ends_at` column ကို သင္႕ရဲ႕ database မွာ အလိုလို set လုပ္သြားပါ႕မယ္။  ဥပမာ၊ customer က March လတစ္ရက္ေန႕မွာ subscription ကို Cancel လုပ္သြားတယ္ ေနာက္ March 5 ရက္ေန႕မွာ subscription end ျဖစ္မယ္လို႕ schedule လည္းမရွိဘူးဆိုရင္ `subscribed` method က March လ 5 ရက္ေန႕အထိ return `true` ျပန္ေနမွာပါ။
 
 <a name="resuming-a-subscription"></a>
 ## Resuming A Subscription
 
-If a user has cancelled their subscription and you wish to resume it, use the `resume` method:
+User တစ္ေယာက္ကသူရဲ႕ subscription ကို cancelled လုပ္သြားတဲ႕အခ်ိန္မွာ သင္႕အေနနဲ႕ သူတို႕ resume ျပန္လုပ္ဖို႕ဆုေတာင္းေနမွာေပါ႕၊ ဒါဆိုရင္ `resume` method ကိုသံုးလိုက္ပါ:
 
 	$user->subscription('monthly')->resume($creditCardToken);
 
-If the user cancels a subscription and then resumes that subscription before the subscription has fully expired, they will not be billed immediately. Their subscription will simply be re-activated, and they will be billed on the original billing cycle.
+တကယ္လို႕ user က subscription တစ္ခုကို cancels လုပ္လိုက္တယ္၊ ေနာက္ subscription က fully expired မျဖစ္ခင္မွာ user က resume ျပန္လုပ္လုိက္တယ္ဆိုရင္ သူတို႕က bill ေတြကိုခ်က္ခ်င္းမျဖတ္ပါဘူး။ သူတို႕ရဲ႕ subscription ေတြကို ရိုးရွင္းစြာပဲ re-activated လုပ္သြားပါတယ္ ေနာက္ သူတို႕ရဲ႕ မူလ    billing cycle အတိုင္း  billed လုပ္ပါလိမ္႕မယ္။
 
 <a name="checking-subscription-status"></a>
 ## Checking Subscription Status
 
-To verify that a user is subscribed to your application, use the `subscribed` command:
+User တစ္ေယာက္က သင္႕ရဲ႕ application ကို subscribed လုပ္သြားတာကို verify လုပ္ရန္အတြက္ `subscribed` command: ကိုသံုးပါ-
 
 	if ($user->subscribed())
 	{
 		//
 	}
 
-The `subscribed` method makes a great candidate for a route filter:
+`subscribed` method က Route filter အတြက္ အေကာင္းဆံုး အသင္႕ေတာ္ဆံုး လုပ္ေဆာင္ေပးထားပါတယ္:
+
 
 	Route::filter('subscribed', function()
 	{
@@ -153,28 +154,29 @@ The `subscribed` method makes a great candidate for a route filter:
 		}
 	});
 
-You may also determine if the user is still within their trial period (if applicable) using the `onTrial` method:
+သင့္အေနနဲ႕ user က trial ကာလမွာဟုတ္မဟုတ္ကို `onTrial` method ကိုအသံုးျပဳၿပီးေတာ႕ ဆံုးျဖတ္ေပးႏိုင္ပါတယ္:
 
 	if ($user->onTrial())
 	{
 		//
 	}
 
-To determine if the user was once an active subscriber, but has cancelled their subscription, you may use the `cancelled` method:
+သင္႕အေနနဲ႕ user က active subscriber လား ဒါမွမဟုတ္ cancel လုပ္လုိက္ၿပီလားဆိုတာကို `cancelled` method ကိုသံုးၿပီးေတာ႕စစ္ႏိုင္ပါတယ္:
+
 
 	if ($user->cancelled())
 	{
 		//
 	}
 
-You may also determine if a user has cancelled their subscription, but are still on their "grace period" until the subscription fully expires. For example, if a user cancels a subscription on March 5th that was scheduled to end on March 10th, the user is on their "grace period" until March 10th. Note that the `subscribed` method still returns `true` during this time.
+သင္႕အေနနဲ႕ User ကသူ႕ရဲ႕ subscription ကို cancel လုပ္လိုက္ၿပီ ဒါေပမယ္႕ subscription ကလည္း fully expires မျဖစ္ေသးဘူး... တစ္နည္းအားျဖင့္ "grace period" လည္းမကုန္ေသးဘူးဆိုတာကို ဆံုးျဖတ္ႏိုင္ပါတယ္။ ဥပမာ၊ user က subscription ကို March လ 5 ရက္ေန႕မွာ cancel လုပ္လိုက္တယ္... တကယ္တမ္း scheduled မွာက March လ 10 ရက္ေန႕မွၿပီးမယ္ဆိုရင္ အဲ႕ဒီ႕ user က "grace period" မွာဘဲရွိေသးပါတယ္။ မွတ္ထားရမွာက `subscribed` method ကအဲ႕ဒီ႕အခ်ိန္မွာ `true` return ဘဲျပန္ေနဦးမွာပါ။
 
 	if ($user->onGracePeriod())
 	{
 		//
 	}
 
-The `everSubscribed` method may be used to determine if the user has ever subscribed to a plan in your application:
+User က သင့္ application ရဲ႕ plan တစ္ခုကိုအၿမဲတမ္း subscribed လုပ္ၿပီးၿပီလား မလုပ္ရေသးဘူးလားဆိုတာကို `everSubscribed` method နဲ႕ စစ္ေဆးႏိုင္ပါတယ္:
 
 	if ($user->everSubscribed())
 	{
