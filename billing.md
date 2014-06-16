@@ -186,13 +186,13 @@ User က သင့္ application ရဲ႕ plan တစ္ခုကိုအၿ�
 <a name="handling-failed-payments"></a>
 ## Handling Failed Payments
 
-What if a customer's credit card expires? No worries - Cashier includes a Webhook controller that can easily cancel the customer's subscription for you. Just point a route to the controller:
+ကတယ္လို႕ customer ရဲ႕ credit card expires ျဖစ္ေနရင္လား၊ မစိုးရိမ္ပါနဲ႕ Cashuer က Webhook controller တစ္ခုပါဝင္ပါတယ္... အဲဒါကဘာလုပ္ႏိုင္လဲဆိုရင္  customer ရဲ႕ subscriotion ကို သင္႕အတြက္ cancel လုပ္ေပးပါလိမ္႕မယ္:
 
 	Route::post('stripe/webhook', 'Laravel\Cashier\WebhookController@handleWebhook');
 
-That's it! Failed payments will be captured and handled by the controller. The controller will cancel the customer's subscription after three failed payment attempts. The `stripe/webhook` URI in this example is just for example. You will need to configure the URI in your Stripe settings.
+ဒါဘဲေလ။ Payment Fail ျဖစ္တာေတြ capture လုပ္တာေတြကိုလည္း controller ကေျဖရွင္းေပးပါလိမ့္မယ္။ controller က payment သံုးႀကိမ္ႀကိဳးစားလို႕မွမရဘူးဆိုရင္ customer subscription ကို cancel လုပ္ပါလိမ္႕မယ္။ ဒီဥပမာမွာ `stripe/webbhook` URI က ဥပမာအတြက္ပါ။ သင္႕အေနနဲ႕အဲ႕ဒီ႕ URI  ကို Stripe Setting မွာ configure လုပ္ဖို႕လိုမွာပါ။
 
-If you have additional Stripe webhook events you would like to handle, simply extend the Webhook controller:
+သင္ထက္ေပါင္းထည္႕ထားတဲ႕ Stripe webhook event ကိုေျဖရွင္းခ်င္တယ္ဆိုရင္ Webhook controller ကို ရိုးရွင္းစြာဘဲ extend လုပ္လိုက္ပါ :
 
 	class WebhookController extends Laravel\Cashier\WebhookController {
 
@@ -211,11 +211,11 @@ If you have additional Stripe webhook events you would like to handle, simply ex
 <a name="invoices"></a>
 ## Invoices
 
-You can easily retrieve an array of a user's invoices using the `invoices` method:
+သင့္အေနနဲ႕ user invoices  ရဲ႕ array ကို `invoices` method ကိုသံုးၿပီးေတာ႕ လြယ္လြယ္ကူကူ retrieve လုပ္ႏိုင္ပါတယ္:
 
 	$invoices = $user->invoices();
 
-When listing the invoices for the customer, you may use these helper methods to display the relevant invoice information:
+Customer ေတြရဲ႕ invoices ေတြကို List လုပ္တဲ႕အခ်ိန္မွာ သင္႕အေနနဲ႕ invoice information နဲ႕ပတ္သတ္တာေတြကို ျပသဖို႕ရာအတြက္ ဒီ helper ေတြကို သံုးႏိုင္ပါတယ္:
 
 	{{ $invoice->id }}
 
@@ -223,7 +223,7 @@ When listing the invoices for the customer, you may use these helper methods to 
 
 	{{ $invoice->dollars() }}
 
-Use the `downloadInvoice` method to generate a PDF download of the invoice. Yes, it's really this easy:
+Invoice PDF download ကို generate ထုတ္ဖို႕ရာအတြက္ `downloadInvoice` method ကိုသံုးပါ။  ဟုတ္တယ္...ဒါကတကယ္ကိုလြယ္ပါတယ္:
 
 	return $user->downloadInvoice($invoice->id, [
 		'vendor'  => 'Your Company',
