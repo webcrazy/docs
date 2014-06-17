@@ -8,60 +8,63 @@
 <a name="introduction"></a>
 ## Introduction
 
-In addition to the commands provided with Artisan, you may also build your own custom commands for working with your application. You may store your custom commands in the `app/commands` directory; however, you are free to choose your own storage location as long as your commands can be autoloaded based on your `composer.json` settings.
+သင္႕ application အတြက္ ကိုယ္ပိုင္ commands ေတြကို Artisan နဲ႕ ထပ္ၿပီးေပါင္းထည္႕ႏိုင္ဖို႕စီစဥ္ထားပါတယ္။ သင္႕ရဲ႕ ကိုယ္ပိုင္ command ေတြကို `app/commands` မွာထက္ထည္႕ႏိုင္ပါတယ္၊ သို႕ေသာ္လည္းသင္႕ရဲ႕ကိုယ္ပိုင္ command ေတြကို  သင္ႀကိဳက္တဲ႕ storage location မွာ ထည္႕ႏိုင္ပါတယ္ သင္႕ရဲ႕ commands ေတြကို သင္႕ရဲ႕ `composer.json` settings မွာအေျခခံၿပီး autoload လုပ္ႏိုင္ပါတယ္။
 
 <a name="building-a-command"></a>
 ## Building A Command
 
 ### Generating The Class
 
-To create a new command, you may use the `command:make` Artisan command, which will generate a command stub to help you get started:
+command တစ္ခုအသစ္ create လုပ္ရန္အတြက္ - သင္႕အေနနဲ႕  `command:make` Artisan command ကိုသံုးႏိုင္ပါတယ္၊  အဲ႕ဒါကသင္စတင္ဖို႕ command stub တစ္ခုကို generate ထုတ္ေပးပါလိမ္႕မယ္:
 
 #### Generate A New Command Class
 
 	php artisan command:make FooCommand
 
-By default, generated commands will be stored in the `app/commands` directory; however, you may specify custom path or namespace:
+Default အရ generate လုပ္လိုက္တဲ႕ commands ေတြက `app/commands` မွာ  သိမ္းဆည္းထားမွာပါ... သို႕ေသာ္လည္း သင္႕ကိုယ္ပိုင္ path ဒါမွမဟုတ္ namespace တစ္ခု သတ္မွတ္ထားလို႕လည္းရပါတယ္:
 
 	php artisan command:make FooCommand --path=app/classes --namespace=Classes
 
-When creating the command, the `--command` option may be used to assign the terminal command name:
+command create လုပ္တဲ႕အခ်ိန္မွာ `--command` option ကို terminal command name အျဖစ္ assign လုပ္ရန္အသံုးျပဳပါလိမ္႕မယ္:
 
 	php artisan command:make AssignUsers --command=users:assign
 
 ### Writing The Command
 
-Once your command is generated, you should fill out the `name` and `description` properties of the class, which will be used when displaying your command on the `list` screen.
+သင္႕ရဲ႕  command generate လုပ္ၿပီးသြားတဲ႕အခ်ိန္မွာ သင္႕အေနနဲ႕ `name` နဲ႕ `description` ေတြရဲ႕ class properties ေတြကို ျဖည္႔စြတ္သင္႕ပါတယ္၊ အဲဒါေတြက သင္႕ရဲ႕ command ေတြကို `list` နဲ႕ screen မွာထုတ္ျပတဲ႕အခ်ိန္မွာ အသံုးျပဳမွာပါ။
 
-The `fire` method will be called when your command is executed. You may place any command logic in this method.
+သင္႕ command excute ျဖစ္သြားၿပီဆိုရင္ `fire` method ကိုေခၚပါ႕မယ္။ ဒီ method မွာသင္ႀကိဳက္တဲ႕ command logic ကိုထည္႕ႏိုင္တယ္။
 
 ### Arguments & Options
 
-The `getArguments` and `getOptions` methods are where you may define any arguments or options your command receives. Both of these methods return an array of commands, which are described by a list of array options.
+The `getArguments` and `getOptions` methods are where you may define any arguments or options your command receives. 
 
-When defining `arguments`, the array definition values represent the following:
+`getArguments` နဲ႕ `getOptions` methods ေတြကို သင္႕ command ကေနလက္ခံရရွိတဲ႕ မည္သည္႕ arguments ဒါမွမဟုတ္ options မဆို  သတ္မွတ္ႏိုင္ပါတယ္။ ဒီ methods ႏွစ္ခုက commands ေတြကို array တစ္ခု return ျပန္ပါတယ္၊ အဲ႕ဒီ႕ array က array options ေတြကို list တစ္ခုပံုစံနဲ႕ ေဖာ္ျပထားပါတယ္။
+
+`arguments` ေတြကို defining လုပ္တဲ႕အခ်ိန္မွာ array definition values ေတြကို ေအာက္မွာျပထားသလိုကိုယ္စားျပဳပါတယ္ -
 
 	array($name, $mode, $description, $defaultValue)
 
-The argument `mode` may be any of the following: `InputArgument::REQUIRED` or `InputArgument::OPTIONAL`.
+argument `mode` ေတြက `InputArgument::REQUIRED` or `InputArgument::OPTIONAL` တစ္ခုခုျဖစ္လိမ္႕မယ္။
 
-When defining `options`, the array definition values represent the following:
+`options` ေတြကိုသတ္မွတ္တဲ႕အခ်ိန္မွာ array definition values ေတြကို ေအာက္မွာျပထားသလိုကိုယ္စားျပဳပါတယ္ -
 
 	array($name, $shortcut, $mode, $description, $defaultValue)
 
-For options, the argument `mode` may be: `InputOption::VALUE_REQUIRED`, `InputOption::VALUE_OPTIONAL`, `InputOption::VALUE_IS_ARRAY`, `InputOption::VALUE_NONE`.
+options အတြက္... argument `mode` က `InputOption::VALUE_REQUIRED`, `InputOption::VALUE_OPTIONAL`, `InputOption::VALUE_IS_ARRAY`, `InputOption::VALUE_NONE` ေတြျဖစ္လိမ္႕မယ္။
 
-The `VALUE_IS_ARRAY` mode indicates that the switch may be used multiple times when calling the command:
+`VALUES_IS_ARRAY` mode ကဘာကိုေျပာတာလဲဆိုရင္ command ကိုေခၚတဲ႕အခ်ိန္မွာ ႏွစ္ႀကိမ္သံုးလို႕ရတယ္ဆိုတာကိုျပတာပါ -
 
 	php artisan foo --option=bar --option=baz
 
 The `VALUE_NONE` option indicates that the option is simply used as a "switch":
+`VALUE_NONE` ကဘာကိုေျပာတာလဲဆိုရင္ သင္႕ရဲ႕ option ကို "switch" အျဖစ္ရိုးရွင္းစြာ သံုးလို႕ရတယ္ဆိုတာကိုျပတာပါ -
 
 	php artisan foo --option
 
 ### Retrieving Input
 
-While your command is executing, you will obviously need to access the values for the arguments and options accepted by your application. To do so, you may use the `argument` and `option` methods:
+ဘာလို႕ သင္႕ရဲ႕ command က execute ျဖစ္တာလည္း၊ သင္ေသခ်ာေပါက္ arguments နဲ႕ options ေတြကို  application က accept လုပ္လိုက္ တဲ႕ values access လုပ္ဖို႕လိုပါမယ္ လို႕ပါမယ္ ဒါကိုလုပ္ဖို႕ဆိုရင္ သင္႕အေနနဲ႕ `argument` နဲ႕ `option` method  ေတြကိုသံုးဖို႕လိုပါလိမ္႕မယ္။
 
 #### Retrieving The Value Of A Command Argument
 
@@ -83,6 +86,8 @@ While your command is executing, you will obviously need to access the values fo
 
 To send output to the console, you may use the `info`, `comment`, `question` and `error` methods. Each of these methods will use the appropriate ANSI colors for their purpose.
 
+Console ဆီကို output send ဖို႕ရာအတြက္  သင္႕အေနနဲ႕  `info`, `comment`, `question` နဲ႕ `error` methods ေတြကိုအသံုးျပဳဖို႕လိုပါလိမ္႕မယ္။ ဒီ methods တစ္ခုခ်င္းဆီက သူတို႕ရည္ရြယ္ခ်က္နဲ႕သင္႕ေလ်ာ္တဲ႕ ANSI colors ေတြကို အသံုးျပဳပါလိမ္႕မယ္။
+
 #### Sending Information To The Console
 
 	$this->info('Display this on the screen');
@@ -93,7 +98,7 @@ To send output to the console, you may use the `info`, `comment`, `question` and
 
 ### Asking Questions
 
-You may also use the `ask` and `confirm` methods to prompt the user for input:
+user input prompt အတြက္ သင္႕အေနနဲ႕ `ask` နဲ႕ `confirm` methods ေတြကို အသံုးျပဳႏိုင္ပါတယ္ -
 
 #### Asking The User For Input
 
@@ -110,7 +115,7 @@ You may also use the `ask` and `confirm` methods to prompt the user for input:
 		//
 	}
 
-You may also specify a default value to the `confirm` method, which should be `true` or `false`:
+သင္႕အေနနဲ႕ default value ကိုု `confirm` method အျဖစ္ သတ္မွတ္ထားႏိုင္ပါတယ္၊ ဒါက `true` or `false` ျဖစ္သင္႕ပါတယ္:
 
 	$this->confirm($question, true);
 
@@ -119,19 +124,19 @@ You may also specify a default value to the `confirm` method, which should be `t
 
 #### Registering An Artisan Command
 
-Once your command is finished, you need to register it with Artisan so it will be available for use. This is typically done in the `app/start/artisan.php` file. Within this file, you may use the `Artisan::add` method to register the command:
+သင္ရဲ႕ command ကၿပီးသြားၿပီ ဆိုရင္ သင္႕အေနနဲ႕ Artisan နဲ႕ register လုပ္ရပါမယ္ ဒါမွ အသံုးျပဳလို႕ရမွာပါ။ ဒါကိုလည္း ထံုးစံအတိုင္းဘဲ `app/start/artisan.php` file မွာ လုပ္ရမွာပါ။ ဒီ file ထဲမွာ command ကို register လုပ္ဖို႕ရာအတြက္ `Artisan::add` method ကို အသံုးျပဳသင္႕ပါတယ္ -
 
 	Artisan::add(new CustomCommand);
 
 #### Registering A Command That Is In The IoC Container
 
-If your command is registered in the application [IoC container](/docs/ioc), you may use the `Artisan::resolve` method to make it available to Artisan:
+သင္႕ ရဲ႕ command က application ရဲ႕  [IoC container](/docs/ioc) ထဲမွာ Register လုပ္ထားတယ္ဆိုရင္... Arisan ကေနေခၚႏိုင္ေအာင္ သင္႕အေနဲ႕ `Artisan::resolve` method ကို အသံုးျပဳရပါ႕မယ္ - 
 
 	Artisan::resolve('binding.name');
 
 <a name="calling-other-commands"></a>
 ## Calling Other Commands
 
-Sometimes you may wish to call other commands from your command. You may do so using the `call` method:
+တစ္ခါတစ္ေလသင္႕ command ကေနအျခား command တစ္ခုခုကိုေခၚခ်င္မွာေပါ့... ဒါလည္းရပါတယ္  `call` method နဲ႕ေခၚလိုက္ရံုပါဘဲ -
 
 	$this->call('command:name', array('argument' => 'foo', '--option' => 'bar'));
