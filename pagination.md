@@ -82,20 +82,19 @@ Paginator ကအသံုးျပဳတဲ့ URI ကိုလဲ `setBaseUrl` 
 <a name="appending-to-pagination-links"></a>
 ## Appending To Pagination Links
 
-
-You can add to the query string of pagination links using the `appends` method on the Paginator:
+သင့္အေနနဲ႔ `appends` method ကိုအသံုးျပဳၿပီး query string ေတြကို pagination links ေတြဆီကို ထပ္ေပါင္းထည့္လို႔ရပါတယ္။
 
 	<?php echo $users->appends(array('sort' => 'votes'))->links(); ?>
 
-This will generate URLs that look something like this:
+အေပၚမွာေရးထားတဲ့ အတိုင္းဆိုရင္ URLs ဟာ ေအာက္ပါပံုစံနဲ႔ထြက္လာမွာပါ။
 
 	http://example.com/something?page=2&sort=votes
 
-If you wish to append a "hash fragment" to the paginator's URLs, you may use the `fragment` method:
+Paginator's URLs မွာ "hash fragment" ထပ္ေပါင္းထည့္ခ်င္ရင္ေတာ့ `fragment` method ကိုအသံုးျပဳႏိုင္ပါတယ္။ 
 
 	<?php echo $users->fragment('foo')->links(); ?>
 
-This method call will generate URLs that look something like this:
+အေပၚက mehtod call ဟာ URLs ကို ေအာက္ပါအတိုင္းထုတ္ေပးပါလိမ့္မယ္။
 
 	http://example.com/something?page=2#foo
 
@@ -107,11 +106,11 @@ The `Paginator` class implements the `Illuminate\Support\Contracts\JsonableInter
 <a name="custom-presenters"></a>
 ## Custom Presenters
 
-The default pagination presenter is Bootstrap compatible out of the box; however, you may customize this with a presenter of your choice.
+Pagination ရဲ့ UI style ဟာ default အေနအထားမွာ Bootstrap Frontend Framework က pagination ပံုစံအတိုင္းျပဳလုပ္ေပးထားပါတယ္။ သင့္အေနနဲ႔ customize presenter နဲ႔ အသံုးျပဳခ်င္တယ္ဆိုရင္လဲ အသံုးျပဳလို႔ရႏိုင္ပါတယ္။ 
 
 ### Extending The Abstract Presenter
 
-Extend the `Illuminate\Pagination\Presenter` class and implement its abstract methods. An example presenter for Zurb Foundation might look like this:
+`Illuminate\Pagination\Presenter` class ကို extend လုပ္ၿပီး အဲ့ဒီ class ရဲ့ abstract methods ေတြကို implement ျပဳလုပ္ၿပီးေျပာငး္လဲ အသံုးျပဳႏိုင္ပါတယ္။ ေအာက္မွာ ျပထားတဲ့ ဥပမာကေတာ့ Zurb Foundation ရဲ့ ပံုစံကိုေျပာင္းလဲ အသံုးျပဳထားတာျဖစ္ပါတယ္။ 
 
     class ZurbPresenter extends Illuminate\Pagination\Presenter {
 
@@ -134,7 +133,7 @@ Extend the `Illuminate\Pagination\Presenter` class and implement its abstract me
 
 ### Using The Custom Presenter
 
-First, create a view in your `app/views` directory that will server as your custom presenter. Then, replace `pagination` option in the `app/config/view.php` configuration file with the new view's name. Finally, the following code would be placed in your custom presenter view:
+ပထမဦးဆံုး custom presenter ျပဳလုပ္လို႔တဲ့ view ဖိုင္ကို `app/views` ေအာက္မွာ ျပဳလုပ္ေပးလိုက္ပါ။ ျပီးရင္ `app/config/view.php` ေအာက္မွာရွိတဲ့ `pagination` `pagination::slider-3` ေနရာမွာ အသစ္လုပ္ထားတဲ့ view file ရဲ့ name နဲ႔အစားထိုးလိုက္ပါ။ အေပၚမွာျပထားတဲ့ Zurb Foundation အတိုင္းဆိုရင္ သင့္ရဲ့ view ဖိုင္အသစ္ဟာ ေအာက္ပါ ပံုစံအတိုင္းျဖစ္ရမွာပါ။ 
 
     <ul class="pagination">
         <?php echo with(new ZurbPresenter($paginator))->render(); ?>
