@@ -44,4 +44,4 @@
 - [Artisan CLI](artisan.md)
 	- [Overview](artisan.md)
 	- [Development](commands.md)
- - [Contributing](contributing.md)
+- [Contributing](contributing.md)

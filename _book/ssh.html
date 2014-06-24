@@ -1,0 +1,907 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="./manifest.appcache">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>SSH | Laravel Framework Documentation (Myanmar)</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 0.5.2">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="./templates.html" />
+    
+    
+    <link rel="prev" href="./session.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="gitbook/style.css">
+
+    
+    <link rel="stylesheet" href="gitbook/plugins/plugin-zawgyicss/zawgyi.css">
+    
+
+
+        
+    <div class="book"  data-level="3.17" data-basepath="." data-revision="1403607994904">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="./" >Laravel Framework Documentation (Myanmar)</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+
+        
+
+        
+
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.</b> Laravel နိဒါန္း
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.1.</b> Laravel မိတ္ဆက္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="quick.html">
+            
+            <a href="./quick.html">
+                <i class="fa fa-check"></i> <b>1.2.</b> Laravel အက်ဥ္းခ်ဳပ္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="releases.html">
+            
+            <a href="./releases.html">
+                <i class="fa fa-check"></i> <b>1.3.</b> Release Notes
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="upgrade.html">
+            
+            <a href="./upgrade.html">
+                <i class="fa fa-check"></i> <b>1.4.</b> Upgrade Guide
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.</b> Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Laravel install လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="configuration.html">
+            
+            <a href="./configuration.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Configuration လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="homestead.html">
+            
+            <a href="./homestead.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Laravel ရဲ႕ Official Development Homestead အေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="lifecycle.html">
+            
+            <a href="./lifecycle.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Request Lifecycle 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="routing.html">
+            
+            <a href="./routing.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Route လုပ္ျခင္းအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="requests.html">
+            
+            <a href="./requests.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Requests ႏွင္႕ Input မ်ားအေၾကာင္း 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="responses.html">
+            
+            <a href="./responses.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Views ႏွင္႕ Responses မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="controllers.html">
+            
+            <a href="./controllers.html">
+                <i class="fa fa-check"></i> <b>2.8.</b> Controllers မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="errors.html">
+            
+            <a href="./errors.html">
+                <i class="fa fa-check"></i> <b>2.9.</b> Errors ႏွင္႕ Logging မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.</b> Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.1.</b> Authentication
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="billing.html">
+            
+            <a href="./billing.html">
+                <i class="fa fa-check"></i> <b>3.2.</b> Billing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="cache.html">
+            
+            <a href="./cache.html">
+                <i class="fa fa-check"></i> <b>3.3.</b> Cache
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="extending.html">
+            
+            <a href="./extending.html">
+                <i class="fa fa-check"></i> <b>3.4.</b> Core Extension
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="events.html">
+            
+            <a href="./events.html">
+                <i class="fa fa-check"></i> <b>3.5.</b> Events
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="facades.html">
+            
+            <a href="./facades.html">
+                <i class="fa fa-check"></i> <b>3.6.</b> Facades
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="html.html">
+            
+            <a href="./html.html">
+                <i class="fa fa-check"></i> <b>3.7.</b> Forms &amp; HTML
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="helpers.html">
+            
+            <a href="./helpers.html">
+                <i class="fa fa-check"></i> <b>3.8.</b> Helpers
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="ioc.html">
+            
+            <a href="./ioc.html">
+                <i class="fa fa-check"></i> <b>3.9.</b> IoC Container
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="localization.html">
+            
+            <a href="./localization.html">
+                <i class="fa fa-check"></i> <b>3.10.</b> Localization
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="mail.html">
+            
+            <a href="./mail.html">
+                <i class="fa fa-check"></i> <b>3.11.</b> Mail
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="packages.html">
+            
+            <a href="./packages.html">
+                <i class="fa fa-check"></i> <b>3.12.</b> Package Development
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="pagination.html">
+            
+            <a href="./pagination.html">
+                <i class="fa fa-check"></i> <b>3.13.</b> Pagination
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="queues.html">
+            
+            <a href="./queues.html">
+                <i class="fa fa-check"></i> <b>3.14.</b> Queues
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.15.</b> Security
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="session.html">
+            
+            <a href="./session.html">
+                <i class="fa fa-check"></i> <b>3.16.</b> Session
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="ssh.html">
+            
+            <a href="./ssh.html">
+                <i class="fa fa-check"></i> <b>3.17.</b> SSH
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="templates.html">
+            
+            <a href="./templates.html">
+                <i class="fa fa-check"></i> <b>3.18.</b> Templates
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="testing.html">
+            
+            <a href="./testing.html">
+                <i class="fa fa-check"></i> <b>3.19.</b> Unit Testing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="validation.html">
+            
+            <a href="./validation.html">
+                <i class="fa fa-check"></i> <b>3.20.</b> Validation
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.</b> Database
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.1.</b> အေျခခံ အသုံးျပဳပုံ
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="queries.html">
+            
+            <a href="./queries.html">
+                <i class="fa fa-check"></i> <b>4.2.</b> Query Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="eloquent.html">
+            
+            <a href="./eloquent.html">
+                <i class="fa fa-check"></i> <b>4.3.</b> Eloquent ORM
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="schema.html">
+            
+            <a href="./schema.html">
+                <i class="fa fa-check"></i> <b>4.4.</b> Schema Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="migrations.html">
+            
+            <a href="./migrations.html">
+                <i class="fa fa-check"></i> <b>4.5.</b> Migrations &amp; Seeding
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="redis.html">
+            
+            <a href="./redis.html">
+                <i class="fa fa-check"></i> <b>4.6.</b> Redis
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.</b> Artisan CLI
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.1.</b> Overview
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="commands.html">
+            
+            <a href="./commands.html">
+                <i class="fa fa-check"></i> <b>5.2.</b> Development
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="contributing.html">
+            
+            <a href="./contributing.html">
+                <i class="fa fa-check"></i> <b>6.</b> Contributing
+            </a>
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 51.21951219512195%;min-width: 48.78048780487805%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./introduction.html" title="Laravel မိတ္ဆက္" class="chapter done " data-progress="1.1" style="left: 2.4390243902439024%;"></a>
+    
+        <a href="./quick.html" title="Laravel အက်ဥ္းခ်ဳပ္" class="chapter done " data-progress="1.2" style="left: 4.878048780487805%;"></a>
+    
+        <a href="./releases.html" title="Release Notes" class="chapter done " data-progress="1.3" style="left: 7.317073170731708%;"></a>
+    
+        <a href="./upgrade.html" title="Upgrade Guide" class="chapter done " data-progress="1.4" style="left: 9.75609756097561%;"></a>
+    
+        <a href="./installation.html" title="Laravel install လုပ္ျခင္း" class="chapter done " data-progress="2.1" style="left: 12.195121951219512%;"></a>
+    
+        <a href="./configuration.html" title="Configuration လုပ္ျခင္း" class="chapter done " data-progress="2.2" style="left: 14.634146341463415%;"></a>
+    
+        <a href="./homestead.html" title="Laravel ရဲ႕ Official Development Homestead အေၾကာင္း" class="chapter done " data-progress="2.3" style="left: 17.073170731707318%;"></a>
+    
+        <a href="./lifecycle.html" title="Request Lifecycle " class="chapter done " data-progress="2.4" style="left: 19.51219512195122%;"></a>
+    
+        <a href="./routing.html" title="Route လုပ္ျခင္းအေၾကာင္း" class="chapter done " data-progress="2.5" style="left: 21.951219512195124%;"></a>
+    
+        <a href="./requests.html" title="Requests ႏွင္႕ Input မ်ားအေၾကာင္း " class="chapter done " data-progress="2.6" style="left: 24.390243902439025%;"></a>
+    
+        <a href="./responses.html" title="Views ႏွင္႕ Responses မ်ားအေၾကာင္း" class="chapter done " data-progress="2.7" style="left: 26.829268292682926%;"></a>
+    
+        <a href="./controllers.html" title="Controllers မ်ားအေၾကာင္း" class="chapter done " data-progress="2.8" style="left: 29.26829268292683%;"></a>
+    
+        <a href="./errors.html" title="Errors ႏွင္႕ Logging မ်ားအေၾကာင္း" class="chapter done " data-progress="2.9" style="left: 31.70731707317073%;"></a>
+    
+        <a href="./localization.html" title="Localization" class="chapter done " data-progress="3.10" style="left: 34.146341463414636%;"></a>
+    
+        <a href="./mail.html" title="Mail" class="chapter done " data-progress="3.11" style="left: 36.58536585365854%;"></a>
+    
+        <a href="./packages.html" title="Package Development" class="chapter done " data-progress="3.12" style="left: 39.02439024390244%;"></a>
+    
+        <a href="./pagination.html" title="Pagination" class="chapter done " data-progress="3.13" style="left: 41.46341463414634%;"></a>
+    
+        <a href="./queues.html" title="Queues" class="chapter done " data-progress="3.14" style="left: 43.90243902439025%;"></a>
+    
+        <a href="./security.html" title="Security" class="chapter done " data-progress="3.15" style="left: 46.34146341463415%;"></a>
+    
+        <a href="./session.html" title="Session" class="chapter done " data-progress="3.16" style="left: 48.78048780487805%;"></a>
+    
+        <a href="./ssh.html" title="SSH" class="chapter done " data-progress="3.17" style="left: 51.21951219512195%;"></a>
+    
+        <a href="./templates.html" title="Templates" class="chapter  " data-progress="3.18" style="left: 53.65853658536585%;"></a>
+    
+        <a href="./testing.html" title="Unit Testing" class="chapter  " data-progress="3.19" style="left: 56.09756097560975%;"></a>
+    
+        <a href="./billing.html" title="Billing" class="chapter  " data-progress="3.2" style="left: 58.53658536585366%;"></a>
+    
+        <a href="./validation.html" title="Validation" class="chapter  " data-progress="3.20" style="left: 60.97560975609756%;"></a>
+    
+        <a href="./cache.html" title="Cache" class="chapter  " data-progress="3.3" style="left: 63.41463414634146%;"></a>
+    
+        <a href="./extending.html" title="Core Extension" class="chapter  " data-progress="3.4" style="left: 65.85365853658537%;"></a>
+    
+        <a href="./events.html" title="Events" class="chapter  " data-progress="3.5" style="left: 68.29268292682927%;"></a>
+    
+        <a href="./facades.html" title="Facades" class="chapter  " data-progress="3.6" style="left: 70.73170731707317%;"></a>
+    
+        <a href="./html.html" title="Forms &amp; HTML" class="chapter  " data-progress="3.7" style="left: 73.17073170731707%;"></a>
+    
+        <a href="./helpers.html" title="Helpers" class="chapter  " data-progress="3.8" style="left: 75.60975609756098%;"></a>
+    
+        <a href="./ioc.html" title="IoC Container" class="chapter  " data-progress="3.9" style="left: 78.04878048780488%;"></a>
+    
+        <a href="./database.html" title="အေျခခံ အသုံးျပဳပုံ" class="chapter  " data-progress="4.1" style="left: 80.48780487804878%;"></a>
+    
+        <a href="./queries.html" title="Query Builder" class="chapter  " data-progress="4.2" style="left: 82.92682926829268%;"></a>
+    
+        <a href="./eloquent.html" title="Eloquent ORM" class="chapter  " data-progress="4.3" style="left: 85.36585365853658%;"></a>
+    
+        <a href="./schema.html" title="Schema Builder" class="chapter  " data-progress="4.4" style="left: 87.8048780487805%;"></a>
+    
+        <a href="./migrations.html" title="Migrations &amp; Seeding" class="chapter  " data-progress="4.5" style="left: 90.2439024390244%;"></a>
+    
+        <a href="./redis.html" title="Redis" class="chapter  " data-progress="4.6" style="left: 92.6829268292683%;"></a>
+    
+        <a href="./artisan.html" title="Overview" class="chapter  " data-progress="5.1" style="left: 95.1219512195122%;"></a>
+    
+        <a href="./commands.html" title="Development" class="chapter  " data-progress="5.2" style="left: 97.5609756097561%;"></a>
+    
+        <a href="./contributing.html" title="Contributing" class="chapter  new-chapter" data-progress="6" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_38">
+                    
+                        <h1 id="ssh">SSH</h1>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#tasks">Tasks</a></li>
+<li><a href="#sftp-downloads">SFTP Downloads</a></li>
+<li><a href="#sftp-uploads">SFTP Uploads</a></li>
+<li><a href="#tailing-remote-logs">Tailing Remote Logs</a></li>
+<li><a href="#envoy-task-runner">Envoy Task Runner</a></li>
+</ul>
+<p><a name="configuration"></a></p>
+<h2 id="configuration">Configuration</h2>
+<p>Laravel includes a simple way to SSH into remote servers and run commands, allowing you to easily build Artisan tasks that work on remote servers. The <code>SSH</code> facade provides the access point to connecting to your remote servers and running commands.</p>
+<p>The configuration file is located at <code>app/config/remote.php</code>, and contains all of the options you need to configure your remote connections. The <code>connections</code> array contains a list of your servers keyed by name. Simply populate the credentials in the <code>connections</code> array and you will be ready to start running remote tasks. Note that the <code>SSH</code> can authenticate using either a password or an SSH key.</p>
+<blockquote>
+<p><strong>Note:</strong> Need to easily run a variety of tasks on your remote server? Check out the <a href="#envoy-task-runner">Envoy task runner</a>!</p>
+</blockquote>
+<p><a name="basic-usage"></a></p>
+<h2 id="basic-usage">Basic Usage</h2>
+<h4 id="running-commands-on-the-default-server">Running Commands On The Default Server</h4>
+<p>To run commands on your <code>default</code> remote connection, use the <code>SSH::run</code> method:</p>
+<pre><code>SSH::run(array(
+    &#39;cd /var/www&#39;,
+    &#39;git pull origin master&#39;,
+));
+</code></pre><h4 id="running-commands-on-a-specific-connection">Running Commands On A Specific Connection</h4>
+<p>Alternatively, you may run commands on a specific connection using the <code>into</code> method:</p>
+<pre><code>SSH::into(&#39;staging&#39;)-&gt;run(array(
+    &#39;cd /var/www&#39;,
+    &#39;git pull origin master&#39;,
+));
+</code></pre><h4 id="catching-output-from-commands">Catching Output From Commands</h4>
+<p>You may catch the &quot;live&quot; output of your remote commands by passing a Closure into the <code>run</code> method:</p>
+<pre><code>SSH::run($commands, function($line)
+{
+    echo $line.PHP_EOL;
+});
+</code></pre><h2 id="tasks">Tasks</h2>
+<p><a name="tasks"></a></p>
+<p>If you need to define a group of commands that should always be run together, you may use the <code>define</code> method to define a <code>task</code>:</p>
+<pre><code>SSH::into(&#39;staging&#39;)-&gt;define(&#39;deploy&#39;, array(
+    &#39;cd /var/www&#39;,
+    &#39;git pull origin master&#39;,
+    &#39;php artisan migrate&#39;,
+));
+</code></pre><p>Once the task has been defined, you may use the <code>task</code> method to run it:</p>
+<pre><code>SSH::into(&#39;staging&#39;)-&gt;task(&#39;deploy&#39;, function($line)
+{
+    echo $line.PHP_EOL;
+});
+</code></pre><p><a name="sftp-downloads"></a></p>
+<h2 id="sftp-downloads">SFTP Downloads</h2>
+<p>The <code>SSH</code> class includes a simple way to download files using the <code>get</code> and <code>getString</code> methods:</p>
+<pre><code>SSH::into(&#39;staging&#39;)-&gt;get($remotePath, $localPath);
+
+$contents = SSH::into(&#39;staging&#39;)-&gt;getString($remotePath);
+</code></pre><p><a name="sftp-uploads"></a></p>
+<h2 id="sftp-uploads">SFTP Uploads</h2>
+<p>The <code>SSH</code> class also includes a simple way to upload files, or even strings, to the server using the <code>put</code> and <code>putString</code> methods:</p>
+<pre><code>SSH::into(&#39;staging&#39;)-&gt;put($localFile, $remotePath);
+
+SSH::into(&#39;staging&#39;)-&gt;putString($remotePath, &#39;Foo&#39;);
+</code></pre><p><a name="tailing-remote-logs"></a></p>
+<h2 id="tailing-remote-logs">Tailing Remote Logs</h2>
+<p>Laravel includes a helpful command for tailing the <code>laravel.log</code> files on any of your remote connections. Simply use the <code>tail</code> Artisan command and specify the name of the remote connection you would like to tail:</p>
+<pre><code>php artisan tail staging
+
+php artisan tail staging --path=/path/to/log.file
+</code></pre><p><a name="envoy-task-runner"></a></p>
+<h2 id="envoy-task-runner">Envoy Task Runner</h2>
+<ul>
+<li><a href="#envoy-installation">Installation</a></li>
+<li><a href="#envoy-running-tasks">Running Tasks</a></li>
+<li><a href="#envoy-multiple-servers">Multiple Servers</a></li>
+<li><a href="#envoy-parallel-execution">Parallel Execution</a></li>
+<li><a href="#envoy-task-macros">Task Macros</a></li>
+<li><a href="#envoy-notifications">Notifications</a></li>
+<li><a href="#envoy-updating-envoy">Updating Envoy</a></li>
+</ul>
+<p>Laravel Envoy provides a clean, minimal syntax for defining common tasks you run on your remote servers. Using a <a href="templates#blade-templating.html">Blade</a> style syntax, you can easily setup tasks for deployment, Artisan commands, and more.</p>
+<blockquote>
+<p><strong>Note:</strong> Envoy requires PHP version 5.4 or greater, and only runs on Mac / Linux operating systems.</p>
+</blockquote>
+<p><a name="envoy-installation"></a></p>
+<h3 id="installation">Installation</h3>
+<p>First, install Envoy using the Composer <code>global</code> command:</p>
+<pre><code>composer global require &quot;laravel/envoy=~1.0&quot;
+</code></pre><p>Make sure to place the <code>~/.composer/vendor/bin</code> directory in your PATH so the <code>envoy</code> executable is found when you run the <code>envoy</code> command in your terminal.</p>
+<p>Next, create an <code>Envoy.blade.php</code> file in the root of your project. Here&#39;s an example to get you started:</p>
+<pre><code>@servers([&#39;web&#39; =&gt; &#39;192.168.1.1&#39;])
+
+@task(&#39;foo&#39;, [&#39;on&#39; =&gt; &#39;web&#39;])
+    ls -la
+@endtask
+</code></pre><p>As you can see, an array of <code>@servers</code> is defined at the top of the file. You can reference these servers in the <code>on</code> option of your task declarations. Within your <code>@task</code> declarations you should place the Bash code that will be run on your server when the task is executed.</p>
+<p>The <code>init</code> command may be used to easily create a stub Envoy file:</p>
+<pre><code>envoy init user@192.168.1.1
+</code></pre><p><a name="envoy-running-tasks"></a></p>
+<h3 id="running-tasks">Running Tasks</h3>
+<p>To run a task, use the <code>run</code> command of your Envoy installation:</p>
+<pre><code>envoy run foo
+</code></pre><p>If needed, you may pass variables into the Envoy file using command line switches:</p>
+<pre><code>envoy run deploy --branch=master
+</code></pre><p>You may use the options via the Blade syntax you are used to:</p>
+<pre><code>@servers([&#39;web&#39; =&gt; &#39;192.168.1.1&#39;])
+
+@task(&#39;deploy&#39;, [&#39;on&#39; =&gt; &#39;web&#39;])
+    cd site
+    git pull origin {{ $branch }}
+    php artisan migrate
+@endtask
+</code></pre><h4 id="bootstrapping">Bootstrapping</h4>
+<p>You may use the <code>@setup</code> directive to declare variables and do general PHP work inside the Envoy file:</p>
+<pre><code>@setup
+    $now = new DateTime();
+
+    $environment = isset($env) ? $env : &quot;testing&quot;;
+@endsetup
+</code></pre><p>You may also use <code>@include</code> to include any PHP files:</p>
+<pre><code>@include(&#39;vendor/autoload.php&#39;);
+</code></pre><p><a name="envoy-multiple-servers"></a></p>
+<h3 id="multiple-servers">Multiple Servers</h3>
+<p>You may easily run a task across multiple servers. Simply list the servers in the task declaration:</p>
+<pre><code>@servers([&#39;web-1&#39; =&gt; &#39;192.168.1.1&#39;, &#39;web-2&#39; =&gt; &#39;192.168.1.2&#39;])
+
+@task(&#39;deploy&#39;, [&#39;on&#39; =&gt; [&#39;web-1&#39;, &#39;web-2&#39;]])
+    cd site
+    git pull origin {{ $branch }}
+    php artisan migrate
+@endtask
+</code></pre><p>By default, the task will be executed on each server serially. Meaning, the task will finish running on the first server before proceeding to execute on the next server.</p>
+<p><a name="envoy-parallel-execution"></a></p>
+<h3 id="parallel-execution">Parallel Execution</h3>
+<p>If you would like to run a task across multiple servers in parallel, simply add the <code>parallel</code> option to your task declaration:</p>
+<pre><code>@servers([&#39;web-1&#39; =&gt; &#39;192.168.1.1&#39;, &#39;web-2&#39; =&gt; &#39;192.168.1.2&#39;])
+
+@task(&#39;deploy&#39;, [&#39;on&#39; =&gt; [&#39;web-1&#39;, &#39;web-2&#39;], &#39;parallel&#39; =&gt; true])
+    cd site
+    git pull origin {{ $branch }}
+    php artisan migrate
+@endtask
+</code></pre><p><a name="envoy-task-macros"></a></p>
+<h3 id="task-macros">Task Macros</h3>
+<p>Macros allow you to define a set of tasks to be run in sequence using a single command. For instance:</p>
+<pre><code>@servers([&#39;web&#39; =&gt; &#39;192.168.1.1&#39;])
+
+@macro(&#39;deploy&#39;)
+    foo
+    bar
+@endmacro
+
+@task(&#39;foo&#39;)
+    echo &quot;HELLO&quot;
+@endtask
+
+@task(&#39;bar&#39;)
+    echo &quot;WORLD&quot;
+@endtask
+</code></pre><p>The <code>deploy</code> macro can now be run via a single, simple command:</p>
+<pre><code>envoy run deploy
+</code></pre><p><a name="envoy-notifications"></a>
+<a name="envoy-hipchat-notifications"></a></p>
+<h3 id="notifications">Notifications</h3>
+<h4 id="hipchat">HipChat</h4>
+<p>After running a task, you may send a notification to your team&#39;s HipChat room using the simple <code>@hipchat</code> directive:</p>
+<pre><code>@servers([&#39;web&#39; =&gt; &#39;192.168.1.1&#39;])
+
+@task(&#39;foo&#39;, [&#39;on&#39; =&gt; &#39;web&#39;])
+    ls -la
+@endtask
+
+@after
+    @hipchat(&#39;token&#39;, &#39;room&#39;, &#39;Envoy&#39;)
+@endafter
+</code></pre><p>You can also specify a custom message to the hipchat room. Any variables declared in <code>@setup</code> or included with <code>@include</code> will be available for use in the message:</p>
+<pre><code>@after
+    @hipchat(&#39;token&#39;, &#39;room&#39;, &#39;Envoy&#39;, &quot;$task ran on [$environment]&quot;)
+@endafter
+</code></pre><p>This is an amazingly simple way to keep your team notified of the tasks being run on the server.</p>
+<h4 id="slack">Slack</h4>
+<p>The following syntax may be used to send a notification to <a href="https://slack.com" target="_blank">Slack</a>:</p>
+<pre><code>@after
+    @slack(&#39;team&#39;, &#39;token&#39;, &#39;channel&#39;)
+@endafter
+</code></pre><p><a name="envoy-updating-envoy"></a></p>
+<h3 id="updating-envoy">Updating Envoy</h3>
+<p>To update Envoy, simply run the <code>self-update</code> command:</p>
+<pre><code>envoy self-update
+</code></pre><p>If your Envoy installation is in <code>/usr/local/bin</code>, you may need to use <code>sudo</code>:</p>
+<pre><code>sudo envoy self-update
+</code></pre>
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./session.html" class="navigation navigation-prev " aria-label="Previous page: Session"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./templates.html" class="navigation navigation-next " aria-label="Next page: Templates"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

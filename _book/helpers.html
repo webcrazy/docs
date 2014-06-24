@@ -1,0 +1,968 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="./manifest.appcache">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>Helpers | Laravel Framework Documentation (Myanmar)</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 0.5.2">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="./ioc.html" />
+    
+    
+    <link rel="prev" href="./html.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="gitbook/style.css">
+
+    
+    <link rel="stylesheet" href="gitbook/plugins/plugin-zawgyicss/zawgyi.css">
+    
+
+
+        
+    <div class="book"  data-level="3.8" data-basepath="." data-revision="1403607994904">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="./" >Laravel Framework Documentation (Myanmar)</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+
+        
+
+        
+
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.</b> Laravel နိဒါန္း
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.1.</b> Laravel မိတ္ဆက္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="quick.html">
+            
+            <a href="./quick.html">
+                <i class="fa fa-check"></i> <b>1.2.</b> Laravel အက်ဥ္းခ်ဳပ္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="releases.html">
+            
+            <a href="./releases.html">
+                <i class="fa fa-check"></i> <b>1.3.</b> Release Notes
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="upgrade.html">
+            
+            <a href="./upgrade.html">
+                <i class="fa fa-check"></i> <b>1.4.</b> Upgrade Guide
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.</b> Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Laravel install လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="configuration.html">
+            
+            <a href="./configuration.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Configuration လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="homestead.html">
+            
+            <a href="./homestead.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Laravel ရဲ႕ Official Development Homestead အေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="lifecycle.html">
+            
+            <a href="./lifecycle.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Request Lifecycle 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="routing.html">
+            
+            <a href="./routing.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Route လုပ္ျခင္းအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="requests.html">
+            
+            <a href="./requests.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Requests ႏွင္႕ Input မ်ားအေၾကာင္း 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="responses.html">
+            
+            <a href="./responses.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Views ႏွင္႕ Responses မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="controllers.html">
+            
+            <a href="./controllers.html">
+                <i class="fa fa-check"></i> <b>2.8.</b> Controllers မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="errors.html">
+            
+            <a href="./errors.html">
+                <i class="fa fa-check"></i> <b>2.9.</b> Errors ႏွင္႕ Logging မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.</b> Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.1.</b> Authentication
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="billing.html">
+            
+            <a href="./billing.html">
+                <i class="fa fa-check"></i> <b>3.2.</b> Billing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="cache.html">
+            
+            <a href="./cache.html">
+                <i class="fa fa-check"></i> <b>3.3.</b> Cache
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="extending.html">
+            
+            <a href="./extending.html">
+                <i class="fa fa-check"></i> <b>3.4.</b> Core Extension
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="events.html">
+            
+            <a href="./events.html">
+                <i class="fa fa-check"></i> <b>3.5.</b> Events
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="facades.html">
+            
+            <a href="./facades.html">
+                <i class="fa fa-check"></i> <b>3.6.</b> Facades
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="html.html">
+            
+            <a href="./html.html">
+                <i class="fa fa-check"></i> <b>3.7.</b> Forms &amp; HTML
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="helpers.html">
+            
+            <a href="./helpers.html">
+                <i class="fa fa-check"></i> <b>3.8.</b> Helpers
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="ioc.html">
+            
+            <a href="./ioc.html">
+                <i class="fa fa-check"></i> <b>3.9.</b> IoC Container
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="localization.html">
+            
+            <a href="./localization.html">
+                <i class="fa fa-check"></i> <b>3.10.</b> Localization
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="mail.html">
+            
+            <a href="./mail.html">
+                <i class="fa fa-check"></i> <b>3.11.</b> Mail
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="packages.html">
+            
+            <a href="./packages.html">
+                <i class="fa fa-check"></i> <b>3.12.</b> Package Development
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="pagination.html">
+            
+            <a href="./pagination.html">
+                <i class="fa fa-check"></i> <b>3.13.</b> Pagination
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="queues.html">
+            
+            <a href="./queues.html">
+                <i class="fa fa-check"></i> <b>3.14.</b> Queues
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.15.</b> Security
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="session.html">
+            
+            <a href="./session.html">
+                <i class="fa fa-check"></i> <b>3.16.</b> Session
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="ssh.html">
+            
+            <a href="./ssh.html">
+                <i class="fa fa-check"></i> <b>3.17.</b> SSH
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="templates.html">
+            
+            <a href="./templates.html">
+                <i class="fa fa-check"></i> <b>3.18.</b> Templates
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="testing.html">
+            
+            <a href="./testing.html">
+                <i class="fa fa-check"></i> <b>3.19.</b> Unit Testing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="validation.html">
+            
+            <a href="./validation.html">
+                <i class="fa fa-check"></i> <b>3.20.</b> Validation
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.</b> Database
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.1.</b> အေျခခံ အသုံးျပဳပုံ
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="queries.html">
+            
+            <a href="./queries.html">
+                <i class="fa fa-check"></i> <b>4.2.</b> Query Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="eloquent.html">
+            
+            <a href="./eloquent.html">
+                <i class="fa fa-check"></i> <b>4.3.</b> Eloquent ORM
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="schema.html">
+            
+            <a href="./schema.html">
+                <i class="fa fa-check"></i> <b>4.4.</b> Schema Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="migrations.html">
+            
+            <a href="./migrations.html">
+                <i class="fa fa-check"></i> <b>4.5.</b> Migrations &amp; Seeding
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="redis.html">
+            
+            <a href="./redis.html">
+                <i class="fa fa-check"></i> <b>4.6.</b> Redis
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.</b> Artisan CLI
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.1.</b> Overview
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="commands.html">
+            
+            <a href="./commands.html">
+                <i class="fa fa-check"></i> <b>5.2.</b> Development
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="contributing.html">
+            
+            <a href="./contributing.html">
+                <i class="fa fa-check"></i> <b>6.</b> Contributing
+            </a>
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 75.60975609756098%;min-width: 73.17073170731707%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./introduction.html" title="Laravel မိတ္ဆက္" class="chapter done " data-progress="1.1" style="left: 2.4390243902439024%;"></a>
+    
+        <a href="./quick.html" title="Laravel အက်ဥ္းခ်ဳပ္" class="chapter done " data-progress="1.2" style="left: 4.878048780487805%;"></a>
+    
+        <a href="./releases.html" title="Release Notes" class="chapter done " data-progress="1.3" style="left: 7.317073170731708%;"></a>
+    
+        <a href="./upgrade.html" title="Upgrade Guide" class="chapter done " data-progress="1.4" style="left: 9.75609756097561%;"></a>
+    
+        <a href="./installation.html" title="Laravel install လုပ္ျခင္း" class="chapter done " data-progress="2.1" style="left: 12.195121951219512%;"></a>
+    
+        <a href="./configuration.html" title="Configuration လုပ္ျခင္း" class="chapter done " data-progress="2.2" style="left: 14.634146341463415%;"></a>
+    
+        <a href="./homestead.html" title="Laravel ရဲ႕ Official Development Homestead အေၾကာင္း" class="chapter done " data-progress="2.3" style="left: 17.073170731707318%;"></a>
+    
+        <a href="./lifecycle.html" title="Request Lifecycle " class="chapter done " data-progress="2.4" style="left: 19.51219512195122%;"></a>
+    
+        <a href="./routing.html" title="Route လုပ္ျခင္းအေၾကာင္း" class="chapter done " data-progress="2.5" style="left: 21.951219512195124%;"></a>
+    
+        <a href="./requests.html" title="Requests ႏွင္႕ Input မ်ားအေၾကာင္း " class="chapter done " data-progress="2.6" style="left: 24.390243902439025%;"></a>
+    
+        <a href="./responses.html" title="Views ႏွင္႕ Responses မ်ားအေၾကာင္း" class="chapter done " data-progress="2.7" style="left: 26.829268292682926%;"></a>
+    
+        <a href="./controllers.html" title="Controllers မ်ားအေၾကာင္း" class="chapter done " data-progress="2.8" style="left: 29.26829268292683%;"></a>
+    
+        <a href="./errors.html" title="Errors ႏွင္႕ Logging မ်ားအေၾကာင္း" class="chapter done " data-progress="2.9" style="left: 31.70731707317073%;"></a>
+    
+        <a href="./localization.html" title="Localization" class="chapter done " data-progress="3.10" style="left: 34.146341463414636%;"></a>
+    
+        <a href="./mail.html" title="Mail" class="chapter done " data-progress="3.11" style="left: 36.58536585365854%;"></a>
+    
+        <a href="./packages.html" title="Package Development" class="chapter done " data-progress="3.12" style="left: 39.02439024390244%;"></a>
+    
+        <a href="./pagination.html" title="Pagination" class="chapter done " data-progress="3.13" style="left: 41.46341463414634%;"></a>
+    
+        <a href="./queues.html" title="Queues" class="chapter done " data-progress="3.14" style="left: 43.90243902439025%;"></a>
+    
+        <a href="./security.html" title="Security" class="chapter done " data-progress="3.15" style="left: 46.34146341463415%;"></a>
+    
+        <a href="./session.html" title="Session" class="chapter done " data-progress="3.16" style="left: 48.78048780487805%;"></a>
+    
+        <a href="./ssh.html" title="SSH" class="chapter done " data-progress="3.17" style="left: 51.21951219512195%;"></a>
+    
+        <a href="./templates.html" title="Templates" class="chapter done " data-progress="3.18" style="left: 53.65853658536585%;"></a>
+    
+        <a href="./testing.html" title="Unit Testing" class="chapter done " data-progress="3.19" style="left: 56.09756097560975%;"></a>
+    
+        <a href="./billing.html" title="Billing" class="chapter done " data-progress="3.2" style="left: 58.53658536585366%;"></a>
+    
+        <a href="./validation.html" title="Validation" class="chapter done " data-progress="3.20" style="left: 60.97560975609756%;"></a>
+    
+        <a href="./cache.html" title="Cache" class="chapter done " data-progress="3.3" style="left: 63.41463414634146%;"></a>
+    
+        <a href="./extending.html" title="Core Extension" class="chapter done " data-progress="3.4" style="left: 65.85365853658537%;"></a>
+    
+        <a href="./events.html" title="Events" class="chapter done " data-progress="3.5" style="left: 68.29268292682927%;"></a>
+    
+        <a href="./facades.html" title="Facades" class="chapter done " data-progress="3.6" style="left: 70.73170731707317%;"></a>
+    
+        <a href="./html.html" title="Forms &amp; HTML" class="chapter done " data-progress="3.7" style="left: 73.17073170731707%;"></a>
+    
+        <a href="./helpers.html" title="Helpers" class="chapter done " data-progress="3.8" style="left: 75.60975609756098%;"></a>
+    
+        <a href="./ioc.html" title="IoC Container" class="chapter  " data-progress="3.9" style="left: 78.04878048780488%;"></a>
+    
+        <a href="./database.html" title="အေျခခံ အသုံးျပဳပုံ" class="chapter  " data-progress="4.1" style="left: 80.48780487804878%;"></a>
+    
+        <a href="./queries.html" title="Query Builder" class="chapter  " data-progress="4.2" style="left: 82.92682926829268%;"></a>
+    
+        <a href="./eloquent.html" title="Eloquent ORM" class="chapter  " data-progress="4.3" style="left: 85.36585365853658%;"></a>
+    
+        <a href="./schema.html" title="Schema Builder" class="chapter  " data-progress="4.4" style="left: 87.8048780487805%;"></a>
+    
+        <a href="./migrations.html" title="Migrations &amp; Seeding" class="chapter  " data-progress="4.5" style="left: 90.2439024390244%;"></a>
+    
+        <a href="./redis.html" title="Redis" class="chapter  " data-progress="4.6" style="left: 92.6829268292683%;"></a>
+    
+        <a href="./artisan.html" title="Overview" class="chapter  " data-progress="5.1" style="left: 95.1219512195122%;"></a>
+    
+        <a href="./commands.html" title="Development" class="chapter  " data-progress="5.2" style="left: 97.5609756097561%;"></a>
+    
+        <a href="./contributing.html" title="Contributing" class="chapter  new-chapter" data-progress="6" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_15">
+                    
+                        <h1 id="-function-">အကူ Function မ်ား</h1>
+<ul>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#paths">Paths</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#urls">URLs</a></li>
+<li><a href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+<p><a name="arrays"></a></p>
+<h2 id="arrays">Arrays</h2>
+<h3 id="array_add">array_add</h3>
+<p><code>array_add</code> function သည္ အကယ္၍ ပထမ argument array တြင္ထပ္မံေပး လုိက္ေသာ key နွင့္ တန္ဖုိး အတြဲ ရွိျပီးသား မဟုတ္ခဲ့ပါက ထုိ key နွင့္ တန္ဖုိးအတြဲအား ထပ္မံေပါင္းထည့္ေပးပါသည္။</p>
+<pre><code>$array = array(&#39;foo&#39; =&gt; &#39;bar&#39;);
+
+$array = array_add($array, &#39;key&#39;, &#39;value&#39;);
+</code></pre><h3 id="array_divide">array_divide</h3>
+<p><code>array_divide</code> function သည္ မူလ array အား key မ်ားပါ၀င္ေသာ array နွင့္ တန္ဖုိးမ်ား ပါ ၀င္ေသာ array နွစ္ခု ပါ၀င္ေသာ array အျဖစ္ return ျပန္ေပးပါသည္။</p>
+<pre><code>$array = array(&#39;foo&#39; =&gt; &#39;bar&#39;);
+
+list($keys, $values) = array_divide($array);
+</code></pre><h3 id="array_dot">array_dot</h3>
+<p><code>array_dot</code> function သည္ dimension တစ္ခုထက္ပုိ၍ ပါ၀င္ေသာ array တစ္ခုကုိ &quot;.&quot; သေကၤတသုံးေရးနည္းျဖင့္ အဆင့္ဆင့္ေခါ္ယူနုိင္ေသာ dimension တစ္ခုတည္း ရွိ array တစ္ခု အျဖစ္ေျပာင္းလဲေပးပါသည္။</p>
+<pre><code>$array = array(&#39;foo&#39; =&gt; array(&#39;bar&#39; =&gt; &#39;baz&#39;));
+</code></pre><p>ၡ
+    $array = array_dot($array);</p>
+<pre><code>// array(&#39;foo.bar&#39; =&gt; &#39;baz&#39;);
+</code></pre><h3 id="array_except">array_except</h3>
+<p><code>array_except</code> method သည္ ေပးလုိက္ေသာ key နွင့္ တန္ဖုိး အတြဲကုိ ပထမ argument array ထံမွ ဖယ္ရွားေပးပါသည္။</p>
+<pre><code>$array = array_except($array, array(&#39;keys&#39;, &#39;to&#39;, &#39;remove&#39;));
+</code></pre><h3 id="array_fetch">array_fetch</h3>
+<p><code>array_fetch</code> method သည္ ပထမ argument array အတြင္းတြင္ အဆင့္ဆင့္ ညွပ္သုံးထားေသာ ေပးထားသည့္ ဒုတိယ argument နွင့္ ကုိက္ညီသည့္ nested array element မ်ားအား တစ္ဆင့္တည္း flattened လုပ္ထားေသာ array အျဖစ္ျဖင့္ return ျပန္ေပးပါသည္။ </p>
+<pre><code>$array = array(
+    array(&#39;developer&#39; =&gt; array(&#39;name&#39; =&gt; &#39;Taylor&#39;)),
+    array(&#39;developer&#39; =&gt; array(&#39;name&#39; =&gt; &#39;Dayle&#39;)),
+);
+
+$array = array_fetch($array, &#39;developer.name&#39;);
+
+// array(&#39;Taylor&#39;, &#39;Dayle&#39;);
+</code></pre><h3 id="array_first">array_first</h3>
+<p><code>array_first</code> method သည္ ေပးထားေသာ array အတြင္း မွ ေပးထားေသာ truth test ကုိ ေျပလည္ ေစ မည့္  ပထမဆုံး element အား return ျပန္ေပးပါသည္။</p>
+<pre><code>$array = array(100, 200, 300);
+
+$value = array_first($array, function($key, $value)
+{
+    return $value &gt;= 150;
+});
+</code></pre><p>default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ parameter အျဖစ္ ထည့္သြင္းေပးနုိင္ပါသည္။</p>
+<pre><code>$value = array_first($array, $callback, $default);
+</code></pre><h3 id="array_last">array_last</h3>
+<p><code>array_last</code> method သည္ ေပးထားေသာ array အတြင္းမွ ေပးထားေသာ truth test ကုိ ေျပလည္ေစမည့္ ေနာက္ဆုံး element အား return ျပန္ေပးပါသည္။</p>
+<pre><code>$array = array(350, 400, 500, 300, 200, 100);
+
+$value = array_last($array, function($key, $value)
+{
+    return $value &gt; 350;
+});
+
+// 500
+</code></pre><p>default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ parameter အျဖစ္ ထည့္သြင္းေပးနုိင္ပါသည္။</p>
+<pre><code>$value = array_last($array, $callback, $default);
+</code></pre><h3 id="array_flatten">array_flatten</h3>
+<p><code>array_flatten</code> method သည္ ေပးထားေသာ dimension တစ္ခုထက္ပုိသည့္ array တစ္ခုကို တစ္ဆင့္တည္း ရွိေသာ array တစ္ခု အျဖစ္ return ျပန္ေပးပါသည္။</p>
+<pre><code>$array = array(&#39;name&#39; =&gt; &#39;Joe&#39;, &#39;languages&#39; =&gt; array(&#39;PHP&#39;, &#39;Ruby&#39;));
+
+$array = array_flatten($array);
+
+// array(&#39;Joe&#39;, &#39;PHP&#39;, &#39;Ruby&#39;);
+</code></pre><h3 id="array_forget">array_forget</h3>
+<p><code>array_forget</code> method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ deeply nested array တစ္ခုမွ  &quot;.&quot; သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ေပးရင္း key နွင့္ တန္ဖုိး အတြဲကုိ ဖယ္ရွားေပးပါသည္။</p>
+<pre><code>$array = array(&#39;names&#39; =&gt; array(&#39;joe&#39; =&gt; array(&#39;programmer&#39;)));
+
+array_forget($array, &#39;names.joe&#39;);
+</code></pre><h3 id="array_get">array_get</h3>
+<p><code>array_get</code> method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ deeply nested array တစ္ခုမွ  &quot;.&quot; သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ေပးရင္း key နွင့္ တန္ဖုိး အတြဲကုိ ထုတ္ယူေပးပါသည္။</p>
+<pre><code>$array = array(&#39;names&#39; =&gt; array(&#39;joe&#39; =&gt; array(&#39;programmer&#39;)));
+
+$value = array_get($array, &#39;names.joe&#39;);
+</code></pre><blockquote>
+<p><strong>မွတ္ခ်က္</strong> အကယ္၍ <code>array_get</code> ၏ အလုပ္လုပ္ပုံမ်  ိုး ကုိ object မ်ားတြင္ သုံးလုိပါက <code>object_get</code> အားသုံးနုိင္ပါသည္။</p>
+</blockquote>
+<h3 id="array_only">array_only</h3>
+<p><code>array_only</code> method သည္ ပထမ argument array အတြင္းမွ ေပးထားေသာ key သုိ့မဟုတ္ တန္ဖုိးမ်ား ပါ၀င္သည့္ အတြဲမ်ားကုိသာ return ျပန္ေပးပါသည္။</p>
+<pre><code>$array = array(&#39;name&#39; =&gt; &#39;Joe&#39;, &#39;age&#39; =&gt; 27, &#39;votes&#39; =&gt; 1);
+
+$array = array_only($array, array(&#39;name&#39;, &#39;votes&#39;));
+</code></pre><h3 id="array_pluck">array_pluck</h3>
+<p><code>array_pluck</code> method သည္ ပထမ argument array ထံမွ ေပးထားေသာ key သို့ မဟုတ္ တန္ဖုိး ပါ၀င္သည့္ အတြဲကုိသာ return ျပန္ေပးပါသည္။</p>
+<pre><code>$array = array(array(&#39;name&#39; =&gt; &#39;Taylor&#39;), array(&#39;name&#39; =&gt; &#39;Dayle&#39;));
+
+$array = array_pluck($array, &#39;name&#39;);
+
+// array(&#39;Taylor&#39;, &#39;Dayle&#39;);
+</code></pre><h3 id="array_pull">array_pull</h3>
+<p><code>array_pull</code> method သည္ ပထမ argument array ထံမွ ေပးထားေသာ key သုိ့ မဟုတ္ တန္ဖုိးပါ၀င္သည့္ အတြဲ ကုိ return ျပန္ျပီး ထုိ အတြဲအား မူလ array ထံမွလည္း ဖယ္ရွားေပးပါသည္။</p>
+<pre><code>$array = array(&#39;name&#39; =&gt; &#39;Taylor&#39;, &#39;age&#39; =&gt; 27);
+
+$name = array_pull($array, &#39;name&#39;);
+</code></pre><h3 id="array_set">array_set</h3>
+<p><code>array_set</code> method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ array တစ္ခုအတြင္းမွ  &quot;.&quot; သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ဒုတိယ argument နွင့္ကုိက္ညီသည့္ တန္ဖုိးအား ျပု ျပင္ထည့္သြင္းေပးပါသည္။</p>
+<pre><code>$array = array(&#39;names&#39; =&gt; array(&#39;programmer&#39; =&gt; &#39;Joe&#39;));
+
+array_set($array, &#39;names.editor&#39;, &#39;Taylor&#39;);
+</code></pre><h3 id="array_sort">array_sort</h3>
+<p><code>array_sort</code> method သည္ ေပးထားေသာ array အား ေပးထားေသာ Closure function ၏ ရလဒ္ကုိ အသုံးျပု ၍ စီေပးပါသည္။</p>
+<pre><code>$array = array(
+    array(&#39;name&#39; =&gt; &#39;Jill&#39;),
+    array(&#39;name&#39; =&gt; &#39;Barry&#39;),
+);
+
+$array = array_values(array_sort($array, function($value)
+{
+    return $value[&#39;name&#39;];
+}));
+</code></pre><h3 id="array_where">array_where</h3>
+<p><code>array_where</code> သည္ ေပးထားေသာ array အား ေပးထားေသာ Closure function တစ္ခုျဖင့္ filter လုပ္ေပးပါသည္။</p>
+<pre><code>$array = array(100, &#39;200&#39;, 300, &#39;400&#39;, 500);
+
+$array = array_where($array, function($key, $value)
+{
+    return is_string($value);
+});
+
+// Array ( [1] =&gt; 200 [3] =&gt; 400 )
+</code></pre><h3 id="head">head</h3>
+<p>array တစ္ခု၏ ပထမဆုံး element ကုိ return ျပန္ေပးပါသည္။ PHP 5.3.x တြင္ အသုံးျပုနုိင္ေသာ method chaining အတြက္ အသုံး၀င္ပါသည္။</p>
+<pre><code>$first = head($this-&gt;returnsArray(&#39;foo&#39;));
+</code></pre><h3 id="last">last</h3>
+<p>array တစ္ခု၏ ေနာက္ဆုံး element ကို return ျပန္ေပးပါသည္။ method chaining အတြက္ အသုံး၀င္ပါသည္။</p>
+<pre><code>$last = last($this-&gt;returnsArray(&#39;foo&#39;));
+</code></pre><p><a name="paths"></a></p>
+<h2 id="paths">Paths</h2>
+<h3 id="app_path">app_path</h3>
+<p><code>app</code> directory၏ path အျပည့္အစုံကုိ ေပးပါသည္။</p>
+<pre><code>$path = app_path();
+</code></pre><h3 id="base_path">base_path</h3>
+<p>application ကုိ install လုပ္ထားေသာ root directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။</p>
+<h3 id="public_path">public_path</h3>
+<p><code>public</code> directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။</p>
+<h3 id="storage_path">storage_path</h3>
+<p><code>app/storage</code> directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။</p>
+<p><a name="strings"></a></p>
+<h2 id="strings">Strings</h2>
+<h3 id="camel_case">camel_case</h3>
+<p>ေပးထားေသာ string အား <code>camelCase</code> ေရးဟန္သုိ့ ေျပာင္းလဲေပးပါသည္။</p>
+<pre><code>$camel = camel_case(&#39;foo_bar&#39;);
+
+// fooBar
+</code></pre><h3 id="class_basename">class_basename</h3>
+<p>ေပးထားေသာ class ၏  အမည္ကုိ namespace အမည္မ်ား မပါ၀င္ပဲ ေပးပါသည္။</p>
+<pre><code>$class = class_basename(&#39;Foo\Bar\Baz&#39;);
+
+// Baz
+</code></pre><h3 id="e">e</h3>
+<p><code>htmlentities</code> function အား ေပးထားေသာ string ျဖင့္ run ပါသည္။ UTF-8 support ပါ၀င္ပါသည္။</p>
+<pre><code>$entities = e(&#39;&lt;html&gt;foo&lt;/html&gt;&#39;);
+</code></pre><h3 id="ends_with">ends_with</h3>
+<p>ပထမ argument တြင္ ေပးထားေသာ string တစ္ခုသည္ ေပးထားေသာ string နွင့္ အဆုံးသတ္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။</p>
+<pre><code>$value = ends_with(&#39;This is my name&#39;, &#39;name&#39;);
+</code></pre><h3 id="snake_case">snake_case</h3>
+<p>ေပးထားေသာ string အား <code>snake_case</code> ေရးဟန္ သုိ့ ေျပာင္းလဲေပးပါသည္။</p>
+<pre><code>$snake = snake_case(&#39;fooBar&#39;);
+
+// foo_bar
+</code></pre><h3 id="str_limit">str_limit</h3>
+<p>string တစ္ခု အတြင္းရွိ အကၡရာအေရအတြက္ကုိ ကန့္သတ္ေပးပါသည္။</p>
+<pre><code>str_limit($value, $limit = 100, $end = &#39;...&#39;)
+</code></pre><p>ဥပမာ</p>
+<pre><code>$value = str_limit(&#39;The PHP framework for web artisans.&#39;, 7);
+
+// The PHP...
+</code></pre><h3 id="starts_with">starts_with</h3>
+<p>ပထမ argument တြင္ ေပးထားေသာ string တစ္ခုသည္ ေပးထားေသာ string နွင့္ စတင္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။</p>
+<pre><code>$value = starts_with(&#39;This is my name&#39;, &#39;This&#39;);
+</code></pre><h3 id="str_contains">str_contains</h3>
+<p>ပထမ argument တြင္ ေပးထားေသာ string တြင္ ေပးထားေသာ string ပါ၀င္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။</p>
+<pre><code>$value = str_contains(&#39;This is my name&#39;, &#39;my&#39;);
+</code></pre><h3 id="str_finish">str_finish</h3>
+<p>ပထမ argument တြင္ေပးထားေသာ string ၏ အဆုံးတြင္ ေပးထားေသာ string အားေပါင္းထည့္ေပးပါသည္။</p>
+<pre><code>$string = str_finish(&#39;this/string&#39;, &#39;/&#39;);
+
+// this/string/
+</code></pre><h3 id="str_is">str_is</h3>
+<p>ေပးထားေသာ pattern တစ္ခုသည္ ေပးထားေသာ string နွင့္ ကုိက္ညီ မကုိက္ညီ ဆုံးျဖတ္ေပးပါသည္။ ခေရပြင့္အကၡရာ &quot;*&quot; မ်ားအား wildcard အကၡရာအျဖစ္သုံးနုိင္ပါသည္။</p>
+<pre><code>$value = str_is(&#39;foo*&#39;, &#39;foobar&#39;);
+</code></pre><h3 id="str_plural">str_plural</h3>
+<p>ေပးထားေသာ string တစ္ခုအား English ဘာသာ ျဖင့္ အမ်ားကိန္း (plural) ပုံစံသုိ့ ေျပာင္းလဲေပးပါသည္။</p>
+<pre><code>$plural = str_plural(&#39;car&#39;);
+</code></pre><h3 id="str_random">str_random</h3>
+<p>ေပးထားေသာ အေရအတြက္အတုိင္း အတိအက် ရွိသည့္ က်ပန္း string တစ္ခုကုိ ထုတ္ေပးပါသည္။</p>
+<pre><code>$string = str_random(40);
+</code></pre><h3 id="str_singular">str_singular</h3>
+<p>ေပးထားေသာ string တစ္ခုအား English ဘာသာ ျဖင့္ အနည္းကိန္း (singular) ပုံစံသုိ့ ေျပာင္းလဲေပးပါသည္။</p>
+<pre><code>$singular = str_singular(&#39;cars&#39;);
+</code></pre><h3 id="studly_case">studly_case</h3>
+<p>ေပးထားေသာ string အား <code>StudlyCase</code> ေရးဟန္သုိ့ ေျပာင္းလဲေပးပါသည္။</p>
+<pre><code>$value = studly_case(&#39;foo_bar&#39;);
+
+// FooBar
+</code></pre><h3 id="trans">trans</h3>
+<p>ေပးထားေသာ string တစ္ေျကာင္းအား ဘာသာျပန္ေပးပါသည္။ <code>Lang::get</code> method ၏ အမည္ေျပာင္း method တစ္ခုျဖစ္ပါသည္။</p>
+<pre><code>$value = trans(&#39;validation.required&#39;):
+</code></pre><h3 id="trans_choice">trans_choice</h3>
+<p>ေပးထားေသာ string တစ္ေျကာင္းအား ေပးထားေသာ နံပါတ္ အလုိက္ ဘာသာျပန္ message ကုိ အသုံးျပု၍ ဘာသာျပန္ေပးပါသည္။ <code>Lang::choice</code> method ၏ အမည္ေျပာင္း method တစ္ခုျဖစ္ပါသည္။</p>
+<pre><code>$value = trans_choice(&#39;foo.bar&#39;, $count);
+</code></pre><p><a name="urls"></a></p>
+<h2 id="urls">URLs</h2>
+<h3 id="action">action</h3>
+<p>ေပးထားေသာ controller action တစ္စုံအတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>$url = action(&#39;HomeController@getIndex&#39;, $params);
+</code></pre><h3 id="route">route</h3>
+<p>ေပးထားေသာ အမည္ရွိ လမ္းေျကာင္း တစ္ခုအတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>$url = route(&#39;routeName&#39;, $params);
+</code></pre><h3 id="asset">asset</h3>
+<p>ေပးထားေသာ asset အတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>$url = asset(&#39;img/photo.jpg&#39;);
+</code></pre><h3 id="link_to">link_to</h3>
+<p>ေပးထားေသာ URL အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>echo link_to(&#39;foo/bar&#39;, $title, $attributes = array(), $secure = null);
+</code></pre><h3 id="link_to_asset">link_to_asset</h3>
+<p>ေပးထားေသာ asset အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>echo link_to_asset(&#39;foo/bar.zip&#39;, $title, $attributes = array(), $secure = null);
+</code></pre><h3 id="link_to_route">link_to_route</h3>
+<p>ေပးထားေသာ လမ္းေျကာင္း တစ္ခု အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>echo link_to_route(&#39;route.name&#39;, $title, $parameters = array(), $attributes = array());
+</code></pre><h3 id="link_to_action">link_to_action</h3>
+<p>ေပးထားေသာ controller action တစ္စုံအတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>echo link_to_action(&#39;HomeController@getIndex&#39;, $title, $parameters = array(), $attributes = array());
+</code></pre><h3 id="secure_asset">secure_asset</h3>
+<p>ေပးထားေသာ asset အတြက္ HTTPS သုံးထားေသာ HTML link တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>echo secure_asset(&#39;foo/bar.zip&#39;, $title, $attributes = array());
+</code></pre><h3 id="secure_url">secure_url</h3>
+<p>ေပးထားေသာ path တစ္ခု အတြက္ URL အျပည့္အစုံ တစ္ခု ထုတ္ေပးပါသည္။</p>
+<pre><code>echo secure_url(&#39;foo/bar&#39;, $parameters = array());
+</code></pre><h3 id="url">url</h3>
+<p>ေပးထားေသာ path တစ္ခု အတြက္ URL အျပည့္အစုံ ထုတ္ေပးပါသည္။</p>
+<pre><code>echo url(&#39;foo/bar&#39;, $parameters = array(), $secure = null);
+</code></pre><p><a name="miscellaneous"></a></p>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<h3 id="csrf_token">csrf_token</h3>
+<p>လက္ရွိ CSRF token တန္ဖုိးကုိ ေပးပါသည္။</p>
+<pre><code>$token = csrf_token();
+</code></pre><h3 id="dd">dd</h3>
+<p>ေပးထားေသာ variable ကုိ dump လုပ္၍ script execution ကုိ ရပ္ေစပါသည္။</p>
+<pre><code>dd($value);
+</code></pre><h3 id="value">value</h3>
+<p>ေပးထားေသာ တန္ဖုိးသည္ <code>Closure</code> တစ္ခု ျဖစ္ပါက <code>Closure</code> မွတစ္ဆင့္ return ျပန္လာေသာ value ကုိ return ျပန္ေပး၍ <code>Closure</code> မဟုတ္ပါက တန္ဖုိးအတုိင္း return ျပန္ေပးပါသည္။</p>
+<pre><code>$value = value(function() { return &#39;bar&#39;; });
+</code></pre><h3 id="with">with</h3>
+<p>ေပးထားေသာ object ကုိ return ျပန္ေပးပါသည္။ PHP 5.3.x တြင္ method chaining constructor မ်ား အတြက္ အသုံး၀င္ပါသည္။</p>
+<pre><code>$value = with(new Foo)-&gt;doWork();
+</code></pre>
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./html.html" class="navigation navigation-prev " aria-label="Previous page: Forms &amp; HTML"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./ioc.html" class="navigation navigation-next " aria-label="Next page: IoC Container"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

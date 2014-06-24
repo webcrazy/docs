@@ -1,0 +1,879 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="./manifest.appcache">
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>Billing | Laravel Framework Documentation (Myanmar)</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 0.5.2">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="./cache.html" />
+    
+    
+    <link rel="prev" href="./security.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="gitbook/style.css">
+
+    
+    <link rel="stylesheet" href="gitbook/plugins/plugin-zawgyicss/zawgyi.css">
+    
+
+
+        
+    <div class="book"  data-level="3.2" data-basepath="." data-revision="1403607994904">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="./" >Laravel Framework Documentation (Myanmar)</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+
+        
+
+        
+
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.</b> Laravel နိဒါန္း
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.1.</b> Laravel မိတ္ဆက္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="quick.html">
+            
+            <a href="./quick.html">
+                <i class="fa fa-check"></i> <b>1.2.</b> Laravel အက်ဥ္းခ်ဳပ္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="releases.html">
+            
+            <a href="./releases.html">
+                <i class="fa fa-check"></i> <b>1.3.</b> Release Notes
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="upgrade.html">
+            
+            <a href="./upgrade.html">
+                <i class="fa fa-check"></i> <b>1.4.</b> Upgrade Guide
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.</b> Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Laravel install လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="configuration.html">
+            
+            <a href="./configuration.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Configuration လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="homestead.html">
+            
+            <a href="./homestead.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Laravel ရဲ႕ Official Development Homestead အေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="lifecycle.html">
+            
+            <a href="./lifecycle.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Request Lifecycle 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="routing.html">
+            
+            <a href="./routing.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Route လုပ္ျခင္းအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="requests.html">
+            
+            <a href="./requests.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Requests ႏွင္႕ Input မ်ားအေၾကာင္း 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="responses.html">
+            
+            <a href="./responses.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Views ႏွင္႕ Responses မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="controllers.html">
+            
+            <a href="./controllers.html">
+                <i class="fa fa-check"></i> <b>2.8.</b> Controllers မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="errors.html">
+            
+            <a href="./errors.html">
+                <i class="fa fa-check"></i> <b>2.9.</b> Errors ႏွင္႕ Logging မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.</b> Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.1.</b> Authentication
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="billing.html">
+            
+            <a href="./billing.html">
+                <i class="fa fa-check"></i> <b>3.2.</b> Billing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="cache.html">
+            
+            <a href="./cache.html">
+                <i class="fa fa-check"></i> <b>3.3.</b> Cache
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="extending.html">
+            
+            <a href="./extending.html">
+                <i class="fa fa-check"></i> <b>3.4.</b> Core Extension
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="events.html">
+            
+            <a href="./events.html">
+                <i class="fa fa-check"></i> <b>3.5.</b> Events
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="facades.html">
+            
+            <a href="./facades.html">
+                <i class="fa fa-check"></i> <b>3.6.</b> Facades
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="html.html">
+            
+            <a href="./html.html">
+                <i class="fa fa-check"></i> <b>3.7.</b> Forms &amp; HTML
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="helpers.html">
+            
+            <a href="./helpers.html">
+                <i class="fa fa-check"></i> <b>3.8.</b> Helpers
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="ioc.html">
+            
+            <a href="./ioc.html">
+                <i class="fa fa-check"></i> <b>3.9.</b> IoC Container
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="localization.html">
+            
+            <a href="./localization.html">
+                <i class="fa fa-check"></i> <b>3.10.</b> Localization
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="mail.html">
+            
+            <a href="./mail.html">
+                <i class="fa fa-check"></i> <b>3.11.</b> Mail
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="packages.html">
+            
+            <a href="./packages.html">
+                <i class="fa fa-check"></i> <b>3.12.</b> Package Development
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="pagination.html">
+            
+            <a href="./pagination.html">
+                <i class="fa fa-check"></i> <b>3.13.</b> Pagination
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="queues.html">
+            
+            <a href="./queues.html">
+                <i class="fa fa-check"></i> <b>3.14.</b> Queues
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.15.</b> Security
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="session.html">
+            
+            <a href="./session.html">
+                <i class="fa fa-check"></i> <b>3.16.</b> Session
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="ssh.html">
+            
+            <a href="./ssh.html">
+                <i class="fa fa-check"></i> <b>3.17.</b> SSH
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="templates.html">
+            
+            <a href="./templates.html">
+                <i class="fa fa-check"></i> <b>3.18.</b> Templates
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="testing.html">
+            
+            <a href="./testing.html">
+                <i class="fa fa-check"></i> <b>3.19.</b> Unit Testing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="validation.html">
+            
+            <a href="./validation.html">
+                <i class="fa fa-check"></i> <b>3.20.</b> Validation
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.</b> Database
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.1.</b> အေျခခံ အသုံးျပဳပုံ
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="queries.html">
+            
+            <a href="./queries.html">
+                <i class="fa fa-check"></i> <b>4.2.</b> Query Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="eloquent.html">
+            
+            <a href="./eloquent.html">
+                <i class="fa fa-check"></i> <b>4.3.</b> Eloquent ORM
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="schema.html">
+            
+            <a href="./schema.html">
+                <i class="fa fa-check"></i> <b>4.4.</b> Schema Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="migrations.html">
+            
+            <a href="./migrations.html">
+                <i class="fa fa-check"></i> <b>4.5.</b> Migrations &amp; Seeding
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="redis.html">
+            
+            <a href="./redis.html">
+                <i class="fa fa-check"></i> <b>4.6.</b> Redis
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.</b> Artisan CLI
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.1.</b> Overview
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="commands.html">
+            
+            <a href="./commands.html">
+                <i class="fa fa-check"></i> <b>5.2.</b> Development
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="contributing.html">
+            
+            <a href="./contributing.html">
+                <i class="fa fa-check"></i> <b>6.</b> Contributing
+            </a>
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 58.53658536585366%;min-width: 56.09756097560975%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./introduction.html" title="Laravel မိတ္ဆက္" class="chapter done " data-progress="1.1" style="left: 2.4390243902439024%;"></a>
+    
+        <a href="./quick.html" title="Laravel အက်ဥ္းခ်ဳပ္" class="chapter done " data-progress="1.2" style="left: 4.878048780487805%;"></a>
+    
+        <a href="./releases.html" title="Release Notes" class="chapter done " data-progress="1.3" style="left: 7.317073170731708%;"></a>
+    
+        <a href="./upgrade.html" title="Upgrade Guide" class="chapter done " data-progress="1.4" style="left: 9.75609756097561%;"></a>
+    
+        <a href="./installation.html" title="Laravel install လုပ္ျခင္း" class="chapter done " data-progress="2.1" style="left: 12.195121951219512%;"></a>
+    
+        <a href="./configuration.html" title="Configuration လုပ္ျခင္း" class="chapter done " data-progress="2.2" style="left: 14.634146341463415%;"></a>
+    
+        <a href="./homestead.html" title="Laravel ရဲ႕ Official Development Homestead အေၾကာင္း" class="chapter done " data-progress="2.3" style="left: 17.073170731707318%;"></a>
+    
+        <a href="./lifecycle.html" title="Request Lifecycle " class="chapter done " data-progress="2.4" style="left: 19.51219512195122%;"></a>
+    
+        <a href="./routing.html" title="Route လုပ္ျခင္းအေၾကာင္း" class="chapter done " data-progress="2.5" style="left: 21.951219512195124%;"></a>
+    
+        <a href="./requests.html" title="Requests ႏွင္႕ Input မ်ားအေၾကာင္း " class="chapter done " data-progress="2.6" style="left: 24.390243902439025%;"></a>
+    
+        <a href="./responses.html" title="Views ႏွင္႕ Responses မ်ားအေၾကာင္း" class="chapter done " data-progress="2.7" style="left: 26.829268292682926%;"></a>
+    
+        <a href="./controllers.html" title="Controllers မ်ားအေၾကာင္း" class="chapter done " data-progress="2.8" style="left: 29.26829268292683%;"></a>
+    
+        <a href="./errors.html" title="Errors ႏွင္႕ Logging မ်ားအေၾကာင္း" class="chapter done " data-progress="2.9" style="left: 31.70731707317073%;"></a>
+    
+        <a href="./localization.html" title="Localization" class="chapter done " data-progress="3.10" style="left: 34.146341463414636%;"></a>
+    
+        <a href="./mail.html" title="Mail" class="chapter done " data-progress="3.11" style="left: 36.58536585365854%;"></a>
+    
+        <a href="./packages.html" title="Package Development" class="chapter done " data-progress="3.12" style="left: 39.02439024390244%;"></a>
+    
+        <a href="./pagination.html" title="Pagination" class="chapter done " data-progress="3.13" style="left: 41.46341463414634%;"></a>
+    
+        <a href="./queues.html" title="Queues" class="chapter done " data-progress="3.14" style="left: 43.90243902439025%;"></a>
+    
+        <a href="./security.html" title="Security" class="chapter done " data-progress="3.15" style="left: 46.34146341463415%;"></a>
+    
+        <a href="./session.html" title="Session" class="chapter done " data-progress="3.16" style="left: 48.78048780487805%;"></a>
+    
+        <a href="./ssh.html" title="SSH" class="chapter done " data-progress="3.17" style="left: 51.21951219512195%;"></a>
+    
+        <a href="./templates.html" title="Templates" class="chapter done " data-progress="3.18" style="left: 53.65853658536585%;"></a>
+    
+        <a href="./testing.html" title="Unit Testing" class="chapter done " data-progress="3.19" style="left: 56.09756097560975%;"></a>
+    
+        <a href="./billing.html" title="Billing" class="chapter done " data-progress="3.2" style="left: 58.53658536585366%;"></a>
+    
+        <a href="./validation.html" title="Validation" class="chapter  " data-progress="3.20" style="left: 60.97560975609756%;"></a>
+    
+        <a href="./cache.html" title="Cache" class="chapter  " data-progress="3.3" style="left: 63.41463414634146%;"></a>
+    
+        <a href="./extending.html" title="Core Extension" class="chapter  " data-progress="3.4" style="left: 65.85365853658537%;"></a>
+    
+        <a href="./events.html" title="Events" class="chapter  " data-progress="3.5" style="left: 68.29268292682927%;"></a>
+    
+        <a href="./facades.html" title="Facades" class="chapter  " data-progress="3.6" style="left: 70.73170731707317%;"></a>
+    
+        <a href="./html.html" title="Forms &amp; HTML" class="chapter  " data-progress="3.7" style="left: 73.17073170731707%;"></a>
+    
+        <a href="./helpers.html" title="Helpers" class="chapter  " data-progress="3.8" style="left: 75.60975609756098%;"></a>
+    
+        <a href="./ioc.html" title="IoC Container" class="chapter  " data-progress="3.9" style="left: 78.04878048780488%;"></a>
+    
+        <a href="./database.html" title="အေျခခံ အသုံးျပဳပုံ" class="chapter  " data-progress="4.1" style="left: 80.48780487804878%;"></a>
+    
+        <a href="./queries.html" title="Query Builder" class="chapter  " data-progress="4.2" style="left: 82.92682926829268%;"></a>
+    
+        <a href="./eloquent.html" title="Eloquent ORM" class="chapter  " data-progress="4.3" style="left: 85.36585365853658%;"></a>
+    
+        <a href="./schema.html" title="Schema Builder" class="chapter  " data-progress="4.4" style="left: 87.8048780487805%;"></a>
+    
+        <a href="./migrations.html" title="Migrations &amp; Seeding" class="chapter  " data-progress="4.5" style="left: 90.2439024390244%;"></a>
+    
+        <a href="./redis.html" title="Redis" class="chapter  " data-progress="4.6" style="left: 92.6829268292683%;"></a>
+    
+        <a href="./artisan.html" title="Overview" class="chapter  " data-progress="5.1" style="left: 95.1219512195122%;"></a>
+    
+        <a href="./commands.html" title="Development" class="chapter  " data-progress="5.2" style="left: 97.5609756097561%;"></a>
+    
+        <a href="./contributing.html" title="Contributing" class="chapter  new-chapter" data-progress="6" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_2">
+                    
+                        <h1 id="laravel-cashier">Laravel Cashier</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#subscribing-to-a-plan">Subscribing To A Plan</a></li>
+<li><a href="#no-card-up-front">No Card Up Front</a></li>
+<li><a href="#swapping-subscriptions">Swapping Subscriptions</a></li>
+<li><a href="#subscription-quantity">Subscription Quantity</a></li>
+<li><a href="#cancelling-a-subscription">Cancelling A Subscription</a></li>
+<li><a href="#resuming-a-subscription">Resuming A Subscription</a></li>
+<li><a href="#checking-subscription-status">Checking Subscription Status</a></li>
+<li><a href="#handling-failed-payments">Handling Failed Payments</a></li>
+<li><a href="#invoices">Invoices</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel Cashier က Subscription Billing Service တစ္ခုျဖစ္တဲ့ Stripe သံုးတဲ့အခါ ပိုၿပီးလြယ္ကူေစေအာင္လို႔ လုပ္ေပးထားပါတယ္။ Stripe သံုးဖို႔အတြက္ အစအဆံုး ျပန္ေရးေနစရာမလိုေတာ့ေအာင္လို႔ အေျခခံ Code ေတြ ေရးထားၿပီးသားျဖစ္ပါတယ္။ အေျခခံ Subscription Management အျပင္ , Coupons, Subscription ကို Upgrade လုပ္တဲ့ Feature (Swap), Subscription Quantities, Subscription ကို သတ္မွတ္ထားတဲ့ ကာလအတြင္း Subscription ကို Cancel လုပ္လို႔ရမယ့္ Feature လည္းပါဝင္ပါတယ္။ ေနာက္ Invoice ကို PDF ထုတ္လို႔ရေအာင္လဲ ကူညီေပးပါတယ္။</p>
+<p><a name="configuration"></a></p>
+<h2 id="configuration">Configuration</h2>
+<h4 id="composer">Composer</h4>
+<p>ပထမဆံုး သင္႕ရဲ႕ Composer File မွာ Casher package ကိုထည္႕ေပးပါ၊</p>
+<pre><code>&quot;laravel/cashier&quot;: &quot;~2.0&quot;
+</code></pre><h4 id="service-provider">Service Provider</h4>
+<p>ေနာက္... သင္ရဲ႕ <code>app</code> configuration file ထဲမွာ <code>Laravel\Cashier\CashierServiceProvider</code> ကို regiter လုပ္ပါ၊</p>
+<h4 id="migration">Migration</h4>
+<p>Chashier ကိုမသံုးခင္မွာ... columns တစ္ခ်ိဳ႕ကို သင္႕ရဲ႕ database ထဲကို add လုပ္ဖို႕လိုပါမယ္။ မစိုးရိမ္ပါနဲ႕... လိုအပ္တဲ႕ column ေတြကိုထက္ထည္႕ဖို႕  <code>cashier:table</code> Artisan command ကိုသံုးႏိုင္ပါတယ္။</p>
+<h4 id="model-setup">Model Setup</h4>
+<p>ေနာက္... သင္႕ရဲ႕ model definition မွာ BillableTrait နဲ႕ appropriate date mutators ေတြကို add လုိက္ပါ:</p>
+<pre><code>use Laravel\Cashier\BillableTrait;
+use Laravel\Cashier\BillableInterface;
+
+class User extends Eloquent implements BillableInterface {
+
+    use BillableTrait;
+
+    protected $dates = [&#39;trial_ends_at&#39;, &#39;subscription_ends_at&#39;];
+
+}
+</code></pre><h4 id="stripe-key">Stripe Key</h4>
+<p>ေနာက္ဆံုးမွာေတာ႕ သင္႕ရဲ႕ Stripe key ကိုသင္႕ရဲ႕ bootstrap files တစ္ခုထဲမွာ set လုပ္လိုက္ပါ</p>
+<pre><code>User::setStripeKey(&#39;stripe-key&#39;);
+</code></pre><p><a name="subscribing-to-a-plan"></a></p>
+<h2 id="subscribing-to-a-plan">Subscribing To A Plan</h2>
+<p>user ကို Stripe plan တစ္ခုေပးဖို႕ သင္႕မွာ model instance တစ္ခုရွိတယ္ဆိုရင္ လြယ္လြယ္ကူကူ subscribe လုပ္ႏိုင္ပါတယ္
+    $user = User::find(1);</p>
+<pre><code>$user-&gt;subscription(&#39;monthly&#39;)-&gt;create($creditCardToken);
+</code></pre><p>subscription ကို create လုပ္ၿပီးသြားၿပီဆိုရင္ သင္႕အေနနဲ႕ cupon ကို apply လုပ္ဖို႕ <code>withCoupon</code> ကိုသံုးႏိုင္ပါတယ္</p>
+<pre><code>$user-&gt;subscription(&#39;monthly&#39;)
+     -&gt;withCoupon(&#39;code&#39;)
+     -&gt;create($creditCardToken);
+</code></pre><p>Stripe subscription ကို <code>subscription</code> method က automatically create လုပ္သြားလိမ္႕မယ္... သင္႕ရဲ႕ Strip customer ID နဲ႕ အျခား billing information နဲ႕ပတ္သတ္တဲ႕ database ေတြေကာ update လုပ္သြားပါလိမ္႕မယ္။</p>
+<p>သင္႕မွာ trail period ရွိတယ္ဆိုရင္ သင္႕ရဲ႕ model မွာ trial end date ကို subscribing လုပ္ၿပီးမွာ set လုပ္ထားရဲ႕လားဆိုတာကိုေသခ်ာ make sure လုပ္ပါ။</p>
+<pre><code>$user-&gt;trial_ends_at = Carbon::now()-&gt;addDays(14);
+
+$user-&gt;save();
+</code></pre><p><a name="no-card-up-front"></a></p>
+<h2 id="no-card-up-front">No Card Up Front</h2>
+<p>သင္႕ရဲ႕ application က ပထမဆံုး free-trial တစ္ခုကို credit-card မပါဘဲ လက္ခံမယ္ဆိုရင္ <code>cardUpFront</code> ကိုသင္႕ရဲ႕ modle မွာ <code>false</code> ဆိုၿပီး set လုပ္ပါ...</p>
+<pre><code>protected $cardUpFront = false;
+</code></pre><p>Account creation မွာ trial ေနာက္ဆံုးရက္ကို model မွာ set လုပ္ထားရဲ႕လားဆိုတာကို make sure လုပ္ပါ...</p>
+<pre><code>$user-&gt;trial_ends_at = Carbon::now()-&gt;addDays(14);
+
+$user-&gt;save();
+</code></pre><p><a name="swapping-subscriptions"></a></p>
+<h2 id="swapping-subscriptions">Swapping Subscriptions</h2>
+<p>Subscription အသစ္တစ္ခုမွာ user တစ္ေယာက္ ကို swap လုပ္ခ်င္တယ္ဆိုရင္  <code>swap</code> method ကိုသံုးပါ...</p>
+<pre><code>$user-&gt;subscription(&#39;premium&#39;)-&gt;swap();
+</code></pre><p>တကယ္လို႕ user က trial မွာဘဲရွိေနတယ္ ဆိုရင္ trial က ပံုမွန္ maintained လုပ္သြားပါ႕မယ္။ ေနာက္ subscription အတြက္ &quot;quantity&quot; တစ္ခုရွိတယ္ဆိုရင္ အဲ႕ဒီ႕ quantity ကိုလည္း maintain လုပ္သြားပါ႕မယ္။</p>
+<p><a name="subscription-quantity"></a></p>
+<h2 id="subscription-quantity">Subscription Quantity</h2>
+<p>တစ္ခါတစ္ေလမွာ subscriptions ေတြက &quot;quantity&quot; ကေနၿပီးေတာ႕ affect ျဖစ္တယ္။ ဥပမာ... သင္႕ရဲ႕ application က user account တစ္ခုအတြက္ တစ္လ ကို $10 charge လုပ္တယ္ဆိုပါေတာ႕။ သင္႕ရဲ႕ subscription quantity ကို တိုးခ်င္တာဘဲျဖစ္ျဖစ္၊ ေလ်ာ႕ခ်င္တာဘဲျဖစ္ျဖစ္ လြယ္လြယ္ကူကူ လုပ္ခ်င္တယ္ဆိုရင္ <code>increment</code> နဲ႕ <code>decrement</code> methods ကိုသံုးႏိုင္ပါတယ္</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;subscription()-&gt;increment();
+
+// Add five to the subscription&#39;s current quantity...
+$user-&gt;subscription()-&gt;increment(5)
+
+$user-&gt;subscription-&gt;decrement();
+
+// Subtract five to the subscription&#39;s current quantity...
+$user-&gt;subscription()-&gt;decrement(5)
+</code></pre><p><a name="cancelling-a-subscription"></a></p>
+<h2 id="cancelling-a-subscription">Cancelling A Subscription</h2>
+<p>Subscription တစ္ခုကို Cancel လုပ္တာ ပန္ၿခံထဲမွာ လမ္းေလွ်ာက္ရသလိုပါဘဲ...</p>
+<pre><code>$user-&gt;subscription()-&gt;cancel();
+</code></pre><p>Subscription တစ္ခု cancel လုပ္သြားတဲ႕အခ်ိန္မွာ Casher က  <code>subscription_ends_at</code> column ကို သင္႕ရဲ႕ database မွာ အလိုလို set လုပ္သြားပါ႕မယ္။  ဥပမာ၊ customer က March လတစ္ရက္ေန႕မွာ subscription ကို Cancel လုပ္သြားတယ္ ေနာက္ March 5 ရက္ေန႕မွာ subscription end ျဖစ္မယ္လို႕ schedule လည္းမရွိဘူးဆိုရင္ <code>subscribed</code> method က March လ 5 ရက္ေန႕အထိ return <code>true</code> ျပန္ေနမွာပါ။</p>
+<p><a name="resuming-a-subscription"></a></p>
+<h2 id="resuming-a-subscription">Resuming A Subscription</h2>
+<p>User တစ္ေယာက္ကသူရဲ႕ subscription ကို cancelled လုပ္သြားတဲ႕အခ်ိန္မွာ သင္႕အေနနဲ႕ သူတို႕ resume ျပန္လုပ္ဖို႕ဆုေတာင္းေနမွာေပါ႕၊ ဒါဆိုရင္ <code>resume</code> method ကိုသံုးလိုက္ပါ:</p>
+<pre><code>$user-&gt;subscription(&#39;monthly&#39;)-&gt;resume($creditCardToken);
+</code></pre><p>တကယ္လို႕ user က subscription တစ္ခုကို cancels လုပ္လိုက္တယ္၊ ေနာက္ subscription က fully expired မျဖစ္ခင္မွာ user က resume ျပန္လုပ္လုိက္တယ္ဆိုရင္ သူတို႕က bill ေတြကိုခ်က္ခ်င္းမျဖတ္ပါဘူး။ သူတို႕ရဲ႕ subscription ေတြကို ရိုးရွင္းစြာပဲ re-activated လုပ္သြားပါတယ္ ေနာက္ သူတို႕ရဲ႕ မူလ    billing cycle အတိုင္း  billed လုပ္ပါလိမ္႕မယ္။</p>
+<p><a name="checking-subscription-status"></a></p>
+<h2 id="checking-subscription-status">Checking Subscription Status</h2>
+<p>User တစ္ေယာက္က သင္႕ရဲ႕ application ကို subscribed လုပ္သြားတာကို verify လုပ္ရန္အတြက္ <code>subscribed</code> command: ကိုသံုးပါ-</p>
+<pre><code>if ($user-&gt;subscribed())
+{
+    //
+}
+</code></pre><p><code>subscribed</code> method က Route filter အတြက္ အေကာင္းဆံုး အသင္႕ေတာ္ဆံုး လုပ္ေဆာင္ေပးထားပါတယ္:</p>
+<pre><code>Route::filter(&#39;subscribed&#39;, function()
+{
+    if (Auth::user() &amp;&amp; ! Auth::user()-&gt;subscribed())
+    {
+        return Redirect::to(&#39;billing&#39;);
+    }
+});
+</code></pre><p>သင့္အေနနဲ႕ user က trial ကာလမွာဟုတ္မဟုတ္ကို <code>onTrial</code> method ကိုအသံုးျပဳၿပီးေတာ႕ ဆံုးျဖတ္ေပးႏိုင္ပါတယ္:</p>
+<pre><code>if ($user-&gt;onTrial())
+{
+    //
+}
+</code></pre><p>သင္႕အေနနဲ႕ user က active subscriber လား ဒါမွမဟုတ္ cancel လုပ္လုိက္ၿပီလားဆိုတာကို <code>cancelled</code> method ကိုသံုးၿပီးေတာ႕စစ္ႏိုင္ပါတယ္:</p>
+<pre><code>if ($user-&gt;cancelled())
+{
+    //
+}
+</code></pre><p>သင္႕အေနနဲ႕ User ကသူ႕ရဲ႕ subscription ကို cancel လုပ္လိုက္ၿပီ ဒါေပမယ္႕ subscription ကလည္း fully expires မျဖစ္ေသးဘူး... တစ္နည္းအားျဖင့္ &quot;grace period&quot; လည္းမကုန္ေသးဘူးဆိုတာကို ဆံုးျဖတ္ႏိုင္ပါတယ္။ ဥပမာ၊ user က subscription ကို March လ 5 ရက္ေန႕မွာ cancel လုပ္လိုက္တယ္... တကယ္တမ္း scheduled မွာက March လ 10 ရက္ေန႕မွၿပီးမယ္ဆိုရင္ အဲ႕ဒီ႕ user က &quot;grace period&quot; မွာဘဲရွိေသးပါတယ္။ မွတ္ထားရမွာက <code>subscribed</code> method ကအဲ႕ဒီ႕အခ်ိန္မွာ <code>true</code> return ဘဲျပန္ေနဦးမွာပါ။</p>
+<pre><code>if ($user-&gt;onGracePeriod())
+{
+    //
+}
+</code></pre><p>User က သင့္ application ရဲ႕ plan တစ္ခုကိုအၿမဲတမ္း subscribed လုပ္ၿပီးၿပီလား မလုပ္ရေသးဘူးလားဆိုတာကို <code>everSubscribed</code> method နဲ႕ စစ္ေဆးႏိုင္ပါတယ္:</p>
+<pre><code>if ($user-&gt;everSubscribed())
+{
+    //
+}
+</code></pre><p><a name="handling-failed-payments"></a></p>
+<h2 id="handling-failed-payments">Handling Failed Payments</h2>
+<p>ကတယ္လို႕ customer ရဲ႕ credit card expires ျဖစ္ေနရင္လား၊ မစိုးရိမ္ပါနဲ႕ Cashuer က Webhook controller တစ္ခုပါဝင္ပါတယ္... အဲဒါကဘာလုပ္ႏိုင္လဲဆိုရင္  customer ရဲ႕ subscriotion ကို သင္႕အတြက္ cancel လုပ္ေပးပါလိမ္႕မယ္:</p>
+<pre><code>Route::post(&#39;stripe/webhook&#39;, &#39;Laravel\Cashier\WebhookController@handleWebhook&#39;);
+</code></pre><p>ဒါဘဲေလ။ Payment Fail ျဖစ္တာေတြ capture လုပ္တာေတြကိုလည္း controller ကေျဖရွင္းေပးပါလိမ့္မယ္။ controller က payment သံုးႀကိမ္ႀကိဳးစားလို႕မွမရဘူးဆိုရင္ customer subscription ကို cancel လုပ္ပါလိမ္႕မယ္။ ဒီဥပမာမွာ <code>stripe/webbhook</code> URI က ဥပမာအတြက္ပါ။ သင္႕အေနနဲ႕အဲ႕ဒီ႕ URI  ကို Stripe Setting မွာ configure လုပ္ဖို႕လိုမွာပါ။</p>
+<p>သင္ထက္ေပါင္းထည္႕ထားတဲ႕ Stripe webhook event ကိုေျဖရွင္းခ်င္တယ္ဆိုရင္ Webhook controller ကို ရိုးရွင္းစြာဘဲ extend လုပ္လိုက္ပါ :</p>
+<pre><code>class WebhookController extends Laravel\Cashier\WebhookController {
+
+    public function handleWebhook()
+    {
+        // Handle other events...
+
+        // Fallback to failed payment check...
+        return parent::handleWebhook();
+    }
+
+}
+</code></pre><blockquote>
+<p><strong>Note:</strong> In addition to updating the subscription information in your database, the Webhook controller will also cancel the subscription via the Stripe API.</p>
+</blockquote>
+<p><a name="invoices"></a></p>
+<h2 id="invoices">Invoices</h2>
+<p>သင့္အေနနဲ႕ user invoices  ရဲ႕ array ကို <code>invoices</code> method ကိုသံုးၿပီးေတာ႕ လြယ္လြယ္ကူကူ retrieve လုပ္ႏိုင္ပါတယ္:</p>
+<pre><code>$invoices = $user-&gt;invoices();
+</code></pre><p>Customer ေတြရဲ႕ invoices ေတြကို List လုပ္တဲ႕အခ်ိန္မွာ သင္႕အေနနဲ႕ invoice information နဲ႕ပတ္သတ္တာေတြကို ျပသဖို႕ရာအတြက္ ဒီ helper ေတြကို သံုးႏိုင္ပါတယ္:</p>
+<pre><code>{{ $invoice-&gt;id }}
+
+{{ $invoice-&gt;dateString() }}
+
+{{ $invoice-&gt;dollars() }}
+</code></pre><p>Invoice PDF download ကို generate ထုတ္ဖို႕ရာအတြက္ <code>downloadInvoice</code> method ကိုသံုးပါ။  ဟုတ္တယ္...ဒါကတကယ္ကိုလြယ္ပါတယ္:</p>
+<pre><code>return $user-&gt;downloadInvoice($invoice-&gt;id, [
+    &#39;vendor&#39;  =&gt; &#39;Your Company&#39;,
+    &#39;product&#39; =&gt; &#39;Your Product&#39;,
+]);
+</code></pre>
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./security.html" class="navigation navigation-prev " aria-label="Previous page: Authentication"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./cache.html" class="navigation navigation-next " aria-label="Next page: Cache"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
