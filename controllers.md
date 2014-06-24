@@ -1,4 +1,4 @@
-﻿# Controllers မ်ားအေၾကာင္း
+# Controllers မ်ားအေၾကာင္း
 
 - [Basic Controllers](#basic-controllers)
 - [Controller Filters](#controller-filters)
@@ -59,7 +59,7 @@ Controller action တစ္ခုရဲ့ နာမည္ကုိ သိရန
 <a name="controller-filters"></a>
 ## Controller Filters
 
-[Filters](/docs/routing#route-filters) က Controller ပါတဲ့ route တခုသတ္မွတ္ကတည္းက ေအာက္ပါပံုစံအတုိင္း သတ္မွတ္ခဲ့ပါတယ္။
+[Filters](routing#route-filters.md) က Controller ပါတဲ့ route တခုသတ္မွတ္ကတည္းက ေအာက္ပါပံုစံအတုိင္း သတ္မွတ္ခဲ့ပါတယ္။
 
 	Route::get('profile', array('before' => 'auth',
 				'uses' => 'UserController@showProfile'));

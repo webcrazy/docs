@@ -117,5 +117,5 @@ session "driver" မွ session data မ်ား မည္သည့္ေနရ
 - `array` - sessions သည္ PHP array အျဖစ္ သိမ္းဆည္းမည္ျဖစ္ျပီး ေနာက္ထပ္ request မ်ားအတြက္ သိမ္းဆည္းထားႏုိင္မည္ မဟုတ္ေပ။
 
 
-> **မွတ္ခ်က္:**  array driver သည္ [unit tests](/docs/testing) အတြက္ အသုံးျပဳျခင္း ျဖစ္ျပီး တကယ့္ session data အတြက္ အသုံးျပဳျခင္း မဟုတ္ေပ။
+> **မွတ္ခ်က္:**  array driver သည္ [unit tests](testing.md) အတြက္ အသုံးျပဳျခင္း ျဖစ္ျပီး တကယ့္ session data အတြက္ အသုံးျပဳျခင္း မဟုတ္ေပ။
 

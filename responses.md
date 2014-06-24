@@ -156,7 +156,7 @@ View composer တစ္ခုကေန Multiple Views ကိုတစ္ႀက�
         $view->with('count', User::count());
     });
 
-If you would rather use a class based composer, which will provide the benefits of being resolved through the application [IoC Container](/docs/ioc), you may do so: 
+If you would rather use a class based composer, which will provide the benefits of being resolved through the application [IoC Container](ioc.md), you may do so: 
 
 	View::composer('profile', 'ProfileComposer');
 

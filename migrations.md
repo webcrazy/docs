@@ -1,4 +1,4 @@
-﻿# Migrations & Seeding
+# Migrations & Seeding
 
 - [အစပ်ိဳး](#introduction)
 - [Migrations ဖန္တီးျခင္း](#creating-migrations)
@@ -9,7 +9,7 @@
 <a name="introduction"></a>
 ## အစပ်ိဳး
 
-Migration မွာ Database အတြက္ Version Control ျပဳလုပ္ႏုိင္ရန္ ဖန္တီးထားသည္။ ၄င္းကို အသုံးျပဳျခင္းျဖင့္ database schema မ်ားကို အလြယ္တကူ ျပင္ဆင္ႏုိင္ျပီး team တစ္ခုလုံး တူညီသည့္ database schema ကုိ အသုံးျပဳႏုိင္ရန္ ပံပုိးထားသည္။ Migrations မွာ ပွံမွန္အားျဖင့္ [Schema Builder](/docs/schema) ျဖင့္ တြဲဖက္ အသုံးျပဳၾကသည္။
+Migration မွာ Database အတြက္ Version Control ျပဳလုပ္ႏုိင္ရန္ ဖန္တီးထားသည္။ ၄င္းကို အသုံးျပဳျခင္းျဖင့္ database schema မ်ားကို အလြယ္တကူ ျပင္ဆင္ႏုိင္ျပီး team တစ္ခုလုံး တူညီသည့္ database schema ကုိ အသုံးျပဳႏုိင္ရန္ ပံပုိးထားသည္။ Migrations မွာ ပွံမွန္အားျဖင့္ [Schema Builder](schema.md) ျဖင့္ တြဲဖက္ အသုံးျပဳၾကသည္။
 
 <a name="creating-migrations"></a>
 ## Migrations ဖန္တီးျခင္း

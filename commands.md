@@ -130,7 +130,7 @@ user input prompt အတြက္ သင္႕အေနနဲ႕ `ask` နဲ႕
 
 #### Registering A Command That Is In The IoC Container
 
-သင္႕ ရဲ႕ command က application ရဲ႕  [IoC container](/docs/ioc) ထဲမွာ Register လုပ္ထားတယ္ဆိုရင္... Arisan ကေနေခၚႏိုင္ေအာင္ သင္႕အေနဲ႕ `Artisan::resolve` method ကို အသံုးျပဳရပါ႕မယ္ - 
+သင္႕ ရဲ႕ command က application ရဲ႕  [IoC container](ioc.md) ထဲမွာ Register လုပ္ထားတယ္ဆိုရင္... Arisan ကေနေခၚႏိုင္ေအာင္ သင္႕အေနဲ႕ `Artisan::resolve` method ကို အသံုးျပဳရပါ႕မယ္ - 
 
 	Artisan::resolve('binding.name');
 

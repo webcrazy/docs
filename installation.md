@@ -44,7 +44,7 @@ PHP 5.5 မွာ တစ္ခ်ိဳ႔ OS ေတြက PHP JSON extension �
 
 Laravel က configuration ဆိုတာမရွိသေလာက္ပါဘဲ။ သင္စၿပီး develop ဖို႕ရာအဆင္သင္႕ပါဘဲ။ဘယ္လိုဘဲေျပာေျပာ သင္႕အေနနဲ႕ `app/config/app.php` file နဲ႕သူ႕ရဲ႕ Documencation ကိုျပန္ၾကည္႕ခ်င္မွာပါဘဲ။ `app/config/app.php`မွာဘာေတြပါသလဲဆိုရင္ေတာ႕ `timezone` ေနာက္ `locale`တို႕ပါပါတယ္၊သင္႕ရဲ႕ application နဲ႕အဆင္ေျပတာေတြကို configure လုပ္ႏိုင္ပါတယ္။
 
-Laravel ကိုတစ္ခါ Install လုပ္တိုင္း [သင္႕ရဲ႕ local environmet](/docs/configuration#environment-configuration) ကို Configure ျပန္လုပ္သင္႕ပါတယ္။ local machine မွာ     develop လုပ္တဲ႕အခါ erros ကိုျမင္ရမယ္။ မူလကေတာ႕ error reporting က သင္႕ရဲ႕ development production မွာ disable လုပ္ထားပါတယ္။
+Laravel ကိုတစ္ခါ Install လုပ္တိုင္း [သင္႕ရဲ႕ local environmet](configuration#environment-configuration.md) ကို Configure ျပန္လုပ္သင္႕ပါတယ္။ local machine မွာ     develop လုပ္တဲ႕အခါ erros ကိုျမင္ရမယ္။ မူလကေတာ႕ error reporting က သင္႕ရဲ႕ development production မွာ disable လုပ္ထားပါတယ္။
 
 > **မွတ္ခ်က္:** `app.debug` ကို production မွာဘယ္ေတာ႕မွ true မေပးသင္႕ပါဘူး။ဘယ္ေတာ႕မွ မလုပ္ပါနဲ႕။
 

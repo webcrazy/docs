@@ -213,7 +213,7 @@ Database အား `seed` method အသံုးျပဳ၍ re-seed ျပဳ�
 
 	$this->seed($connection);
 
-Database seeds မ်ားျပဳလုပ္ျခင္းႏွင့္ ပတ္သက္၍ documentation ရဲ႕ [migrations and seeding](/docs/migrations#database-seeding) အခန္းမွာ သြားၾကည့္ႏိုင္ပါတယ္။
+Database seeds မ်ားျပဳလုပ္ျခင္းႏွင့္ ပတ္သက္၍ documentation ရဲ႕ [migrations and seeding](migrations#database-seeding.md) အခန္းမွာ သြားၾကည့္ႏိုင္ပါတယ္။
 
 
 <a name="refreshing-the-application"></a>

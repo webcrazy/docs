@@ -88,7 +88,7 @@ Application ရဲ့ လက္ရွိအသံုးျပဳေနတဲ့ 
 <a name="provider-configuration"></a>
 ### Provider ျပင္ဆင္ျခင္း
 
-Environment configuration ကို အသံုးျပဳၿပီဆိုလို႔ရွိရင္၊ ကိုယ့္ရဲ့ ပင္မ `app` configuration ဖိုင္ထဲမွာ environment [service providers](/docs/ioc#service-providers) ကိုထည့္ေပါင္းထည့္ဖို႔ လုိအပ္လာတဲ့ အေျခအေနေတြ ရွိလာႏိုင္ပါတယ္။ အကယ္၍ ကိုယ္က ထပ္ေပါင္းထည့္ထားတယ္ဆိုလို႔ရွိရင္, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုၿပီး သတိေပးပါလိမ့္မယ္။ အဲ့လိုအေျခအေနမ်ိဳးမွာ providers ကို မရမကထပ္ေပါင္းထည့္ေစဖို႔အတြက္ `append_config` ဆိုတဲ့ helper method ကို ကိုယ့္ရဲ့ environment `app` configuration ဖိုင္ထဲမွာ အသံုးျပဳႏိုင္ပါတယ္။
+Environment configuration ကို အသံုးျပဳၿပီဆိုလို႔ရွိရင္၊ ကိုယ့္ရဲ့ ပင္မ `app` configuration ဖိုင္ထဲမွာ environment [service providers](ioc#service-providers.md) ကိုထည့္ေပါင္းထည့္ဖို႔ လုိအပ္လာတဲ့ အေျခအေနေတြ ရွိလာႏိုင္ပါတယ္။ အကယ္၍ ကိုယ္က ထပ္ေပါင္းထည့္ထားတယ္ဆိုလို႔ရွိရင္, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုၿပီး သတိေပးပါလိမ့္မယ္။ အဲ့လိုအေျခအေနမ်ိဳးမွာ providers ကို မရမကထပ္ေပါင္းထည့္ေစဖို႔အတြက္ `append_config` ဆိုတဲ့ helper method ကို ကိုယ့္ရဲ့ environment `app` configuration ဖိုင္ထဲမွာ အသံုးျပဳႏိုင္ပါတယ္။
 
 	'providers' => append_config(array(
 		'LocalOnlyServiceProvider',
@@ -99,7 +99,7 @@ Environment configuration ကို အသံုးျပဳၿပီဆို�
 
 အမွန္တကယ္အသံုးျပဳမဲ့ application ေတြအတြက္၊ ကိုယ့္ရဲ့ အမွားမခံ၊ အသိခံလို႔ မရတဲ့ configuration ေတြကို configuration ဖိုင္ထဲမွာ မသိမ္းပဲနဲ႔ အျခားတစ္ေနရာမွာထားတာက ပိုၿပီးသင့္ေတာ္ပါတယ္။ ဘယ္လိုအမ်ိဳးအစားေတြလဲဆိုေတာ့ database passwords, Stripe API keys, and encryption keys စတာေတြကို ျဖစ္ႏိုင္လို႔ရွိရင္ configuration ဖိုင္ထဲမွာမသိမ္းသင့္ပါဘူး။ ဒါဆိုဘယ္ေနရာမွာသိမ္းမလဲ? အဲ့ဒီအတြက္ Laravel ကေျဖရွင္းေပးၿပီးသားျဖစ္ပါတယ္။ အဲ့ဒီလို configuration အမ်ိဳးအစားေတြအတြက္ "dot" files ေတြကိုအသံုးျပဳၿပီး ကာကြယ္ထားႏိုင္ပါတယ္။
 
-ပထမဆံုးအေနနဲ႔ ကိုယ့္ရဲ့စက္ဟာ local မွာ run ေနတာပါဆိုတာကို application ကသိေအာင္ [configure](/docs/configuration#environment-configuration) လုပ္ေပးရပါမယ္။ ၿပီးရင္ `.env.local.php` ဆိုတဲ့ ဖိုင္အသစ္ကို `composer.json` ဖိုင္ရွိတဲ့ ဖိုဒါေအာက္မွာ ေဆာက္ေပးလိုက္ပါ။ အဲ့ဒီ `.env.local.php` ဖိုင္ဟာ အျခား laravel configuration ဖိုင္ေတြလိုပဲ key-value pairs ျဖစ္တဲ့ array တစ္ခု return ျပန္ရပါမယ္။ 
+ပထမဆံုးအေနနဲ႔ ကိုယ့္ရဲ့စက္ဟာ local မွာ run ေနတာပါဆိုတာကို application ကသိေအာင္ [configure](configuration#environment-configuration.md) လုပ္ေပးရပါမယ္။ ၿပီးရင္ `.env.local.php` ဆိုတဲ့ ဖိုင္အသစ္ကို `composer.json` ဖိုင္ရွိတဲ့ ဖိုဒါေအာက္မွာ ေဆာက္ေပးလိုက္ပါ။ အဲ့ဒီ `.env.local.php` ဖိုင္ဟာ အျခား laravel configuration ဖိုင္ေတြလိုပဲ key-value pairs ျဖစ္တဲ့ array တစ္ခု return ျပန္ရပါမယ္။ 
 
 	<?php
 
@@ -143,4 +143,4 @@ Application ဟာ ျပဳျပင္ထိန္းသိမ္းမႈ ျ
 
 ### Maintenance Mode ႏွင္႕ Queues
 
-Application ဟာ maintenance mode မွာ ရွိေနစဥ္အတြင္း [queue jobs](/docs/queues) ေတြကို ကိုင္တြယ္ေျဖရွင္းမွာမဟုတ္ပါဘူး။ Application ဟာ ပံုမွန္အေျခအေန ကိုျပန္ေရာက္ပီဆိုေတာ့မွ ျပန္လည္ကိုင္တြယ္ေျဖရွင္းေပးမွာျဖစ္ပါတယ္။
+Application ဟာ maintenance mode မွာ ရွိေနစဥ္အတြင္း [queue jobs](queues.md) ေတြကို ကိုင္တြယ္ေျဖရွင္းမွာမဟုတ္ပါဘူး။ Application ဟာ ပံုမွန္အေျခအေန ကိုျပန္ေရာက္ပီဆိုေတာ့မွ ျပန္လည္ကိုင္တြယ္ေျဖရွင္းေပးမွာျဖစ္ပါတယ္။

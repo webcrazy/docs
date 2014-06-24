@@ -1,4 +1,4 @@
-﻿# Laravel Quickstart
+# Laravel Quickstart
 
 - [Installation](#installation)
 - [Routing](#routing)
@@ -28,7 +28,7 @@ Laravel framework ကုိ [Composer](http://getcomposer.org) မွလည္�
 
 ### Permissions
 
-Laravel ကုိ install ျပဳလုပ္ျပီးပါက သင့္အေနျဖင့္ web server ၏ write permission ျဖင့္ပတ္သတ္၍ `app/storage` ထဲတြင္ ျပင္ဆင္ရန္ လုိအပ္ေကာင္း လုိအပ္ေပမည္။ အေသးစိတ္ အခ်က္အလက္ကုိ  [Installation](/docs/installation) တြင္ ၾကည့္ရႈႏုိင္ပါသည္။
+Laravel ကုိ install ျပဳလုပ္ျပီးပါက သင့္အေနျဖင့္ web server ၏ write permission ျဖင့္ပတ္သတ္၍ `app/storage` ထဲတြင္ ျပင္ဆင္ရန္ လုိအပ္ေကာင္း လုိအပ္ေပမည္။ အေသးစိတ္ အခ်က္အလက္ကုိ  [Installation](installation.md) တြင္ ၾကည့္ရႈႏုိင္ပါသည္။
 
 ### Serving Laravel
 
@@ -59,7 +59,7 @@ Route မ်ားမွာ controller မ်ားႏွင့္လည္း �
 
 	Route::get('users', 'UserController@getIndex');
 
-အဆုိပါ route တြင္ 	`/users` ဟုေခၚယူလုိက္ပါက `UserController` class အတြင္းရွိ `getIndex` method  ကုိ အလုပ္လုပ္မည္ ျဖစ္သည္။ Controller routing ႏွင့္ ပတ္သတ္၍ အေသးစိတ္ကုိ [controller documentation](/docs/controllers) တြင္ၾကည့္ရႈႏုိင္သည္။
+အဆုိပါ route တြင္ 	`/users` ဟုေခၚယူလုိက္ပါက `UserController` class အတြင္းရွိ `getIndex` method  ကုိ အလုပ္လုပ္မည္ ျဖစ္သည္။ Controller routing ႏွင့္ ပတ္သတ္၍ အေသးစိတ္ကုိ [controller documentation](controllers.md) တြင္ၾကည့္ရႈႏုိင္သည္။
 
 <a name="creating-a-view"></a>
 ## View တစ္ခု တည္ေဆာက္ျခင္း
@@ -82,7 +82,7 @@ Route မ်ားမွာ controller မ်ားႏွင့္လည္း �
 		Users!
 	@stop
 
-တခ်ိဳ  ့ေသာ syntax မ်ားမွ သင့္အတြက္ နည္းနည္း စိမ္းေနမည္ ျဖစ္သည္။ အဘယ္ေၾကာင့္ဆုိေသာ္ ယခု အသုံးျပဳထားသည္မွာ Laravel ၏ templating system ျဖစ္သည့္ Blade ကုိ အသုံးျပဳထားျခင္း ေၾကာင့္ ျဖစ္သည္။ Blade သည္ အလြန္ျမန္ဆန္ လွေပသည္။ အေၾကာင္းမွာ ရုိးရွင္းလြယ္ကူ regular expression မ်ားကုိ အသုံးျပဳကာ PHP အျဖစ္သုိ ့ compile ျပဳလုပ္ထားျခင္းေၾကာင့္ျဖစ္သည္။ Blade အေနျဖင့္ အလြန္တရာ စြမ္းအင္ၾကီးမားလွေသာ template inheritance ကဲ့သို ့ေသာ feature မ်ားကို support ေပးရုံသာမက  PHP တြင္ ေရးသားႏုိင္သည့္ `if` ႏွင့္ `for` သုိ ့ေသာ Conditional statement မ်ားကိုပါ ေသသပ္လွပစြာ ေရးသားႏိုင္ေသာေၾကာင့္ျဖစ္သည္။ အေသးစိတ္ကို  [Blade documentation](/docs/templates) ၾကည့္ရႈႏုိင္ေပမည္။ 
+တခ်ိဳ  ့ေသာ syntax မ်ားမွ သင့္အတြက္ နည္းနည္း စိမ္းေနမည္ ျဖစ္သည္။ အဘယ္ေၾကာင့္ဆုိေသာ္ ယခု အသုံးျပဳထားသည္မွာ Laravel ၏ templating system ျဖစ္သည့္ Blade ကုိ အသုံးျပဳထားျခင္း ေၾကာင့္ ျဖစ္သည္။ Blade သည္ အလြန္ျမန္ဆန္ လွေပသည္။ အေၾကာင္းမွာ ရုိးရွင္းလြယ္ကူ regular expression မ်ားကုိ အသုံးျပဳကာ PHP အျဖစ္သုိ ့ compile ျပဳလုပ္ထားျခင္းေၾကာင့္ျဖစ္သည္။ Blade အေနျဖင့္ အလြန္တရာ စြမ္းအင္ၾကီးမားလွေသာ template inheritance ကဲ့သို ့ေသာ feature မ်ားကို support ေပးရုံသာမက  PHP တြင္ ေရးသားႏုိင္သည့္ `if` ႏွင့္ `for` သုိ ့ေသာ Conditional statement မ်ားကိုပါ ေသသပ္လွပစြာ ေရးသားႏိုင္ေသာေၾကာင့္ျဖစ္သည္။ အေသးစိတ္ကို  [Blade documentation](templates.md) ၾကည့္ရႈႏုိင္ေပမည္။ 
 
 ယခု ကြ်န္ေတာ္တုိ ့ views အပုိင္းကို ဖန္တီးျပီး ျဖစ္၍ `/users` ဟုေသာ route ဘက္ကုိ ျပန္လွည့္ၾကပါစုိ ့။ Route မွ `Users!` ဟု return ျပန္ျခင္းထက္ 
 view ကို ျပန္ေပးဖုိ ့လုိေပမည္။ 
@@ -101,7 +101,7 @@ Table တစ္ခုတည္ေဆာက္ျပီး data ေတြကု�
 
 ေရွးဦးစြာ database ႏွင့္ ခ်ိတ္ဆက္ရန္ လုိေပမည္။ database ျဖင့္ခ်ိတ္ဆက္ရန္ အတြက္ `app/config/database.php` တြင္ ျပင္ဆင္ရန္လုိေပမည္။ ပုံမွန္အားျဖင့္ Laravel သည္ MySQL ျဖင့္ အသုံးျပဳရန္ သတ္မွတ္ထားသည္။ သင့္အေနျဖင့္ လုိအပ္ေသာ credential မ်ားကုိ config file တြင္ ျဖည့္သြင္းရန္လုိေပမည္။ သင့္အေနျဖင့္ အလုိရွိပါက စိတ္ၾကိဳက္ `driver` option ကုိ `sqlite` ျဖစ္ေစေျပာင္းလဲႏုိင္ျပီ။ ၄င္းအေနျဖင့္ `app/database` directory ေအာက္တြင္ တည္ရွိမည့္ SQLite database ကို အလုပ္လုပ္မည္ ျဖစ္သည္။
 
-ထုိေနာက္ migration တစ္ခု ဖန္တီးရန္ [Artisan CLI](/docs/artisan) ကုိ အသုံးျပဳမည္ ျဖစ္သည္။ project ၏ root တြင္ ေအာက္ပါ အတုိင္း terminal မွ run ရန္ လုိေပမည္။
+ထုိေနာက္ migration တစ္ခု ဖန္တီးရန္ [Artisan CLI](artisan.md) ကုိ အသုံးျပဳမည္ ျဖစ္သည္။ project ၏ root တြင္ ေအာက္ပါ အတုိင္း terminal မွ run ရန္ လုိေပမည္။
 
 	php artisan migrate:make create_users_table
 
@@ -175,4 +175,4 @@ Eloquent ORM သည္ Laravel ၏ အလွတရား တစ္ရပ္ပ�
 
 သင့္အေနျဖင့္ `echo` statements ကုိရွာေနလား မသိ။ Blade ကုိ အသုံးျပဳရာတြင္ data မ်ားကို တြန္ ့ကြင္း ႏွစ္ခု အၾကား ထည့္သြင္းျခင္းျဖင့္ data မ်ားကို echo အစား ျပသေပးႏုိင္သည္။ ဘယ္ေလာက္မ်ား လြယ္ကူေပသလဲ။ ယခုအခါ သင့္အေနျဖင့္ `/users` route ကုိ လွမ္းေခၚလုိက္ျခင္းျဖင့္ သင့္ users မ်ားကုိ ျပသႏုိင္ေလျပီ။
 
-အထက္ပါ ဥပမာဟာ အစသာရွိပါေသးသည္။ ထုိ tutorial တြင္ သင့္အေနျဖင့္ laravel ၏ အေျခခံကို ေတြ ့ျမင္ႏုိင္မည္ ျဖစ္သည္။ သုိ ့ေသာ္လည္း ပုိမုိ၍ စိတ္လႈပ္ရွားစရာ အခ်က္မ်ားစြာ စီတန္း၍ ေလ့လာရန္ က်န္ရွိေနပါေသးသည္။ documentation ကုိ ဖတ္ရႈျခင္းျဖင့္  စြမ္းအားၾကီးမားလွသည့္  [Eloquent](/docs/eloquent) ႏွင့္ [Blade](/docs/templates) ကဲ့သုိ ့ေသာ သုိ ့မဟုတ္ သင့္ပုိစိတ္ဝင္စားႏုိင္သည့္  [Queues](/docs/queues) ႏွင့္ [Unit Testing](/docs/testing) ကဲ့သုိ ့ေသာ အေၾကာင္းအရာမ်ားကို ေလ့လာႏုိင္သည္။ ထပ္၍ သင့္ application ၏ architecture ကုိ သက္ေတာင့္သက္သာ ျဖစ္ေစမည့္  [IoC Container](/docs/ioc) မ်ားလည္း ပါဝင္ပါေသးသည္။ ေရြးခ်ယ္ပါေလာ့။
+အထက္ပါ ဥပမာဟာ အစသာရွိပါေသးသည္။ ထုိ tutorial တြင္ သင့္အေနျဖင့္ laravel ၏ အေျခခံကို ေတြ ့ျမင္ႏုိင္မည္ ျဖစ္သည္။ သုိ ့ေသာ္လည္း ပုိမုိ၍ စိတ္လႈပ္ရွားစရာ အခ်က္မ်ားစြာ စီတန္း၍ ေလ့လာရန္ က်န္ရွိေနပါေသးသည္။ documentation ကုိ ဖတ္ရႈျခင္းျဖင့္  စြမ္းအားၾကီးမားလွသည့္  [Eloquent](eloquent) ႏွင့္ [Blade](/docs/templates) ကဲ့သုိ ့ေသာ သုိ ့မဟုတ္ သင့္ပုိစိတ္ဝင္စားႏုိင္သည့္  [Queues](/docs/queues) ႏွင့္ [Unit Testing](/docs/testing) ကဲ့သုိ ့ေသာ အေၾကာင္းအရာမ်ားကို ေလ့လာႏုိင္သည္။ ထပ္၍ သင့္ application ၏ architecture ကုိ သက္ေတာင့္သက္သာ ျဖစ္ေစမည့္  [IoC Container](/docs/ioc.md) မ်ားလည္း ပါဝင္ပါေသးသည္။ ေရြးခ်ယ္ပါေလာ့။

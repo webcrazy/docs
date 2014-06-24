@@ -1,4 +1,4 @@
-﻿# Redis
+# Redis
 
 - [အစပ်ိဳး](#introduction)
 - [Configuration](#configuration)
@@ -70,7 +70,7 @@ default connection  မွ ဆန္ ့က်င္ျပီး command မ်�
 
 	$values = Redis::lrange('names', 5, 10);
 
-> **Note:** Laravel တြင္ Redis [cache](/docs/cache) ႏွင့္ [session](/docs/session) drivers မ်ား ပါဝင္ျပီး ျဖစ္သည္။
+> **Note:** Laravel တြင္ Redis [cache](cache) ႏွင့္ [session](/docs/session.md) drivers မ်ား ပါဝင္ျပီး ျဖစ္သည္။
 
 <a name="pipelining"></a>
 ## Pipelining
