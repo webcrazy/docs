@@ -1,7 +1,0 @@
-{
-  "name": "Laravel Myanmar Docs",
-  "description": "Laravel Myanmar Docs",
-  "dependencies": {
-    "plugin-zawgyicss" : ">= 0.0.5"
-  }
-}
