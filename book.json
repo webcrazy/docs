@@ -1,11 +1,12 @@
 {
   "title": "Laravel Framework Documentation (Myanmar)",
-  "github": "https://github.com/Laravel-Myanmar/docs",
+  "github": "Laravel-Myanmar/docs",
   "plugins" : [
     "plugin-zawgyicss"
   ],
   "links" : {
     "home" : false,
     "about" : false
-  }
+  },
+  "extension" : "epub"
 }
