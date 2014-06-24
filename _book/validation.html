@@ -1,0 +1,1111 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>Validation | Laravel Framework Documentation (Myanmar)</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 0.5.2">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="./database.html" />
+    
+    
+    <link rel="prev" href="./testing.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="gitbook/style.css">
+
+    
+    <link rel="stylesheet" href="gitbook/plugins/plugin-zawgyicss/zawgyi.css">
+    
+
+
+        
+    <div class="book"  data-level="3.20" data-basepath="." data-revision="1403599999016">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="./" >Laravel Framework Documentation (Myanmar)</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+
+        
+
+        
+
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.</b> Laravel နိဒါန္း
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.1.</b> Laravel မိတ္ဆက္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="quick.html">
+            
+            <a href="./quick.html">
+                <i class="fa fa-check"></i> <b>1.2.</b> Laravel အက်ဥ္းခ်ဳပ္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="releases.html">
+            
+            <a href="./releases.html">
+                <i class="fa fa-check"></i> <b>1.3.</b> Release Notes
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="upgrade.html">
+            
+            <a href="./upgrade.html">
+                <i class="fa fa-check"></i> <b>1.4.</b> Upgrade Guide
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.</b> Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Laravel install လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="configuration.html">
+            
+            <a href="./configuration.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Configuration လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="homestead.html">
+            
+            <a href="./homestead.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Laravel ရဲ႕ Official Development Homestead အေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="lifecycle.html">
+            
+            <a href="./lifecycle.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Request Lifecycle 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="routing.html">
+            
+            <a href="./routing.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Route လုပ္ျခင္းအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="requests.html">
+            
+            <a href="./requests.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Requests ႏွင္႕ Input မ်ားအေၾကာင္း 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="responses.html">
+            
+            <a href="./responses.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Views ႏွင္႕ Responses မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="controllers.html">
+            
+            <a href="./controllers.html">
+                <i class="fa fa-check"></i> <b>2.8.</b> Controllers မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="errors.html">
+            
+            <a href="./errors.html">
+                <i class="fa fa-check"></i> <b>2.9.</b> Errors ႏွင္႕ Logging မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.</b> Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.1.</b> Authentication
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="billing.html">
+            
+            <a href="./billing.html">
+                <i class="fa fa-check"></i> <b>3.2.</b> Billing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="cache.html">
+            
+            <a href="./cache.html">
+                <i class="fa fa-check"></i> <b>3.3.</b> Cache
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="extending.html">
+            
+            <a href="./extending.html">
+                <i class="fa fa-check"></i> <b>3.4.</b> Core Extension
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="events.html">
+            
+            <a href="./events.html">
+                <i class="fa fa-check"></i> <b>3.5.</b> Events
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="facades.html">
+            
+            <a href="./facades.html">
+                <i class="fa fa-check"></i> <b>3.6.</b> Facades
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="html.html">
+            
+            <a href="./html.html">
+                <i class="fa fa-check"></i> <b>3.7.</b> Forms &amp; HTML
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="helpers.html">
+            
+            <a href="./helpers.html">
+                <i class="fa fa-check"></i> <b>3.8.</b> Helpers
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="ioc.html">
+            
+            <a href="./ioc.html">
+                <i class="fa fa-check"></i> <b>3.9.</b> IoC Container
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="localization.html">
+            
+            <a href="./localization.html">
+                <i class="fa fa-check"></i> <b>3.10.</b> Localization
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="mail.html">
+            
+            <a href="./mail.html">
+                <i class="fa fa-check"></i> <b>3.11.</b> Mail
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="packages.html">
+            
+            <a href="./packages.html">
+                <i class="fa fa-check"></i> <b>3.12.</b> Package Development
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="pagination.html">
+            
+            <a href="./pagination.html">
+                <i class="fa fa-check"></i> <b>3.13.</b> Pagination
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="queues.html">
+            
+            <a href="./queues.html">
+                <i class="fa fa-check"></i> <b>3.14.</b> Queues
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.15.</b> Security
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="session.html">
+            
+            <a href="./session.html">
+                <i class="fa fa-check"></i> <b>3.16.</b> Session
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="ssh.html">
+            
+            <a href="./ssh.html">
+                <i class="fa fa-check"></i> <b>3.17.</b> SSH
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="templates.html">
+            
+            <a href="./templates.html">
+                <i class="fa fa-check"></i> <b>3.18.</b> Templates
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="testing.html">
+            
+            <a href="./testing.html">
+                <i class="fa fa-check"></i> <b>3.19.</b> Unit Testing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="validation.html">
+            
+            <a href="./validation.html">
+                <i class="fa fa-check"></i> <b>3.20.</b> Validation
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.</b> Database
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.1.</b> အေျခခံ အသုံးျပဳပုံ
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="queries.html">
+            
+            <a href="./queries.html">
+                <i class="fa fa-check"></i> <b>4.2.</b> Query Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="eloquent.html">
+            
+            <a href="./eloquent.html">
+                <i class="fa fa-check"></i> <b>4.3.</b> Eloquent ORM
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="schema.html">
+            
+            <a href="./schema.html">
+                <i class="fa fa-check"></i> <b>4.4.</b> Schema Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="migrations.html">
+            
+            <a href="./migrations.html">
+                <i class="fa fa-check"></i> <b>4.5.</b> Migrations &amp; Seeding
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="redis.html">
+            
+            <a href="./redis.html">
+                <i class="fa fa-check"></i> <b>4.6.</b> Redis
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.</b> Artisan CLI
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.1.</b> Overview
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="commands.html">
+            
+            <a href="./commands.html">
+                <i class="fa fa-check"></i> <b>5.2.</b> Development
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="contributing.html">
+            
+            <a href="./contributing.html">
+                <i class="fa fa-check"></i> <b>5.2.1.</b> Contributing
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 60.97560975609756%;min-width: 58.53658536585366%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./introduction.html" title="Laravel မိတ္ဆက္" class="chapter done " data-progress="1.1" style="left: 2.4390243902439024%;"></a>
+    
+        <a href="./quick.html" title="Laravel အက်ဥ္းခ်ဳပ္" class="chapter done " data-progress="1.2" style="left: 4.878048780487805%;"></a>
+    
+        <a href="./releases.html" title="Release Notes" class="chapter done " data-progress="1.3" style="left: 7.317073170731708%;"></a>
+    
+        <a href="./upgrade.html" title="Upgrade Guide" class="chapter done " data-progress="1.4" style="left: 9.75609756097561%;"></a>
+    
+        <a href="./installation.html" title="Laravel install လုပ္ျခင္း" class="chapter done " data-progress="2.1" style="left: 12.195121951219512%;"></a>
+    
+        <a href="./configuration.html" title="Configuration လုပ္ျခင္း" class="chapter done " data-progress="2.2" style="left: 14.634146341463415%;"></a>
+    
+        <a href="./homestead.html" title="Laravel ရဲ႕ Official Development Homestead အေၾကာင္း" class="chapter done " data-progress="2.3" style="left: 17.073170731707318%;"></a>
+    
+        <a href="./lifecycle.html" title="Request Lifecycle " class="chapter done " data-progress="2.4" style="left: 19.51219512195122%;"></a>
+    
+        <a href="./routing.html" title="Route လုပ္ျခင္းအေၾကာင္း" class="chapter done " data-progress="2.5" style="left: 21.951219512195124%;"></a>
+    
+        <a href="./requests.html" title="Requests ႏွင္႕ Input မ်ားအေၾကာင္း " class="chapter done " data-progress="2.6" style="left: 24.390243902439025%;"></a>
+    
+        <a href="./responses.html" title="Views ႏွင္႕ Responses မ်ားအေၾကာင္း" class="chapter done " data-progress="2.7" style="left: 26.829268292682926%;"></a>
+    
+        <a href="./controllers.html" title="Controllers မ်ားအေၾကာင္း" class="chapter done " data-progress="2.8" style="left: 29.26829268292683%;"></a>
+    
+        <a href="./errors.html" title="Errors ႏွင္႕ Logging မ်ားအေၾကာင္း" class="chapter done " data-progress="2.9" style="left: 31.70731707317073%;"></a>
+    
+        <a href="./localization.html" title="Localization" class="chapter done " data-progress="3.10" style="left: 34.146341463414636%;"></a>
+    
+        <a href="./mail.html" title="Mail" class="chapter done " data-progress="3.11" style="left: 36.58536585365854%;"></a>
+    
+        <a href="./packages.html" title="Package Development" class="chapter done " data-progress="3.12" style="left: 39.02439024390244%;"></a>
+    
+        <a href="./pagination.html" title="Pagination" class="chapter done " data-progress="3.13" style="left: 41.46341463414634%;"></a>
+    
+        <a href="./queues.html" title="Queues" class="chapter done " data-progress="3.14" style="left: 43.90243902439025%;"></a>
+    
+        <a href="./security.html" title="Security" class="chapter done " data-progress="3.15" style="left: 46.34146341463415%;"></a>
+    
+        <a href="./session.html" title="Session" class="chapter done " data-progress="3.16" style="left: 48.78048780487805%;"></a>
+    
+        <a href="./ssh.html" title="SSH" class="chapter done " data-progress="3.17" style="left: 51.21951219512195%;"></a>
+    
+        <a href="./templates.html" title="Templates" class="chapter done " data-progress="3.18" style="left: 53.65853658536585%;"></a>
+    
+        <a href="./testing.html" title="Unit Testing" class="chapter done " data-progress="3.19" style="left: 56.09756097560975%;"></a>
+    
+        <a href="./billing.html" title="Billing" class="chapter done " data-progress="3.2" style="left: 58.53658536585366%;"></a>
+    
+        <a href="./validation.html" title="Validation" class="chapter done " data-progress="3.20" style="left: 60.97560975609756%;"></a>
+    
+        <a href="./cache.html" title="Cache" class="chapter  " data-progress="3.3" style="left: 63.41463414634146%;"></a>
+    
+        <a href="./extending.html" title="Core Extension" class="chapter  " data-progress="3.4" style="left: 65.85365853658537%;"></a>
+    
+        <a href="./events.html" title="Events" class="chapter  " data-progress="3.5" style="left: 68.29268292682927%;"></a>
+    
+        <a href="./facades.html" title="Facades" class="chapter  " data-progress="3.6" style="left: 70.73170731707317%;"></a>
+    
+        <a href="./html.html" title="Forms &amp; HTML" class="chapter  " data-progress="3.7" style="left: 73.17073170731707%;"></a>
+    
+        <a href="./helpers.html" title="Helpers" class="chapter  " data-progress="3.8" style="left: 75.60975609756098%;"></a>
+    
+        <a href="./ioc.html" title="IoC Container" class="chapter  " data-progress="3.9" style="left: 78.04878048780488%;"></a>
+    
+        <a href="./database.html" title="အေျခခံ အသုံးျပဳပုံ" class="chapter  " data-progress="4.1" style="left: 80.48780487804878%;"></a>
+    
+        <a href="./queries.html" title="Query Builder" class="chapter  " data-progress="4.2" style="left: 82.92682926829268%;"></a>
+    
+        <a href="./eloquent.html" title="Eloquent ORM" class="chapter  " data-progress="4.3" style="left: 85.36585365853658%;"></a>
+    
+        <a href="./schema.html" title="Schema Builder" class="chapter  " data-progress="4.4" style="left: 87.8048780487805%;"></a>
+    
+        <a href="./migrations.html" title="Migrations &amp; Seeding" class="chapter  " data-progress="4.5" style="left: 90.2439024390244%;"></a>
+    
+        <a href="./redis.html" title="Redis" class="chapter  " data-progress="4.6" style="left: 92.6829268292683%;"></a>
+    
+        <a href="./artisan.html" title="Overview" class="chapter  " data-progress="5.1" style="left: 95.1219512195122%;"></a>
+    
+        <a href="./commands.html" title="Development" class="chapter  " data-progress="5.2" style="left: 97.5609756097561%;"></a>
+    
+        <a href="./contributing.html" title="Contributing" class="chapter  " data-progress="5.2.1" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_42">
+                    
+                        <p>﻿# စိစစ္ျခင္း</p>
+<ul>
+<li><a href="#basic-usage">အေျခခံအသုံးျပဳပုံ</a></li>
+<li><a href="#working-with-error-messages">Working With Error Messages</a></li>
+<li><a href="#error-messages-and-views">Error Messages &amp; Views</a></li>
+<li><a href="#available-validation-rules">Available Validation Rules</a></li>
+<li><a href="#conditionally-adding-rules">Conditionally Adding Rules</a></li>
+<li><a href="#custom-error-messages">Custom Error Messages</a></li>
+<li><a href="#custom-validation-rules">Custom Validation Rules</a></li>
+</ul>
+<p><a name="basic-usage"></a></p>
+<h2 id="-">အေျခခံအသုံးျပဳပုံ</h2>
+<p>Laravel အေနျဖင့္ data မ်ားကုိ စိစစ္ရာတြင္ ရုိးရွင္း အဆင္ေျပေသာ နည္းလမ္းမ်ားကုိ အသုံးျပဳထားသည္။ error message မ်ားကုိ <code>Validation</code> class မွ တဆင့္ ထုတ္ယူႏုိင္သည္။</p>
+<h4 id="-">အေျခခံအသုံးျပဳပုံ ဥပမာ</h4>
+<pre><code>$validator = Validator::make(
+    array(&#39;name&#39; =&gt; &#39;Dayle&#39;),
+    array(&#39;name&#39; =&gt; &#39;required|min:5&#39;)
+);
+</code></pre><p>Validation ျပဳလုပ္ရာတြင္  <code>make</code> method ဟုသည့္ method ကုိ အသုံးျပဳျပီး array တြင္းပါရွိမည့္ ပထမ argument မွာ data ျဖစ္ျပီး ဒုတိယ argument မွာ ထုိ data မ်ားကုိ စိစစ္မည့္ rule မ်ားကို ထည့္သြင္းရမည္။</p>
+<h4 id="array-rule-">Array ကုိ အသုံးျပဳ၍ Rule မ်ား သတ္မွတ္ျခင္း</h4>
+<p>တခုထက္ပုိေသာ rule မ်ားကို သတ္မွတ္လုိပါက &quot;pipe&quot; character ကုိျဖစ္ေစ array အတြင္း ျခား၍ျဖစ္ေစ ထည့္သြင္းႏုိင္သည္။</p>
+<pre><code>$validator = Validator::make(
+    array(&#39;name&#39; =&gt; &#39;Dayle&#39;),
+    array(&#39;name&#39; =&gt; array(&#39;required&#39;, &#39;min:5&#39;))
+);
+</code></pre><h4 id="fields-">Fields မ်ားစြာကုိ စိစစ္ျခင္း</h4>
+<pre><code>$validator = Validator::make(
+    array(
+        &#39;name&#39; =&gt; &#39;Dayle&#39;,
+        &#39;password&#39; =&gt; &#39;lamepassword&#39;,
+        &#39;email&#39; =&gt; &#39;email@example.com&#39;
+    ),
+    array(
+        &#39;name&#39; =&gt; &#39;required&#39;,
+        &#39;password&#39; =&gt; &#39;required|min:8&#39;,
+        &#39;email&#39; =&gt; &#39;required|email|unique:users&#39;
+    )
+);
+</code></pre><p><code>Validator</code> instance ကုိ ျပဳလုပ္ျပီးပါက <code>fails</code> သုိ ့မဟုတ္ <code>passes</code> method ကုိ အသုံးျပဳ၍ အခ်က္အလက္မ်ား စိစစ္ႏုိင္သည္။</p>
+<pre><code>if ($validator-&gt;fails())
+{
+    // The given data did not pass validation
+}
+</code></pre><p>စိစစ္ျခင္း မေအာင္ျမင္ပါက validator မွ error message ကုိ ရယူႏုိင္ေပသည္။</p>
+<pre><code>$messages = $validator-&gt;messages();
+</code></pre><p>္fail ျဖစ္သည့္ rule မ်ားကုိသာ ရယူလုိျပီး message မ်ား မပါဝင္ေစလုိပါက <code>failed</code> method ကုိ အသုံးျပဳႏုိင္သည္။</p>
+<pre><code>$failed = $validator-&gt;failed();
+</code></pre><h4 id="files-">Files မ်ားစိစစ္ျခင္း</h4>
+<p><code>Validator</code> class အေနျဖင့္ <code>size</code> ႏွင့္ <code>mimes</code> အပါအဝင္ မ်ားေျမာင္လွေသာ validation method မ်ားကုိ အေထာက္အပံ့ေပးထားျပီး file မ်ား validate ျပဳလုပ္လုိပါက ထုိထဲ့သုိ ့ ထည့္သြင္းရန္သာ လုိေပမည္။</p>
+<p><a name="working-with-error-messages"></a></p>
+<h2 id="error-messages-">Error Messages မ်ားႏွင့္ လႈပ္ရွားျခင္း</h2>
+<p>After calling the  on a 
+<code>Validator</code> instance မွ <code>messages</code> method ကုိ ေခၚျပီးပါက Error message မ်ားျဖင့္ အလုပ္လုပ္ရာတြင္ လြယ္ကူေစမည့္ method မ်ားစြာပါဝင္မည့္ <code>MessageBag</code> ပါဝင္မည္ ျဖစ္သည္။</p>
+<h4 id="field-error-message-">Field တစ္ခုမွ ပထမဆုံး Error Message ကုိ ထုတ္ယူျခင္း</h4>
+<pre><code>echo $messages-&gt;first(&#39;email&#39;);
+</code></pre><h4 id="field-error-message-">Field တစ္ခုမွ Error Message မ်ားထုတ္ယူျခင္း</h4>
+<pre><code>foreach ($messages-&gt;get(&#39;email&#39;) as $message)
+{
+    //
+}
+</code></pre><h4 id="field-error-message-">Field အားလုံးမွ Error Message မ်ားထုတ္ယူျခင္း</h4>
+<pre><code>foreach ($messages-&gt;all() as $message)
+{
+    //
+}
+</code></pre><h4 id="field-message-">Field တစ္ခုမွ message ရွိမရွိ စစ္ေဆးျခင္း</h4>
+<pre><code>if ($messages-&gt;has(&#39;email&#39;))
+{
+    //
+}
+</code></pre><h4 id="error-message-format-">Error Message မ်ားအား Format ေျပာင္း၍ ထုတ္ယူျခင္း</h4>
+<pre><code>echo $messages-&gt;first(&#39;email&#39;, &#39;&lt;p&gt;:message&lt;/p&gt;&#39;);
+</code></pre><blockquote>
+<p><strong>မွတ္ခ်က္:</strong>  ပုံမွန္အားျဖင့္ messages မ်ားကုိ Bootstrap ျဖင့္ အဆင္ေျပမည့္ ပုံစံမ်ားအေနျဖင့္ သတ္မွတ္ထားပါသည္။</p>
+</blockquote>
+<h4 id="error-messages-format-">Error Messages မ်ားအား Format တစ္ခု သတ္မွတ္၍ ထုတ္ယူျခင္း</h4>
+<pre><code>foreach ($messages-&gt;all(&#39;&lt;li&gt;:message&lt;/li&gt;&#39;) as $message)
+{
+    //
+}
+</code></pre><p><a name="error-messages-and-views"></a></p>
+<h2 id="error-message-view-">Error Message မ်ားႏွင့္ View မ်ား</h2>
+<p>Validation ကုိ ေဆာင္ရြက္ျပီးသည္ႏွင့္ Error message မ်ားကုိ လြယ္လင့္တကူ ျပန္လည္ျပသႏုိင္ရန္ လုိအပ္ေပသည္။ ထုိလုိအပ္ခ်က္မ်ားကုိ Laravel မွ အဆင္ေျပလြယ္ကူစြာ ျဖည့္စြမ္းထားသည္။ ေအာက္ပါ route မ်ားကုိ ဥပမာ အေနျဖင့္ၾကည့္ပါ။</p>
+<pre><code>Route::get(&#39;register&#39;, function()
+{
+    return View::make(&#39;user.register&#39;);
+});
+
+Route::post(&#39;register&#39;, function()
+{
+    $rules = array(...);
+
+    $validator = Validator::make(Input::all(), $rules);
+
+    if ($validator-&gt;fails())
+    {
+        return Redirect::to(&#39;register&#39;)-&gt;withErrors($validator);
+    }
+});
+</code></pre><p>Note that when စိစစ္ျခင္း မေအာင္ျမင္ပါက <code>Validator</code> instance ကုိ <code>withErrors</code> method ျဖင့္ Error မ်ားကို passing ေပးလုိက္ျပီး Redirect ျပဳလုပ္လုိက္သည္ ကုိ ေတြ ့ရေပမည္။ အဆုိပါ method ကုိ အသုံးျပဳျခင္းျဖင့္ error message မ်ားကို လြယ္လင့္တကူ ျဖတ္ကနဲ  ျပသရာတြင္ သုံးႏုိင္ရင္ next request ၏ Session ထဲတြင္ ထည့္သြင္းထားပါသည္။</p>
+<p>သုိ ့ပင္ေသာ္ညား GET route နဲ ့ Error Message မ်ားကုိ အေသခ်ည္ေႏွာင္ထားရန္ မလုိသည္ကို သတိျပဳရမည္။ အဘယ္ေၾကာင့္ဆုိေသာ္ Laravel သည္ Session data မ်ားမွ Error မ်ားကုိ စစ္ေဆးျပီး view ဆီသုိ ့ အဆင္ေျပသည္ႏွင့္ တျပိဳင္နက္ ျပသႏုိင္ရန္ ျပင္ဆင္ထားသည္ကုိ သတိျပဳရမည္။ **ထုိေၾကာင့္ အေရးၾကီးသည့္ အခ်က္မွာ<code>$errors</code> ဟုသည္ variable မွာ သင့္ view ၏ request တုိင္းတြင္ ျပင္ဆင္ထားေသာေၾကာင့္ အျမဲတမ္း အဆင္သင့္ ျဖစ္ေနသည္ကုိ မွတ္ထားရန္လုိသည္။ <code>$errors</code> variable မွာ <code>MessageBag</code> ၏ instance ျဖစ္သည္။</p>
+<p>ထုိေၾကာင့္ redirect ျပဳလုပ္ျပီးေနာက္ <code>$errors</code> variable ႏွင့္ သင့္ view မွာ အလုိအေလ်ာက္ ခ်ည္ေႏွာင္ျပီးသား ျဖစ္ေပသည္။</p>
+<pre><code>&lt;?php echo $errors-&gt;first(&#39;email&#39;); ?&gt;
+</code></pre><h3 id="-error-bag-">အမည္ေပးထားေသာ Error Bag မ်ား</h3>
+<p>သင့္အေနျဖင့္ Page တစ္ခုတည္းတြင္ မ်ားျပားလွေသာ form မ်ားသည္ရွိသည္ ဆုိပါစုိ ့။ ထုိအခါ သင့္အေနျဖင့္ Error မ်ား၏ <code>MessageBag</code> မ်ားကုိ ကြဲျပားျခားနား ေစရန္ အမည္နာမ ေပးလုိေပမည္။ ထုိအခါတြင္ သင့္အေနျဖင့္ <code>withErrors</code> ဟုသည့္ method ၏ ဒုတိယ argument အေနျဖင့္ မိမိေပးလုိသည့္ အမည္ကုိ ထည့္သြင္းႏုိင္သည္။</p>
+<pre><code>return Redirect::to(&#39;register&#39;)-&gt;withErrors($validator, &#39;login&#39;);
+</code></pre><p>ထုိေနာက္ သင့္အေနျဖင့္ <code>$errors</code> variable မွ <code>MessageBag</code> instance ကုိ ေအာက္ပါအတုိင္း ဆြဲထုတ္ႏုိင္သည္။</p>
+<pre><code>&lt;?php echo $errors-&gt;login-&gt;first(&#39;email&#39;); ?&gt;
+</code></pre><p><a name="available-validation-rules"></a></p>
+<h2 id="-rule-">အသုံးျပဳႏုိင္သည့္ စိစစ္ျခင္း Rule မ်ား</h2>
+<p>ေအာက္တြင္ ေဖာ္ျပထားသည္မွာ အသုံးျပဳႏုိင္ေသာ စိစစ္ေရး rule မ်ားႏွင့္ ၄င္းတုိ ့၏ function မ်ားျဖစ္ၾကသည္။</p>
+<ul>
+<li><a href="#rule-accepted">Accepted</a></li>
+<li><a href="#rule-active-url">Active URL</a></li>
+<li><a href="#rule-after">After (Date)</a></li>
+<li><a href="#rule-alpha">Alpha</a></li>
+<li><a href="#rule-alpha-dash">Alpha Dash</a></li>
+<li><a href="#rule-alpha-num">Alpha Numeric</a></li>
+<li><a href="#rule-array">Array</a></li>
+<li><a href="#rule-before">Before (Date)</a></li>
+<li><a href="#rule-between">Between</a></li>
+<li><a href="#rule-confirmed">Confirmed</a></li>
+<li><a href="#rule-date">Date</a></li>
+<li><a href="#rule-date-format">Date Format</a></li>
+<li><a href="#rule-different">Different</a></li>
+<li><a href="#rule-digits">Digits</a></li>
+<li><a href="#rule-digits-between">Digits Between</a></li>
+<li><a href="#rule-email">E-Mail</a></li>
+<li><a href="#rule-exists">Exists (Database)</a></li>
+<li><a href="#rule-image">Image (File)</a></li>
+<li><a href="#rule-in">In</a></li>
+<li><a href="#rule-integer">Integer</a></li>
+<li><a href="#rule-ip">IP Address</a></li>
+<li><a href="#rule-max">Max</a></li>
+<li><a href="#rule-mimes">MIME Types</a></li>
+<li><a href="#rule-min">Min</a></li>
+<li><a href="#rule-not-in">Not In</a></li>
+<li><a href="#rule-numeric">Numeric</a></li>
+<li><a href="#rule-regex">Regular Expression</a></li>
+<li><a href="#rule-required">Required</a></li>
+<li><a href="#rule-required-if">Required If</a></li>
+<li><a href="#rule-required-with">Required With</a></li>
+<li><a href="#rule-required-with-all">Required With All</a></li>
+<li><a href="#rule-required-without">Required Without</a></li>
+<li><a href="#rule-required-without-all">Required Without All</a></li>
+<li><a href="#rule-same">Same</a></li>
+<li><a href="#rule-size">Size</a></li>
+<li><a href="#rule-unique">Unique (Database)</a></li>
+<li><a href="#rule-url">URL</a></li>
+</ul>
+<p><a name="rule-accepted"></a></p>
+<h4 id="accepted">accepted</h4>
+<p>အဆုိပါ field တြင္ စိစစ္သည္မွာ  <em>yes</em>, <em>on</em>, သုိ ့မဟုတ္  <em>1</em>  တုိ ့ျဖစ္သည္။ &quot;Terms of Service&quot; ကဲ့သုိ ့ တခုသာ ေရြးမေရြး စိစစ္ရာေနရာမ်ားတြင္ ၄င္းကုိ အသုံးျပဳႏုိင္သည္။</p>
+<p><a name="rule-active-url"></a></p>
+<h4 id="active_url">active_url</h4>
+<p>အဆုိပါ field တြင္ စိစစ္သည္မွာ <code>checkdnsrr</code> ဟုသည္ PHP function ကုိ အသုံးျပဳ၍ အင္ထုထားသည့္ URL ဟုတ္မဟုတ္ကို စစ္ေဆးသြားမည္ ျဖစ္သည္။</p>
+<p><a name="rule-after"></a></p>
+<h4 id="after-_date_">after:<em>date</em></h4>
+<p>အဆုိပါ field တြင္ စိစစ္သည္မွာ သတ္မွတ္ထားေသာ date အတြင္းတြင္သာ ထည့္သြင္းေစရႏ္ ျဖစ္သည္။ date မ်ားကုိ  PHP ၏ <code>strtotime</code> function ကုိ အသုံးျပဳ၍ ေျပာင္းလဲကာ စိစစ္သြားမည္ ျဖစ္သည္။</p>
+<p><a name="rule-alpha"></a></p>
+<h4 id="alpha">alpha</h4>
+<p>အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ မ်ားသာ ျဖစ္ရမည္ ျဖစ္သည္။ ဥပမာ ကိန္းဂဏန္းမ်ားကို လက္ခံသြားမည္ မဟုတ္။</p>
+<p><a name="rule-alpha-dash"></a></p>
+<h4 id="alpha_dash">alpha_dash</h4>
+<p>အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ ႏွင့္ ကိန္းဂဏန္းမ်ားသာ မက dash ႏွင့္ underscore ကုိပါ လက္ခံသြားမည္ ျဖစ္သည္။</p>
+<p><a name="rule-alpha-num"></a></p>
+<h4 id="alpha_num">alpha_num</h4>
+<p>အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ ႏွင့္ ကိန္းဂဏန္းမ်ားသာ လက္ခံသြားမည္။</p>
+<p><a name="rule-array"></a></p>
+<h4 id="array">array</h4>
+<p>အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ array အမ်ိဳးအစားကိုသာ လက္ခံသြားမည္။</p>
+<p><a name="rule-before"></a></p>
+<h4 id="before-_date_">before:<em>date</em></h4>
+<p>အဆုိပါ field တြင္ပါဝင္ေသာ အခ်က္အလက္မ်ားကို date ျဖင့္ စိစစ္သတ္မွတ္ျခင္း ျဖစ္သည္။ dates မ်ားကုိ PHP မွ <code>strtotime</code> function ကုိ အသုံးျပဳ၍ passing ေပးသြားမည္ ျဖစ္သည္။</p>
+<p><a name="rule-between"></a></p>
+<h4 id="between-_min_-_max_">between:<em>min</em>,<em>max</em></h4>
+<p>အဆုိပါ field တြင္ထည့္သြင္းေသာ အခ်က္အလက္မ်ား ၏ အမ်ားဆုံးႏွင့္ အနည္းဆုံး တန္ဖုိးမ်ားကုိ သတ္မွတ္ျခင္း ျဖစ္ျပီး String ၊ numeric ႏွင့္ file မ်ားကို <code>size</code> rule ကုိ အသုံးျပဳသကဲ့သုိ ့ ဆင္တင္တင္ပင္ ျဖစ္သည္။</p>
+<p><a name="rule-confirmed"></a></p>
+<h4 id="confirmed">confirmed</h4>
+<p>အဆုိပါ field ၏ အခ်က္အလက္သည္ ရည္ညြန္း field ၏ အခ်က္အလက္ ဥပမာ <code>foo_confirmation</code>  ႏွင့္ တူညီရမည္ ျဖစ္သည္။ ဥပမာ ျပဳရေသာ္ <code>password</code> field သည္ <code>password_confirmation</code> field ႏွင့္ ထပ္တူညီရမည္ ျဖစ္သည္။</p>
+<p><a name="rule-date"></a></p>
+<h4 id="date">date</h4>
+<p>တိက် မွန္ကန္ေသာ date ျဖစ္ေစရန္ စိစစ္ေပးျပီး <code>strtotime</code> ဟူေသာ PHP function ကုိ အသုံးျပဳထားသည္။</p>
+<p><a name="rule-date-format"></a></p>
+<h4 id="date_format-_format_">date<em>format:_format</em></h4>
+<p>အဆုိပါ field မွ format ႏွင့္ တူညီရမည္ ျဖစ္ျပီး <code>date_parse_from_format</code> ဟူသည္ PHP function ကုိ အသုံးျပဳထားသည္။</p>
+<p><a name="rule-different"></a></p>
+<h4 id="different-_field_">different:<em>field</em></h4>
+<p>အဆုိပါ field သည္ အျခား ရည္ညြန္း field ႏွင့္ လုံးဝ ကြဲျပားျခားရမည္ ျဖစ္သည္။
+The given <em>field</em> must be different than the field under validation.</p>
+<p><a name="rule-digits"></a></p>
+<h4 id="digits-_value_">digits:<em>value</em></h4>
+<p>အဆုိပါ file တြင္ numeric value ျဖစ္ျပီး တိက်ေသခ်ာေသာ ဂဏန္း အလုံးအေရအတြက္ ကုိသာ ထည့္သြင္းရမည္ျဖစ္သည္။</p>
+<p><a name="rule-digits-between"></a></p>
+<h4 id="digits_between-_min_-_max_">digits<em>between:_min</em>,<em>max</em></h4>
+<p>အဆုိ field တြင္ <em>min</em> and <em>max</em> အၾကား ထည့္သြင္းရေသာ ဂဏန္းအလုံးအေရအတြက္ကုိသာ ထည့္သြင္းခြင့္ရမည္ျဖစ္သည္။</p>
+<p><a name="rule-email"></a></p>
+<h4 id="email">email</h4>
+<p>အဆုိပါ field တြင္ email address format အတုိင္း ထည့္သြင္းထားျခင္း ရွိမရွိ စစ္ေဆးသြားမည္ ျဖစ္သည္။</p>
+<p><a name="rule-exists"></a></p>
+<h4 id="exists-_table_-_column_">exists:<em>table</em>,<em>column</em></h4>
+<p>The field under validation must exist on a given database table.</p>
+<h4 id="basic-usage-of-exists-rule">Basic Usage Of Exists Rule</h4>
+<pre><code>&#39;state&#39; =&gt; &#39;exists:states&#39;
+</code></pre><h4 id="specifying-a-custom-column-name">Specifying A Custom Column Name</h4>
+<pre><code>&#39;state&#39; =&gt; &#39;exists:states,abbreviation&#39;
+</code></pre><p>You may also specify more conditions that will be added as &quot;where&quot; clauses to the query:</p>
+<pre><code>&#39;email&#39; =&gt; &#39;exists:staff,email,account_id,1&#39;
+</code></pre><p>Passing <code>NULL</code> as a &quot;where&quot; clause value will add a check for a <code>NULL</code> database value:</p>
+<pre><code>&#39;email&#39; =&gt; &#39;exists:staff,email,deleted_at,NULL&#39;
+</code></pre><p><a name="rule-image"></a></p>
+<h4 id="image">image</h4>
+<p>The file under validation must be an image (jpeg, png, bmp, or gif)</p>
+<p><a name="rule-in"></a></p>
+<h4 id="in-_foo_-_bar_-">in:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be included in the given list of values.</p>
+<p><a name="rule-integer"></a></p>
+<h4 id="integer">integer</h4>
+<p>The field under validation must have an integer value.</p>
+<p><a name="rule-ip"></a></p>
+<h4 id="ip">ip</h4>
+<p>The field under validation must be formatted as an IP address.</p>
+<p><a name="rule-max"></a></p>
+<h4 id="max-_value_">max:<em>value</em></h4>
+<p>The field under validation must be less than or equal to a maximum <em>value</em>. Strings, numerics, and files are evaluated in the same fashion as the <code>size</code> rule.</p>
+<p><a name="rule-mimes"></a></p>
+<h4 id="mimes-_foo_-_bar_-">mimes:<em>foo</em>,<em>bar</em>,...</h4>
+<p>The file under validation must have a MIME type corresponding to one of the listed extensions.</p>
+<h4 id="basic-usage-of-mime-rule">Basic Usage Of MIME Rule</h4>
+<pre><code>&#39;photo&#39; =&gt; &#39;mimes:jpeg,bmp,png&#39;
+</code></pre><p><a name="rule-min"></a></p>
+<h4 id="min-_value_">min:<em>value</em></h4>
+<p>The field under validation must have a minimum <em>value</em>. Strings, numerics, and files are evaluated in the same fashion as the <code>size</code> rule.</p>
+<p><a name="rule-not-in"></a></p>
+<h4 id="not_in-_foo_-_bar_-">not<em>in:_foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must not be included in the given list of values.</p>
+<p><a name="rule-numeric"></a></p>
+<h4 id="numeric">numeric</h4>
+<p>The field under validation must have a numeric value.</p>
+<p><a name="rule-regex"></a></p>
+<h4 id="regex-_pattern_">regex:<em>pattern</em></h4>
+<p>The field under validation must match the given regular expression.</p>
+<p><strong>Note:</strong> When using the <code>regex</code> pattern, it may be necessary to specify rules in an array instead of using pipe delimiters, especially if the regular expression contains a pipe character.</p>
+<p><a name="rule-required"></a></p>
+<h4 id="required">required</h4>
+<p>The field under validation must be present in the input data.</p>
+<p><a name="rule-required-if"></a></p>
+<h4 id="required-_if-_field_-_value_">required_if:<em>field</em>,<em>value</em></h4>
+<p>The field under validation must be present if the <em>field</em> field is equal to <em>value</em>.</p>
+<p><a name="rule-required-with"></a></p>
+<h4 id="required_with-_foo_-_bar_-">required<em>with:_foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present <em>only if</em> any of the other specified fields are present.</p>
+<p><a name="rule-required-with-all"></a></p>
+<h4 id="required_with_all-_foo_-_bar_-">required<em>with_all:_foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present <em>only if</em> all of the other specified fields are present.</p>
+<p><a name="rule-required-without"></a></p>
+<h4 id="required_without-_foo_-_bar_-">required<em>without:_foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present <em>only when</em> any of the other specified fields are not present.</p>
+<p><a name="rule-required-without-all"></a></p>
+<h4 id="required_without_all-_foo_-_bar_-">required<em>without_all:_foo</em>,<em>bar</em>,...</h4>
+<p>The field under validation must be present <em>only when</em> the all of the other specified fields are not present.</p>
+<p><a name="rule-same"></a></p>
+<h4 id="same-_field_">same:<em>field</em></h4>
+<p>The given <em>field</em> must match the field under validation.</p>
+<p><a name="rule-size"></a></p>
+<h4 id="size-_value_">size:<em>value</em></h4>
+<p>The field under validation must have a size matching the given <em>value</em>. For string data, <em>value</em> corresponds to the number of characters. For numeric data, <em>value</em> corresponds to a given integer value. For files, <em>size</em> corresponds to the file size in kilobytes.</p>
+<p><a name="rule-unique"></a></p>
+<h4 id="unique-_table_-_column_-_except_-_idcolumn_">unique:<em>table</em>,<em>column</em>,<em>except</em>,<em>idColumn</em></h4>
+<p>The field under validation must be unique on a given database table. If the <code>column</code> option is not specified, the field name will be used.</p>
+<h4 id="basic-usage-of-unique-rule">Basic Usage Of Unique Rule</h4>
+<pre><code>&#39;email&#39; =&gt; &#39;unique:users&#39;
+</code></pre><h4 id="specifying-a-custom-column-name">Specifying A Custom Column Name</h4>
+<pre><code>&#39;email&#39; =&gt; &#39;unique:users,email_address&#39;
+</code></pre><h4 id="forcing-a-unique-rule-to-ignore-a-given-id">Forcing A Unique Rule To Ignore A Given ID</h4>
+<pre><code>&#39;email&#39; =&gt; &#39;unique:users,email_address,10&#39;
+</code></pre><h4 id="adding-additional-where-clauses">Adding Additional Where Clauses</h4>
+<p>You may also specify more conditions that will be added as &quot;where&quot; clauses to the query:</p>
+<pre><code>&#39;email&#39; =&gt; &#39;unique:users,email_address,NULL,id,account_id,1&#39;
+</code></pre><p>In the rule above, only rows with an <code>account_id</code> of <code>1</code> would be included in the unique check.</p>
+<p><a name="rule-url"></a></p>
+<h4 id="url">url</h4>
+<p>The field under validation must be formatted as an URL.</p>
+<blockquote>
+<p><strong>Note:</strong> This function uses PHP&#39;s <code>filter_var</code> method.</p>
+</blockquote>
+<p><a name="conditionally-adding-rules"></a></p>
+<h2 id="conditionally-adding-rules">Conditionally Adding Rules</h2>
+<p>In some situations, you may wish to run validation checks against a field <strong>only</strong> if that field is present in the input array. To quickly accomplish this, add the <code>sometimes</code> rule to your rule list:</p>
+<pre><code>$v = Validator::make($data, array(
+    &#39;email&#39; =&gt; &#39;sometimes|required|email&#39;,
+));
+</code></pre><p>In the example above, the <code>email</code> field will only be validated if it is present in the <code>$data</code> array.</p>
+<h4 id="complex-conditional-validation">Complex Conditional Validation</h4>
+<p>Sometimes you may wish to require a given field only if another field has a greater value than 100. Or you may need two fields to have a given value only when another field is present. Adding these validation rules doesn&#39;t have to be a pain. First, create a <code>Validator</code> instance with your <em>static rules</em> that never change:</p>
+<pre><code>$v = Validator::make($data, array(
+    &#39;email&#39; =&gt; &#39;required|email&#39;,
+    &#39;games&#39; =&gt; &#39;required|numeric&#39;,
+));
+</code></pre><p>Let&#39;s assume our web application is for game collectors. If a game collector registers with our application and they own more than 100 games, we want them to explain why they own so many games. For example, perhaps they run a game re-sell shop, or maybe they just enjoy collecting. To conditionally add this requirement, we can use the <code>sometimes</code> method on the <code>Validator</code> instance.</p>
+<pre><code>$v-&gt;sometimes(&#39;reason&#39;, &#39;required|max:500&#39;, function($input)
+{
+    return $input-&gt;games &gt;= 100;
+});
+</code></pre><p>The first argument passed to the <code>sometimes</code> method is the name of the field we are conditionally validating. The second argument is the rules we want to add. If the <code>Closure</code> passed as the third argument returns <code>true</code>, the rules will be added. This method makes it a breeze to build complex conditional validations. You may even add conditional validations for several fields at once:</p>
+<pre><code>$v-&gt;sometimes(array(&#39;reason&#39;, &#39;cost&#39;), &#39;required&#39;, function($input)
+{
+    return $input-&gt;games &gt;= 100;
+});
+</code></pre><blockquote>
+<p><strong>Note:</strong> The <code>$input</code> parameter passed to your <code>Closure</code> will be an instance of <code>Illuminate\Support\Fluent</code> and may be used as an object to access your input and files.</p>
+</blockquote>
+<p><a name="custom-error-messages"></a></p>
+<h2 id="custom-error-messages">Custom Error Messages</h2>
+<p>If needed, you may use custom error messages for validation instead of the defaults. There are several ways to specify custom messages.</p>
+<h4 id="passing-custom-messages-into-validator">Passing Custom Messages Into Validator</h4>
+<pre><code>$messages = array(
+    &#39;required&#39; =&gt; &#39;The :attribute field is required.&#39;,
+);
+
+$validator = Validator::make($input, $rules, $messages);
+</code></pre><blockquote>
+<p><em>Note:</em> The <code>:attribute</code> place-holder will be replaced by the actual name of the field under validation. You may also utilize other place-holders in validation messages.</p>
+</blockquote>
+<h4 id="other-validation-place-holders">Other Validation Place-Holders</h4>
+<pre><code>$messages = array(
+    &#39;same&#39;    =&gt; &#39;The :attribute and :other must match.&#39;,
+    &#39;size&#39;    =&gt; &#39;The :attribute must be exactly :size.&#39;,
+    &#39;between&#39; =&gt; &#39;The :attribute must be between :min - :max.&#39;,
+    &#39;in&#39;      =&gt; &#39;The :attribute must be one of the following types: :values&#39;,
+);
+</code></pre><h4 id="specifying-a-custom-message-for-a-given-attribute">Specifying A Custom Message For A Given Attribute</h4>
+<p>Sometimes you may wish to specify a custom error messages only for a specific field:</p>
+<pre><code>$messages = array(
+    &#39;email.required&#39; =&gt; &#39;We need to know your e-mail address!&#39;,
+);
+</code></pre><p><a name="localization"></a></p>
+<h4 id="specifying-custom-messages-in-language-files">Specifying Custom Messages In Language Files</h4>
+<p>In some cases, you may wish to specify your custom messages in a language file instead of passing them directly to the <code>Validator</code>. To do so, add your messages to <code>custom</code> array in the <code>app/lang/xx/validation.php</code> language file.</p>
+<pre><code>&#39;custom&#39; =&gt; array(
+    &#39;email&#39; =&gt; array(
+        &#39;required&#39; =&gt; &#39;We need to know your e-mail address!&#39;,
+    ),
+),
+</code></pre><p><a name="custom-validation-rules"></a></p>
+<h2 id="custom-validation-rules">Custom Validation Rules</h2>
+<h4 id="registering-a-custom-validation-rule">Registering A Custom Validation Rule</h4>
+<p>Laravel provides a variety of helpful validation rules; however, you may wish to specify some of your own. One method of registering custom validation rules is using the <code>Validator::extend</code> method:</p>
+<pre><code>Validator::extend(&#39;foo&#39;, function($attribute, $value, $parameters)
+{
+    return $value == &#39;foo&#39;;
+});
+</code></pre><p>The custom validator Closure receives three arguments: the name of the <code>$attribute</code> being validated, the <code>$value</code> of the attribute, and an array of <code>$parameters</code> passed to the rule.</p>
+<p>You may also pass a class and method to the <code>extend</code> method instead of a Closure:</p>
+<pre><code>Validator::extend(&#39;foo&#39;, &#39;FooValidator@validate&#39;);
+</code></pre><p>Note that you will also need to define an error message for your custom rules. You can do so either using an inline custom message array or by adding an entry in the validation language file.</p>
+<h4 id="extending-the-validator-class">Extending The Validator Class</h4>
+<p>Instead of using Closure callbacks to extend the Validator, you may also extend the Validator class itself. To do so, write a Validator class that extends <code>Illuminate\Validation\Validator</code>. You may add validation methods to the class by prefixing them with <code>validate</code>:</p>
+<pre><code>&lt;?php
+
+class CustomValidator extends Illuminate\Validation\Validator {
+
+    public function validateFoo($attribute, $value, $parameters)
+    {
+        return $value == &#39;foo&#39;;
+    }
+
+}
+</code></pre><h4 id="registering-a-custom-validator-resolver">Registering A Custom Validator Resolver</h4>
+<p>Next, you need to register your custom Validator extension:</p>
+<pre><code>Validator::resolver(function($translator, $data, $rules, $messages)
+{
+    return new CustomValidator($translator, $data, $rules, $messages);
+});
+</code></pre><p>When creating a custom validation rule, you may sometimes need to define custom place-holder replacements for error messages. You may do so by creating a custom Validator as described above, and adding a <code>replaceXXX</code> function to the validator.</p>
+<pre><code>protected function replaceFoo($message, $attribute, $rule, $parameters)
+{
+    return str_replace(&#39;:foo&#39;, $parameters[0], $message);
+}
+</code></pre><p>If you would like to add a custom message &quot;replacer&quot; without extending the <code>Validator</code> class, you may use the <code>Validator::replacer</code> method:</p>
+<pre><code>Validator::replacer(&#39;rule&#39;, function($message, $attribute, $rule, $parameters)
+{
+    //
+});
+</code></pre>
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./testing.html" class="navigation navigation-prev " aria-label="Previous page: Unit Testing"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./database.html" class="navigation navigation-next " aria-label="Next page: Database"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

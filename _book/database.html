@@ -1,0 +1,817 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>အေျခခံ အသုံးျပဳပုံ | Laravel Framework Documentation (Myanmar)</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 0.5.2">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="./queries.html" />
+    
+    
+    <link rel="prev" href="./database.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="gitbook/style.css">
+
+    
+    <link rel="stylesheet" href="gitbook/plugins/plugin-zawgyicss/zawgyi.css">
+    
+
+
+        
+    <div class="book"  data-level="4.1" data-basepath="." data-revision="1403599999016">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="./" >Laravel Framework Documentation (Myanmar)</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+
+        
+
+        
+
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="./"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.</b> Laravel နိဒါန္း
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="introduction.html">
+            
+            <a href="./introduction.html">
+                <i class="fa fa-check"></i> <b>1.1.</b> Laravel မိတ္ဆက္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="quick.html">
+            
+            <a href="./quick.html">
+                <i class="fa fa-check"></i> <b>1.2.</b> Laravel အက်ဥ္းခ်ဳပ္
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="releases.html">
+            
+            <a href="./releases.html">
+                <i class="fa fa-check"></i> <b>1.3.</b> Release Notes
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="upgrade.html">
+            
+            <a href="./upgrade.html">
+                <i class="fa fa-check"></i> <b>1.4.</b> Upgrade Guide
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.</b> Laravel ကိုစတင္ေလ႕လာျခင္း (အေျခခံ)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="installation.html">
+            
+            <a href="./installation.html">
+                <i class="fa fa-check"></i> <b>2.1.</b> Laravel install လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="configuration.html">
+            
+            <a href="./configuration.html">
+                <i class="fa fa-check"></i> <b>2.2.</b> Configuration လုပ္ျခင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="homestead.html">
+            
+            <a href="./homestead.html">
+                <i class="fa fa-check"></i> <b>2.3.</b> Laravel ရဲ႕ Official Development Homestead အေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="lifecycle.html">
+            
+            <a href="./lifecycle.html">
+                <i class="fa fa-check"></i> <b>2.4.</b> Request Lifecycle 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="routing.html">
+            
+            <a href="./routing.html">
+                <i class="fa fa-check"></i> <b>2.5.</b> Route လုပ္ျခင္းအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="requests.html">
+            
+            <a href="./requests.html">
+                <i class="fa fa-check"></i> <b>2.6.</b> Requests ႏွင္႕ Input မ်ားအေၾကာင္း 
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="responses.html">
+            
+            <a href="./responses.html">
+                <i class="fa fa-check"></i> <b>2.7.</b> Views ႏွင္႕ Responses မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="controllers.html">
+            
+            <a href="./controllers.html">
+                <i class="fa fa-check"></i> <b>2.8.</b> Controllers မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="errors.html">
+            
+            <a href="./errors.html">
+                <i class="fa fa-check"></i> <b>2.9.</b> Errors ႏွင္႕ Logging မ်ားအေၾကာင္း
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.</b> Laravel ကုိေလ့လာျခင္း (အဆင့္ျမင့္)
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.1.</b> Authentication
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="billing.html">
+            
+            <a href="./billing.html">
+                <i class="fa fa-check"></i> <b>3.2.</b> Billing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="cache.html">
+            
+            <a href="./cache.html">
+                <i class="fa fa-check"></i> <b>3.3.</b> Cache
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="extending.html">
+            
+            <a href="./extending.html">
+                <i class="fa fa-check"></i> <b>3.4.</b> Core Extension
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="events.html">
+            
+            <a href="./events.html">
+                <i class="fa fa-check"></i> <b>3.5.</b> Events
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="facades.html">
+            
+            <a href="./facades.html">
+                <i class="fa fa-check"></i> <b>3.6.</b> Facades
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="html.html">
+            
+            <a href="./html.html">
+                <i class="fa fa-check"></i> <b>3.7.</b> Forms &amp; HTML
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="helpers.html">
+            
+            <a href="./helpers.html">
+                <i class="fa fa-check"></i> <b>3.8.</b> Helpers
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="ioc.html">
+            
+            <a href="./ioc.html">
+                <i class="fa fa-check"></i> <b>3.9.</b> IoC Container
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="localization.html">
+            
+            <a href="./localization.html">
+                <i class="fa fa-check"></i> <b>3.10.</b> Localization
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="mail.html">
+            
+            <a href="./mail.html">
+                <i class="fa fa-check"></i> <b>3.11.</b> Mail
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="packages.html">
+            
+            <a href="./packages.html">
+                <i class="fa fa-check"></i> <b>3.12.</b> Package Development
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="pagination.html">
+            
+            <a href="./pagination.html">
+                <i class="fa fa-check"></i> <b>3.13.</b> Pagination
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="queues.html">
+            
+            <a href="./queues.html">
+                <i class="fa fa-check"></i> <b>3.14.</b> Queues
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="security.html">
+            
+            <a href="./security.html">
+                <i class="fa fa-check"></i> <b>3.15.</b> Security
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="session.html">
+            
+            <a href="./session.html">
+                <i class="fa fa-check"></i> <b>3.16.</b> Session
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="ssh.html">
+            
+            <a href="./ssh.html">
+                <i class="fa fa-check"></i> <b>3.17.</b> SSH
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="templates.html">
+            
+            <a href="./templates.html">
+                <i class="fa fa-check"></i> <b>3.18.</b> Templates
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="testing.html">
+            
+            <a href="./testing.html">
+                <i class="fa fa-check"></i> <b>3.19.</b> Unit Testing
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="validation.html">
+            
+            <a href="./validation.html">
+                <i class="fa fa-check"></i> <b>3.20.</b> Validation
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.</b> Database
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="database.html">
+            
+            <a href="./database.html">
+                <i class="fa fa-check"></i> <b>4.1.</b> အေျခခံ အသုံးျပဳပုံ
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="queries.html">
+            
+            <a href="./queries.html">
+                <i class="fa fa-check"></i> <b>4.2.</b> Query Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="eloquent.html">
+            
+            <a href="./eloquent.html">
+                <i class="fa fa-check"></i> <b>4.3.</b> Eloquent ORM
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="schema.html">
+            
+            <a href="./schema.html">
+                <i class="fa fa-check"></i> <b>4.4.</b> Schema Builder
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="migrations.html">
+            
+            <a href="./migrations.html">
+                <i class="fa fa-check"></i> <b>4.5.</b> Migrations &amp; Seeding
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="redis.html">
+            
+            <a href="./redis.html">
+                <i class="fa fa-check"></i> <b>4.6.</b> Redis
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.</b> Artisan CLI
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="artisan.html">
+            
+            <a href="./artisan.html">
+                <i class="fa fa-check"></i> <b>5.1.</b> Overview
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="commands.html">
+            
+            <a href="./commands.html">
+                <i class="fa fa-check"></i> <b>5.2.</b> Development
+            </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.2.1" data-path="contributing.html">
+            
+            <a href="./contributing.html">
+                <i class="fa fa-check"></i> <b>5.2.1.</b> Contributing
+            </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 80.48780487804878%;min-width: 78.04878048780488%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="./introduction.html" title="Laravel မိတ္ဆက္" class="chapter done " data-progress="1.1" style="left: 2.4390243902439024%;"></a>
+    
+        <a href="./quick.html" title="Laravel အက်ဥ္းခ်ဳပ္" class="chapter done " data-progress="1.2" style="left: 4.878048780487805%;"></a>
+    
+        <a href="./releases.html" title="Release Notes" class="chapter done " data-progress="1.3" style="left: 7.317073170731708%;"></a>
+    
+        <a href="./upgrade.html" title="Upgrade Guide" class="chapter done " data-progress="1.4" style="left: 9.75609756097561%;"></a>
+    
+        <a href="./installation.html" title="Laravel install လုပ္ျခင္း" class="chapter done " data-progress="2.1" style="left: 12.195121951219512%;"></a>
+    
+        <a href="./configuration.html" title="Configuration လုပ္ျခင္း" class="chapter done " data-progress="2.2" style="left: 14.634146341463415%;"></a>
+    
+        <a href="./homestead.html" title="Laravel ရဲ႕ Official Development Homestead အေၾကာင္း" class="chapter done " data-progress="2.3" style="left: 17.073170731707318%;"></a>
+    
+        <a href="./lifecycle.html" title="Request Lifecycle " class="chapter done " data-progress="2.4" style="left: 19.51219512195122%;"></a>
+    
+        <a href="./routing.html" title="Route လုပ္ျခင္းအေၾကာင္း" class="chapter done " data-progress="2.5" style="left: 21.951219512195124%;"></a>
+    
+        <a href="./requests.html" title="Requests ႏွင္႕ Input မ်ားအေၾကာင္း " class="chapter done " data-progress="2.6" style="left: 24.390243902439025%;"></a>
+    
+        <a href="./responses.html" title="Views ႏွင္႕ Responses မ်ားအေၾကာင္း" class="chapter done " data-progress="2.7" style="left: 26.829268292682926%;"></a>
+    
+        <a href="./controllers.html" title="Controllers မ်ားအေၾကာင္း" class="chapter done " data-progress="2.8" style="left: 29.26829268292683%;"></a>
+    
+        <a href="./errors.html" title="Errors ႏွင္႕ Logging မ်ားအေၾကာင္း" class="chapter done " data-progress="2.9" style="left: 31.70731707317073%;"></a>
+    
+        <a href="./localization.html" title="Localization" class="chapter done " data-progress="3.10" style="left: 34.146341463414636%;"></a>
+    
+        <a href="./mail.html" title="Mail" class="chapter done " data-progress="3.11" style="left: 36.58536585365854%;"></a>
+    
+        <a href="./packages.html" title="Package Development" class="chapter done " data-progress="3.12" style="left: 39.02439024390244%;"></a>
+    
+        <a href="./pagination.html" title="Pagination" class="chapter done " data-progress="3.13" style="left: 41.46341463414634%;"></a>
+    
+        <a href="./queues.html" title="Queues" class="chapter done " data-progress="3.14" style="left: 43.90243902439025%;"></a>
+    
+        <a href="./security.html" title="Security" class="chapter done " data-progress="3.15" style="left: 46.34146341463415%;"></a>
+    
+        <a href="./session.html" title="Session" class="chapter done " data-progress="3.16" style="left: 48.78048780487805%;"></a>
+    
+        <a href="./ssh.html" title="SSH" class="chapter done " data-progress="3.17" style="left: 51.21951219512195%;"></a>
+    
+        <a href="./templates.html" title="Templates" class="chapter done " data-progress="3.18" style="left: 53.65853658536585%;"></a>
+    
+        <a href="./testing.html" title="Unit Testing" class="chapter done " data-progress="3.19" style="left: 56.09756097560975%;"></a>
+    
+        <a href="./billing.html" title="Billing" class="chapter done " data-progress="3.2" style="left: 58.53658536585366%;"></a>
+    
+        <a href="./validation.html" title="Validation" class="chapter done " data-progress="3.20" style="left: 60.97560975609756%;"></a>
+    
+        <a href="./cache.html" title="Cache" class="chapter done " data-progress="3.3" style="left: 63.41463414634146%;"></a>
+    
+        <a href="./extending.html" title="Core Extension" class="chapter done " data-progress="3.4" style="left: 65.85365853658537%;"></a>
+    
+        <a href="./events.html" title="Events" class="chapter done " data-progress="3.5" style="left: 68.29268292682927%;"></a>
+    
+        <a href="./facades.html" title="Facades" class="chapter done " data-progress="3.6" style="left: 70.73170731707317%;"></a>
+    
+        <a href="./html.html" title="Forms &amp; HTML" class="chapter done " data-progress="3.7" style="left: 73.17073170731707%;"></a>
+    
+        <a href="./helpers.html" title="Helpers" class="chapter done " data-progress="3.8" style="left: 75.60975609756098%;"></a>
+    
+        <a href="./ioc.html" title="IoC Container" class="chapter done " data-progress="3.9" style="left: 78.04878048780488%;"></a>
+    
+        <a href="./database.html" title="အေျခခံ အသုံးျပဳပုံ" class="chapter done " data-progress="4.1" style="left: 80.48780487804878%;"></a>
+    
+        <a href="./queries.html" title="Query Builder" class="chapter  " data-progress="4.2" style="left: 82.92682926829268%;"></a>
+    
+        <a href="./eloquent.html" title="Eloquent ORM" class="chapter  " data-progress="4.3" style="left: 85.36585365853658%;"></a>
+    
+        <a href="./schema.html" title="Schema Builder" class="chapter  " data-progress="4.4" style="left: 87.8048780487805%;"></a>
+    
+        <a href="./migrations.html" title="Migrations &amp; Seeding" class="chapter  " data-progress="4.5" style="left: 90.2439024390244%;"></a>
+    
+        <a href="./redis.html" title="Redis" class="chapter  " data-progress="4.6" style="left: 92.6829268292683%;"></a>
+    
+        <a href="./artisan.html" title="Overview" class="chapter  " data-progress="5.1" style="left: 95.1219512195122%;"></a>
+    
+        <a href="./commands.html" title="Development" class="chapter  " data-progress="5.2" style="left: 97.5609756097561%;"></a>
+    
+        <a href="./contributing.html" title="Contributing" class="chapter  " data-progress="5.2.1" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_8">
+                    
+                        <h1 id="basic-database-usage">Basic Database Usage</h1>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#read-write-connections">Read / Write Connections</a></li>
+<li><a href="#running-queries">Running Queries</a></li>
+<li><a href="#database-transactions">Database Transactions</a></li>
+<li><a href="#accessing-connections">Accessing Connections</a></li>
+<li><a href="#query-logging">Query Logging</a></li>
+</ul>
+<p><a name="configuration"></a></p>
+<h2 id="configuration">Configuration</h2>
+<p>Laravel makes connecting with databases and running queries extremely simple. The database configuration file is <code>app/config/database.php</code>. In this file you may define all of your database connections, as well as specify which connection should be used by default. Examples for all of the supported database systems are provided in this file.</p>
+<p>Currently Laravel supports four database systems: MySQL, Postgres, SQLite, and SQL Server.</p>
+<p><a name="read-write-connections"></a></p>
+<h2 id="read-write-connections">Read / Write Connections</h2>
+<p>Sometimes you may wish to use one database connection for SELECT statements, and another for INSERT, UPDATE, and DELETE statements. Laravel makes this a breeze, and the proper connections will always be used whether you are using raw queries, the query builder, or the Eloquent ORM.</p>
+<p>To see how read / write connections should be configured, let&#39;s look at this example:</p>
+<pre><code>&#39;mysql&#39; =&gt; array(
+    &#39;read&#39; =&gt; array(
+        &#39;host&#39; =&gt; &#39;192.168.1.1&#39;,
+    ),
+    &#39;write&#39; =&gt; array(
+        &#39;host&#39; =&gt; &#39;196.168.1.2&#39;
+    ),
+    &#39;driver&#39;    =&gt; &#39;mysql&#39;,
+    &#39;database&#39;  =&gt; &#39;database&#39;,
+    &#39;username&#39;  =&gt; &#39;root&#39;,
+    &#39;password&#39;  =&gt; &#39;&#39;,
+    &#39;charset&#39;   =&gt; &#39;utf8&#39;,
+    &#39;collation&#39; =&gt; &#39;utf8_unicode_ci&#39;,
+    &#39;prefix&#39;    =&gt; &#39;&#39;,
+),
+</code></pre><p>Note that two keys have been added to the configuration array: <code>read</code> and <code>write</code>. Both of these keys have array values containing a single key: <code>host</code>. The rest of the database options for the <code>read</code> and <code>write</code> connections will be merged from the main <code>mysql</code> array. So, we only need to place items in the <code>read</code> and <code>write</code> arrays if we wish to override the values in the main array. So, in this case, <code>192.168.1.1</code> will be used as the &quot;read&quot; connection, while <code>192.168.1.2</code> will be used as the &quot;write&quot; connection. The database credentials, prefix, character set, and all other options in the main <code>mysql</code> array will be shared across both connections.</p>
+<p><a name="running-queries"></a></p>
+<h2 id="running-queries">Running Queries</h2>
+<p>Once you have configured your database connection, you may run queries using the <code>DB</code> class.</p>
+<h4 id="running-a-select-query">Running A Select Query</h4>
+<pre><code>$results = DB::select(&#39;select * from users where id = ?&#39;, array(1));
+</code></pre><p>The <code>select</code> method will always return an <code>array</code> of results.</p>
+<h4 id="running-an-insert-statement">Running An Insert Statement</h4>
+<pre><code>DB::insert(&#39;insert into users (id, name) values (?, ?)&#39;, array(1, &#39;Dayle&#39;));
+</code></pre><h4 id="running-an-update-statement">Running An Update Statement</h4>
+<pre><code>DB::update(&#39;update users set votes = 100 where name = ?&#39;, array(&#39;John&#39;));
+</code></pre><h4 id="running-a-delete-statement">Running A Delete Statement</h4>
+<pre><code>DB::delete(&#39;delete from users&#39;);
+</code></pre><blockquote>
+<p><strong>Note:</strong> The <code>update</code> and <code>delete</code> statements return the number of rows affected by the operation.</p>
+</blockquote>
+<h4 id="running-a-general-statement">Running A General Statement</h4>
+<pre><code>DB::statement(&#39;drop table users&#39;);
+</code></pre><h4 id="listening-for-query-events">Listening For Query Events</h4>
+<p>You may listen for query events using the <code>DB::listen</code> method:</p>
+<pre><code>DB::listen(function($sql, $bindings, $time)
+{
+    //
+});
+</code></pre><p><a name="database-transactions"></a></p>
+<h2 id="database-transactions">Database Transactions</h2>
+<p>To run a set of operations within a database transaction, you may use the <code>transaction</code> method:</p>
+<pre><code>DB::transaction(function()
+{
+    DB::table(&#39;users&#39;)-&gt;update(array(&#39;votes&#39; =&gt; 1));
+
+    DB::table(&#39;posts&#39;)-&gt;delete();
+});
+</code></pre><blockquote>
+<p><strong>Note:</strong> Any exception thrown within the <code>transaction</code> closure will cause the transaction to be rolled back automatically.</p>
+</blockquote>
+<p>Sometimes you may need to begin a transaction yourself:</p>
+<pre><code>DB::beginTransaction();
+</code></pre><p>You can rollback a transaction via the <code>rollback</code> method:</p>
+<pre><code>DB::rollback();
+</code></pre><p>Lastly, you can commit a transaction via the <code>commit</code> method:</p>
+<pre><code>DB::commit();
+</code></pre><p><a name="accessing-connections"></a></p>
+<h2 id="accessing-connections">Accessing Connections</h2>
+<p>When using multiple connections, you may access them via the <code>DB::connection</code> method:</p>
+<pre><code>$users = DB::connection(&#39;foo&#39;)-&gt;select(...);
+</code></pre><p>You may also access the raw, underlying PDO instance:</p>
+<pre><code>$pdo = DB::connection()-&gt;getPdo();
+</code></pre><p>Sometimes you may need to reconnect to a given database:</p>
+<pre><code>DB::reconnect(&#39;foo&#39;);
+</code></pre><p>If you need to disconnect from the given database due to exceeding the underlying PDO instance&#39;s <code>max_connections</code> limit, use the <code>disconnect</code> method:</p>
+<pre><code>DB::disconnect(&#39;foo&#39;);
+</code></pre><p><a name="query-logging"></a></p>
+<h2 id="query-logging">Query Logging</h2>
+<p>By default, Laravel keeps a log in memory of all queries that have been run for the current request. However, in some cases, such as when inserting a large number of rows, this can cause the application to use excess memory. To disable the log, you may use the <code>disableQueryLog</code> method:</p>
+<pre><code>DB::connection()-&gt;disableQueryLog();
+</code></pre><p>To get an array of the executed queries, you may use the <code>getQueryLog</code> method:</p>
+<pre><code>   $queries = DB::getQueryLog();
+</code></pre>
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./database.html" class="navigation navigation-prev " aria-label="Previous page: Database"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./queries.html" class="navigation navigation-next " aria-label="Next page: Query Builder"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
