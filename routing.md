@@ -205,7 +205,7 @@ You may also constrain pattern filters by HTTP verbs:
 
 #### Filter class မ်ား
 
-အဆင့္ျမင့္ route filter မ်ား တြင္ Closure တစ္ခု ထက္ class တစ္ခုကုိ အသုံးျပု ခ်င္ ေကာင္း အသုံးျပု ပါလိမ့္မည္။စင္စစ္ filter class မ်ားသည္ application [IoC Container](/docs/ioc) မွ တစ္ဆင့္ ျပန္ျဖည္ခ်င္းျဖစ္ရာ dependency injection ကုိ အသုံး ျပု နုိင္ေစ၍ test လုပ္ျခင္းကုိ အေထာက္အပံ့ေကာင္းေကာင္းေပးနုိင္ပါသည္။
+အဆင့္ျမင့္ route filter မ်ား တြင္ Closure တစ္ခု ထက္ class တစ္ခုကုိ အသုံးျပု ခ်င္ ေကာင္း အသုံးျပု ပါလိမ့္မည္။စင္စစ္ filter class မ်ားသည္ application [IoC Container](ioc.md) မွ တစ္ဆင့္ ျပန္ျဖည္ခ်င္းျဖစ္ရာ dependency injection ကုိ အသုံး ျပု နုိင္ေစ၍ test လုပ္ျခင္းကုိ အေထာက္အပံ့ေကာင္းေကာင္းေပးနုိင္ပါသည္။
 
 #### Class အေျခခံ filter တစ္ခု အား မွတ္ပုံတင္ျခင္း
 
@@ -350,11 +350,11 @@ Model ခ်ိတ္တြယ္ျခင္း သည္ model instance တစ
 
 ဒုတိယတည္နည္းမွာ `Symfony\Component\HttpKernel\Exception\NotFoundHttpException` ကုိ ကုိယ္တုိင္ ထုတ္လြွတ္ျခင္းျဖစ္သည္။
 
-404 exception မ်ား ကိုင္တြယ္ျခင္း နွင့္ ၎တုိ့ အတြက္ ကုိယ္ပုိင္တုန့္ျပန္ခ်က္မ်ား ျပု လုပ္ျခင္းတုိ့ နွင့္ ပတ္သက္၍ [errors](/docs/errors#handling-404-errors) အပိုင္းတြင္ ပုိမုိ ဖတ္ရွုနုိင္ပါသည္။
+404 exception မ်ား ကိုင္တြယ္ျခင္း နွင့္ ၎တုိ့ အတြက္ ကုိယ္ပုိင္တုန့္ျပန္ခ်က္မ်ား ျပု လုပ္ျခင္းတုိ့ နွင့္ ပတ္သက္၍ [errors](errors#handling-404-errors.md) အပိုင္းတြင္ ပုိမုိ ဖတ္ရွုနုိင္ပါသည္။
 
 <a name="routing-to-controllers"></a>
 ## Controller မ်ား အား လမ္းေျကာင္းေပးျခင္း
 
 Laravel တြင္ လမ္းေျကာင္းေပးရာ၌ Closure မ်ား ကုိသာ မဟုတ္ controller class မ်ားကို လည္း အသုံးျပု နုိင္သည့္ အျပင္  [resource controllers](/docs/controllers#resource-controllers လမ္းေျကာင္းမ်ား ပါ ခြင့္ျပုထားပါသည္။
 
-[Controllers](/docs/controllers) လမ္းညြွန္ တြင္အေသးစိတ္ ဖတ္ရွု နုိင္ပါသည္။
+[Controllers](controllers.md) လမ္းညြွန္ တြင္အေသးစိတ္ ဖတ္ရွု နုိင္ပါသည္။

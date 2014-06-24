@@ -1,0 +1,11 @@
+{
+  "title": "Laravel Framework Documentation (Myanmar)",
+  "github": "https://github.com/Laravel-Myanmar/docs",
+  "plugins" : [
+    "plugin-zawgyicss"
+  ],
+  "links" : {
+    "home" : false,
+    "about" : false
+  }
+}

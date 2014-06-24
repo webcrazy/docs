@@ -10,11 +10,11 @@
 <a name="introduction"></a>
 ## မိတ္ဆက္
 
-Facades (ဖေဆာ့စ္ ဟုအသံထြက္ပါ) က Application ရဲ႕ [IoC container](/docs/ioc) ထဲမွာရွိတဲ့ Class ေတြကို static ပံုစံမ်ိဳးသံုးႏိုင္ေအာင္ လုပ္ေပးပါတယ္။ Laravel မွာလဲ Facades ေတြအမ်ားႀကီးပါဝင္ၿပီးေတာ့ အဲဒီ Facade ေတြကိုလည္း သံုးဖူးပါလိမ့္မယ္။ သင္သံုးဖူးေပမယ့္လည္း သံုးဖူးမွန္းမသိျဖစ္ေနတက္ပါတယ္။ Laravel "facades" ေတြက Static Proxy ေတြအေနနဲ႔ ကူညီေပးပါတယ္။ ၄င္းက သာမာန္ Static method ေတြမဟုတ္ဘဲ ၊ ဖတ္/မွတ္လို႔ေကာင္းၿပီး ပိုၿပီးတိုေတာင္းတဲ့ Syntax ပံုစံေတြျဖစ္ေစတဲ့အျပင္ Test လုပ္လို႔အဆင္ေျပၿပီး ေျပာင္းလြယ္ျပင္လြယ္ျဖစ္ေစပါတယ္။
+Facades (ဖေဆာ့စ္ ဟုအသံထြက္ပါ) က Application ရဲ႕ [IoC container](ioc.md) ထဲမွာရွိတဲ့ Class ေတြကို static ပံုစံမ်ိဳးသံုးႏိုင္ေအာင္ လုပ္ေပးပါတယ္။ Laravel မွာလဲ Facades ေတြအမ်ားႀကီးပါဝင္ၿပီးေတာ့ အဲဒီ Facade ေတြကိုလည္း သံုးဖူးပါလိမ့္မယ္။ သင္သံုးဖူးေပမယ့္လည္း သံုးဖူးမွန္းမသိျဖစ္ေနတက္ပါတယ္။ Laravel "facades" ေတြက Static Proxy ေတြအေနနဲ႔ ကူညီေပးပါတယ္။ ၄င္းက သာမာန္ Static method ေတြမဟုတ္ဘဲ ၊ ဖတ္/မွတ္လို႔ေကာင္းၿပီး ပိုၿပီးတိုေတာင္းတဲ့ Syntax ပံုစံေတြျဖစ္ေစတဲ့အျပင္ Test လုပ္လို႔အဆင္ေျပၿပီး ေျပာင္းလြယ္ျပင္လြယ္ျဖစ္ေစပါတယ္။
 
 အခါအားေလ်ာက္စြာ သင့္ Application နဲ႔ Package ေတြ အတြက္ သင့္ကိုယ္ပိုင္ Facades ေတြတည္ေဆာက္ႏိုင္ပါတယ္။ ဒါ့ေၾကာင့္ ဒီ Class ေတြရဲ႕ အသံုးျပဳပံုေတြ နဲ႔ အယူအစေတြကို ေမႊေႏွာက္ၾကည့္ၾကရေအာင္။
 
-> **မွတ္ခ်က္:** Facades ကိုမေလ့လာခင္ ၊ Laravel ရဲ႕ [IoC container](/docs/ioc) နဲ႔ေသခ်ာရင္းႏွီးေနဖို႔ အႀကံျပဳခ်င္ပါတယ္။
+> **မွတ္ခ်က္:** Facades ကိုမေလ့လာခင္ ၊ Laravel ရဲ႕ [IoC container](ioc.md) နဲ႔ေသခ်ာရင္းႏွီးေနဖို႔ အႀကံျပဳခ်င္ပါတယ္။
 
 <a name="explanation"></a>
 ## ရွင္းလင္းခ်က္
@@ -85,7 +85,7 @@ IoC container ထဲအဲဒီ class ကို ထည့္ေပးဖို�
 		return new \PaymentGateway\Payment;
 	});
 
-ဒီ bind လုပ္ထားတာကို Register လုပ္ဖို႔အတြက္ အေကာင္းဆံုးနည္းကေတာ့ `PaymentServiceProvider` ဆိုၿပီး [service provider](/docs/ioc#service-providers) တစ္ခုေဆာက္ၿပီးေတာ့ အေပၚက bind လုပ္ထားတာကို `register` ဆိုတဲ့ method ထဲ ထည့္ေပးလိုက္တာပါ။ အခုေဆာက္ထားတဲ့ Service Provider ကို Laravel က load လုပ္ဖို႔ဆိုရင္ေတာ့ `app/config/app.php` ထဲမွာ သတ္မွတ္ေပးဖို႔လိုပါမယ္။
+ဒီ bind လုပ္ထားတာကို Register လုပ္ဖို႔အတြက္ အေကာင္းဆံုးနည္းကေတာ့ `PaymentServiceProvider` ဆိုၿပီး [service provider](ioc#service-providers.md) တစ္ခုေဆာက္ၿပီးေတာ့ အေပၚက bind လုပ္ထားတာကို `register` ဆိုတဲ့ method ထဲ ထည့္ေပးလိုက္တာပါ။ အခုေဆာက္ထားတဲ့ Service Provider ကို Laravel က load လုပ္ဖို႔ဆိုရင္ေတာ့ `app/config/app.php` ထဲမွာ သတ္မွတ္ေပးဖို႔လိုပါမယ္။
 
 Next, we can create our own facade class:
 ေနာက္တစ္ဆင့္မွာေတာ့ ကိုယ္ပိုင္ facade class ေဆာက္ႏိုင္ပါၿပီ -
@@ -109,12 +109,12 @@ Next, we can create our own facade class:
 
 <a name="mocking-facades"></a>
 ## Facades ေတြကို Mock ျပဳလုပ္ေပးျခင္း
-Facade ေတြ အဓိကရွိေနရျခင္းရဲ႕အေၾကာင္းရင္းကေတာ့ Test လြယ္လြယ္ကူကူလုပ္ႏုိင္ဖို႔ပဲျဖစ္ပါတယ္။ Mock လုပ္တဲ့အပိုင္းကိုေတာ့ [mocking facades](/docs/testing#mocking-facades) မွာ ျပည့္ျပည့္စံုစံု ေဖာ္ျပေပးထားပါတယ္။
+Facade ေတြ အဓိကရွိေနရျခင္းရဲ႕အေၾကာင္းရင္းကေတာ့ Test လြယ္လြယ္ကူကူလုပ္ႏုိင္ဖို႔ပဲျဖစ္ပါတယ္။ Mock လုပ္တဲ့အပိုင္းကိုေတာ့ [mocking facades](testing#mocking-facades.md) မွာ ျပည့္ျပည့္စံုစံု ေဖာ္ျပေပးထားပါတယ္။
 
 <a name="facade-class-reference"></a>
 ## Facade Class ကိုကား
 
-ေအာက္ကဇယားမွာေတာ့ ရွိသမွ် Facade ေတြနဲ႔ သူရဲ႕ေနာက္ကြယ္က class ေတြကို ေဖာ္ျပေပးထားပါတယ္။ API Documentation ထဲကို သက္ဆိုင္ရာ ေနရာလိုက္လဲ ခ်ိတ္ေပးထားပါတယ္။ [IoC binding](/docs/ioc) key ရွိတဲ့ Facade ေတြကိုလဲ သူ႕ key ေတြေရးေပးထားပါတယ္။
+ေအာက္ကဇယားမွာေတာ့ ရွိသမွ် Facade ေတြနဲ႔ သူရဲ႕ေနာက္ကြယ္က class ေတြကို ေဖာ္ျပေပးထားပါတယ္။ API Documentation ထဲကို သက္ဆိုင္ရာ ေနရာလိုက္လဲ ခ်ိတ္ေပးထားပါတယ္။ [IoC binding](ioc.md) key ရွိတဲ့ Facade ေတြကိုလဲ သူ႕ key ေတြေရးေပးထားပါတယ္။
 
 Facade  |  Class  |  IoC Binding
 ------------- | ------------- | -------------

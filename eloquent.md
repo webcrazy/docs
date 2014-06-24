@@ -59,7 +59,7 @@ $user = User::find(1);
 
 var_dump($user->name);
 
-> **Note:**  [query builder] တြင္ အသုုံးျပဳႏုုိင္သည့္ method မ်ား အားလုုံး (/docs/queries) Eloquent models တြင္လည္း ဆက္လက္ အသုုံးျပဳႏုုိင္မည္ ျဖစ္သည္။ 
+> **Note:**  [query builder] တြင္ အသုုံးျပဳႏုုိင္သည့္ method မ်ား အားလုုံး (queries.md) Eloquent models တြင္လည္း ဆက္လက္ အသုုံးျပဳႏုုိင္မည္ ျဖစ္သည္။ 
 
 #### Model အတြင္း record မ်ားအား primary key ကုုိ အသုုံးျပဳကာ ထုုတ္ယူျပီး မရွိပါက Exception ျဖင့္ ျပသျခင္း
 

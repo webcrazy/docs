@@ -28,7 +28,7 @@ Homestead က မည္သည္႕ Window, Mac, Linux မွာမဆို run
 - Redis
 - Memcached
 - Beanstalkd
-- [Laravel Envoy](/docs/ssh#envoy-task-runner)
+- [Laravel Envoy](ssh#envoy-task-runner.md)
 - Fabric + HipChat Extension
 
 <a name="installation-and-setup"></a>

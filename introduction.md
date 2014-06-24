@@ -7,14 +7,14 @@
 
 Framework အသစ္တစ္ခုကို ေလ႕လာရတာကိုလန္႕ေနႏိုင္ပါတယ္၊ ဒါေပမယ္႕ ဒါဟာ ရင္ခုန္ဖို႕အရမ္းေကာင္းပါတယ္။ သင္႕ရဲ႕ အကူးအေျပာင္းကိုအဆင္ေျပဖို႕၊ ကြ်န္ေတာ္တို႕က က်စ္လ်စ္ျပည္႕စံုၿပီး အရွင္းဆံုးျဖစ္ေအာင္ႀကိဳးပမ္းၿပီးေတာ႕ Laravel Documentation ကို ျပဳလုပ္ထားပါတယ္။ဒီမွာအရင္ဖတ္သင္႕တာေတြကို ေဖာ္ျပထားပါတယ္:
 
- - [Installation](/docs/installation) and
-   [Configuration](/docs/configuration)
- - [Routing](/docs/routing)
- - [Requests & Input](/docs/requests)
- - [Views & Responses](/docs/responses)
- - [Controllers](/docs/controllers)
+ - [Installation](installation.md) and
+   [Configuration](configuration.md)
+ - [Routing](routing.md)
+ - [Requests & Input](requests.md)
+ - [Views & Responses](responses.md)
+ - [Controllers](controllers.md)
 
-အေပၚက Documention Link ေတြကိုဖတ္ၿပီးၿပီဆိုရင္ သင့္ အေနနဲ႕ Laravel ရဲ႕ request/response ေတြကို ေကာင္းေကာင္း ကိုယ္တြယ္ေျဖရွင္းႏိုင္သင္႕ပါတယ္။ ေနာက္ၿပီး သင္အေနနဲ႕ [Database Configuration](/docs/database) / [Eloquent ORM](/docs/eloquent) ဖတ္ဖို႕ဆုေတာင္းေကာင္းဆုေတာင္းေနမယ္လို႕ထင္ပါတယ္ အဲ႕ဒီလိုမွမဟုတ္ဘူးဆိုရင္ [authentication and security](/docs/security) ကိုေပါ႕ ဒါမွလူေတြကို သင္႕ရဲ႕ application ထဲကို  sign in ဝင္ခိုင္းလို႕ရမွာကိုး။
+အေပၚက Documention Link ေတြကိုဖတ္ၿပီးၿပီဆိုရင္ သင့္ အေနနဲ႕ Laravel ရဲ႕ request/response ေတြကို ေကာင္းေကာင္း ကိုယ္တြယ္ေျဖရွင္းႏိုင္သင္႕ပါတယ္။ ေနာက္ၿပီး သင္အေနနဲ႕ [Database Configuration](database) / [Eloquent ORM](/docs/eloquent) ဖတ္ဖို႕ဆုေတာင္းေကာင္းဆုေတာင္းေနမယ္လို႕ထင္ပါတယ္ အဲ႕ဒီလိုမွမဟုတ္ဘူးဆိုရင္ [authentication and security](/docs/security.md) ကိုေပါ႕ ဒါမွလူေတြကို သင္႕ရဲ႕ application ထဲကို  sign in ဝင္ခိုင္းလို႕ရမွာကိုး။
 
 
 <a name="laravel-philosophy"></a>

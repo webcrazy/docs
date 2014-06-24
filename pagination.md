@@ -24,7 +24,7 @@ Frameworks ေတာ္ေတာ္မ်ားမ်ားအတြက္ေတ
 
 #### Paginating An Eloquent Model
 
-[Eloquent](/docs/eloquent) models ေတြကိုလည္း paginate လုပ္ႏိုင္ပါတယ္ -
+[Eloquent](eloquent.md) models ေတြကိုလည္း paginate လုပ္ႏိုင္ပါတယ္ -
 
 	$allUsers = User::paginate(15);
 

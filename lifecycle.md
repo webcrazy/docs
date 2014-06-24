@@ -1,4 +1,4 @@
-﻿# Request Lifecycle
+# Request Lifecycle
 
 - [Overview](#overview)
 - [Request Lifecycle](#request-lifecycle)
@@ -17,11 +17,11 @@
 
 သင္႔ application ရဲ႕ Request အားလံုးကို `public/index.php` ဆီကို redirect လုပ္ပါတယ္။  Apache ကိုအသံုးျပဳတဲ႔အခါမွာ `.htaccess` files က request အားလံုးကို `index.php` စီ redirect လုပ္ေပးပါတယ္။ အဲ႔ဒီ႔ကေနစၿပီးေတာ႔ Laravel က request ေတြကိုလက္ခံတာ  response ေတြကို client ဆီျပန္ေပးတာေတြကို handles လုပ္ေပးသြားတာပါ၊ Laravel ရဲ႕  bootstrap general idea က အသံုးဝင္ပါလိမ္႔မယ္ ၊ ဒါေၾကာင္႔ကြ်န္ေတာ္တို႔အခု ေအာက္မွာရွင္းျပပါ႔မယ္။
 
-Laravel ရဲ႕ bootstrap process ေလ႔လာတဲ႔ေနရာမွာ **Service Providers**  ကအဓိကျဖစ္ပါတယ္။ Services Providers ေတြရဲ႕  Lists ေတြကို  `app/config/app.php` ကိုဖြင္႔ၿပီး `providers` arrays မွာရွာေတြ႔ႏိုင္ပါတယ္။ ဒီ providers ေတြက Laravel ကို bootstrap လုပ္ဖို႔ အဓိက ျဖစ္ပါတယ္။ သင္႔ `index.php` file ကို request တစ္ခုလုပ္လိုက္တာနဲ႔ `bootstrap/start.php` က load လုပ္ပါမယ္။ အဲ႔ဒီ႔ file က Laravel `Application` object ေတြကို create လုပ္ပါ႔မယ္၊ ေနာက္ [Ioc container](/docs/ioc) ကိုလည္း serve လုပ္ပါတယ္။
+Laravel ရဲ႕ bootstrap process ေလ႔လာတဲ႔ေနရာမွာ **Service Providers**  ကအဓိကျဖစ္ပါတယ္။ Services Providers ေတြရဲ႕  Lists ေတြကို  `app/config/app.php` ကိုဖြင္႔ၿပီး `providers` arrays မွာရွာေတြ႔ႏိုင္ပါတယ္။ ဒီ providers ေတြက Laravel ကို bootstrap လုပ္ဖို႔ အဓိက ျဖစ္ပါတယ္။ သင္႔ `index.php` file ကို request တစ္ခုလုပ္လိုက္တာနဲ႔ `bootstrap/start.php` က load လုပ္ပါမယ္။ အဲ႔ဒီ႔ file က Laravel `Application` object ေတြကို create လုပ္ပါ႔မယ္၊ ေနာက္ [Ioc container](ioc.md) ကိုလည္း serve လုပ္ပါတယ္။
 
-`Application` ရဲ႕ object ေတြကို create လုပ္ၿပီးၿပီဆိုရင္ေတာ႔ project ရဲ႕ paths အခ်ိဳ႕ကိုစတင္ၿပီး တပ္ဆင္ပါ႔မယ္၊ ေနာက္ [environment detection](/docs/configuration#environment-configuration) ေတြကိုဆက္လက္လုပ္ေဆာင္ပါတယ္။ ဒါၿပီးရင္ေတာ႔ Laravel bootstrap script ေတြကို call လုပ္ပါ႔မယ္။ Laravel source ရဲ႕တြင္းပိုင္း File ေတြထိ live ျဖစ္သြားၿပီဆိုရင္ သင္႕ရဲ႕ configuration ေပၚမူတည္ၿပီး setting ေတြကို တပ္ဆင္ပါလိမ္႔မယ္။ timezoneတို႔၊ error reporting နဲ႔ အျခား လိုအပ္တဲ႔ setting ေတြေပါ႔။ ဒါေပမယ္႕ သင့္ Application လိုအပ္တဲ့ Service Provider မ်ားအားလုံးကို register လုပ္ထားဖို႔ကလည္း အျခား configuration ေတြအားလုံးလိုပဲ အေရးႀကီးပါတယ္။
+`Application` ရဲ႕ object ေတြကို create လုပ္ၿပီးၿပီဆိုရင္ေတာ႔ project ရဲ႕ paths အခ်ိဳ႕ကိုစတင္ၿပီး တပ္ဆင္ပါ႔မယ္၊ ေနာက္ [environment detection](configuration#environment-configuration.md) ေတြကိုဆက္လက္လုပ္ေဆာင္ပါတယ္။ ဒါၿပီးရင္ေတာ႔ Laravel bootstrap script ေတြကို call လုပ္ပါ႔မယ္။ Laravel source ရဲ႕တြင္းပိုင္း File ေတြထိ live ျဖစ္သြားၿပီဆိုရင္ သင္႕ရဲ႕ configuration ေပၚမူတည္ၿပီး setting ေတြကို တပ္ဆင္ပါလိမ္႔မယ္။ timezoneတို႔၊ error reporting နဲ႔ အျခား လိုအပ္တဲ႔ setting ေတြေပါ႔။ ဒါေပမယ္႕ သင့္ Application လိုအပ္တဲ့ Service Provider မ်ားအားလုံးကို register လုပ္ထားဖို႔ကလည္း အျခား configuration ေတြအားလုံးလိုပဲ အေရးႀကီးပါတယ္။
 
-Simple service providers only have one method: `register`. This `register` method is called when the service provider is registered with the application object via the application's own `register` method. Within this method, service providers register things with the [IoC container](/docs/ioc). Essentially, each service provider binds one or more [closures](http://us3.php.net/manual/en/functions.anonymous.php) into the container, which allows you to access those bound services within your application. So, for example, the `QueueServiceProvider` registers closures that resolve the various [Queue](/docs/queues) related classes. Of course, service providers may be used for any bootstrapping task, not just registering things with the IoC container. A service provider may register event listeners, view composers, Artisan commands, and more.
+Simple service providers only have one method: `register`. This `register` method is called when the service provider is registered with the application object via the application's own `register` method. Within this method, service providers register things with the [IoC container](ioc). Essentially, each service provider binds one or more [closures](http://us3.php.net/manual/en/functions.anonymous.php) into the container, which allows you to access those bound services within your application. So, for example, the `QueueServiceProvider` registers closures that resolve the various [Queue](/docs/queues.md) related classes. Of course, service providers may be used for any bootstrapping task, not just registering things with the IoC container. A service provider may register event listeners, view composers, Artisan commands, and more.
 
 Service Providers ေတြအကုန္လံုး register လုပ္ၿပီးရင္ သင္႕ရဲ႕ `app/start` file loadလုပ္ပါလိမ္႔မယ္။ ေနာက္ဆံုးအေနနဲ႔သင္႔ရဲ႕ `app/routes.php` ကို load လုပ္ပါ႔မယ္။ ေနာက္တစ္ခါသင္႕ application ရဲ႕ `route.php` load လုပ္ၿပီးရင္ request objects ေတြသင္႔ application ဆီကိုပို႔ပါမယ္၊ ဒါက route ေတြကိုေစလႊတ္ျခင္းျဖစ္ပါလိမ္႔မယ္။
 
@@ -40,16 +40,16 @@ Service Providers ေတြအကုန္လံုး register လုပ္ၿ�
 <a name="start-files"></a>
 ## Start Files
 
-သင္႔ Application ရဲ႕ Start Files ေတြက `app/start` ထဲမွာပါ။ Default အရဆိုရင္ သင္႔ application ရဲ႕ `global.php`,`local.php` နဲ႔ `artisan.php` တို႔ပါဝင္ပါတယ္။ artisan အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔ [Artisan command line](/docs/command#registering-commands) ကိုဖတ္ဖို႔ညႊန္းပရေစ။
+သင္႔ Application ရဲ႕ Start Files ေတြက `app/start` ထဲမွာပါ။ Default အရဆိုရင္ သင္႔ application ရဲ႕ `global.php`,`local.php` နဲ႔ `artisan.php` တို႔ပါဝင္ပါတယ္။ artisan အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔ [Artisan command line](command#registering-commands.md) ကိုဖတ္ဖို႔ညႊန္းပရေစ။
 
-Default အရ`global.php` မွာ basic items ေတြပါဝင္ပါတယ္၊ registration ေတြရဲ႕ [logger](/docs/errors) တို႔... ေနာက္  `app/filters.php` တို႔လည္းပါဝင္ပါေသးတယ္။ ဒါေပမယ္႔လည္း ဒီ `global.php` မွာ သင္ႀကိဳက္တဲ႔ File ေတြထက္ထည္႔လို႔ရပါတယ္။ တကယ္လို႔ထက္ထည္႔လိုက္ရင္ အဲ႔ဒီ႔ File က  သင္႔ application ရဲ႕ request တိုင္းမွာ auto ပါဝင္ေနမွာပါ။ `local.php` file ကေတာ႔ `local` environment မွာမွ call လုပ္မွာပါ၊
-Environment configuration အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔  [configuration](/docs/configuration) ကိုဖတ္ဖို႔ ညႊန္းပရေစ။
+Default အရ`global.php` မွာ basic items ေတြပါဝင္ပါတယ္၊ registration ေတြရဲ႕ [logger](errors.md) တို႔... ေနာက္  `app/filters.php` တို႔လည္းပါဝင္ပါေသးတယ္။ ဒါေပမယ္႔လည္း ဒီ `global.php` မွာ သင္ႀကိဳက္တဲ႔ File ေတြထက္ထည္႔လို႔ရပါတယ္။ တကယ္လို႔ထက္ထည္႔လိုက္ရင္ အဲ႔ဒီ႔ File က  သင္႔ application ရဲ႕ request တိုင္းမွာ auto ပါဝင္ေနမွာပါ။ `local.php` file ကေတာ႔ `local` environment မွာမွ call လုပ္မွာပါ၊
+Environment configuration အေၾကာင္းအေသးစိတ္သိလိုတယ္ဆိုရင္ေတာ႔  [configuration](configuration.md) ကိုဖတ္ဖို႔ ညႊန္းပရေစ။
 
 ဟုတ္တာေပါ႕ သင္႕မွာ `local` environment တစ္ခုအျပင္အျခား environment တစ္ခုရွိတယ္ဆိုရင္ အဲ႕ဒီ႕ environment အတြက္ start file တစ္ခု create လုပ္ရမွာေပါ႕။ ေနာက္အဲ႕ဒီ႕ start မွာပါတာေတြက သင္အဲ႕ဒီ႕ environment မွာအလုပ္လုပ္တဲ႕အခါမွာ အလိုလိုပါလာမွပါ။ ဒါေၾကာင့္ ..... ဥပမာ- သင္႕မွာ `developemt` environment တစ္ခုရွၿပီးေတာ႕ `bootstrap/start.php` မွာ configre လုပ္ၿပီးၿပီဆိုရင္ သင္အေနနဲ႕ `app/start/development.php` file တစ္ခု create လုပ္ထားတယ္ဆိုရင္ သင္႕ application က အဲ႕ဒီ႕ environment မွာ run ရင္ `app/start/development.php` ကအလိုလိုပါဝင္ေနမွာပါ။
 
 ### What To Place In Start Files
 
-Start files ကရိုးရိုးေနရာပါဘဲ...."bootstrapping" code ေတြထည္႕ရတဲ႕ေနရာေပါ႕ ။ ဥပမာ၊  View composerတို႕၊ logging preferences ေတြကို configure လုပ္တာတို႕ PHP Setting ေတြေျပာင္းတာ..နဲ႕အျခားလိုအပ္တာေတြကို သင္႕ register လုပ္ခ်င္ရင္လဲလုပ္ႏိုင္ပါတယ္။ ဘာေတြကို register လုပ္ခ်င္လဲဆိုတာကေတာ႕ သင္႕အေပၚမွာဘဲမူတည္ပါတယ္။ ဟုတ္တာေပါ႕ "bootstrapping code" ေတြအကုန္လံုးကိုသင္႕ရဲ႕ start file ထဲကိုထည္႕လိုက္ရင္  သင္႕ရဲ႕ start file ေတြရွုပ္ပြကုန္မွာေပါ႕။Application နည္းနည္းႀကီးလာၿပီဆိုရင္ ဒါမွမဟုတ္ သင္႕ရဲ႕ start files နည္းနည္းရွုပ္လာၿပီလို႕ခံစားရၿပီဆိုရင္... bootstrapping code ေတြကို [service providers](/docs/ioc#service-providers) ေတြဆီေရႊ႕လိုက္ပါ။
+Start files ကရိုးရိုးေနရာပါဘဲ...."bootstrapping" code ေတြထည္႕ရတဲ႕ေနရာေပါ႕ ။ ဥပမာ၊  View composerတို႕၊ logging preferences ေတြကို configure လုပ္တာတို႕ PHP Setting ေတြေျပာင္းတာ..နဲ႕အျခားလိုအပ္တာေတြကို သင္႕ register လုပ္ခ်င္ရင္လဲလုပ္ႏိုင္ပါတယ္။ ဘာေတြကို register လုပ္ခ်င္လဲဆိုတာကေတာ႕ သင္႕အေပၚမွာဘဲမူတည္ပါတယ္။ ဟုတ္တာေပါ႕ "bootstrapping code" ေတြအကုန္လံုးကိုသင္႕ရဲ႕ start file ထဲကိုထည္႕လိုက္ရင္  သင္႕ရဲ႕ start file ေတြရွုပ္ပြကုန္မွာေပါ႕။Application နည္းနည္းႀကီးလာၿပီဆိုရင္ ဒါမွမဟုတ္ သင္႕ရဲ႕ start files နည္းနည္းရွုပ္လာၿပီလို႕ခံစားရၿပီဆိုရင္... bootstrapping code ေတြကို [service providers](ioc#service-providers.md) ေတြဆီေရႊ႕လိုက္ပါ။
 
 <a name="application-events"></a>
 ## Application Events
@@ -68,7 +68,7 @@ Start files ကရိုးရိုးေနရာပါဘဲ...."bootstrappin
 		//
 	});
 
-အဲ႕ဒီ႕ event ေတြေပၚမူတည္ၿပီးေတာ႕ `before` နဲ႕  `after` request ေတြကို တစ္လွည္႕ဆီသင္႕ application က run မွာပါ။ ဒီ events ေတြက global filtering နဲ႕ global modification ေတြရဲ႕ responses ေတြအတြက္အလြန္အသံုးဝင္ပါလိမ္႕မယ္။ သင္႕အေနနဲ႕ အဲ႕ဒါေတြကို `start` files ဒါမွမဟုတ္ [service provider](/docs/ioc#service-providers) မွာ register လုပ္ထားႏိုင္ပါတယ္။
+အဲ႕ဒီ႕ event ေတြေပၚမူတည္ၿပီးေတာ႕ `before` နဲ႕  `after` request ေတြကို တစ္လွည္႕ဆီသင္႕ application က run မွာပါ။ ဒီ events ေတြက global filtering နဲ႕ global modification ေတြရဲ႕ responses ေတြအတြက္အလြန္အသံုးဝင္ပါလိမ္႕မယ္။ သင္႕အေနနဲ႕ အဲ႕ဒါေတြကို `start` files ဒါမွမဟုတ္ [service provider](ioc#service-providers.md) မွာ register လုပ္ထားႏိုင္ပါတယ္။
 
 `matched` event ေပၚက listener တစ္ခုကိုလည္း register လုပ္ႏိုင္ပါတယ္၊ request အဝင္တစ္ခုနဲ႕ route တစ္ခုနဲ႕  matched ျဖစ္သြားၿပီဆိုရင္ အဲဒါက fired လုပ္လိုက္တယ္ ဒါေပမယ္႔ အဲ႕ဒီ႕ route က excute ျဖစ္မသြားပါဘူး။
 
