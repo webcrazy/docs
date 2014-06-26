@@ -24,9 +24,9 @@ Authernication ကို အရိုးရွင္းဆံုးျဖစ္�
 <a name="storing-passwords"></a>
 ## Storing Passwords
 
-The Laravel `Hash` class provides secure Bcrypt hashing:
+Laravel ရဲ႕ `Hash` class က secure Bcrypt hashing စီစဥ္ေပးပါတယ္ -
 
-#### Hashing A Password Using Bcrypt
+#### Bcrypt ကိုသံုးၿပီး Password တစ္ခုကို Hash လုပ္ျခင္း
 
 	$password = Hash::make('secret');
 
@@ -37,7 +37,7 @@ The Laravel `Hash` class provides secure Bcrypt hashing:
 		// The passwords match...
 	}
 
-#### Checking If A Password Needs To Be Rehashed
+#### Password တစ္ခုကို Rehashed လုပ္ဖို႕လိုလားမလိုလားစစ္ရင္
 
 	if (Hash::needsRehash($hashed))
 	{
@@ -47,27 +47,27 @@ The Laravel `Hash` class provides secure Bcrypt hashing:
 <a name="authenticating-users"></a>
 ## Authenticating Users
 
-To log a user into your application, you may use the `Auth::attempt` method.
+User တစ္ေယာက္ သင္႕ application ထဲကိုဝင္ဖို႕အတြက္ သင္႕ေနနဲ႕ `Auth::attempt` method ကိုသံုးရပါလိမ္႕မယ္။
 
 	if (Auth::attempt(array('email' => $email, 'password' => $password)))
 	{
 		return Redirect::intended('dashboard');
 	}
 
-Take note that `email` is not a required option, it is merely used for example. You should use whatever column name corresponds to a "username" in your database. The `Redirect::intended` function will redirect the user to the URL they were trying to access before being caught by the authentication filter. A fallback URI may be given to this method in case the intended destination is not available.
+မွတ္ထားေပးရမွာက... `email` က require option မဟုတ္ပါဘူး၊ ဒါက နမူနာ သတ္သတ္ျဖစ္ပါတယ္။ သင္႕အေနနဲ႕ "username" column အစားသင္ႀကိဳက္တဲ႕ column ကို အစားထိုးအသံုးျပဳႏိုင္ပါတယ္။ `Redirect::intended` function က user authernication filter ကိုေက်ာ္ၿပီးမွ access လုပ္လိုရမယ္႕ လိုသတ္မွတ္ထားတဲ႕ url ကို redirect လုပ္ပါ႕မယ္။  fallback URI တစ္ခု အဲ႕ဒီ method ဆီကို ေပးပါလိမ္႕မယ္  လိုအပ္လို႕ရွိရင္ intended destination က မရႏိုင္ပါဘူး။
 
-When the `attempt` method is called, the `auth.attempt` [event](events.md) will be fired. If the authentication attempt is successful and the user is logged in, the `auth.login` event will be fired as well.
+`attempt` method ေခၚၿပီးသြားတဲ႕အခ်ိန္မွာ `auth.attempt` [event](events.md) က fire ျဖစ္သြားပါလိမ္႕မယ္။ တကယ္လို႕ authentication attempt က successful ျဖစ္ၿပီးေတာ႕ user က logged ျဖစ္သြားတဲ႕အခ်ိန္မွာ  `auth.login` event ကလည္း fired ျဖစ္ပါလိမ္႕ဦးမယ္။
 
-#### Determining If A User Is Authenticated
+#### User တစ္ေယာက္က Authenticat ျဖစ္ေနလားဆိုတာကို ဆံုးျဖတ္ျခင္း
 
-To determine if the user is already logged into your application, you may use the `check` method:
+User က သင္႕ application ထဲ login ဝင္ၿပီးၿပီလားဆိုတာကိုဆံုးျဖတ္ရန္ သင္႕အေနနဲ႕ `check` method ကိုအသံုးျပဳသင္႕ပါတယ္ -
 
 	if (Auth::check())
 	{
 		// The user is logged in...
 	}
 
-#### Authenticating A User And "Remembering" Them
+#### User တစ္ေယာက္ကို Authenticate လုပ္ျခင္း နဲ႕ သူတို႕ကို "Remember" လုပ္ျခင္း
 
 If you would like to provide "remember me" functionality in your application, you may pass `true` as the second argument to the `attempt` method, which will keep the user authenticated indefinitely (or until they manually logout). Of course, your `users` table must include the string `remember_token` column, which will be used to store the "remember me" token.
 
