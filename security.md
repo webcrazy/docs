@@ -13,11 +13,11 @@
 <a name="configuration"></a>
 ## Configuration
 
-Laravel aims to make implementing authentication very simple. In fact, almost everything is configured for you out of the box. The authentication configuration file is located at `app/config/auth.php`, which contains several well documented options for tweaking the behavior of the authentication facilities.
+Authernication ကို အရိုးရွင္းဆံုးျဖစ္ေအာင္  ရည္ရြယ္ၿပီး Laravel က ရည္ရြယ္ထားပါတယ္။ တစ္နည္းအားျဖင္႔ configuration ေတြအားလံုးနီးပါး မရွိသေလာက္ျဖစ္ေအာင္လုပ္ထားတာပါ။ Authernication file က `app/config/auth.php` မွာရွိတာပါ ၊  ဒီထဲမွာဘာေတြပါလဲဆိုရင္   Authernication ေတြရဲ႕အေၾကာင္းေျပာထားတဲ႕  behavior facilities ေတြအေၾကာင္းကို Well documented လုပ္ထားတာေတြကိုေတြ႕ရမွာပါ။
 
-By default, Laravel includes a `User` model in your `app/models` directory which may be used with the default Eloquent authentication driver. Please remember when building the Schema for this Model to ensure that the password field is a minimum of 60 characters.
+မူလ ပံုစံအရဆိုရင္ Laravel မွာသင္႕ရဲ႕  `app/models` ထဲမွ `User` model ပါဝင္ပါတယ္... ဒါက default Eloquent authentication driver ကိုသံုးရပါလိမ္႕မယ္။  မွတ္ထားရမွာက ဒီ `User` Model အတြက္ Schema  ကို create လုပ္တဲ႕အခ်ိန္မွာ password field က 60 characters အနည္းဆံုးရွိရမယ္ဆိုတာကိုေတာ႕မွတ္ထားပါ။
 
-If your application is not using Eloquent, you may use the `database` authentication driver which uses the Laravel query builder.
+သင္႕ application က Eloquent ကိုမသံုးဘူးဆိုရင္ သင္႕အေနနဲ႕ `database` authentication driver ကိုအသံုးျပဳရပါလိမ္႕မယ္... အဲဒါက Laravel query builder ကိုသံုးထားတာပါ။
 
 > **Note:** Before getting started, make sure that your `users` (or equivalent) table contains a nullable, string `remember_token` column of 100 characters. This column will be used to store a token for "remember me" sessions being maintained by your application.
 
