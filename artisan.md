@@ -1,39 +1,39 @@
-## Artisan CLI
+﻿## Artisan CLI
 
-- [မိတ္ဆက္](#introduction)
-- [အသုုံးျပဳပုုံ](#အသုုံးျပဳပုုံ)
+- [မိတ်ဆက်](#introduction)
+- [အသုံးပြုပုံ](#အသုံးပြုပုံ)
 
 <a name="introduction"></a>
-## မိတ္ဆက္
+## မိတ်ဆက်
 
-Artisan သည္ laravel တြင္အသုုံးျပဳသည့္ command line interface တစ္ခုုျဖစ္သည္။ ၄င္းတြင္ application develop ျပဳလုုပ္ရာတြင္ အလြန္အသုုံးဝင္လွေသာ commands မ်ားစြာပါဝင္သည္။ ၄င္းမွာ Symfony ၏ console component မွဆင္းသက္လာျခင္း ျဖစ္သည္။
+Artisan သည် laravel တွင်အသုံးပြုသည့် command line interface တစ်ခုဖြစ်သည်။ ၄င်းတွင် application develop ပြုလုပ်ရာတွင် အလွန်အသုံးဝင်လှသော commands များစွာပါဝင်သည်။ ၄င်းမှာ Symfony ၏ console component မှဆင်းသက်လာခြင်း ဖြစ်သည်။
 
 
 <a name="usage"></a>
-## အသုုံးျပဳပုုံ
+## အသုံးပြုပုံ
 
-#### အသုုံးျပဳႏုုိင္သည့္ Command မ်ားကုုိ စီရီျပသျခင္း
+#### အသုံးပြုနိုင်သည့် Command များကို စီရီပြသခြင်း
 
-Artisan တြင္ပါဝင္သည့္ Command အကုုန္လုုံးကုုိ list အေနျဖင့္ ျပသလုုိပါက `list` ဟုုသည့္ command ကုုိ အသုုံးျပဳႏုုိင္သည္။
+Artisan တွင်ပါဝင်သည့် Command အကုန်လုံးကို list အနေဖြင့် ပြသလိုပါက `list` ဟုသည့် command ကို အသုံးပြုနိုင်သည်။
 
 	php artisan list
 
-#### Command  တစ္ခုုခ်င္း၏ အသုုံးျပဳျခင္း လမ္းညြန္မႈကုုိ ၾကည့္ရႈျခင္း 
+#### Command  တစ်ခုချင်း၏ အသုံးပြုခြင်း လမ်းညွန်မှုကို ကြည့်ရှုခြင်း 
 
-Command တုုိင္းလုုိလုုိ တြင္ “help” ဟုု အပုုိေဆာင္း ရုုိက္ျခင္း ျဖင့္ မိမိတုုိ ့ အသုုံးျပဳမည့္ Command တြင္ ထည့္သြင္းရမည့္ arguments မ်ားႏွင့္ ေရြးခ်ယ္စရာမ်ားကုုိ သိရွိႏုုိင္ပါသည္။
+Command တိုင်းလိုလို တွင် “help” ဟု အပိုဆောင်း ရိုက်ခြင်း ဖြင့် မိမိတို ့ အသုံးပြုမည့် Command တွင် ထည့်သွင်းရမည့် arguments များနှင့် ရွေးချယ်စရာများကို သိရှိနိုင်ပါသည်။
 
 	php artisan help migrate
 
-#### Configuration Environment ကုုိ သတ္မွတ္ျခင္း
+#### Configuration Environment ကို သတ်မှတ်ခြင်း
 
-မိမိတုုိ ့ အသုုံးျပဳလုုိသည္ Configuration Environment ကုုိ —env ဟုုေသာ  switch ျဖင့္ ေရြးခ်ယ္သတ္မွတ္ႏုုိင္သည္။ 
+မိမိတို ့ အသုံးပြုလိုသည် Configuration Environment ကို —env ဟုသော  switch ဖြင့် ရွေးချယ်သတ်မှတ်နိုင်သည်။ 
 
 
 	php artisan migrate --env=local
 
-#### လက္ရွိ အသုုံးျပဳေနသည့္ Laravel version ကိုုေဖာ္ျပျခင္း
+#### လက်ရှိ အသုံးပြုနေသည့် Laravel version ကိုဖော်ပြခြင်း
 
-မိမိတုုိ ့လက္ရွိအသုုံးျပဳေနသည့္ Laravel version ကုုိ သိရွိလုုိပါက —switch ကုုိ အသုုံးျပဳျပီး  သိရွိႏုုိင္ပါသည္။ 
+မိမိတို ့လက်ရှိအသုံးပြုနေသည့် Laravel version ကို သိရှိလိုပါက —switch ကို အသုံးပြုပြီး  သိရှိနိုင်ပါသည်။ 
  
 
 	php artisan --version

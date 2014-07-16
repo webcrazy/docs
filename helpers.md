@@ -1,4 +1,4 @@
-# အကူ Function မ်ား
+﻿# အကူ Function များ
 
 - [Arrays](#arrays)
 - [Paths](#paths)
@@ -11,7 +11,7 @@
 
 ### array_add
 
-`array_add` function သည္ အကယ္၍ ပထမ argument array တြင္ထပ္မံေပး လုိက္ေသာ key နွင့္ တန္ဖုိး အတြဲ ရွိျပီးသား မဟုတ္ခဲ့ပါက ထုိ key နွင့္ တန္ဖုိးအတြဲအား ထပ္မံေပါင္းထည့္ေပးပါသည္။
+`array_add` function သည် အကယ်၍ ပထမ argument array တွင်ထပ်မံပေး လိုက်သော key နှင့် တန်ဖိုး အတွဲ ရှိပြီးသား မဟုတ်ခဲ့ပါက ထို key နှင့် တန်ဖိုးအတွဲအား ထပ်မံပေါင်းထည့်ပေးပါသည်။
 
 	$array = array('foo' => 'bar');
 
@@ -19,7 +19,7 @@
 
 ### array_divide
 
-`array_divide` function သည္ မူလ array အား key မ်ားပါ၀င္ေသာ array နွင့္ တန္ဖုိးမ်ား ပါ ၀င္ေသာ array နွစ္ခု ပါ၀င္ေသာ array အျဖစ္ return ျပန္ေပးပါသည္။
+`array_divide` function သည် မူလ array အား key များပါဝင်သော array နှင့် တန်ဖိုးများ ပါ ဝင်သော array နှစ်ခု ပါဝင်သော array အဖြစ် return ပြန်ပေးပါသည်။
 
 	$array = array('foo' => 'bar');
 
@@ -27,23 +27,23 @@
 
 ### array_dot
 
-`array_dot` function သည္ dimension တစ္ခုထက္ပုိ၍ ပါ၀င္ေသာ array တစ္ခုကုိ "." သေကၤတသုံးေရးနည္းျဖင့္ အဆင့္ဆင့္ေခါ္ယူနုိင္ေသာ dimension တစ္ခုတည္း ရွိ array တစ္ခု အျဖစ္ေျပာင္းလဲေပးပါသည္။
+`array_dot` function သည် dimension တစ်ခုထက်ပို၍ ပါဝင်သော array တစ်ခုကို "." သင်္ကေတသုံးရေးနည်းဖြင့် အဆင့်ဆင့်ခေါ်ယူနိုင်သော dimension တစ်ခုတည်း ရှိ array တစ်ခု အဖြစ်ပြောင်းလဲပေးပါသည်။
 
 	$array = array('foo' => array('bar' => 'baz'));
-ၡ
+္ခ
 	$array = array_dot($array);
 
 	// array('foo.bar' => 'baz');
 
 ### array_except
 
-`array_except` method သည္ ေပးလုိက္ေသာ key နွင့္ တန္ဖုိး အတြဲကုိ ပထမ argument array ထံမွ ဖယ္ရွားေပးပါသည္။
+`array_except` method သည် ပေးလိုက်သော key နှင့် တန်ဖိုး အတွဲကို ပထမ argument array ထံမှ ဖယ်ရှားပေးပါသည်။
 
 	$array = array_except($array, array('keys', 'to', 'remove'));
 
 ### array_fetch
 
-`array_fetch` method သည္ ပထမ argument array အတြင္းတြင္ အဆင့္ဆင့္ ညွပ္သုံးထားေသာ ေပးထားသည့္ ဒုတိယ argument နွင့္ ကုိက္ညီသည့္ nested array element မ်ားအား တစ္ဆင့္တည္း flattened လုပ္ထားေသာ array အျဖစ္ျဖင့္ return ျပန္ေပးပါသည္။ 
+`array_fetch` method သည် ပထမ argument array အတွင်းတွင် အဆင့်ဆင့် ညှပ်သုံးထားသော ပေးထားသည့် ဒုတိယ argument နှင့် ကိုက်ညီသည့် nested array element များအား တစ်ဆင့်တည်း flattened လုပ်ထားသော array အဖြစ်ဖြင့် return ပြန်ပေးပါသည်။ 
 
 	$array = array(
 		array('developer' => array('name' => 'Taylor')),
@@ -56,7 +56,7 @@
 
 ### array_first
 
-`array_first` method သည္ ေပးထားေသာ array အတြင္း မွ ေပးထားေသာ truth test ကုိ ေျပလည္ ေစ မည့္  ပထမဆုံး element အား return ျပန္ေပးပါသည္။
+`array_first` method သည် ပေးထားသော array အတွင်း မှ ပေးထားသော truth test ကို ပြေလည် စေ မည့်  ပထမဆုံး element အား return ပြန်ပေးပါသည်။
 
 	$array = array(100, 200, 300);
 
@@ -65,13 +65,13 @@
 		return $value >= 150;
 	});
 
-default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ parameter အျဖစ္ ထည့္သြင္းေပးနုိင္ပါသည္။
+default တန်ဖိုးတစ်ခုကို လည်း တတိယ parameter အဖြစ် ထည့်သွင်းပေးနိုင်ပါသည်။
 
 	$value = array_first($array, $callback, $default);
 
 ### array_last
 
-`array_last` method သည္ ေပးထားေသာ array အတြင္းမွ ေပးထားေသာ truth test ကုိ ေျပလည္ေစမည့္ ေနာက္ဆုံး element အား return ျပန္ေပးပါသည္။
+`array_last` method သည် ပေးထားသော array အတွင်းမှ ပေးထားသော truth test ကို ပြေလည်စေမည့် နောက်ဆုံး element အား return ပြန်ပေးပါသည်။
 
 	$array = array(350, 400, 500, 300, 200, 100);
 
@@ -82,13 +82,13 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 	// 500
 
-default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ parameter အျဖစ္ ထည့္သြင္းေပးနုိင္ပါသည္။
+default တန်ဖိုးတစ်ခုကို လည်း တတိယ parameter အဖြစ် ထည့်သွင်းပေးနိုင်ပါသည်။
 
 	$value = array_last($array, $callback, $default);
 
 ### array_flatten
 
-`array_flatten` method သည္ ေပးထားေသာ dimension တစ္ခုထက္ပုိသည့္ array တစ္ခုကို တစ္ဆင့္တည္း ရွိေသာ array တစ္ခု အျဖစ္ return ျပန္ေပးပါသည္။
+`array_flatten` method သည် ပေးထားသော dimension တစ်ခုထက်ပိုသည့် array တစ်ခုကို တစ်ဆင့်တည်း ရှိသော array တစ်ခု အဖြစ် return ပြန်ပေးပါသည်။
 
 	$array = array('name' => 'Joe', 'languages' => array('PHP', 'Ruby'));
 
@@ -98,7 +98,7 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### array_forget
 
-`array_forget` method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ deeply nested array တစ္ခုမွ  "." သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ေပးရင္း key နွင့္ တန္ဖုိး အတြဲကုိ ဖယ္ရွားေပးပါသည္။
+`array_forget` method သည် အဆင့်ဆင့်နက်နဲစွာ ညှပ်ထားသော deeply nested array တစ်ခုမှ  "." သင်္ကေတသုံးရေးနည်းကို အသုံးပြု၍ ရေးထားသော ပေးရင်း key နှင့် တန်ဖိုး အတွဲကို ဖယ်ရှားပေးပါသည်။
 
 	$array = array('names' => array('joe' => array('programmer')));
 
@@ -106,17 +106,17 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### array_get
 
-`array_get` method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ deeply nested array တစ္ခုမွ  "." သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ေပးရင္း key နွင့္ တန္ဖုိး အတြဲကုိ ထုတ္ယူေပးပါသည္။
+`array_get` method သည် အဆင့်ဆင့်နက်နဲစွာ ညှပ်ထားသော deeply nested array တစ်ခုမှ  "." သင်္ကေတသုံးရေးနည်းကို အသုံးပြု၍ ရေးထားသော ပေးရင်း key နှင့် တန်ဖိုး အတွဲကို ထုတ်ယူပေးပါသည်။
 
 	$array = array('names' => array('joe' => array('programmer')));
 
 	$value = array_get($array, 'names.joe');
 
->**မွတ္ခ်က္** အကယ္၍ `array_get` ၏ အလုပ္လုပ္ပုံမ်  ိုး ကုိ object မ်ားတြင္ သုံးလုိပါက `object_get` အားသုံးနုိင္ပါသည္။
+>**မှတ်ချက်** အကယ်၍ `array_get` ၏ အလုပ်လုပ်ပုံမျ  ိုး ကို object များတွင် သုံးလိုပါက `object_get` အားသုံးနိုင်ပါသည်။
 
 ### array_only
 
-`array_only` method သည္ ပထမ argument array အတြင္းမွ ေပးထားေသာ key သုိ့မဟုတ္ တန္ဖုိးမ်ား ပါ၀င္သည့္ အတြဲမ်ားကုိသာ return ျပန္ေပးပါသည္။
+`array_only` method သည် ပထမ argument array အတွင်းမှ ပေးထားသော key သို့မဟုတ် တန်ဖိုးများ ပါဝင်သည့် အတွဲများကိုသာ return ပြန်ပေးပါသည်။
 
 	$array = array('name' => 'Joe', 'age' => 27, 'votes' => 1);
 
@@ -124,7 +124,7 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### array_pluck
 
-`array_pluck` method သည္ ပထမ argument array ထံမွ ေပးထားေသာ key သို့ မဟုတ္ တန္ဖုိး ပါ၀င္သည့္ အတြဲကုိသာ return ျပန္ေပးပါသည္။
+`array_pluck` method သည် ပထမ argument array ထံမှ ပေးထားသော key သို့ မဟုတ် တန်ဖိုး ပါဝင်သည့် အတွဲကိုသာ return ပြန်ပေးပါသည်။
 
 	$array = array(array('name' => 'Taylor'), array('name' => 'Dayle'));
 
@@ -134,7 +134,7 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### array_pull
 
-`array_pull` method သည္ ပထမ argument array ထံမွ ေပးထားေသာ key သုိ့ မဟုတ္ တန္ဖုိးပါ၀င္သည့္ အတြဲ ကုိ return ျပန္ျပီး ထုိ အတြဲအား မူလ array ထံမွလည္း ဖယ္ရွားေပးပါသည္။
+`array_pull` method သည် ပထမ argument array ထံမှ ပေးထားသော key သို့ မဟုတ် တန်ဖိုးပါဝင်သည့် အတွဲ ကို return ပြန်ပြီး ထို အတွဲအား မူလ array ထံမှလည်း ဖယ်ရှားပေးပါသည်။
 
 	$array = array('name' => 'Taylor', 'age' => 27);
 
@@ -142,7 +142,7 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### array_set
 
-`array_set` method သည္ အဆင့္ဆင့္နက္နဲစြာ ညွပ္ထားေသာ array တစ္ခုအတြင္းမွ  "." သေကၤတသုံးေရးနည္းကုိ အသုံးျပု၍ ေရးထားေသာ ဒုတိယ argument နွင့္ကုိက္ညီသည့္ တန္ဖုိးအား ျပု ျပင္ထည့္သြင္းေပးပါသည္။
+`array_set` method သည် အဆင့်ဆင့်နက်နဲစွာ ညှပ်ထားသော array တစ်ခုအတွင်းမှ  "." သင်္ကေတသုံးရေးနည်းကို အသုံးပြု၍ ရေးထားသော ဒုတိယ argument နှင့်ကိုက်ညီသည့် တန်ဖိုးအား ပြု ပြင်ထည့်သွင်းပေးပါသည်။
 
 	$array = array('names' => array('programmer' => 'Joe'));
 
@@ -150,7 +150,7 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### array_sort
 
-`array_sort` method သည္ ေပးထားေသာ array အား ေပးထားေသာ Closure function ၏ ရလဒ္ကုိ အသုံးျပု ၍ စီေပးပါသည္။
+`array_sort` method သည် ပေးထားသော array အား ပေးထားသော Closure function ၏ ရလဒ်ကို အသုံးပြု ၍ စီပေးပါသည်။
 
 	$array = array(
 		array('name' => 'Jill'),
@@ -164,7 +164,7 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### array_where
 
-`array_where` သည္ ေပးထားေသာ array အား ေပးထားေသာ Closure function တစ္ခုျဖင့္ filter လုပ္ေပးပါသည္။
+`array_where` သည် ပေးထားသော array အား ပေးထားသော Closure function တစ်ခုဖြင့် filter လုပ်ပေးပါသည်။
 
 	$array = array(100, '200', 300, '400', 500);
 
@@ -177,13 +177,13 @@ default တန္ဖုိးတစ္ခုကုိ လည္း တတိယ 
 
 ### head
 
-array တစ္ခု၏ ပထမဆုံး element ကုိ return ျပန္ေပးပါသည္။ PHP 5.3.x တြင္ အသုံးျပုနုိင္ေသာ method chaining အတြက္ အသုံး၀င္ပါသည္။
+array တစ်ခု၏ ပထမဆုံး element ကို return ပြန်ပေးပါသည်။ PHP 5.3.x တွင် အသုံးပြုနိုင်သော method chaining အတွက် အသုံးဝင်ပါသည်။
 
 	$first = head($this->returnsArray('foo'));
 
 ### last
 
-array တစ္ခု၏ ေနာက္ဆုံး element ကို return ျပန္ေပးပါသည္။ method chaining အတြက္ အသုံး၀င္ပါသည္။
+array တစ်ခု၏ နောက်ဆုံး element ကို return ပြန်ပေးပါသည်။ method chaining အတွက် အသုံးဝင်ပါသည်။
 
 	$last = last($this->returnsArray('foo'));
 
@@ -192,28 +192,28 @@ array တစ္ခု၏ ေနာက္ဆုံး element ကို return �
 
 ### app_path
 
-`app` directory၏ path အျပည့္အစုံကုိ ေပးပါသည္။
+`app` directory၏ path အပြည့်အစုံကို ပေးပါသည်။
 
 	$path = app_path();
 
 ### base_path
 
-application ကုိ install လုပ္ထားေသာ root directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။
+application ကို install လုပ်ထားသော root directory ၏ path အပြည့်အစုံကို ပေးပါသည်။
 
 ### public_path
 
-`public` directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။
+`public` directory ၏ path အပြည့်အစုံကို ပေးပါသည်။
 
 ### storage_path
 
-`app/storage` directory ၏ path အျပည့္အစုံကုိ ေပးပါသည္။
+`app/storage` directory ၏ path အပြည့်အစုံကို ပေးပါသည်။
 
 <a name="strings"></a>
 ## Strings
 
 ### camel_case
 
-ေပးထားေသာ string အား `camelCase` ေရးဟန္သုိ့ ေျပာင္းလဲေပးပါသည္။
+ပေးထားသော string အား `camelCase` ရေးဟန်သို့ ပြောင်းလဲပေးပါသည်။
 
 	$camel = camel_case('foo_bar');
 
@@ -221,7 +221,7 @@ application ကုိ install လုပ္ထားေသာ root directory ၏ 
 
 ### class_basename
 
-ေပးထားေသာ class ၏  အမည္ကုိ namespace အမည္မ်ား မပါ၀င္ပဲ ေပးပါသည္။
+ပေးထားသော class ၏  အမည်ကို namespace အမည်များ မပါဝင်ပဲ ပေးပါသည်။
 
 	$class = class_basename('Foo\Bar\Baz');
 
@@ -229,19 +229,19 @@ application ကုိ install လုပ္ထားေသာ root directory ၏ 
 
 ### e
 
-`htmlentities` function အား ေပးထားေသာ string ျဖင့္ run ပါသည္။ UTF-8 support ပါ၀င္ပါသည္။
+`htmlentities` function အား ပေးထားသော string ဖြင့် run ပါသည်။ UTF-8 support ပါဝင်ပါသည်။
 
 	$entities = e('<html>foo</html>');
 
 ### ends_with
 
-ပထမ argument တြင္ ေပးထားေသာ string တစ္ခုသည္ ေပးထားေသာ string နွင့္ အဆုံးသတ္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။
+ပထမ argument တွင် ပေးထားသော string တစ်ခုသည် ပေးထားသော string နှင့် အဆုံးသတ်ခြင်းရှိမရှိ ဆုံးဖြတ်ပေးပါသည်။
 
 	$value = ends_with('This is my name', 'name');
 
 ### snake_case
 
-ေပးထားေသာ string အား `snake_case` ေရးဟန္ သုိ့ ေျပာင္းလဲေပးပါသည္။
+ပေးထားသော string အား `snake_case` ရေးဟန် သို့ ပြောင်းလဲပေးပါသည်။
 
 	$snake = snake_case('fooBar');
 
@@ -249,7 +249,7 @@ application ကုိ install လုပ္ထားေသာ root directory ၏ 
 
 ### str_limit
 
-string တစ္ခု အတြင္းရွိ အကၡရာအေရအတြက္ကုိ ကန့္သတ္ေပးပါသည္။
+string တစ်ခု အတွင်းရှိ အက္ခရာအရေအတွက်ကို ကန့်သတ်ပေးပါသည်။
 
 	str_limit($value, $limit = 100, $end = '...')
 
@@ -261,19 +261,19 @@ string တစ္ခု အတြင္းရွိ အကၡရာအေရအ�
 
 ### starts_with
 
-ပထမ argument တြင္ ေပးထားေသာ string တစ္ခုသည္ ေပးထားေသာ string နွင့္ စတင္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။
+ပထမ argument တွင် ပေးထားသော string တစ်ခုသည် ပေးထားသော string နှင့် စတင်ခြင်းရှိမရှိ ဆုံးဖြတ်ပေးပါသည်။
 
 	$value = starts_with('This is my name', 'This');
 
 ### str_contains
 
-ပထမ argument တြင္ ေပးထားေသာ string တြင္ ေပးထားေသာ string ပါ၀င္ျခင္းရွိမရွိ ဆုံးျဖတ္ေပးပါသည္။
+ပထမ argument တွင် ပေးထားသော string တွင် ပေးထားသော string ပါဝင်ခြင်းရှိမရှိ ဆုံးဖြတ်ပေးပါသည်။
 
 	$value = str_contains('This is my name', 'my');
 
 ### str_finish
 
-ပထမ argument တြင္ေပးထားေသာ string ၏ အဆုံးတြင္ ေပးထားေသာ string အားေပါင္းထည့္ေပးပါသည္။
+ပထမ argument တွင်ပေးထားသော string ၏ အဆုံးတွင် ပေးထားသော string အားပေါင်းထည့်ပေးပါသည်။
 
 	$string = str_finish('this/string', '/');
 
@@ -281,31 +281,31 @@ string တစ္ခု အတြင္းရွိ အကၡရာအေရအ�
 
 ### str_is
 
-ေပးထားေသာ pattern တစ္ခုသည္ ေပးထားေသာ string နွင့္ ကုိက္ညီ မကုိက္ညီ ဆုံးျဖတ္ေပးပါသည္။ ခေရပြင့္အကၡရာ "*" မ်ားအား wildcard အကၡရာအျဖစ္သုံးနုိင္ပါသည္။
+ပေးထားသော pattern တစ်ခုသည် ပေးထားသော string နှင့် ကိုက်ညီ မကိုက်ညီ ဆုံးဖြတ်ပေးပါသည်။ ခရေပွင့်အက္ခရာ "*" များအား wildcard အက္ခရာအဖြစ်သုံးနိုင်ပါသည်။
 
 	$value = str_is('foo*', 'foobar');
 
 ### str_plural
 
-ေပးထားေသာ string တစ္ခုအား English ဘာသာ ျဖင့္ အမ်ားကိန္း (plural) ပုံစံသုိ့ ေျပာင္းလဲေပးပါသည္။
+ပေးထားသော string တစ်ခုအား English ဘာသာ ဖြင့် အများကိန်း (plural) ပုံစံသို့ ပြောင်းလဲပေးပါသည်။
 
 	$plural = str_plural('car');
 
 ### str_random
 
-ေပးထားေသာ အေရအတြက္အတုိင္း အတိအက် ရွိသည့္ က်ပန္း string တစ္ခုကုိ ထုတ္ေပးပါသည္။
+ပေးထားသော အရေအတွက်အတိုင်း အတိအကျ ရှိသည့် ကျပန်း string တစ်ခုကို ထုတ်ပေးပါသည်။
 
 	$string = str_random(40);
 
 ### str_singular
 
-ေပးထားေသာ string တစ္ခုအား English ဘာသာ ျဖင့္ အနည္းကိန္း (singular) ပုံစံသုိ့ ေျပာင္းလဲေပးပါသည္။
+ပေးထားသော string တစ်ခုအား English ဘာသာ ဖြင့် အနည်းကိန်း (singular) ပုံစံသို့ ပြောင်းလဲပေးပါသည်။
 
 	$singular = str_singular('cars');
 
 ### studly_case
 
-ေပးထားေသာ string အား `StudlyCase` ေရးဟန္သုိ့ ေျပာင္းလဲေပးပါသည္။
+ပေးထားသော string အား `StudlyCase` ရေးဟန်သို့ ပြောင်းလဲပေးပါသည်။
 
 	$value = studly_case('foo_bar');
 
@@ -313,13 +313,13 @@ string တစ္ခု အတြင္းရွိ အကၡရာအေရအ�
 
 ### trans
 
-ေပးထားေသာ string တစ္ေျကာင္းအား ဘာသာျပန္ေပးပါသည္။ `Lang::get` method ၏ အမည္ေျပာင္း method တစ္ခုျဖစ္ပါသည္။
+ပေးထားသော string တစ်ကြောင်းအား ဘာသာပြန်ပေးပါသည်။ `Lang::get` method ၏ အမည်ပြောင်း method တစ်ခုဖြစ်ပါသည်။
 
 	$value = trans('validation.required'):
 
 ### trans_choice
 
-ေပးထားေသာ string တစ္ေျကာင္းအား ေပးထားေသာ နံပါတ္ အလုိက္ ဘာသာျပန္ message ကုိ အသုံးျပု၍ ဘာသာျပန္ေပးပါသည္။ `Lang::choice` method ၏ အမည္ေျပာင္း method တစ္ခုျဖစ္ပါသည္။
+ပေးထားသော string တစ်ကြောင်းအား ပေးထားသော နံပါတ် အလိုက် ဘာသာပြန် message ကို အသုံးပြု၍ ဘာသာပြန်ပေးပါသည်။ `Lang::choice` method ၏ အမည်ပြောင်း method တစ်ခုဖြစ်ပါသည်။
 
 	$value = trans_choice('foo.bar', $count);
 
@@ -328,61 +328,61 @@ string တစ္ခု အတြင္းရွိ အကၡရာအေရအ�
 
 ### action
 
-ေပးထားေသာ controller action တစ္စုံအတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော controller action တစ်စုံအတွက် URL တစ်ခု ထုတ်ပေးပါသည်။
 
 	$url = action('HomeController@getIndex', $params);
 
 ### route
 
-ေပးထားေသာ အမည္ရွိ လမ္းေျကာင္း တစ္ခုအတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော အမည်ရှိ လမ်းကြောင်း တစ်ခုအတွက် URL တစ်ခု ထုတ်ပေးပါသည်။
 
 	$url = route('routeName', $params);
 
 ### asset
 
-ေပးထားေသာ asset အတြက္ URL တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော asset အတွက် URL တစ်ခု ထုတ်ပေးပါသည်။
 
 	$url = asset('img/photo.jpg');
 
 ### link_to
 
-ေပးထားေသာ URL အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော URL အတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
 
 	echo link_to('foo/bar', $title, $attributes = array(), $secure = null);
 
 ### link_to_asset
 
-ေပးထားေသာ asset အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော asset အတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
 
 	echo link_to_asset('foo/bar.zip', $title, $attributes = array(), $secure = null);
 
 ### link_to_route
 
-ေပးထားေသာ လမ္းေျကာင္း တစ္ခု အတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော လမ်းကြောင်း တစ်ခု အတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
 
 	echo link_to_route('route.name', $title, $parameters = array(), $attributes = array());
 
 ### link_to_action
 
-ေပးထားေသာ controller action တစ္စုံအတြက္ HTML link တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော controller action တစ်စုံအတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
 
 	echo link_to_action('HomeController@getIndex', $title, $parameters = array(), $attributes = array());
 
 ### secure_asset
 
-ေပးထားေသာ asset အတြက္ HTTPS သုံးထားေသာ HTML link တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော asset အတွက် HTTPS သုံးထားသော HTML link တစ်ခု ထုတ်ပေးပါသည်။
 
 	echo secure_asset('foo/bar.zip', $title, $attributes = array());
 
 ### secure_url
 
-ေပးထားေသာ path တစ္ခု အတြက္ URL အျပည့္အစုံ တစ္ခု ထုတ္ေပးပါသည္။
+ပေးထားသော path တစ်ခု အတွက် URL အပြည့်အစုံ တစ်ခု ထုတ်ပေးပါသည်။
 
 	echo secure_url('foo/bar', $parameters = array());
 
 ### url
 
-ေပးထားေသာ path တစ္ခု အတြက္ URL အျပည့္အစုံ ထုတ္ေပးပါသည္။
+ပေးထားသော path တစ်ခု အတွက် URL အပြည့်အစုံ ထုတ်ပေးပါသည်။
 
 	echo url('foo/bar', $parameters = array(), $secure = null);
 
@@ -391,24 +391,24 @@ string တစ္ခု အတြင္းရွိ အကၡရာအေရအ�
 
 ### csrf_token
 
-လက္ရွိ CSRF token တန္ဖုိးကုိ ေပးပါသည္။
+လက်ရှိ CSRF token တန်ဖိုးကို ပေးပါသည်။
 
 	$token = csrf_token();
 
 ### dd
 
-ေပးထားေသာ variable ကုိ dump လုပ္၍ script execution ကုိ ရပ္ေစပါသည္။
+ပေးထားသော variable ကို dump လုပ်၍ script execution ကို ရပ်စေပါသည်။
 
 	dd($value);
 
 ### value
 
-ေပးထားေသာ တန္ဖုိးသည္ `Closure` တစ္ခု ျဖစ္ပါက `Closure` မွတစ္ဆင့္ return ျပန္လာေသာ value ကုိ return ျပန္ေပး၍ `Closure` မဟုတ္ပါက တန္ဖုိးအတုိင္း return ျပန္ေပးပါသည္။
+ပေးထားသော တန်ဖိုးသည် `Closure` တစ်ခု ဖြစ်ပါက `Closure` မှတစ်ဆင့် return ပြန်လာသော value ကို return ပြန်ပေး၍ `Closure` မဟုတ်ပါက တန်ဖိုးအတိုင်း return ပြန်ပေးပါသည်။
 
 	$value = value(function() { return 'bar'; });
 
 ### with
 
-ေပးထားေသာ object ကုိ return ျပန္ေပးပါသည္။ PHP 5.3.x တြင္ method chaining constructor မ်ား အတြက္ အသုံး၀င္ပါသည္။
+ပေးထားသော object ကို return ပြန်ပေးပါသည်။ PHP 5.3.x တွင် method chaining constructor များ အတွက် အသုံးဝင်ပါသည်။
 
 	$value = with(new Foo)->doWork();

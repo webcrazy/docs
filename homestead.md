@@ -1,23 +1,23 @@
-# Laravel ရဲ႕ Official Development Homestead အေၾကာင္း
+﻿# Laravel ရဲ့ Official Development Homestead အကြောင်း
 
-- [Homestead မိတ္ဆက္](#introduction)
-- [Homestead မွာပါဝင္ေသာ Software မ်ား](#included-software)
+- [Homestead မိတ်ဆက်](#introduction)
+- [Homestead မှာပါဝင်သော Software များ](#included-software)
 - [Installation & Setup](#installation-and-setup)
-- [ေန႕စဥ္အသံုးျပဳမွူ](#general-usage)
+- [နေ့စဉ်အသုံးပြုမှူ](#general-usage)
 - [Ports](#ports)
 
 <a name="introduction"></a>
-## Homestead မိတ္ဆက္
+## Homestead မိတ်ဆက်
 
-သင္႕ရဲ႕ PHP Development environment  ကို local development environment မွာပါ ၾကည္ႏူးသာယာဖြယ္ေကာင္းေအာင္Laravel က အေကာင္းဆံုးႀကိဳးစားအားထုတ္မွူတစ္ခုလုပ္ခဲ႕ပါတယ္။ [Vagrant](http://vagrantup.com) ကသင္႕ရဲ႕ Virtual Machine ေတြကို လြယ္လြယ္ကူကူ ထိန္းသိမ္း ႏိုင္ေအာင္ သင္႕ကိုေထာက္ပံ့ ေပးထားပါတယ္။
+သင့်ရဲ့ PHP Development environment  ကို local development environment မှာပါ ကြည်နူးသာယာဖွယ်ကောင်းအောင်Laravel က အကောင်းဆုံးကြိုးစားအားထုတ်မှူတစ်ခုလုပ်ခဲ့ပါတယ်။ [Vagrant](http://vagrantup.com) ကသင့်ရဲ့ Virtual Machine တွေကို လွယ်လွယ်ကူကူ ထိန်းသိမ်း နိုင်အောင် သင့်ကိုထောက်ပံ့ ပေးထားပါတယ်။
 
 
-Laravel Homestead က official ပါ၊ Vagrant  "box" မွာ ႀကိဳဳ ၿပီး package လုပ္ထားတာပါ... ေနာက္ အဲဒါကသင္႕ကို development environment တစ္ခု တည္ေဆာက္တဲ႕ေနရာမွာ PHP, a web server, နဲ႕ အျခားအသံုးဝင္တဲ႕  tools ေတြကို သင္႕ရဲ႕ local machine မွာ install လုပ္စရာမလိုပါဘူး။ ဘယ္ Opearting System ကိုသံုးတယ္ဆိုတာကိုလည္း worry မ်ားစရာမလိုေတာ႕ပါဘူး။ Vagrant boxes ေတြနဲ႕ဘဲ အသံုးျပဳလို႕ရပါတယ္။ တကယ္လို႕တစ္ခုခုမွားသြားတယ္ဆိုရင္ vagrant boxes ေတြကိုမိနစ္အနည္းငယ္အတြင္း destory လုပ္ၿပီးေတာ႕ ျပန္ၿပီး create လုပ္ႏိုင္ပါတယ္။
+Laravel Homestead က official ပါ၊ Vagrant  "box" မှာ ကြို ပြီး package လုပ်ထားတာပါ... နောက် အဲဒါကသင့်ကို development environment တစ်ခု တည်ဆောက်တဲ့နေရာမှာ PHP, a web server, နဲ့ အခြားအသုံးဝင်တဲ့  tools တွေကို သင့်ရဲ့ local machine မှာ install လုပ်စရာမလိုပါဘူး။ ဘယ် Opearting System ကိုသုံးတယ်ဆိုတာကိုလည်း worry များစရာမလိုတော့ပါဘူး။ Vagrant boxes တွေနဲ့ဘဲ အသုံးပြုလို့ရပါတယ်။ တကယ်လို့တစ်ခုခုမှားသွားတယ်ဆိုရင် vagrant boxes တွေကိုမိနစ်အနည်းငယ်အတွင်း destory လုပ်ပြီးတော့ ပြန်ပြီး create လုပ်နိုင်ပါတယ်။
 
-Homestead က မည္သည္႕ Window, Mac, Linux မွာမဆို run ပါတယ္။ Homesead မွာ Nginx web server, PHP 5.5, MySQL, Postgres, Redis, Memcached နဲ႕ အျခား Laravel application အတြက္ အသံုးဝင္တာေတြပါဝင္ပါတယ္။
+Homestead က မည်သည့် Window, Mac, Linux မှာမဆို run ပါတယ်။ Homesead မှာ Nginx web server, PHP 5.5, MySQL, Postgres, Redis, Memcached နဲ့ အခြား Laravel application အတွက် အသုံးဝင်တာတွေပါဝင်ပါတယ်။
 
 <a name="included-software"></a>
-## Homestead မွာပါဝင္ေသာ Software မ်ား
+## Homestead မှာပါဝင်သော Software များ
 
 - Ubuntu 14.04
 - PHP 5.5
@@ -34,93 +34,93 @@ Homestead က မည္သည္႕ Window, Mac, Linux မွာမဆို run
 <a name="installation-and-setup"></a>
 ## Installation & Setup
 
-### VirtualBox နဲ႕ Vagrant Installing
+### VirtualBox နဲ့ Vagrant Installing
 
-သင္အေနနဲ႕ Homestead environment ကိုမဖြင္႕ခင္ [VirtualBox](https://www.virtualbox.org/wiki/Downloads) နဲ႕ [Vagrant](http://www.vagrantup.com/downloads.html) ကို install လုပ္ထားရပါ႕မယ္။ ဒီ software ႏွစ္ခုေပါင္းၿပီး popular operating systems မ်ားကိုလြယ္ကူစြာ virtual install လုပ္လို႕ရပါမည္။ 
+သင်အနေနဲ့ Homestead environment ကိုမဖွင့်ခင် [VirtualBox](https://www.virtualbox.org/wiki/Downloads) နဲ့ [Vagrant](http://www.vagrantup.com/downloads.html) ကို install လုပ်ထားရပါ့မယ်။ ဒီ software နှစ်ခုပေါင်းပြီး popular operating systems များကိုလွယ်ကူစွာ virtual install လုပ်လို့ရပါမည်။ 
 
-### Vagrant Box မ်ားထည္႕ျခင္း
+### Vagrant Box များထည့်ခြင်း
 
-VirtualBox နဲ႕ Vagrant ကို install လုပ္ၿပီးၿပီဆိုရင္ ပထမဆံုး သင္႕ရဲ႕ Vagrant installation မွာ  `laravel/homestead` လို႕ terminal ကေန run ၿပီး Laravel ရဲ႕ Homestead ကို Virtual Box မွာ add လိုက္ပါ။ Laravel ရဲ႕ Homestead box ကို download လုပ္ဖို႕အတြက္ သင္႕အင္တာနက္ conn  ေပၚမူတည္ၿပီး အခိ်ၾကာပါ႕မယ္
+VirtualBox နဲ့ Vagrant ကို install လုပ်ပြီးပြီဆိုရင် ပထမဆုံး သင့်ရဲ့ Vagrant installation မှာ  `laravel/homestead` လို့ terminal ကနေ run ပြီး Laravel ရဲ့ Homestead ကို Virtual Box မှာ add လိုက်ပါ။ Laravel ရဲ့ Homestead box ကို download လုပ်ဖို့အတွက် သင့်အင်တာနက် conn  ပေါ်မူတည်ပြီး အချိကြာပါ့မယ်
 
 	vagrant box add laravel/homestead
 
 ### Clone The Homestead Repository
 
-သင္ရဲ႕ Vagrant Installation မွာ box ထည့္ၿပီးသြားၿပီဆိုရင္ သင္႕အေနနဲ႕ဒီ repository ကို download ဒါမွမဟုတ္ clone လုပ္ေပးပါ။ နားလည္ထားရမွာက ဒီ repositiry က `Homestead` ပါ၊ ဒီ Folder ထဲမွာ သင္႕ရဲ႕ Laravel Projects ေတြကို ထားရမွာပါ၊ Homestead box ေတြကသင့္ရဲ႕ Laravel (နဲ႕ PHP Projects) ေတြကို host အျဖစ္ run မွာျဖစ္ပါတယ္။
+သင်ရဲ့ Vagrant Installation မှာ box ထည့်ပြီးသွားပြီဆိုရင် သင့်အနေနဲ့ဒီ repository ကို download ဒါမှမဟုတ် clone လုပ်ပေးပါ။ နားလည်ထားရမှာက ဒီ repositiry က `Homestead` ပါ၊ ဒီ Folder ထဲမှာ သင့်ရဲ့ Laravel Projects တွေကို ထားရမှာပါ၊ Homestead box တွေကသင့်ရဲ့ Laravel (နဲ့ PHP Projects) တွေကို host အဖြစ် run မှာဖြစ်ပါတယ်။
 
 	git clone https://github.com/laravel/homestead.git Homestead
 
 ### Set Your SSH Key
 
-ၿပီးရင္ေတာ႕သင္ download လုပ္ထားတဲ႕ repository ထဲမွာပါတဲ႕ `Homestead.yaml` file ကို edit လုပ္သင္႕ပါတယ္။ ဒီ file ထဲမွာဆိုရင္ သင္ရဲ႕ public SSH key တို႕ ေနာက္ သင္႔ရဲ႕ main machine နဲ႕ Homestead virtual machine တို႕ကို share တဲ႕ Folder တို႕ကို configure လုပ္ႏိုင္ပါတယ္။
+ပြီးရင်တော့သင် download လုပ်ထားတဲ့ repository ထဲမှာပါတဲ့ `Homestead.yaml` file ကို edit လုပ်သင့်ပါတယ်။ ဒီ file ထဲမှာဆိုရင် သင်ရဲ့ public SSH key တို့ နောက် သင့်ရဲ့ main machine နဲ့ Homestead virtual machine တို့ကို share တဲ့ Folder တို့ကို configure လုပ်နိုင်ပါတယ်။
 
-သင္႕မွာ SSH key မရွိဘူးလား၊ သင္က Linux ဒါမွမဟုတ္ Mac မွာဆိုရင္  ေအာက္မွာေဖာ္ျပထားတဲ႕ command ကို run လိုက္တာနဲ႕  ssh key တစ္စံုကိုသင္႕အတြက္ဖန္တီးေပးပါလိမ္႕မယ္
+သင့်မှာ SSH key မရှိဘူးလား၊ သင်က Linux ဒါမှမဟုတ် Mac မှာဆိုရင်  အောက်မှာဖော်ပြထားတဲ့ command ကို run လိုက်တာနဲ့  ssh key တစ်စုံကိုသင့်အတွက်ဖန်တီးပေးပါလိမ့်မယ်
 
 	ssh-keygen -t rsa -C "your@email.com"
 
-Windows မွာဆိုရင္ သင္အေနနဲ႕ [Git](http://git-scm.com/) ကို install လုပ္ၿပီးေတာ႕ `Git Bash`မွာ အထက္က command ကို run ၿပီးေတာ႕ အဆင္ေျပပါတယ္။ အဲလိုမွမဟုတ္ဘူးဆိုရင္လည္း[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). တို႕ကိုအသံုးျပဳႏိုင္ပါတယ္။ 
+Windows မှာဆိုရင် သင်အနေနဲ့ [Git](http://git-scm.com/) ကို install လုပ်ပြီးတော့ `Git Bash`မှာ အထက်က command ကို run ပြီးတော့ အဆင်ပြေပါတယ်။ အဲလိုမှမဟုတ်ဘူးဆိုရင်လည်း[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). တို့ကိုအသုံးပြုနိုင်ပါတယ်။ 
 
-သင္ SSH Key ကို create လုပ္ၿပီးၿပီဆိုရင္  `Homestead.yaml` file ထဲက `authorize` ဆိုတဲ႕ လမ္းေၾကာင္းထဲမွာ သင္႕ရဲ႕ SSH Key ရဲ႕ path ကိုသတ္မွတ္လိုက္ပါ။
+သင် SSH Key ကို create လုပ်ပြီးပြီဆိုရင်  `Homestead.yaml` file ထဲက `authorize` ဆိုတဲ့ လမ်းကြောင်းထဲမှာ သင့်ရဲ့ SSH Key ရဲ့ path ကိုသတ်မှတ်လိုက်ပါ။
 
 ### Configure Your Shared Folders
 
-သင့္ရဲ႕ Homestead environment နဲ႕ သင္႕ရဲ႕ local machine ႏွစ္ခုၾကားမွာ Share တဲ႕ Folder ေတြအားလံုးက `Homestead.yaml` File ထဲမွာရွိမွာပါ။ တကယ္လို႕ အဲ႕ဒီ႕ Files ေတြ change သြားရင္ သင္႕ရဲ႕ local machine နဲ႕ Homestead environment ကို auto sync လုပ္ေပးသြားမွာပါ။ Share Folders ေတြအမ်ားႀကီးကိုလည္းသင္လိုအပ္ရင္ configure လုပ္ရမွာပါ။
+သင့်ရဲ့ Homestead environment နဲ့ သင့်ရဲ့ local machine နှစ်ခုကြားမှာ Share တဲ့ Folder တွေအားလုံးက `Homestead.yaml` File ထဲမှာရှိမှာပါ။ တကယ်လို့ အဲ့ဒီ့ Files တွေ change သွားရင် သင့်ရဲ့ local machine နဲ့ Homestead environment ကို auto sync လုပ်ပေးသွားမှာပါ။ Share Folders တွေအများကြီးကိုလည်းသင်လိုအပ်ရင် configure လုပ်ရမှာပါ။
 
 ### Configure Your Nginx Sites
 
-Nginx နဲ႕သိပ္မရင္းႏွီးဘူးမဟုတ္လား ျပသနာမရွိပါဘူး။ `sites` ေတြကသင္႕ရဲ႕ Homestead environment က Folders ေတြကို "domain" ဆီကိုလြယ္ကူစြာ map ေပးပါလိမ္႕မယ္။ Site configuration တစ္ခုကို `Homestead.yaml` မွာေတြ႕ႏိုင္ပါတယ္။ သင္႕အေနနဲ႕ sites အမ်ားႀကီးကိုသင္႕ရဲ႕ Homestead မွာထည္႕ခ်င္ပါလိမ္႕မယ္၊ Homestad က သင္႕virtualized Laravel Projects ေတြရဲ႕ environment ေတြကို အဆင္ေျပေစပါလိမ္႕မယ္။
+Nginx နဲ့သိပ်မရင်းနှီးဘူးမဟုတ်လား ပြသနာမရှိပါဘူး။ `sites` တွေကသင့်ရဲ့ Homestead environment က Folders တွေကို "domain" ဆီကိုလွယ်ကူစွာ map ပေးပါလိမ့်မယ်။ Site configuration တစ်ခုကို `Homestead.yaml` မှာတွေ့နိုင်ပါတယ်။ သင့်အနေနဲ့ sites အများကြီးကိုသင့်ရဲ့ Homestead မှာထည့်ချင်ပါလိမ့်မယ်၊ Homestad က သင့်virtualized Laravel Projects တွေရဲ့ environment တွေကို အဆင်ပြေစေပါလိမ့်မယ်။
 
 ### Bash Aliases
 
 To add Bash aliases to your Homestead box, simply add to the `aliases` file in the root of the Homestead directory.
 
-### VagrantBox ကိုစတင္ျခင္း
+### VagrantBox ကိုစတင်ခြင်း
 
-`Homestead.yaml` file မွာသင္႕ရဲ႕ link ေတြကို edit လုပ္ၿပီးၿပီဆိုရင္ သင္႕ရဲ႕ `Homestead` directory ထဲမွာ `vagrant up` ဆိုၿပီး terminal ကေန run လိုက္ပါ။ Vagrant က Virtual Machine ကို boot လုပ္ပါ႕လိမ္႕မယ္ ၿပီးရင္ေတာ႕ သင္႕ရဲ႕ share folders နဲ႕ Nginx sites ေတြကို auto configure လုပ္သြားပါလိမ္႕မယ္။
+`Homestead.yaml` file မှာသင့်ရဲ့ link တွေကို edit လုပ်ပြီးပြီဆိုရင် သင့်ရဲ့ `Homestead` directory ထဲမှာ `vagrant up` ဆိုပြီး terminal ကနေ run လိုက်ပါ။ Vagrant က Virtual Machine ကို boot လုပ်ပါ့လိမ့်မယ် ပြီးရင်တော့ သင့်ရဲ့ share folders နဲ့ Nginx sites တွေကို auto configure လုပ်သွားပါလိမ့်မယ်။
 
-သင္႕ရဲ႕ Nginx sites ေတြအတြက္ "domain" ေတြကို သင္ရဲ႕ local machine က hosts မွာထက္ေပါင္းထည္႕ဖို႕မေမ႕ပါနဲ႕ဦး။ hosts file ကသင့္ local machine က requests ေတြကို Homestead ဆီကို redirect လုပ္ေပးပါလိမ္႕မယ္။ Mac နဲ႕ linux မွာ ဆိုရင္ hosts file က `/etc/hosts` ထဲမွာျပင္လို႕ရပါတယ္။ Window မွာဆိုရင္ေတာ႕ `C:\Windows\System32\drivers\etc\hosts` မွာရွိပါတယ္။ သင္ထက္ေပါင္းထည္႕ရမယ္႕ line က ေအာက္ကလိုျဖစ္ပါလိမ္႕မယ္၊
+သင့်ရဲ့ Nginx sites တွေအတွက် "domain" တွေကို သင်ရဲ့ local machine က hosts မှာထက်ပေါင်းထည့်ဖို့မမေ့ပါနဲ့ဦး။ hosts file ကသင့် local machine က requests တွေကို Homestead ဆီကို redirect လုပ်ပေးပါလိမ့်မယ်။ Mac နဲ့ linux မှာ ဆိုရင် hosts file က `/etc/hosts` ထဲမှာပြင်လို့ရပါတယ်။ Window မှာဆိုရင်တော့ `C:\Windows\System32\drivers\etc\hosts` မှာရှိပါတယ်။ သင်ထက်ပေါင်းထည့်ရမယ့် line က အောက်ကလိုဖြစ်ပါလိမ့်မယ်၊
 
 	127.0.0.1  homestead.app
 
-သင့္ရဲ႕ domain ကိုသင္႕ရဲ႕ `hosts` file ထဲကိုေပါင္းထည့္ၿပီးၿပီဆိုရင္ သင္ရဲ႕ browser ကေနသင့္ domain ေနာက္က port နံပါတ္နဲ႕ဆိုရင္သင့္ရဲ႕ဆိုက္ကို access လုပ္လို႕ရပါၿပီ။
+သင့်ရဲ့ domain ကိုသင့်ရဲ့ `hosts` file ထဲကိုပေါင်းထည့်ပြီးပြီဆိုရင် သင်ရဲ့ browser ကနေသင့် domain နောက်က port နံပါတ်နဲ့ဆိုရင်သင့်ရဲ့ဆိုက်ကို access လုပ်လို့ရပါပြီ။
 
 	http://homestead.app:8000
 
-သင္ရဲ႕ database ေတြကိုဘယ္လို connect လုပ္မလဲဆိုတာကို ေလ႕လာဖို႕ ဆက္ဖတ္ပါဦ။
+သင်ရဲ့ database တွေကိုဘယ်လို connect လုပ်မလဲဆိုတာကို လေ့လာဖို့ ဆက်ဖတ်ပါဦ။
 
 <a name="daily-usage"></a>
-## ေန႕စဥ္အသံုးျပဳမွူ
+## နေ့စဉ်အသုံးပြုမှူ
 
-### SSH ကို connect လုပ္ျခင္း
+### SSH ကို connect လုပ်ခြင်း
 
-သင္႕ရဲ႕ Homestead environment ကို SSH ကေန ခ်ိတ္ဆက္ဝင္ဖို႕ သင္႕အေနနဲ႕ `127.0.0.1` port ကေတာ႕ 2222 ျဖစ္ၿပီး SSH key ကေတာ႕ သင္ရဲ႕`Homestead.yaml`မွာ သင္သတ္မွတ္ခဲ႕တဲ႕ key ဘဲျဖစ္ပါတယ္။ `vagrant ssh` ဆိုၿပီးသင္႕ရဲ႕ Homestead Folder ကေနလည္း ဝင္လို႕ရပါတယ္။
+သင့်ရဲ့ Homestead environment ကို SSH ကနေ ချိတ်ဆက်ဝင်ဖို့ သင့်အနေနဲ့ `127.0.0.1` port ကတော့ 2222 ဖြစ်ပြီး SSH key ကတော့ သင်ရဲ့`Homestead.yaml`မှာ သင်သတ်မှတ်ခဲ့တဲ့ key ဘဲဖြစ်ပါတယ်။ `vagrant ssh` ဆိုပြီးသင့်ရဲ့ Homestead Folder ကနေလည်း ဝင်လို့ရပါတယ်။
 
-သင္အေနနဲ႕ ဒါ႕ထက္အဆင္ေျပမွဴ လိုခ်င္ေသးတယ္ဆိုရင္ေတာ႕ ေအာက္မွာေဖာ္ျပထားတဲ႕ alias ကို သင္႕ရဲ႕ `~/.bash_aliases` ဒါမွမဟုတ္ `~/.bash_profile` မွာေပါင္းထည္႕လိုက္တာက ပိုၿပီးအသံုးဝင္ပါမယ္၊ 
+သင်အနေနဲ့ ဒါ့ထက်အဆင်ပြေမှူ လိုချင်သေးတယ်ဆိုရင်တော့ အောက်မှာဖော်ပြထားတဲ့ alias ကို သင့်ရဲ့ `~/.bash_aliases` ဒါမှမဟုတ် `~/.bash_profile` မှာပေါင်းထည့်လိုက်တာက ပိုပြီးအသုံးဝင်ပါမယ်၊ 
 
 	alias vm='ssh vagrant@127.0.0.1 -p 2222'
 
-### သင့္ရဲ႕ Databases မ်ားကို connect လုပ္ျခင္း
+### သင့်ရဲ့ Databases များကို connect လုပ်ခြင်း
 
-homestead` ရဲ႕ databases ေတြျဖစ္တဲ႕ MySQL နဲ႕ Postgres ႏွစ္ခုလံုးကို box ေတြရဲ႕အျပင္မွာ configuration လုပ္ထားပါတယ္။ ဒါထက္ပိုၿပီးအဆင္ေျပဖို႕ Laravel ရဲ႕ `local` database ကို default configure လုပ္ထားပါတယ္။
+homestead` ရဲ့ databases တွေဖြစ်တဲ့ MySQL နဲ့ Postgres နှစ်ခုလုံးကို box တွေရဲ့အပြင်မှာ configuration လုပ်ထားပါတယ်။ ဒါထက်ပိုပြီးအဆင်ပြေဖို့ Laravel ရဲ့ `local` database ကို default configure လုပ်ထားပါတယ်။
 
-သင္႕ရဲ႕ database MySQL ဒါမွမဟုတ္ Postgres ကို Navicat (သို႕) Sequel Pro ကေနသင္႕ရဲ႕ main machine နဲ႕ connect လုပ္ခ်င္တယ္ဆိုရင္ သင္႕အေနနဲ႕  MySQL အတြက္ `127.0.0.1` နဲ႕ port 33060 နဲ႕Postgres အတြက္ port 54320 ျဖစ္ပါတယ္။ Database ႏွစ္ခုလံုးအတြက္ username နဲ႕ password က  `homestead`/ `secreat` ျဖစ္ပါတယ္။
+သင့်ရဲ့ database MySQL ဒါမှမဟုတ် Postgres ကို Navicat (သို့) Sequel Pro ကနေသင့်ရဲ့ main machine နဲ့ connect လုပ်ချင်တယ်ဆိုရင် သင့်အနေနဲ့  MySQL အတွက် `127.0.0.1` နဲ့ port 33060 နဲ့Postgres အတွက် port 54320 ဖြစ်ပါတယ်။ Database နှစ်ခုလုံးအတွက် username နဲ့ password က  `homestead`/ `secreat` ဖြစ်ပါတယ်။
 
 > **Note:** You should only use these non-standard ports when connecting to the databases from your main machine. You will use the default 3306 and 5432 ports in your Laravel database configuration file since Laravel is running _within_ the Virtual Machine.
 
-### ေနာက္ထက္ဆိုက္တစ္ခု ထပ္ထည္႕ျခင္း
+### နောက်ထက်ဆိုက်တစ်ခု ထပ်ထည့်ခြင်း
 
-သင့္ရဲ႕ Homestead environment ကသင္ထည္႕ခ်င္တာေတြထည္႕ၿပီးသြားၿပီ run လည္း run ေနၿပီဆိုရင္ သင္႕အေနနဲ႕ Laravel applications ေတြကို သင္႕ရဲ႕ Nginx sites မွာထပ္ထည္႕ခ်င္မွာေပါ႕။ Homestead environment တစ္ခုမွာ သင္ႀကိဳက္သေလာက္ Laravel installation လုပ္ႏိုင္ပါတယ္။ Laravel application ထက္ေပါင္းထည္႕ တဲ႕ေနရာမွာ နည္းႏွစ္ခုရွိပါတယ္။ ပထမတစ္ခုကသင္႕ရဲ႕ `Homestead.yaml` files မွာထက္ေပါင္းထည္႕ပါ  ၿပီးရင္ `vagrant destory` နဲ႕ box ေတြကို ဖ်က္ပါ၊ ၿပီးရင္ `vagrant up` ျပန္လုပ္ပါ။
+သင့်ရဲ့ Homestead environment ကသင်ထည့်ချင်တာတွေထည့်ပြီးသွားပြီ run လည်း run နေပြီဆိုရင် သင့်အနေနဲ့ Laravel applications တွေကို သင့်ရဲ့ Nginx sites မှာထပ်ထည့်ချင်မှာပေါ့။ Homestead environment တစ်ခုမှာ သင်ကြိုက်သလောက် Laravel installation လုပ်နိုင်ပါတယ်။ Laravel application ထက်ပေါင်းထည့် တဲ့နေရာမှာ နည်းနှစ်ခုရှိပါတယ်။ ပထမတစ်ခုကသင့်ရဲ့ `Homestead.yaml` files မှာထက်ပေါင်းထည့်ပါ  ပြီးရင် `vagrant destory` နဲ့ box တွေကို ဖျက်ပါ၊ ပြီးရင် `vagrant up` ပြန်လုပ်ပါ။
 
-ေနာက္ထက္နည္းတစ္ခုကေတာ႕ သင္႕ရဲ႕ Homestead environment မွာ `serve` script ကိုသံုးၿပီး Laravel application ေတြကိုထက္ထည္႕ႏိုင္ပါတယ္။ `serve` script ကိုအသံုးျပဳခ်င္တယ္ဆိုရင္ေတာ႕ သင္႕ရဲ႕ Homestead environment ထဲကိုဝင္ၿပီးေတာ႕ ေအာက္က command ကို run လိုက္ပါ
+နောက်ထက်နည်းတစ်ခုကတော့ သင့်ရဲ့ Homestead environment မှာ `serve` script ကိုသုံးပြီး Laravel application တွေကိုထက်ထည့်နိုင်ပါတယ်။ `serve` script ကိုအသုံးပြုချင်တယ်ဆိုရင်တော့ သင့်ရဲ့ Homestead environment ထဲကိုဝင်ပြီးတော့ အောက်က command ကို run လိုက်ပါ
 
 	serve domain.app /home/vagrant/Code/path/to/public/directory
 
-> **မွတ္ခ်က္:** `serve` command ကို run ၿပီးၿပီဆိုရင္  `hosts` file ထဲမွာ သင္ထပ္ေပါင္းထည္႕လိုက္တဲ႕ ေနာက္ထက္ site ကို သင့္ရဲ႕ စက္မွာ ထက္ေပါင္းထည္႕ဖို႕ မေမ႕ပါနဲ႕။
+> **မှတ်ချက်:** `serve` command ကို run ပြီးပြီဆိုရင်  `hosts` file ထဲမှာ သင်ထပ်ပေါင်းထည့်လိုက်တဲ့ နောက်ထက် site ကို သင့်ရဲ့ စက်မှာ ထက်ပေါင်းထည့်ဖို့ မမေ့ပါနဲ့။
 
 <a name="ports"></a>
 ## Ports
 
-ေအာက္မွာေဖာ္ျပထားတဲ႕ ports ေတြက  သင္႕ Homestead ရဲ႕ ports ေတြျဖစ္ပါတယ္
+အောက်မှာဖော်ပြထားတဲ့ ports တွေက  သင့် Homestead ရဲ့ ports တွေဖြစ်ပါတယ်
 
 - **SSH:** 2222 -> Forwards To 22
 - **HTTP:** 8000 -> Forwards To 80

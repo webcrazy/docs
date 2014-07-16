@@ -1,71 +1,71 @@
-# Laravel install လုပ္ျခင္း
+﻿# Laravel install လုပ်ခြင်း
 
-- [Composer ကို Install လုပ္ျခင္း](#install-composer)
-- [Laravel ကို Install လုပ္ျခင္း](#install-laravel)
-- [Server လိုအပ္ခ်က္မ်ာ](#server-requirements)
-- [Configuration လုပ္ျခင္း](#configuration)
-- [URL လွလွေလးလိုခ်င္တယ္](#pretty-urls)
+- [Composer ကို Install လုပ်ခြင်း](#install-composer)
+- [Laravel ကို Install လုပ်ခြင်း](#install-laravel)
+- [Server လိုအပ်ချက်မျာ](#server-requirements)
+- [Configuration လုပ်ခြင်း](#configuration)
+- [URL လှလှလေးလိုချင်တယ်](#pretty-urls)
 
 <a name="install-composer"></a>
-## Composer ကို Install လုပ္ျခင္း
+## Composer ကို Install လုပ်ခြင်း
 
-Laravel ရဲ႕အသံုးဝင္တဲ႕tool .... [Composer](http://getcomposer.org), သူ႕ရဲ႕ depenedencies ေတြကို Manage လုပ္ဖို႕။ ပထမဆံုး `composer.phar` copy ကိုိ download လုပ္လိုက္ပါ။ download လုပ္ၿပီးသြားၿပီဆိုရင္ သင္႕မွာ PHAR ဆိုတဲ႕file ေလးရွိသြားပါၿပီ၊ အဲဒီ႕ file ကိုသင္႕ရဲ႕local project မွာဒီတိုင္းထားခ်င္ရင္လည္းရပါတယ္ တကယ္လို႕သင္က `usr/local/bin` ထဲကိုေရႊ႕ၿပီးေတာ႕သင္႕ရဲ႕  System အတြက္ Global လုပ္မယ္ဆိုလည္းလုပ္ႏိုင္ပါတယ္။ Window မွာဆိုရင္ေတာ႕ [Windows installer](https://getcomposer.org/Composer-Setup.exe) ကိုသံုးၿပီး install လုပ္ႏိုင္ပါတယ္။
+Laravel ရဲ့အသုံးဝင်တဲ့tool .... [Composer](http://getcomposer.org), သူ့ရဲ့ depenedencies တွေကို Manage လုပ်ဖို့။ ပထမဆုံး `composer.phar` copy ကိို download လုပ်လိုက်ပါ။ download လုပ်ပြီးသွားပြီဆိုရင် သင့်မှာ PHAR ဆိုတဲ့file လေးရှိသွားပါပြီ၊ အဲဒီ့ file ကိုသင့်ရဲ့local project မှာဒီတိုင်းထားချင်ရင်လည်းရပါတယ် တကယ်လို့သင်က `usr/local/bin` ထဲကိုရွှေ့ပြီးတော့သင့်ရဲ့  System အတွက် Global လုပ်မယ်ဆိုလည်းလုပ်နိုင်ပါတယ်။ Window မှာဆိုရင်တော့ [Windows installer](https://getcomposer.org/Composer-Setup.exe) ကိုသုံးပြီး install လုပ်နိုင်ပါတယ်။
 
 <a name="install-laravel"></a>
-## Laravel ကို Install လုပ္ျခင္း
+## Laravel ကို Install လုပ်ခြင်း
 
-### Laravel Installer မွတစ္ဆင့္
+### Laravel Installer မှတစ်ဆင့်
 
-ပထမဆံုး[Laravel installer PHAR archive](http://laravel.com/laravel.phar) ကို  download လုပ္ပါ၊ install လုပ္ရာမွာလြယ္ကူေအာင္လို႕ file name ကို `laravel` လို႕ေျပာင္းလိုက္ပါ၊ ေျပာင္းၿပီးသြားရင္အဲ႕ဒီ႕ File ကို  `/usr/local/bin` ထဲကိုေရႊ႕လိုက္ပါ။ Laravel ကို Install လုပ္မယ္ဆိုရင္ `laravel new` ဆိုၿပီး command line ကေန run လိုက္ရင္ Laravel Framework တစ္ခုကိုကိုယ္ႀကိဳက္တဲ႕ေနရာမွာ Install လုပ္ႏိုင္ပါၿပီ။ `laravel new blog` ဆိုၿပီး command line ကေန run လိုက္ရင္ blog ဆိုတဲ႕အမည္နဲ႕ command line ကေနကိုယ္ create လုပ္ခ်င္တဲ႕ေနရာမွာ Laravel Framework အသစ္တစ္ခုကို install လုပ္ေပးမွာျဖစ္ပါတယ္။ ဒီနည္းက composer ကေန download လုပ္တာထက္ပိုျမန္ပါတယ္။
+ပထမဆုံး[Laravel installer PHAR archive](http://laravel.com/laravel.phar) ကို  download လုပ်ပါ၊ install လုပ်ရာမှာလွယ်ကူအောင်လို့ file name ကို `laravel` လို့ပြောင်းလိုက်ပါ၊ ပြောင်းပြီးသွားရင်အဲ့ဒီ့ File ကို  `/usr/local/bin` ထဲကိုရွှေ့လိုက်ပါ။ Laravel ကို Install လုပ်မယ်ဆိုရင် `laravel new` ဆိုပြီး command line ကနေ run လိုက်ရင် Laravel Framework တစ်ခုကိုကိုယ်ကြိုက်တဲ့နေရာမှာ Install လုပ်နိုင်ပါပြီ။ `laravel new blog` ဆိုပြီး command line ကနေ run လိုက်ရင် blog ဆိုတဲ့အမည်နဲ့ command line ကနေကိုယ် create လုပ်ချင်တဲ့နေရာမှာ Laravel Framework အသစ်တစ်ခုကို install လုပ်ပေးမှာဖြစ်ပါတယ်။ ဒီနည်းက composer ကနေ download လုပ်တာထက်ပိုမြန်ပါတယ်။
 
-သင္႕အေနနဲ႕ Laravel ကို Composer ကေနတစ္ဆင္႕ `create-project`  command သံုးၿပီးေတာ႕လည္း install လုပ္ႏိုင္ပါတယ္၊ terminal မွာ ေအာက္မွာေရးထားတဲ႕ command ကို run ၿပီးေတာ႕လည္း install လုပ္ႏိုင္ပါတယ္
+သင့်အနေနဲ့ Laravel ကို Composer ကနေတစ်ဆင့် `create-project`  command သုံးပြီးတော့လည်း install လုပ်နိုင်ပါတယ်၊ terminal မှာ အောက်မှာရေးထားတဲ့ command ကို run ပြီးတော့လည်း install လုပ်နိုင်ပါတယ်
 
 	composer create-project laravel/laravel --prefer-dist
 
-### Download မွတစ္ဆင္႕
+### Download မှတစ်ဆင့်
 
-Composer ကို install လုပ္ၿပီးသြားၿပီဆိုရင္ Laravel Framework [latest version](https://github.com/laravel/laravel/archive/master.zip) ကို download လုပ္လိုက္ပါ၊  သင္႕ရဲ႕ web server ထဲမွာ  zip ကို extra လုပ္လိုက္ပါ၊ extra လုပ္ထားတဲ႕  framework folder ထဲကို command line ကဝင္ၿပီးေတာ႕  `php composer.phar install` ဒါမွမဟုတ္ (`composer install`) ဆိုၿပီး run လိုက္ပါ။ ဒီ command က framework ရဲ႕ dependencies ေတြကို install လုပ္ခိုင္းလိုက္တာပါ။ ဒီ installation လုပ္တဲ႕ေနရာမွာ webserver မွာ git install လုပ္ထားမွ successfully complete ျဖစ္မွာပါ။
+Composer ကို install လုပ်ပြီးသွားပြီဆိုရင် Laravel Framework [latest version](https://github.com/laravel/laravel/archive/master.zip) ကို download လုပ်လိုက်ပါ၊  သင့်ရဲ့ web server ထဲမှာ  zip ကို extra လုပ်လိုက်ပါ၊ extra လုပ်ထားတဲ့  framework folder ထဲကို command line ကဝင်ပြီးတော့  `php composer.phar install` ဒါမှမဟုတ် (`composer install`) ဆိုပြီး run လိုက်ပါ။ ဒီ command က framework ရဲ့ dependencies တွေကို install လုပ်ခိုင်းလိုက်တာပါ။ ဒီ installation လုပ်တဲ့နေရာမှာ webserver မှာ git install လုပ်ထားမှ successfully complete ဖြစ်မှာပါ။
 
-တကယ္လို႕သင္ Framework ကို update လုပ္ခ်င္တယ္ဆိုရင္`php composer.phar update` command ကို run ေပးရပါ႕မယ္။
+တကယ်လို့သင် Framework ကို update လုပ်ချင်တယ်ဆိုရင်`php composer.phar update` command ကို run ပေးရပါ့မယ်။
 
 <a name="server-requirements"></a>
-## Server လိုအပ္ခ်က္မ်ား
-Laravel Framework မွာ system requirements တစ္ခ်ိဳ႕ရွိပါတယ္။ ဘာေတြလည္းဆိုရင္
+## Server လိုအပ်ချက်များ
+Laravel Framework မှာ system requirements တစ်ချို့ရှိပါတယ်။ ဘာတွေလည်းဆိုရင်
 
 - PHP >= 5.3.7
 - MCrypt PHP Extension
 
-တို႕ဘဲျဖစ္ပါတယ္။
+တို့ဘဲဖြစ်ပါတယ်။
 
-PHP 5.5 မွာ တစ္ခ်ိဳ႔ OS ေတြက PHP JSON extension ကို manullly install လုပ္ေပးရပါတယ္။ တကယ္လို႕ Ubuntu သံုးတယ္ဆိုရင္ `apt-get install php5-json` ဆိုၿပီး terminal ကေန run လိုက္တာနဲ႕အဆင္ေျပပါတယ္။
+PHP 5.5 မှာ တစ်ချို့ OS တွေက PHP JSON extension ကို manullly install လုပ်ပေးရပါတယ်။ တကယ်လို့ Ubuntu သုံးတယ်ဆိုရင် `apt-get install php5-json` ဆိုပြီး terminal ကနေ run လိုက်တာနဲ့အဆင်ပြေပါတယ်။
 
 <a name="configuration"></a>
-## Configuration လုပ္ျခင္း
+## Configuration လုပ်ခြင်း
 
-Laravel က configuration ဆိုတာမရွိသေလာက္ပါဘဲ။ သင္စၿပီး develop ဖို႕ရာအဆင္သင္႕ပါဘဲ။ဘယ္လိုဘဲေျပာေျပာ သင္႕အေနနဲ႕ `app/config/app.php` file နဲ႕သူ႕ရဲ႕ Documencation ကိုျပန္ၾကည္႕ခ်င္မွာပါဘဲ။ `app/config/app.php`မွာဘာေတြပါသလဲဆိုရင္ေတာ႕ `timezone` ေနာက္ `locale`တို႕ပါပါတယ္၊သင္႕ရဲ႕ application နဲ႕အဆင္ေျပတာေတြကို configure လုပ္ႏိုင္ပါတယ္။
+Laravel က configuration ဆိုတာမရှိသလောက်ပါဘဲ။ သင်စပြီး develop ဖို့ရာအဆင်သင့်ပါဘဲ။ဘယ်လိုဘဲပြောပြော သင့်အနေနဲ့ `app/config/app.php` file နဲ့သူ့ရဲ့ Documencation ကိုပြန်ကြည့်ချင်မှာပါဘဲ။ `app/config/app.php`မှာဘာတွေပါသလဲဆိုရင်တော့ `timezone` နောက် `locale`တို့ပါပါတယ်၊သင့်ရဲ့ application နဲ့အဆင်ပြေတာတွေကို configure လုပ်နိုင်ပါတယ်။
 
-Laravel ကိုတစ္ခါ Install လုပ္တိုင္း [သင္႕ရဲ႕ local environmet](configuration#environment-configuration.md) ကို Configure ျပန္လုပ္သင္႕ပါတယ္။ local machine မွာ     develop လုပ္တဲ႕အခါ erros ကိုျမင္ရမယ္။ မူလကေတာ႕ error reporting က သင္႕ရဲ႕ development production မွာ disable လုပ္ထားပါတယ္။
+Laravel ကိုတစ်ခါ Install လုပ်တိုင်း [သင့်ရဲ့ local environmet](configuration#environment-configuration.md) ကို Configure ပြန်လုပ်သင့်ပါတယ်။ local machine မှာ     develop လုပ်တဲ့အခါ erros ကိုမြင်ရမယ်။ မူလကတော့ error reporting က သင့်ရဲ့ development production မှာ disable လုပ်ထားပါတယ်။
 
-> **မွတ္ခ်က္:** `app.debug` ကို production မွာဘယ္ေတာ႕မွ true မေပးသင္႕ပါဘူး။ဘယ္ေတာ႕မွ မလုပ္ပါနဲ႕။
+> **မှတ်ချက်:** `app.debug` ကို production မှာဘယ်တော့မှ true မပေးသင့်ပါဘူး။ဘယ်တော့မှ မလုပ်ပါနဲ့။
 
 <a name="permissions"></a>
-### Permissions မ်ား
+### Permissions များ
 
-Laravel က   `app/storage` ကို web server အတြက္ permission write ေပးရပါမယ္။
+Laravel က   `app/storage` ကို web server အတွက် permission write ပေးရပါမယ်။
 
 <a name="paths"></a>
-### လမ္းေၾကာင္းမ်ား
+### လမ်းကြောင်းများ
 
-Framework ရဲ႕ လမ္းေၾကာင္းေတြကေျပာင္းလဲႏိုင္ပါတယ္၊ ဒီ location ေတြကိုေျပာင္းခ်င္တယ္ဆိုရင္ `bootstrap/paths.php` မွာၾကည္႕ရွူေျပာင္းလည္းႏိုင္ပါတယ္။
+Framework ရဲ့ လမ်းကြောင်းတွေကပြောင်းလဲနိုင်ပါတယ်၊ ဒီ location တွေကိုပြောင်းချင်တယ်ဆိုရင် `bootstrap/paths.php` မှာကြည့်ရှူပြောင်းလည်းနိုင်ပါတယ်။
 
 <a name="pretty-urls"></a>
-## URL လွလွေလးလိုခ်င္တယ္
+## URL လှလှလေးလိုချင်တယ်
 
 ### Apache
 
-Framework ထဲက `public/.htaccess` ကို URL မွာ `index.php` မပါေအာင္ေဖ်ာက္ထားေပးမွာျဖစ္ပါတယ္။ တကယ္လို႕သင္႕ ရဲ႕ Laravel application က Apache ကိုသံုးတယ္ဆိုရင္  `mod_rewrite` ကို enable လုပ္ဖို႕မေမ႕ပါနဲ႕ဦး။
+Framework ထဲက `public/.htaccess` ကို URL မှာ `index.php` မပါအောင်ဖျောက်ထားပေးမှာဖြစ်ပါတယ်။ တကယ်လို့သင့် ရဲ့ Laravel application က Apache ကိုသုံးတယ်ဆိုရင်  `mod_rewrite` ကို enable လုပ်ဖို့မမေ့ပါနဲ့ဦး။
 
-တကယ္လို႕ `.htaccess`file က သင္႕ Application မွာအလုပ္မလုပ္ဘူးဆိုရင္ ေအာက္ကတစ္ခုကိုစမ္းၾကည္႕လိုက္ပါ:
+တကယ်လို့ `.htaccess`file က သင့် Application မှာအလုပ်မလုပ်ဘူးဆိုရင် အောက်ကတစ်ခုကိုစမ်းကြည့်လိုက်ပါ:
 
 	Options +FollowSymLinks
 	RewriteEngine On
@@ -76,7 +76,7 @@ Framework ထဲက `public/.htaccess` ကို URL မွာ `index.php` မ�
 
 ### Nginx
 
-Nginx မွာဆိုရင္ေအာက္ကညႊန္ၾကားခ်က္ကို လိုက္လုပ္လိုက္တာနဲ႕URL လွလွေလးေတြရပါတယ္
+Nginx မှာဆိုရင်အောက်ကညွှန်ကြားချက်ကို လိုက်လုပ်လိုက်တာနဲ့URL လှလှလေးတွေရပါတယ်
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;

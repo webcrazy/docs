@@ -1,16 +1,16 @@
-# Eloquent ORM
+﻿# Eloquent ORM
 
-- [အၾကမ္းဖ်င္း](#အၾကမ္းဖ်င္း)
-- [အေျခခံအသုုံးျပဳပုုံ](#အေျခခံအသုုံးျပဳပုုံ)
+- [အကြမ်းဖျင်း](#အကြမ်းဖျင်း)
+- [အခြေခံအသုံးပြုပုံ](#အခြေခံအသုံးပြုပုံ)
 - [Mass Assignment](#mass-assignment)
-- [ထည့္သြင္း ၊ ျပင္ဆင္ ၊ ဖ်က္ပစ္](#insert-update-delete)
+- [ထည့်သွင်း ၊ ပြင်ဆင် ၊ ဖျက်ပစ်](#insert-update-delete)
 - [Soft Deleting](#soft-deleting)
 - [Timestamps](#timestamps)
 - [Query Scopes](#query-scopes)
 - [Relationships](#relationships)
 - [Querying Relations](#querying-relations)
 - [Eager Loading](#eager-loading)
-- [ဆက္စပ္ေနသည့္ Model မ်ားတြင္ data ထည့္သြင္းျခင္း](#inserting-related-models)
+- [ဆက်စပ်နေသည့် Model များတွင် data ထည့်သွင်းခြင်း](#inserting-related-models)
 - [Touching Parent Timestamps](#touching-parent-timestamps)
 - [Working With Pivot Tables](#working-with-pivot-tables)
 - [Collections](#collections)
@@ -18,26 +18,26 @@
 - [Date Mutators](#date-mutators)
 - [Model Events](#model-events)
 - [Model Observers](#model-observers)
-- [Arrays ႏွင့္ JSON သုိ ့ေျပာင္းလဲျခင္း](#converting-to-arrays-or-json)
+- [Arrays နှင့် JSON သို ့ပြောင်းလဲခြင်း](#converting-to-arrays-or-json)
 
 <a name="introduction"></a>
-## အၾကမ္းဖ်င္း
+## အကြမ်းဖျင်း
 
-Laravel တြင္ပါဝင္သည့္ ရုုိးရွင္းျပီး လွပသပ္ရပ္ေသာ Eloquent ORM သည္  သင့္ Database ကုုိ ActiveRecord ျဖင့္ အေျခခံထား သျဖင့္ အလြယ္တကူပင္ အသုုံးျပဳႏုုိင္မည္ ျဖစ္သည္။ Database မွ Table တစ္ခုုတုုိင္းကုုိ Model တစ္ခုု အေနျဖင့္ သတ္မွတ္ကာ အသုုံးျပဳရမည္ ျဖစ္သည္။ 
+Laravel တွင်ပါဝင်သည့် ရိုးရှင်းပြီး လှပသပ်ရပ်သော Eloquent ORM သည်  သင့် Database ကို ActiveRecord ဖြင့် အခြေခံထား သဖြင့် အလွယ်တကူပင် အသုံးပြုနိုင်မည် ဖြစ်သည်။ Database မှ Table တစ်ခုတိုင်းကို Model တစ်ခု အနေဖြင့် သတ်မှတ်ကာ အသုံးပြုရမည် ဖြစ်သည်။ 
 
-အသုုံးမျပဳခင္ ပထမဆုုံး အေနျဖင့္ `app/config/database.php` သုုိ ့သြားေရာက္ကာ ၾကိဳတင္ ျပင္ဆင္ရမည္ ျဖစ္သည္။ 
+အသုံးမပြုခင် ပထမဆုံး အနေဖြင့် `app/config/database.php` သို ့သွားရောက်ကာ ကြိုတင် ပြင်ဆင်ရမည် ဖြစ်သည်။ 
 
 <a name="basic-usage"></a>
-## အေျခခံအသုုံးျပဳပုုံ
+## အခြေခံအသုံးပြုပုံ
 
-စတင္ အသုုံးျပဳရန္ Eloquent model တစ္ခုုကိုု တည္ေဆာက္ရမည္ ျဖစ္သည္။ ပုုံမွန္အားျဖင့္ Models file မ်ားမွာ `app/models` အမည္ရွိသည့္ Folder ထဲတြင္ တည္ရွိမည္ ျဖစ္ေသာ္လည္း အလ်ဥ္းသင့္သလုုိ ျပင္ဆင္ႏုုိင္မည္ျဖစ္သည္။ ထုုိသုုိ ့ျပင္ဆင္ႏုုိင္ရန္ အတြက္ `composer.json` ထဲတြင္ မိမိတုုိ ့  autoload လုုပ္ခ်င္သည့္ file ၏ အမည္ႏွင့္ တည္ေနရာကိုု ထည့္သြင္းထားရမည္ ျဖစ္သည္။ 
+စတင် အသုံးပြုရန် Eloquent model တစ်ခုကို တည်ဆောက်ရမည် ဖြစ်သည်။ ပုံမှန်အားဖြင့် Models file များမှာ `app/models` အမည်ရှိသည့် Folder ထဲတွင် တည်ရှိမည် ဖြစ်သော်လည်း အလျဉ်းသင့်သလို ပြင်ဆင်နိုင်မည်ဖြစ်သည်။ ထိုသို ့ပြင်ဆင်နိုင်ရန် အတွက် `composer.json` ထဲတွင် မိမိတို ့  autoload လုပ်ချင်သည့် file ၏ အမည်နှင့် တည်နေရာကို ထည့်သွင်းထားရမည် ဖြစ်သည်။ 
 
 
-#### Eloquent Model တစ္ခုု Define ျပဳလုုပ္ျခင္း
+#### Eloquent Model တစ်ခု Define ပြုလုပ်ခြင်း
 
 class User extends Eloquent {}
 
-Eloquent Model တြင္ မည့္သည့္ table ကုုိ အသုုံးျပဳမည္ကုုိ မေၾကညာ ထားပါက Model အမည္၏ အမ်ားကိန္း ကုုိ အသုုံးျပဳမည္ ျဖစ္သည္။ ဥပမာ User.php ဟုု ေၾကညာထားပါက Users table ဟုု အလုုိအေလ်ာက္ သတ္မွတ္မည္ ျဖစ္သည္။ သုုိ ့မဟုုတ္ပဲ မိမိ စိတ္ၾကိဳက္ အသုုံးျပဳလုုိပါက ေအာက္ပါ အတုုိင္း သတ္မွတ္ႏုုိင္မည္ ျဖစ္သည္။ 
+Eloquent Model တွင် မည့်သည့် table ကို အသုံးပြုမည်ကို မကြေညာ ထားပါက Model အမည်၏ အများကိန်း ကို အသုံးပြုမည် ဖြစ်သည်။ ဥပမာ User.php ဟု ကြေညာထားပါက Users table ဟု အလိုအလျောက် သတ်မှတ်မည် ဖြစ်သည်။ သို ့မဟုတ်ပဲ မိမိ စိတ်ကြိုက် အသုံးပြုလိုပါက အောက်ပါ အတိုင်း သတ်မှတ်နိုင်မည် ဖြစ်သည်။ 
 
 class User extends Eloquent {
 
@@ -45,25 +45,25 @@ protected $table = 'my_users';
 
 }
 
-> **မွတ္ခ်က္:** Eloquent အေနျဖင့္ Primary Key column ဟုု `id` ဟုု အလုုိအေလ်ာက္ သတ္မွတ္ျဖစ္ေသာ္လည္း အထက္က ကဲ့သုုိ ့ပင္ မိမိစိတ္ၾကိဳက္ column ကုုိ သတ္မွတ္ႏုုိင္သည္။ ထုုိကဲ့သုုိ ့ Database Connection ကုုိ `connection` ဟုုသည္ property ကုုိ အသုုံးျပဳ ထပ္မံ သတ္မွတ္ႏုုိင္မည္ ျဖစ္သည္။ 
+> **မှတ်ချက်:** Eloquent အနေဖြင့် Primary Key column ဟု `id` ဟု အလိုအလျောက် သတ်မှတ်ဖြစ်သော်လည်း အထက်က ကဲ့သို ့ပင် မိမိစိတ်ကြိုက် column ကို သတ်မှတ်နိုင်သည်။ ထိုကဲ့သို ့ Database Connection ကို `connection` ဟုသည် property ကို အသုံးပြု ထပ်မံ သတ်မှတ်နိုင်မည် ဖြစ်သည်။ 
 
-Model ကုုိ သတ္မွတ္ျပီးသည္ႏွင့္ မိမိတုုိ ့ အလုုိရွိသည့္ record မ်ားကုုိ စတင္ တည္ေဆာက္ျခင္း ၊ ထုုတ္ယူျခင္းမ်ား ျပဳလုုပ္ႏုုိင္ျပီ ျဖစ္သည္။  သတိျပဳရမည့္ တစ္ခ်က္မွာ `updated_at` ႏွင့္ `created_at` ဆုုိသည့္ columns မ်ားမွာ သင့္ table တြင္ အလုုိအေလ်ာက္ ပါဝင္မည္ျဖစ္သည္။ သင့္ အေနျဖင့္ အလုုိမရွိပါက model အတြင္းရွိ `$timestamps`ဟုုသည္ property ကုုိ `false` ဟုု ေပးထားရန္ လုုိေပမည္။
+Model ကို သတ်မှတ်ပြီးသည်နှင့် မိမိတို ့ အလိုရှိသည့် record များကို စတင် တည်ဆောက်ခြင်း ၊ ထုတ်ယူခြင်းများ ပြုလုပ်နိုင်ပြီ ဖြစ်သည်။  သတိပြုရမည့် တစ်ချက်မှာ `updated_at` နှင့် `created_at` ဆိုသည့် columns များမှာ သင့် table တွင် အလိုအလျောက် ပါဝင်မည်ဖြစ်သည်။ သင့် အနေဖြင့် အလိုမရှိပါက model အတွင်းရှိ `$timestamps`ဟုသည် property ကို `false` ဟု ပေးထားရန် လိုပေမည်။
 
-#### Model အတြင္းမွ record အားလုုံး ထုုတ္ယူျခင္း
+#### Model အတွင်းမှ record အားလုံး ထုတ်ယူခြင်း
 
 $users = User::all();
 
-#### Model အတြင္း record မ်ားအား primary key ကုုိ အသုုံးျပဳကာ ထုုတ္ယူျခင္း
+#### Model အတွင်း record များအား primary key ကို အသုံးပြုကာ ထုတ်ယူခြင်း
 
 $user = User::find(1);
 
 var_dump($user->name);
 
-> **Note:**  [query builder] တြင္ အသုုံးျပဳႏုုိင္သည့္ method မ်ား အားလုုံး (queries.md) Eloquent models တြင္လည္း ဆက္လက္ အသုုံးျပဳႏုုိင္မည္ ျဖစ္သည္။ 
+> **Note:**  [query builder] တွင် အသုံးပြုနိုင်သည့် method များ အားလုံး (queries.md) Eloquent models တွင်လည်း ဆက်လက် အသုံးပြုနိုင်မည် ဖြစ်သည်။ 
 
-#### Model အတြင္း record မ်ားအား primary key ကုုိ အသုုံးျပဳကာ ထုုတ္ယူျပီး မရွိပါက Exception ျဖင့္ ျပသျခင္း
+#### Model အတွင်း record များအား primary key ကို အသုံးပြုကာ ထုတ်ယူပြီး မရှိပါက Exception ဖြင့် ပြသခြင်း
 
-တခါတရံ သင့္ အေနျဖင့္ Model မွ data မ်ား ရွာမေတြ ့ပါက Exception အေနျဖင့္ ျပသခ်င္မည္ ျဖစ္သည္။ ထုုိသုုိ ့ ျပဳလုုပ္ႏဳိင္ရန္ `App::error` ဟုုေသာ handler ကုုိ အသုုံးျပဳျပီး 404 page ကုုိ လြဲေျပာင္းျပသႏုုိင္မည္ ျဖစ္သည္။
+တခါတရံ သင့် အနေဖြင့် Model မှ data များ ရှာမတွေ ့ပါက Exception အနေဖြင့် ပြသချင်မည် ဖြစ်သည်။ ထိုသို ့ ပြုလုပ်နိုင်ရန် `App::error` ဟုသော handler ကို အသုံးပြုပြီး 404 page ကို လွဲပြောင်းပြသနိုင်မည် ဖြစ်သည်။
 
 $model = User::findOrFail(1);
 
@@ -78,7 +78,7 @@ App::error(function(ModelNotFoundException $e)
 return Response::make('Not Found', 404);
 });
 
-#### Querying Using Eloquent Models ကုုိ အသုုံးျပဳကာ Query မ်ားေရးသားျခင္း
+#### Querying Using Eloquent Models ကို အသုံးပြုကာ Query များရေးသားခြင်း
 
 $users = User::where('votes', '>', 100)->take(10)->get();
 
@@ -87,10 +87,10 @@ foreach ($users as $user)
 var_dump($user->name);
 }
 
-#### Eloquent ကို ေပါင္းစပ္ အသုုံးျပဳျခင္း 
+#### Eloquent ကို ပေါင်းစပ် အသုံးပြုခြင်း 
 
 
-သင့္အေနျဖင့္  Query Builder function မ်ားျဖင့္ Eloquent ကို ေပါင္းစပ္ အသုုံးျပဳႏုုိင္သည္။
+သင့်အနေဖြင့်  Query Builder function များဖြင့် Eloquent ကို ပေါင်းစပ် အသုံးပြုနိုင်သည်။
 
 $count = User::where('votes', '>', 100)->count();
 
@@ -99,9 +99,9 @@ If you are unable to generate the query you need via the fluent interface, feel 
 
 $users = User::whereRaw('age > ? and votes = 100', array(25))->get();
 
-#### Results မ်ားကုိ ခြဲထုတ္ျခင္း
+#### Results များကို ခွဲထုတ်ခြင်း
 
-သင့္အေနျဖင့္ ေထာင္ေပါင္းမ်ားစြာေသာ Eloquent records မ်ားကို ထုတ္ယူလုိပါက  `chunk` ဟုေသာ method ကို အသုံးျပဳ၍ Memory အသုံးျပဳမႈကုိ ေလ်ာ့ခ်ႏုိင္ပါသည္။ 
+သင့်အနေဖြင့် ထောင်ပေါင်းများစွာသော Eloquent records များကို ထုတ်ယူလိုပါက  `chunk` ဟုသော method ကို အသုံးပြု၍ Memory အသုံးပြုမှုကို လျော့ချနိုင်ပါသည်။ 
 
 
 User::chunk(200, function($users)
@@ -112,21 +112,21 @@ foreach ($users as $user)
 }
 });
 
-ပထမဆုံး argument   အေနျဖင့္ မိမိတုိ ့ ပုိင္းထုတ္လုိသည့္ အေရအတြက္ကုိ ထည့္သြင္း ေပးရမည္ ျဖစ္သည္။ ဒုတိယ argument အေနျဖင့္ closure ပါဝင္မည္ျဖစ္ျပီး ထုိထဲတြင္ ထြက္ေပၚလာေသာ record တုိင္းတြင္ ျဖစ္ေပၚေစလုိသည့္  Instruction မ်ား ေရးသားႏုိင္သည္။ 
+ပထမဆုံး argument   အနေဖြင့် မိမိတို ့ ပိုင်းထုတ်လိုသည့် အရေအတွက်ကို ထည့်သွင်း ပေးရမည် ဖြစ်သည်။ ဒုတိယ argument အနေဖြင့် closure ပါဝင်မည်ဖြစ်ပြီး ထိုထဲတွင် ထွက်ပေါ်လာသော record တိုင်းတွင် ဖြစ်ပေါ်စေလိုသည့်  Instruction များ ရေးသားနိုင်သည်။ 
 
-#### Query Connection သတ္မွတ္အသုံးျပဳျခင္း
+#### Query Connection သတ်မှတ်အသုံးပြုခြင်း
 
-မိမိတုိ ့ အသုံးျပဳလုိသည္ Database connection အေပၚမူတည္၍ `on` method ကုိ အသုံးျပဳကာ ေျပာင္းလဲ အသုံးျပဳႏုိင္ပါသည္။
+မိမိတို ့ အသုံးပြုလိုသည် Database connection အပေါ်မူတည်၍ `on` method ကို အသုံးပြုကာ ပြောင်းလဲ အသုံးပြုနိုင်ပါသည်။
 
 $user = User::on('connection-name')->find(1);
 
 <a name="mass-assignment"></a>
-## အေျမာက္အမ်ား ထည့္သြင္းျခင္း
+## အမြောက်အများ ထည့်သွင်းခြင်း
 
 
-Model အသစ္ကို တည္ေဆာက္ျပီးပါက Constructor အေနျဖင့္ ပါဝင္မည့္ attribute မ်ားကုိ array အေနျဖင့္ ထည့္သြင္းႏုိင္ပါသည္။  
-ထုိကဲ့သုိ ့ attribute မ်ား ကုိ Model မ်ားမွ တဆင့္ အေျမာက္အမ်ား ထည့္သြင္းႏုိင္ျခင္းသည္ အဆင္ေျပေသာ္လည္း User Input ကို မစစ္မေဆးပဲ အေျမာက္အမ်ားထည့္သြင္းပါက လုံျခဳံေရး ဆုိင္ရာ **ျပႆနာ** မ်ားရွိႏုိင္ပါသည္။ ထုိေၾကာင့္ default အေနျဖင့္ Eloquent Model မ်ားအားလုံးတြင္ ထုိသုိ ့
-ျပဳလုပ္ျခင္းကုိ ဖြင့္မေပးထားပါ။ သုိ ့ေသာ္ ထုိ ့သုိ ့ျပဳလုပ္ခ်င္ပါက `fillable` သုိ ့မဟုတ္ `guarded`  အစရွိသည့္ attribute မ်ားကုိ သတ္မွတ္ထားရန္ လုိေပမည္။
+Model အသစ်ကို တည်ဆောက်ပြီးပါက Constructor အနေဖြင့် ပါဝင်မည့် attribute များကို array အနေဖြင့် ထည့်သွင်းနိုင်ပါသည်။  
+ထိုကဲ့သို ့ attribute များ ကို Model များမှ တဆင့် အမြောက်အများ ထည့်သွင်းနိုင်ခြင်းသည် အဆင်ပြေသော်လည်း User Input ကို မစစ်မဆေးပဲ အမြောက်အများထည့်သွင်းပါက လုံခြုံရေး ဆိုင်ရာ **ပြဿနာ** များရှိနိုင်ပါသည်။ ထိုကြောင့် default အနေဖြင့် Eloquent Model များအားလုံးတွင် ထိုသို ့
+ပြုလုပ်ခြင်းကို ဖွင့်မပေးထားပါ။ သို ့သော် ထို ့သို ့ပြုလုပ်ချင်ပါက `fillable` သို ့မဟုတ် `guarded`  အစရှိသည့် attribute များကို သတ်မှတ်ထားရန် လိုပေမည်။
 
 #### Defining Fillable Attributes On A Model
 
@@ -138,12 +138,12 @@ protected $fillable = array('first_name', 'last_name', 'email');
 
 }
 
-အထက္က ဥပမာတြင္ array တြင္ထည့္သြင္းထားသည့္ attribute မ်ားသည္ အေျမာက္အမ်ား ထည့္သြင္းႏုိင္သည္။
+အထက်က ဥပမာတွင် array တွင်ထည့်သွင်းထားသည့် attribute များသည် အမြောက်အများ ထည့်သွင်းနိုင်သည်။
 
-#### Model တြင္ တားျမစ္ attribute မ်ားအား သတ္မွတ္ျခင္း
+#### Model တွင် တားမြစ် attribute များအား သတ်မှတ်ခြင်း
 
 
-`fillable` ၏ ေျပာင္းျပန္မွာ `guarded` ျဖစ္ျပီၤး phone တစ္လုံး၏  "black-list" ကဲ့သုိ ့ အလုပ္လုပ္သည္။
+`fillable` ၏ ပြောင်းပြန်မှာ `guarded` ဖြစ်င်္ပြီး phone တစ်လုံး၏  "black-list" ကဲ့သို ့ အလုပ်လုပ်သည်။
 
 class User extends Eloquent {
 
@@ -153,19 +153,19 @@ protected $guarded = array('id', 'password');
 
 > **Note:** When using `guarded`, you should still never pass `Input::get()` or any raw array of user controlled input into a `save` or `update` method, as any column that is not guarded may be updated.
 
-#### အေျမာက္အမ်ား ထည့္သြင္းျခင္းမွ တားျမစ္ျခင္း
+#### အမြောက်အများ ထည့်သွင်းခြင်းမှ တားမြစ်ခြင်း
 
-အေပၚမွ ဥပမာတြင္ `id` ႏွင့္ `password` field မ်ားမွာ အေျမာက္အမ်ား ထည့္သြင္းႏုိင္မည္ မဟုတ္ေပ။ အျခား attribute မ်ားမွာမူ အေျမာက္အမ်ား ထည့္သြင္းႏုိင္မည္ ျဖစ္သည္။ အကယ္၏ field အားလုံးကို တားျမစ္လုိပါက 
+အပေါ်မှ ဥပမာတွင် `id` နှင့် `password` field များမှာ အမြောက်အများ ထည့်သွင်းနိုင်မည် မဟုတ်ပေ။ အခြား attribute များမှာမူ အမြောက်အများ ထည့်သွင်းနိုင်မည် ဖြစ်သည်။ အကယ်၏ field အားလုံးကို တားမြစ်လိုပါက 
 
 protected $guarded = array('*');
 
 <a name="insert-update-delete"></a>
-## ထည့္သြင္း ၊ ျပင္ဆင္ ၊ ဖ်က္ပစ္
+## ထည့်သွင်း ၊ ပြင်ဆင် ၊ ဖျက်ပစ်
 
-Model မွ record အသစ္ကုိ တည္ေဆာက္လုိပါက model instance တစ္ခုကို တည္ေဆာက္ျပီး  `save` method ကို အသုံးျပဳႏုိင္သည္။
+Model မှ record အသစ်ကို တည်ဆောက်လိုပါက model instance တစ်ခုကို တည်ဆောက်ပြီး  `save` method ကို အသုံးပြုနိုင်သည်။
 
 
-#### Model တြင္ record မ်ား ထည့္သြင္းျခင္း
+#### Model တွင် record များ ထည့်သွင်းခြင်း
 
 $user = new User;
 
@@ -200,10 +200,10 @@ $user = User::firstOrCreate(array('name' => 'John'));
 // Retrieve the user by the attributes, or instantiate a new instance...
 $user = User::firstOrNew(array('name' => 'John'));
 
-#### Model တစ္ခုအား Update ျပဳလုပ္ျခင္း
+#### Model တစ်ခုအား Update ပြုလုပ်ခြင်း
 
-Model အား update ျပဳလုပ္လုိပါက ေရွးဦးစြာ ျပဳလုပ္လုိသည္ record ကုိ retrieve ျပဳလုပ္ရပါမည္။ ထုိေနာက္ attribute အား မိမိတို ့ထည့္သြင္းလုိသည့္ႏွင့္
-ေျပာင္းလဲ သတ္မွတ္ျပီး `save` method ကို အသုံးျပဳကာ update ျပဳလုပ္ႏုိင္ပါသည္။
+Model အား update ပြုလုပ်လိုပါက ရှေးဦးစွာ ပြုလုပ်လိုသည် record ကို retrieve ပြုလုပ်ရပါမည်။ ထိုနောက် attribute အား မိမိတို ့ထည့်သွင်းလိုသည့်နှင့်
+ပြောင်းလဲ သတ်မှတ်ပြီး `save` method ကို အသုံးပြုကာ update ပြုလုပ်နိုင်ပါသည်။
 
 $user = User::find(1);
 
@@ -211,9 +211,9 @@ $user->email = 'john@foo.com';
 
 $user->save();
 
-#### Model ႏွင့္ ၄င္း၏ Relationship မ်ားတြင္ save ျပဳလုပ္ျခင္း
+#### Model နှင့် ၄င်း၏ Relationship များတွင် save ပြုလုပ်ခြင်း
 
-တခါတရံ  သင့္အေနျဖင့္ လက္ရွိ အသုံးျပဳေနသည့္ model တြင္သာ မက ၄င္းႏွင့္ relationship ျပဳလုပ္ထားေသာ Model မ်ားတြင္ပါ save လုပ္လုိသည့္ အခါမ်ားရွိေပမည္။ ထုိသုိ ့ ျပဳလုပ္လုိပါက `push` method ကုိ အသုံးျပဳႏုိင္သည္။ 
+တခါတရံ  သင့်အနေဖြင့် လက်ရှိ အသုံးပြုနေသည့် model တွင်သာ မက ၄င်းနှင့် relationship ပြုလုပ်ထားသော Model များတွင်ပါ save လုပ်လိုသည့် အခါများရှိပေမည်။ ထိုသို ့ ပြုလုပ်လိုပါက `push` method ကို အသုံးပြုနိုင်သည်။ 
 
 $user->push();
 
@@ -224,15 +224,15 @@ $affectedRows = User::where('votes', '>', 100)->update(array('status' => 2));
 
 > **Note:** No model events are fired when updating a set of models via the Eloquent query builder.
 
-#### Model မွ record မ်ားအား ဖ်က္ပစ္ျခင္း
+#### Model မှ record များအား ဖျက်ပစ်ခြင်း
 
-record တစ္ခုအား ဖ်က္ပစ္လုိပါက `delete` ဟုေသာ method ကုိ အသုံးျပဳႏိုင္သည္။
+record တစ်ခုအား ဖျက်ပစ်လိုပါက `delete` ဟုသော method ကို အသုံးပြုနိုင်သည်။
 
 $user = User::find(1);
 
 $user->delete();
 
-#### Model မွ record မ်ားအား key အလုိက္ ဖ်က္ပစ္ျခင္း
+#### Model မှ record များအား key အလိုက် ဖျက်ပစ်ခြင်း
 
 User::destroy(1);
 
@@ -240,20 +240,20 @@ User::destroy(array(1, 2, 3));
 
 User::destroy(1, 2, 3);
 
-သင့္အေနျဖင့္ query လုပ္ျပီးမွလည္း ဖ်က္ပစ္ႏုိင္ပါသည္။
+သင့်အနေဖြင့် query လုပ်ပြီးမှလည်း ဖျက်ပစ်နိုင်ပါသည်။
 
 $affectedRows = User::where('votes', '>', 100)->delete();
 
-####  Model ၏ Timestamps ကုိသာ update ျပဳလုပ္ျခင္း
+####  Model ၏ Timestamps ကိုသာ update ပြုလုပ်ခြင်း
 
-Model ၏ Timestamps ကုိသာ update ျပဳလုပ္လိုပါက `touch` ကုိ အသုံးျပဳႏုိင္သည္။
+Model ၏ Timestamps ကိုသာ update ပြုလုပ်လိုပါက `touch` ကို အသုံးပြုနိုင်သည်။
 
 $user->touch();
 
 <a name="soft-deleting"></a>
 ## Soft Deleting  
 
-Soft delete ျပဳလုပ္ပါက တကယ္ဖ်က္ပစ္လုိက္ျခင္း မဟုတ္ပဲ  သင့္ record ထဲတြင္  `deleted_at` ဟု timestamp တြင္ သင့္ဖ်က္ပစ္လုိက္သည့္ အခ်ိန္ကုိ မွတ္သားထားမည္ ျဖစ္သည္။ Soft delete ကုိ ထည့္သြင္းလုိပါက `SoftDeletingTrait` ကုိပါ ထည့္သြင္းရမည္ ျဖစ္သည္။
+Soft delete ပြုလုပ်ပါက တကယ်ဖျက်ပစ်လိုက်ခြင်း မဟုတ်ပဲ  သင့် record ထဲတွင်  `deleted_at` ဟု timestamp တွင် သင့်ဖျက်ပစ်လိုက်သည့် အချိန်ကို မှတ်သားထားမည် ဖြစ်သည်။ Soft delete ကို ထည့်သွင်းလိုပါက `SoftDeletingTrait` ကိုပါ ထည့်သွင်းရမည် ဖြစ်သည်။
 
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
@@ -265,49 +265,49 @@ protected $dates = ['deleted_at'];
 
 }
 
-`deleted_at` ဟုသည့္ column ကုိ သင့္၏ table တြင္ ထည့္သြင္းလုိပါက migration တြင္ `softDeletes` ဟုသည့္ method ကုိ အသုံးျပဳႏုိင္ပါသည္။
+`deleted_at` ဟုသည့် column ကို သင့်၏ table တွင် ထည့်သွင်းလိုပါက migration တွင် `softDeletes` ဟုသည့် method ကို အသုံးပြုနိုင်ပါသည်။
 
 $table->softDeletes();
 
-ထုိသုိ ့ျပဳလုပ္ျပီး `delete` method ကို ေခၚယူပါက အမွန္တကယ္ ဖ်က္ပစ္မည္ မဟုတ္ပဲ `deleted_at` ဟု column တြင္ လက္ရွိ timestamp ကိုမွတ္သားထားမည္ ျဖစ္သည္။ Model တစ္ခုတြင္ soft delete ကို အသုံးျပဳထားပါက query ျပဳလုပ္ေသာ အခါတုိင္းတြင္ deleted record မ်ားမွာ ပါဝင္မည္ မဟုတ္ေပ။
+ထိုသို ့ပြုလုပ်ပြီး `delete` method ကို ခေါ်ယူပါက အမှန်တကယ် ဖျက်ပစ်မည် မဟုတ်ပဲ `deleted_at` ဟု column တွင် လက်ရှိ timestamp ကိုမှတ်သားထားမည် ဖြစ်သည်။ Model တစ်ခုတွင် soft delete ကို အသုံးပြုထားပါက query ပြုလုပ်သော အခါတိုင်းတွင် deleted record များမှာ ပါဝင်မည် မဟုတ်ပေ။
 
-#### Soft Deleted record မ်ားပါ ေရာစပ္ထုတ္ယူျခင္း
+#### Soft Deleted record များပါ ရောစပ်ထုတ်ယူခြင်း
 
 
-soft deleted record မ်ားပါ ေပါင္းစပ္ ထုတ္ယူလုိပါက `withTrashed` ကုိ query တြင္ထည့္သြင္း အသုံးျပဳရမည္ ျဖစ္သည္။
+soft deleted record များပါ ပေါင်းစပ် ထုတ်ယူလိုပါက `withTrashed` ကို query တွင်ထည့်သွင်း အသုံးပြုရမည် ဖြစ်သည်။
 
 $users = User::withTrashed()->where('account_id', 1)->get();
 
-`withTrashed` method ကုိ relationship ျပဳလုပ္ထားေသာ model တြင္လည္း အသုံးျပဳႏုိင္ပါသည္။
+`withTrashed` method ကို relationship ပြုလုပ်ထားသော model တွင်လည်း အသုံးပြုနိုင်ပါသည်။
 
 $user->posts()->withTrashed()->get();
 
-ွSoft deleted ျပဳလုပ္ထားေသာ results မ်ားသာ ေတြ  ့ျမင္လုိပါက `onlyTrashed` ဟုေသာ method ကုိ အသုံးျပဳႏုိင္သည္။
+ှSoft deleted ပြုလုပ်ထားသော results များသာ တွေ  ့မြင်လိုပါက `onlyTrashed` ဟုသော method ကို အသုံးပြုနိုင်သည်။
 
 $users = User::onlyTrashed()->where('account_id', 1)->get();
 
-soft deleted ျပဳလုပ္ထားေသာ record မ်ားကုိ restore ျပဳလုပ္လုိပါက `restore` method ကို အသုံးျပဳႏုိင္သည္။
+soft deleted ပြုလုပ်ထားသော record များကို restore ပြုလုပ်လိုပါက `restore` method ကို အသုံးပြုနိုင်သည်။
 
 $user->restore();
 
-`restore` method ကုိ query ျပဳလုပ္ေနသည့္ အေတာအတြင္းလည္း အသုံးျပဳႏုိင္သည္။
+`restore` method ကို query ပြုလုပ်နေသည့် အတောအတွင်းလည်း အသုံးပြုနိုင်သည်။
 
 User::withTrashed()->where('account_id', 1)->restore();
 
 
-`withTrashed` ကဲ့သုိ ့ပင္ `restore` method ကိုလည္း relationship မ်ားၾကားထဲအတြင္း အသုံးျပဳႏုိင္သည္။
+`withTrashed` ကဲ့သို ့ပင် `restore` method ကိုလည်း relationship များကြားထဲအတွင်း အသုံးပြုနိုင်သည်။
 
 $user->posts()->restore();
 
-Record တစ္ခုကို အမွန္တကယ္ database ထဲမွ ဖ်က္ပစ္လုိပါက `forceDelete` method ကုိ အသုံးျပဳႏုိင္သည္။
+Record တစ်ခုကို အမှန်တကယ် database ထဲမှ ဖျက်ပစ်လိုပါက `forceDelete` method ကို အသုံးပြုနိုင်သည်။
 
 $user->forceDelete();
 
-`forceDelete` method မွာလည္း relationship မ်ားအၾကား အသုံးျပဳႏုိင္သည္။
+`forceDelete` method မှာလည်း relationship များအကြား အသုံးပြုနိုင်သည်။
 
 $user->posts()->forceDelete();
 
-soft delted ျပဳလုပ္ထားျခင္း ဟုတ္မဟုတ္ စစ္ေဆးႏုိင္ရန္  `trashed` method ကုိ အသုံးျပဳႏုိင္သည္။ 
+soft delted ပြုလုပ်ထားခြင်း ဟုတ်မဟုတ် စစ်ဆေးနိုင်ရန်  `trashed` method ကို အသုံးပြုနိုင်သည်။ 
 
 if ($user->trashed())
 {
@@ -317,9 +317,9 @@ if ($user->trashed())
 <a name="timestamps"></a>
 ## Timestamps
 
-ပုံမွန္အားျဖင့္ Eloquent အေနျဖင့္ `timestamp` attribute ကုိထည့္သြင္းေပးသည္ႏွင့္ `created_at` and `updated_at` ကို အလုိအေလ်ာက္ ကုိင္တြယ္ေပးမည္ ျဖစ္သည္။ သင့္အေနႏွင့္ မလုိခ်င္ပါက ေအာက္ပါအတုိင္း ေျပာင္းလဲ သတ္မွတ္ႏုိင္သည္။
+ပုံမှန်အားဖြင့် Eloquent အနေဖြင့် `timestamp` attribute ကိုထည့်သွင်းပေးသည်နှင့် `created_at` and `updated_at` ကို အလိုအလျောက် ကိုင်တွယ်ပေးမည် ဖြစ်သည်။ သင့်အနေနှင့် မလိုချင်ပါက အောက်ပါအတိုင်း ပြောင်းလဲ သတ်မှတ်နိုင်သည်။
 
-#### အလုိအေလ်ာက္ Timestamps ျပဳလုပ္ျခင္းမွ ဖယ္ရွားျခင္း
+#### အလိုအလျောက် Timestamps ပြုလုပ်ခြင်းမှ ဖယ်ရှားခြင်း
 
 class User extends Eloquent {
 
@@ -329,9 +329,9 @@ public $timestamps = false;
 
 }
 
-#### စိတ္ၾကိဳက္ Timestamp တစ္ခုသတ္မွတ္ျခင္း
+#### စိတ်ကြိုက် Timestamp တစ်ခုသတ်မှတ်ခြင်း
 
-Timestamp တစ္ခုကို စိတ္ၾကိဳက္သတ္မွတ္လုိပါက model အတြင္းရွိ `getDateFormat` ကုိ အသုံးျပဳ၍ သတ္မွတ္ႏုိင္သည္။
+Timestamp တစ်ခုကို စိတ်ကြိုက်သတ်မှတ်လိုပါက model အတွင်းရှိ `getDateFormat` ကို အသုံးပြု၍ သတ်မှတ်နိုင်သည်။
 
 class User extends Eloquent {
 
@@ -345,10 +345,10 @@ return 'U';
 <a name="query-scopes"></a>
 ## Query Scopes
 
-#### Query Scope တစ္ခုအား သတ္မွတ္ျခင္း
+#### Query Scope တစ်ခုအား သတ်မှတ်ခြင်း
 
-Scope မ်ားမွာ သင့္၏ query logic မ်ားကို ထပ္ခါထပ္ခါ အသုံးျပဳႏုိင္ျခင္း ျဖင့္ သက္သာေစသည္။  Scope တစ္ခုကုိ ဖန္တီးႏုိင္ရင္ `scope` ဟုပါဝင္သည့္ 
-method တစ္ခုကုိ ဖန္တီးရန္ လုိေပမည္။
+Scope များမှာ သင့်၏ query logic များကို ထပ်ခါထပ်ခါ အသုံးပြုနိုင်ခြင်း ဖြင့် သက်သာစေသည်။  Scope တစ်ခုကို ဖန်တီးနိုင်ရင် `scope` ဟုပါဝင်သည့် 
+method တစ်ခုကို ဖန်တီးရန် လိုပေမည်။
 
 class User extends Eloquent {
 
@@ -364,13 +364,13 @@ return $query->whereGender('W');
 
 }
 
-#### Query Scope တစ္ခုအား အသုံးျပဳျခင္း 
+#### Query Scope တစ်ခုအား အသုံးပြုခြင်း 
 
 $users = User::popular()->women()->orderBy('created_at')->get();
 
-#### Scopes အရွင္မ်ား ဖန္တီးျခင္း
+#### Scopes အရှင်များ ဖန်တီးခြင်း
 
-တခါတရံ သင့္အေနျဖင့္ parameter မ်ားလက္ခံေသာ scope အရွင္မ်ားကို ဖန္တီးလုိေပမည္။ ထုိသုိ ့ျပဳလုပ္ႏုိင္ရန္ သင့္၏ scope function အတြင္းတြင္
+တခါတရံ သင့်အနေဖြင့် parameter များလက်ခံသော scope အရှင်များကို ဖန်တီးလိုပေမည်။ ထိုသို ့ပြုလုပ်နိုင်ရန် သင့်၏ scope function အတွင်းတွင်
 
 class User extends Eloquent {
 
@@ -381,14 +381,14 @@ return $query->whereType($type);
 
 }
 
-ထိုေနာက္ scope တြင္ parameter ကုိ ထည့္သြင္း အသုံးျပဳႏုိင္သည္။
+ထိုနောက် scope တွင် parameter ကို ထည့်သွင်း အသုံးပြုနိုင်သည်။
 
 $users = User::ofType('member')->get();
 
 <a name="relationships"></a>
 ## Relationships
 
-Database table မ်ားမွာ တခါတရံ တစ္ခုႏွင့္ တစ္ခု ဆက္စပ္ျပီး တည္ရွိႏုိင္ေပသည္။ ဥပမာ Blog post တစ္ခုတြင္ comment မ်ားစြာ ပါဝင္သကဲ့သုိ ့  Order တစ္ခုတြင္လည္း User တစ္ေယာက္ႏွင့္ ဆက္စပ္ႏုိင္ ေပသည္။ Laravel အေနျဖင့္ ဆက္စပ္မႈ မ်ိဳးစုံကုိ ေဆာင္ရြက္ႏုိင္ေအာင္ ကူညီေပးထားပါသည္။
+Database table များမှာ တခါတရံ တစ်ခုနှင့် တစ်ခု ဆက်စပ်ပြီး တည်ရှိနိုင်ပေသည်။ ဥပမာ Blog post တစ်ခုတွင် comment များစွာ ပါဝင်သကဲ့သို ့  Order တစ်ခုတွင်လည်း User တစ်ယောက်နှင့် ဆက်စပ်နိုင် ပေသည်။ Laravel အနေဖြင့် ဆက်စပ်မှု မျိုးစုံကို ဆောင်ရွက်နိုင်အောင် ကူညီပေးထားပါသည်။
 
 - [One To One](#one-to-one)
 - [One To Many](#one-to-many)
@@ -400,10 +400,10 @@ Database table မ်ားမွာ တခါတရံ တစ္ခုႏွင
 <a name="one-to-one"></a>
 ### One To One
 
-#### One To One Relation တစ္ခုကုိ တည္ေဆာက္ျခင္း
+#### One To One Relation တစ်ခုကို တည်ဆောက်ခြင်း
 
-one-to-one relationship မွာ အလြန္ပင္ အေျခခံက်ေသာ relation ျဖစ္သည္။  ဥပမာ User တစ္ေယာက္တြင္ Phone တစ္လုံး ရွိရမည့္ အေနအထားမ်ိဳး။ 
-ထုိသုိ ့ေသာ relation မ်ိဳးကို Eloquent တြင္ ဖန္တီးႏုိင္ေပသည္။
+one-to-one relationship မှာ အလွန်ပင် အခြေခံကျသော relation ဖြစ်သည်။  ဥပမာ User တစ်ယောက်တွင် Phone တစ်လုံး ရှိရမည့် အနေအထားမျိုး။ 
+ထိုသို ့သော relation မျိုးကို Eloquent တွင် ဖန်တီးနိုင်ပေသည်။
 
 class User extends Eloquent {
 
@@ -415,25 +415,25 @@ return $this->hasOne('Phone');
 }
 
 
-`hasOne` တြင္ထည့္သြင္းရမည့္ argument မွာ ဆက္စပ္ေနသည့္ Model ၏ အမည္ပင္ျဖစ္သည္။ relationship တည္ေဆာက္ျပီးသည္ႏွင့္ Eloquent ၏ [dynamic properties](#dynamic-properties): ကုိ အသုံးျပဳျပီး အခ်က္အလက္မ်ားကုိ ထုတ္ယူႏုိင္သည္။
+`hasOne` တွင်ထည့်သွင်းရမည့် argument မှာ ဆက်စပ်နေသည့် Model ၏ အမည်ပင်ဖြစ်သည်။ relationship တည်ဆောက်ပြီးသည်နှင့် Eloquent ၏ [dynamic properties](#dynamic-properties): ကို အသုံးပြုပြီး အချက်အလက်များကို ထုတ်ယူနိုင်သည်။
 
 $phone = User::find(1)->phone;
 
-အထက္ပါ statement အတြက္ run သြားမည့္ SQL မွာ ေအာက္ပါ အတုိင္းျဖစ္သည္။
+အထက်ပါ statement အတွက် run သွားမည့် SQL မှာ အောက်ပါ အတိုင်းဖြစ်သည်။
 
 select * from users where id = 1
 
 select * from phones where user_id = 1
 
-Eloquent အေနျဖင့္ model name မ်ားကို အေျခခံျပီး Forigen key မ်ားကို သတ္မွတ္သြားမည္ကုိ သတိျပဳရမည္။ အထက္က `Phone` model တြင္ `user_id` ကုိ foreign key အေနျဖင့္ အလုိအေလ်ာက္ သတ္မွတ္မည္ ျဖစ္သည္။  မိမိတုိ ့ စိတ္ၾကိဳက္ေျပာင္းလဲလုိပါက `hasOne` method တြင္ ဒုတိယ argument အျဖစ္သြင္းေပးရန္ လုိေပမည္။  ထုိထက္ပုိ၍ တတိယ argument အေနျဖင့္ ထည့္သြင္းပါက မည္သည့္ local column ကုိ ပူးေပါင္းမည္ကုိပါ သတ္မွတ္ႏုိင္သည္။
+Eloquent အနေဖြင့် model name များကို အခြေခံပြီး Forigen key များကို သတ်မှတ်သွားမည်ကို သတိပြုရမည်။ အထက်က `Phone` model တွင် `user_id` ကို foreign key အနေဖြင့် အလိုအလျောက် သတ်မှတ်မည် ဖြစ်သည်။  မိမိတို ့ စိတ်ကြိုက်ပြောင်းလဲလိုပါက `hasOne` method တွင် ဒုတိယ argument အဖြစ်သွင်းပေးရန် လိုပေမည်။  ထိုထက်ပို၍ တတိယ argument အနေဖြင့် ထည့်သွင်းပါက မည်သည့် local column ကို ပူးပေါင်းမည်ကိုပါ သတ်မှတ်နိုင်သည်။
 
 return $this->hasOne('Phone', 'foreign_key');
 
 return $this->hasOne('Phone', 'foreign_key', 'local_key');
 
-#### Relation ေျပာင္းျပန္သတ္မွတ္ျခင္း
+#### Relation ပြောင်းပြန်သတ်မှတ်ခြင်း
 
-`Phone` model မွ Relation ကုိ ေျပာင္းျပန္အေနျဖင့္ သတ္မွတ္လုိပါက `belongsTo` ဟုသည့္ method ကုိ အသုံးျပဳႏုိင္သည္။
+`Phone` model မှ Relation ကို ပြောင်းပြန်အနေဖြင့် သတ်မှတ်လိုပါက `belongsTo` ဟုသည့် method ကို အသုံးပြုနိုင်သည်။
 
 class Phone extends Eloquent {
 
@@ -444,7 +444,7 @@ return $this->belongsTo('User');
 
 }
 
-အထက္က ဥပမာတြင္ Eloquent အေနျဖင့္ `phones` table မွ `user_id` column ကုိ အသုံးျပဳမည္ ျဖစ္သည္။ `hasMany` ကဲ့သုိ ့ပင္ Foriegn Key ကုိ သတ္မွတ္လုိပါက ဒုတိယ argument ကုိ ထည့္သြင္းေပးႏုိင္သည္။
+အထက်က ဥပမာတွင် Eloquent အနေဖြင့် `phones` table မှ `user_id` column ကို အသုံးပြုမည် ဖြစ်သည်။ `hasMany` ကဲ့သို ့ပင် Foriegn Key ကို သတ်မှတ်လိုပါက ဒုတိယ argument ကို ထည့်သွင်းပေးနိုင်သည်။
 
 
 class Phone extends Eloquent {
@@ -456,7 +456,7 @@ return $this->belongsTo('User', 'local_key');
 
 }
 
-ထုိအျပင္ parent table ႏွင့္ဆက္စပ္ေနသည့္  column ကုိ တတိယ parameter အျဖစ္ ထည့္သြင္းႏုိင္သည္။
+ထိုအပြင် parent table နှင့်ဆက်စပ်နေသည့်  column ကို တတိယ parameter အဖြစ် ထည့်သွင်းနိုင်သည်။
 
 class Phone extends Eloquent {
 
@@ -470,8 +470,8 @@ return $this->belongsTo('User', 'local_key', 'parent_key');
 <a name="one-to-many"></a>
 ### One To Many
 
-one-to-many relation ၏ ဥပမာမွာ blog post တစ္ခုတြင္ comment မ်ားစြာ ရွိသကဲ့သုိ ့ပင္ ျဖစ္သည္။ ထုိသုိ ့ relation ကုိ ေအာက္ပါအတုိင္း model တြင္
-သတ္မွတ္ႏုိင္သည္။
+one-to-many relation ၏ ဥပမာမှာ blog post တစ်ခုတွင် comment များစွာ ရှိသကဲ့သို ့ပင် ဖြစ်သည်။ ထိုသို ့ relation ကို အောက်ပါအတိုင်း model တွင်
+သတ်မှတ်နိုင်သည်။
 
 class Post extends Eloquent {
 
@@ -482,23 +482,23 @@ return $this->hasMany('Comment');
 
 }
 
-ထုိအခါ post comments မ်ားကို [dynamic property](#dynamic-properties) ကုိ အသုံးျပဳ၍ ထုတ္ယူႏုိင္ပါျပီ။
+ထိုအခါ post comments များကို [dynamic property](#dynamic-properties) ကို အသုံးပြု၍ ထုတ်ယူနိုင်ပါပြီ။
 
 $comments = Post::find(1)->comments;
 
-ထုိထဲမွ  ထုတ္ယူလုိသည့္ comment မ်ားကုိ စစ္ယူလုိပါက `comments` method ေနာက္တြင္ method မ်ားကုိ စီတန္း အသုံးျပဳႏုိင္ပါေသးသည္။
+ထိုထဲမှ  ထုတ်ယူလိုသည့် comment များကို စစ်ယူလိုပါက `comments` method နောက်တွင် method များကို စီတန်း အသုံးပြုနိုင်ပါသေးသည်။
 
 $comments = Post::find(1)->comments()->where('title', '=', 'foo')->first();
 
-၄င္းတြင္လည္း `hasOne` ကဲ့သုိ ့ foriegn key ကုိ  `hasMany` method  ေနာက္တြင္ second argument အေနျဖင့္ႏွင့္  third argument ကို local key အေနျဖင့္ ထည့္သြင္းႏုိင္ေပသည္။
+၄င်းတွင်လည်း `hasOne` ကဲ့သို ့ foriegn key ကို  `hasMany` method  နောက်တွင် second argument အနေဖြင့်နှင့်  third argument ကို local key အနေဖြင့် ထည့်သွင်းနိုင်ပေသည်။
 
 return $this->hasMany('Comment', 'foreign_key');
 
 return $this->hasMany('Comment', 'foreign_key', 'local_key');
 
-#### ေျပာင္းျပန္ relation သတ္မွတ္ျခင္း
+#### ပြောင်းပြန် relation သတ်မှတ်ခြင်း
 
-`Comment` model ေျပာင္းျပန္ သတ္မွတ္ႏုိင္ရန္  `belongsTo` ဟုသည့္ method ကုိ အသုံးျပဳႏုိင္သည္။
+`Comment` model ပြောင်းပြန် သတ်မှတ်နိုင်ရန်  `belongsTo` ဟုသည့် method ကို အသုံးပြုနိုင်သည်။
 
 class Comment extends Eloquent {
 
@@ -513,11 +513,11 @@ return $this->belongsTo('Post');
 ### Many To Many
 
 
-Many-to-many relations မွာ ပုိမိုရႈပ္ေထြးသည့္ relation ျဖစ္သည္။ ဥပမာ User တစ္ေယာက္မွာ တာဝန္မ်ားစြာ ရွိျပီး တာဝန္တစ္ခုကိုလည္း User မ်ားစြာ ခြဲေဝေပးအပ္ထားသည္ ဆုိပါစုိ ့။  User မ်ားစြာ  "Admin" တာဝန္ကုိ ယူထားႏုိင္သည့္ အေျခအေနတြင္ရွိေပမည္။  ထုိသုိ ့ေသာ အေျခအေနတြင္ Database 
-Table သုံးခု လုိအပ္မည္ ျဖစ္သည္။ ၄င္းတုိ ့မွာ `users` ၊ `roles` ႏွင့္ `role_user` တုိ ့ျဖစ္ၾကသည္။ `role_user` table မွာ ဆက္စပ္ေနသည့္ model အမည္မ်ားကုိ ဆက္စပ္ေပးမည္ ျဖစ္ျပီး ၄င္းတြင္ `user_id` ႏွင့္ `role_id` ဟူေသာ columns ႏွစ္ခု ပါဝင္မည္ ျဖစ္သည္။
+Many-to-many relations မှာ ပိုမိုရှုပ်ထွေးသည့် relation ဖြစ်သည်။ ဥပမာ User တစ်ယောက်မှာ တာဝန်များစွာ ရှိပြီး တာဝန်တစ်ခုကိုလည်း User များစွာ ခွဲဝေပေးအပ်ထားသည် ဆိုပါစို ့။  User များစွာ  "Admin" တာဝန်ကို ယူထားနိုင်သည့် အခြေအနေတွင်ရှိပေမည်။  ထိုသို ့သော အခြေအနေတွင် Database 
+Table သုံးခု လိုအပ်မည် ဖြစ်သည်။ ၄င်းတို ့မှာ `users` ၊ `roles` နှင့် `role_user` တို ့ဖြစ်ကြသည်။ `role_user` table မှာ ဆက်စပ်နေသည့် model အမည်များကို ဆက်စပ်ပေးမည် ဖြစ်ပြီး ၄င်းတွင် `user_id` နှင့် `role_id` ဟူသော columns နှစ်ခု ပါဝင်မည် ဖြစ်သည်။
 
 
-many-to-many relation  ကုိ  `belongsToMany` method ကုိ အသုံးျပဳ၍ ေရးသားႏုိင္သည္။
+many-to-many relation  ကို  `belongsToMany` method ကို အသုံးပြု၍ ရေးသားနိုင်သည်။
 
 class User extends Eloquent {
 
@@ -528,19 +528,19 @@ return $this->belongsToMany('Role');
 
 }
 
-ထုိအခါ `User` မွ role ကုိ ေအာက္ပါ အတုိင္း ထုတ္ယူႏုိင္မည္ ျဖစ္သည္။
+ထိုအခါ `User` မှ role ကို အောက်ပါ အတိုင်း ထုတ်ယူနိုင်မည် ဖြစ်သည်။
 
 $roles = User::find(1)->roles;
 
-မိမိ၏ ၾကားခံ table ၏ အမည္ကုိ စိတ္ၾကိဳက္ သတ္မွတ္လုိပါက `belongsToMany` method ၏ ဒုတိယ argument မွ သြင္း၍ စိတ္ၾကိဳက္ သတ္မွတ္ႏုိင္သည္။
+မိမိ၏ ကြားခံ table ၏ အမည်ကို စိတ်ကြိုက် သတ်မှတ်လိုပါက `belongsToMany` method ၏ ဒုတိယ argument မှ သွင်း၍ စိတ်ကြိုက် သတ်မှတ်နိုင်သည်။
 
 return $this->belongsToMany('Role', 'user_roles');
 
-ထုိအျပင္ ပါဝင္ပတ္သတ္ေနေသာ Keys မ်ားကိုလည္း စိတ္ၾကိဳက္ သတ္မွတ္ႏုိင္သည္။
+ထိုအပြင် ပါဝင်ပတ်သတ်နေသော Keys များကိုလည်း စိတ်ကြိုက် သတ်မှတ်နိုင်သည်။
 
 return $this->belongsToMany('Role', 'user_roles', 'user_id', 'foo_id');
 
-ထုိအျပင္ `Role` model မွလည္း ေျပာင္းျပန္သတ္မွတ္ ၍လည္း ျဖစ္ပါသည္။
+ထိုအပြင် `Role` model မှလည်း ပြောင်းပြန်သတ်မှတ် ၍လည်း ဖြစ်ပါသည်။
 
 class Role extends Eloquent {
 
@@ -554,7 +554,7 @@ return $this->belongsToMany('User');
 <a name="has-many-through"></a>
 ### Has Many Through
 
- "has many through"  ေဝးကြာေနသည့္ relation မ်ားမွ record မ်ားကုိ access လုပ္ႏုိင္ရန္ အလြယ္တကူ ၾကားျဖတ္ေဆာင္ရြက္ေပးေသာ method ျဇစ္သည္။ ဥပမာ  `Country` model မွာ  `Posts` ျဖင့္ ခ်ိတ္ဆက္ထားျခင္း မရွိေသာ္လည္း `Users` model ျဖင့္မူ ခ်ိတ္ဆက္ထားပါက တဆင့္ေက်ာ္၍ access လုပ္ႏုိင္သည္။  ထုိ table မ်ား၏  relationship မွာ ေအာက္ပါအတုိင္း ဆုိပါစို ့
+ "has many through"  ဝေးကွာနေသည့် relation များမှ record များကို access လုပ်နိုင်ရန် အလွယ်တကူ ကြားဖြတ်ဆောင်ရွက်ပေးသော method ဇြစ်သည်။ ဥပမာ  `Country` model မှာ  `Posts` ဖြင့် ချိတ်ဆက်ထားခြင်း မရှိသော်လည်း `Users` model ဖြင့်မူ ချိတ်ဆက်ထားပါက တဆင့်ကျော်၍ access လုပ်နိုင်သည်။  ထို table များ၏  relationship မှာ အောက်ပါအတိုင်း ဆိုပါစို ့
 
 countries
 id - integer
@@ -570,7 +570,7 @@ id - integer
 user_id - integer
 title - string
 
-`posts` table တြင္ `country_id` column မပါဝင္ေသာ္လည္း `hasManyThrough` relation ျဖင့္ `$country->posts` ဟု၍ accessible ျဖစ္ေအာင္ စြမ္းေဆာင္ႏုိင္ေပသည္။ 
+`posts` table တွင် `country_id` column မပါဝင်သော်လည်း `hasManyThrough` relation ဖြင့် `$country->posts` ဟု၍ accessible ဖြစ်အောင် စွမ်းဆောင်နိုင်ပေသည်။ 
 
 class Country extends Eloquent {
 
@@ -581,7 +581,7 @@ return $this->hasManyThrough('Post', 'User');
 
 }
 
-relationship key မ်ားကုိ စိတ္ၾကိဳက္သတ္မွတ္လုိပါက တတိယႏွင့္ စတုတၳ parameter အမ်ားအျဖစ္ ထည့္သြင္းႏုိင္ေပသည္။
+relationship key များကို စိတ်ကြိုက်သတ်မှတ်လိုပါက တတိယနှင့် စတုတ္ထ parameter အများအဖြစ် ထည့်သွင်းနိုင်ပေသည်။
 
 class Country extends Eloquent {
 
@@ -595,8 +595,8 @@ return $this->hasManyThrough('Post', 'User', 'country_id', 'user_id');
 <a name="polymorphic-relations"></a>
 ### Polymorphic Relations
 
-Polymorphic relations ကုိ အသုံးျပဳျခင္းျဖင့္ အျခား Model တစ္ခုထက္ပုိ၍ associate ျပဳလုပ္ထားေသာ record မ်ားကို ထုတ္ယူႏုိင္သည္။ ဥပမာ သင့္တြင္ 
-staff ဟုေသာ model ႏွင့္ order ဟုေသာ model ႏွစ္ခုလုံးႏွင့္ ပတ္သတ္ေနသည့္ photo ဟုေသာ model ရွိသည္ ဆုိပါစုိ ့။
+Polymorphic relations ကို အသုံးပြုခြင်းဖြင့် အခြား Model တစ်ခုထက်ပို၍ associate ပြုလုပ်ထားသော record များကို ထုတ်ယူနိုင်သည်။ ဥပမာ သင့်တွင် 
+staff ဟုသော model နှင့် order ဟုသော model နှစ်ခုလုံးနှင့် ပတ်သတ်နေသည့် photo ဟုသော model ရှိသည် ဆိုပါစို ့။
 
 
 class Photo extends Eloquent {
@@ -626,9 +626,9 @@ return $this->morphMany('Photo', 'imageable');
 
 }
 
-#### Polymorphic Relation ကုိ အသုံးျပဳျခင္း
+#### Polymorphic Relation ကို အသုံးပြုခြင်း
 
-ေအာက္ပါ အတုိင္း photo မ်ားကို Staff member မ်ားမွေသာ္လည္းေကာင္း  Order မွေသာ္လည္းေကာင္း ထုတ္ယူႏုိင္သည္။
+အောက်ပါ အတိုင်း photo များကို Staff member များမှသော်လည်းကောင်း  Order မှသော်လည်းကောင်း ထုတ်ယူနိုင်သည်။
 
 $staff = Staff::find(1);
 
@@ -637,20 +637,20 @@ foreach ($staff->photos as $photo)
 //
 }
 
-#### Polymorphic Relation မွ Owner ၏ record မ်ားကုိ ထုတ္ယူျခင္း
+#### Polymorphic Relation မှ Owner ၏ record များကို ထုတ်ယူခြင်း
 
-သုိ ့ေသာ္ တကယ့္ "polymorphic" အလွတရားမွာ `Photo` model မွ staff ျဖစ္ေစ ၊ order ျဖစ္ေစ ထုတ္ယူႏုိင္ျခင္း ျဖစ္သည္။
+သို ့သော် တကယ့် "polymorphic" အလှတရားမှာ `Photo` model မှ staff ဖြစ်စေ ၊ order ဖြစ်စေ ထုတ်ယူနိုင်ခြင်း ဖြစ်သည်။
 
 
 $photo = Photo::find(1);
 
 $imageable = $photo->imageable;
 
-`Photo` model မွ `imageable` relation  မွာ `Staff` မွျဖစ္ေစ `Order` instance ျဖစ္ေစ ပိုင္ဆုိင္သည့္ model ေပၚမူတည္၍ ထုတ္ေပးသြားမည္ ျဖစ္သည္။
+`Photo` model မှ `imageable` relation  မှာ `Staff` မှဖြစ်စေ `Order` instance ဖြစ်စေ ပိုင်ဆိုင်သည့် model ပေါ်မူတည်၍ ထုတ်ပေးသွားမည် ဖြစ်သည်။
 
 #### Polymorphic Relation Table Structure
 
-မည္သုိ ့မည္ပုံ အလုပ္လုပ္ေဆာင္သြားသည္ကုိ သိရွိႏုိင္ရန္ ေအာက္ပါ database structure ကုိ ၾကည့္ရႈႏုိင္ပါသည္။
+မည်သို ့မည်ပုံ အလုပ်လုပ်ဆောင်သွားသည်ကို သိရှိနိုင်ရန် အောက်ပါ database structure ကို ကြည့်ရှုနိုင်ပါသည်။
 
 staff
 id - integer
@@ -666,15 +666,15 @@ path - string
 imageable_id - integer
 imageable_type - string
 
-Key field အေနျဖင့္  `photos` table မွ `imageable_id` ႏွင့္ `imageable_type` တုိ ့ကုိ မွတ္သားထားရပါမည္ ျဖစ္သည္။ ID မွာ Order သုိ ့မဟုတ္ 
-Staff တုိ ့၏  ID ႏွင့္ ခ်ိတ္ဆက္ထားမည္ ျဖစ္သည္။  ORM အေနျဖင့္ မည္သည့္ model ကုိျပန္ရမည္ ဆုိသည္ကုိ `imageable` ၏ relation ကို ေထာက္ရႈ၍ လုပ္ေဆာင္ သြားမည္ ျဖစ္သည္။
+Key field အနေဖြင့်  `photos` table မှ `imageable_id` နှင့် `imageable_type` တို ့ကို မှတ်သားထားရပါမည် ဖြစ်သည်။ ID မှာ Order သို ့မဟုတ် 
+Staff တို ့၏  ID နှင့် ချိတ်ဆက်ထားမည် ဖြစ်သည်။  ORM အနေဖြင့် မည်သည့် model ကိုပြန်ရမည် ဆိုသည်ကို `imageable` ၏ relation ကို ထောက်ရှု၍ လုပ်ဆောင် သွားမည် ဖြစ်သည်။
 
 <a name="many-to-many-polymorphic-relations"></a>
 ### Many To Many Polymorphic Relations
 
 #### Polymorphic Many To Many Relation Table Structure  
 
-သမရုိးက် polymorphic relations တစ္ခုသာမက many-to-many polymorphic relations မ်ားကိုပါ တည္ေဆာက္ႏုိင္သည္။ ဥပမာ blog တစ္ခု၏ database structure ျဖစ္ေသာ  `Post` ႏွင့္ `Video` model တုိ ့တြင္ `Tag` model ကုိ တူညီစြာ polymorphic relation အေနျဖင့္ ခ်ိတ္ဆက္ရန္ လုိေပမည္။ ေရွဦးစြာ table structure ကုိၾကည့္လုိက္ပါ။
+သမရိုးကျ polymorphic relations တစ်ခုသာမက many-to-many polymorphic relations များကိုပါ တည်ဆောက်နိုင်သည်။ ဥပမာ blog တစ်ခု၏ database structure ဖြစ်သော  `Post` နှင့် `Video` model တို ့တွင် `Tag` model ကို တူညီစွာ polymorphic relation အနေဖြင့် ချိတ်ဆက်ရန် လိုပေမည်။ ရှေဦးစွာ table structure ကိုကြည့်လိုက်ပါ။
 
 posts
 id - integer
@@ -693,8 +693,8 @@ tag_id - integer
 taggable_id - integer
 taggable_type - string
 
-အထက္ပါ table အတြက္ relationship မ်ားကုိ model တြင္ ေအာက္ပါအတုိင္း တည္ေဆာက္ရမည္ျဖစ္သည္။ `Post` ႏွင့္ `Video` model တုိ ့ႏွစ္ခုလုံးတြင္
-`tags` method မွ `morphToMany` relationship ကုိ ေၾကညာေပးရမည္ ျဖစ္သည္။
+အထက်ပါ table အတွက် relationship များကို model တွင် အောက်ပါအတိုင်း တည်ဆောက်ရမည်ဖြစ်သည်။ `Post` နှင့် `Video` model တို ့နှစ်ခုလုံးတွင်
+`tags` method မှ `morphToMany` relationship ကို ကြေညာပေးရမည် ဖြစ်သည်။
 
 class Post extends Eloquent {
 
@@ -705,7 +705,7 @@ return $this->morphToMany('Tag', 'taggable');
 
 }
 
-`Tag` model အေနျဖင့္ ၄င္း၏ relationships ကုိ ေအာက္ပါ အတုိင္း သတ္မွတ္ႏုိင္သည္။ 
+`Tag` model အနေဖြင့် ၄င်း၏ relationships ကို အောက်ပါ အတိုင်း သတ်မှတ်နိုင်သည်။ 
 
 class Tag extends Eloquent {
 
@@ -722,19 +722,19 @@ return $this->morphedByMany('Video', 'taggable');
 }
 
 <a name="querying-relations"></a>
-## Relation မ်ားကုိ Query ျပဳလုပ္ျခင္း
+## Relation များကို Query ပြုလုပ်ခြင်း
 
-#### Relations မ်ားတြင္ Select ကုိ အသုံးျပဳျခင္း
+#### Relations များတွင် Select ကို အသုံးပြုခြင်း
 
-Model မ်ားမွ record မ်ားကုိ access ျပဳလုပ္ရာတြင္ ၊  result မ်ားကို စစ္ေဆးျပီးမွ ထုတ္ယူလုိသည့္ အေနအထားမ်ိဳးတြင္ ရွိေပႏုိင္သည္။ ဥပမာ သင့္အေနျဖင့္ Comment တစ္ခု အနည္းဆုံး ရွိသည့္ blog post မ်ားကုိ ဆြဲထုတ္လုိသည္ ဆုိပါစို ့။  သင့္အေနနဲ ့ `has` method ကုိ အသုံးျပဳရမည္ ျဖစ္သည္။
+Model များမှ record များကို access ပြုလုပ်ရာတွင် ၊  result များကို စစ်ဆေးပြီးမှ ထုတ်ယူလိုသည့် အနေအထားမျိုးတွင် ရှိပေနိုင်သည်။ ဥပမာ သင့်အနေဖြင့် Comment တစ်ခု အနည်းဆုံး ရှိသည့် blog post များကို ဆွဲထုတ်လိုသည် ဆိုပါစို ့။  သင့်အနေနဲ ့ `has` method ကို အသုံးပြုရမည် ဖြစ်သည်။
 
 $posts = Post::has('comments')->get();
 
-has method တြင္ သင့္အေနျဖင့္ operator မ်ား ႏွင့္  ထုတ္ယူလုိသည့္ အေရအတြက္ကုိ သတ္မွတ္ႏုိင္သည္။
+has method တွင် သင့်အနေဖြင့် operator များ နှင့်  ထုတ်ယူလိုသည့် အရေအတွက်ကို သတ်မှတ်နိုင်သည်။
 
 $posts = Post::has('comments', '>=', 3)->get();
 
-သင့္အေနျဖင့္ ပုိ၍ အေသးစိတ္က်ျပီး "where" conditions မ်ားကုိ `has` queries အတြင္း စစ္ေဆးလုိပါက `whereHas` ႏွင့္ `orWhereHas` method မ်ားကုိအသုံးျပဳႏုိင္သည္။
+သင့်အနေဖြင့် ပို၍ အသေးစိတ်ကျပြီး "where" conditions များကို `has` queries အတွင်း စစ်ဆေးလိုပါက `whereHas` နှင့် `orWhereHas` method များကိုအသုံးပြုနိုင်သည်။
 
 $posts = Post::whereHas('comments', function($q)
 {
@@ -746,8 +746,8 @@ $q->where('content', 'like', 'foo%');
 ### Dynamic Properties
 
 
-Eloquent တြင္ သင့္အေနျဖင့္ relations မ်ားမွ properties မ်ားကုိ dynamic properties အေနျဖင့္ ဆြဲယူႏုိင္သည္။ Eloquent အေနျဖင့္ သင့္၏ relationship အလုိအေလ်ာက္အေနျဖင့္ relations ကုိ အလိုအေလ်ာက္ load လုပ္ကာ ေခၚယူမည္ ျဖစ္ျပီး  `get` ( one-to-many relationships) ေပေလာ၊ `first` (for one-to-one relationships) method ေပေလာ ကုိပင္ ခြဲျခားလုပ္ေဆာင္ေပးမည္ ျဖစ္သည္။ ထုိေနာက္ တူညီေသာ အမည္မွ တဆင့္
-dynamic property ကုိ အလြယ္တကူ ေခၚဆုိ ႏုိင္ေပမည္။ ဥပမာ `$phone` ဟုသည့္ model မွ တဆင့္
+Eloquent တွင် သင့်အနေဖြင့် relations များမှ properties များကို dynamic properties အနေဖြင့် ဆွဲယူနိုင်သည်။ Eloquent အနေဖြင့် သင့်၏ relationship အလိုအလျောက်အနေဖြင့် relations ကို အလိုအလျောက် load လုပ်ကာ ခေါ်ယူမည် ဖြစ်ပြီး  `get` ( one-to-many relationships) ပေလော၊ `first` (for one-to-one relationships) method ပေလော ကိုပင် ခွဲခြားလုပ်ဆောင်ပေးမည် ဖြစ်သည်။ ထိုနောက် တူညီသော အမည်မှ တဆင့်
+dynamic property ကို အလွယ်တကူ ခေါ်ဆို နိုင်ပေမည်။ ဥပမာ `$phone` ဟုသည့် model မှ တဆင့်
 
 class Phone extends Eloquent {
 
@@ -768,13 +768,13 @@ It may be shortened to simply:
 
 echo $phone->user->email;
 
-> **Note:** Relationships မ်ားကုိ return ျပန္ေသာ result မ်ားကုိ အလုပ္လုပ္သြားေသာ method မွာ `Illuminate\Database\Eloquent\Collection` class မွ instance မ်ားကုိ ျပန္ျခင္းျဖစ္သည္။
+> **Note:** Relationships များကို return ပြန်သော result များကို အလုပ်လုပ်သွားသော method မှာ `Illuminate\Database\Eloquent\Collection` class မှ instance များကို ပြန်ခြင်းဖြစ်သည်။
 
 <a name="eager-loading"></a>
 ## Eager Loading
 
 
-Eager loading exists to N+1 query ကဲ့သို ့ေသာ Query မ်ားကုိ ပုိ ့၍ ေပါ့ပါးစြာ အသုံးျပဳႏုိင္ရန္ ျဖစ္သည္။ ဥပမာ `Author` model ႏွင့္ `Book` model တုိ ့ ဆက္စပ္ေနသည္ ဆုိပါစုိ ့။ ၄င္းတုိ ့၏ relationship ကုိ ေအာက္ပါ အတိုင္း သတ္မွတ္ႏုိင္ပါသည္။ 
+Eager loading exists to N+1 query ကဲ့သို ့သော Query များကို ပို ့၍ ပေါ့ပါးစွာ အသုံးပြုနိုင်ရန် ဖြစ်သည်။ ဥပမာ `Author` model နှင့် `Book` model တို ့ ဆက်စပ်နေသည် ဆိုပါစို ့။ ၄င်းတို ့၏ relationship ကို အောက်ပါ အတိုင်း သတ်မှတ်နိုင်ပါသည်။ 
 
 class Book extends Eloquent {
 
@@ -785,15 +785,15 @@ return $this->belongsTo('Author');
 
 }
 
-ထုိေနာက္ ေအာက္ပါ code ကုိ ၾကည့္ၾကည့္ပါ။
+ထိုနောက် အောက်ပါ code ကို ကြည့်ကြည့်ပါ။
 
 foreach (Book::all() as $book)
 {
 echo $book->author->name;
 }
 
-ထုိ loop မွာ Book မွ ရွိသမွ် စာအုပ္တုိင္းကုိ ေခၚယူမည္ ျဖစ္သည္။ ထုိေနာက္ ထုိေနာက္ ထုိေနာက္ ေနာက္ query တစ္ခုအေနျဖင့္ စာအုပ္တစ္ခုခ်င္းဆီ၏ 
-author ကုိ  ေဖာ္ျပသြားမည္ ျဖစ္သည္။ အကယ္၍ စာအုပ္ ၂၅ အုပ္ ရွိသည္ ဆုိပါစုိ ့ ၊ query ၂၆ ေၾကာင္း run ျဖစ္သည္။ သုိ ့ပင္ေသာ္ညား eager loading ၏ အက်ိဳးေက်းဇူးေၾကာင့္ မလုိအပ္ေသာ query မ်ားကုိ ေလွ်ာ့ခ်ႏုိင္သည္။ ထုိ relationship တြင္ `with` method အသုံးျပဳ၍ eager load ျပဳလုပ္ႏုိင္သည္။
+ထို loop မှာ Book မှ ရှိသမျှ စာအုပ်တိုင်းကို ခေါ်ယူမည် ဖြစ်သည်။ ထိုနောက် ထိုနောက် ထိုနောက် နောက် query တစ်ခုအနေဖြင့် စာအုပ်တစ်ခုချင်းဆီ၏ 
+author ကို  ဖော်ပြသွားမည် ဖြစ်သည်။ အကယ်၍ စာအုပ် ၂၅ အုပ် ရှိသည် ဆိုပါစို ့ ၊ query ၂၆ ကြောင်း run ဖြစ်သည်။ သို ့ပင်သော်ညား eager loading ၏ အကျိုးကျေးဇူးကြောင့် မလိုအပ်သော query များကို လျှော့ချနိုင်သည်။ ထို relationship တွင် `with` method အသုံးပြု၍ eager load ပြုလုပ်နိုင်သည်။
 
 
 foreach (Book::with('author')->get() as $book)
@@ -801,27 +801,27 @@ foreach (Book::with('author')->get() as $book)
 echo $book->author->name;
 }
 
-အထက္ပါ loop တြင္မူ query ႏွစ္ေၾကာင္းသာ execute ျပဳလုပ္မည္ ျဖစ္သည္။
+အထက်ပါ loop တွင်မူ query နှစ်ကြောင်းသာ execute ပြုလုပ်မည် ဖြစ်သည်။
 
 select * from books
 
 select * from authors where id in (1, 2, 3, 4, 5, ...)
 
-Eager loading ကုိ အသုံးျပဳျခင္း အားျဖင့္ သင့္ application ၏ performance ကုိ သိသိသာသာ ျမင့္တက္ေစမည္ ျဖစ္သည္။
+Eager loading ကို အသုံးပြုခြင်း အားဖြင့် သင့် application ၏ performance ကို သိသိသာသာ မြင့်တက်စေမည် ဖြစ်သည်။
 
-ထုိအျပင္ တစ္ခုထက္ပုိေသာ relation မ်ားတြင္ တခ်ိန္တည္းတြင္ eager load အသုံးျပဳႏုိင္မည္ ျဖစ္သည္။
+ထိုအပြင် တစ်ခုထက်ပိုသော relation များတွင် တချိန်တည်းတွင် eager load အသုံးပြုနိုင်မည် ဖြစ်သည်။
 
 $books = Book::with('author', 'publisher')->get();
 
-Nested relationship မ်ားတြင္လည္း eager load အသုံးျပဳႏုိင္သည္။
+Nested relationship များတွင်လည်း eager load အသုံးပြုနိုင်သည်။
 
 $books = Book::with('author.contacts')->get();
 
-အထက္ ဥပမာ တြင္ `author` ႏွင့္ ပတ္သတ္ေနသည္မ်ားကုိ eager load ျပဳလုပ္ျပီး author ၏ `contacts` relation ပါ load သြားမည္ ျဖစ္သည္။
+အထက် ဥပမာ တွင် `author` နှင့် ပတ်သတ်နေသည်များကို eager load ပြုလုပ်ပြီး author ၏ `contacts` relation ပါ load သွားမည် ဖြစ်သည်။
 
-### Eager Load အကန္ ့အသတ္မ်ား 
+### Eager Load အကန် ့အသတ်များ 
 
-ထခါတရံ condition မ်ား စစ္ေဆးျပီးမွ relationship မ်ားကို eager load ျပဳလုပ္လုိမည္ အခ်ိန္ကာလ လည္း ရွိေပမည္။ ေအာက္က ဥပမာတြင္ ဆုိပါစို ့
+ထခါတရံ condition များ စစ်ဆေးပြီးမှ relationship များကို eager load ပြုလုပ်လိုမည် အချိန်ကာလ လည်း ရှိပေမည်။ အောက်က ဥပမာတွင် ဆိုပါစို ့
 
 $users = User::with(array('posts' => function($query)
 {
@@ -829,7 +829,7 @@ $query->where('title', 'like', '%first%');
 
 }))->get();
 
-ထုိ ဥပမာ တြင္ user's post တြင္းမွ  "first"  စကာလုံး ႏွင့္စတင္သည္မ်ားကိုသာ eager load လုပ္သြားမည္ ျဖစ္သည္။ Closure မ်ား အတြင္းတြင္မူ အကန့္ အသတ္မရွိေပ။  သင့္အေနျဖင့္ ေအာက္က အတုိင္း order အလုိက္ စီရီႏုိင္ေပဦးမည္။
+ထို ဥပမာ တွင် user's post တွင်းမှ  "first"  စကာလုံး နှင့်စတင်သည်များကိုသာ eager load လုပ်သွားမည် ဖြစ်သည်။ Closure များ အတွင်းတွင်မူ အကန့် အသတ်မရှိပေ။  သင့်အနေဖြင့် အောက်က အတိုင်း order အလိုက် စီရီနိုင်ပေဦးမည်။
 
 $users = User::with(array('posts' => function($query)
 {
@@ -839,18 +839,18 @@ $query->orderBy('created_at', 'desc');
 
 ### Lazy Eager Loading
 
-တည္ရွိေနျပီးေသာ model collection မ်ားထဲမွ eager load ႏွင့္ ဆက္စပ္ေနေသာ model မ်ားကုိ တုိက္ရုိက္ ေခၚယူ၍လည္း ျဖစ္ႏုိင္ေပသည္။ ထုိသုိ ့ျပဳလုပ္ျခင္း Model မ်ားကို Load လုပ္ရာတြင္ load လုပ္မည္ မလုပ္မည္ကုိ dynamically စဥ္းစားဆုံးျဖတ္ရာတြင္ ေသာ္လည္းေကာင္း ၊ caching ျဖင့္ ပူးေပါင္း အသုံးျပဳရာတြင္ေသာ္လည္းေကာင္း အသုံးဝင္သည္။
+တည်ရှိနေပြီးသော model collection များထဲမှ eager load နှင့် ဆက်စပ်နေသော model များကို တိုက်ရိုက် ခေါ်ယူ၍လည်း ဖြစ်နိုင်ပေသည်။ ထိုသို ့ပြုလုပ်ခြင်း Model များကို Load လုပ်ရာတွင် load လုပ်မည် မလုပ်မည်ကို dynamically စဉ်းစားဆုံးဖြတ်ရာတွင် သော်လည်းကောင်း ၊ caching ဖြင့် ပူးပေါင်း အသုံးပြုရာတွင်သော်လည်းကောင်း အသုံးဝင်သည်။
 
 $books = Book::all();
 
 $books->load('author', 'publisher');
 
 <a name="inserting-related-models"></a>
-## ဆက္စပ္ေနသည့္ Model မ်ားတြင္ data ထည့္သြင္းျခင္း
+## ဆက်စပ်နေသည့် Model များတွင် data ထည့်သွင်းခြင်း
 
-#### ဆက္စပ္ေနသည့္ Model ျဖင့္ ခ်ိတ္ဆက္ျခင္း
+#### ဆက်စပ်နေသည့် Model ဖြင့် ချိတ်ဆက်ခြင်း
 
-တခါတရံ ဆက္စပ္ေနသည့္ model မ်ားအား insert ျပဳလုပ္ရန္လည္း လုိေပမည္။ ဥပမာ သင့္အေနျဖင့္ post တစ္ခုတြင္ comment တစ္ခုကုိ ထည့္သြင္းမည္ ဆုိပါစုိ ့။  Model တစ္ခု၏ `post_id` foreign key ကုိ manually ထည့္သြင္းေနမည့္ အစား `Post` model ဖက္မွ တုိက္ရုိက္ထည့္သြင္း၍လည္း ရေပသည္။
+တခါတရံ ဆက်စပ်နေသည့် model များအား insert ပြုလုပ်ရန်လည်း လိုပေမည်။ ဥပမာ သင့်အနေဖြင့် post တစ်ခုတွင် comment တစ်ခုကို ထည့်သွင်းမည် ဆိုပါစို ့။  Model တစ်ခု၏ `post_id` foreign key ကို manually ထည့်သွင်းနေမည့် အစား `Post` model ဖက်မှ တိုက်ရိုက်ထည့်သွင်း၍လည်း ရပေသည်။
 
 $comment = new Comment(array('message' => 'A new comment.'));
 
@@ -858,11 +858,11 @@ $post = Post::find(1);
 
 $comment = $post->comments()->save($comment);
 
-အထက္က ဥပမာတြင္ `post_id` field ကုိ အလုိအေလ်ာက္ ထည့္သြင္းသြားမည္ ျဖစ္သည္။
+အထက်က ဥပမာတွင် `post_id` field ကို အလိုအလျောက် ထည့်သွင်းသွားမည် ဖြစ်သည်။
 
-### Models မ်ား ဆက္စပ္ျခင္း(Belongs To)
+### Models များ ဆက်စပ်ခြင်း(Belongs To)
 
-`belongsTo` relationship ျဖင့္ Method မ်ားကို data မ်ား update လုပ္ေစလုိပါက `associate` method ကုိ အသုံးျပဳႏုိင္သည္။ ထုိ method သည္ လက္ေအာက္ခံ model ၏ foregin key ကုိပါ ထည့္သြင္းေပးသြားမည္ ျဖစ္သည္။
+`belongsTo` relationship ဖြင့် Method များကို data များ update လုပ်စေလိုပါက `associate` method ကို အသုံးပြုနိုင်သည်။ ထို method သည် လက်အောက်ခံ model ၏ foregin key ကိုပါ ထည့်သွင်းပေးသွားမည် ဖြစ်သည်။
 
 $account = Account::find(10);
 
@@ -870,9 +870,9 @@ $user->account()->associate($account);
 
 $user->save();
 
-### ဆက္စပ္ေနသည့္ Model တြင္ data ထည့္သြင္းျခင္း (Many To Many)
+### ဆက်စပ်နေသည့် Model တွင် data ထည့်သွင်းခြင်း (Many To Many)
 
-သင့္အေနျဖင့္ many-to-many relations ရွိေနသည့္ model မ်ားတြင္လည္း data ျဖည့္သြင္းလုိေပမည္။  ထုံးစံ ဥပမာ တစ္ခုျဖစ္သည့္ `User` ႏွင့္ `Role` model မ်ားျဖင့္ ေရွ  ့ဆက္ၾကစုိ ့။ user ၏ roles မ်ားကုိ `attach` method ျဖင့္ ခ်ိတ္ဆက္ႏုိင္သည္။
+သင့်အနေဖြင့် many-to-many relations ရှိနေသည့် model များတွင်လည်း data ဖြည့်သွင်းလိုပေမည်။  ထုံးစံ ဥပမာ တစ်ခုဖြစ်သည့် `User` နှင့် `Role` model များဖြင့် ရှေ  ့ဆက်ကြစို ့။ user ၏ roles များကို `attach` method ဖြင့် ချိတ်ဆက်နိုင်သည်။
 
 #### Attaching Many To Many Models
 
@@ -1169,39 +1169,39 @@ You may register an observer instance using the `observe` method:
 User::observe(new UserObserver);
 
 <a name="converting-to-arrays-or-json"></a>
-## Arrays ႏွင့္ JSON သုိ ့ေျပာင္းလဲျခင္း
+## Arrays နှင့် JSON သို ့ပြောင်းလဲခြင်း
 
-#### Model တစ္ခုကို Array သုိ ့ေျပာင္းလဲျခင္း
+#### Model တစ်ခုကို Array သို ့ပြောင်းလဲခြင်း
 
-JSON APIs မ်ား တည္ေဆာက္ရာတြင္ ၊ သင့္ အေနျဖင့္ model ႏွင့္ ဆက္စပ္ပတ္သတ္သည္မ်ားကို array အေနျဖင့္ေသာ လည္းေကာင္း JSON အေနျဖင့္ေသာ္ လည္းေကာင္း ထုတ္ေပးလုိသည့္ အခ်ိန္ကာလ မ်ား ရွိေပမည္။ Eloquent အေနျဖင့္ ထုိသုိ ့ျပဳလုပ္ႏုိင္ရန္ ေထာက္ပံ့ေပးေသာ method မ်ားလည္း ရွိေပသည္။ ထုိသုိ ့ ၄င္းႏွင့္ တကြ ဆက္စပ္ပတ္သတ္ေနသည္မ်ားကိုပါက array အျဖစ္ေျပာင္းလဲ ႏုိင္ရန္ `toArray` method ကုိ အသုံးျပဳႏုိင္သည္။
+JSON APIs များ တည်ဆောက်ရာတွင် ၊ သင့် အနေဖြင့် model နှင့် ဆက်စပ်ပတ်သတ်သည်များကို array အနေဖြင့်သော လည်းကောင်း JSON အနေဖြင့်သော် လည်းကောင်း ထုတ်ပေးလိုသည့် အချိန်ကာလ များ ရှိပေမည်။ Eloquent အနေဖြင့် ထိုသို ့ပြုလုပ်နိုင်ရန် ထောက်ပံ့ပေးသော method များလည်း ရှိပေသည်။ ထိုသို ့ ၄င်းနှင့် တကွ ဆက်စပ်ပတ်သတ်နေသည်များကိုပါက array အဖြစ်ပြောင်းလဲ နိုင်ရန် `toArray` method ကို အသုံးပြုနိုင်သည်။
 
 $user = User::with('roles')->first();
 
 return $user->toArray();
 
-Models connection တစ္ခုလုံးပါ array အျဖစ္ ေျပာင္းလဲသြားသည္ကုိ သတိျပဳရမည္။ 
+Models connection တစ်ခုလုံးပါ array အဖြစ် ပြောင်းလဲသွားသည်ကို သတိပြုရမည်။ 
 
 return User::all()->toArray();
 
-#### Model တစ္ခုကုိ JSON သုိ ့ ေျပာင္းလဲျခင္း
+#### Model တစ်ခုကို JSON သို ့ ပြောင်းလဲခြင်း
 
-Model တစ္ခုကုိ JSON အေနျဖင့္ ေျပာင္းလဲလုိပါက `toJson` method ကုိ အသုံးျပဳႏုိင္သည္။
+Model တစ်ခုကို JSON အနေဖြင့် ပြောင်းလဲလိုပါက `toJson` method ကို အသုံးပြုနိုင်သည်။
 
 return User::find(1)->toJson();
 
-#### Route တစ္ခုမွ Model ကုိ return ျပန္ျခင္း  
+#### Route တစ်ခုမှ Model ကို return ပြန်ခြင်း  
 
-Model သုိ ့မဟုတ္ collection တစ္ခုသည္ string အျဖစ္သုိ ့ cast အလုပ္ခံရပါက အလုိအေလ်ာက္ JSON အျဖစ္သုိ ့ေျပာင္းလဲသြားမည္ ျဖစ္သည္။ 
-ထုိ ့ေၾကာင့္ သင့္ application route မွ တုိက္ရုိက္ return ျပန္၍လည္း ရႏုိင္သည္။
+Model သို ့မဟုတ် collection တစ်ခုသည် string အဖြစ်သို ့ cast အလုပ်ခံရပါက အလိုအလျောက် JSON အဖြစ်သို ့ပြောင်းလဲသွားမည် ဖြစ်သည်။ 
+ထို ့ကြောင့် သင့် application route မှ တိုက်ရိုက် return ပြန်၍လည်း ရနိုင်သည်။
 
 Route::get('users', function()
 {
 return User::all();
 });
 
-#### Array သုိ ့မဟုတ္ JSON သုိ ့ေျပာင္းလဲရာတြင္ Attribute တစ္ခ်ိဳ  ့ကုိ ေဖ်ာက္ထားျခင္း
+#### Array သို ့မဟုတ် JSON သို ့ပြောင်းလဲရာတွင် Attribute တစ်ချို  ့ကို ဖျောက်ထားခြင်း
 
-တခါတရံ သင့္အေနျဖင့္ တခ်ိဳ  ့ေသာ attribute မ်ားကို array သုိ ့မဟုတ္ JSON သုိ ့ေျပာင္းလဲရာတြင္ ပါမလာ ေစခ်င္သည့္ attribute မ်ား (ဥပမာ password မ်ားကဲ့သုိ ့ေသာ ) ရွိေပမည္။ ထုိသုိ ့ျပဳလုပ္ႏုိင္ရန္ model အတြင္းတြင္ `hidden` ဟူေသာ property တစ္ခုအျဖစ္ ေၾကညာေပးရန္ လုိေပမည္။
+တခါတရံ သင့်အနေဖြင့် တချို  ့သော attribute များကို array သို ့မဟုတ် JSON သို ့ပြောင်းလဲရာတွင် ပါမလာ စေချင်သည့် attribute များ (ဥပမာ password များကဲ့သို ့သော ) ရှိပေမည်။ ထိုသို ့ပြုလုပ်နိုင်ရန် model အတွင်းတွင် `hidden` ဟူသော property တစ်ခုအဖြစ် ကြေညာပေးရန် လိုပေမည်။
 
 class User extends Eloquent {
 
@@ -1211,7 +1211,7 @@ protected $hidden = array('password');
 
 > **Note:** When hiding relationships, use the relationship's **method** name, not the dynamic accessor name.
 
-အျပန္အလွန္အားျဖင့္ သင့္အေနျဖင့္ ထုတ္ခ်င္သည္မ်ားကိုသာ ေဖာ္ျပႏုိင္ရန္ `visible` ဟုသည္ property တစ္ခု ေၾကညာႏုိင္ေပသည္။
+အပြန်အလှန်အားဖြင့် သင့်အနေဖြင့် ထုတ်ချင်သည်များကိုသာ ဖော်ပြနိုင်ရန် `visible` ဟုသည် property တစ်ခု ကြေညာနိုင်ပေသည်။
 
 protected $visible = array('first_name', 'last_name');
 

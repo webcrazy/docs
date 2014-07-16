@@ -1,6 +1,6 @@
-﻿# စိစစ္ျခင္း
+﻿# စိစစ်ခြင်း
 
-- [အေျခခံအသုံးျပဳပုံ](#basic-usage)
+- [အခြေခံအသုံးပြုပုံ](#basic-usage)
 - [Working With Error Messages](#working-with-error-messages)
 - [Error Messages & Views](#error-messages-and-views)
 - [Available Validation Rules](#available-validation-rules)
@@ -9,30 +9,30 @@
 - [Custom Validation Rules](#custom-validation-rules)
 
 <a name="basic-usage"></a>
-## အေျခခံအသုံးျပဳပုံ
+## အခြေခံအသုံးပြုပုံ
 
-Laravel အေနျဖင့္ data မ်ားကုိ စိစစ္ရာတြင္ ရုိးရွင္း အဆင္ေျပေသာ နည္းလမ္းမ်ားကုိ အသုံးျပဳထားသည္။ error message မ်ားကုိ `Validation` class မွ တဆင့္ ထုတ္ယူႏုိင္သည္။
+Laravel အနေဖြင့် data များကို စိစစ်ရာတွင် ရိုးရှင်း အဆင်ပြေသော နည်းလမ်းများကို အသုံးပြုထားသည်။ error message များကို `Validation` class မှ တဆင့် ထုတ်ယူနိုင်သည်။
 
-#### အေျခခံအသုံးျပဳပုံ ဥပမာ
+#### အခြေခံအသုံးပြုပုံ ဥပမာ
 
 	$validator = Validator::make(
 		array('name' => 'Dayle'),
 		array('name' => 'required|min:5')
 	);
 
-Validation ျပဳလုပ္ရာတြင္  `make` method ဟုသည့္ method ကုိ အသုံးျပဳျပီး array တြင္းပါရွိမည့္ ပထမ argument မွာ data ျဖစ္ျပီး ဒုတိယ argument မွာ ထုိ data မ်ားကုိ စိစစ္မည့္ rule မ်ားကို ထည့္သြင္းရမည္။
+Validation ပြုလုပ်ရာတွင်  `make` method ဟုသည့် method ကို အသုံးပြုပြီး array တွင်းပါရှိမည့် ပထမ argument မှာ data ဖြစ်ပြီး ဒုတိယ argument မှာ ထို data များကို စိစစ်မည့် rule များကို ထည့်သွင်းရမည်။
 
 
-#### Array ကုိ အသုံးျပဳ၍ Rule မ်ား သတ္မွတ္ျခင္း
+#### Array ကို အသုံးပြု၍ Rule များ သတ်မှတ်ခြင်း
 
-တခုထက္ပုိေသာ rule မ်ားကို သတ္မွတ္လုိပါက "pipe" character ကုိျဖစ္ေစ array အတြင္း ျခား၍ျဖစ္ေစ ထည့္သြင္းႏုိင္သည္။
+တခုထက်ပိုသော rule များကို သတ်မှတ်လိုပါက "pipe" character ကိုဖြစ်စေ array အတွင်း ခြား၍ဖြစ်စေ ထည့်သွင်းနိုင်သည်။
 
 	$validator = Validator::make(
 		array('name' => 'Dayle'),
 		array('name' => array('required', 'min:5'))
 	);
 
-#### Fields မ်ားစြာကုိ စိစစ္ျခင္း
+#### Fields များစွာကို စိစစ်ခြင်း
 
     $validator = Validator::make(
         array(
@@ -47,7 +47,7 @@ Validation ျပဳလုပ္ရာတြင္  `make` method ဟုသည�
         )
     );
 
-`Validator` instance ကုိ ျပဳလုပ္ျပီးပါက `fails` သုိ ့မဟုတ္ `passes` method ကုိ အသုံးျပဳ၍ အခ်က္အလက္မ်ား စိစစ္ႏုိင္သည္။
+`Validator` instance ကို ပြုလုပ်ပြီးပါက `fails` သို ့မဟုတ် `passes` method ကို အသုံးပြု၍ အချက်အလက်များ စိစစ်နိုင်သည်။
 
 
 	if ($validator->fails())
@@ -55,58 +55,58 @@ Validation ျပဳလုပ္ရာတြင္  `make` method ဟုသည�
 		// The given data did not pass validation
 	}
 
-စိစစ္ျခင္း မေအာင္ျမင္ပါက validator မွ error message ကုိ ရယူႏုိင္ေပသည္။
+စိစစ်ခြင်း မအောင်မြင်ပါက validator မှ error message ကို ရယူနိုင်ပေသည်။
 
 	$messages = $validator->messages();
 
-္fail ျဖစ္သည့္ rule မ်ားကုိသာ ရယူလုိျပီး message မ်ား မပါဝင္ေစလုိပါက `failed` method ကုိ အသုံးျပဳႏုိင္သည္။
+်fail ဖြစ်သည့် rule များကိုသာ ရယူလိုပြီး message များ မပါဝင်စေလိုပါက `failed` method ကို အသုံးပြုနိုင်သည်။
 
 	$failed = $validator->failed();
 
-#### Files မ်ားစိစစ္ျခင္း
+#### Files များစိစစ်ခြင်း
 
-`Validator` class အေနျဖင့္ `size` ႏွင့္ `mimes` အပါအဝင္ မ်ားေျမာင္လွေသာ validation method မ်ားကုိ အေထာက္အပံ့ေပးထားျပီး file မ်ား validate ျပဳလုပ္လုိပါက ထုိထဲ့သုိ ့ ထည့္သြင္းရန္သာ လုိေပမည္။
+`Validator` class အနေဖြင့် `size` နှင့် `mimes` အပါအဝင် များမြောင်လှသော validation method များကို အထောက်အပံ့ပေးထားပြီး file များ validate ပြုလုပ်လိုပါက ထိုထဲ့သို ့ ထည့်သွင်းရန်သာ လိုပေမည်။
 
 
 <a name="working-with-error-messages"></a>
-## Error Messages မ်ားႏွင့္ လႈပ္ရွားျခင္း
+## Error Messages များနှင့် လှုပ်ရှားခြင်း
 
 
 After calling the  on a 
-`Validator` instance မွ `messages` method ကုိ ေခၚျပီးပါက Error message မ်ားျဖင့္ အလုပ္လုပ္ရာတြင္ လြယ္ကူေစမည့္ method မ်ားစြာပါဝင္မည့္ `MessageBag` ပါဝင္မည္ ျဖစ္သည္။
+`Validator` instance မှ `messages` method ကို ခေါ်ပြီးပါက Error message များဖြင့် အလုပ်လုပ်ရာတွင် လွယ်ကူစေမည့် method များစွာပါဝင်မည့် `MessageBag` ပါဝင်မည် ဖြစ်သည်။
 
-#### Field တစ္ခုမွ ပထမဆုံး Error Message ကုိ ထုတ္ယူျခင္း
+#### Field တစ်ခုမှ ပထမဆုံး Error Message ကို ထုတ်ယူခြင်း
 
 	echo $messages->first('email');
 
-#### Field တစ္ခုမွ Error Message မ်ားထုတ္ယူျခင္း
+#### Field တစ်ခုမှ Error Message များထုတ်ယူခြင်း
 
 	foreach ($messages->get('email') as $message)
 	{
 		//
 	}
 
-#### Field အားလုံးမွ Error Message မ်ားထုတ္ယူျခင္း
+#### Field အားလုံးမှ Error Message များထုတ်ယူခြင်း
 
 	foreach ($messages->all() as $message)
 	{
 		//
 	}
 
-#### Field တစ္ခုမွ message ရွိမရွိ စစ္ေဆးျခင္း
+#### Field တစ်ခုမှ message ရှိမရှိ စစ်ဆေးခြင်း
 
 	if ($messages->has('email'))
 	{
 		//
 	}
 
-#### Error Message မ်ားအား Format ေျပာင္း၍ ထုတ္ယူျခင္း
+#### Error Message များအား Format ပြောင်း၍ ထုတ်ယူခြင်း
 
 	echo $messages->first('email', '<p>:message</p>');
 	
-> **မွတ္ခ်က္:**  ပုံမွန္အားျဖင့္ messages မ်ားကုိ Bootstrap ျဖင့္ အဆင္ေျပမည့္ ပုံစံမ်ားအေနျဖင့္ သတ္မွတ္ထားပါသည္။
+> **မှတ်ချက်:**  ပုံမှန်အားဖြင့် messages များကို Bootstrap ဖြင့် အဆင်ပြေမည့် ပုံစံများအနေဖြင့် သတ်မှတ်ထားပါသည်။
 
-#### Error Messages မ်ားအား Format တစ္ခု သတ္မွတ္၍ ထုတ္ယူျခင္း
+#### Error Messages များအား Format တစ်ခု သတ်မှတ်၍ ထုတ်ယူခြင်း
 
 	foreach ($messages->all('<li>:message</li>') as $message)
 	{
@@ -114,9 +114,9 @@ After calling the  on a
 	}
 
 <a name="error-messages-and-views"></a>
-## Error Message မ်ားႏွင့္ View မ်ား
+## Error Message များနှင့် View များ
 
-Validation ကုိ ေဆာင္ရြက္ျပီးသည္ႏွင့္ Error message မ်ားကုိ လြယ္လင့္တကူ ျပန္လည္ျပသႏုိင္ရန္ လုိအပ္ေပသည္။ ထုိလုိအပ္ခ်က္မ်ားကုိ Laravel မွ အဆင္ေျပလြယ္ကူစြာ ျဖည့္စြမ္းထားသည္။ ေအာက္ပါ route မ်ားကုိ ဥပမာ အေနျဖင့္ၾကည့္ပါ။
+Validation ကို ဆောင်ရွက်ပြီးသည်နှင့် Error message များကို လွယ်လင့်တကူ ပြန်လည်ပြသနိုင်ရန် လိုအပ်ပေသည်။ ထိုလိုအပ်ချက်များကို Laravel မှ အဆင်ပြေလွယ်ကူစွာ ဖြည့်စွမ်းထားသည်။ အောက်ပါ route များကို ဥပမာ အနေဖြင့်ကြည့်ပါ။
 
 	Route::get('register', function()
 	{
@@ -136,28 +136,28 @@ Validation ကုိ ေဆာင္ရြက္ျပီးသည္ႏွင�
 	});
 
 	
-Note that when စိစစ္ျခင္း မေအာင္ျမင္ပါက `Validator` instance ကုိ `withErrors` method ျဖင့္ Error မ်ားကို passing ေပးလုိက္ျပီး Redirect ျပဳလုပ္လုိက္သည္ ကုိ ေတြ ့ရေပမည္။ အဆုိပါ method ကုိ အသုံးျပဳျခင္းျဖင့္ error message မ်ားကို လြယ္လင့္တကူ ျဖတ္ကနဲ  ျပသရာတြင္ သုံးႏုိင္ရင္ next request ၏ Session ထဲတြင္ ထည့္သြင္းထားပါသည္။
+Note that when စိစစ်ခြင်း မအောင်မြင်ပါက `Validator` instance ကို `withErrors` method ဖြင့် Error များကို passing ပေးလိုက်ပြီး Redirect ပြုလုပ်လိုက်သည် ကို တွေ ့ရပေမည်။ အဆိုပါ method ကို အသုံးပြုခြင်းဖြင့် error message များကို လွယ်လင့်တကူ ဖြတ်ကနဲ  ပြသရာတွင် သုံးနိုင်ရင် next request ၏ Session ထဲတွင် ထည့်သွင်းထားပါသည်။
 
-သုိ ့ပင္ေသာ္ညား GET route နဲ ့ Error Message မ်ားကုိ အေသခ်ည္ေႏွာင္ထားရန္ မလုိသည္ကို သတိျပဳရမည္။ အဘယ္ေၾကာင့္ဆုိေသာ္ Laravel သည္ Session data မ်ားမွ Error မ်ားကုိ စစ္ေဆးျပီး view ဆီသုိ ့ အဆင္ေျပသည္ႏွင့္ တျပိဳင္နက္ ျပသႏုိင္ရန္ ျပင္ဆင္ထားသည္ကုိ သတိျပဳရမည္။ **ထုိေၾကာင့္ အေရးၾကီးသည့္ အခ်က္မွာ`$errors` ဟုသည္ variable မွာ သင့္ view ၏ request တုိင္းတြင္ ျပင္ဆင္ထားေသာေၾကာင့္ အျမဲတမ္း အဆင္သင့္ ျဖစ္ေနသည္ကုိ မွတ္ထားရန္လုိသည္။ `$errors` variable မွာ `MessageBag` ၏ instance ျဖစ္သည္။
+သို ့ပင်သော်ညား GET route နဲ ့ Error Message များကို အသေချည်နှောင်ထားရန် မလိုသည်ကို သတိပြုရမည်။ အဘယ်ကြောင့်ဆိုသော် Laravel သည် Session data များမှ Error များကို စစ်ဆေးပြီး view ဆီသို ့ အဆင်ပြေသည်နှင့် တပြိုင်နက် ပြသနိုင်ရန် ပြင်ဆင်ထားသည်ကို သတိပြုရမည်။ **ထိုကြောင့် အရေးကြီးသည့် အချက်မှာ`$errors` ဟုသည် variable မှာ သင့် view ၏ request တိုင်းတွင် ပြင်ဆင်ထားသောကြောင့် အမြဲတမ်း အဆင်သင့် ဖြစ်နေသည်ကို မှတ်ထားရန်လိုသည်။ `$errors` variable မှာ `MessageBag` ၏ instance ဖြစ်သည်။
 
-ထုိေၾကာင့္ redirect ျပဳလုပ္ျပီးေနာက္ `$errors` variable ႏွင့္ သင့္ view မွာ အလုိအေလ်ာက္ ခ်ည္ေႏွာင္ျပီးသား ျဖစ္ေပသည္။
+ထိုကြောင့် redirect ပြုလုပ်ပြီးနောက် `$errors` variable နှင့် သင့် view မှာ အလိုအလျောက် ချည်နှောင်ပြီးသား ဖြစ်ပေသည်။
 
 	<?php echo $errors->first('email'); ?>
 
-### အမည္ေပးထားေသာ Error Bag မ်ား
+### အမည်ပေးထားသော Error Bag များ
 
-သင့္အေနျဖင့္ Page တစ္ခုတည္းတြင္ မ်ားျပားလွေသာ form မ်ားသည္ရွိသည္ ဆုိပါစုိ ့။ ထုိအခါ သင့္အေနျဖင့္ Error မ်ား၏ `MessageBag` မ်ားကုိ ကြဲျပားျခားနား ေစရန္ အမည္နာမ ေပးလုိေပမည္။ ထုိအခါတြင္ သင့္အေနျဖင့္ `withErrors` ဟုသည့္ method ၏ ဒုတိယ argument အေနျဖင့္ မိမိေပးလုိသည့္ အမည္ကုိ ထည့္သြင္းႏုိင္သည္။
+သင့်အနေဖြင့် Page တစ်ခုတည်းတွင် များပြားလှသော form များသည်ရှိသည် ဆိုပါစို ့။ ထိုအခါ သင့်အနေဖြင့် Error များ၏ `MessageBag` များကို ကွဲပြားခြားနား စေရန် အမည်နာမ ပေးလိုပေမည်။ ထိုအခါတွင် သင့်အနေဖြင့် `withErrors` ဟုသည့် method ၏ ဒုတိယ argument အနေဖြင့် မိမိပေးလိုသည့် အမည်ကို ထည့်သွင်းနိုင်သည်။
 
 	return Redirect::to('register')->withErrors($validator, 'login');
 
-ထုိေနာက္ သင့္အေနျဖင့္ `$errors` variable မွ `MessageBag` instance ကုိ ေအာက္ပါအတုိင္း ဆြဲထုတ္ႏုိင္သည္။
+ထိုနောက် သင့်အနေဖြင့် `$errors` variable မှ `MessageBag` instance ကို အောက်ပါအတိုင်း ဆွဲထုတ်နိုင်သည်။
 
 	<?php echo $errors->login->first('email'); ?>
 
 <a name="available-validation-rules"></a>
-## အသုံးျပဳႏုိင္သည့္ စိစစ္ျခင္း Rule မ်ား
+## အသုံးပြုနိုင်သည့် စိစစ်ခြင်း Rule များ
 
-ေအာက္တြင္ ေဖာ္ျပထားသည္မွာ အသုံးျပဳႏုိင္ေသာ စိစစ္ေရး rule မ်ားႏွင့္ ၄င္းတုိ ့၏ function မ်ားျဖစ္ၾကသည္။
+အောက်တွင် ဖော်ပြထားသည်မှာ အသုံးပြုနိုင်သော စိစစ်ရေး rule များနှင့် ၄င်းတို ့၏ function များဖြစ်ကြသည်။
 
 - [Accepted](#rule-accepted)
 - [Active URL](#rule-active-url)
@@ -200,83 +200,83 @@ Note that when စိစစ္ျခင္း မေအာင္ျမင္ပ�
 <a name="rule-accepted"></a>
 #### accepted
 
-အဆုိပါ field တြင္ စိစစ္သည္မွာ  _yes_, _on_, သုိ ့မဟုတ္  _1_  တုိ ့ျဖစ္သည္။ "Terms of Service" ကဲ့သုိ ့ တခုသာ ေရြးမေရြး စိစစ္ရာေနရာမ်ားတြင္ ၄င္းကုိ အသုံးျပဳႏုိင္သည္။
+အဆိုပါ field တွင် စိစစ်သည်မှာ  _yes_, _on_, သို ့မဟုတ်  _1_  တို ့ဖြစ်သည်။ "Terms of Service" ကဲ့သို ့ တခုသာ ရွေးမရွေး စိစစ်ရာနေရာများတွင် ၄င်းကို အသုံးပြုနိုင်သည်။
 
 
 <a name="rule-active-url"></a>
 #### active_url
 
-အဆုိပါ field တြင္ စိစစ္သည္မွာ `checkdnsrr` ဟုသည္ PHP function ကုိ အသုံးျပဳ၍ အင္ထုထားသည့္ URL ဟုတ္မဟုတ္ကို စစ္ေဆးသြားမည္ ျဖစ္သည္။
+အဆိုပါ field တွင် စိစစ်သည်မှာ `checkdnsrr` ဟုသည် PHP function ကို အသုံးပြု၍ အင်ထုထားသည့် URL ဟုတ်မဟုတ်ကို စစ်ဆေးသွားမည် ဖြစ်သည်။
 
 <a name="rule-after"></a>
 #### after:_date_
 
-အဆုိပါ field တြင္ စိစစ္သည္မွာ သတ္မွတ္ထားေသာ date အတြင္းတြင္သာ ထည့္သြင္းေစရႏ္ ျဖစ္သည္။ date မ်ားကုိ  PHP ၏ `strtotime` function ကုိ အသုံးျပဳ၍ ေျပာင္းလဲကာ စိစစ္သြားမည္ ျဖစ္သည္။
+အဆိုပါ field တွင် စိစစ်သည်မှာ သတ်မှတ်ထားသော date အတွင်းတွင်သာ ထည့်သွင်းစေရန် ဖြစ်သည်။ date များကို  PHP ၏ `strtotime` function ကို အသုံးပြု၍ ပြောင်းလဲကာ စိစစ်သွားမည် ဖြစ်သည်။
 
 <a name="rule-alpha"></a>
 #### alpha
-အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ မ်ားသာ ျဖစ္ရမည္ ျဖစ္သည္။ ဥပမာ ကိန္းဂဏန္းမ်ားကို လက္ခံသြားမည္ မဟုတ္။
+အဆိုပါ field တွင် ပါဝင်သော အချက်အလက်များသည် အက္ခရာ များသာ ဖြစ်ရမည် ဖြစ်သည်။ ဥပမာ ကိန်းဂဏန်းများကို လက်ခံသွားမည် မဟုတ်။
 
 <a name="rule-alpha-dash"></a>
 #### alpha_dash
 
-အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ ႏွင့္ ကိန္းဂဏန္းမ်ားသာ မက dash ႏွင့္ underscore ကုိပါ လက္ခံသြားမည္ ျဖစ္သည္။
+အဆိုပါ field တွင် ပါဝင်သော အချက်အလက်များသည် အက္ခရာ နှင့် ကိန်းဂဏန်းများသာ မက dash နှင့် underscore ကိုပါ လက်ခံသွားမည် ဖြစ်သည်။
 
 <a name="rule-alpha-num"></a>
 #### alpha_num
 
-အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ အကၡရာ ႏွင့္ ကိန္းဂဏန္းမ်ားသာ လက္ခံသြားမည္။
+အဆိုပါ field တွင် ပါဝင်သော အချက်အလက်များသည် အက္ခရာ နှင့် ကိန်းဂဏန်းများသာ လက်ခံသွားမည်။
 
 <a name="rule-array"></a>
 #### array
 
-အဆုိပါ field တြင္ ပါဝင္ေသာ အခ်က္အလက္မ်ားသည္ array အမ်ိဳးအစားကိုသာ လက္ခံသြားမည္။
+အဆိုပါ field တွင် ပါဝင်သော အချက်အလက်များသည် array အမျိုးအစားကိုသာ လက်ခံသွားမည်။
 
 <a name="rule-before"></a>
 #### before:_date_
 
-အဆုိပါ field တြင္ပါဝင္ေသာ အခ်က္အလက္မ်ားကို date ျဖင့္ စိစစ္သတ္မွတ္ျခင္း ျဖစ္သည္။ dates မ်ားကုိ PHP မွ `strtotime` function ကုိ အသုံးျပဳ၍ passing ေပးသြားမည္ ျဖစ္သည္။
+အဆိုပါ field တွင်ပါဝင်သော အချက်အလက်များကို date ဖြင့် စိစစ်သတ်မှတ်ခြင်း ဖြစ်သည်။ dates များကို PHP မှ `strtotime` function ကို အသုံးပြု၍ passing ပေးသွားမည် ဖြစ်သည်။
 
 <a name="rule-between"></a>
 #### between:_min_,_max_
 
-အဆုိပါ field တြင္ထည့္သြင္းေသာ အခ်က္အလက္မ်ား ၏ အမ်ားဆုံးႏွင့္ အနည္းဆုံး တန္ဖုိးမ်ားကုိ သတ္မွတ္ျခင္း ျဖစ္ျပီး String ၊ numeric ႏွင့္ file မ်ားကို `size` rule ကုိ အသုံးျပဳသကဲ့သုိ ့ ဆင္တင္တင္ပင္ ျဖစ္သည္။
+အဆိုပါ field တွင်ထည့်သွင်းသော အချက်အလက်များ ၏ အများဆုံးနှင့် အနည်းဆုံး တန်ဖိုးများကို သတ်မှတ်ခြင်း ဖြစ်ပြီး String ၊ numeric နှင့် file များကို `size` rule ကို အသုံးပြုသကဲ့သို ့ ဆင်တင်တင်ပင် ဖြစ်သည်။
 
 <a name="rule-confirmed"></a>
 #### confirmed
 
-အဆုိပါ field ၏ အခ်က္အလက္သည္ ရည္ညြန္း field ၏ အခ်က္အလက္ ဥပမာ `foo_confirmation`  ႏွင့္ တူညီရမည္ ျဖစ္သည္။ ဥပမာ ျပဳရေသာ္ `password` field သည္ `password_confirmation` field ႏွင့္ ထပ္တူညီရမည္ ျဖစ္သည္။
+အဆိုပါ field ၏ အချက်အလက်သည် ရည်ညွန်း field ၏ အချက်အလက် ဥပမာ `foo_confirmation`  နှင့် တူညီရမည် ဖြစ်သည်။ ဥပမာ ပြုရသော် `password` field သည် `password_confirmation` field နှင့် ထပ်တူညီရမည် ဖြစ်သည်။
 
 <a name="rule-date"></a>
 #### date
 
-တိက် မွန္ကန္ေသာ date ျဖစ္ေစရန္ စိစစ္ေပးျပီး `strtotime` ဟူေသာ PHP function ကုိ အသုံးျပဳထားသည္။
+တိကျ မှန်ကန်သော date ဖြစ်စေရန် စိစစ်ပေးပြီး `strtotime` ဟူသော PHP function ကို အသုံးပြုထားသည်။
 
 <a name="rule-date-format"></a>
 #### date_format:_format_
 
-အဆုိပါ field မွ format ႏွင့္ တူညီရမည္ ျဖစ္ျပီး `date_parse_from_format` ဟူသည္ PHP function ကုိ အသုံးျပဳထားသည္။
+အဆိုပါ field မှ format နှင့် တူညီရမည် ဖြစ်ပြီး `date_parse_from_format` ဟူသည် PHP function ကို အသုံးပြုထားသည်။
 
 <a name="rule-different"></a>
 #### different:_field_
 
-အဆုိပါ field သည္ အျခား ရည္ညြန္း field ႏွင့္ လုံးဝ ကြဲျပားျခားရမည္ ျဖစ္သည္။
+အဆိုပါ field သည် အခြား ရည်ညွန်း field နှင့် လုံးဝ ကွဲပြားခြားရမည် ဖြစ်သည်။
 The given _field_ must be different than the field under validation.
 
 <a name="rule-digits"></a>
 #### digits:_value_
 
-အဆုိပါ file တြင္ numeric value ျဖစ္ျပီး တိက်ေသခ်ာေသာ ဂဏန္း အလုံးအေရအတြက္ ကုိသာ ထည့္သြင္းရမည္ျဖစ္သည္။
+အဆိုပါ file တွင် numeric value ဖြစ်ပြီး တိကျသေချာသော ဂဏန်း အလုံးအရေအတွက် ကိုသာ ထည့်သွင်းရမည်ဖြစ်သည်။
 
 <a name="rule-digits-between"></a>
 #### digits_between:_min_,_max_
 
-အဆုိ field တြင္ _min_ and _max_ အၾကား ထည့္သြင္းရေသာ ဂဏန္းအလုံးအေရအတြက္ကုိသာ ထည့္သြင္းခြင့္ရမည္ျဖစ္သည္။
+အဆို field တွင် _min_ and _max_ အကြား ထည့်သွင်းရသော ဂဏန်းအလုံးအရေအတွက်ကိုသာ ထည့်သွင်းခွင့်ရမည်ဖြစ်သည်။
 
 <a name="rule-email"></a>
 #### email
 
-အဆုိပါ field တြင္ email address format အတုိင္း ထည့္သြင္းထားျခင္း ရွိမရွိ စစ္ေဆးသြားမည္ ျဖစ္သည္။
+အဆိုပါ field တွင် email address format အတိုင်း ထည့်သွင်းထားခြင်း ရှိမရှိ စစ်ဆေးသွားမည် ဖြစ်သည်။
 
 <a name="rule-exists"></a>
 #### exists:_table_,_column_

@@ -1,4 +1,4 @@
-# Laravel Cashier
+﻿# Laravel Cashier
 
 - [Introduction](#introduction)
 - [Configuration](#configuration)
@@ -15,28 +15,28 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravel Cashier က Subscription Billing Service တစ္ခုျဖစ္တဲ့ Stripe သံုးတဲ့အခါ ပိုၿပီးလြယ္ကူေစေအာင္လို႔ လုပ္ေပးထားပါတယ္။ Stripe သံုးဖို႔အတြက္ အစအဆံုး ျပန္ေရးေနစရာမလိုေတာ့ေအာင္လို႔ အေျခခံ Code ေတြ ေရးထားၿပီးသားျဖစ္ပါတယ္။ အေျခခံ Subscription Management အျပင္ , Coupons, Subscription ကို Upgrade လုပ္တဲ့ Feature (Swap), Subscription Quantities, Subscription ကို သတ္မွတ္ထားတဲ့ ကာလအတြင္း Subscription ကို Cancel လုပ္လို႔ရမယ့္ Feature လည္းပါဝင္ပါတယ္။ ေနာက္ Invoice ကို PDF ထုတ္လို႔ရေအာင္လဲ ကူညီေပးပါတယ္။
+Laravel Cashier က Subscription Billing Service တစ်ခုဖြစ်တဲ့ Stripe သုံးတဲ့အခါ ပိုပြီးလွယ်ကူစေအောင်လို့ လုပ်ပေးထားပါတယ်။ Stripe သုံးဖို့အတွက် အစအဆုံး ပြန်ရေးနေစရာမလိုတော့အောင်လို့ အခြေခံ Code တွေ ရေးထားပြီးသားဖြစ်ပါတယ်။ အခြေခံ Subscription Management အပြင် , Coupons, Subscription ကို Upgrade လုပ်တဲ့ Feature (Swap), Subscription Quantities, Subscription ကို သတ်မှတ်ထားတဲ့ ကာလအတွင်း Subscription ကို Cancel လုပ်လို့ရမယ့် Feature လည်းပါဝင်ပါတယ်။ နောက် Invoice ကို PDF ထုတ်လို့ရအောင်လဲ ကူညီပေးပါတယ်။
 
 <a name="configuration"></a>
 ## Configuration
 
 #### Composer
 
-ပထမဆံုး သင္႕ရဲ႕ Composer File မွာ Casher package ကိုထည္႕ေပးပါ၊
+ပထမဆုံး သင့်ရဲ့ Composer File မှာ Casher package ကိုထည့်ပေးပါ၊
 
 	"laravel/cashier": "~2.0"
 
 #### Service Provider
 
-ေနာက္... သင္ရဲ႕ `app` configuration file ထဲမွာ `Laravel\Cashier\CashierServiceProvider` ကို regiter လုပ္ပါ၊
+နောက်... သင်ရဲ့ `app` configuration file ထဲမှာ `Laravel\Cashier\CashierServiceProvider` ကို regiter လုပ်ပါ၊
 
 #### Migration
 
-Chashier ကိုမသံုးခင္မွာ... columns တစ္ခ်ိဳ႕ကို သင္႕ရဲ႕ database ထဲကို add လုပ္ဖို႕လိုပါမယ္။ မစိုးရိမ္ပါနဲ႕... လိုအပ္တဲ႕ column ေတြကိုထက္ထည္႕ဖို႕  `cashier:table` Artisan command ကိုသံုးႏိုင္ပါတယ္။
+Chashier ကိုမသုံးခင်မှာ... columns တစ်ချို့ကို သင့်ရဲ့ database ထဲကို add လုပ်ဖို့လိုပါမယ်။ မစိုးရိမ်ပါနဲ့... လိုအပ်တဲ့ column တွေကိုထက်ထည့်ဖို့  `cashier:table` Artisan command ကိုသုံးနိုင်ပါတယ်။
 
 #### Model Setup
 
-ေနာက္... သင္႕ရဲ႕ model definition မွာ BillableTrait နဲ႕ appropriate date mutators ေတြကို add လုိက္ပါ:
+နောက်... သင့်ရဲ့ model definition မှာ BillableTrait နဲ့ appropriate date mutators တွေကို add လိုက်ပါ:
 
 	use Laravel\Cashier\BillableTrait;
 	use Laravel\Cashier\BillableInterface;
@@ -51,27 +51,27 @@ Chashier ကိုမသံုးခင္မွာ... columns တစ္ခ်�
 
 #### Stripe Key
 
-ေနာက္ဆံုးမွာေတာ႕ သင္႕ရဲ႕ Stripe key ကိုသင္႕ရဲ႕ bootstrap files တစ္ခုထဲမွာ set လုပ္လိုက္ပါ
+နောက်ဆုံးမှာတော့ သင့်ရဲ့ Stripe key ကိုသင့်ရဲ့ bootstrap files တစ်ခုထဲမှာ set လုပ်လိုက်ပါ
 
 	User::setStripeKey('stripe-key');
 
 <a name="subscribing-to-a-plan"></a>
 ## Subscribing To A Plan
 
-user ကို Stripe plan တစ္ခုေပးဖို႕ သင္႕မွာ model instance တစ္ခုရွိတယ္ဆိုရင္ လြယ္လြယ္ကူကူ subscribe လုပ္ႏိုင္ပါတယ္
+user ကို Stripe plan တစ်ခုပေးဖို့ သင့်မှာ model instance တစ်ခုရှိတယ်ဆိုရင် လွယ်လွယ်ကူကူ subscribe လုပ်နိုင်ပါတယ်
 	$user = User::find(1);
 
 	$user->subscription('monthly')->create($creditCardToken);
 
-subscription ကို create လုပ္ၿပီးသြားၿပီဆိုရင္ သင္႕အေနနဲ႕ cupon ကို apply လုပ္ဖို႕ `withCoupon` ကိုသံုးႏိုင္ပါတယ္
+subscription ကို create လုပ်ပြီးသွားပြီဆိုရင် သင့်အနေနဲ့ cupon ကို apply လုပ်ဖို့ `withCoupon` ကိုသုံးနိုင်ပါတယ်
 
 	$user->subscription('monthly')
 	     ->withCoupon('code')
 	     ->create($creditCardToken);
 
-Stripe subscription ကို `subscription` method က automatically create လုပ္သြားလိမ္႕မယ္... သင္႕ရဲ႕ Strip customer ID နဲ႕ အျခား billing information နဲ႕ပတ္သတ္တဲ႕ database ေတြေကာ update လုပ္သြားပါလိမ္႕မယ္။
+Stripe subscription ကို `subscription` method က automatically create လုပ်သွားလိမ့်မယ်... သင့်ရဲ့ Strip customer ID နဲ့ အခြား billing information နဲ့ပတ်သတ်တဲ့ database တွေကော update လုပ်သွားပါလိမ့်မယ်။
 
-သင္႕မွာ trail period ရွိတယ္ဆိုရင္ သင္႕ရဲ႕ model မွာ trial end date ကို subscribing လုပ္ၿပီးမွာ set လုပ္ထားရဲ႕လားဆိုတာကိုေသခ်ာ make sure လုပ္ပါ။
+သင့်မှာ trail period ရှိတယ်ဆိုရင် သင့်ရဲ့ model မှာ trial end date ကို subscribing လုပ်ပြီးမှာ set လုပ်ထားရဲ့လားဆိုတာကိုသေချာ make sure လုပ်ပါ။
 
 	$user->trial_ends_at = Carbon::now()->addDays(14);
 
@@ -79,11 +79,11 @@ Stripe subscription ကို `subscription` method က automatically create လ
 
 <a name="no-card-up-front"></a>
 ## No Card Up Front
-သင္႕ရဲ႕ application က ပထမဆံုး free-trial တစ္ခုကို credit-card မပါဘဲ လက္ခံမယ္ဆိုရင္ `cardUpFront` ကိုသင္႕ရဲ႕ modle မွာ `false` ဆိုၿပီး set လုပ္ပါ...
+သင့်ရဲ့ application က ပထမဆုံး free-trial တစ်ခုကို credit-card မပါဘဲ လက်ခံမယ်ဆိုရင် `cardUpFront` ကိုသင့်ရဲ့ modle မှာ `false` ဆိုပြီး set လုပ်ပါ...
 
 	protected $cardUpFront = false;
 
-Account creation မွာ trial ေနာက္ဆံုးရက္ကို model မွာ set လုပ္ထားရဲ႕လားဆိုတာကို make sure လုပ္ပါ...
+Account creation မှာ trial နောက်ဆုံးရက်ကို model မှာ set လုပ်ထားရဲ့လားဆိုတာကို make sure လုပ်ပါ...
 
 	$user->trial_ends_at = Carbon::now()->addDays(14);
 
@@ -92,16 +92,16 @@ Account creation မွာ trial ေနာက္ဆံုးရက္ကို m
 <a name="swapping-subscriptions"></a>
 ## Swapping Subscriptions
 
-Subscription အသစ္တစ္ခုမွာ user တစ္ေယာက္ ကို swap လုပ္ခ်င္တယ္ဆိုရင္  `swap` method ကိုသံုးပါ...
+Subscription အသစ်တစ်ခုမှာ user တစ်ယောက် ကို swap လုပ်ချင်တယ်ဆိုရင်  `swap` method ကိုသုံးပါ...
 
 	$user->subscription('premium')->swap();
 
-တကယ္လို႕ user က trial မွာဘဲရွိေနတယ္ ဆိုရင္ trial က ပံုမွန္ maintained လုပ္သြားပါ႕မယ္။ ေနာက္ subscription အတြက္ "quantity" တစ္ခုရွိတယ္ဆိုရင္ အဲ႕ဒီ႕ quantity ကိုလည္း maintain လုပ္သြားပါ႕မယ္။
+တကယ်လို့ user က trial မှာဘဲရှိနေတယ် ဆိုရင် trial က ပုံမှန် maintained လုပ်သွားပါ့မယ်။ နောက် subscription အတွက် "quantity" တစ်ခုရှိတယ်ဆိုရင် အဲ့ဒီ့ quantity ကိုလည်း maintain လုပ်သွားပါ့မယ်။
 
 <a name="subscription-quantity"></a>
 ## Subscription Quantity
 
-တစ္ခါတစ္ေလမွာ subscriptions ေတြက "quantity" ကေနၿပီးေတာ႕ affect ျဖစ္တယ္။ ဥပမာ... သင္႕ရဲ႕ application က user account တစ္ခုအတြက္ တစ္လ ကို $10 charge လုပ္တယ္ဆိုပါေတာ႕။ သင္႕ရဲ႕ subscription quantity ကို တိုးခ်င္တာဘဲျဖစ္ျဖစ္၊ ေလ်ာ႕ခ်င္တာဘဲျဖစ္ျဖစ္ လြယ္လြယ္ကူကူ လုပ္ခ်င္တယ္ဆိုရင္ `increment` နဲ႕ `decrement` methods ကိုသံုးႏိုင္ပါတယ္
+တစ်ခါတစ်လေမှာ subscriptions တွေက "quantity" ကနေပြီးတော့ affect ဖြစ်တယ်။ ဥပမာ... သင့်ရဲ့ application က user account တစ်ခုအတွက် တစ်လ ကို $10 charge လုပ်တယ်ဆိုပါတော့။ သင့်ရဲ့ subscription quantity ကို တိုးချင်တာဘဲဖြစ်ဖြစ်၊ လျော့ချင်တာဘဲဖြစ်ဖြစ် လွယ်လွယ်ကူကူ လုပ်ချင်တယ်ဆိုရင် `increment` နဲ့ `decrement` methods ကိုသုံးနိုင်ပါတယ်
 
 	$user = User::find(1);
 
@@ -118,32 +118,32 @@ Subscription အသစ္တစ္ခုမွာ user တစ္ေယာက္ 
 <a name="cancelling-a-subscription"></a>
 ## Cancelling A Subscription
 
-Subscription တစ္ခုကို Cancel လုပ္တာ ပန္ၿခံထဲမွာ လမ္းေလွ်ာက္ရသလိုပါဘဲ...
+Subscription တစ်ခုကို Cancel လုပ်တာ ပန်ခြံထဲမှာ လမ်းလျှောက်ရသလိုပါဘဲ...
 
 	$user->subscription()->cancel();
 
-Subscription တစ္ခု cancel လုပ္သြားတဲ႕အခ်ိန္မွာ Casher က  `subscription_ends_at` column ကို သင္႕ရဲ႕ database မွာ အလိုလို set လုပ္သြားပါ႕မယ္။  ဥပမာ၊ customer က March လတစ္ရက္ေန႕မွာ subscription ကို Cancel လုပ္သြားတယ္ ေနာက္ March 5 ရက္ေန႕မွာ subscription end ျဖစ္မယ္လို႕ schedule လည္းမရွိဘူးဆိုရင္ `subscribed` method က March လ 5 ရက္ေန႕အထိ return `true` ျပန္ေနမွာပါ။
+Subscription တစ်ခု cancel လုပ်သွားတဲ့အချိန်မှာ Casher က  `subscription_ends_at` column ကို သင့်ရဲ့ database မှာ အလိုလို set လုပ်သွားပါ့မယ်။  ဥပမာ၊ customer က March လတစ်ရက်နေ့မှာ subscription ကို Cancel လုပ်သွားတယ် နောက် March 5 ရက်နေ့မှာ subscription end ဖြစ်မယ်လို့ schedule လည်းမရှိဘူးဆိုရင် `subscribed` method က March လ 5 ရက်နေ့အထိ return `true` ပြန်နေမှာပါ။
 
 <a name="resuming-a-subscription"></a>
 ## Resuming A Subscription
 
-User တစ္ေယာက္ကသူရဲ႕ subscription ကို cancelled လုပ္သြားတဲ႕အခ်ိန္မွာ သင္႕အေနနဲ႕ သူတို႕ resume ျပန္လုပ္ဖို႕ဆုေတာင္းေနမွာေပါ႕၊ ဒါဆိုရင္ `resume` method ကိုသံုးလိုက္ပါ:
+User တစ်ယောက်ကသူရဲ့ subscription ကို cancelled လုပ်သွားတဲ့အချိန်မှာ သင့်အနေနဲ့ သူတို့ resume ပြန်လုပ်ဖို့ဆုတောင်းနေမှာပေါ့၊ ဒါဆိုရင် `resume` method ကိုသုံးလိုက်ပါ:
 
 	$user->subscription('monthly')->resume($creditCardToken);
 
-တကယ္လို႕ user က subscription တစ္ခုကို cancels လုပ္လိုက္တယ္၊ ေနာက္ subscription က fully expired မျဖစ္ခင္မွာ user က resume ျပန္လုပ္လုိက္တယ္ဆိုရင္ သူတို႕က bill ေတြကိုခ်က္ခ်င္းမျဖတ္ပါဘူး။ သူတို႕ရဲ႕ subscription ေတြကို ရိုးရွင္းစြာပဲ re-activated လုပ္သြားပါတယ္ ေနာက္ သူတို႕ရဲ႕ မူလ    billing cycle အတိုင္း  billed လုပ္ပါလိမ္႕မယ္။
+တကယ်လို့ user က subscription တစ်ခုကို cancels လုပ်လိုက်တယ်၊ နောက် subscription က fully expired မဖြစ်ခင်မှာ user က resume ပြန်လုပ်လိုက်တယ်ဆိုရင် သူတို့က bill တွေကိုချက်ချင်းမဖြတ်ပါဘူး။ သူတို့ရဲ့ subscription တွေကို ရိုးရှင်းစွာပဲ re-activated လုပ်သွားပါတယ် နောက် သူတို့ရဲ့ မူလ    billing cycle အတိုင်း  billed လုပ်ပါလိမ့်မယ်။
 
 <a name="checking-subscription-status"></a>
 ## Checking Subscription Status
 
-User တစ္ေယာက္က သင္႕ရဲ႕ application ကို subscribed လုပ္သြားတာကို verify လုပ္ရန္အတြက္ `subscribed` command: ကိုသံုးပါ-
+User တစ်ယောက်က သင့်ရဲ့ application ကို subscribed လုပ်သွားတာကို verify လုပ်ရန်အတွက် `subscribed` command: ကိုသုံးပါ-
 
 	if ($user->subscribed())
 	{
 		//
 	}
 
-`subscribed` method က Route filter အတြက္ အေကာင္းဆံုး အသင္႕ေတာ္ဆံုး လုပ္ေဆာင္ေပးထားပါတယ္:
+`subscribed` method က Route filter အတွက် အကောင်းဆုံး အသင့်တော်ဆုံး လုပ်ဆောင်ပေးထားပါတယ်:
 
 
 	Route::filter('subscribed', function()
@@ -154,14 +154,14 @@ User တစ္ေယာက္က သင္႕ရဲ႕ application ကို sub
 		}
 	});
 
-သင့္အေနနဲ႕ user က trial ကာလမွာဟုတ္မဟုတ္ကို `onTrial` method ကိုအသံုးျပဳၿပီးေတာ႕ ဆံုးျဖတ္ေပးႏိုင္ပါတယ္:
+သင့်အနေနဲ့ user က trial ကာလမှာဟုတ်မဟုတ်ကို `onTrial` method ကိုအသုံးပြုပြီးတော့ ဆုံးဖြတ်ပေးနိုင်ပါတယ်:
 
 	if ($user->onTrial())
 	{
 		//
 	}
 
-သင္႕အေနနဲ႕ user က active subscriber လား ဒါမွမဟုတ္ cancel လုပ္လုိက္ၿပီလားဆိုတာကို `cancelled` method ကိုသံုးၿပီးေတာ႕စစ္ႏိုင္ပါတယ္:
+သင့်အနေနဲ့ user က active subscriber လား ဒါမှမဟုတ် cancel လုပ်လိုက်ပြီလားဆိုတာကို `cancelled` method ကိုသုံးပြီးတော့စစ်နိုင်ပါတယ်:
 
 
 	if ($user->cancelled())
@@ -169,14 +169,14 @@ User တစ္ေယာက္က သင္႕ရဲ႕ application ကို sub
 		//
 	}
 
-သင္႕အေနနဲ႕ User ကသူ႕ရဲ႕ subscription ကို cancel လုပ္လိုက္ၿပီ ဒါေပမယ္႕ subscription ကလည္း fully expires မျဖစ္ေသးဘူး... တစ္နည္းအားျဖင့္ "grace period" လည္းမကုန္ေသးဘူးဆိုတာကို ဆံုးျဖတ္ႏိုင္ပါတယ္။ ဥပမာ၊ user က subscription ကို March လ 5 ရက္ေန႕မွာ cancel လုပ္လိုက္တယ္... တကယ္တမ္း scheduled မွာက March လ 10 ရက္ေန႕မွၿပီးမယ္ဆိုရင္ အဲ႕ဒီ႕ user က "grace period" မွာဘဲရွိေသးပါတယ္။ မွတ္ထားရမွာက `subscribed` method ကအဲ႕ဒီ႕အခ်ိန္မွာ `true` return ဘဲျပန္ေနဦးမွာပါ။
+သင့်အနေနဲ့ User ကသူ့ရဲ့ subscription ကို cancel လုပ်လိုက်ပြီ ဒါပေမယ့် subscription ကလည်း fully expires မဖြစ်သေးဘူး... တစ်နည်းအားဖြင့် "grace period" လည်းမကုန်သေးဘူးဆိုတာကို ဆုံးဖြတ်နိုင်ပါတယ်။ ဥပမာ၊ user က subscription ကို March လ 5 ရက်နေ့မှာ cancel လုပ်လိုက်တယ်... တကယ်တမ်း scheduled မှာက March လ 10 ရက်နေ့မှပြီးမယ်ဆိုရင် အဲ့ဒီ့ user က "grace period" မှာဘဲရှိသေးပါတယ်။ မှတ်ထားရမှာက `subscribed` method ကအဲ့ဒီ့အချိန်မှာ `true` return ဘဲပြန်နေဦးမှာပါ။
 
 	if ($user->onGracePeriod())
 	{
 		//
 	}
 
-User က သင့္ application ရဲ႕ plan တစ္ခုကိုအၿမဲတမ္း subscribed လုပ္ၿပီးၿပီလား မလုပ္ရေသးဘူးလားဆိုတာကို `everSubscribed` method နဲ႕ စစ္ေဆးႏိုင္ပါတယ္:
+User က သင့် application ရဲ့ plan တစ်ခုကိုအမြဲတမ်း subscribed လုပ်ပြီးပြီလား မလုပ်ရသေးဘူးလားဆိုတာကို `everSubscribed` method နဲ့ စစ်ဆေးနိုင်ပါတယ်:
 
 	if ($user->everSubscribed())
 	{
@@ -186,13 +186,13 @@ User က သင့္ application ရဲ႕ plan တစ္ခုကိုအၿ�
 <a name="handling-failed-payments"></a>
 ## Handling Failed Payments
 
-ကတယ္လို႕ customer ရဲ႕ credit card expires ျဖစ္ေနရင္လား၊ မစိုးရိမ္ပါနဲ႕ Cashuer က Webhook controller တစ္ခုပါဝင္ပါတယ္... အဲဒါကဘာလုပ္ႏိုင္လဲဆိုရင္  customer ရဲ႕ subscriotion ကို သင္႕အတြက္ cancel လုပ္ေပးပါလိမ္႕မယ္:
+ကတယ်လို့ customer ရဲ့ credit card expires ဖြစ်နေရင်လား၊ မစိုးရိမ်ပါနဲ့ Cashuer က Webhook controller တစ်ခုပါဝင်ပါတယ်... အဲဒါကဘာလုပ်နိုင်လဲဆိုရင်  customer ရဲ့ subscriotion ကို သင့်အတွက် cancel လုပ်ပေးပါလိမ့်မယ်:
 
 	Route::post('stripe/webhook', 'Laravel\Cashier\WebhookController@handleWebhook');
 
-ဒါဘဲေလ။ Payment Fail ျဖစ္တာေတြ capture လုပ္တာေတြကိုလည္း controller ကေျဖရွင္းေပးပါလိမ့္မယ္။ controller က payment သံုးႀကိမ္ႀကိဳးစားလို႕မွမရဘူးဆိုရင္ customer subscription ကို cancel လုပ္ပါလိမ္႕မယ္။ ဒီဥပမာမွာ `stripe/webbhook` URI က ဥပမာအတြက္ပါ။ သင္႕အေနနဲ႕အဲ႕ဒီ႕ URI  ကို Stripe Setting မွာ configure လုပ္ဖို႕လိုမွာပါ။
+ဒါဘဲလေ။ Payment Fail ဖြစ်တာတွေ capture လုပ်တာတွေကိုလည်း controller ကဖြေရှင်းပေးပါလိမ့်မယ်။ controller က payment သုံးကြိမ်ကြိုးစားလို့မှမရဘူးဆိုရင် customer subscription ကို cancel လုပ်ပါလိမ့်မယ်။ ဒီဥပမာမှာ `stripe/webbhook` URI က ဥပမာအတွက်ပါ။ သင့်အနေနဲ့အဲ့ဒီ့ URI  ကို Stripe Setting မှာ configure လုပ်ဖို့လိုမှာပါ။
 
-သင္ထက္ေပါင္းထည္႕ထားတဲ႕ Stripe webhook event ကိုေျဖရွင္းခ်င္တယ္ဆိုရင္ Webhook controller ကို ရိုးရွင္းစြာဘဲ extend လုပ္လိုက္ပါ :
+သင်ထက်ပေါင်းထည့်ထားတဲ့ Stripe webhook event ကိုဖြေရှင်းချင်တယ်ဆိုရင် Webhook controller ကို ရိုးရှင်းစွာဘဲ extend လုပ်လိုက်ပါ :
 
 	class WebhookController extends Laravel\Cashier\WebhookController {
 
@@ -211,11 +211,11 @@ User က သင့္ application ရဲ႕ plan တစ္ခုကိုအၿ�
 <a name="invoices"></a>
 ## Invoices
 
-သင့္အေနနဲ႕ user invoices  ရဲ႕ array ကို `invoices` method ကိုသံုးၿပီးေတာ႕ လြယ္လြယ္ကူကူ retrieve လုပ္ႏိုင္ပါတယ္:
+သင့်အနေနဲ့ user invoices  ရဲ့ array ကို `invoices` method ကိုသုံးပြီးတော့ လွယ်လွယ်ကူကူ retrieve လုပ်နိုင်ပါတယ်:
 
 	$invoices = $user->invoices();
 
-Customer ေတြရဲ႕ invoices ေတြကို List လုပ္တဲ႕အခ်ိန္မွာ သင္႕အေနနဲ႕ invoice information နဲ႕ပတ္သတ္တာေတြကို ျပသဖို႕ရာအတြက္ ဒီ helper ေတြကို သံုးႏိုင္ပါတယ္:
+Customer တွေရဲ့ invoices တွေကို List လုပ်တဲ့အချိန်မှာ သင့်အနေနဲ့ invoice information နဲ့ပတ်သတ်တာတွေကို ပြသဖို့ရာအတွက် ဒီ helper တွေကို သုံးနိုင်ပါတယ်:
 
 	{{ $invoice->id }}
 
@@ -223,7 +223,7 @@ Customer ေတြရဲ႕ invoices ေတြကို List လုပ္တဲ�
 
 	{{ $invoice->dollars() }}
 
-Invoice PDF download ကို generate ထုတ္ဖို႕ရာအတြက္ `downloadInvoice` method ကိုသံုးပါ။  ဟုတ္တယ္...ဒါကတကယ္ကိုလြယ္ပါတယ္:
+Invoice PDF download ကို generate ထုတ်ဖို့ရာအတွက် `downloadInvoice` method ကိုသုံးပါ။  ဟုတ်တယ်...ဒါကတကယ်ကိုလွယ်ပါတယ်:
 
 	return $user->downloadInvoice($invoice->id, [
 		'vendor'  => 'Your Company',

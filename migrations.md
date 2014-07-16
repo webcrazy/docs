@@ -1,71 +1,71 @@
-# Migrations & Seeding
+﻿# Migrations & Seeding
 
-- [အစပ်ိဳး](#introduction)
-- [Migrations ဖန္တီးျခင္း](#creating-migrations)
-- [Migrations ျပဳလုပ္ျခင္း](#running-migrations)
-- [Migrations ေနာက္ျပန္ျခင္း](#rolling-back-migrations)
+- [အစပျိုး](#introduction)
+- [Migrations ဖန်တီးခြင်း](#creating-migrations)
+- [Migrations ပြုလုပ်ခြင်း](#running-migrations)
+- [Migrations နောက်ပြန်ခြင်း](#rolling-back-migrations)
 - [Database Seeding](#database-seeding)
 
 <a name="introduction"></a>
-## အစပ်ိဳး
+## အစပျိုး
 
-Migration မွာ Database အတြက္ Version Control ျပဳလုပ္ႏုိင္ရန္ ဖန္တီးထားသည္။ ၄င္းကို အသုံးျပဳျခင္းျဖင့္ database schema မ်ားကို အလြယ္တကူ ျပင္ဆင္ႏုိင္ျပီး team တစ္ခုလုံး တူညီသည့္ database schema ကုိ အသုံးျပဳႏုိင္ရန္ ပံပုိးထားသည္။ Migrations မွာ ပွံမွန္အားျဖင့္ [Schema Builder](schema.md) ျဖင့္ တြဲဖက္ အသုံးျပဳၾကသည္။
+Migration မှာ Database အတွက် Version Control ပြုလုပ်နိုင်ရန် ဖန်တီးထားသည်။ ၄င်းကို အသုံးပြုခြင်းဖြင့် database schema များကို အလွယ်တကူ ပြင်ဆင်နိုင်ပြီး team တစ်ခုလုံး တူညီသည့် database schema ကို အသုံးပြုနိုင်ရန် ပံပိုးထားသည်။ Migrations မှာ ပှံမှန်အားဖြင့် [Schema Builder](schema.md) ဖြင့် တွဲဖက် အသုံးပြုကြသည်။
 
 <a name="creating-migrations"></a>
-## Migrations ဖန္တီးျခင္း
+## Migrations ဖန်တီးခြင်း
 
-migration တစ္ခု ဖန္တီးႏိုင္ရန္ Artisan CLI တြင္ `migrate:make` ဟူသည္ command ကုိ အသုံးျပဳႏုိင္သည္။
+migration တစ်ခု ဖန်တီးနိုင်ရန် Artisan CLI တွင် `migrate:make` ဟူသည် command ကို အသုံးပြုနိုင်သည်။
 
 	php artisan migrate:make create_users_table
 
-Migration file မ်ားသည္ `app/database/migrations` ဆုိသည့္ folder တြင္တည္ရွိမည္ ျဖစ္ျပီး Migrations မ်ားကုိ အစဥ္အတုိင္း စီရီထားမည့္ timestamp ျဖင့္ သတ္မွတ္ထားမည္ ျဖစ္သည္။
+Migration file များသည် `app/database/migrations` ဆိုသည့် folder တွင်တည်ရှိမည် ဖြစ်ပြီး Migrations များကို အစဉ်အတိုင်း စီရီထားမည့် timestamp ဖြင့် သတ်မှတ်ထားမည် ဖြစ်သည်။
 
-Migration တစ္ခု ဖန္တီးေနစဥ္ `--path` ဟု attribute ကို အသုံးျပဳႏုိင္သည္။ အဆုိပါ path မွာ သင္ install လုပ္ထားေသာ root directory မွ အလုိအေလ်ာက္ သိရွိမည္ ျဖစ္ပါသည္။
+Migration တစ်ခု ဖန်တီးနေစဉ် `--path` ဟု attribute ကို အသုံးပြုနိုင်သည်။ အဆိုပါ path မှာ သင် install လုပ်ထားသော root directory မှ အလိုအလျောက် သိရှိမည် ဖြစ်ပါသည်။
 
 	php artisan migrate:make foo --path=app/migrations
 
 	
-`--table` ႏွင့္ `--create` options မ်ားကို အသုံးျပဳ၍  table အမည္ကုိ သတ္မွတ္ျခင္း ၊  table အသစ္ကို ဖန္တီးျခင္း မ်ား ျပဳလုပ္ႏုိင္ပါမည္။
+`--table` နှင့် `--create` options များကို အသုံးပြု၍  table အမည်ကို သတ်မှတ်ခြင်း ၊  table အသစ်ကို ဖန်တီးခြင်း များ ပြုလုပ်နိုင်ပါမည်။
 
 	php artisan migrate:make add_votes_to_user_table --table=users
 
 	php artisan migrate:make create_users_table --create=users
 
 <a name="running-migrations"></a>
-## Migrations ျပဳလုပ္ျခင္း
+## Migrations ပြုလုပ်ခြင်း
 
-#### Migration ကုိ အျပည့္အဝ ျပဳလုပ္ျခင္း
+#### Migration ကို အပြည့်အဝ ပြုလုပ်ခြင်း
 
 	php artisan migrate
 
-#### Path  လမ္းေၾကာင္းတစ္ခုတြင္သာ Migration ျပဳလုပ္ျခင္း
+#### Path  လမ်းကြောင်းတစ်ခုတွင်သာ Migration ပြုလုပ်ခြင်း
 
 	php artisan migrate --path=app/foo/migrations
 
-#### Package တစ္ခုအတြက္ Migration ျပဳလုပ္ျခင္း
+#### Package တစ်ခုအတွက် Migration ပြုလုပ်ခြင်း
 
 	php artisan migrate --package=vendor/package
 
-> **သတိျပဳရန္:**  migrations run ေနစဥ္ "class not found" ဟု error ေတြ ့ရွိပါက `composer dump-autoload` ဆုိသည့္ command ကုိ run ၾကည့္ပါ။
+> **သတိပြုရန်:**  migrations run နေစဉ် "class not found" ဟု error တွေ ့ရှိပါက `composer dump-autoload` ဆိုသည့် command ကို run ကြည့်ပါ။
 
-### Production တြင္ Migration ျပဳလုပ္ျခင္း
+### Production တွင် Migration ပြုလုပ်ခြင်း
 
-အခ်ိဳ  ့ေသာ migration operations မ်ားမွာ အႏၱာရယ္မ်ားလွေပသည္။ တနည္းအားျဖင့္ သင့္၏ အခ်က္အလက္မ်ားကို စကၠန္ ့ပုိင္းအတြင္ ဆုံးရႈံးသြားေစႏုိင္သည္။ အဆုိပါ အႏၱာရယ္မွ ကာကြယ္ႏုိင္ရန္  production အေျခအေနတြင္ migration ျပဳလုပ္ရန္ confirmation ေတာင္းခံပါသည္။ ထုိေတာင္းခံမႈကုိ ေက်ာ္လြွားလုိပါက `--force` flag ကုိ အသုံးျပဳႏုိင္သည္။
+အချို  ့သော migration operations များမှာ အန္တာရယ်များလှပေသည်။ တနည်းအားဖြင့် သင့်၏ အချက်အလက်များကို စက္ကန် ့ပိုင်းအတွင် ဆုံးရှုံးသွားစေနိုင်သည်။ အဆိုပါ အန္တာရယ်မှ ကာကွယ်နိုင်ရန်  production အခြေအနေတွင် migration ပြုလုပ်ရန် confirmation တောင်းခံပါသည်။ ထိုတောင်းခံမှုကို ကျော်လွှားလိုပါက `--force` flag ကို အသုံးပြုနိုင်သည်။
 
 	php artisan migrate --force
 
 <a name="rolling-back-migrations"></a>
 ## Rolling Back Migrations
 
-#### Migrations ေနာက္ျပန္ျခင္း
+#### Migrations နောက်ပြန်ခြင်း
 
 	php artisan migrate:rollback
 
-#### Migrations ပထမဆုံး အေျခအေနသုိ ့ ေနာက္ျပန္ျခင္း
+#### Migrations ပထမဆုံး အခြေအနေသို ့ နောက်ပြန်ခြင်း
 
 	php artisan migrate:reset
 
-#### အစမွ အဆုံး ေနာက္ျပန္ျပီးေနာက္ တဖန္ Migration ျပဳလုပ္ျခင္း
+#### အစမှ အဆုံး နောက်ပြန်ပြီးနောက် တဖန် Migration ပြုလုပ်ခြင်း
 
 	php artisan migrate:refresh
 
@@ -74,8 +74,8 @@ Migration တစ္ခု ဖန္တီးေနစဥ္ `--path` ဟု attr
 <a name="database-seeding"></a>
 ## Database Seeding
 
-Laravel အေနျဖင့္ database ကို အလြယ္တကူ seed ျပဳလုပ္ႏုိင္ရင္ seed classes မ်ားပါရွိပါသည္။ Seed class မ်ားမွာ `app/database/seeds` တြင္တည္ရွိမည္ ျဖစ္သည္။ Seed class မ်ားကို အလုိရွိသလုိ အမည္ေပးႏုိင္ေသာ္လည္း အဓိပၸါယ္ရွိေသာ နာမည္မ်ိဳး ဥပမာ `UserTableSeeder` စသျဖင့္သာ ေပးသင့္သည္။ ပုံမွန္အားျဖင့္ `DatabaseSeeder` class မွာ ဖန္တီးေပးထားသည္။ ထုိ class မွ သင့္အေနျဖင့္ `call` method ကုိ အသုံးျပဳကာ
-အစီအစဥ္အလုိက္ အျခားေသာ seed classes မ်ားကုိ run ႏုိင္သည္။
+Laravel အနေဖြင့် database ကို အလွယ်တကူ seed ပြုလုပ်နိုင်ရင် seed classes များပါရှိပါသည်။ Seed class များမှာ `app/database/seeds` တွင်တည်ရှိမည် ဖြစ်သည်။ Seed class များကို အလိုရှိသလို အမည်ပေးနိုင်သော်လည်း အဓိပ္ပါယ်ရှိသော နာမည်မျိုး ဥပမာ `UserTableSeeder` စသဖြင့်သာ ပေးသင့်သည်။ ပုံမှန်အားဖြင့် `DatabaseSeeder` class မှာ ဖန်တီးပေးထားသည်။ ထို class မှ သင့်အနေဖြင့် `call` method ကို အသုံးပြုကာ
+အစီအစဉ်အလိုက် အခြားသော seed classes များကို run နိုင်သည်။
 
 #### Example Database Seed Class
 
@@ -101,14 +101,14 @@ Laravel အေနျဖင့္ database ကို အလြယ္တကူ see
 
 	}
 
-Database ကို seed ျပဳလုပ္ရန္ Artisan CLI မွ `db:seed` command ကုိ အသုံးျပဳႏုိင္သည္။
+Database ကို seed ပြုလုပ်ရန် Artisan CLI မှ `db:seed` command ကို အသုံးပြုနိုင်သည်။
 
 	php artisan db:seed
 
-ပုံမွန္အားျဖင့္ `db:seed` command မွာ `DatabaseSeeder` class ကုိ run မည္ျဖစ္ျပီး ထုိမွတဆင့္ အျခား seed class မ်ားကို ေခၚယူမည္ ျဖစ္သည္။ သုိ ့ပင္ေသာ္ညား `--class` option ကုိ အသုံးျပဳကာ သီးသန္ ့ seeder class တစ္ခုခ်င္းစီလည္း run ႏုိင္ပါေသးသည္။
+ပုံမှန်အားဖြင့် `db:seed` command မှာ `DatabaseSeeder` class ကို run မည်ဖြစ်ပြီး ထိုမှတဆင့် အခြား seed class များကို ခေါ်ယူမည် ဖြစ်သည်။ သို ့ပင်သော်ညား `--class` option ကို အသုံးပြုကာ သီးသန် ့ seeder class တစ်ခုချင်းစီလည်း run နိုင်ပါသေးသည်။
 
 	php artisan db:seed --class=UserTableSeeder
 
-ထုိအျပင္ `migrate:refresh` ကုိအသုံးျပဳကာ, rollback ျပဳလုပ္ျပီး  migrations ကုိ အစမွ တဖန္ျပန္၍ run ျခင္းကိုလည္း ျပဳလုပ္ႏုိင္မည္ ျဖစ္သည္။
+ထိုအပြင် `migrate:refresh` ကိုအသုံးပြုကာ, rollback ပြုလုပ်ပြီး  migrations ကို အစမှ တဖန်ပြန်၍ run ခြင်းကိုလည်း ပြုလုပ်နိုင်မည် ဖြစ်သည်။
 
 	php artisan migrate:refresh --seed

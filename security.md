@@ -1,4 +1,4 @@
-# Security
+﻿# Security
 
 - [Configuration](#configuration)
 - [Storing Passwords](#storing-passwords)
@@ -13,20 +13,20 @@
 <a name="configuration"></a>
 ## Configuration
 
-Authernication ကို အရိုးရွင္းဆံုးျဖစ္ေအာင္  ရည္ရြယ္ၿပီး Laravel က ရည္ရြယ္ထားပါတယ္။ တစ္နည္းအားျဖင္႔ configuration ေတြအားလံုးနီးပါး မရွိသေလာက္ျဖစ္ေအာင္လုပ္ထားတာပါ။ Authernication file က `app/config/auth.php` မွာရွိတာပါ ၊  ဒီထဲမွာဘာေတြပါလဲဆိုရင္   Authernication ေတြရဲ႕အေၾကာင္းေျပာထားတဲ႕  behavior facilities ေတြအေၾကာင္းကို Well documented လုပ္ထားတာေတြကိုေတြ႕ရမွာပါ။
+Authernication ကို အရိုးရှင်းဆုံးဖြစ်အောင်  ရည်ရွယ်ပြီး Laravel က ရည်ရွယ်ထားပါတယ်။ တစ်နည်းအားဖြင့် configuration တွေအားလုံးနီးပါး မရှိသလောက်ဖြစ်အောင်လုပ်ထားတာပါ။ Authernication file က `app/config/auth.php` မှာရှိတာပါ ၊  ဒီထဲမှာဘာတွေပါလဲဆိုရင်   Authernication တွေရဲ့အကြောင်းပြောထားတဲ့  behavior facilities တွေအကြောင်းကို Well documented လုပ်ထားတာတွေကိုတွေ့ရမှာပါ။
 
-မူလ ပံုစံအရဆိုရင္ Laravel မွာသင္႕ရဲ႕  `app/models` ထဲမွ `User` model ပါဝင္ပါတယ္... ဒါက default Eloquent authentication driver ကိုသံုးရပါလိမ္႕မယ္။  မွတ္ထားရမွာက ဒီ `User` Model အတြက္ Schema  ကို create လုပ္တဲ႕အခ်ိန္မွာ password field က 60 characters အနည္းဆံုးရွိရမယ္ဆိုတာကိုေတာ႕မွတ္ထားပါ။
+မူလ ပုံစံအရဆိုရင် Laravel မှာသင့်ရဲ့  `app/models` ထဲမှ `User` model ပါဝင်ပါတယ်... ဒါက default Eloquent authentication driver ကိုသုံးရပါလိမ့်မယ်။  မှတ်ထားရမှာက ဒီ `User` Model အတွက် Schema  ကို create လုပ်တဲ့အချိန်မှာ password field က 60 characters အနည်းဆုံးရှိရမယ်ဆိုတာကိုတော့မှတ်ထားပါ။
 
-သင္႕ application က Eloquent ကိုမသံုးဘူးဆိုရင္ သင္႕အေနနဲ႕ `database` authentication driver ကိုအသံုးျပဳရပါလိမ္႕မယ္... အဲဒါက Laravel query builder ကိုသံုးထားတာပါ။
+သင့် application က Eloquent ကိုမသုံးဘူးဆိုရင် သင့်အနေနဲ့ `database` authentication driver ကိုအသုံးပြုရပါလိမ့်မယ်... အဲဒါက Laravel query builder ကိုသုံးထားတာပါ။
 
 > **Note:** Before getting started, make sure that your `users` (or equivalent) table contains a nullable, string `remember_token` column of 100 characters. This column will be used to store a token for "remember me" sessions being maintained by your application.
 
 <a name="storing-passwords"></a>
 ## Storing Passwords
 
-Laravel ရဲ႕ `Hash` class က secure Bcrypt hashing စီစဥ္ေပးပါတယ္ -
+Laravel ရဲ့ `Hash` class က secure Bcrypt hashing စီစဉ်ပေးပါတယ် -
 
-#### Bcrypt ကိုသံုးၿပီး Password တစ္ခုကို Hash လုပ္ျခင္း
+#### Bcrypt ကိုသုံးပြီး Password တစ်ခုကို Hash လုပ်ခြင်း
 
 	$password = Hash::make('secret');
 
@@ -37,7 +37,7 @@ Laravel ရဲ႕ `Hash` class က secure Bcrypt hashing စီစဥ္ေပ�
 		// The passwords match...
 	}
 
-#### Password တစ္ခုကို Rehashed လုပ္ဖို႕လိုလားမလိုလားစစ္ရင္
+#### Password တစ်ခုကို Rehashed လုပ်ဖို့လိုလားမလိုလားစစ်ရင်
 
 	if (Hash::needsRehash($hashed))
 	{
@@ -47,27 +47,27 @@ Laravel ရဲ႕ `Hash` class က secure Bcrypt hashing စီစဥ္ေပ�
 <a name="authenticating-users"></a>
 ## Authenticating Users
 
-User တစ္ေယာက္ သင္႕ application ထဲကိုဝင္ဖို႕အတြက္ သင္႕ေနနဲ႕ `Auth::attempt` method ကိုသံုးရပါလိမ္႕မယ္။
+User တစ်ယောက် သင့် application ထဲကိုဝင်ဖို့အတွက် သင့်နေနဲ့ `Auth::attempt` method ကိုသုံးရပါလိမ့်မယ်။
 
 	if (Auth::attempt(array('email' => $email, 'password' => $password)))
 	{
 		return Redirect::intended('dashboard');
 	}
 
-မွတ္ထားေပးရမွာက... `email` က require option မဟုတ္ပါဘူး၊ ဒါက နမူနာ သတ္သတ္ျဖစ္ပါတယ္။ သင္႕အေနနဲ႕ "username" column အစားသင္ႀကိဳက္တဲ႕ column ကို အစားထိုးအသံုးျပဳႏိုင္ပါတယ္။ `Redirect::intended` function က user authernication filter ကိုေက်ာ္ၿပီးမွ access လုပ္လိုရမယ္႕ လိုသတ္မွတ္ထားတဲ႕ url ကို redirect လုပ္ပါ႕မယ္။  fallback URI တစ္ခု အဲ႕ဒီ method ဆီကို ေပးပါလိမ္႕မယ္  လိုအပ္လို႕ရွိရင္ intended destination က မရႏိုင္ပါဘူး။
+မှတ်ထားပေးရမှာက... `email` က require option မဟုတ်ပါဘူး၊ ဒါက နမူနာ သတ်သတ်ဖြစ်ပါတယ်။ သင့်အနေနဲ့ "username" column အစားသင်ကြိုက်တဲ့ column ကို အစားထိုးအသုံးပြုနိုင်ပါတယ်။ `Redirect::intended` function က user authernication filter ကိုကျော်ပြီးမှ access လုပ်လိုရမယ့် လိုသတ်မှတ်ထားတဲ့ url ကို redirect လုပ်ပါ့မယ်။  fallback URI တစ်ခု အဲ့ဒီ method ဆီကို ပေးပါလိမ့်မယ်  လိုအပ်လို့ရှိရင် intended destination က မရနိုင်ပါဘူး။
 
-`attempt` method ေခၚၿပီးသြားတဲ႕အခ်ိန္မွာ `auth.attempt` [event](events.md) က fire ျဖစ္သြားပါလိမ္႕မယ္။ တကယ္လို႕ authentication attempt က successful ျဖစ္ၿပီးေတာ႕ user က logged ျဖစ္သြားတဲ႕အခ်ိန္မွာ  `auth.login` event ကလည္း fired ျဖစ္ပါလိမ္႕ဦးမယ္။
+`attempt` method ခေါ်ပြီးသွားတဲ့အချိန်မှာ `auth.attempt` [event](events.md) က fire ဖြစ်သွားပါလိမ့်မယ်။ တကယ်လို့ authentication attempt က successful ဖြစ်ပြီးတော့ user က logged ဖြစ်သွားတဲ့အချိန်မှာ  `auth.login` event ကလည်း fired ဖြစ်ပါလိမ့်ဦးမယ်။
 
-#### User တစ္ေယာက္က Authenticat ျဖစ္ေနလားဆိုတာကို ဆံုးျဖတ္ျခင္း
+#### User တစ်ယောက်က Authenticat ဖြစ်နေလားဆိုတာကို ဆုံးဖြတ်ခြင်း
 
-User က သင္႕ application ထဲ login ဝင္ၿပီးၿပီလားဆိုတာကိုဆံုးျဖတ္ရန္ သင္႕အေနနဲ႕ `check` method ကိုအသံုးျပဳသင္႕ပါတယ္ -
+User က သင့် application ထဲ login ဝင်ပြီးပြီလားဆိုတာကိုဆုံးဖြတ်ရန် သင့်အနေနဲ့ `check` method ကိုအသုံးပြုသင့်ပါတယ် -
 
 	if (Auth::check())
 	{
 		// The user is logged in...
 	}
 
-#### User တစ္ေယာက္ကို Authenticate လုပ္ျခင္း နဲ႕ သူတို႕ကို "Remember" လုပ္ျခင္း
+#### User တစ်ယောက်ကို Authenticate လုပ်ခြင်း နဲ့ သူတို့ကို "Remember" လုပ်ခြင်း
 
 If you would like to provide "remember me" functionality in your application, you may pass `true` as the second argument to the `attempt` method, which will keep the user authenticated indefinitely (or until they manually logout). Of course, your `users` table must include the string `remember_token` column, which will be used to store the "remember me" token.
 

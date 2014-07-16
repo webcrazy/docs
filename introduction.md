@@ -1,11 +1,11 @@
-# Laravel Framework မိတ္ဆက္
+﻿# Laravel Framework မိတ်ဆက်
 
- - [ဘယ္ကေနစမလဲ](#where-to-start)
- - [Laravel သေဘာတရား](#laravel-philosophy)
+ - [ဘယ်ကနေစမလဲ](#where-to-start)
+ - [Laravel သဘောတရား](#laravel-philosophy)
 
-## ဘယ္ကေနစမလဲ
+## ဘယ်ကနေစမလဲ
 
-Framework အသစ္တစ္ခုကို ေလ႕လာရတာကိုလန္႕ေနႏိုင္ပါတယ္၊ ဒါေပမယ္႕ ဒါဟာ ရင္ခုန္ဖို႕အရမ္းေကာင္းပါတယ္။ သင္႕ရဲ႕ အကူးအေျပာင္းကိုအဆင္ေျပဖို႕၊ ကြ်န္ေတာ္တို႕က က်စ္လ်စ္ျပည္႕စံုၿပီး အရွင္းဆံုးျဖစ္ေအာင္ႀကိဳးပမ္းၿပီးေတာ႕ Laravel Documentation ကို ျပဳလုပ္ထားပါတယ္။ဒီမွာအရင္ဖတ္သင္႕တာေတြကို ေဖာ္ျပထားပါတယ္:
+Framework အသစ်တစ်ခုကို လေ့လာရတာကိုလန့်နေနိုင်ပါတယ်၊ ဒါပေမယ့် ဒါဟာ ရင်ခုန်ဖို့အရမ်းကောင်းပါတယ်။ သင့်ရဲ့ အကူးအပြောင်းကိုအဆင်ပြေဖို့၊ ကျွန်တော်တို့က ကျစ်လျစ်ပြည့်စုံပြီး အရှင်းဆုံးဖြစ်အောင်ကြိုးပမ်းပြီးတော့ Laravel Documentation ကို ပြုလုပ်ထားပါတယ်။ဒီမှာအရင်ဖတ်သင့်တာတွေကို ဖော်ပြထားပါတယ်:
 
  - [Installation](installation.md) and
    [Configuration](configuration.md)
@@ -14,12 +14,12 @@ Framework အသစ္တစ္ခုကို ေလ႕လာရတာကို
  - [Views & Responses](responses.md)
  - [Controllers](controllers.md)
 
-အေပၚက Documention Link ေတြကိုဖတ္ၿပီးၿပီဆိုရင္ သင့္ အေနနဲ႕ Laravel ရဲ႕ request/response ေတြကို ေကာင္းေကာင္း ကိုယ္တြယ္ေျဖရွင္းႏိုင္သင္႕ပါတယ္။ ေနာက္ၿပီး သင္အေနနဲ႕ [Database Configuration](database) / [Eloquent ORM](/docs/eloquent) ဖတ္ဖို႕ဆုေတာင္းေကာင္းဆုေတာင္းေနမယ္လို႕ထင္ပါတယ္ အဲ႕ဒီလိုမွမဟုတ္ဘူးဆိုရင္ [authentication and security](/docs/security.md) ကိုေပါ႕ ဒါမွလူေတြကို သင္႕ရဲ႕ application ထဲကို  sign in ဝင္ခိုင္းလို႕ရမွာကိုး။
+အပေါ်က Documention Link တွေကိုဖတ်ပြီးပြီဆိုရင် သင့် အနေနဲ့ Laravel ရဲ့ request/response တွေကို ကောင်းကောင်း ကိုယ်တွယ်ဖြေရှင်းနိုင်သင့်ပါတယ်။ နောက်ပြီး သင်အနေနဲ့ [Database Configuration](database) / [Eloquent ORM](/docs/eloquent) ဖတ်ဖို့ဆုတောင်းကောင်းဆုတောင်းနေမယ်လို့ထင်ပါတယ် အဲ့ဒီလိုမှမဟုတ်ဘူးဆိုရင် [authentication and security](/docs/security.md) ကိုပေါ့ ဒါမှလူတွေကို သင့်ရဲ့ application ထဲကို  sign in ဝင်ခိုင်းလို့ရမှာကိုး။
 
 
 <a name="laravel-philosophy"></a>
-## Laravel သေဘာတရား
+## Laravel သဘောတရား
 
-Laravel က ရုိးရွင္းသပ္ရပ္၊ မဟာဆန္ျပီး လွပေနတဲ့ syntax ေတြနဲ ့ ေရးသားထားတဲ့  Web Application Framework တစ္ခုျဖစ္ပါတယ္၊ ကြ်န္ေတာ္တို႕ Development က ေပ်ာ္စရာ ေကာင္းရမယ္ ဆိုတာကိုယံုၾကည္ပါတယ္။ ဖန္တီးမွု ေတြကိုလည္း စိတ္ခ်မ္းသာမူ အျပည္႕အဝ ေပးမယ္လို႕ယံုၾကည္ပါတယ္။ Laravel က Web projects ေတြရဲ႕အဓိကအလုပ္ေတြျဖစ္တဲ့ authernication, routing, sessions, နဲ႕ caching ေတြကို တက္ႏိုင္သမွ် ေလွ်ာ႕ခ်ဖို႕ ႀကိဳးစားေနပါတယ္။
+Laravel က ရိုးရှင်းသပ်ရပ်၊ မဟာဆန်ပြီး လှပနေတဲ့ syntax တွေနဲ ့ ရေးသားထားတဲ့  Web Application Framework တစ်ခုဖြစ်ပါတယ်၊ ကျွန်တော်တို့ Development က ပျော်စရာ ကောင်းရမယ် ဆိုတာကိုယုံကြည်ပါတယ်။ ဖန်တီးမှု တွေကိုလည်း စိတ်ချမ်းသာမူ အပြည့်အဝ ပေးမယ်လို့ယုံကြည်ပါတယ်။ Laravel က Web projects တွေရဲ့အဓိကအလုပ်တွေဖြစ်တဲ့ authernication, routing, sessions, နဲ့ caching တွေကို တက်နိုင်သမျှ လျှော့ချဖို့ ကြိုးစားနေပါတယ်။
 
-Laravel ကနားလည္လြယ္တယ္၊ ဟုတ္ပါတယ္ powerful လည္းျဖစ္တယ္၊ ေနာက္ ႀကီးမားရွုပ္ေထြးတဲ႕ Projects ေတြအတြက္လည္း အေကာင္းဆံုး tools ေတြကိုေထာက္ပံ႕ေနပါတယ္။ ထိပ္တန္း  ခြဲစိတ္မွူတစ္ခု control container,expressive migration system နဲ႕ tightly integrated unit testing support tools ေတြကိုသင္႕ကိုေပးထားပါတယ္ သင္ Create လုပ္ခ်င္တဲ႕ Application ကိုသင္စိတ္ႀကိဳက္လုပ္ႏိုင္ပါတယ္။
+Laravel ကနားလည်လွယ်တယ်၊ ဟုတ်ပါတယ် powerful လည်းဖြစ်တယ်၊ နောက် ကြီးမားရှုပ်ထွေးတဲ့ Projects တွေအတွက်လည်း အကောင်းဆုံး tools တွေကိုထောက်ပံ့နေပါတယ်။ ထိပ်တန်း  ခွဲစိတ်မှူတစ်ခု control container,expressive migration system နဲ့ tightly integrated unit testing support tools တွေကိုသင့်ကိုပေးထားပါတယ် သင် Create လုပ်ချင်တဲ့ Application ကိုသင်စိတ်ကြိုက်လုပ်နိုင်ပါတယ်။

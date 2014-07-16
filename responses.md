@@ -1,4 +1,4 @@
-# Views ႏွင္႕ Responses မ်ားအေၾကာင္း
+﻿# Views နှင့် Responses များအကြောင်း
 
 - [Basic Responses](#basic-responses)
 - [Redirects](#redirects)
@@ -10,7 +10,7 @@
 <a name="basic-responses"></a>
 ## Basic Responses
 
-#### String တစ္ခုကို Routes ကေန return ျပန္ခ်င္ရင္ -
+#### String တစ်ခုကို Routes ကနေ return ပြန်ချင်ရင် -
 
 	Route::get('/', function()
 	{
@@ -19,7 +19,7 @@
 
 #### Creating Custom Responses
 
-Symfony\Component\HttpFoundation\Response` class ကေန Response` တစ္ခုကျဖစ္လာတယ္၊  HTTPS responses ေတြကို တည္ေဆာက္ဖို႕ရာအတြက္ မ်ားစြာေသာ methods ေတြကေန စီစဥ္ေပးပါတယ္။
+Symfony\Component\HttpFoundation\Response` class ကနေ Response` တစ်ခုကဖြစ်လာတယ်၊  HTTPS responses တွေကို တည်ဆောက်ဖို့ရာအတွက် များစွာသော methods တွေကနေ စီစဉ်ပေးပါတယ်။
 
 	$response = Response::make($contents, $statusCode);
 
@@ -27,61 +27,61 @@ Symfony\Component\HttpFoundation\Response` class ကေန Response` တစ္�
 
 	return $response;
 
-သင္က `Response` class တစ္ခုရဲ႕ method ကိုလည္းလိုခ်င္တယ္... ဒါေပမယ္႕ response content အျဖစ္ return ျပန္ခ်င္တယ္ ဆိုရင္ေတာ႕`Response::view` method ကအဆင္ေျပပါလိမ္႕မယ္-
+သင်က `Response` class တစ်ခုရဲ့ method ကိုလည်းလိုချင်တယ်... ဒါပေမယ့် response content အဖြစ် return ပြန်ချင်တယ် ဆိုရင်တော့`Response::view` method ကအဆင်ပြေပါလိမ့်မယ်-
 
 	return Response::view('hello')->header('Content-Type', $type);
 
-#### Cookies ေတြကို Responses ေတြဆီျပန္ခ်င္တယ္ဆိုရင္
+#### Cookies တွေကို Responses တွေဆီပြန်ချင်တယ်ဆိုရင်
 
 	$cookie = Cookie::make('name', 'value');
 
 	return Response::make($content)->withCookie($cookie);
 
 <a name="redirects"></a>
-## ျပန္လည္လမ္းေၾကာင္းညႊန္ၾကားမွူ႔
+## ပြန်လည်လမ်းကြောင်းညွှန်ကြားမှူ့
 
-#### Redirect လုပ္ခ်င္တယ္ဆိုရင္ -
+#### Redirect လုပ်ချင်တယ်ဆိုရင် -
 
 	return Redirect::to('user/login');
 
-#### Flash Data နဲ႕ Redirect လုပ္ရင္ -
+#### Flash Data နဲ့ Redirect လုပ်ရင် -
 
 	return Redirect::to('user/login')->with('message', 'Login Failed');
 
 > **Note:** Since the `with` method flashes data to the session, you may retrieve the data using the typical `Session::get` method.
 
-#### Nmaed Route ႏွင္႕ Redirect လုပ္ရင္-
+#### Nmaed Route နှင့် Redirect လုပ်ရင်-
 
 	return Redirect::route('login');
 
-#### Route Parameters တစ္ခုနဲ႕ Redirect လုပ္ရင္ -
+#### Route Parameters တစ်ခုနဲ့ Redirect လုပ်ရင် -
 
 
 	return Redirect::route('profile', array(1));
 
-#### Route ထဲမွာ name parameters ပါတာကို Redirect လုပ္ရင္
+#### Route ထဲမှာ name parameters ပါတာကို Redirect လုပ်ရင်
 
 	return Redirect::route('profile', array('user' => 1));
 
-#### Controller ရဲ႕ Action တစ္ခုကေန Redirect တစ္ခု return လုပ္ခ်င္ရင္
+#### Controller ရဲ့ Action တစ်ခုကနေ Redirect တစ်ခု return လုပ်ချင်ရင်
 
 	return Redirect::action('HomeController@index');
 
-#### Paramater ပါတဲ႕ Controller တစ္ခုကို Redirect တစ္ခု return လုပ္ျခင္း
+#### Paramater ပါတဲ့ Controller တစ်ခုကို Redirect တစ်ခု return လုပ်ခြင်း
 
 	return Redirect::action('UserController@profile', array(1));
 
-#### Name Parameters တစ္ခုပါတဲ႕ Controller Action တစ္ခုကေန Redirect  တစ္ခု return လုပ္ျခင္း
+#### Name Parameters တစ်ခုပါတဲ့ Controller Action တစ်ခုကနေ Redirect  တစ်ခု return လုပ်ခြင်း
 
 	return Redirect::action('UserController@profile', array('user' => 1));
 
 <a name="views"></a>
 ## Views 
 
-သင္႕ရဲ႕ presentation logic ကေန controller နဲ႕ domain logic ေတြ ခြဲျခားဖို႕ရာအတြက္ Views က အဆင္ေျပဆံုးျဖစ္ေအာင္စီစဥ္ေပးပါတယ္။
-Views Files ေတြက `app/views` directory ထဲမွာ ရွိပါတယ္။ Views မွာ ထံုးစံအတိုင္း သင္႔ application ရဲ႕ HTML ေတြပါဝင္ပါတယ္ ။
+သင့်ရဲ့ presentation logic ကနေ controller နဲ့ domain logic တွေ ခွဲခြားဖို့ရာအတွက် Views က အဆင်ပြေဆုံးဖြစ်အောင်စီစဉ်ပေးပါတယ်။
+Views Files တွေက `app/views` directory ထဲမှာ ရှိပါတယ်။ Views မှာ ထုံးစံအတိုင်း သင့် application ရဲ့ HTML တွေပါဝင်ပါတယ် ။
 
-ေအာက္မွာေဖာ္ျပထားတာကေတာ႕ Views နမူနာတစ္ခုပါ:
+အောက်မှာဖော်ပြထားတာကတော့ Views နမူနာတစ်ခုပါ:
 
 	<!-- View stored in app/views/greeting.php -->
 
@@ -91,7 +91,7 @@ Views Files ေတြက `app/views` directory ထဲမွာ ရွိပါ�
 		</body>
 	</html>
 
-အဲ႕ဒီ႕အထက္က View ကို browser ကိုေအာက္ကလို retun ျပန္ခဲ႕ပါတယ္
+အဲ့ဒီ့အထက်က View ကို browser ကိုအောက်ကလို retun ပြန်ခဲ့ပါတယ်
 
 	Route::get('/', function()
 	{
@@ -100,7 +100,7 @@ Views Files ေတြက `app/views` directory ထဲမွာ ရွိပါ�
 
 The second argument passed to `View::make` is an array of data that should be made available to the view.
 
-#### Data ေတြကို View ဆီကို pass လုပ္ျခင္း
+#### Data တွေကို View ဆီကို pass လုပ်ခြင်း
 
 	// Using conventional approach
 	$view = View::make('greeting')->with('name', 'Steve');
@@ -108,25 +108,25 @@ The second argument passed to `View::make` is an array of data that should be ma
 	// Using Magic Methods
 	$view = View::make('greeting')->withName('steve');
 
-အထက္ကဥပမာမွာ `$name` variable ကို view ကေနၿပီးေတာ႕ access လုပ္ႏုိင္ပါတယ္၊ ေနာက္ `Steve` ေကာေပါ႕။
+အထက်ကဥပမာမှာ `$name` variable ကို view ကနေပြီးတော့ access လုပ်နိုင်ပါတယ်၊ နောက် `Steve` ကောပေါ့။
 
-သင္႕အေနနဲ႕ data ထဲက array ေတြကို `make` method ရဲ႕ second partameter မွာ array ျဖစ္တဲ႕ data ကို pass လုပ္ႏိုင္ပါတယ္။ သင္လုပ္ခ်င္ရင္ေပါ႕
+သင့်အနေနဲ့ data ထဲက array တွေကို `make` method ရဲ့ second partameter မှာ array ဖြစ်တဲ့ data ကို pass လုပ်နိုင်ပါတယ်။ သင်လုပ်ချင်ရင်ပေါ့
 
 	$view = View::make('greetings', $data);
 
-သင္႕အေနနဲ႕ data နည္းနည္း ေလးကို views အားလံုးကို share ႏိုင္ပါတယ္၊
+သင့်အနေနဲ့ data နည်းနည်း လေးကို views အားလုံးကို share နိုင်ပါတယ်၊
 
 	View::share('name', 'Steve');
 
-#### View တစ္ခုမွ Sub-View တစ္ခုကို pass လုပ္ျခင္း
+#### View တစ်ခုမှ Sub-View တစ်ခုကို pass လုပ်ခြင်း
 
-တစ္ခါတစ္ေလသင္႕အေနနဲ႕ veiw တစ္ခုကေန တစ္ခုေျပာင္းခ်င္ပါလိမ္႕မယ္။ ဥပမာ၊ ဒုတိယ view တစ္ခုကို `app/views/child/view.php` မွာ stored လုပ္ထားတယ္၊ ကြ်န္ေတာ္တို႕ ေနာက္ထက္ View တစ္ခုကို Pass လုပ္ခ်င္တယ္ဆိုရင္... like so:
+တစ်ခါတစ်လေသင့်အနေနဲ့ veiw တစ်ခုကနေ တစ်ခုပြောင်းချင်ပါလိမ့်မယ်။ ဥပမာ၊ ဒုတိယ view တစ်ခုကို `app/views/child/view.php` မှာ stored လုပ်ထားတယ်၊ ကျွန်တော်တို့ နောက်ထက် View တစ်ခုကို Pass လုပ်ချင်တယ်ဆိုရင်... like so:
 
 	$view = View::make('greeting')->nest('child', 'child.view');
 
 	$view = View::make('greeting')->nest('child', 'child.view', $data);
 
-paraent view က sub-view ဆီကေန render လုပ္ႏိုင္ပါၿပီ-
+paraent view က sub-view ဆီကနေ render လုပ်နိုင်ပါပြီ-
 
 	<html>
 		<body>
@@ -138,18 +138,18 @@ paraent view က sub-view ဆီကေန render လုပ္ႏိုင္ပ�
 <a name="view-composers"></a>
 ## View Composers
 
-View က rendered ျဖစ္တဲ႕အခ်ိန္မွာ View composers ေတြက callbacks ဒါမွမဟုတ္ရင္ class methods ေတြကို ေခၚခဲ႕တယ္ ။ သင္႕ application မွ render လုပ္ၿပီးေတာ႕ သင့္ရဲ႕ view ကိုအခ်ိန္တိုင္း ေသခ်ာေပါက္ေပးရမယ္႕ data ရွိတဲ႕အခါမ်ိဳးဆိုရင္  ... အဲ႕ဒီ႕ code ကို location တစ္ခုထဲကေန View Composer တစ္ခုက organize လုပ္ႏိုင္တယ္ ။
+View က rendered ဖြစ်တဲ့အချိန်မှာ View composers တွေက callbacks ဒါမှမဟုတ်ရင် class methods တွေကို ခေါ်ခဲ့တယ် ။ သင့် application မှ render လုပ်ပြီးတော့ သင့်ရဲ့ view ကိုအချိန်တိုင်း သေချာပေါက်ပေးရမယ့် data ရှိတဲ့အခါမျိုးဆိုရင်  ... အဲ့ဒီ့ code ကို location တစ်ခုထဲကနေ View Composer တစ်ခုက organize လုပ်နိုင်တယ် ။
 
-#### View Composer တစ္ခု သတ္မွတ္ျခင္း
+#### View Composer တစ်ခု သတ်မှတ်ခြင်း
 
 	View::composer('profile', function($view)
 	{
 		$view->with('count', User::count());
 	});
 
-အခု `profile` view က rendered ျဖစ္တဲ႕အခ်ိန္တိုင္းမွာ  `count` data က view ဆီကို bound ပါလိမ္႕မယ္
+အခု `profile` view က rendered ဖြစ်တဲ့အချိန်တိုင်းမှာ  `count` data က view ဆီကို bound ပါလိမ့်မယ်
 
-View composer တစ္ခုကေန Multiple Views ကိုတစ္ႀကိမ္တည္းသင္႕အေနနဲ႕ attach လုပ္ႏိုင္ပါတယ္
+View composer တစ်ခုကနေ Multiple Views ကိုတစ်ကြိမ်တည်းသင့်အနေနဲ့ attach လုပ်နိုင်ပါတယ်
 
     View::composer(array('profile','dashboard'), function($view)
     {
@@ -160,7 +160,7 @@ If you would rather use a class based composer, which will provide the benefits 
 
 	View::composer('profile', 'ProfileComposer');
 
-View Composer Class တစ္ခုကို ေအာက္ကလုိ define လုပ္ႏိုင္ပါတယ္ :
+View Composer Class တစ်ခုကို အောက်ကလို define လုပ်နိုင်ပါတယ် :
 
 	class ProfileComposer {
 
@@ -171,9 +171,9 @@ View Composer Class တစ္ခုကို ေအာက္ကလုိ define 
 
 	}
 
-#### Composer ႏွစ္ခုသတ္မွတ္ျခင္း
+#### Composer နှစ်ခုသတ်မှတ်ခြင်း
 
-တစ္ခ်ိန္တည္းမွာဘဲ Composers Group ေတြကို Register လုပ္ဖို႕သင္႕အေနနဲ႕ `composers` method ကိုသံုးႏိုင္ပါတယ္။
+တစ်ချိန်တည်းမှာဘဲ Composers Group တွေကို Register လုပ်ဖို့သင့်အနေနဲ့ `composers` method ကိုသုံးနိုင်ပါတယ်။
 
 
 	View::composers(array(
@@ -183,9 +183,9 @@ View Composer Class တစ္ခုကို ေအာက္ကလုိ define 
 
 > **Note:** There is no convention on where composer classes may be stored. You are free to store them anywhere as long as they can be autoloaded using the directives in your `composer.json` file.
 
-### View Creators ( View ဖန္တီးသူမ်ား)
+### View Creators ( View ဖန်တီးသူများ)
 
-View **creators** ေတြက view composers ေတြလုပ္သလိုမ်ိဳးတစ္ပံုစံတည္းလုပ္တာပါ။ သို႕ေပမယ္႕လည္း...view ေတြ instantiated ျဖစ္ၿပီးၿပီဆိုမွ သူတို႕က ခ်က္ခ်င္း fired လုပ္တာပါ။ View creator တစ္ခုလုပ္ဖို႕ Register လုပ္ခ်င္တယ္ဆိုရင္ `creator` method ကိုသံုးပါ။
+View **creators** တွေက view composers တွေလုပ်သလိုမျိုးတစ်ပုံစံတည်းလုပ်တာပါ။ သို့ပေမယ့်လည်း...view တွေ instantiated ဖြစ်ပြီးပြီဆိုမှ သူတို့က ချက်ချင်း fired လုပ်တာပါ။ View creator တစ်ခုလုပ်ဖို့ Register လုပ်ချင်တယ်ဆိုရင် `creator` method ကိုသုံးပါ။
 
 	View::creator('profile', function($view)
 	{
@@ -195,15 +195,15 @@ View **creators** ေတြက view composers ေတြလုပ္သလို�
 <a name="special-responses"></a>
 ## Special Responses 
 
-#### JSON Response တစ္ခုျပဳလုပ္ျခင္း
+#### JSON Response တစ်ခုပြုလုပ်ခြင်း
 
 	return Response::json(array('name' => 'Steve', 'state' => 'CA'));
 
-#### JSON Response တစ္ခုျပဳလုပ္ျခင္း
+#### JSON Response တစ်ခုပြုလုပ်ခြင်း
 
 	return Response::json(array('name' => 'Steve', 'state' => 'CA'))->setCallback(Input::get('callback'));
 
-#### File Download Response တစ္ခုျပဳလုပ္ျခင္း
+#### File Download Response တစ်ခုပြုလုပ်ခြင်း
 
 	return Response::download($pathToFile);
 
@@ -214,15 +214,15 @@ View **creators** ေတြက view composers ေတြလုပ္သလို�
 <a name="response-macros"></a>
 ## Response Macros
 
-သင္႕အေနနဲ႕ကိုယ္ပိုင္ response တစ္ခုျပဳလုပ္ၿပီးေတာ႕ routes နဲ႕ controllers ေတြကေနျပန္ၿပီးေတာ႕အသံုးျပဳခ်င္တယ္ဆိုရင္... သင္႕အေနနဲ႕ `Response::macro` method ကိုသံုးႏိုင္ပါတယ္
+သင့်အနေနဲ့ကိုယ်ပိုင် response တစ်ခုပြုလုပ်ပြီးတော့ routes နဲ့ controllers တွေကနေပြန်ပြီးတော့အသုံးပြုချင်တယ်ဆိုရင်... သင့်အနေနဲ့ `Response::macro` method ကိုသုံးနိုင်ပါတယ်
 
 	Response::macro('caps', function($value)
 	{
 		return Response::make(strtoupper($value));
 	});
 
-`micro` function ကသူ႕ရဲ႕  name တစ္ခုကို first argument အျဖစ္လက္ခံထားတယ္၊ ေနာက္ Closure ကေတာ႕ သူ႕ရဲ႕ဒုတိယတစ္ခုပါ။ micro name က `Response` class ကို ေခၚတဲ႕အခ်ိန္မွာ macro closure က execute ျဖစ္သြားပါတယ္ :
+`micro` function ကသူ့ရဲ့  name တစ်ခုကို first argument အဖြစ်လက်ခံထားတယ်၊ နောက် Closure ကတော့ သူ့ရဲ့ဒုတိယတစ်ခုပါ။ micro name က `Response` class ကို ခေါ်တဲ့အချိန်မှာ macro closure က execute ဖြစ်သွားပါတယ် :
 
 	return Response::caps('foo');
 
-micros ေတြကို သင္႕ရဲ႕ `app/start`  files ထဲမွာ define လုပ္ထားရပါမယ္။  တစ္နည္းအားျဖင္႕ သင္႕ separate လုပ္ထားတဲ႕ macros ေတြကို `start` files မွာသင္ျပန္ organize လုပ္ရပါမယ္။
+micros တွေကို သင့်ရဲ့ `app/start`  files ထဲမှာ define လုပ်ထားရပါမယ်။  တစ်နည်းအားဖြင့် သင့် separate လုပ်ထားတဲ့ macros တွေကို `start` files မှာသင်ပြန် organize လုပ်ရပါမယ်။

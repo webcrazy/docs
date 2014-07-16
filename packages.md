@@ -1,4 +1,4 @@
-# Package Development
+﻿# Package Development
 
 - [Introduction](#introduction)
 - [Creating A Package](#creating-a-package)
@@ -17,35 +17,35 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravelတြင္ တျခား functions ေတြ အသစ္ထည့္တဲ့အခါမွာ Packages ေတြခြဲျပီးအသစ္ထပ္ထည့္တဲ့နည္းက သမရုိးက် နည္းလမ္းေကာင္းတခုျဖစ္ပါတယ္။ လူအမ်ားစုေဆာင္းျပီး project ေတြကုိ ဖန္တီးရာတဲ့အခါမွာ အရမ္းအသံုးတည့္တဲ့နည္းလမ္းျဖစ္ပါတယ္။ ဥပမာ [Carbon](https://github.com/briannesbitt/Carbon), or  [Behat](https://github.com/Behat/Behat).
+Laravelတွင် တခြား functions တွေ အသစ်ထည့်တဲ့အခါမှာ Packages တွေခွဲပြီးအသစ်ထပ်ထည့်တဲ့နည်းက သမရိုးကျ နည်းလမ်းကောင်းတခုဖြစ်ပါတယ်။ လူအများစုဆောင်းပြီး project တွေကို ဖန်တီးရာတဲ့အခါမှာ အရမ်းအသုံးတည့်တဲ့နည်းလမ်းဖြစ်ပါတယ်။ ဥပမာ [Carbon](https://github.com/briannesbitt/Carbon), or  [Behat](https://github.com/Behat/Behat).
 
-ေသခ်ာတာေပါ့ဗ်ာ ၊ Packages ေတြကုိ အသံုးျပဳရာမွာ ပံုစံမ်ိဳးစံုရွိပါတယ္။ တခ်ိဳဟာေတြက Laravel တစ္ခုတည္းမဟုတ္ပဲ အျခားျခားေသာ Framework ေတြမွာပါ အလုပ္လုပ္တဲ့ stand-alone packages ေတြျဖစ္တယ္။ အေပၚက CarBon နဲ့ Behat လုိ packages ေတြကေတာ့ Stand-alon ေတြျဖစ္ပါတယ္ ။ အဲဒီလိုဖန္တီးထားတဲ့ packages ေတြကုိ Laravel မွာသံုးမယ္ဆုိရင္ေတာ့ ထံုးစံတုိင္း "composer.json" ဖုိင္မွာ သြားထည့့္ေပးလုိက္တာနဲ့ သံုးျပဳႏုိင္မွာပါ။
+သေချာတာပေါ့ဗျာ ၊ Packages တွေကို အသုံးပြုရာမှာ ပုံစံမျိုးစုံရှိပါတယ်။ တချိုဟာတွေက Laravel တစ်ခုတည်းမဟုတ်ပဲ အခြားခြားသော Framework တွေမှာပါ အလုပ်လုပ်တဲ့ stand-alone packages တွေဖြစ်တယ်။ အပေါ်က CarBon နဲ့ Behat လို packages တွေကတော့ Stand-alon တွေဖြစ်ပါတယ် ။ အဲဒီလိုဖန်တီးထားတဲ့ packages တွေကို Laravel မှာသုံးမယ်ဆိုရင်တော့ ထုံးစံတိုင်း "composer.json" ဖိုင်မှာ သွားထည့်ပေးလိုက်တာနဲ့ သုံးပြုနိုင်မှာပါ။
 
-တျခားတခ်က္ကေတာ့ တျခား packages ေတြက Laravel အတြက္ပဲလို့ အေသသတ္မွတ္ပီး ထုတ္လုပ္ထားတဲ့ packages ေတြလဲ ရွိပါတယ္ ။ ဥပမာ အရင္ laravel version ေတြမွာ တုန္းက "bundles" လို packages ေတြမ်ိဳးပါ။ အဲဒီ packages ေတြမွာ  routes, controllers, views, configuration, နဲ့ migrations ဖြဲ့စည္းထားျပီး laravel ရဲ့  လုပ္ေဆာင္ႏုိင္မူေတြကုိ တိုးခ်ဲ့ အသံုးျပဳႏုိင္ပါတယ္။ Stan-alone packages တစ္ခု ဖန္တီးဖို့ဆိုတာ အရမ္းခက္တဲ့ ကိစၥေတာ့မဟုတ္ပါဘူး ၊ အခုေအာက္မွာ ထပ္ေဖာ္ျပမယ့္ နည္းလမ္းေတြအတုိင္း ဖန္တီးၾကည့္ႏုိင္ပါတယ္။
+တခြားတချက်ကတော့ တခြား packages တွေက Laravel အတွက်ပဲလို့ အသေသတ်မှတ်ပီး ထုတ်လုပ်ထားတဲ့ packages တွေလဲ ရှိပါတယ် ။ ဥပမာ အရင် laravel version တွေမှာ တုန်းက "bundles" လို packages တွေမျိုးပါ။ အဲဒီ packages တွေမှာ  routes, controllers, views, configuration, နဲ့ migrations ဖွဲ့စည်းထားပြီး laravel ရဲ့  လုပ်ဆောင်နိုင်မူတွေကို တိုးချဲ့ အသုံးပြုနိုင်ပါတယ်။ Stan-alone packages တစ်ခု ဖန်တီးဖို့ဆိုတာ အရမ်းခက်တဲ့ ကိစ္စတော့မဟုတ်ပါဘူး ၊ အခုအောက်မှာ ထပ်ဖော်ပြမယ့် နည်းလမ်းတွေအတိုင်း ဖန်တီးကြည့်နိုင်ပါတယ်။
 
-Laravel အတြက္ Packages ေတြကုိ  [Packagist](http://packagist.org)မွာတင္ျပီး ျဖန့္ခ်ီႏုိင္ျပီး [Composer](http://getcomposer.org) လို အရမ္းမိုက္တဲ့ Package destributuin tool ေတြသံုးျပဳ ျပီး ဖန္တီးရမွာပါ။
+Laravel အတွက် Packages တွေကို  [Packagist](http://packagist.org)မှာတင်ပြီး ဖြန့်ချီနိုင်ပြီး [Composer](http://getcomposer.org) လို အရမ်းမိုက်တဲ့ Package destributuin tool တွေသုံးပြု ပြီး ဖန်တီးရမှာပါ။
 
 <a name="creating-a-package"></a>
 ## Creating A Package
 
-Laravel မွာသံုးျပဳဖုိ့အတြက္ packages တစ္ခုတည္ေဆာက္ဖုိ့အတြက္ကေတာ့ 'workbench' Artisan command ကုိ အသံုးျပဳျပီးလြယ္လြယ္ကူကူကုိဖန္တီးႏုိင္ပါတယ္။ အဲလိုလုပ္ဖုိ့အတြက္ ပထမဆံုး 'app/config/workbench.php' မွာ name နဲ့ email ေလးအရင္သြားျဖည့္ေပးရပါတယ္။ အဲဒီ name နဲ့ email ကုိ အသစ္ေဆာက္မယ့္ packages ေတြ က 'composer.json' မွာ ျပန္အသံုးျပဳဖုိ့အတြက္ျဖစ္ပါတယ္။ကဲ့ ဒီေလာက္ျပင္ဆင္ျပီးရင္ package တစ္ခု တည္ေဆာက္ဖုိ့ အဆင္သင့္ျဖစ္ေနပါျပီ။ေအာက္က ကြန္မန္းကုိ Terminal(cmd) မွာ ထည့္ run လုိက္ပါ။
+Laravel မှာသုံးပြုဖို့အတွက် packages တစ်ခုတည်ဆောက်ဖို့အတွက်ကတော့ 'workbench' Artisan command ကို အသုံးပြုပြီးလွယ်လွယ်ကူကူကိုဖန်တီးနိုင်ပါတယ်။ အဲလိုလုပ်ဖို့အတွက် ပထမဆုံး 'app/config/workbench.php' မှာ name နဲ့ email လေးအရင်သွားဖြည့်ပေးရပါတယ်။ အဲဒီ name နဲ့ email ကို အသစ်ဆောက်မယ့် packages တွေ က 'composer.json' မှာ ပြန်အသုံးပြုဖို့အတွက်ဖြစ်ပါတယ်။ကဲ့ ဒီလောက်ပြင်ဆင်ပြီးရင် package တစ်ခု တည်ဆောက်ဖို့ အဆင်သင့်ဖြစ်နေပါပြီ။အောက်က ကွန်မန်းကို Terminal(cmd) မှာ ထည့် run လိုက်ပါ။
 
 #### Issuing The Workbench Artisan Command
 
 	php artisan workbench vendor/package --resources
 
-အေပၚက command ထဲမွာ vendor ဆိုတာက package တစ္ခုကုိ authors ေတြခြဲေရးတဲ့အခါမွာ package name ကုိ ခြဲခြဲျခားျခားသိႏုိင္ေအာင္ေပးထားတဲ့နာမည္ျဖစ္ပါတယ္။ Vendor ဆုိတာက အဲဒီ package ကုိ ဖန္တီးတဲ့လူျဖစ္ျပီး package ဆိုတာကေတာ့ ကုိယ္လုပ္တဲ့ package name ျဖစ္ပါတယ္။ ဥပမာ ကြ်န္ေတာ္ Taylar Otwell က "Zapper" ဆိုတဲ့ package တစ္ခုတည္ေဆာက္လုိက္ရင္ Package name က 'Zapper' ျဖစ္ျပး Vendor name က Taylar ျဖစ္ပါတယ္။ပံုမွန္အားျဖင့္ေတာ့ workbench က framework package တခုတည္ေဆာက္ပါတယ္။ "--resources" command က workbench ကုိ `migrations`, `views`, `config`, စသျဖင့္လိုအပ္တဲ့ ဖုိင္ေတြကုိ ဖန္တီးေပးဖို ့ေျပာပါတယ္။
+အပေါ်က command ထဲမှာ vendor ဆိုတာက package တစ်ခုကို authors တွေခွဲရေးတဲ့အခါမှာ package name ကို ခွဲခွဲခြားခြားသိနိုင်အောင်ပေးထားတဲ့နာမည်ဖြစ်ပါတယ်။ Vendor ဆိုတာက အဲဒီ package ကို ဖန်တီးတဲ့လူဖြစ်ပြီး package ဆိုတာကတော့ ကိုယ်လုပ်တဲ့ package name ဖြစ်ပါတယ်။ ဥပမာ ကျွန်တော် Taylar Otwell က "Zapper" ဆိုတဲ့ package တစ်ခုတည်ဆောက်လိုက်ရင် Package name က 'Zapper' ဖြစ်ပြး Vendor name က Taylar ဖြစ်ပါတယ်။ပုံမှန်အားဖြင့်တော့ workbench က framework package တခုတည်ဆောက်ပါတယ်။ "--resources" command က workbench ကို `migrations`, `views`, `config`, စသဖြင့်လိုအပ်တဲ့ ဖိုင်တွေကို ဖန်တီးပေးဖို ့ပြောပါတယ်။
 
-အေပၚက 'Workbench' ကုိ run ျပီးျပီဆိုရင္ေတာ့ ၊ ကိုယ္ေပးထားတဲ့ နာမည္အတုိင္းပဲ 'workbench' ဆိုတဲ့ဖိုဒါထဲမွာ vendor name နဲ့ ဖိုဒါေတြေရာက္လာျပီး အထဲမွာ package နာမည္နဲ့ လိုအပ္တဲ့ဖုိင္ေတြအကုန္ အလုိေလ်ာက္ရွိေနပါလိမ့္မယ္။ ျပီးရင္ေတာ့ တည္ေဆာက္လုိက္တဲ့ package ကုိ laravel ကေန သံုးျပဳႏုိင္ရန္အတြက္ 'ServiceProvider' ေၾကာ္ျငာေပးရပါတယ္။ Service Provider ကုိ 'app/config/app.php' မွာ သြားထည့္ေပးရပါတယ္။အဲဒီမွာ သြားထည့္ေပးလုိက္ရင္ workbench ထဲက package ေတြကုိ laravel ကေန အသံုးျပဳႏုိင္ပါျပီ။ Service Provider က '[Package]ServiceProvider' ကိုအသံုးျပဳပါတယ္။ဥပမာအရဆုိရင္ 'app/config/app.php' က Provider မွာ 'Taylor\Zapper\ZapperServiceProvider' ဆိုျပီး array ထဲမွာ သြားထည့္ေပးရမွာပါ။
+အပေါ်က 'Workbench' ကို run ပြီးပြီဆိုရင်တော့ ၊ ကိုယ်ပေးထားတဲ့ နာမည်အတိုင်းပဲ 'workbench' ဆိုတဲ့ဖိုဒါထဲမှာ vendor name နဲ့ ဖိုဒါတွေရောက်လာပြီး အထဲမှာ package နာမည်နဲ့ လိုအပ်တဲ့ဖိုင်တွေအကုန် အလိုလျောက်ရှိနေပါလိမ့်မယ်။ ပြီးရင်တော့ တည်ဆောက်လိုက်တဲ့ package ကို laravel ကနေ သုံးပြုနိုင်ရန်အတွက် 'ServiceProvider' ကြော်ငြာပေးရပါတယ်။ Service Provider ကို 'app/config/app.php' မှာ သွားထည့်ပေးရပါတယ်။အဲဒီမှာ သွားထည့်ပေးလိုက်ရင် workbench ထဲက package တွေကို laravel ကနေ အသုံးပြုနိုင်ပါပြီ။ Service Provider က '[Package]ServiceProvider' ကိုအသုံးပြုပါတယ်။ဥပမာအရဆိုရင် 'app/config/app.php' က Provider မှာ 'Taylor\Zapper\ZapperServiceProvider' ဆိုပြီး array ထဲမှာ သွားထည့်ပေးရမှာပါ။
 
-အခုလို Provider မွာ သြားထည့္ေပးျပီးရင္ေတာ့ packages ကုိ လုိအပ္သလိုမ်ိဳး စတင္ အသံုးျပဳႏုိပ္ပါျပီ။ ပထမဆံုး package structure နဲ ့ development workflow ကို အရင္ေလ့လာသင့္ပါတယ္။
+အခုလို Provider မှာ သွားထည့်ပေးပြီးရင်တော့ packages ကို လိုအပ်သလိုမျိုး စတင် အသုံးပြုနိုပ်ပါပြီ။ ပထမဆုံး package structure နဲ ့ development workflow ကို အရင်လေ့လာသင့်ပါတယ်။
 
-> **Note:** Service Provider cannot be found ဆိုျပီး error ျပေနရင္ `php artisan dump-autoload` ကုိ root directory မွာ terminal(cmd) မွ တစ္ဆင့္ run ျပီး ျပန္စမ္းၾကည့္ပါ။
+> **Note:** Service Provider cannot be found ဆိုပြီး error ပြနေရင် `php artisan dump-autoload` ကို root directory မှာ terminal(cmd) မှ တစ်ဆင့် run ပြီး ပြန်စမ်းကြည့်ပါ။
 
 <a name="package-structure"></a>
 ## Package Structure
 
-'workbench' command ကုိ အသံုးျပဳျပီးတဲ့အခါမွာ အဲဒီ command က ကိုယ္ဖန္တီးလိုက္တဲ့ packages ကုိ laravel ႏွင့္ တြဲဖက္အသံုးျပဳႏုိင္ေအာင္ အကုန္အလိုေလ်ာက္ျပဳလုပ္ေပးပါတယ္။
+'workbench' command ကို အသုံးပြုပြီးတဲ့အခါမှာ အဲဒီ command က ကိုယ်ဖန်တီးလိုက်တဲ့ packages ကို laravel နှင့် တွဲဖက်အသုံးပြုနိုင်အောင် အကုန်အလိုလျောက်ပြုလုပ်ပေးပါတယ်။
 
 #### Basic Package Directory Structure
 
@@ -60,24 +60,24 @@ Laravel မွာသံုးျပဳဖုိ့အတြက္ packages တ�
 	/tests
 	/public
 
-အေပၚက file structure ကုိအရင္ေလ့လာၾကည့္ရေအာင္။ 'src/Vendor/Package' က ေတာ့ 'ServiceProvider' ပါဝင္တဲ့အတြက္ package's classes ေတြရဲ့  အဓိကေနရာလုိ့ေျပာရမွာပါ။ `config`, `lang`, `migrations`, နဲ့ `views' ေတြကေတာ့ packages အတြက္ လိုအပ္တဲ့ resources ေတြပါဝင္မယ့္ဖုိင္ေတြျဖစ္ပါတယ္။
-Packages တစ္ခုမွာလဲ Laravel မွာရွိတဲ့ resources ေတြ အတုိင္း တည္ရွိေနမွာပါ။
+အပေါ်က file structure ကိုအရင်လေ့လာကြည့်ရအောင်။ 'src/Vendor/Package' က တော့ 'ServiceProvider' ပါဝင်တဲ့အတွက် package's classes တွေရဲ့  အဓိကနေရာလို့ပြောရမှာပါ။ `config`, `lang`, `migrations`, နဲ့ `views' တွေကတော့ packages အတွက် လိုအပ်တဲ့ resources တွေပါဝင်မယ့်ဖိုင်တွေဖြစ်ပါတယ်။
+Packages တစ်ခုမှာလဲ Laravel မှာရှိတဲ့ resources တွေ အတိုင်း တည်ရှိနေမှာပါ။
 
 <a name="service-providers"></a>
 ## Service Providers
 
-Service providers ဖိုင္ေတြကေတာ့ packages ေတြရဲ့ အသက္ဖုိင္လုိ့ေျပာရမွာပါ။ပံုမွန္အားျဖင့္ Service Provider မွာ 'boot' နဲ့ 'register' ဆိုတဲ့ methodsႏွစ္ခုပါဝင္ပါတယ္။
-ဒီ methods ႏွစ္ခုမွာပဲ အကုန္လံုးျပဳလုပ္ႏုိင္ပါတယ္။ ဥပမာ routes ဖိုင္ခ်ိတ္ဖုိ့ ၊IoC Container ေတြ register bindings လုပ္ဖုိ့ ၊ events ေတြထည့္ဖုိ့ ၊ အကုန္လံုးနည္းပါးကုိ ဒီ method ႏွစ္ခုတစ္ဆင့္ အလုပ္လုပ္သြားမွာပါ။
+Service providers ဖိုင်တွေကတော့ packages တွေရဲ့ အသက်ဖိုင်လို့ပြောရမှာပါ။ပုံမှန်အားဖြင့် Service Provider မှာ 'boot' နဲ့ 'register' ဆိုတဲ့ methodsနှစ်ခုပါဝင်ပါတယ်။
+ဒီ methods နှစ်ခုမှာပဲ အကုန်လုံးပြုလုပ်နိုင်ပါတယ်။ ဥပမာ routes ဖိုင်ချိတ်ဖို့ ၊IoC Container တွေ register bindings လုပ်ဖို့ ၊ events တွေထည့်ဖို့ ၊ အကုန်လုံးနည်းပါးကို ဒီ method နှစ်ခုတစ်ဆင့် အလုပ်လုပ်သွားမှာပါ။
 
-"register" method က Service Provider ကုိ register ျပဳလုပ္ျပီးတာနဲ့ အလုပ္လုပ္မယ့္ method ျဖစ္ပါတယ္။ 'boot' method ကေတာ့ request အသက္မဝင္ခင္အခ်ိန္ထိပဲ အလုပ္လုပ္မွာျဖစ္ပါတယ္။ ဒါဆိုရင္ေတာ့ service provider ထဲက actions ေတြ registe လုပ္ျပီးတဲ့အခ်ိန္ (သို ့) တျခား provider တစ္ခုရဲ့  service ကုိ ေက်ာ္လြန္(override)အသံုးျပဳလိုပါက 'boot' method ကုိ အသံုးျပဳသင့္ပါတယ္။
+"register" method က Service Provider ကို register ပြုလုပ်ပြီးတာနဲ့ အလုပ်လုပ်မယ့် method ဖြစ်ပါတယ်။ 'boot' method ကတော့ request အသက်မဝင်ခင်အချိန်ထိပဲ အလုပ်လုပ်မှာဖြစ်ပါတယ်။ ဒါဆိုရင်တော့ service provider ထဲက actions တွေ registe လုပ်ပြီးတဲ့အချိန် (သို ့) တခြား provider တစ်ခုရဲ့  service ကို ကျော်လွန်(override)အသုံးပြုလိုပါက 'boot' method ကို အသုံးပြုသင့်ပါတယ်။
 
-'workbench' command ႏွင့္ package တစ္ခုတည္ေဆာက္လုိက္တာနဲ့ 'boot' method မွာ ေအာက္ေဖာ္ျပပါအတုိင္း action တစ္ခု ပါဝင္ေနပါတယ္။
+'workbench' command နှင့် package တစ်ခုတည်ဆောက်လိုက်တာနဲ့ 'boot' method မှာ အောက်ဖော်ပြပါအတိုင်း action တစ်ခု ပါဝင်နေပါတယ်။
 
 	$this->package('vendor/package');
 
-ဒီ method က laravel ကုိ packages ထဲက views,config, other resource ေတြကုိ အသံုးျပဳႏုိင္ေအာင္လုပ္ေပးပါတယ္။ ပံုမွန္အားျဖင့္ေတာ့ အဲဒီ ကုတ္ကုိ ျပဳျပင္ဖုိ့မလိုအပ္ပါဘူး။
+ဒီ method က laravel ကို packages ထဲက views,config, other resource တွေကို အသုံးပြုနိုင်အောင်လုပ်ပေးပါတယ်။ ပုံမှန်အားဖြင့်တော့ အဲဒီ ကုတ်ကို ပြုပြင်ဖို့မလိုအပ်ပါဘူး။
 
-ပံုမွန္အားျဖင့္ package တစ္ခုတည္ေဆာက္ျပီးတဲ့အခါ အဲဒီ packages ရဲ့  resource ေတြက 'vendor/package' ေအာက္မွာရွိပါတယ္။ဘယ္လုိျဖစ္ျဖစ္  package method ကုိ argument ေနာက္တစ္ခု ထပ္ထည့္ျပီး package resource ေနရာေတြကုိ လုိအပ္သလို ေအာက္ကပံုစံအတုိင္း ေျပာင္းလဲႏုိင္ပါေသးတယ္။
+ပုံမှန်အားဖြင့် package တစ်ခုတည်ဆောက်ပြီးတဲ့အခါ အဲဒီ packages ရဲ့  resource တွေက 'vendor/package' အောက်မှာရှိပါတယ်။ဘယ်လိုဖြစ်ဖြစ်  package method ကို argument နောက်တစ်ခု ထပ်ထည့်ပြီး package resource နေရာတွေကို လိုအပ်သလို အောက်ကပုံစံအတိုင်း ပြောင်းလဲနိုင်ပါသေးတယ်။
 
 	// Passing custom namespace to package method
 	$this->package('vendor/package', 'custom-namespace');
@@ -85,22 +85,22 @@ Service providers ဖိုင္ေတြကေတာ့ packages ေတြရ�
 	// Package resources now accessed via custom-namespace
 	$view = View::make('custom-namespace::foo');
 
-Service provider classes ေတြအတြက္ app directory ထဲမွာ ေနရာအတည္တစ္က် သတ္မွတ္ထားတာမ်ိဳးလဲမရွိပါဘူး။ 'app' ထဲမွ  'Providers' namespace ေပးျပီး ထားခ်င္တဲ့ေနရာမွာ ထားႏုိင္ပါတယ္။ ဒဲဒီ class ဖိုင္ေတြကုိ Composer's [auto-loading facilities](http://getcomposer.org/doc/01-basic-usage.md#autoloading) က သိမွတ္ျပဳေနသ၍ အဲဒီ class ဖုိင္ထဲက class ေတြကုိ app က ယူသံုးႏုိင္မွာပါ။
+Service provider classes တွေအတွက် app directory ထဲမှာ နေရာအတည်တစ်ကျ သတ်မှတ်ထားတာမျိုးလဲမရှိပါဘူး။ 'app' ထဲမှ  'Providers' namespace ပေးပြီး ထားချင်တဲ့နေရာမှာ ထားနိုင်ပါတယ်။ ဒဲဒီ class ဖိုင်တွေကို Composer's [auto-loading facilities](http://getcomposer.org/doc/01-basic-usage.md#autoloading) က သိမှတ်ပြုနေသ၍ အဲဒီ class ဖိုင်ထဲက class တွေကို app က ယူသုံးနိုင်မှာပါ။
 
-'Package ထဲက resources ( ဥပမာ Configuration ၊ Views ) ေနရာေတြကုိ ေျပာင္းလုိက္ျပီဆိုရင္ ေျပာင္းလိုက္တဲ့ေနရာကုိ 'package' methord မွာ တတိယေျမာက္ argument တစ္ခုအျဖစ္ ေအာက္ပါအတုိင္းထည့္သင့္ေပးသင့္ပါတယ္။
+'Package ထဲက resources ( ဥပမာ Configuration ၊ Views ) နေရာတွေကို ပြောင်းလိုက်ပြီဆိုရင် ပြောင်းလိုက်တဲ့နေရာကို 'package' methord မှာ တတိယမြောက် argument တစ်ခုအဖြစ် အောက်ပါအတိုင်းထည့်သင့်ပေးသင့်ပါတယ်။
 
 	$this->package('vendor/package', null, '/path/to/resources');
 
 <a name="deferred-providers"></a>
 ## Deferred Providers
 
-အကယ္၍မ်ား ကုိယ္တည္ေဆာက္ေနတဲ့ Service Provider က configuration၊ views လိုမ်ိဳး resources ေတြ အသံုးျပဳဖုိ ့မလိုအပ္ဘူးဆိုရင္ "deferred" service provide အျဖစ္တည္ေဆာက္သင့္ပါတယ္။ Deferred service provide က Application ရဲ့ IoC container က လိုအပ္တဲ့အခ်ိန္ေရာက္မွသင့္ အလုပ္ထ လုပ္မယ့္ provider မ်ိဳးျဖစ္ပါတယ္။ Applicaion ရဲ့  request cycle က မလိုအပ္သ၍ ဘယ္ေတာ့မွ အလုပ္လုပ္မွာမဟုတ္ပါဘူး။
+အကယ်၍များ ကိုယ်တည်ဆောက်နေတဲ့ Service Provider က configuration၊ views လိုမျိုး resources တွေ အသုံးပြုဖို ့မလိုအပ်ဘူးဆိုရင် "deferred" service provide အဖြစ်တည်ဆောက်သင့်ပါတယ်။ Deferred service provide က Application ရဲ့ IoC container က လိုအပ်တဲ့အချိန်ရောက်မှသင့် အလုပ်ထ လုပ်မယ့် provider မျိုးဖြစ်ပါတယ်။ Applicaion ရဲ့  request cycle က မလိုအပ်သ၍ ဘယ်တော့မှ အလုပ်လုပ်မှာမဟုတ်ပါဘူး။
 
-defer service provider အျဖစ္သတ္မွတ္ေပးဖုိ့အတြက္ ေအာက္ကပံုစံအတုိင္း Service Provider files ထဲမွာ defer = true ဆိုျပီး ေအာက္ကပံုစံအတုိင္းသြားထည့္ေပးရမွာပါ။
+defer service provider အဖြစ်သတ်မှတ်ပေးဖို့အတွက် အောက်ကပုံစံအတိုင်း Service Provider files ထဲမှာ defer = true ဆိုပြီး အောက်ကပုံစံအတိုင်းသွားထည့်ပေးရမှာပါ။
 
 	protected $defer = true;
 
-ျပီးရင္ေတာ့ `Illuminate\Support\ServiceProvider` ရဲ့  provider method ကုိလဲ ေျပာင္းလဲျပီး  IoC container ကုိ သြားတဲ့ bindingေတြ အားလံုးကုိ return ျပန္သင့္ပါတယ္။ဥပမာ 'package.service' နဲ့ 'package.another-service' ႏွစ္ခုကုိ IoC container ထဲ binding လုပ္လိုလွ်င္ ေအာက္က ပံုစံအတုိင္း provide method မွာ သတ္မွတ္ရမွာပါ။
+ပြီးရင်တော့ `Illuminate\Support\ServiceProvider` ရဲ့  provider method ကိုလဲ ပြောင်းလဲပြီး  IoC container ကို သွားတဲ့ bindingတွေ အားလုံးကို return ပြန်သင့်ပါတယ်။ဥပမာ 'package.service' နဲ့ 'package.another-service' နှစ်ခုကို IoC container ထဲ binding လုပ်လိုလျှင် အောက်က ပုံစံအတိုင်း provide method မှာ သတ်မှတ်ရမှာပါ။
 
 	public function provides()
 	{
@@ -110,7 +110,7 @@ defer service provider အျဖစ္သတ္မွတ္ေပးဖုိ့
 <a name="package-conventions"></a>
 ## Package Conventions
 
-Package ထဲက config နဲ့ views ဖိုင္ေတြကုိ အသံုးခ်တဲ့အခါမွာ double-colon "::" ကုိ အသံုးျပဳျပီးေရးပါတယ္။
+Package ထဲက config နဲ့ views ဖိုင်တွေကို အသုံးချတဲ့အခါမှာ double-colon "::" ကို အသုံးပြုပြီးရေးပါတယ်။
 
 #### Loading A View From A Package
 
@@ -120,18 +120,18 @@ Package ထဲက config နဲ့ views ဖိုင္ေတြကုိ အ�
 
 	return Config::get('package::group.option');
 
-> **Note:** တကယ္လုိ ့ Package ထဲမွာ migrations ဖိုင္ပါခဲ့ရင္ေတာ့ migrationဖုိင္နာမည္တြကုိ package ရဲ့  နာမည္ နဲ့ prefixေပးဖုိ ့လိုအပ္ပါလိမ့္မယ္။ ဒီလိုအသံုးျပဳမွ တျခားေသာ package ေတြနဲ့ conflict ျဖစ္မွာ မပူရေတာ့ပါဘူး။
+> **Note:** တကယ်လို ့ Package ထဲမှာ migrations ဖိုင်ပါခဲ့ရင်တော့ migrationဖိုင်နာမည်တွကို package ရဲ့  နာမည် နဲ့ prefixပေးဖို ့လိုအပ်ပါလိမ့်မယ်။ ဒီလိုအသုံးပြုမှ တခြားသော package တွေနဲ့ conflict ဖြစ်မှာ မပူရတော့ပါဘူး။
 
 <a name="development-workflow"></a>
 ## Development Workflow
 
-Package တစ္ခုတည္ေဆာက္အခ်ိန္မွာ Application တခုခုကုိ ဖန္တီးရင္း တည္ေဆာက္ရတာကပုိေကာင္းပါတယ္။ အဲဒီအတြက္ view နဲ့ တျခား template ပုိင္းေတြ နဲ့ အျခားအရာေတြကုိ လက္ေတြ ့က်က် ေတြ ့မွာႏုိင္မွာပါ။ ပထမဆံုး Laravel ဆုိဒ္ကေန Laravel ဖုိင္အသစ္တခုေဒါင္းျပီး install ျပဳလုပ္လုိက္ပါ။ ျပီးရင္ေတာ့ 'workbench' command ကုိ သံုးျပဴျပီး Package တစ္ခုအတြက္ လိုအပ္တဲ့ ပံုစံေတြ ရယူပါ။
+Package တစ်ခုတည်ဆောက်အချိန်မှာ Application တခုခုကို ဖန်တီးရင်း တည်ဆောက်ရတာကပိုကောင်းပါတယ်။ အဲဒီအတွက် view နဲ့ တခြား template ပိုင်းတွေ နဲ့ အခြားအရာတွေကို လက်တွေ ့ကျကျ တွေ ့မှာနိုင်မှာပါ။ ပထမဆုံး Laravel ဆိုဒ်ကနေ Laravel ဖိုင်အသစ်တခုဒေါင်းပြီး install ပြုလုပ်လိုက်ပါ။ ပြီးရင်တော့ 'workbench' command ကို သုံးပြူပြီး Package တစ်ခုအတွက် လိုအပ်တဲ့ ပုံစံတွေ ရယူပါ။
 
-'workbench' command ျပီးရင္ေတာ့ 'workbench'/[vendor]/[package]' ထဲဝင္ျပီး 'git init' နဲ့ 'git push' ျပဳလုပ္ပါ။ အဲဒီလိုျပဳလုပ္ထားတဲ့အတြက္ 'composer update' ေၾကာင့္ ျဖစ္လာမယ့္ ျပသနာေတြကုိ ရွင္းျပီးသားျဖစ္ေနပါလိမ့္မယ္။
+'workbench' command ပြီးရင်တော့ 'workbench'/[vendor]/[package]' ထဲဝင်ပြီး 'git init' နဲ့ 'git push' ပြုလုပ်ပါ။ အဲဒီလိုပြုလုပ်ထားတဲ့အတွက် 'composer update' ကြောင့် ဖြစ်လာမယ့် ပြသနာတွေကို ရှင်းပြီးသားဖြစ်နေပါလိမ့်မယ်။
 
-'workbench' ဖိုဒါထဲမွာ package ထည့္လိုက္တာနဲ့  Composer က အဲဖုိင္ေတြအတြက္ ဘာမွ ေရးေပးစရာမလိုပဲ ဘယ္လိုသိသြားလဲလုိ့ သိခ်င္မွာေပါ့။ တကယ္ေတာ့ 'workbench'ဆိုတဲ့ ဖုိဒါၾကီးရွိေန ကတည္းကုိက Laravel စြမ္းအားေတြနဲ့ အလိုအေလ်ာက္ သိေနျပီး အဲဒီ package အတြက္ composer fileကုိ ရွာျပီး သံုးျပဳသြားမွာပါတယ္။
+'workbench' ဖိုဒါထဲမှာ package ထည့်လိုက်တာနဲ့  Composer က အဲဖိုင်တွေအတွက် ဘာမှ ရေးပေးစရာမလိုပဲ ဘယ်လိုသိသွားလဲလို့ သိချင်မှာပေါ့။ တကယ်တော့ 'workbench'ဆိုတဲ့ ဖိုဒါကြီးရှိနေ ကတည်းကိုက Laravel စွမ်းအားတွေနဲ့ အလိုအလျောက် သိနေပြီး အဲဒီ package အတွက် composer fileကို ရှာပြီး သုံးပြုသွားမှာပါတယ်။
 
-တကယ္လုိ့ package ထဲမွာ autoload files ေတြ သံုးျပဳလိုရင္ေတာ့ လိုအပ္တာေရးျပီး  package folder  ထဲမွာ 'php artisan dump-autoload' command အသံုးျပဳျပီး သတ္မွတ္ႏိုင္ပါတယ္။ workbench ထဲမွာ ထည့္ထားတဲ့ autoload ေတြက root project ေတြသာမက တျခားေသာ workbenches ေတြမွာပါအသံုးျပဳသြားႏုိင္ပါတယ္။
+တကယ်လို့ package ထဲမှာ autoload files တွေ သုံးပြုလိုရင်တော့ လိုအပ်တာရေးပြီး  package folder  ထဲမှာ 'php artisan dump-autoload' command အသုံးပြုပြီး သတ်မှတ်နိုင်ပါတယ်။ workbench ထဲမှာ ထည့်ထားတဲ့ autoload တွေက root project တွေသာမက တခြားသော workbenches တွေမှာပါအသုံးပြုသွားနိုင်ပါတယ်။
 
 #### Running The Artisan Autoload Command
 
@@ -141,9 +141,9 @@ Package တစ္ခုတည္ေဆာက္အခ်ိန္မွာ Appli
 
 ## Package Routing
 
-laravel အရင္versionတုန္းကေတာ့ Pakcage ထဲက သတ္မွတ္ထားတဲ့ URIS ေတြအလုပ္လုပ္ဖုိ့အတြက္ 'handles' ဆိုတဲ့စာသားေလးသံုးျပဳခဲ့ပါတယ္။ Laravel 4 မွာေတာ့ Pakcage ထဲက route ေတြက uri အားလံုးကုိအုလပ္ုလပ္သြားမွာပါ။ Package ထဲမွာ route file ထည့္ဖုိ့အတြက္ Service Provider fileထဲက 'boot'မွာ method ေအာက္ကပံုစံအတိုင္း သြားေၾကာ္ျငာေပးရပါတယ္။
+laravel အရင်versionတုန်းကတော့ Pakcage ထဲက သတ်မှတ်ထားတဲ့ URIS တွေအလုပ်လုပ်ဖို့အတွက် 'handles' ဆိုတဲ့စာသားလေးသုံးပြုခဲ့ပါတယ်။ Laravel 4 မှာတော့ Pakcage ထဲက route တွေက uri အားလုံးကိုအုလပ်ုလပ်သွားမှာပါ။ Package ထဲမှာ route file ထည့်ဖို့အတွက် Service Provider fileထဲက 'boot'မှာ method အောက်ကပုံစံအတိုင်း သွားကြော်ငြာပေးရပါတယ်။
 
-#### Service Provider ထဲမွာ Route File သတ္မွတ္ေပးျခင္း။
+#### Service Provider ထဲမှာ Route File သတ်မှတ်ပေးခြင်း။
 
 	public function boot()
 	{
@@ -152,28 +152,28 @@ laravel အရင္versionတုန္းကေတာ့ Pakcage ထဲက သ�
 		include __DIR__.'/../../routes.php';
 	}
 
-> **Note:** တကယ္လုိ့ controller အသံုးျပဳခ်င္ရင္ေတာ့ 'composer.json' ဖုိင္ထဲက auto-load section ထဲမွာ namespace သြားထည့္ေပးရပါတယ္။
+> **Note:** တကယ်လို့ controller အသုံးပြုချင်ရင်တော့ 'composer.json' ဖိုင်ထဲက auto-load section ထဲမှာ namespace သွားထည့်ပေးရပါတယ်။
 
 <a name="package-configuration"></a>
 ## Package Configuration
 
 #### Accessing Package Configuration Files
 
-Packages ေတြမွာ ၎တို ့အတြက္ Configuration file ေတြ သံုးျပဳဖုိ့လုိအပ္ေကာင္း လိုအပ္ပါလိမ့္မယ္။ အဲဒီဖုိင္ေတြတည္ေဆာက္ဖုိ့ကလဲ ပံုမွန္လုပ္ေနၾကနည္းလမ္းမ်ားအတိုင္းပဲ အလြယ္တကူလုပ္ႏုိင္ပါတယ္။ Config file တည္ေဆာက္တဲ့အခါမွာ 'Service Provider' ထဲက '$this->package' method ကုိအသံုးျပဳမယ္ဆိုရင္ေတာ့ ေအာက္ကပံုစံအတုိင္း Config ေတြကုိ "double-colon" ကုိအသံုးျပဳျပီး ယူသံုးႏိုင္ပါတယ္။
+Packages တွေမှာ ၎င်းတို ့အတွက် Configuration file တွေ သုံးပြုဖို့လိုအပ်ကောင်း လိုအပ်ပါလိမ့်မယ်။ အဲဒီဖိုင်တွေတည်ဆောက်ဖို့ကလဲ ပုံမှန်လုပ်နေကြနည်းလမ်းများအတိုင်းပဲ အလွယ်တကူလုပ်နိုင်ပါတယ်။ Config file တည်ဆောက်တဲ့အခါမှာ 'Service Provider' ထဲက '$this->package' method ကိုအသုံးပြုမယ်ဆိုရင်တော့ အောက်ကပုံစံအတိုင်း Config တွေကို "double-colon" ကိုအသုံးပြုပြီး ယူသုံးနိုင်ပါတယ်။
 
 	Config::get('package::file.option');
 
 #### Accessing Single File Package Configuration
-တကယ္လုိ့ Config ဖုိင္က 'config.php' လိုမ်ိဳးတစ္ဖုိင္တည္းဆိုရင္ေတာ့ ေအာက္ကပံုစံအတုိင္း တုိက္ရိုက္အသံုးျပဳႏုိင္ပါတယ္။
+တကယ်လို့ Config ဖိုင်က 'config.php' လိုမျိုးတစ်ဖိုင်တည်းဆိုရင်တော့ အောက်ကပုံစံအတိုင်း တိုက်ရိုက်အသုံးပြုနိုင်ပါတယ်။
 
 	Config::get('package::option');
 
 #### Registering A Resource Namespace Manually
-တခါတရံမွာေတာ့ သင့္အေနနဲ့ views နဲ့ တျခား Lang ၊ Config ဖိုင္အတြက္ေရးထားတဲ့ "$this->package" method အတုိင္း အသံုးမျပဳခ်င္တဲ့ အခါေတြရွိမွာပါ။ အဲဒီလို သတ္မွတ္ေပးဖုိ့အတြက္ 'addNamespace' method ကုိ သံုးသံုးျပီး 'View'၊'Lang'ႏွင့္'Config' တုိ့အတြက္ကုိ ေအာက္ကပံုစံအတုိင္းအသံုးျပဳရမွာပါ။ 
+တခါတရံမှာတော့ သင့်အနေနဲ့ views နဲ့ တခြား Lang ၊ Config ဖိုင်အတွက်ရေးထားတဲ့ "$this->package" method အတိုင်း အသုံးမပြုချင်တဲ့ အခါတွေရှိမှာပါ။ အဲဒီလို သတ်မှတ်ပေးဖို့အတွက် 'addNamespace' method ကို သုံးသုံးပြီး 'View'၊'Lang'နှင့်'Config' တို့အတွက်ကို အောက်ကပုံစံအတိုင်းအသုံးပြုရမှာပါ။ 
 
 	View::addNamespace('package', __DIR__.'/path/to/views');
 
-Namespace ေၾကာ္ျငာျပီးရင္ေတာ့ ေအာက္ကပံုစံအတုိင္း View ဖိုင္ေတြကုိ "double colon" ေလးနဲ့ သံုးႏုိင္ပါတယ္။
+Namespace ကြော်ငြာပြီးရင်တော့ အောက်ကပုံစံအတိုင်း View ဖိုင်တွေကို "double colon" လေးနဲ့ သုံးနိုင်ပါတယ်။
 
 	return View::make('package::view.name');
 
@@ -181,28 +181,28 @@ Namespace ေၾကာ္ျငာျပီးရင္ေတာ့ ေအာက
 The method signature for `addNamespace` is identical on the `View`, `Lang`, and `Config` classes.
 
 ### Cascading Configuration Files
-ကိုယ္တည္ေဆာက္လုိက္တဲ့ Package ကုိ တျခား developers ေတြ သြင္ျပီးရင္ေတာ့ သူတုိ့အေနနဲ့ သူတုိ့လိုအပ္ခ်က္အရ ေျပာင္းလဲ Configuration options ေတြကုိ သံုးျပဴခ်င္မွာပါ။ သူတုိ့ အဲဒီ Package ထဲက config value ေတြကုိ ေျပာင္းလိုက္ရင္ေတာ့ Composer update ျပဳလုပ္လဲ အဲဒီ value ေတြပဲ overwrite ျဖစ္သြားမွာပါ။အဲဒီအတြက္ 'config:publish' ဆိုတဲ့ aritsan command ကုိ ေအာက္ကပံုစံအတိုင္းအသံုးျပဳႏုိင္ပါတယ္။
+ကိုယ်တည်ဆောက်လိုက်တဲ့ Package ကို တခြား developers တွေ သွင်ပြီးရင်တော့ သူတို့အနေနဲ့ သူတို့လိုအပ်ချက်အရ ပြောင်းလဲ Configuration options တွေကို သုံးပြူချင်မှာပါ။ သူတို့ အဲဒီ Package ထဲက config value တွေကို ပြောင်းလိုက်ရင်တော့ Composer update ပြုလုပ်လဲ အဲဒီ value တွေပဲ overwrite ဖြစ်သွားမှာပါ။အဲဒီအတွက် 'config:publish' ဆိုတဲ့ aritsan command ကို အောက်ကပုံစံအတိုင်းအသုံးပြုနိုင်ပါတယ်။
 
 	php artisan config:publish vendor/package
 
-အေပၚက command ကုိ အသံုးျပဳျပီးတ့ဲအခါမွာ package ထဲက config ဖုိင္ေတြက 'app/config/packages/vendor/package' ထဲကုိ ကူးျပီးသားျဖစ္ေနပါလိမ့္မယ္။
+အပေါ်က command ကို အသုံးပြုပြီးတဲ့အခါမှာ package ထဲက config ဖိုင်တွေက 'app/config/packages/vendor/package' ထဲကို ကူးပြီးသားဖြစ်နေပါလိမ့်မယ်။
 
-> **Note:** Developers က enviornment ခြဲျပီး configuration ေတြ သတ္မွတ္ထားရင္ေတာ့ config ဖိုင္ေတြကုိ `app/config/packages/vendor/package/environment` အတုိင္းသြားထားျပီးသံုးျပဳရမွာပါ။
+> **Note:** Developers က enviornment ခွဲပြီး configuration တွေ သတ်မှတ်ထားရင်တော့ config ဖိုင်တွေကို `app/config/packages/vendor/package/environment` အတိုင်းသွားထားပြီးသုံးပြုရမှာပါ။
 
 <a name="package-views"></a>
 ## Package Views
 
-တကယ္လုိ့ကုိယ္က Package တစ္ခုတည္ေဆာက္ျပီးဆိုရင္ အဲဒီ Package အတြက္ views ေတြ ခြဲေရးခ်င္မွာပါ။အဲဒီအတြက္ view ဖုိင္ကုိ src ေအာက္က views ဖုိင္ထဲမွာထည့္ထားေပမယ့္ အျပင္က main မွာ အလုပ္လုပ္ဖုိ့အတြက္ 'view:publish' ဆိုတဲ့ Artisan Command ေလးသံုးျပီးေတာ့ 'app/views' ကုိ ေျပာင္းႏုိင္ပါတယ္။
+တကယ်လို့ကိုယ်က Package တစ်ခုတည်ဆောက်ပြီးဆိုရင် အဲဒီ Package အတွက် views တွေ ခွဲရေးချင်မှာပါ။အဲဒီအတွက် view ဖိုင်ကို src အောက်က views ဖိုင်ထဲမှာထည့်ထားပေမယ့် အပြင်က main မှာ အလုပ်လုပ်ဖို့အတွက် 'view:publish' ဆိုတဲ့ Artisan Command လေးသုံးပြီးတော့ 'app/views' ကို ပြောင်းနိုင်ပါတယ်။
 
 	php artisan view:publish vendor/package
 
-အေပၚက command ကုိ run လုိက္ရင္ေတာ့ package ထဲက views ဖိုင္ေတြက 'app/views/packages' ထဲကုိ package နာမည္နဲ့ ဖုိင္ေတြ ေရာက္ေနမွာပါ။packages နာမည္နဲ့ folder မရွိရင္လဲ သူ ့အလိုလို folder တည္ေဆာက္သြားပါလိမ့္မယ္။ Package အတြက္ Views ဖိုင္ ေတြကုိ publish လုပ္ျပီးရင္ေတာ့ Packages အတြက္ အဲဒီ viewsဖုိင္ေတြက ဦးစားေပးအေနနဲ့ အလုပ္လုပ္သြားပါလိမ့္မယ္။
+အပေါ်က command ကို run လိုက်ရင်တော့ package ထဲက views ဖိုင်တွေက 'app/views/packages' ထဲကို package နာမည်နဲ့ ဖိုင်တွေ ရောက်နေမှာပါ။packages နာမည်နဲ့ folder မရှိရင်လဲ သူ ့အလိုလို folder တည်ဆောက်သွားပါလိမ့်မယ်။ Package အတွက် Views ဖိုင် တွေကို publish လုပ်ပြီးရင်တော့ Packages အတွက် အဲဒီ viewsဖိုင်တွေက ဦးစားပေးအနေနဲ့ အလုပ်လုပ်သွားပါလိမ့်မယ်။
 
 <a name="package-migrations"></a>
 ## Package Migrations
 
 #### Creating Migrations For Workbench Packages
-Packages ေတြအတြက္ Migration ကုိ Artisan command သံုးျပဳျပီးအလြယ္တကူတည္ေဆာက္ႏုိင္ပါတယ္။Package အတြက္ migration တည္ေဆာက္ဖုိ့အတြက္ migrate လုပ္ခ်င္တဲ့ workbench ထဲဝင္ျပီး ေအာက္က ပံုစံအတုိင္း "--bench" ဆိုတဲ့ ဦးတည္ခ်က္ေလးေပးျပီး တည္ေဆာက္ႏုိင္ပါတယ္။
+Packages တွေအတွက် Migration ကို Artisan command သုံးပြုပြီးအလွယ်တကူတည်ဆောက်နိုင်ပါတယ်။Package အတွက် migration တည်ဆောက်ဖို့အတွက် migrate လုပ်ချင်တဲ့ workbench ထဲဝင်ပြီး အောက်က ပုံစံအတိုင်း "--bench" ဆိုတဲ့ ဦးတည်ချက်လေးပေးပြီး တည်ဆောက်နိုင်ပါတယ်။
 
 	php artisan migrate:make create_users_table --bench="vendor/package"
 
@@ -212,7 +212,7 @@ Packages ေတြအတြက္ Migration ကုိ Artisan command သံု�
 
 #### Running Migrations For An Installed Package
 
-တကယ္လုိ့ ကုိယ္တည္ေဆာက္လုိက္တဲ့ Package က ျပီးျပည့္စံုျပီး တျခားေနရာျပန္သြင္းတဲ့အခါတြင္ database migrate လုပ္ဖို့အတြက္ "--package"ဆိုတဲ့ ဦးတည္ခ်က္ ေလးသံုးျပီး ေအာက္ကပံုစံအတြက္ Migrate လုပ္ႏုိင္ပါတယ္။
+တကယ်လို့ ကိုယ်တည်ဆောက်လိုက်တဲ့ Package က ပြီးပြည့်စုံပြီး တခြားနေရာပြန်သွင်းတဲ့အခါတွင် database migrate လုပ်ဖို့အတွက် "--package"ဆိုတဲ့ ဦးတည်ချက် လေးသုံးပြီး အောက်ကပုံစံအတွက် Migrate လုပ်နိုင်ပါတယ်။
 
 	php artisan migrate --package="vendor/package"
 
@@ -220,25 +220,25 @@ Packages ေတြအတြက္ Migration ကုိ Artisan command သံု�
 ## Package Assets
 
 #### Moving Package Assets To Public
-'packages' ေတြမွာ 'Javascript, Css, images လုိ assets ေတြပါေကာင္းပါႏုိင္ပါတယ္။ အဲဒီ assets ေတြကုိ app မွ တဆင့္တန္းဆြဲေခၚသံုးဖုိ့မျဖစ္ႏုိင္ပါဘူး  ။ အဲဒီအတြက္ 'package' ထဲက assets ေတြကုိ public ေအာက္ကုိ ေျပာင္းထည့္ေပးဖုိ့လိုအပ္ပါတယ္။ အဲဒီအတြက္ `asset:publish`  ကြန္မန္း ကုိ  ေအာက္ကအတုိင္း အသံုးျပဳျပီး ေျပာင္းထည့္ေပးႏုိင္ပါတယ္။
+'packages' တွေမှာ 'Javascript, Css, images လို assets တွေပါကောင်းပါနိုင်ပါတယ်။ အဲဒီ assets တွေကို app မှ တဆင့်တန်းဆွဲခေါ်သုံးဖို့မဖြစ်နိုင်ပါဘူး  ။ အဲဒီအတွက် 'package' ထဲက assets တွေကို public အောက်ကို ပြောင်းထည့်ပေးဖို့လိုအပ်ပါတယ်။ အဲဒီအတွက် `asset:publish`  ကွန်မန်း ကို  အောက်ကအတိုင်း အသုံးပြုပြီး ပြောင်းထည့်ပေးနိုင်ပါတယ်။
 
 	php artisan asset:publish
 
 	php artisan asset:publish vendor/package
 
-တကယ္လုိ တည္ေဆာက္ထားတဲ့ 'package' က 'workbench' ေအာက္မွာပဲရွိေသးရင္ေတာ့ ' --bench ' ကုိေအာက္ပါအတုိင္းထပ္ထည့္ျပီးေရးေပးရပါတယ္။
+တကယ်လို တည်ဆောက်ထားတဲ့ 'package' က 'workbench' အောက်မှာပဲရှိသေးရင်တော့ ' --bench ' ကိုအောက်ပါအတိုင်းထပ်ထည့်ပြီးရေးပေးရပါတယ်။
 
 	php artisan asset:publish --bench="vendor/package"
 
-ဒီကြန္မန္းက package ထဲမွ assets ေတြကုိ 'public/packages' ထဲကုိ သက္ဆိုင္ရင္ package နဲ့ vendor နာမည္ေတြအလုိက္ဖိုဒါေတြ အလိုေလ်ာက္ေဆာက္ျပီး သိမ္းဆည္းေပးသြားမွာပါ။ ဥပမာ 'workbench' ေအာက္မွာ 'usersape/kusod' ဆိုျပီး packages ေဆာက္ထားရင္ 'public/packages/userscape/kudos' ဆိုျပီး ေရာက္သြားမွာပါ။ ဒီလိုလုပ္ျခင္းအားျဖင့္ asset ေတြနဲ့ပက္သက္ျပီး  လံုျခံဳေရးဆုိင္ရာ အားသာခ်က္မ်ား ရရွိႏုိင္ပါတယ္။
+ဒီကွန်မန်းက package ထဲမှ assets တွေကို 'public/packages' ထဲကို သက်ဆိုင်ရင် package နဲ့ vendor နာမည်တွေအလိုက်ဖိုဒါတွေ အလိုလျောက်ဆောက်ပြီး သိမ်းဆည်းပေးသွားမှာပါ။ ဥပမာ 'workbench' အောက်မှာ 'usersape/kusod' ဆိုပြီး packages ဆောက်ထားရင် 'public/packages/userscape/kudos' ဆိုပြီး ရောက်သွားမှာပါ။ ဒီလိုလုပ်ခြင်းအားဖြင့် asset တွေနဲ့ပက်သက်ပြီး  လုံခြုံရေးဆိုင်ရာ အားသာချက်များ ရရှိနိုင်ပါတယ်။
 
 <a name="publishing-packages"></a>
 ## Publishing Packages
 
-ကုိယ္တည္ေဆာက္ထားတဲ့'Package' က အသံုးျပဳဖို ့အားလံုးျပင္ဆင္ျပီးသြားရင္ေတာ့ [Packagist](http://packagist.org) ကုိ တျခားသူေတြပါသံုးျပဳႏုိင္ေအာင္ တင္ထားေပးသင့္ပါတယ္။ တကယ္လုိ့ ကုိယ္ တည္ေဆာက္လုိက္တဲ့ 'package' က laravel အတြက္ပဲ သီးသန့္တည္ေဆာက္ထားရင္ေတာ့ 'composer.json' မွာ 'laravel' ဆိုျပီး tag ထည့္ေပးဖုိ့လိုအပ္ပါတယ္။
+ကိုယ်တည်ဆောက်ထားတဲ့'Package' က အသုံးပြုဖို ့အားလုံးပြင်ဆင်ပြီးသွားရင်တော့ [Packagist](http://packagist.org) ကို တခြားသူတွေပါသုံးပြုနိုင်အောင် တင်ထားပေးသင့်ပါတယ်။ တကယ်လို့ ကိုယ် တည်ဆောက်လိုက်တဲ့ 'package' က laravel အတွက်ပဲ သီးသန့်တည်ဆောက်ထားရင်တော့ 'composer.json' မှာ 'laravel' ဆိုပြီး tag ထည့်ပေးဖို့လိုအပ်ပါတယ်။
 
-ထိုနည္းတူစြာျဖင့္ Packagist တြင္တင္တဲ့အခါမွာ releases version ေတြပါ tag အေနနဲ့တခါတည္း ထည့္ေပးသင့္ပါတယ္ ။ Developers ေတြက ကုိယ့္ရဲ့  packages ကုိ သံုးတဲ့အခါမွာ  'composer.json' မွာလိုအပ္တဲ့ version ကုိ ထည့္ျပီးသံုးျပဳႏုိင္သြားမွာပါ။တကယ္လုိ့ Stable Version မဟုတ္ေသးရင္ေတာ့ 'branch-alias' ဆိုတဲ့ composer keyword ေလးသံုးျပီးသံုးျပဳႏိုင္ပါတယ္။
+ထိုနည်းတူစွာဖြင့် Packagist တွင်တင်တဲ့အခါမှာ releases version တွေပါ tag အနေနဲ့တခါတည်း ထည့်ပေးသင့်ပါတယ် ။ Developers တွေက ကိုယ့်ရဲ့  packages ကို သုံးတဲ့အခါမှာ  'composer.json' မှာလိုအပ်တဲ့ version ကို ထည့်ပြီးသုံးပြုနိုင်သွားမှာပါ။တကယ်လို့ Stable Version မဟုတ်သေးရင်တော့ 'branch-alias' ဆိုတဲ့ composer keyword လေးသုံးပြီးသုံးပြုနိုင်ပါတယ်။
 
-Package တစ္ခုတည္ေဆာက္လိုက္ျပီးျပီဆိုရင္ေတာ့ 'workbench' ကုိ အသံုးျပဳျပီး web application ေတြမွာ လိုအပ္သလို သံုးျပဳျပီး ဆက္လုပ္သြားသင့္ပါတယ္။ အဲဒီနည္းကေတာ့ 'package' တစ္ခုကုိ published လုပ္လိုက္ျပီးေသာ္လည္း အဲဒီ package ကုိ ဆက္လက္ျပီး ေကာင္းေအာင္လုပ္ေပးႏိုင္မွာပါ။
+Package တစ်ခုတည်ဆောက်လိုက်ပြီးပြီဆိုရင်တော့ 'workbench' ကို အသုံးပြုပြီး web application တွေမှာ လိုအပ်သလို သုံးပြုပြီး ဆက်လုပ်သွားသင့်ပါတယ်။ အဲဒီနည်းကတော့ 'package' တစ်ခုကို published လုပ်လိုက်ပြီးသော်လည်း အဲဒီ package ကို ဆက်လက်ပြီး ကောင်းအောင်လုပ်ပေးနိုင်မှာပါ။
 
-တစ္ခ်ိဳ ့ေသာအဖြဲ ့စည္းေတြကေတာ့ သူတုိ့ရဲ့  Packages ေတြကုိ ၎တို ့ရဲ့  Developers သံုးျပဳဖုိ့အတြက္ ကုိယ္ပုိင္ repository ေတြေဆာက္ျပီး ထားေလ့ရွိပါတယ္။ သင္လဲ အဲဒီလိုလုပ္ဖုိ့ အတြက္ စိတ္ကူးရွိရင္ေတာ့ Composer Team က သတ္မွတ္ေပးထားတဲ့ [Satis](http://github.com/composer/satis) project ကုိ ေလ့လာသင့္ပါတယ္။
+တစ်ချို ့သောအဖွဲ ့စည်းတွေကတော့ သူတို့ရဲ့  Packages တွေကို ၎င်းတို ့ရဲ့  Developers သုံးပြုဖို့အတွက် ကိုယ်ပိုင် repository တွေဆောက်ပြီး ထားလေ့ရှိပါတယ်။ သင်လဲ အဲဒီလိုလုပ်ဖို့ အတွက် စိတ်ကူးရှိရင်တော့ Composer Team က သတ်မှတ်ပေးထားတဲ့ [Satis](http://github.com/composer/satis) project ကို လေ့လာသင့်ပါတယ်။

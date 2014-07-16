@@ -1,40 +1,40 @@
-# Configuration လုပ္ျခင္း
+﻿# Configuration လုပ်ခြင်း
 
-- [မိတ္ဆက္](#introduction)
-- [Environment ျပင္ဆင္ျခင္း](#environment-configuration)
-- [Provider ျပင္ဆင္ျခင္း](#provider-configuration)
-- [အမွားခံ၊ အသိခံ၍ မရေသာ အခ်က္အလက္မ်ားအား ကာကြယ္ျခင္း](#protecting-sensitive-configuration)
-- [Application အားျပဳျပင္ထိန္းသိမ္းမႈ အေျခအေန](#maintenance-mode)
+- [မိတ်ဆက်](#introduction)
+- [Environment ပြင်ဆင်ခြင်း](#environment-configuration)
+- [Provider ပြင်ဆင်ခြင်း](#provider-configuration)
+- [အမှားခံ၊ အသိခံ၍ မရသော အချက်အလက်များအား ကာကွယ်ခြင်း](#protecting-sensitive-configuration)
+- [Application အားပြုပြင်ထိန်းသိမ်းမှု အခြေအနေ](#maintenance-mode)
 
 <a name="introduction"></a>
-## မိတ္ဆက္
+## မိတ်ဆက်
 
-Laravel framework မွာရွိတဲ့ configuration ဖိုင္အားလံုးကို `app/config` လမ္းေၾကာင္းေအာက္မွာသိမ္းထားပါတယ္။ ဖိုင္အားလံုးမွာပါတဲ့ option တစ္ခုခ်င္းစီအတြက္ documentation မွာ ေရးထားပီးသားပါ။ အသံုးျပဳႏိုင္တဲ့ options ေတြကို documentation နဲ႔တြဲျပီး ေလ့လာ ႏိုင္ပါတယ္။
+Laravel framework မှာရှိတဲ့ configuration ဖိုင်အားလုံးကို `app/config` လမ်းကြောင်းအောက်မှာသိမ်းထားပါတယ်။ ဖိုင်အားလုံးမှာပါတဲ့ option တစ်ခုချင်းစီအတွက် documentation မှာ ရေးထားပီးသားပါ။ အသုံးပြုနိုင်တဲ့ options တွေကို documentation နဲ့တွဲပြီး လေ့လာ နိုင်ပါတယ်။
 
-Application run ေနတဲ့အခ်ိန္ေတြမွာ configuration values ေတြကို အသံုးျပဳဖို႔လိုအပ္လာရင္ `Config` class ကိုအသံုးျပဳၿပီး ဆြဲယူႏိုင္ပါတယ္။
+Application run နေတဲ့အချိန်တွေမှာ configuration values တွေကို အသုံးပြုဖို့လိုအပ်လာရင် `Config` class ကိုအသုံးပြုပြီး ဆွဲယူနိုင်ပါတယ်။
 
-#### Configuration Value မ်ားကို အသံုးျပဳျခင္း
+#### Configuration Value များကို အသုံးပြုခြင်း
 
 	Config::get('app.timezone');
 
-ဆြဲယူအသံုးျပဳလိုက္တဲ့ configuration option မရွိတဲ့အေျခအေနအတြက္ default value ကို return ျပန္ေအာင္ သတ္မွတ္ေပးထားႏိုင္ပါတယ္။
+ဆွဲယူအသုံးပြုလိုက်တဲ့ configuration option မရှိတဲ့အခြေအနေအတွက် default value ကို return ပြန်အောင် သတ်မှတ်ပေးထားနိုင်ပါတယ်။
 
 	$timezone = Config::get('app.timezone', 'UTC');
 
-#### Configuration value သတ္မွတ္ျခင္း
+#### Configuration value သတ်မှတ်ခြင်း
 
-Configuration ဖိုင္ေတြထဲမွာရွိတဲ့ value ေတြကို "dot” ကိုအသံုးျပဳၿပီး (eg. filename.value) access လုပ္ႏိုင္ပါတယ္။ Application run-time ကာလမွာ configuration ေတြသတ္မွတ္ဖို႔အတြက္လည္း အသံုးျပဳႏိုင္ပါတယ္။
+Configuration ဖိုင်တွေထဲမှာရှိတဲ့ value တွေကို "dot” ကိုအသုံးပြုပြီး (eg. filename.value) access လုပ်နိုင်ပါတယ်။ Application run-time ကာလမှာ configuration တွေသတ်မှတ်ဖို့အတွက်လည်း အသုံးပြုနိုင်ပါတယ်။
 
 	Config::set('database.default', 'sqlite');
 
-Applicastion run-time ကာလမွာ သတ္မွတ္ထားတဲ့ configuration values ေတြဟာ app ရဲ့ လက္ရွိ request အေပၚမွာပဲသက္ေရာက္မႈရွိပါတယ္။ ေနာက္ပိုင္းထပ္ျဖစ္လာမဲ့ requests ေတြအထိ ယူေဆာင္သြားမွာမဟုတ္ပါဘူး
+Applicastion run-time ကာလမှာ သတ်မှတ်ထားတဲ့ configuration values တွေဟာ app ရဲ့ လက်ရှိ request အပေါ်မှာပဲသက်ရောက်မှုရှိပါတယ်။ နောက်ပိုင်းထပ်ဖြစ်လာမဲ့ requests တွေအထိ ယူဆောင်သွားမှာမဟုတ်ပါဘူး
 
 <a name="environment-configuration"></a>
-## Environment ျပင္ဆင္ျခင္း
+## Environment ပြင်ဆင်ခြင်း
 
-Application run ေနတဲ့ environment အေပၚအေျခခံပီး configuration ဖိုင္ေတြ သတ္မွတ္ထားျခင္းဟာ အေထာက္အကူ အမ်ားႀကီးျဖစ္ေစပါတယ္။ ဥပမာ - ကုိယ့္ရဲ့ local machine ေပၚမွာ မတူညီတဲ့ cache driver ေတြအသံုးျပဳခ်င္တယ္ဆိုရင္ ဒီ environment based configuration ကိုအသံုးျပဳရံုနဲ႔ လြယ္ကူ ၿပီးေျမာက္ေစႏိုင္ပါတယ္။ 
+Application run နေတဲ့ environment အပေါ်အခြေခံပီး configuration ဖိုင်တွေ သတ်မှတ်ထားခြင်းဟာ အထောက်အကူ အများကြီးဖြစ်စေပါတယ်။ ဥပမာ - ကိုယ့်ရဲ့ local machine ပေါ်မှာ မတူညီတဲ့ cache driver တွေအသုံးပြုချင်တယ်ဆိုရင် ဒီ environment based configuration ကိုအသုံးပြုရုံနဲ့ လွယ်ကူ ပြီးမြောက်စေနိုင်ပါတယ်။ 
 
-`config` ဖိုဒါထဲမွာ ကိုယ့္ရဲ့ environmen  လိုက္ဖက္မဲ့ directory တစ္ခုကို ေဆာက္လိုက္ပါ။ ဥပမာ - `local`။ ၿပီးရင္ အဲ့ဒီ environment အတြက္ override လုပ္သြားမဲ့ config ေတြ၊ ထပ္မံသတ္မွတ္ခ်င္တဲ့ options ေတြကို configuration ဖိုင္ေတြျပဳလုပ္ပီးသတ္မွတ္ႏိုင္ပါၿပီ။ ဥပမာ - local environment အတြက္ cache driver ကို override လုပ္ခ်င္တယ္ဆိုရင္၊ `app/config/local` ဖိုဒါထဲမွာ `cache.php` ဖိုင္ေဆာက္ပီး ေအာက္မွာေပးထားတဲ့ code ေတြနဲ႔ ျပဳလုပ္လိုက္ပါ။ 
+`config` ဖိုဒါထဲမှာ ကိုယ့်ရဲ့ environmen  လိုက်ဖက်မဲ့ directory တစ်ခုကို ဆောက်လိုက်ပါ။ ဥပမာ - `local`။ ပြီးရင် အဲ့ဒီ environment အတွက် override လုပ်သွားမဲ့ config တွေ၊ ထပ်မံသတ်မှတ်ချင်တဲ့ options တွေကို configuration ဖိုင်တွေပြုလုပ်ပီးသတ်မှတ်နိုင်ပါပြီ။ ဥပမာ - local environment အတွက် cache driver ကို override လုပ်ချင်တယ်ဆိုရင်၊ `app/config/local` ဖိုဒါထဲမှာ `cache.php` ဖိုင်ဆောက်ပီး အောက်မှာပေးထားတဲ့ code တွေနဲ့ ပြုလုပ်လိုက်ပါ။ 
 
 	<?php
 
@@ -44,11 +44,11 @@ Application run ေနတဲ့ environment အေပၚအေျခခံပီ
 
 	);
 
-> **သတိျပဳရန္:** `testing` ဆိုတဲ့ အမည္နဲ႔ environment name ကို မသတ္မွတ္ပါနဲ႔။ အဲ့ဒီအမည္ဟာ unit testing အတြက္ သီးသန္႔သတ္မွတ္ထားတဲ့ အမည္ျဖစ္ပါတယ္။
+> **သတိပြုရန်:** `testing` ဆိုတဲ့ အမည်နဲ့ environment name ကို မသတ်မှတ်ပါနဲ့။ အဲ့ဒီအမည်ဟာ unit testing အတွက် သီးသန့်သတ်မှတ်ထားတဲ့ အမည်ဖြစ်ပါတယ်။
 
-base configuration ဖိုင္မွာပါတဲ့ option အားလံုးကို ျပန္လည္သတ္မွတ္ေပးဖို႔ မလိုအပ္ပါ လိုအပ္ၿပီး ကိုယ့္အေနနဲ႔ override လုပ္ခ်င္တဲ့ option ေတြကိုသာသတ္မွတ္ေပးရန္။ Base configuration files ေတြကို environment configuration files ေတြက "cascade” လုပ္သြားပါလိမ့္မယ္။
+base configuration ဖိုင်မှာပါတဲ့ option အားလုံးကို ပြန်လည်သတ်မှတ်ပေးဖို့ မလိုအပ်ပါ လိုအပ်ပြီး ကိုယ့်အနေနဲ့ override လုပ်ချင်တဲ့ option တွေကိုသာသတ်မှတ်ပေးရန်။ Base configuration files တွေကို environment configuration files တွေက "cascade” လုပ်သွားပါလိမ့်မယ်။
 
-ၿပီးရင္ေတာ့ ဘယ္ environment မွာ run ေနတယ္ဆိုတာ framework ကေန သိႏိုင္ဖို႔အတြက္ သတ္မွတ္ထားေပးရမွာပါ။ Default environment ကေတာ့ `production` ျဖစ္ပါတယ္။ အျခား environment ေတြအတြက္ setup ျပဳလုပ္ရမဲ့ ေနရာက root directory ေအာက္မွာရွိတဲ့ `bootstrap/start.php` ဖိုင္ထဲမွာျပဳလုပ္ေပးရပါမယ္။ အဲ့ဒီဖိုင္ထဲမွာရွိတဲ့ `$app->detectEnvironment` ဆိုတဲ့  method ထဲကို သတ္မွတ္ထားတဲ့ environment ေတြပါတဲ့ array တစ္ခု passing လုပ္ထားပါတယ္။ အဲ့ဒီ array ကိုအသံုးျပဳၿပီး လက္ရွိ environment ကို ဆံုးျဖတ္တာျဖစ္ပါတယ္။ လိုအပ္လာလို႔ရွိရင္ အဲ့ဒီ array ထဲကို ေနာက္ထပ္ environment ေတြ ထပ္ထည့္ႏိုင္ပါတယ္။
+ပြီးရင်တော့ ဘယ် environment မှာ run နေတယ်ဆိုတာ framework ကနေ သိနိုင်ဖို့အတွက် သတ်မှတ်ထားပေးရမှာပါ။ Default environment ကတော့ `production` ဖြစ်ပါတယ်။ အခြား environment တွေအတွက် setup ပြုလုပ်ရမဲ့ နေရာက root directory အောက်မှာရှိတဲ့ `bootstrap/start.php` ဖိုင်ထဲမှာပြုလုပ်ပေးရပါမယ်။ အဲ့ဒီဖိုင်ထဲမှာရှိတဲ့ `$app->detectEnvironment` ဆိုတဲ့  method ထဲကို သတ်မှတ်ထားတဲ့ environment တွေပါတဲ့ array တစ်ခု passing လုပ်ထားပါတယ်။ အဲ့ဒီ array ကိုအသုံးပြုပြီး လက်ရှိ environment ကို ဆုံးဖြတ်တာဖြစ်ပါတယ်။ လိုအပ်လာလို့ရှိရင် အဲ့ဒီ array ထဲကို နောက်ထပ် environment တွေ ထပ်ထည့်နိုင်ပါတယ်။
 
     <?php
 
@@ -58,48 +58,48 @@ base configuration ဖိုင္မွာပါတဲ့ option အားလ�
 
     ));
 
-အေပၚမွာျပထားတဲ့ ဥပမာမွာ `local` က environment အမည္ျဖစ္ၿပီး `your-machine-name` က server ရဲ့ hostname ျဖစ္ပါတယ္။ Linux နဲ႔ Mac ကြန္ပ်ဴတာေတြမွာဆိုရင္ `hostname` ဆိုတဲ့ terminal command ကိုအသံုးျပဳၿပီး hostname ကိုသတ္မွတ္ေပးႏိုင္ပါတယ္။
+အပေါ်မှာပြထားတဲ့ ဥပမာမှာ `local` က environment အမည်ဖြစ်ပြီး `your-machine-name` က server ရဲ့ hostname ဖြစ်ပါတယ်။ Linux နဲ့ Mac ကွန်ပျူတာတွေမှာဆိုရင် `hostname` ဆိုတဲ့ terminal command ကိုအသုံးပြုပြီး hostname ကိုသတ်မှတ်ပေးနိုင်ပါတယ်။
 
-အကယ္၍ ပိုၿပီးထိေရာက္တဲ့ environment သိရွိမႈကို လိုအပ္တယ္ဆိုရင္ေတာ့ `detectEnvironment` method ထဲကို ကိုယ္လိုအပ္သလိုအသံုးျပဳႏိုင္တဲ့ environment သိရွိမႈေတြကိုျပဳလုပ္ေပးႏိုင္မဲ့ `Closure` တစ္ခုကို passing ေပးဖို႔လိုအပ္ပါတယ္။
+အကယ်၍ ပိုပြီးထိရောက်တဲ့ environment သိရှိမှုကို လိုအပ်တယ်ဆိုရင်တော့ `detectEnvironment` method ထဲကို ကိုယ်လိုအပ်သလိုအသုံးပြုနိုင်တဲ့ environment သိရှိမှုတွေကိုပြုလုပ်ပေးနိုင်မဲ့ `Closure` တစ်ခုကို passing ပေးဖို့လိုအပ်ပါတယ်။
 
 	$env = $app->detectEnvironment(function()
 	{
 		return $_SERVER['MY_LARAVEL_ENV'];
 	});
 
-#### Application ရဲ့ လက္ရွိ Environment ကိုအသံုးျပဳျခင္း။
+#### Application ရဲ့ လက်ရှိ Environment ကိုအသုံးပြုခြင်း။
 
-Application ရဲ့ လက္ရွိအသံုးျပဳေနတဲ့ environment ကို `environment` method ကိုအသံုးျပဳၿပီး ရယူႏိုင္ပါတယ္။
+Application ရဲ့ လက်ရှိအသုံးပြုနေတဲ့ environment ကို `environment` method ကိုအသုံးပြုပြီး ရယူနိုင်ပါတယ်။
 
 	$environment = App::environment();
 
-ကိုယ္အသံုးျပဳခ်င္တဲ့ environment ဟုတ္/မဟုတ္ ကိုလည္း `environment` method ထဲကို arguments ေတြ passing ေပးၿပီး စစ္ၾကည့္ႏိုင္ပါတယ္။
+ကိုယ်အသုံးပြုချင်တဲ့ environment ဟုတ်/မဟုတ် ကိုလည်း `environment` method ထဲကို arguments တွေ passing ပေးပြီး စစ်ကြည့်နိုင်ပါတယ်။
 
 	if (App::environment('local'))
 	{
-		// Local environment ျဖစ္တယ္
+		// Local environment ဖြစ်တယ်
 	}
 
 	if (App::environment('local', 'staging'))
 	{
-		//Local သို႔မဟုတ္ staging environment ျဖစ္တယ္
+		//Local သို့မဟုတ် staging environment ဖြစ်တယ်
 	}
 
 <a name="provider-configuration"></a>
-### Provider ျပင္ဆင္ျခင္း
+### Provider ပြင်ဆင်ခြင်း
 
-Environment configuration ကို အသံုးျပဳၿပီဆိုလို႔ရွိရင္၊ ကိုယ့္ရဲ့ ပင္မ `app` configuration ဖိုင္ထဲမွာ environment [service providers](ioc#service-providers.md) ကိုထည့္ေပါင္းထည့္ဖို႔ လုိအပ္လာတဲ့ အေျခအေနေတြ ရွိလာႏိုင္ပါတယ္။ အကယ္၍ ကိုယ္က ထပ္ေပါင္းထည့္ထားတယ္ဆိုလို႔ရွိရင္, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုၿပီး သတိေပးပါလိမ့္မယ္။ အဲ့လိုအေျခအေနမ်ိဳးမွာ providers ကို မရမကထပ္ေပါင္းထည့္ေစဖို႔အတြက္ `append_config` ဆိုတဲ့ helper method ကို ကိုယ့္ရဲ့ environment `app` configuration ဖိုင္ထဲမွာ အသံုးျပဳႏိုင္ပါတယ္။
+Environment configuration ကို အသုံးပြုပြီဆိုလို့ရှိရင်၊ ကိုယ့်ရဲ့ ပင်မ `app` configuration ဖိုင်ထဲမှာ environment [service providers](ioc#service-providers.md) ကိုထည့်ပေါင်းထည့်ဖို့ လိုအပ်လာတဲ့ အခြေအနေတွေ ရှိလာနိုင်ပါတယ်။ အကယ်၍ ကိုယ်က ထပ်ပေါင်းထည့်ထားတယ်ဆိုလို့ရှိရင်, the environment `app` providers are overriding the providers in your primary `app` configuration file ဆိုပြီး သတိပေးပါလိမ့်မယ်။ အဲ့လိုအခြေအနေမျိုးမှာ providers ကို မရမကထပ်ပေါင်းထည့်စေဖို့အတွက် `append_config` ဆိုတဲ့ helper method ကို ကိုယ့်ရဲ့ environment `app` configuration ဖိုင်ထဲမှာ အသုံးပြုနိုင်ပါတယ်။
 
 	'providers' => append_config(array(
 		'LocalOnlyServiceProvider',
 	))
 
 <a name="protecting-sensitive-configuration"></a>
-## အမွားခံ၊ အသိခံ၍ မရေသာ အခ်က္အလက္မ်ားအား ကာကြယ္ျခင္း
+## အမှားခံ၊ အသိခံ၍ မရသော အချက်အလက်များအား ကာကွယ်ခြင်း
 
-အမွန္တကယ္အသံုးျပဳမဲ့ application ေတြအတြက္၊ ကိုယ့္ရဲ့ အမွားမခံ၊ အသိခံလို႔ မရတဲ့ configuration ေတြကို configuration ဖိုင္ထဲမွာ မသိမ္းပဲနဲ႔ အျခားတစ္ေနရာမွာထားတာက ပိုၿပီးသင့္ေတာ္ပါတယ္။ ဘယ္လိုအမ်ိဳးအစားေတြလဲဆိုေတာ့ database passwords, Stripe API keys, and encryption keys စတာေတြကို ျဖစ္ႏိုင္လို႔ရွိရင္ configuration ဖိုင္ထဲမွာမသိမ္းသင့္ပါဘူး။ ဒါဆိုဘယ္ေနရာမွာသိမ္းမလဲ? အဲ့ဒီအတြက္ Laravel ကေျဖရွင္းေပးၿပီးသားျဖစ္ပါတယ္။ အဲ့ဒီလို configuration အမ်ိဳးအစားေတြအတြက္ "dot" files ေတြကိုအသံုးျပဳၿပီး ကာကြယ္ထားႏိုင္ပါတယ္။
+အမှန်တကယ်အသုံးပြုမဲ့ application တွေအတွက်၊ ကိုယ့်ရဲ့ အမှားမခံ၊ အသိခံလို့ မရတဲ့ configuration တွေကို configuration ဖိုင်ထဲမှာ မသိမ်းပဲနဲ့ အခြားတစ်နေရာမှာထားတာက ပိုပြီးသင့်တော်ပါတယ်။ ဘယ်လိုအမျိုးအစားတွေလဲဆိုတော့ database passwords, Stripe API keys, and encryption keys စတာတွေကို ဖြစ်နိုင်လို့ရှိရင် configuration ဖိုင်ထဲမှာမသိမ်းသင့်ပါဘူး။ ဒါဆိုဘယ်နေရာမှာသိမ်းမလဲ? အဲ့ဒီအတွက် Laravel ကဖြေရှင်းပေးပြီးသားဖြစ်ပါတယ်။ အဲ့ဒီလို configuration အမျိုးအစားတွေအတွက် "dot" files တွေကိုအသုံးပြုပြီး ကာကွယ်ထားနိုင်ပါတယ်။
 
-ပထမဆံုးအေနနဲ႔ ကိုယ့္ရဲ့စက္ဟာ local မွာ run ေနတာပါဆိုတာကို application ကသိေအာင္ [configure](configuration#environment-configuration.md) လုပ္ေပးရပါမယ္။ ၿပီးရင္ `.env.local.php` ဆိုတဲ့ ဖိုင္အသစ္ကို `composer.json` ဖိုင္ရွိတဲ့ ဖိုဒါေအာက္မွာ ေဆာက္ေပးလိုက္ပါ။ အဲ့ဒီ `.env.local.php` ဖိုင္ဟာ အျခား laravel configuration ဖိုင္ေတြလိုပဲ key-value pairs ျဖစ္တဲ့ array တစ္ခု return ျပန္ရပါမယ္။ 
+ပထမဆုံးအနေနဲ့ ကိုယ့်ရဲ့စက်ဟာ local မှာ run နေတာပါဆိုတာကို application ကသိအောင် [configure](configuration#environment-configuration.md) လုပ်ပေးရပါမယ်။ ပြီးရင် `.env.local.php` ဆိုတဲ့ ဖိုင်အသစ်ကို `composer.json` ဖိုင်ရှိတဲ့ ဖိုဒါအောက်မှာ ဆောက်ပေးလိုက်ပါ။ အဲ့ဒီ `.env.local.php` ဖိုင်ဟာ အခြား laravel configuration ဖိုင်တွေလိုပဲ key-value pairs ဖြစ်တဲ့ array တစ်ခု return ပြန်ရပါမယ်။ 
 
 	<?php
 
@@ -109,38 +109,38 @@ Environment configuration ကို အသံုးျပဳၿပီဆို�
 
 	);
 
-အဲ့ဒီ ဖိုင္ထဲကေန return ျပန္လာတဲ့ key-value pairs ေတြဟာ PHP "superglobals" ေတြျဖစ္တဲ့ `$_ENV` နဲ႔ `$_SERVER` ေတြဆီကို auto ေရာက္သြားပါလိမ့္မယ္။ အဲ့ဒီ "superglobals" ေတြကေနတစ္ဆင့္ ကိုယ့္ရဲ့ configuration ဖိုင္ထဲမွာ ျပန္လည္အသံုးျပဳႏိုင္ၿပီျဖစ္ပါတယ္။ 
+အဲ့ဒီ ဖိုင်ထဲကနေ return ပြန်လာတဲ့ key-value pairs တွေဟာ PHP "superglobals" တွေဖြစ်တဲ့ `$_ENV` နဲ့ `$_SERVER` တွေဆီကို auto ရောက်သွားပါလိမ့်မယ်။ အဲ့ဒီ "superglobals" တွေကနေတစ်ဆင့် ကိုယ့်ရဲ့ configuration ဖိုင်ထဲမှာ ပြန်လည်အသုံးပြုနိုင်ပြီဖြစ်ပါတယ်။ 
 
 	'key' => $_ENV['TEST_STRIPE_KEY']
 
-ေသခ်ာေအာင္လုပ္ဖို႔လိုအပ္တာတစ္ခုက အဲ့ဒီ `.env.local.php` ဖိုင္ကို `.gitignore` လုပ္ထားေပးရပါမယ္။ အဲ့ဒီေတာ့မွ ကိုယ့္ရဲ့ team မွာရွိတဲ့က်န္တဲ့ developers ေတြဟာ သူတို႔ရဲ့ ကိုယ္ပိုင္ local configuration ေတြကိုျပဳလုပ္ႏုိင္မည့္အျပင္ ကိုယ့္ရဲ့ sensitive configuration ေတြကိုလဲ source control မွာမပါေအာင္ ကာကြယ္ၿပီးသားျဖစ္မွာပါ။
+သေချာအောင်လုပ်ဖို့လိုအပ်တာတစ်ခုက အဲ့ဒီ `.env.local.php` ဖိုင်ကို `.gitignore` လုပ်ထားပေးရပါမယ်။ အဲ့ဒီတော့မှ ကိုယ့်ရဲ့ team မှာရှိတဲ့ကျန်တဲ့ developers တွေဟာ သူတို့ရဲ့ ကိုယ်ပိုင် local configuration တွေကိုပြုလုပ်နိုင်မည့်အပြင် ကိုယ့်ရဲ့ sensitive configuration တွေကိုလဲ source control မှာမပါအောင် ကာကွယ်ပြီးသားဖြစ်မှာပါ။
 
-Production environment အတြက္လည္း လိုအပ္တဲ့ configuration ေတြပါတဲ့ `.env.php` ဖိုင္ကို project root ဖိုဒါထဲမွာ ေဆာက္လိုက္ပါ။ `.env.local.php` ဖိုင္လိုပဲ production environment မွာ အသံုးျပဳမဲ့`.env.php` ဖိုင္ဟာ source control ထဲမွာ မပါသင့္ပါဘူး။
+Production environment အတွက်လည်း လိုအပ်တဲ့ configuration တွေပါတဲ့ `.env.php` ဖိုင်ကို project root ဖိုဒါထဲမှာ ဆောက်လိုက်ပါ။ `.env.local.php` ဖိုင်လိုပဲ production environment မှာ အသုံးပြုမဲ့`.env.php` ဖိုင်ဟာ source control ထဲမှာ မပါသင့်ပါဘူး။
 
-> **သတိျပဳရန္:** Application ကေန support လုပ္တဲ့ environment တစ္ခုခ်င္းစီအတြက္ `.env` ဖိုင္ေတြ တည္ေဆာက္လာႏိုင္ပါတယ္။ ဥပမာ - `development` environment အတြက္ဆိုရင္ `.env.development.php` ဖိုင္က ရွိေနလို႔ရွိရင္ load လုပ္သြားပါလိမ့္မယ္။ 
+> **သတိပြုရန်:** Application ကနေ support လုပ်တဲ့ environment တစ်ခုချင်းစီအတွက် `.env` ဖိုင်တွေ တည်ဆောက်လာနိုင်ပါတယ်။ ဥပမာ - `development` environment အတွက်ဆိုရင် `.env.development.php` ဖိုင်က ရှိနေလို့ရှိရင် load လုပ်သွားပါလိမ့်မယ်။ 
 
 <a name="maintenance-mode"></a>
-## Application အားျပဳျပင္ထိန္းသိမ္းမႈအေျခအေန
+## Application အားပြုပြင်ထိန်းသိမ်းမှုအခြေအနေ
 
-Application ဟာ ျပဳျပင္ထိန္းသိမ္းမႈ ျပဳလုပ္တဲ့ အေျခအေနမွာ ရွိေနမယ္ဆိုရင္ application မွာရွိတဲ့ route အားလံုးအတြက္ ႀကိဳတင္ျပဳလုပ္ထားႏိုင္တဲ့ စိတ္ႀကိဳက္ ျမင္ကြင္း(view) ကိုျပေပးပါလိမ့္မယ္။ ျပဳျပင္ထိန္းသိမ္းမႈျပဳလုပ္ေနရင္ပဲျဖစ္ျဖစ္၊ update လုပ္ေနရင္ပဲျဖစ္ျဖစ္ application ကို လြယ္လြယ္ကူကူပဲ disable လုပ္ထားႏိုင္ပါတယ္။ `app/start/global.php` ဖိုင္ထဲမွာရွိၿပီးသားျဖစ္တဲ့ `App::down` ဆိုတဲ့ method ကိုေခၚသံုးလိုက္ရံုပဲ။ အဲ့ဒီ method ကေနျပန္လာတဲ့ response ကို users ေတြဆီကိုပို႔ေပးပါလိမ့္မယ္။
+Application ဟာ ပြုပြင်ထိန်းသိမ်းမှု ပြုလုပ်တဲ့ အခြေအနေမှာ ရှိနေမယ်ဆိုရင် application မှာရှိတဲ့ route အားလုံးအတွက် ကြိုတင်ပြုလုပ်ထားနိုင်တဲ့ စိတ်ကြိုက် မြင်ကွင်း(view) ကိုပြပေးပါလိမ့်မယ်။ ပြုပြင်ထိန်းသိမ်းမှုပြုလုပ်နေရင်ပဲဖြစ်ဖြစ်၊ update လုပ်နေရင်ပဲဖြစ်ဖြစ် application ကို လွယ်လွယ်ကူကူပဲ disable လုပ်ထားနိုင်ပါတယ်။ `app/start/global.php` ဖိုင်ထဲမှာရှိပြီးသားဖြစ်တဲ့ `App::down` ဆိုတဲ့ method ကိုခေါ်သုံးလိုက်ရုံပဲ။ အဲ့ဒီ method ကနေပြန်လာတဲ့ response ကို users တွေဆီကိုပို့ပေးပါလိမ့်မယ်။
 
-ျပဳျပင္ထိန္းသိမ္းမႈျပဳလုပ္ေနပါတယ္ဆိုတဲ့ အေျခအေနကိုထားခ်င္တယ္ဆိုရင္ `down` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
+ပြုပြင်ထိန်းသိမ်းမှုပြုလုပ်နေပါတယ်ဆိုတဲ့ အခြေအနေကိုထားချင်တယ်ဆိုရင် `down` ဆိုတဲ့ Artisan command ကို အသုံးပြုနိုင်ပါတယ်။
 
 	php artisan down
 
-ထိန္းသိမ္းမႈျပဳလုပ္ၿပီးသြားလို႔ application ကိုျပန္ၿပီး အသက္သြင္းခ်င္ရင္ `up` ဆိုတဲ့ Artisan command ကို အသံုးျပဳႏိုင္ပါတယ္။
+ထိန်းသိမ်းမှုပြုလုပ်ပြီးသွားလို့ application ကိုပြန်ပြီး အသက်သွင်းချင်ရင် `up` ဆိုတဲ့ Artisan command ကို အသုံးပြုနိုင်ပါတယ်။
 
 	php artisan up
 
-ထိန္းသိမ္းမႈျပဳလုပ္ေနတဲ့အေျခအေနအတြက္ စိတ္ႀကိဳက္ ျမင္ကြင္း (view) သတ္မွတ္ခ်င္တယ္ဆိုရင္ေတာ့ ေအာက္မွာျပထားသလိုပဲ `app/start/global.php` ဖိုင္ထဲမွာ ႏွစ္သက္သလို သြားေရာက္ျပင္ဆင္ႏိုင္ပါတယ္။
+ထိန်းသိမ်းမှုပြုလုပ်နေတဲ့အခြေအနေအတွက် စိတ်ကြိုက် မြင်ကွင်း (view) သတ်မှတ်ချင်တယ်ဆိုရင်တော့ အောက်မှာပြထားသလိုပဲ `app/start/global.php` ဖိုင်ထဲမှာ နှစ်သက်သလို သွားရောက်ပြင်ဆင်နိုင်ပါတယ်။
 
 	App::down(function()
 	{
 		return Response::view('maintenance', array(), 503);
 	});
 
-အကယ္၍ `down` method ထဲကို Closure တစ္ခု passing ေပးလိုက္ရင္ေတာ့ `NULL` ပဲ return ျပန္လာၿပီး အဲ့ဒီ request မွာပါတဲ့ maintenance mode ကို ignore လုပ္သြားပါလိမ့္မယ္။
+အကယ်၍ `down` method ထဲကို Closure တစ်ခု passing ပေးလိုက်ရင်တော့ `NULL` ပဲ return ပြန်လာပြီး အဲ့ဒီ request မှာပါတဲ့ maintenance mode ကို ignore လုပ်သွားပါလိမ့်မယ်။
 
-### Maintenance Mode ႏွင္႕ Queues
+### Maintenance Mode နှင့် Queues
 
-Application ဟာ maintenance mode မွာ ရွိေနစဥ္အတြင္း [queue jobs](queues.md) ေတြကို ကိုင္တြယ္ေျဖရွင္းမွာမဟုတ္ပါဘူး။ Application ဟာ ပံုမွန္အေျခအေန ကိုျပန္ေရာက္ပီဆိုေတာ့မွ ျပန္လည္ကိုင္တြယ္ေျဖရွင္းေပးမွာျဖစ္ပါတယ္။
+Application ဟာ maintenance mode မှာ ရှိနေစဉ်အတွင်း [queue jobs](queues.md) တွေကို ကိုင်တွယ်ဖြေရှင်းမှာမဟုတ်ပါဘူး။ Application ဟာ ပုံမှန်အခြေအနေ ကိုပြန်ရောက်ပီဆိုတော့မှ ပြန်လည်ကိုင်တွယ်ဖြေရှင်းပေးမှာဖြစ်ပါတယ်။

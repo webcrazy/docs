@@ -1,4 +1,4 @@
-# Laravel Quickstart
+﻿# Laravel Quickstart
 
 - [Installation](#installation)
 - [Routing](#routing)
@@ -10,61 +10,61 @@
 <a name="installation"></a>
 ## Installation
 
-### Laravel Installer ကုိ အသုံးျပဳျခင္း
+### Laravel Installer ကို အသုံးပြုခြင်း
 
-ေရွးဦးစြာ [Laravel installer PHAR archive](http://laravel.com/laravel.phar) ကုိ ေဒါင္းပါ။  အဆင္ေျပေစရန္အတြက္ ထုိ  file ကုိ `laravel` ဟု အမည္ေပးျပီး `/usr/local/bin` ထဲသုိ ့ေျပာင္းေရြ  ့လုိက္ပါ။ ထုိေနာက္ `laravel new` command ျဖင့္ သင္ထားရွိထားေသာ directory ေပၚတြင္ laravel installation အလုိအေလ်ာက္ ျပလုပ္သြားမည္ ျဖစ္သည္။  ဥပမာ `laravel new blog` ဆုိသည့္ command ကုိအသုံးျပပါက `blog` အမည္ရွိ folder တစ္ခုကုိ တည္ေဆာက္ေပးျပီး လုိအပ္သည့္ package မ်ားကိုပါ တခါတည္း ေဒါင္းလုပ္လုပ္ကာ စုစည္းေပးသြားမည္ ျဖစ္သည္။ ၄င္းသုိ ့ install ျပဳလုပ္ျခင္းသည္ Composer မွ install လုပ္ျခင္းထက္ ပုိ၍ လ်င္ျမန္ပါလိမ့္မည္။
+ရှေးဦးစွာ [Laravel installer PHAR archive](http://laravel.com/laravel.phar) ကို ဒေါင်းပါ။  အဆင်ပြေစေရန်အတွက် ထို  file ကို `laravel` ဟု အမည်ပေးပြီး `/usr/local/bin` ထဲသို ့ပြောင်းရွေ  ့လိုက်ပါ။ ထိုနောက် `laravel new` command ဖြင့် သင်ထားရှိထားသော directory ပေါ်တွင် laravel installation အလိုအလျောက် ပြလုပ်သွားမည် ဖြစ်သည်။  ဥပမာ `laravel new blog` ဆိုသည့် command ကိုအသုံးပြပါက `blog` အမည်ရှိ folder တစ်ခုကို တည်ဆောက်ပေးပြီး လိုအပ်သည့် package များကိုပါ တခါတည်း ဒေါင်းလုပ်လုပ်ကာ စုစည်းပေးသွားမည် ဖြစ်သည်။ ၄င်းသို ့ install ပြုလုပ်ခြင်းသည် Composer မှ install လုပ်ခြင်းထက် ပို၍ လျင်မြန်ပါလိမ့်မည်။
 
-### Composer ကို အသုံးျပဳျခင္း
+### Composer ကို အသုံးပြုခြင်း
 
-Laravel framework ကုိ [Composer](http://getcomposer.org) မွလည္း installation ႏွင့္ လုိအပ္သည့္ package မ်ားကုိ ထည့္သြင္းႏုိင္သည္။ Composer မသြင္းရေသးပါက  [Composer ထည့္သြင္းျခင္းနည္းလမ္း](http://getcomposer.org/doc/00-intro.md) ကုိၾကည့္၍ ထည့္သြင္းႏုိင္ပါသည္။
+Laravel framework ကို [Composer](http://getcomposer.org) မှလည်း installation နှင့် လိုအပ်သည့် package များကို ထည့်သွင်းနိုင်သည်။ Composer မသွင်းရသေးပါက  [Composer ထည့်သွင်းခြင်းနည်းလမ်း](http://getcomposer.org/doc/00-intro.md) ကိုကြည့်၍ ထည့်သွင်းနိုင်ပါသည်။
 
-ထုိေနာက္ သင့္အေနျဖင့္ terminal မွ ေအာက္ပါ command ကုိ ရုိက္သြင္းျခင္းျဖင့္ Laravel ကုိ install ျပဳလုပ္ႏုိင္မည္ ျဖစ္သည္။
+ထိုနောက် သင့်အနေဖြင့် terminal မှ အောက်ပါ command ကို ရိုက်သွင်းခြင်းဖြင့် Laravel ကို install ပြုလုပ်နိုင်မည် ဖြစ်သည်။
 
 	composer create-project laravel/laravel your-project-name --prefer-dist
 
-၄င္း command မွ laravel အသစ္စက္စက္ ကုိ သင့္`your-project-name` folder အတြင္းတြင္ တည္ရွိေနမည္ကို ေတြ ့ရပါမည္။
+၄င်း command မှ laravel အသစ်စက်စက် ကို သင့်`your-project-name` folder အတွင်းတွင် တည်ရှိနေမည်ကို တွေ ့ရပါမည်။
 
-ထုိတင္မက သင့္ အေနျဖင့္ [Laravel repository from Github](https://github.com/laravel/laravel/archive/master.zip) မွ ေဒါင္းေလာ့ ျပဳလုပ္ျပီး directory ထဲတြင္ `composer install` run ၍လည္း install ျပဳလုပ္ႏုိင္ပါသည္။ ထုိ command မွ framework တြင္ လုိအပ္ေသာ package မ်ားကုိ အလုိအေလ်ာက္ download ျပဳလုပ္ျပီး install သြားမည္ ျဖစ္သည္။
+ထိုတင်မက သင့် အနေဖြင့် [Laravel repository from Github](https://github.com/laravel/laravel/archive/master.zip) မှ ဒေါင်းလော့ ပြုလုပ်ပြီး directory ထဲတွင် `composer install` run ၍လည်း install ပြုလုပ်နိုင်ပါသည်။ ထို command မှ framework တွင် လိုအပ်သော package များကို အလိုအလျောက် download ပြုလုပ်ပြီး install သွားမည် ဖြစ်သည်။
 
 ### Permissions
 
-Laravel ကုိ install ျပဳလုပ္ျပီးပါက သင့္အေနျဖင့္ web server ၏ write permission ျဖင့္ပတ္သတ္၍ `app/storage` ထဲတြင္ ျပင္ဆင္ရန္ လုိအပ္ေကာင္း လုိအပ္ေပမည္။ အေသးစိတ္ အခ်က္အလက္ကုိ  [Installation](installation.md) တြင္ ၾကည့္ရႈႏုိင္ပါသည္။
+Laravel ကို install ပြုလုပ်ပြီးပါက သင့်အနေဖြင့် web server ၏ write permission ဖြင့်ပတ်သတ်၍ `app/storage` ထဲတွင် ပြင်ဆင်ရန် လိုအပ်ကောင်း လိုအပ်ပေမည်။ အသေးစိတ် အချက်အလက်ကို  [Installation](installation.md) တွင် ကြည့်ရှုနိုင်ပါသည်။
 
 ### Serving Laravel
 
-အၾကမ္းအားျဖင့္ Apache သုိ ့မဟုတ္ Nginx ေပၚတြင္ laravel application ကုိ တင္ထားႏုိင္သည္။  သင့္ အသုံးျပဳေသာ PHP version မွာ 5.4 အထက္ျဖစ္ျပီး PHP တြင္ပါဝင္ေသာ default server ကုိ အသုံးျပဳလုိပါက သင့္အေနျဖင့္ Artisan command ျဖစ္သည့္ `serve` ကုိ အသုံးျပဳႏုိင္သည္။
+အကြမ်းအားဖြင့် Apache သို ့မဟုတ် Nginx ပေါ်တွင် laravel application ကို တင်ထားနိုင်သည်။  သင့် အသုံးပြုသော PHP version မှာ 5.4 အထက်ဖြစ်ပြီး PHP တွင်ပါဝင်သော default server ကို အသုံးပြုလိုပါက သင့်အနေဖြင့် Artisan command ဖြစ်သည့် `serve` ကို အသုံးပြုနိုင်သည်။
 
 	php artisan serve
 
 <a name="directories"></a>
 ### Directory Structure
 
-Framework ကုိ install ျပဳလုပ္ျပီးေနာက္ သင့္ အေနျဖင့္ directory structure ျဖင့္ ရင္းႏွီးေနရန္ လုိေပမည္။ `app` directory ထဲတြင္ `views`, `controllers`, and `models` အစရွိသည့္ folder မ်ား တည္ရွိေနသည္ကုိ ေတြ ့ ရမည္ ျဖစ္သည္။ သင့္ application ၏ code မ်ားကုိ ထုိထဲတြင္ ေရးသားရမည္ ျဖစ္သည္။ သင့္အေနျဖင့္ လုိအပ္မည့္ configuration ႏွင့္ ပတ္သတ္၍ `app/config` အမည္ရွိ directory ထဲတြင္ၾကည့္ရႈရမည္ ျဖစ္သည္။
+Framework ကို install ပြုလုပ်ပြီးနောက် သင့် အနေဖြင့် directory structure ဖြင့် ရင်းနှီးနေရန် လိုပေမည်။ `app` directory ထဲတွင် `views`, `controllers`, and `models` အစရှိသည့် folder များ တည်ရှိနေသည်ကို တွေ ့ ရမည် ဖြစ်သည်။ သင့် application ၏ code များကို ထိုထဲတွင် ရေးသားရမည် ဖြစ်သည်။ သင့်အနေဖြင့် လိုအပ်မည့် configuration နှင့် ပတ်သတ်၍ `app/config` အမည်ရှိ directory ထဲတွင်ကြည့်ရှုရမည် ဖြစ်သည်။
 
 <a name="routing"></a>
 ## Routing
 
-ေရွးဦးစြာ Route တစ္ခုကို တည္ေဆာက္ၾကပါစို ့။  Laravel တြင္ အရုိးရွင္းဆုံး route မွာ route to Closure ျဖစ္သည္။ `app/routes.php` ကုိဖြင့္ျပီး ေအာက္ပါ code ကုိထည့္သြင္းၾကည့္ပါ။ 
+ရှေးဦးစွာ Route တစ်ခုကို တည်ဆောက်ကြပါစို ့။  Laravel တွင် အရိုးရှင်းဆုံး route မှာ route to Closure ဖြစ်သည်။ `app/routes.php` ကိုဖွင့်ပြီး အောက်ပါ code ကိုထည့်သွင်းကြည့်ပါ။ 
 
 	Route::get('users', function()
 	{
 		return 'Users!';
 	});
 
-ထုိေနာက္ web browser ေပၚတြင္ `/users` ဟူေသာ route ျဖင့္ စမ္းၾကည့္ပါက သင့္အေနျဖင့္ `Users!` တုံ ့ျပန္သည္ကို ျမင္ေတြ ့ရမည္ ျဖစ္သည္။ 
-ေကာင္းေလစြ! သင့္အေနျဖင့္ ပထမဦးစြာ route တစ္ခုကို ဖန္တီးလုိက္ျပီ ျဖစ္သည္။
+ထိုနောက် web browser ပေါ်တွင် `/users` ဟူသော route ဖြင့် စမ်းကြည့်ပါက သင့်အနေဖြင့် `Users!` တုံ ့ပြန်သည်ကို မြင်တွေ ့ရမည် ဖြစ်သည်။ 
+ကောင်းလေစွ! သင့်အနေဖြင့် ပထမဦးစွာ route တစ်ခုကို ဖန်တီးလိုက်ပြီ ဖြစ်သည်။
 
 
-Route မ်ားမွာ controller မ်ားႏွင့္လည္း ခ်ိတ္ဆက္ အလုပ္လုပ္ႏိုင္သည္။ ဥပမာ
+Route များမှာ controller များနှင့်လည်း ချိတ်ဆက် အလုပ်လုပ်နိုင်သည်။ ဥပမာ
 
 	Route::get('users', 'UserController@getIndex');
 
-အဆုိပါ route တြင္ 	`/users` ဟုေခၚယူလုိက္ပါက `UserController` class အတြင္းရွိ `getIndex` method  ကုိ အလုပ္လုပ္မည္ ျဖစ္သည္။ Controller routing ႏွင့္ ပတ္သတ္၍ အေသးစိတ္ကုိ [controller documentation](controllers.md) တြင္ၾကည့္ရႈႏုိင္သည္။
+အဆိုပါ route တွင် 	`/users` ဟုခေါ်ယူလိုက်ပါက `UserController` class အတွင်းရှိ `getIndex` method  ကို အလုပ်လုပ်မည် ဖြစ်သည်။ Controller routing နှင့် ပတ်သတ်၍ အသေးစိတ်ကို [controller documentation](controllers.md) တွင်ကြည့်ရှုနိုင်သည်။
 
 <a name="creating-a-view"></a>
-## View တစ္ခု တည္ေဆာက္ျခင္း
+## View တစ်ခု တည်ဆောက်ခြင်း
 
-ထုိေနာက္ user data မ်ားကို ေဖာ္ျပရန္ ရုိးရွင္းသည့္ view တစ္ခုကို တည္ေဆာက္ရန္ လုိေပမည္။  view file မ်ားသည္ `app/views` directory  ထဲတြင္ တည္ရွိမည္ ျဖစ္သည္။  View တြင္ သင့္ application တြင္ ေဖာ္ျပလုိသည့္  HTML ျဖင့္ ေဖာ္ျပသြားမည္ ျဖစ္သည္။  `layout.blade.php` ႏွင့္ `users.blade.php` ဟု၍ file ႏွစ္ခုကို တည္ေဆာက္လုိက္ပါ။ `layout.blade.php` ဟုသည့္ file တြင္ ေအာက္ပါ အတုိင္း ေရးသားလုိက္ပါ။
+ထိုနောက် user data များကို ဖော်ပြရန် ရိုးရှင်းသည့် view တစ်ခုကို တည်ဆောက်ရန် လိုပေမည်။  view file များသည် `app/views` directory  ထဲတွင် တည်ရှိမည် ဖြစ်သည်။  View တွင် သင့် application တွင် ဖော်ပြလိုသည့်  HTML ဖြင့် ဖော်ပြသွားမည် ဖြစ်သည်။  `layout.blade.php` နှင့် `users.blade.php` ဟု၍ file နှစ်ခုကို တည်ဆောက်လိုက်ပါ။ `layout.blade.php` ဟုသည့် file တွင် အောက်ပါ အတိုင်း ရေးသားလိုက်ပါ။
 
 	<html>
 		<body>
@@ -74,7 +74,7 @@ Route မ်ားမွာ controller မ်ားႏွင့္လည္း �
 		</body>
 	</html>
 
-ထုိေနာက္ `users.blade.php` ဟုေသာ view တစ္ခုကို တည္ေဆာက္ လတၱံ ့။ 
+ထိုနောက် `users.blade.php` ဟုသော view တစ်ခုကို တည်ဆောက် လတ္တံ ့။ 
 
 	@extends('layout')
 
@@ -82,34 +82,34 @@ Route မ်ားမွာ controller မ်ားႏွင့္လည္း �
 		Users!
 	@stop
 
-တခ်ိဳ  ့ေသာ syntax မ်ားမွ သင့္အတြက္ နည္းနည္း စိမ္းေနမည္ ျဖစ္သည္။ အဘယ္ေၾကာင့္ဆုိေသာ္ ယခု အသုံးျပဳထားသည္မွာ Laravel ၏ templating system ျဖစ္သည့္ Blade ကုိ အသုံးျပဳထားျခင္း ေၾကာင့္ ျဖစ္သည္။ Blade သည္ အလြန္ျမန္ဆန္ လွေပသည္။ အေၾကာင္းမွာ ရုိးရွင္းလြယ္ကူ regular expression မ်ားကုိ အသုံးျပဳကာ PHP အျဖစ္သုိ ့ compile ျပဳလုပ္ထားျခင္းေၾကာင့္ျဖစ္သည္။ Blade အေနျဖင့္ အလြန္တရာ စြမ္းအင္ၾကီးမားလွေသာ template inheritance ကဲ့သို ့ေသာ feature မ်ားကို support ေပးရုံသာမက  PHP တြင္ ေရးသားႏုိင္သည့္ `if` ႏွင့္ `for` သုိ ့ေသာ Conditional statement မ်ားကိုပါ ေသသပ္လွပစြာ ေရးသားႏိုင္ေသာေၾကာင့္ျဖစ္သည္။ အေသးစိတ္ကို  [Blade documentation](templates.md) ၾကည့္ရႈႏုိင္ေပမည္။ 
+တချို  ့သော syntax များမှ သင့်အတွက် နည်းနည်း စိမ်းနေမည် ဖြစ်သည်။ အဘယ်ကြောင့်ဆိုသော် ယခု အသုံးပြုထားသည်မှာ Laravel ၏ templating system ဖြစ်သည့် Blade ကို အသုံးပြုထားခြင်း ကြောင့် ဖြစ်သည်။ Blade သည် အလွန်မြန်ဆန် လှပေသည်။ အကြောင်းမှာ ရိုးရှင်းလွယ်ကူ regular expression များကို အသုံးပြုကာ PHP အဖြစ်သို ့ compile ပြုလုပ်ထားခြင်းကြောင့်ဖြစ်သည်။ Blade အနေဖြင့် အလွန်တရာ စွမ်းအင်ကြီးမားလှသော template inheritance ကဲ့သို ့သော feature များကို support ပေးရုံသာမက  PHP တွင် ရေးသားနိုင်သည့် `if` နှင့် `for` သို ့သော Conditional statement များကိုပါ သေသပ်လှပစွာ ရေးသားနိုင်သောကြောင့်ဖြစ်သည်။ အသေးစိတ်ကို  [Blade documentation](templates.md) ကြည့်ရှုနိုင်ပေမည်။ 
 
-ယခု ကြ်န္ေတာ္တုိ ့ views အပုိင္းကို ဖန္တီးျပီး ျဖစ္၍ `/users` ဟုေသာ route ဘက္ကုိ ျပန္လွည့္ၾကပါစုိ ့။ Route မွ `Users!` ဟု return ျပန္ျခင္းထက္ 
-view ကို ျပန္ေပးဖုိ ့လုိေပမည္။ 
+ယခု ကျွန်တော်တို ့ views အပိုင်းကို ဖန်တီးပြီး ဖြစ်၍ `/users` ဟုသော route ဘက်ကို ပြန်လှည့်ကြပါစို ့။ Route မှ `Users!` ဟု return ပြန်ခြင်းထက် 
+view ကို ပြန်ပေးဖို ့လိုပေမည်။ 
 
 	Route::get('users', function()
 	{
 		return View::make('users');
 	});
 
-အံၾသဖြယ္ေကာင္းေလစြ။ သင့္အေနျဖင့္ layout တစ္ခုကို extends ျပဳလုပ္ထားေသာ view တစ္ခုကုိ တည္ေဆာက္ျပီးေပသည္။ ဆက္၍ database layer တြင္ ဆက္၍ လႈပ္ရွားၾကပါစုိ ့။
+အံသြဖွယ်ကောင်းလေစွ။ သင့်အနေဖြင့် layout တစ်ခုကို extends ပြုလုပ်ထားသော view တစ်ခုကို တည်ဆောက်ပြီးပေသည်။ ဆက်၍ database layer တွင် ဆက်၍ လှုပ်ရှားကြပါစို ့။
 
 <a name="creating-a-migration"></a>
-## Migration တစ္ခုဖန္တီးျခင္း
+## Migration တစ်ခုဖန်တီးခြင်း
 
-Table တစ္ခုတည္ေဆာက္ျပီး data ေတြကုိ handle ႏုိင္ရန္ Laravel migration system ကုိ အသုံးျပဳရန္လုိေပမည္။ Migration အေနျဖင့္ သင့္ database ၏ modification ကုိ အလြယ္တကူ သတ္မွတ္ႏုိင္ျပီး သင့္အဖြဲ  ့သားမ်ားႏွင့္ မွ်ေဝႏုိင္ေပမည္။
+Table တစ်ခုတည်ဆောက်ပြီး data တွေကို handle နိုင်ရန် Laravel migration system ကို အသုံးပြုရန်လိုပေမည်။ Migration အနေဖြင့် သင့် database ၏ modification ကို အလွယ်တကူ သတ်မှတ်နိုင်ပြီး သင့်အဖွဲ  ့သားများနှင့် မျှဝေနိုင်ပေမည်။
 
-ေရွးဦးစြာ database ႏွင့္ ခ်ိတ္ဆက္ရန္ လုိေပမည္။ database ျဖင့္ခ်ိတ္ဆက္ရန္ အတြက္ `app/config/database.php` တြင္ ျပင္ဆင္ရန္လုိေပမည္။ ပုံမွန္အားျဖင့္ Laravel သည္ MySQL ျဖင့္ အသုံးျပဳရန္ သတ္မွတ္ထားသည္။ သင့္အေနျဖင့္ လုိအပ္ေသာ credential မ်ားကုိ config file တြင္ ျဖည့္သြင္းရန္လုိေပမည္။ သင့္အေနျဖင့္ အလုိရွိပါက စိတ္ၾကိဳက္ `driver` option ကုိ `sqlite` ျဖစ္ေစေျပာင္းလဲႏုိင္ျပီ။ ၄င္းအေနျဖင့္ `app/database` directory ေအာက္တြင္ တည္ရွိမည့္ SQLite database ကို အလုပ္လုပ္မည္ ျဖစ္သည္။
+ရှေးဦးစွာ database နှင့် ချိတ်ဆက်ရန် လိုပေမည်။ database ဖြင့်ချိတ်ဆက်ရန် အတွက် `app/config/database.php` တွင် ပြင်ဆင်ရန်လိုပေမည်။ ပုံမှန်အားဖြင့် Laravel သည် MySQL ဖြင့် အသုံးပြုရန် သတ်မှတ်ထားသည်။ သင့်အနေဖြင့် လိုအပ်သော credential များကို config file တွင် ဖြည့်သွင်းရန်လိုပေမည်။ သင့်အနေဖြင့် အလိုရှိပါက စိတ်ကြိုက် `driver` option ကို `sqlite` ဖြစ်စေပြောင်းလဲနိုင်ပြီ။ ၄င်းအနေဖြင့် `app/database` directory အောက်တွင် တည်ရှိမည့် SQLite database ကို အလုပ်လုပ်မည် ဖြစ်သည်။
 
-ထုိေနာက္ migration တစ္ခု ဖန္တီးရန္ [Artisan CLI](artisan.md) ကုိ အသုံးျပဳမည္ ျဖစ္သည္။ project ၏ root တြင္ ေအာက္ပါ အတုိင္း terminal မွ run ရန္ လုိေပမည္။
+ထိုနောက် migration တစ်ခု ဖန်တီးရန် [Artisan CLI](artisan.md) ကို အသုံးပြုမည် ဖြစ်သည်။ project ၏ root တွင် အောက်ပါ အတိုင်း terminal မှ run ရန် လိုပေမည်။
 
 	php artisan migrate:make create_users_table
 
-ဆက္၍ `app/database/migrations` တည္ရွိသည့္ migration file ကုိ ရွာရန္ လုိေပမည္။ ထုိထဲတြင္ `up` ႏွင့္`down`ဟူေသာ method ႏွစ္ခုပါဝင္မည္ ျဖစ္သည္။
+ဆက်၍ `app/database/migrations` တည်ရှိသည့် migration file ကို ရှာရန် လိုပေမည်။ ထိုထဲတွင် `up` နှင့်`down`ဟူသော method နှစ်ခုပါဝင်မည် ဖြစ်သည်။
 
 
-`up` method တြင္ database တြင္ ေျပာင္းလဲခ်င္သည္မ်ားကို ထည့္သြင္းေရးသား၍  `down` method ေျပာင္းျပန္ေရးသားရမည္ ျဖစ္သည္။
-ေအာက္ပါအတုိင္း migration ကုိ တည္ေဆာက္လုိက္ပါ။
+`up` method တွင် database တွင် ပြောင်းလဲချင်သည်များကို ထည့်သွင်းရေးသား၍  `down` method ပြောင်းပြန်ရေးသားရမည် ဖြစ်သည်။
+အောက်ပါအတိုင်း migration ကို တည်ဆောက်လိုက်ပါ။
 
 	public function up()
 	{
@@ -127,27 +127,27 @@ Table တစ္ခုတည္ေဆာက္ျပီး data ေတြကု�
 		Schema::drop('users');
 	}
 
-ဆက္၍ migrate ျပဳလုပ္လုိပါက terminal တြင္`migrate` ဟုရုိက္ရန္လုိေပမည္။ 
+ဆက်၍ migrate ပြုလုပ်လိုပါက terminal တွင်`migrate` ဟုရိုက်ရန်လိုပေမည်။ 
 
 	php artisan migrate
 
-migration တစ္ခုကို rollback (ေနာက္ျပန္လွည့္) လုိပါက သင့္အေနျဖင့္ `migrate:rollback` ဟူ၍  ရုိက္ရုံသာ ျဖစ္သည္။ ယခု database table ရွိျပီ ျဖစ္၍ 
-data ေလးနည္းနည္းျဖင့္ စလုိက္ၾကပါစို ့။
+migration တစ်ခုကို rollback (နောက်ပြန်လှည့်) လိုပါက သင့်အနေဖြင့် `migrate:rollback` ဟူ၍  ရိုက်ရုံသာ ဖြစ်သည်။ ယခု database table ရှိပြီ ဖြစ်၍ 
+data လေးနည်းနည်းဖြင့် စလိုက်ကြပါစို ့။
 
 <a name="eloquent-orm"></a>
 ## Eloquent ORM
 
-Eloquent ORM သည္ Laravel ၏ အလွတရား တစ္ရပ္ပင္ျဖစ္သည္။ သင့္အေနျဖင့္ Ruby on Rails framework ကုိ အသုံးျပဳဖူးပါက ၄င္းကဲ့သုိ ့ database interaction ျပဳလုပ္ရာတြင္ ActiveRecord ORM style သုံးထားသာ Eloquent ႏွင့္ရင္းႏွီးေနမည္ ျဖစ္သည္။  
+Eloquent ORM သည် Laravel ၏ အလှတရား တစ်ရပ်ပင်ဖြစ်သည်။ သင့်အနေဖြင့် Ruby on Rails framework ကို အသုံးပြုဖူးပါက ၄င်းကဲ့သို ့ database interaction ပြုလုပ်ရာတွင် ActiveRecord ORM style သုံးထားသာ Eloquent နှင့်ရင်းနှီးနေမည် ဖြစ်သည်။  
 
-ပထမဦးဆုံး model တစ္ခုကို သတ္မွတ္ၾကပါစို ့။ Eloquent model တစ္ခုသည္ ဆက္စပ္ေနေသာ database table မ်ား၏ query ကုိပါ အသုံးျပဳႏုိင္သည္။ သိပ္မ်ား နားရႈပ္သြားသလား မသိ။ အခုလာမယ့္ အပုိင္းမွာ တျဖည္းျဖည္း နားလည္လာမွာပါ။ Model ေတြဟာ `app/models` ဆုိတဲ့ directory အတြင္းမွာ တည္ရွိပါတယ္။ အဆုိပါ directory ထဲမွာ ေအာက္ပါအတုိင္း `User.php` ဆုိတဲ့ model တစ္ခုကုိ တည္ေဆာက္လုိက္ပါ။
+ပထမဦးဆုံး model တစ်ခုကို သတ်မှတ်ကြပါစို ့။ Eloquent model တစ်ခုသည် ဆက်စပ်နေသော database table များ၏ query ကိုပါ အသုံးပြုနိုင်သည်။ သိပ်များ နားရှုပ်သွားသလား မသိ။ အခုလာမယ့် အပိုင်းမှာ တဖြည်းဖြည်း နားလည်လာမှာပါ။ Model တွေဟာ `app/models` ဆိုတဲ့ directory အတွင်းမှာ တည်ရှိပါတယ်။ အဆိုပါ directory ထဲမှာ အောက်ပါအတိုင်း `User.php` ဆိုတဲ့ model တစ်ခုကို တည်ဆောက်လိုက်ပါ။
 
 	class User extends Eloquent {}
 
-သတိျပဳရမည္မွာ ကြ်န္ေတာ္တုိ ့အေနျဖင့္ Eloquent ကုိ မည္သည့္ table အသုံးျပဳရန္ မညြန္းဆုိရေသးေခ်။ Eloquent တြင္ အသုံးျပဳနည္း မ်ားစြာ ရွိသည့္ အနက္တစ္ခုမွာ Model အမည္၏ အမ်ားကိန္းမွာ database table အျဖစ္ အလုိအေလ်ာက္ သိရွိေနမည္ ျဖစ္သည္။ အဆင္ေျပေလစြ!
+သတိပြုရမည်မှာ ကျွန်တော်တို ့အနေဖြင့် Eloquent ကို မည်သည့် table အသုံးပြုရန် မညွန်းဆိုရသေးချေ။ Eloquent တွင် အသုံးပြုနည်း များစွာ ရှိသည့် အနက်တစ်ခုမှာ Model အမည်၏ အများကိန်းမှာ database table အဖြစ် အလိုအလျောက် သိရှိနေမည် ဖြစ်သည်။ အဆင်ပြေလေစွ!
 
-သင့္အေနျဖင့္ ၾကိဳက္သည့္ database administration tool ကို အသုံးျပဳျပီး `users` table တြင္ row အနည္းငယ္ data သြင္းလုိက္ပါ။  ထုိေနာက္ Eloquent ကုိ အသုံးျပဳ၍  data မ်ားကို ထုတ္ယူျပီး view သုိ ့လြဲေျပာင္းေပးလုိက္မည္။
+သင့်အနေဖြင့် ကြိုက်သည့် database administration tool ကို အသုံးပြုပြီး `users` table တွင် row အနည်းငယ် data သွင်းလိုက်ပါ။  ထိုနောက် Eloquent ကို အသုံးပြု၍  data များကို ထုတ်ယူပြီး view သို ့လွဲပြောင်းပေးလိုက်မည်။
 
-ယခု `/users` route ကုိ ေအာက္ပါပုံစံေျပာင္းလဲလုိက္ပါ။
+ယခု `/users` route ကို အောက်ပါပုံစံပြောင်းလဲလိုက်ပါ။
 
 	Route::get('users', function()
 	{
@@ -156,14 +156,14 @@ Eloquent ORM သည္ Laravel ၏ အလွတရား တစ္ရပ္ပ�
 		return View::make('users')->with('users', $users);
 	});
 
-အထက္ပါ route ကုိၾကည့္ပါ။ ေရွးဦးစြာ `User` model မွ `all` method မွာ `users` table မွ rows အားလုံးကုိ ထုတ္ေပးမည္ ျဖစ္သည္။ ထုိေနာက္ ထုိ record မ်ားကုိ `with` method အသုံးျပဳ၍ view သုိ ့ passing ေပးလုိက္ျခင္း ျဖစ္သည္။ ထုိ `with` method  သည္ key ႏွင့္ value အေနျဖင့္ data မ်ားကို လက္ခံမည္ ျဖစ္သည္။ ထုိအခါ view သုိ ့ data မ်ားေရာက္သြားမည္ ျဖစ္သည္။
+အထက်ပါ route ကိုကြည့်ပါ။ ရှေးဦးစွာ `User` model မှ `all` method မှာ `users` table မှ rows အားလုံးကို ထုတ်ပေးမည် ဖြစ်သည်။ ထိုနောက် ထို record များကို `with` method အသုံးပြု၍ view သို ့ passing ပေးလိုက်ခြင်း ဖြစ်သည်။ ထို `with` method  သည် key နှင့် value အနေဖြင့် data များကို လက်ခံမည် ဖြစ်သည်။ ထိုအခါ view သို ့ data များရောက်သွားမည် ဖြစ်သည်။
 
-ေကာင္းေလးစြ။ ယခု ကြ်န္ေတာ္တုိ ့ user ကုိ data မ်ား ျပသႏုိင္ရန္ အဆင္သင့္ျဖစ္ေခ်ျပီ။
+ကောင်းလေးစွ။ ယခု ကျွန်တော်တို ့ user ကို data များ ပြသနိုင်ရန် အဆင်သင့်ဖြစ်ချေပြီ။
 
 <a name="displaying-data"></a>
-## Data မ်ား ျပသျခင္း
+## Data များ ပြသခြင်း
 
-ယခုအခါ `users` ကုိ view တြင္ ျမင္သာေစရန္ ျပဳလုပ္ျပီးျပီျဖစ္သည္။ ကြ်န္ေတာ္တုိ ့ ေအာက္ပါ အတုိင္း ျပသႏုိင္ေလျပီ။
+ယခုအခါ `users` ကို view တွင် မြင်သာစေရန် ပြုလုပ်ပြီးပြီဖြစ်သည်။ ကျွန်တော်တို ့ အောက်ပါ အတိုင်း ပြသနိုင်လေပြီ။
 
 	@extends('layout')
 
@@ -173,6 +173,6 @@ Eloquent ORM သည္ Laravel ၏ အလွတရား တစ္ရပ္ပ�
 		@endforeach
 	@stop
 
-သင့္အေနျဖင့္ `echo` statements ကုိရွာေနလား မသိ။ Blade ကုိ အသုံးျပဳရာတြင္ data မ်ားကို တြန္ ့ကြင္း ႏွစ္ခု အၾကား ထည့္သြင္းျခင္းျဖင့္ data မ်ားကို echo အစား ျပသေပးႏုိင္သည္။ ဘယ္ေလာက္မ်ား လြယ္ကူေပသလဲ။ ယခုအခါ သင့္အေနျဖင့္ `/users` route ကုိ လွမ္းေခၚလုိက္ျခင္းျဖင့္ သင့္ users မ်ားကုိ ျပသႏုိင္ေလျပီ။
+သင့်အနေဖြင့် `echo` statements ကိုရှာနေလား မသိ။ Blade ကို အသုံးပြုရာတွင် data များကို တွန် ့ကွင်း နှစ်ခု အကြား ထည့်သွင်းခြင်းဖြင့် data များကို echo အစား ပြသပေးနိုင်သည်။ ဘယ်လောက်များ လွယ်ကူပေသလဲ။ ယခုအခါ သင့်အနေဖြင့် `/users` route ကို လှမ်းခေါ်လိုက်ခြင်းဖြင့် သင့် users များကို ပြသနိုင်လေပြီ။
 
-အထက္ပါ ဥပမာဟာ အစသာရွိပါေသးသည္။ ထုိ tutorial တြင္ သင့္အေနျဖင့္ laravel ၏ အေျခခံကို ေတြ ့ျမင္ႏုိင္မည္ ျဖစ္သည္။ သုိ ့ေသာ္လည္း ပုိမုိ၍ စိတ္လႈပ္ရွားစရာ အခ်က္မ်ားစြာ စီတန္း၍ ေလ့လာရန္ က်န္ရွိေနပါေသးသည္။ documentation ကုိ ဖတ္ရႈျခင္းျဖင့္  စြမ္းအားၾကီးမားလွသည့္  [Eloquent](eloquent) ႏွင့္ [Blade](/docs/templates) ကဲ့သုိ ့ေသာ သုိ ့မဟုတ္ သင့္ပုိစိတ္ဝင္စားႏုိင္သည့္  [Queues](/docs/queues) ႏွင့္ [Unit Testing](/docs/testing) ကဲ့သုိ ့ေသာ အေၾကာင္းအရာမ်ားကို ေလ့လာႏုိင္သည္။ ထပ္၍ သင့္ application ၏ architecture ကုိ သက္ေတာင့္သက္သာ ျဖစ္ေစမည့္  [IoC Container](/docs/ioc.md) မ်ားလည္း ပါဝင္ပါေသးသည္။ ေရြးခ်ယ္ပါေလာ့။
+အထက်ပါ ဥပမာဟာ အစသာရှိပါသေးသည်။ ထို tutorial တွင် သင့်အနေဖြင့် laravel ၏ အခြေခံကို တွေ ့မြင်နိုင်မည် ဖြစ်သည်။ သို ့သော်လည်း ပိုမို၍ စိတ်လှုပ်ရှားစရာ အချက်များစွာ စီတန်း၍ လေ့လာရန် ကျန်ရှိနေပါသေးသည်။ documentation ကို ဖတ်ရှုခြင်းဖြင့်  စွမ်းအားကြီးမားလှသည့်  [Eloquent](eloquent) နှင့် [Blade](/docs/templates) ကဲ့သို ့သော သို ့မဟုတ် သင့်ပိုစိတ်ဝင်စားနိုင်သည့်  [Queues](/docs/queues) နှင့် [Unit Testing](/docs/testing) ကဲ့သို ့သော အကြောင်းအရာများကို လေ့လာနိုင်သည်။ ထပ်၍ သင့် application ၏ architecture ကို သက်တောင့်သက်သာ ဖြစ်စေမည့်  [IoC Container](/docs/ioc.md) များလည်း ပါဝင်ပါသေးသည်။ ရွေးချယ်ပါလော့။

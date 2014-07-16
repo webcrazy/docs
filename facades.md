@@ -1,38 +1,38 @@
-# Facades
+﻿# Facades
 
-- [မိတ္ဆက္](#introduction)
-- [ရွင္းလင္းခ်က္](#explanation)
-- [လက္ေတြ့အသံုးခ်ျခင္း](#practical-usage)
-- [ကိုယ္ပိုင္ Facades တည္ေဆာက္ျခင္း](#creating-facades)
-- [Facades ေတြကို Mock ျပဳလုပ္ေပးျခင္း](#mocking-facades)
+- [မိတ်ဆက်](#introduction)
+- [ရှင်းလင်းချက်](#explanation)
+- [လက်တွေ့အသုံးချခြင်း](#practical-usage)
+- [ကိုယ်ပိုင် Facades တည်ဆောက်ခြင်း](#creating-facades)
+- [Facades တွေကို Mock ပြုလုပ်ပေးခြင်း](#mocking-facades)
 - [Facade Class ကိုကား](#facade-class-reference)
 
 <a name="introduction"></a>
-## မိတ္ဆက္
+## မိတ်ဆက်
 
-Facades (ဖေဆာ့စ္ ဟုအသံထြက္ပါ) က Application ရဲ႕ [IoC container](ioc.md) ထဲမွာရွိတဲ့ Class ေတြကို static ပံုစံမ်ိဳးသံုးႏိုင္ေအာင္ လုပ္ေပးပါတယ္။ Laravel မွာလဲ Facades ေတြအမ်ားႀကီးပါဝင္ၿပီးေတာ့ အဲဒီ Facade ေတြကိုလည္း သံုးဖူးပါလိမ့္မယ္။ သင္သံုးဖူးေပမယ့္လည္း သံုးဖူးမွန္းမသိျဖစ္ေနတက္ပါတယ္။ Laravel "facades" ေတြက Static Proxy ေတြအေနနဲ႔ ကူညီေပးပါတယ္။ ၄င္းက သာမာန္ Static method ေတြမဟုတ္ဘဲ ၊ ဖတ္/မွတ္လို႔ေကာင္းၿပီး ပိုၿပီးတိုေတာင္းတဲ့ Syntax ပံုစံေတြျဖစ္ေစတဲ့အျပင္ Test လုပ္လို႔အဆင္ေျပၿပီး ေျပာင္းလြယ္ျပင္လြယ္ျဖစ္ေစပါတယ္။
+Facades (ဖဆော့စ် ဟုအသံထွက်ပါ) က Application ရဲ့ [IoC container](ioc.md) ထဲမှာရှိတဲ့ Class တွေကို static ပုံစံမျိုးသုံးနိုင်အောင် လုပ်ပေးပါတယ်။ Laravel မှာလဲ Facades တွေအများကြီးပါဝင်ပြီးတော့ အဲဒီ Facade တွေကိုလည်း သုံးဖူးပါလိမ့်မယ်။ သင်သုံးဖူးပေမယ့်လည်း သုံးဖူးမှန်းမသိဖြစ်နေတက်ပါတယ်။ Laravel "facades" တွေက Static Proxy တွေအနေနဲ့ ကူညီပေးပါတယ်။ ၄င်းက သာမာန် Static method တွေမဟုတ်ဘဲ ၊ ဖတ်/မှတ်လို့ကောင်းပြီး ပိုပြီးတိုတောင်းတဲ့ Syntax ပုံစံတွေဖြစ်စေတဲ့အပြင် Test လုပ်လို့အဆင်ပြေပြီး ပြောင်းလွယ်ပြင်လွယ်ဖြစ်စေပါတယ်။
 
-အခါအားေလ်ာက္စြာ သင့္ Application နဲ႔ Package ေတြ အတြက္ သင့္ကိုယ္ပိုင္ Facades ေတြတည္ေဆာက္ႏိုင္ပါတယ္။ ဒါ့ေၾကာင့္ ဒီ Class ေတြရဲ႕ အသံုးျပဳပံုေတြ နဲ႔ အယူအစေတြကို ေမႊေႏွာက္ၾကည့္ၾကရေအာင္။
+အခါအားလျောက်စွာ သင့် Application နဲ့ Package တွေ အတွက် သင့်ကိုယ်ပိုင် Facades တွေတည်ဆောက်နိုင်ပါတယ်။ ဒါ့ကြောင့် ဒီ Class တွေရဲ့ အသုံးပြုပုံတွေ နဲ့ အယူအစတွေကို မွှေနှောက်ကြည့်ကြရအောင်။
 
-> **မွတ္ခ်က္:** Facades ကိုမေလ့လာခင္ ၊ Laravel ရဲ႕ [IoC container](ioc.md) နဲ႔ေသခ်ာရင္းႏွီးေနဖို႔ အႀကံျပဳခ်င္ပါတယ္။
+> **မှတ်ချက်:** Facades ကိုမလေ့လာခင် ၊ Laravel ရဲ့ [IoC container](ioc.md) နဲ့သေချာရင်းနှီးနေဖို့ အကြံပြုချင်ပါတယ်။
 
 <a name="explanation"></a>
-## ရွင္းလင္းခ်က္
+## ရှင်းလင်းချက်
 
-Facade ဆိုတာ Class တစ္ခုျဖစ္ၿပီး Container ထဲက Object ကို ေခၚအသံုးျပဳခြင့္ေပးပါတယ္။ ဒီလိုေခၚသံုးႏိုင္တာ `Facade` class ေၾကာင့္ျဖစ္ပါတယ္။ Laravel ရဲ႕ Facade ေတြ နဲ႔ သင္ကိုယ္ပိုင္ေဆာက္ထားတဲ့ Facade ေတြအားလံုးဟာ `Facade` class ကို Extend ျပဳလုပ္ရပါတယ္။
+Facade ဆိုတာ Class တစ်ခုဖြစ်ပြီး Container ထဲက Object ကို ခေါ်အသုံးပြုခွင့်ပေးပါတယ်။ ဒီလိုခေါ်သုံးနိုင်တာ `Facade` class ကြောင့်ဖြစ်ပါတယ်။ Laravel ရဲ့ Facade တွေ နဲ့ သင်ကိုယ်ပိုင်ဆောက်ထားတဲ့ Facade တွေအားလုံးဟာ `Facade` class ကို Extend ပြုလုပ်ရပါတယ်။
 
-သင့္ကိုယ္ပိုင္ Facade class ေဆာက္ေတာ့မယ္ဆိုရင္ `getFacadeAccessor` ဆိုတဲ့ method ကိုပဲ implement လုပ္ဖို႔လိုပါမယ္။ `getFacadeAccessor` က Container ထဲကေန ဘယ္ဟာကိုသံုးရမယ္လို႔ ဆံုးျဖတ္ေပးပါတယ္။ သင့္ကိုယ္ပိုင္ Facade ကေန Resolved လုပ္ၿပီးသား object ထဲကိုေရႊ႕ေျပာင္းဖို႔အတြက္ အေျခခံ `Facade` class မွာေတာ့ `__callStatic()` ဆိုတဲ့ magic-method ကိုသံုးထားပါတယ္။
+သင့်ကိုယ်ပိုင် Facade class ဆောက်တော့မယ်ဆိုရင် `getFacadeAccessor` ဆိုတဲ့ method ကိုပဲ implement လုပ်ဖို့လိုပါမယ်။ `getFacadeAccessor` က Container ထဲကနေ ဘယ်ဟာကိုသုံးရမယ်လို့ ဆုံးဖြတ်ပေးပါတယ်။ သင့်ကိုယ်ပိုင် Facade ကနေ Resolved လုပ်ပြီးသား object ထဲကိုရွှေ့ပြောင်းဖို့အတွက် အခြေခံ `Facade` class မှာတော့ `__callStatic()` ဆိုတဲ့ magic-method ကိုသုံးထားပါတယ်။
 
-ဒါ့ေၾကာင့္ သင့္အေနနဲ႔ `Cache::get` လိုမ်ိဳး Facade တစ္ခုကို ေခၚမယ္ဆိုရင္ Laravel က Cache manager class ကို IoC container ထဲကေနဆြဲထုတ္ၿပီး သူထဲက `get` method ကိုေခၚေပးပါတယ္။ နည္းပညာအေခၚအေဝၚအရဆိုရင္ေတာ Laravel Facades ေတြဆိုတာ Ioc container ေတြကို service locator တစ္ခုအေနနဲ႔အသံုးျပဳႏိုင္တဲ့ ေရး/ဖတ္/မွတ္ရလြယ္ကူေသာ syntax ျဖစ္ပါတယ္။
+ဒါ့ကြောင့် သင့်အနေနဲ့ `Cache::get` လိုမျိုး Facade တစ်ခုကို ခေါ်မယ်ဆိုရင် Laravel က Cache manager class ကို IoC container ထဲကနေဆွဲထုတ်ပြီး သူထဲက `get` method ကိုခေါ်ပေးပါတယ်။ နည်းပညာအခေါ်အဝေါ်အရဆိုရင်တော Laravel Facades တွေဆိုတာ Ioc container တွေကို service locator တစ်ခုအနေနဲ့အသုံးပြုနိုင်တဲ့ ရေး/ဖတ်/မှတ်ရလွယ်ကူသော syntax ဖြစ်ပါတယ်။
 
 <a name="practical-usage"></a>
-## လက္ေတြ႕အသံုးခ်ျခင္း
+## လက်တွေ့အသုံးချခြင်း
 
-ေအာက္ကအတိုင္းဆိုရင္ ၊ Laravel cache system ကို ေခၚတာပါ။ သာမာန္အေပၚယံအတိုင္း ၾကည့္လိုက္မယ္ဆိုရင္ေတာ့ `Cache` class ထဲက `get` ဆိုတဲ့ static method တစ္ခုကို ေခၚလိုက္တယ္လို႔ထင္ရပါတယ္။
+အောက်ကအတိုင်းဆိုရင် ၊ Laravel cache system ကို ခေါ်တာပါ။ သာမာန်အပေါ်ယံအတိုင်း ကြည့်လိုက်မယ်ဆိုရင်တော့ `Cache` class ထဲက `get` ဆိုတဲ့ static method တစ်ခုကို ခေါ်လိုက်တယ်လို့ထင်ရပါတယ်။
 
 	$value = Cache::get('key');
 
-ဒါေပမယ့္ `Illuminate\Support\Facades\Cache` class  ကိုၾကည့္လိုက္မယ္ဆိုရင္ `get` ဆိုတဲ့ static method လံုးဝမရွိပါဘူး
+ဒါပေမယ့် `Illuminate\Support\Facades\Cache` class  ကိုကြည့်လိုက်မယ်ဆိုရင် `get` ဆိုတဲ့ static method လုံးဝမရှိပါဘူး
 
 	class Cache extends Facade {
 
@@ -45,25 +45,25 @@ Facade ဆိုတာ Class တစ္ခုျဖစ္ၿပီး Container �
 
 	}
 
-Cache class က `Facade` class ကို extend လုပ္ထားၿပီး `getFacadeAccessor()` ဆိုတာပဲရွိပါတယ္။ အဲဒီ Method ရဲ႕တာဝန္က IoC နာမည္ကို return လုပ္ေပးယံုပါပဲ။
+Cache class က `Facade` class ကို extend လုပ်ထားပြီး `getFacadeAccessor()` ဆိုတာပဲရှိပါတယ်။ အဲဒီ Method ရဲ့တာဝန်က IoC နာမည်ကို return လုပ်ပေးယုံပါပဲ။
 
-User က `Cache` facade ထဲက ဘယ္ static method ကိုမဆို သံုးလိုက္မယ္ဆိုတာနဲ႔ ၊ Laravel က IoC container ထဲကေန `cache` ကိုေခၚၿပီး ၊ ကိုယ္လိုခ်င္တဲ့ method (အခုအတိုင္းဆို `get`) ကို run ေပးပါတယ္။
+User က `Cache` facade ထဲက ဘယ် static method ကိုမဆို သုံးလိုက်မယ်ဆိုတာနဲ့ ၊ Laravel က IoC container ထဲကနေ `cache` ကိုခေါ်ပြီး ၊ ကိုယ်လိုချင်တဲ့ method (အခုအတိုင်းဆို `get`) ကို run ပေးပါတယ်။
 
-ဒါ့ေၾကာင့္ ၊ ကၽြန္ေတာ္တို႔သံုးထားတဲ့ `Cache::get` ရဲ႕ ေနာက္ကြယ္မွာက ေအာက္ကအတိုင္းရွိေနပါမယ္။
+ဒါ့ကြောင့် ၊ ကျွန်တော်တို့သုံးထားတဲ့ `Cache::get` ရဲ့ နောက်ကွယ်မှာက အောက်ကအတိုင်းရှိနေပါမယ်။
 
 	$value = $app->make('cache')->get('key');
 
 <a name="creating-facades"></a>
-## ကိုယ္ပိုင္ Facades တည္ေဆာက္ျခင္း
+## ကိုယ်ပိုင် Facades တည်ဆောက်ခြင်း
 
 Creating a facade for your own application or package is simple. You only need 3 things:
-ကိုယ့္ application (ဒါမွမဟုတ္) package အတြက္ ကိုယ္ပိုင္ facade ေဆာက္ရတာလြယ္ကူပါတယ္။ အဆင့္ ၃ ဆင့္ပဲလိုပါတယ္ :
+ကိုယ့် application (ဒါမှမဟုတ်) package အတွက် ကိုယ်ပိုင် facade ဆောက်ရတာလွယ်ကူပါတယ်။ အဆင့် ၃ ဆင့်ပဲလိုပါတယ် :
 
 - An IoC binding
-- facade class တစ္ခု
-- facade ကိုယ္ ေခၚမယ့္ Alia သတ္မွတ္ေပးရန္
+- facade class တစ်ခု
+- facade ကိုယ် ခေါ်မယ့် Alia သတ်မှတ်ပေးရန်
 
-ဥပမာတစ္ခုေလာက္ ၾကည့္ၾကပါမယ္။ ကၽြန္ေတာ္တို႔မွာ `PaymentGateway\Payment` ဆိုတဲ့ class တစ္ခုရွိမယ္ဆိုၾကပါစို႔
+ဥပမာတစ်ခုလောက် ကြည့်ကြပါမယ်။ ကျွန်တော်တို့မှာ `PaymentGateway\Payment` ဆိုတဲ့ class တစ်ခုရှိမယ်ဆိုကြပါစို့
 
 	namespace PaymentGateway;
 
@@ -76,19 +76,19 @@ Creating a facade for your own application or package is simple. You only need 3
 
 	}
 
-ဒီ class က `app/models` directory ထဲမွာျဖစ္ျဖစ္ (ဒါမွမဟုတ္) တစ္ျခား Composer က auto-load ျပဳလုပ္ႏုိင္တဲ့ မည္သည့္ေနရာတြင္မဆို တည္ရွိႏိုင္ပါတယ္။
+ဒီ class က `app/models` directory ထဲမှာဖြစ်ဖြစ် (ဒါမှမဟုတ်) တစ်ခြား Composer က auto-load ပြုလုပ်နိုင်တဲ့ မည်သည့်နေရာတွင်မဆို တည်ရှိနိုင်ပါတယ်။
 
-IoC container ထဲအဲဒီ class ကို ထည့္ေပးဖို႔အတြက္ bind လုပ္ဖို႔လုိပါမယ္။
+IoC container ထဲအဲဒီ class ကို ထည့်ပေးဖို့အတွက် bind လုပ်ဖို့လိုပါမယ်။
 
 	App::bind('payment', function()
 	{
 		return new \PaymentGateway\Payment;
 	});
 
-ဒီ bind လုပ္ထားတာကို Register လုပ္ဖို႔အတြက္ အေကာင္းဆံုးနည္းကေတာ့ `PaymentServiceProvider` ဆိုၿပီး [service provider](ioc#service-providers.md) တစ္ခုေဆာက္ၿပီးေတာ့ အေပၚက bind လုပ္ထားတာကို `register` ဆိုတဲ့ method ထဲ ထည့္ေပးလိုက္တာပါ။ အခုေဆာက္ထားတဲ့ Service Provider ကို Laravel က load လုပ္ဖို႔ဆိုရင္ေတာ့ `app/config/app.php` ထဲမွာ သတ္မွတ္ေပးဖို႔လိုပါမယ္။
+ဒီ bind လုပ်ထားတာကို Register လုပ်ဖို့အတွက် အကောင်းဆုံးနည်းကတော့ `PaymentServiceProvider` ဆိုပြီး [service provider](ioc#service-providers.md) တစ်ခုဆောက်ပြီးတော့ အပေါ်က bind လုပ်ထားတာကို `register` ဆိုတဲ့ method ထဲ ထည့်ပေးလိုက်တာပါ။ အခုဆောက်ထားတဲ့ Service Provider ကို Laravel က load လုပ်ဖို့ဆိုရင်တော့ `app/config/app.php` ထဲမှာ သတ်မှတ်ပေးဖို့လိုပါမယ်။
 
 Next, we can create our own facade class:
-ေနာက္တစ္ဆင့္မွာေတာ့ ကိုယ္ပိုင္ facade class ေဆာက္ႏိုင္ပါၿပီ -
+နောက်တစ်ဆင့်မှာတော့ ကိုယ်ပိုင် facade class ဆောက်နိုင်ပါပြီ -
 
 	use Illuminate\Support\Facades\Facade;
 
@@ -98,23 +98,23 @@ Next, we can create our own facade class:
 
 	}
 
-ေနာက္ဆံုးအေနနဲ႔ ကၽြန္ေတာ္တို႔ရဲ႕ Facade ကို Alia (Shortcut) အေနနဲ႔ေခၚသံုးခ်င္တယ္ဆိုရင္ေတာ့ `app/config/app.php` ထဲက `aliases` array ထဲမွာ သတ္မွတ္ေပးရပါမယ္။ အခုဆိုရင္ေတာ့ `Payment` class ရဲ႕ `process` method ကို ေအာက္ကအတိုင္း လြယ္လြယ္ကူကူပဲ ေခၚႏိုင္ပါၿပီ-
+နောက်ဆုံးအနေနဲ့ ကျွန်တော်တို့ရဲ့ Facade ကို Alia (Shortcut) အနေနဲ့ခေါ်သုံးချင်တယ်ဆိုရင်တော့ `app/config/app.php` ထဲက `aliases` array ထဲမှာ သတ်မှတ်ပေးရပါမယ်။ အခုဆိုရင်တော့ `Payment` class ရဲ့ `process` method ကို အောက်ကအတိုင်း လွယ်လွယ်ကူကူပဲ ခေါ်နိုင်ပါပြီ-
 
 	Payment::process();
 
-### Aliases ေတြကို Auto-Load လုပ္တဲ့အခါ သတိထားစရာမ်ား
+### Aliases တွေကို Auto-Load လုပ်တဲ့အခါ သတိထားစရာများ
 
-[PHP က type hint မသက္မွတ္ေပးထားတဲ့ class ေတြကို autload လုပ္ေပးမွာမဟုတ္တဲ့အတြက္](https://bugs.php.net/bug.php?id=39003)  `Aliases` array ထဲမွာ ရွိတဲ့ Class ေတြကို တစ္ခ်ိဳ႕ေသာ instance ေတြမွာ သံုးလို႔မရပါဘူး။ `\ServiceWrapper\ApiTimeoutException` ကို `ApiTimeoutException` လို႔ Alia လုပ္ထားလိုက္မယ္ဆိုရင္ `\ServiceWrapper` namespace ရဲ႕အျပင္ဖက္မွာ `catch(ApiTimeoutException $e)` လို႔ေခၚမယ္ဆိုရင္ thrown လုပ္လိုက္ေပမယ့္ ဘယ္ေတာ့မွ catch လုပ္လို႔မရပါဘူး။ ဒီလိုျပႆနာမ်ိဳးကိုပဲ Model ေတြမွာလဲ ႀကံဳေတြ႕ႏိုင္ပါတယ္။ တစ္ခုတည္းေသာ ေျဖရွင္းနည္းကေတာ့ Alias ေတြမသတ္မွတ္ဘဲ file ရဲ႕အေပၚဆံုးမွာ `use` ဆိုၿပီးသတ္မွတ္ၿပီးသံုးတာပါပဲ။
+[PHP က type hint မသက်မှတ်ပေးထားတဲ့ class တွေကို autload လုပ်ပေးမှာမဟုတ်တဲ့အတွက်](https://bugs.php.net/bug.php?id=39003)  `Aliases` array ထဲမှာ ရှိတဲ့ Class တွေကို တစ်ချို့သော instance တွေမှာ သုံးလို့မရပါဘူး။ `\ServiceWrapper\ApiTimeoutException` ကို `ApiTimeoutException` လို့ Alia လုပ်ထားလိုက်မယ်ဆိုရင် `\ServiceWrapper` namespace ရဲ့အပြင်ဖက်မှာ `catch(ApiTimeoutException $e)` လို့ခေါ်မယ်ဆိုရင် thrown လုပ်လိုက်ပေမယ့် ဘယ်တော့မှ catch လုပ်လို့မရပါဘူး။ ဒီလိုပြဿနာမျိုးကိုပဲ Model တွေမှာလဲ ကြုံတွေ့နိုင်ပါတယ်။ တစ်ခုတည်းသော ဖြေရှင်းနည်းကတော့ Alias တွေမသတ်မှတ်ဘဲ file ရဲ့အပေါ်ဆုံးမှာ `use` ဆိုပြီးသတ်မှတ်ပြီးသုံးတာပါပဲ။
 
 
 <a name="mocking-facades"></a>
-## Facades ေတြကို Mock ျပဳလုပ္ေပးျခင္း
-Facade ေတြ အဓိကရွိေနရျခင္းရဲ႕အေၾကာင္းရင္းကေတာ့ Test လြယ္လြယ္ကူကူလုပ္ႏုိင္ဖို႔ပဲျဖစ္ပါတယ္။ Mock လုပ္တဲ့အပိုင္းကိုေတာ့ [mocking facades](testing#mocking-facades.md) မွာ ျပည့္ျပည့္စံုစံု ေဖာ္ျပေပးထားပါတယ္။
+## Facades တွေကို Mock ပြုလုပ်ပေးခြင်း
+Facade တွေ အဓိကရှိနေရခြင်းရဲ့အကြောင်းရင်းကတော့ Test လွယ်လွယ်ကူကူလုပ်နိုင်ဖို့ပဲဖြစ်ပါတယ်။ Mock လုပ်တဲ့အပိုင်းကိုတော့ [mocking facades](testing#mocking-facades.md) မှာ ပြည့်ပြည့်စုံစုံ ဖော်ပြပေးထားပါတယ်။
 
 <a name="facade-class-reference"></a>
 ## Facade Class ကိုကား
 
-ေအာက္ကဇယားမွာေတာ့ ရွိသမွ် Facade ေတြနဲ႔ သူရဲ႕ေနာက္ကြယ္က class ေတြကို ေဖာ္ျပေပးထားပါတယ္။ API Documentation ထဲကို သက္ဆိုင္ရာ ေနရာလိုက္လဲ ခ်ိတ္ေပးထားပါတယ္။ [IoC binding](ioc.md) key ရွိတဲ့ Facade ေတြကိုလဲ သူ႕ key ေတြေရးေပးထားပါတယ္။
+အောက်ကဇယားမှာတော့ ရှိသမျှ Facade တွေနဲ့ သူရဲ့နောက်ကွယ်က class တွေကို ဖော်ပြပေးထားပါတယ်။ API Documentation ထဲကို သက်ဆိုင်ရာ နေရာလိုက်လဲ ချိတ်ပေးထားပါတယ်။ [IoC binding](ioc.md) key ရှိတဲ့ Facade တွေကိုလဲ သူ့ key တွေရေးပေးထားပါတယ်။
 
 Facade  |  Class  |  IoC Binding
 ------------- | ------------- | -------------

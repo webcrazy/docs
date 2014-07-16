@@ -1,22 +1,22 @@
-# Redis
+﻿# Redis
 
-- [အစပ်ိဳး](#introduction)
+- [အစပျိုး](#introduction)
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Pipelining](#pipelining)
 
 <a name="introduction"></a>
-## အစပ်ိဳး
+## အစပျိုး
 
-[Redis](http://redis.io) သည္ open source advanced key-value store တစ္ခုျဖစ္သည္။  ၄င္းသည္ keys မ်ားတြင္ [strings](http://redis.io/topics/data-types#strings), [hashes](http://redis.io/topics/data-types#hashes), [lists](http://redis.io/topics/data-types#lists), [sets](http://redis.io/topics/data-types#sets), and [sorted sets](http://redis.io/topics/data-types#sorted-sets) ပါဝင္ေသာေၾကာင့္  ရံဖန္ရံခါ  data structure server ဟု သတ္မွတ္ျခင္း ခံရသည္။   
+[Redis](http://redis.io) သည် open source advanced key-value store တစ်ခုဖြစ်သည်။  ၄င်းသည် keys များတွင် [strings](http://redis.io/topics/data-types#strings), [hashes](http://redis.io/topics/data-types#hashes), [lists](http://redis.io/topics/data-types#lists), [sets](http://redis.io/topics/data-types#sets), and [sorted sets](http://redis.io/topics/data-types#sorted-sets) ပါဝင်သောကြောင့်  ရံဖန်ရံခါ  data structure server ဟု သတ်မှတ်ခြင်း ခံရသည်။   
 
-> **Note:** သင့္တြင္ Redis PHP extension ကုိ PECL မွ တဆင့္ သြင္းျပီးပါက Redis အတြက္ အတုိေကာက္ အမည္ကုိ `app/config/app.php` ေၾကညာေပးရမည္။
+> **Note:** သင့်တွင် Redis PHP extension ကို PECL မှ တဆင့် သွင်းပြီးပါက Redis အတွက် အတိုကောက် အမည်ကို `app/config/app.php` ကြေညာပေးရမည်။
 
 <a name="configuration"></a>
 ## Configuration
 
-Application အတြက္ Redis configuration မွာ **app/config/database.php**  အမည္ရွိ file ထဲတြင္ တည္ရွိမည္ ျဖစ္ျပီး ထုိ file ထဲတြင္  **redis** 
-အမည္ရွိ array ကို application မွ အသုံးျပဳမည္ ျဖစ္သည္။
+Application အတွက် Redis configuration မှာ **app/config/database.php**  အမည်ရှိ file ထဲတွင် တည်ရှိမည် ဖြစ်ပြီး ထို file ထဲတွင်  **redis** 
+အမည်ရှိ array ကို application မှ အသုံးပြုမည် ဖြစ်သည်။
 
 
 	'redis' => array(
@@ -27,29 +27,29 @@ Application အတြက္ Redis configuration မွာ **app/config/database.
 
 	),
 
-default server configuration မွာ development အတြက္ ဦးတည္ထားေသာ္လည္း မိမိတုိ ့စိတ္ၾကိဳက္ ထုိ array ကိုေျပာင္းလဲ သတ္မွတ္ႏုိင္သည္။ 
-ထုိ Redis server ၏ name ၊ host ႏွင့္ Server မွ အသုံးျပဳသည့္ port ကုိ ေၾကညာေပးရန္လုိေပမည္။
+default server configuration မှာ development အတွက် ဦးတည်ထားသော်လည်း မိမိတို ့စိတ်ကြိုက် ထို array ကိုပြောင်းလဲ သတ်မှတ်နိုင်သည်။ 
+ထို Redis server ၏ name ၊ host နှင့် Server မှ အသုံးပြုသည့် port ကို ကြေညာပေးရန်လိုပေမည်။
 
 
- Laravel Redis client ကုိ `cluster` option မွ Redis nodes မ်ား အၾကား client-side sharding ျပဳလုပ္ရန္ ညြန္ၾကားျခင္းျဖင့္ Nodes မ်ားမွ data ဆြဲယူျပီး RAM အတြက္ ေနရာလြတ္မ်ား ဖန္တီးႏိုင္မည္ ျဖစ္သည္။ သို ့ေသာ္ client-side sharding သည္ failover ကုိ ကုိင္တြယ္ႏုိင္ျခင္း မရွိေပ။ ထုိေၾကာင့္
- Primary data store မ်ား ရရွိႏိုသည့္ အေျခအေနတြင္ cache data မ်ား ထုတ္လြတ္ေပးသူ အျဖစ္ အသုံးဝင္သည္။
+ Laravel Redis client ကို `cluster` option မှ Redis nodes များ အကြား client-side sharding ပြုလုပ်ရန် ညွန်ကြားခြင်းဖြင့် Nodes များမှ data ဆွဲယူပြီး RAM အတွက် နေရာလွတ်များ ဖန်တီးနိုင်မည် ဖြစ်သည်။ သို ့သော် client-side sharding သည် failover ကို ကိုင်တွယ်နိုင်ခြင်း မရှိပေ။ ထိုကြောင့်
+ Primary data store များ ရရှိနိုသည့် အခြေအနေတွင် cache data များ ထုတ်လွတ်ပေးသူ အဖြစ် အသုံးဝင်သည်။
 
-Redis Server အေနျဖင့္ စိစစ္ရန္လုိအပ္ပါက Redis Server Configuration array အတြင္း `password` key / value pair ကုိ ထည့္သြင္းႏုိင္သည္။
+Redis Server အနေဖြင့် စိစစ်ရန်လိုအပ်ပါက Redis Server Configuration array အတွင်း `password` key / value pair ကို ထည့်သွင်းနိုင်သည်။
 
 <a name="usage"></a>
-## အသုံးျပဳပုံ
+## အသုံးပြုပုံ
 
 
- `Redis::connection` method ကုိ ေခၚယူျခင္းျဖင့္ Redis instance ကုိရယူႏုိင္သည္။
+ `Redis::connection` method ကို ခေါ်ယူခြင်းဖြင့် Redis instance ကိုရယူနိုင်သည်။
 
 	$redis = Redis::connection();
 
-၄င္းသည္ default Redis server ၏ instance ကုိ ျပန္ေပးမည္ ျဖစ္သည္။ Server clustering ကုိ အသုံးျပဳေနသည္ မဟုတ္ပါက `connection` method 
-တြင္ မိမိတုိ ့ အသုံးျပဳေနသည့္ server ၏ အမည္ကုိ configuration တြင္ ထည့္သြင္းေပးရန္ လုိအပ္ေပမည္။
+၄င်းသည် default Redis server ၏ instance ကို ပြန်ပေးမည် ဖြစ်သည်။ Server clustering ကို အသုံးပြုနေသည် မဟုတ်ပါက `connection` method 
+တွင် မိမိတို ့ အသုံးပြုနေသည့် server ၏ အမည်ကို configuration တွင် ထည့်သွင်းပေးရန် လိုအပ်ပေမည်။
 
 	$redis = Redis::connection('other');
 
-Redis ၏ instance ကုိ ရရွိသည္ႏွင့္ တျပိဳင္နက္ [Redis commands](http://redis.io/commands) ကုိ အသုံးျပဳႏုိင္ျပီ ျဖစ္သည္။ Laravel အေနျဖင့္ magic methods ကုိ အသုံးျပဳျပီး Redis server သုိ ့ command မ်ားကုိ ပုိ ့ေဆာင္ေပးသည္။
+Redis ၏ instance ကို ရရှိသည်နှင့် တပြိုင်နက် [Redis commands](http://redis.io/commands) ကို အသုံးပြုနိုင်ပြီ ဖြစ်သည်။ Laravel အနေဖြင့် magic methods ကို အသုံးပြုပြီး Redis server သို ့ command များကို ပို ့ဆောင်ပေးသည်။
 
 	$redis->set('name', 'Taylor');
 
@@ -58,11 +58,11 @@ Redis ၏ instance ကုိ ရရွိသည္ႏွင့္ တျပိ�
 	$values = $redis->lrange('names', 5, 10);
 
 
-အထက္က ေဖာ္ျပထားသည့္ အတုိင္း Magic method မ်ားမွ command မ်ားကို passing ေပးသြားသည္ကို ေတြ ့ရမည္ ျဖစ္သည္။ သုိ ့ေသာ္ သင့္အေနျဖင့္ Magic method မ်ားကုိ မသုံးမျဖစ္ သုံးရသည္ မဟုတ္ပဲ ၊ အသုံးမျပဳလုိပါက `command` method ကုိ အစားထုိး အသုံးျပဳႏုိင္သည္။
+အထက်က ဖော်ပြထားသည့် အတိုင်း Magic method များမှ command များကို passing ပေးသွားသည်ကို တွေ ့ရမည် ဖြစ်သည်။ သို ့သော် သင့်အနေဖြင့် Magic method များကို မသုံးမဖြစ် သုံးရသည် မဟုတ်ပဲ ၊ အသုံးမပြုလိုပါက `command` method ကို အစားထိုး အသုံးပြုနိုင်သည်။
 
 	$values = $redis->command('lrange', array(5, 10));
 
-default connection  မွ ဆန္ ့က်င္ျပီး command မ်ား အသုံးျပဳလုိပါက `Redis` class မွ static magic method မ်ားကို အသုံးျပဳႏုိင္သည္။
+default connection  မှ ဆန် ့ကျင်ပြီး command များ အသုံးပြုလိုပါက `Redis` class မှ static magic method များကို အသုံးပြုနိုင်သည်။
 
 	Redis::set('name', 'Taylor');
 
@@ -70,14 +70,14 @@ default connection  မွ ဆန္ ့က်င္ျပီး command မ်�
 
 	$values = Redis::lrange('names', 5, 10);
 
-> **Note:** Laravel တြင္ Redis [cache](cache) ႏွင့္ [session](/docs/session.md) drivers မ်ား ပါဝင္ျပီး ျဖစ္သည္။
+> **Note:** Laravel တွင် Redis [cache](cache) နှင့် [session](/docs/session.md) drivers များ ပါဝင်ပြီး ဖြစ်သည်။
 
 <a name="pipelining"></a>
 ## Pipelining
 
-Operation တစ္ခုအတြက္ Command မ်ားစြာ ကုိ ပုိ ့လြတ္ရန္ လုိအပ္ပါက Pipelining ကုိ အသုံးျပဳရသည္။ ထုိ သုိ ့ ျပဳလုပ္ရန္ `pipeline`  ကုိ အသုံးျပဳရမည္။
+Operation တစ်ခုအတွက် Command များစွာ ကို ပို ့လွတ်ရန် လိုအပ်ပါက Pipelining ကို အသုံးပြုရသည်။ ထို သို ့ ပြုလုပ်ရန် `pipeline`  ကို အသုံးပြုရမည်။
 
-#### Server သုိ ့ Command မ်ားကို Piping ျပဳလုပ္ျခင္း 
+#### Server သို ့ Command များကို Piping ပြုလုပ်ခြင်း 
 
 	Redis::pipeline(function($pipe)
 	{
