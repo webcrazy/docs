@@ -1,11 +1,11 @@
 # Forms & HTML
 
-- [Opening A Form](#opening-a-form)
+- [Form တစ္ခုဖြင့္ျခင္း](#opening-a-form)
 - [CSRF Protection](#csrf-protection)
 - [Form Model Binding](#form-model-binding)
 - [Labels](#labels)
 - [Text, Text Area, Password & Hidden Fields](#text)
-- [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
+- [Checkbox မ်ားႏွင့္ Radio Button မ်ား](#checkboxes-and-radio-buttons)
 - [File Input](#file-input)
 - [Drop-Down Lists](#drop-down-lists)
 - [Buttons](#buttons)
@@ -13,7 +13,7 @@
 - [Generating URLs](#generating-urls)
 
 <a name="opening-a-form"></a>
-## Opening A Form
+## Form တစ္ခု ဖြင့္ျခင္း
 
 #### Opening A Form
 
@@ -21,38 +21,39 @@
 		//
 	{{ Form::close() }}
 
-By default, a `POST` method will be assumed; however, you are free to specify another method:
+
+default အေနျဖင့္  `POST` method အေနျဖင့္ သတ္မွတ္မည္ ျဖစ္ေသာ္လည္း မိမိတုိ ့ၾကိဳက္ႏွစ္သက္သည့္ အျခား method ကိုလည္း အသုံးျပဳႏုိင္သည္။
 
 	echo Form::open(array('url' => 'foo/bar', 'method' => 'put'))
 
-> **Note:** Since HTML forms only support `POST` and `GET`, `PUT` and `DELETE` methods will be spoofed by automatically adding a `_method` hidden field to your form.
+> **Note:** HTML forms မ်ားတြင္ `POST` ႏွင့္ `GET`၊ `PUT` ႏွင့္ `DELETE` methods  မ်ားသာ အသုံးျပဳႏုိင္မည္ ျဖစ္ျပီး  `_method` ဟုသည့္ hidden field အလုိအေလ်ာက္ ထည့္သြင္းသြားမည္ ျဖစ္သည္။ 
 
-You may also open forms that point to named routes or controller actions:
+သင့္အေနျဖင့္ Route ႏွင့္ Controller action အေျချပဳ Form မ်ားကုိ ဖြင့္ႏိုင္ဦးမည္ ျဖစ္သည္။
 
 	echo Form::open(array('route' => 'route.name'))
 
 	echo Form::open(array('action' => 'Controller@method'))
 
-You may pass in route parameters as well:
+သင့္အေနျဖင့္ route ၏ paratmeter ကုိပါ ေအာက္ပါ အတုိင္း ထည့္သြင္းႏိုင္မည္ ျဖစ္သည္။
 
 	echo Form::open(array('route' => array('route.name', $user->id)))
 
 	echo Form::open(array('action' => array('Controller@method', $user->id)))
 
-If your form is going to accept file uploads, add a `files` option to your array:
+သင့္၏ Form အေနျဖင့္  file uploads ကုိ လက္ခံလုိပါက `files` option ကုိ array အတြင္းထည့္သြင္း၍ သတ္မွတ္ႏုိင္သည္။
 
 	echo Form::open(array('url' => 'foo/bar', 'files' => true))
 
 <a name="csrf-protection"></a>
 ## CSRF Protection
 
-#### Adding The CSRF Token To A Form
+#### Form တစ္ခုထဲတြင္ CSRF Token ထည့္သြင္းျခင္း
 
-Laravel provides an easy method of protecting your application from cross-site request forgeries. First, a random token is placed in your user's session. Don't sweat it, this is done automatically. The CSRF token will be added to your forms as a hidden field automatically. However, if you wish to generate the HTML for the hidden field, you may use the `token` method:
+Laravel အေနျဖင့္ cross-site request forgery မ်ားမွ ကာကြယ္ႏုိင္ရန္ method တစ္ခု ထည့္သြင္းထာသည္။ ပထမဦးစြာ သင့္ User session ထဲတြင္ random token တစ္ခု ထည့္သြင္းထားမည္။ သင့္ အံၾသသြားပါသလား။ စိတ္မပူပါႏွင့္ ၊  အလုိအေလ်ာက္ ထည့္သြင္းသြားမည္ ျဖစ္သည္။ CSRF token သည္ သင့္ Form မ်ားတြင္ hidden field မ်ား အေနျဖင့္ အလုိအေလ်ာက္ ထည့္သြင္းသြားမည္ ျဖစ္သည္။ သုိ ့ေသာ္ သင့္အေနျဖင့္ hidden field ၏ HTML ကုိ generate လုပ္လုိပါက `token` method ကုိ အသုံးျပဳႏုိင္ပါသည္။
 
 	echo Form::token();
 
-#### Attaching The CSRF Filter To A Route
+#### CSRF Filter ႏွင့္ Route တစ္ခု ခ်ိတ္ဆက္ျခင္း
 
 	Route::post('profile', array('before' => 'csrf', function()
 	{
@@ -62,67 +63,68 @@ Laravel provides an easy method of protecting your application from cross-site r
 <a name="form-model-binding"></a>
 ## Form Model Binding
 
-#### Opening A Model Form
+#### Form Model တစ္ခု ဖြင့္လွစ္ျခင္း
 
-Often, you will want to populate a form based on the contents of a model. To do so, use the `Form::model` method:
+တခါတရံ  သင့္အေနျဖင့္ Model တစ္ခုမွ အခ်က္အလက္မ်ား အတုိင္း Form တစ္ခုကုိ ဖန္တီး လုိခ်င္ေပလိမ့္မည္။ ထုိသုိ ့အသုံးျပဳႏုိင္ရန္ `Form::model` method ကုိ အသုံးျပဳႏုိင္သည္။
 
 	echo Form::model($user, array('route' => array('user.update', $user->id)))
 
-Now, when you generate a form element, like a text input, the model's value matching the field's name will automatically be set as the field value. So, for example, for a text input named `email`, the user model's `email` attribute would be set as the value. However, there's more! If there is an item in the Session flash data matching the input name, that will take precedence over the model's value. So, the priority looks like this:
+ယခု သင့္အေနျဖင့္ Form element တစ္ခု ဥပမာ text input ကဲ့သုိ ့ကုိ Model ၏ value ႏွင့္ ခ်ိတ္ဆက္ျပီး အလုိအေလ်ာက္အေနျဖင့္ ထုိ္ field ၏ အခ်က္အလက္မ်ားကုိ ထည့္သြင္းသြားမည္ ျဖစ္သည္။ ထုိေၾကာင့္ ဥပမာ `email` field တစ္ခု ဆုိပါစုိ ့ user model ၏ `email` attribute သည္ value အေနျဖင့္ အလုိအေလ်ာက္ အေနျဖင့္ ေဖာ္ျပထားမည္ ကုိ ေတြ  ့ရမည္။ သုိ ့ေသာ္ ဒါတင္ မကေသးပါဘူး။ Session Flash အခ်က္အလက္ႏွင့္  input name တုိ ့ကုိက္ညီပါက ကုိက္ညီေသာ model ၏ အခ်က္အလက္မ်ားကို ထည့္သြင္းသြားမည္ ျဖစ္သည္။ ထုိေၾကာင့္ အစီအစဥ္အားျဖင့္ ေအာက္ပါ အတုိင္း ျဖစ္ေပမည္။
 
-1. Session Flash Data (Old Input)
+
+1. Session Flash Data (Input အေဟာင္းမ်ား)
 2. Explicitly Passed Value
 3. Model Attribute Data
 
-This allows you to quickly build forms that not only bind to model values, but easily re-populate if there is a validation error on the server!
+ထုိသုိ ့ ျပဳလုပ္ျခင္းအားျဖင့္  model value မ်ားႏွင့္ ခ်ိတ္ဆက္ထားရုံသာ မက validation error မ်ားကုိပါ ျပန္လည္ ေဖာ္ျပႏုိင္သည့္ Form မ်ားကုိ အလြယ္တကူ ေဖာ္ျပႏုိင္မည္ ျဖစ္သည္။
 
-> **Note:** When using `Form::model`, be sure to close your form with `Form::close`!
+> **သတိျပဳရန္:** `Form::model` ကုိ အသုံးျပဳပါက `Form::close` ျဖင့္ Form ကုိ မျဖစ္မေန ပိတ္ေပးရန္ လုိလိမ့္မည္။ 
 
 <a name="labels"></a>
 ## Labels
 
-#### Generating A Label Element
+#### Label တစ္ခု တည္ေဆာက္ျခင္း
 
 	echo Form::label('email', 'E-Mail Address');
 
-#### Specifying Extra HTML Attributes
+####  အျခားေသာ HTML Attributes ထည့္သြင္း သတ္မွတ္ျခင္း
 
 	echo Form::label('email', 'E-Mail Address', array('class' => 'awesome'));
 
-> **Note:** After creating a label, any form element you create with a name matching the label name will automatically receive an ID matching the label name as well.
+> **Note:** label တစ္ခုကို တည္ေဆာက္ျပီးပါက Label name ျဖင့္ တူညီသည့္ အျခား Form element တုိင္းကုိ label name တြင္ပါဝင္ ID ကို အလုိအေလ်ာက္ ထည့္သြင္းေပးမည္ ျဖစ္သည္။
 
 <a name="text"></a>
 ## Text, Text Area, Password & Hidden Fields
 
-#### Generating A Text Input
+#### Text Input တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::text('username');
 
-#### Specifying A Default Value
+#### Default Value တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::text('email', 'example@gmail.com');
 
-> **Note:** The *hidden* and *textarea* methods have the same signature as the *text* method.
+> **သတိျပဳရန္:**  *hidden* ႏွင့္ *textarea* method မ်ားမွာ *text* method ႏွင့္ အတူတူပင္ ျဖစ္သည္။
 
-#### Generating A Password Input
+#### Password Input တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::password('password');
 
-#### Generating Other Inputs
+#### အျခား Input မ်ား ထည့္သြင္းျခင္း
 
 	echo Form::email($name, $value = null, $attributes = array());
 	echo Form::file($name, $attributes = array());
 
 <a name="checkboxes-and-radio-buttons"></a>
-## Checkboxes and Radio Buttons
+## Checkbox မ်ားႏွင့္ Radio Button မ်ား
 
-#### Generating A Checkbox Or Radio Input
+####  Checkbox သုိ ့မဟုတ္ Radio Input တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::checkbox('name', 'value');
 
 	echo Form::radio('name', 'value');
 
-#### Generating A Checkbox Or Radio Input That Is Checked
+####  နဂုိကတည္းက ေရြးခ်ယ္ထားသည့္ Checkbox သုိ ့မဟုတ္ Radio Input တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::checkbox('name', 'value', true);
 
@@ -131,60 +133,60 @@ This allows you to quickly build forms that not only bind to model values, but e
 <a name="file-input"></a>
 ## File Input
 
-#### Generating A File Input
+#### File Input တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::file('image');
 
-> **Note:** The form must have been opened with the `files` option set to `true`.
+> **သတိျပဳရန္:**  form ထဲတြင္ `files` option ကုိ `true` ေပးထားရန္လုိေပမည္။
 
 <a name="drop-down-lists"></a>
 ## Drop-Down Lists
 
-#### Generating A Drop-Down List
+#### Drop-Down List တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::select('size', array('L' => 'Large', 'S' => 'Small'));
 
-#### Generating A Drop-Down List With Selected Default
+#### ေရြးခ်ယ္ထားသည့္ Drop-Down List တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::select('size', array('L' => 'Large', 'S' => 'Small'), 'S');
 
-#### Generating A Grouped List
+#### Grouped List တစ္ခု ထည့္သြင္းျခင္း
 
 	echo Form::select('animal', array(
 		'Cats' => array('leopard' => 'Leopard'),
 		'Dogs' => array('spaniel' => 'Spaniel'),
 	));
 
-#### Generating A Drop-Down List With A Range
+#### Range သတ္မွတ္ထားသည့္  Drop-Down List တစ္ခု ထည့္သြင္းျခင္း
 
     echo Form::selectRange('number', 10, 20);
 
-#### Generating A List With Month Names
+#### ၁၂ လကုိ ေဖာ္ျပထားသည့္ List တစ္ခုထည့္သြင္းျခင္း
 
     echo Form::selectMonth('month');
 
 <a name="buttons"></a>
 ## Buttons
 
-#### Generating A Submit Button
+#### Submit Button တစ္ခုထည့္သြင္းျခင္း
 
 	echo Form::submit('Click Me!');
 
-> **Note:** Need to create a button element? Try the *button* method. It has the same signature as *submit*.
+> **သတိျပဳရန္:**  button element ျပဳလုပ္လုိပါသလား ?  *button* method ကုိ အသုံးျပဳႏုိင္သည္။ ၄င္းမွာ *submit* ႏွင့္ အတူတူပင္ျဖစ္သည္။
 
 <a name="custom-macros"></a>
 ## Custom Macros
 
-#### Registering A Form Macro
+####  Form Macro တစ္ခု သတ္မွတ္ျခင္း
 
-It's easy to define your own custom Form class helpers called "macros". Here's how it works. First, simply register the macro with a given name and a Closure:
+"macros" ဟု ေခၚသည့္ မိမိတုိ ့စိတ္ၾကိဳက္  custom Form class helpers မ်ားကုိထည့္သြင္းႏုိင္သည္။ ေရွးဦးစြာ မိမိတုိ ့သတ္မွတ္လုိသည့္ macro တစ္ခုကို Closure ျဖင့္ သတ္မွတ္ႏုိင္သည္။
 
 	Form::macro('myField', function()
 	{
 		return '<input type="awesome">';
 	});
 
-Now you can call your macro using its name:
+ထုိေနာက္ သင့္အေနျဖင့္ အဆုိပါ အမည္ျဖင့္ macro တစ္ခုကို ေခၚဆုိႏုိင္သည္။
 
 #### Calling A Custom Form Macro
 
@@ -192,6 +194,6 @@ Now you can call your macro using its name:
 
 
 <a name="generating-urls"></a>
-##Generating URLs
+## URL မ်ားထည့္သြင္းျခင္း 
 
-For more information on generating URL's, check out the documentation on [helpers](helpers#urls.md).
+URL မ်ားထည့္သြင္းျခင္းႏွင့္ ပတ္သတ္၍ သိရွိလုိပါက documentation မွ [helpers](helpers#urls.md) တြင္ ၾကည့္ရႈႏုိင္သည္။
