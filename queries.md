@@ -1,29 +1,29 @@
 # Query Builder
 
-- [Introduction](#introduction)
-- [Selects](#selects)
-- [Joins](#joins)
-- [Advanced Wheres](#advanced-wheres)
-- [Aggregates](#aggregates)
-- [Raw Expressions](#raw-expressions)
-- [Inserts](#inserts)
-- [Updates](#updates)
-- [Deletes](#deletes)
-- [Unions](#unions)
+- [မိတ္ဆက္](#introduction)
+- [Select မ်ား](#selects)
+- [Join မ်ား](#joins)
+- [အဆင့္ျမင့္ where clause မ်ား](#advanced-wheres)
+- [Aggregate မ်ား](#aggregates)
+- [Raw expression မ်ား](#raw-expressions)
+- [Insert မ်ား](#inserts)
+- [Update မ်ား](#updates)
+- [Delete မ်ား](#deletes)
+- [Union မ်ား](#unions)
 - [Pessimistic Locking](#pessimistic-locking)
-- [Caching Queries](#caching-queries)
+- [Query မ်ားကုိ Cache လုပ္ျခင္း](#caching-queries)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ္ဆက္
 
-The database query builder provides a convenient, fluent interface to creating and running database queries. It can be used to perform most database operations in your application, and works on all supported database systems.
+Database query builder သည္ database query မ်ား တည္ေဆာက္ျခင္း၊ အသုံးျပု ျခင္းမ်ား ျပုလုပ္ရာ၌ လြယ္ကူသက္သာ အဆင္ေျပေစေသာ interface တစ္ခုကုိ ေပးပါသည္။ သင့္ application ၏ database နွင့္ ပတ္သက္ေသာ လုပ္ထုံးလုပ္နည္း အမ်ားစုအတြက္ အသုံးျပု နုိင္ျပီး ေထာက္ပံ့ေပးထားေသာ database စနစ္ အားလုံးအတြက္ အလုပ္လုပ္ပါသည္။
 
-> **Note:** The Laravel query builder uses PDO parameter binding throughout to protect your application against SQL injection attacks. There is no need to clean strings being passed as bindings.
+>**မွတ္ခ်က္**။ ။ Laravel query builder သည္ သင့္ application အား SQL injection တုိက္ခုိက္မွုမ်ားမွ ကာကြယ္ရန္ PDO parameter binding အား အသုံးျပု ထားပါသည္။ Binding အျဖစ္ ေပးပုိ့သည့္ string မ်ားအား သန့္စင္ရန္ မလိုအပ္ပါ။
 
 <a name="selects"></a>
-## Selects
+## Select မ်ား
 
-#### Retrieving All Rows From A Table
+#### Table တစ္ခုမွ row အားလုံးကုိ ထုတ္ယူျခင္း
 
 	$users = DB::table('users')->get();
 
@@ -32,25 +32,25 @@ The database query builder provides a convenient, fluent interface to creating a
 		var_dump($user->name);
 	}
 
-#### Retrieving A Single Row From A Table
+#### Table တစ္ခုမွ row တစ္ခုခ်င္းစီ ထုတ္ယူျခင္း
 
 	$user = DB::table('users')->where('name', 'John')->first();
 
 	var_dump($user->name);
 
-#### Retrieving A Single Column From A Row
+#### Row တစ္ခုမွ Column တစ္ခုခ်င္းစီ ထုတ္ယူျခင္း
 
 	$name = DB::table('users')->where('name', 'John')->pluck('name');
 
-#### Retrieving A List Of Column Values
+#### Column တန္ဖုိးမ်ားအား list တစ္ခု အျဖစ္ ထုတ္ယူျခင္း
 
 	$roles = DB::table('roles')->lists('title');
 
-This method will return an array of role titles. You may also specify a custom key column for the returned array:
+ဤ method သည္ role title မ်ားပါ၀င္ေသာ array တစ္ခုကုိ return ျပန္ပါလိမ့္မည္။ သင္သည္ return ျပန္လာေသာ array အတြက္ key column တစ္ခုကုိ လည္း သတ္မွတ္နုိင္ပါသည္။
 
 	$roles = DB::table('roles')->lists('title', 'name');
 
-#### Specifying A Select Clause
+#### Select clause တစ္ခု သတ္မွတ္ျခင္း
 
 	$users = DB::table('users')->select('name', 'email')->get();
 
@@ -58,34 +58,34 @@ This method will return an array of role titles. You may also specify a custom k
 
 	$users = DB::table('users')->select('name as user_name')->get();
 
-#### Adding A Select Clause To An Existing Query
+#### မူလရွိျပီးသား query တြင္ select clause တစ္ခု ထပ္ထည့္ျခင္း
 
 	$query = DB::table('users')->select('name');
 
 	$users = $query->addSelect('age')->get();
 
-#### Using Where Operators
+#### Where Operator မ်ား အသုံးျပုျခင္း
 
 	$users = DB::table('users')->where('votes', '>', 100)->get();
 
-#### Or Statements
+#### OR statement မ်ား
 
 	$users = DB::table('users')
 	                    ->where('votes', '>', 100)
 	                    ->orWhere('name', 'John')
 	                    ->get();
 
-#### Using Where Between
+#### Where Between ကုိ အသုံးျပု ျခင္း
 
 	$users = DB::table('users')
 	                    ->whereBetween('votes', array(1, 100))->get();
 
-#### Using Where Not Between
+#### Where Not Between အား အသုံးျပု ျခင္း
 
 	$users = DB::table('users')
 	                    ->whereNotBetween('votes', array(1, 100))->get();
 
-#### Using Where In With An Array
+#### Where In အား array တစ္ခုျဖင့္ အသုံးျပု ျခင္း
 
 	$users = DB::table('users')
 	                    ->whereIn('id', array(1, 2, 3))->get();
@@ -93,12 +93,12 @@ This method will return an array of role titles. You may also specify a custom k
 	$users = DB::table('users')
 	                    ->whereNotIn('id', array(1, 2, 3))->get();
 
-#### Using Where Null To Find Records With Unset Values
+#### တန္ဖုိးမျဖည့္သြင္းထားေသာ Record မ်ားအား ရွာေဖြရန္ Where Null ကုိ အသုံးျပု ျခင္း
 
 	$users = DB::table('users')
 	                    ->whereNull('updated_at')->get();
 
-#### Order By, Group By, And Having
+#### Order By, Group By နွင့္ Having
 
 	$users = DB::table('users')
 	                    ->orderBy('name', 'desc')
@@ -106,16 +106,16 @@ This method will return an array of role titles. You may also specify a custom k
 	                    ->having('count', '>', 100)
 	                    ->get();
 
-#### Offset & Limit
+#### Offset နွင့္ Limit
 
 	$users = DB::table('users')->skip(10)->take(5)->get();
 
 <a name="joins"></a>
-## Joins
+## Join မ်ား
 
-The query builder may also be used to write join statements. Take a look at the following examples:
+Query builder အား join statement မ်ား ေရးသားရန္လည္း အသုံးျပု နုိင္ပါသည္။ ေအာက္ပါဥပမာမ်ားကို ျကည့္ပါ၊
 
-#### Basic Join Statement
+#### အေျခခံ join statement
 
 	DB::table('users')
 	            ->join('contacts', 'users.id', '=', 'contacts.user_id')
@@ -123,13 +123,13 @@ The query builder may also be used to write join statements. Take a look at the 
 	            ->select('users.id', 'contacts.phone', 'orders.price')
 	            ->get();
 
-#### Left Join Statement
+#### ဘယ္ Join Statement
 
 	DB::table('users')
 		    ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
 		    ->get();
 
-You may also specify more advanced join clauses:
+သင့္ အေနနွင့္ ပုိမို အဆင့္ျမင့္ေသာ join clause မ်ား လည္း သတ္မွတ္နုိင္ပါသည္။
 
 	DB::table('users')
 	        ->join('contacts', function($join)
@@ -138,7 +138,7 @@ You may also specify more advanced join clauses:
 	        })
 	        ->get();
 
-If you would like to use a "where" style clause on your joins, you may use the `where` and `orWhere` methods on a join. Instead of comparing two columns, these methods will compare the column against a value:
+အကယ္၍ သင့္ join clause မ်ား တြင္ "where" ပုံစံ clause မ်ားကုိ သုံးလုိပါက `where` နွင့္ `orWhere` methodမ်ားကုိ join တစ္ခုတြင္ ထည့္သြင္းအသုံးျပုနုိင္ပါသည္။ ၎ method မ်ားသည္ column နွစ္ခုကို နွုိင္းယွဥ္မည့္အစား column တစ္ခုအား တန္ဖုိးတစ္ခုျဖင့္ နွုိင္းယွဥ္ပါလိမ့္မည္။
 
 	DB::table('users')
 	        ->join('contacts', function($join)
@@ -149,11 +149,11 @@ If you would like to use a "where" style clause on your joins, you may use the `
 	        ->get();
 
 <a name="advanced-wheres"></a>
-## Advanced Wheres
+## အဆင့္ျမင့္ where clause မ်ား
 
-#### Parameter Grouping
+#### Parameter အုပ္စုဖြဲ့  ျခင္း
 
-Sometimes you may need to create more advanced where clauses such as "where exists" or nested parameter groupings. The Laravel query builder can handle these as well:
+တစ္ခါတစ္ရံ သင္သည္  "where exists" သုိ့မဟုတ္ အဆင့္ဆင့္ parameter အုပ္စုဖြဲ့ ျခင္းမ်ား ကဲ့သုိ့ ပုိမုိ အဆင့္ျမင့္ေသာ where clause မ်ားအား လုိအပ္နုိင္ပါသည္။ ၎တု့ိကုိလည္း Laravel query builder ျဖင့္ ကိုင္တြယ္နုိင္ပါသည္။
 
 	DB::table('users')
 	            ->where('name', '=', 'John')
@@ -164,11 +164,11 @@ Sometimes you may need to create more advanced where clauses such as "where exis
 	            })
 	            ->get();
 
-The query above will produce the following SQL:
+အထက္ပါ query သည္ ေအာက္ပါ SQL statement ကုိ ထုတ္ေပးပါလိမ့္မည္။
 
 	select * from users where name = 'John' or (votes > 100 and title <> 'Admin')
 
-#### Exists Statements
+#### Exists Statement မ်ား
 
 	DB::table('users')
 	            ->whereExists(function($query)
@@ -179,7 +179,7 @@ The query above will produce the following SQL:
 	            })
 	            ->get();
 
-The query above will produce the following SQL:
+အထက္ပါ query သည္ ေအာက္ပါ SQL statement ကုိ ထုတ္ေပးပါလိမ့္မည္။
 
 	select * from users
 	where exists (
@@ -187,11 +187,11 @@ The query above will produce the following SQL:
 	)
 
 <a name="aggregates"></a>
-## Aggregates
+## Aggregate မ်ား
 
-The query builder also provides a variety of aggregate methods, such as `count`, `max`, `min`, `avg`, and `sum`.
+Query builder သည္ အမ်ိ  ုးမ် ိ ုးေသာ aggregate method မ်ား ကုိလည္း သတ္မွတ္ေပးထားပါသည္။ `count`, `max`, `min`, `avg` နွင့္ `sum` အစရွိသျဖင့္ ရွိပါသည္။
 
-#### Using Aggregate Methods
+#### Aggregate Method မ်ားအား အသုံးျပု ျခင္း
 
 	$users = DB::table('users')->count();
 
@@ -204,11 +204,11 @@ The query builder also provides a variety of aggregate methods, such as `count`,
 	$total = DB::table('users')->sum('votes');
 
 <a name="raw-expressions"></a>
-## Raw Expressions
+## Raw expression မ်ား
 
-Sometimes you may need to use a raw expression in a query. These expressions will be injected into the query as strings, so be careful not to create any SQL injection points! To create a raw expression, you may use the `DB::raw` method:
+တစ္ခါတစ္ရံ သင္ သည္ query တစ္ခုတြင္ raw expression တစ္ခု ထည့္သြင္းရန္ လုိအပ္နုိင္ပါသည္။ ၎ expression မ်ားသည္ query အတြင္းသုိ့ string မ်ား အျဖစ္ ထည့္သြင္းခံရပါလိမ့္မည္။ ထုိ့ေျကာင့္ SQL injections ပစ္မွတ္မ်ား ကုိ မတည္ေဆာက္မိေစရန္ ဂရုျပုဖုိ့ လုိပါသည္။ သင္သည္ raw expression မ်ား သတ္မွတ္ရန္ `Db::raw` method ကုိ အသုံးျပုနုိင္ပါသည္။
 
-#### Using A Raw Expression
+#### Raw expression မ်ား အသုံးျပု ျခင္း
 
 	$users = DB::table('users')
 	                     ->select(DB::raw('count(*) as user_count, status'))
@@ -216,7 +216,7 @@ Sometimes you may need to use a raw expression in a query. These expressions wil
 	                     ->groupBy('status')
 	                     ->get();
 
-#### Incrementing or decrementing a value of a column
+#### Column တန္ဖုိးတစ္ခုအား တိုးျခင္း သုိ့မဟုတ္ ေလ်ွာ့ျခင္း
 
 	DB::table('users')->increment('votes');
 
@@ -226,30 +226,30 @@ Sometimes you may need to use a raw expression in a query. These expressions wil
 
 	DB::table('users')->decrement('votes', 5);
 
-You may also specify additional columns to update:
+သင့္ အေနနွင့္ အျခား update လုပ္လုိေသာcolumn မ်ား ကိုလည္း ထပ္မံ ထည့္သြင္းေပးနုိင္ပါသည္။
 
 	DB::table('users')->increment('votes', 1, array('name' => 'John'));
 
 <a name="inserts"></a>
-## Inserts
+## Insert မ်ား
 
-#### Inserting Records Into A Table
+#### Table တစ္ခု အတြင္းသုိ့ Record မ်ား ထည့္သြင္းျခင္း
 
 	DB::table('users')->insert(
 		array('email' => 'john@example.com', 'votes' => 0)
 	);
 
-#### Inserting Records Into A Table With An Auto-Incrementing ID
+#### Table တစ္ခုအတြင္းသုိ့ အလိုအေလ်ာက္ ID နံပါတ္တုိးျခင္း မပါ၀င္ပဲ Record အသစ္မ်ား ထည့္သြင္းျခင္း
 
-If the table has an auto-incrementing id, use `insertGetId` to insert a record and retrieve the id:
+အကယ္၍ table တြင္ အလုိအေလ်ာက္တုိး id နံပါတ္ပါရွိပါက `insertGetId` method ကုိ သုံး၍ record အသစ္ ထည့္သြင္းျပီး id ကုိ ရယူနုိင္ပါသည္။
 
 	$id = DB::table('users')->insertGetId(
 		array('email' => 'john@example.com', 'votes' => 0)
 	);
 
-> **Note:** When using PostgreSQL the insertGetId method expects the auto-incrementing column to be named "id".
+>**မွတ္ခ်က္**။ ။ အကယ္၍ PostgreSQL ကုိ အသုံးျပု ပါက `insertGetId` method အတြက္ အလုိအေလ်ာက္တုိး column အား "id" ဟု အမည္ေပးထားရန္ လုိပါသည္။
 
-#### Inserting Multiple Records Into A Table
+#### Table Table တစ္ခု အတြင္း Record အမ်ားအျပား ထည့္သြင္းျခင္း
 
 	DB::table('users')->insert(array(
 		array('email' => 'taylor@example.com', 'votes' => 0),
@@ -257,62 +257,63 @@ If the table has an auto-incrementing id, use `insertGetId` to insert a record a
 	));
 
 <a name="updates"></a>
-## Updates
+## Update မ်ား
 
-#### Updating Records In A Table
+#### Table တစ္ခုအတြင္းရွိ Record မ်ားအား ျပု ျပင္မြမ္းမံျခင္း
 
 	DB::table('users')
 	            ->where('id', 1)
 	            ->update(array('votes' => 1));
 
 <a name="deletes"></a>
-## Deletes
+## Delete မ်ား
 
-#### Deleting Records In A Table
+#### Table တစ္ခုအတြင္းရွိ record မ်ား အား ဖ်က္သိမ္းျခင္း
 
 	DB::table('users')->where('votes', '<', 100)->delete();
 
-#### Deleting All Records From A Table
+#### Table တစ္ခုအတြင္းရွိ record အားလုံးအား ဖ်က္သိမ္းျခင္း
 
 	DB::table('users')->delete();
 
-#### Truncating A Table
+#### Table တစ္ခုအား truncate လုပ္ျခင္း
 
 	DB::table('users')->truncate();
 
 <a name="unions"></a>
-## Unions
+## Union မ်ား
 
-The query builder also provides a quick way to "union" two queries together:
+Query builder သည္ query နွစ္ခုအား အလြယ္တကူ "union" လုပ္နုိင္ေစရန္ နည္းလမ္းတစ္ခု ပံ့ပိုးေပးထားပါသည္။
 
 	$first = DB::table('users')->whereNull('first_name');
 
 	$users = DB::table('users')->whereNull('last_name')->union($first)->get();
 
-The `unionAll` method is also available, and has the same method signature as `union`.
+`unionAll`method လည္းရွိပါသည္။ ၎၏ method signature မွာ `union` နွင့္ အတူတူပင္ ျဖစ္ပါသည္။
 
 <a name="pessimistic-locking"></a>
 ## Pessimistic Locking
 
-The query builder includes a few functions to help you do "pessimistic locking" on your SELECT statements.
+Query builder တြင္ သင့္ select statement မ်ား "pessimistic locking" ျပု လုပ္နုိင္ရန္ ဖန္ရွင္ တစ္ခ် ိ ု့ ပံ့ပုိးေပးထားပါသည္။
 
-To run the SELECT statement with a "shared lock", you may use the `sharedLock` method on a query:
+Select statement တစ္ခုအား "shared_lock" ျဖင့္ သုံးလိုလ်ွင္ သင့္ query တြင္ `sharedLock` method အား အသုံးျပုနုိင္ပါသည္။
 
 	DB::table('users')->where('votes', '>', 100)->sharedLock()->get();
 
-To "lock for update" on a SELECT statement, you may use the `lockForUpdate` method on a query:
+Select statement တစ္ခုအား update လုပ္ျခင္းမွ ကာကြယ္လုိလွ်င္ သင့္ query တြင္ `lockForUpdate` method ကုိ အသုံးျပုနုိင္ပါသည္။
 
 	DB::table('users')->where('votes', '>', 100)->lockForUpdate()->get();
 
 <a name="caching-queries"></a>
-## Caching Queries
+## Query မ်ားကုိ Cache လုပ္ျခင္း
 
-You may easily cache the results of a query using the `remember` method:
+သင္သည္ query တစ္ခု၏ ရလဒ္ကုိ `remember` method ကုိ သုံး ၍ အလြယ္တကူ cache လုပ္နုိင္ပါသည္။
 
 	$users = DB::table('users')->remember(10)->get();
 
-In this example, the results of the query will be cached for ten minutes. While the results are cached, the query will not be run against the database, and the results will be loaded from the default cache driver specified for your application.
+အထက္ပါ ဥပမာတြင္ သင့္ query ရလဒ္အား ၁၀ မိနစ္ အထိ cache လုပ္ေပးသြားမည္ ျဖစ္သည္။ အကယ္၍ ရလဒ္မ်ားသည္ cache လုပ္ျပီး ျဖစ္ပါက database အား ထပ္မံ query လုပ္မည္မဟုတ္ပဲ ရလဒ္မ်ားအား သင့္ application အတြက္ သတ္မွတ္ထားေသာ cache driver မွ ရယူေပးသြားမည္ ျဖစ္ပါသည္။
 
-If you are using a [supported cache driver](cache#cache-tags.md), you can also add tags to the caches:
+အကယ္၍ သင္သည္ ေထာက္ပံ့ေပးထားေသာ [supported cache driver](cache#cache-tags.md) တစ္ခုကို သုံးပါက cache မ်ားအတြက္ tag မ်ားလည္း ထည့္သြင္းနုိင္ပါသည္။
 
 	$users = DB::table('users')->cacheTags(array('people', 'authors'))->remember(10)->get();
+
