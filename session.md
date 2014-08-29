@@ -1,23 +1,21 @@
-﻿# ဆက်ရှင်
+# Session
 
-- [ပြင်ဆင်ခြင်း](#configuration)
+- [Configuration](#configuration)
 - [Session Usage](#session-usage)
 - [Flash Data](#flash-data)
 - [Database Sessions](#database-sessions)
 - [Session Drivers](#session-drivers)
 
 <a name="configuration"></a>
-## ပြင်ဆင်ခြင်း
+## Configuration
 
-HTTP မှာ Stateless protocol ဖြစ်သောကြောင့် request တစ်ခုနှင့်တစ်ခု ကြားထဲတွင် Session ထဲတွင် အချက်အလက်များကို သိမ်းဆည်းကာ ပို ့ဆောင်ရပေသည်။ Laravel တွင် session ကို နည်းလမ်းမျိုးစုံဖြင့် အသုံးပြုနိုင်ရန် API တစ်ခုကို ဖန်တီးကာ စုစည်းထားသည်။ အခြားသော ကျော်ကြားသည့်  
-[Memcached](http://memcached.org) နှင့် [Redis](http://redis.io), Session အဖြစ်အသုံးပြုနိုင်သည့် နည်းလမ်းများကို ပံ့ပိုးထားသည်။
+Since HTTP driven applications are stateless, sessions provide a way to store information about the user across requests. Laravel ships with a variety of session back-ends available for use through a clean, unified API. Support for popular back-ends such as [Memcached](http://memcached.org), [Redis](http://redis.io), and databases is included out of the box.
 
-Session နှင့်ပတ်သတ်သည့် အချက်အလက်များကို `app/config/session.php` တွင် လိုအပ်သလို ပြောင်းလဲ ရမည် ဖြစ်သည်။ ပုံမှန်အားဖြင့် application အတော်များများတွင် အဆင်ပြေမည့် `file` session driver ကို အသုံးပြုထားသည်။
+The session configuration is stored in `app/config/session.php`. Be sure to review the well documented options available to you in this file. By default, Laravel is configured to use the `file` session driver, which will work well for the majority of applications.
 
-#### Reserved Keys (သီးသန့် key)
+#### Reserved Keys
 
-
-`flash` ဆက်ရှင်ကီးကို Laravel Farmework အတွင်းပိုင်းတွင်သုံးထားပါသည်၊ ထို့ကြောင့်  သင့်အနေနဲ့အဲ့ဒီ့ `flash` ဆိုတဲ့အမည်နဲ့  session ထဲကို item တစ်ခုမှ မထည့်သင့်ပါ။
+The Laravel framework uses the `flash` session key internally, so you should not add an item to the session by that name.
 
 <a name="session-usage"></a>
 ## Session Usage
@@ -40,53 +38,52 @@ Session နှင့်ပတ်သတ်သည့် အချက်အလက�
 
 	$value = Session::get('key', function() { return 'default'; });
 
-#### Session မှ value တစ်ခု ထုတ်ယူကာ ဖယ်ထုတ်ခြင်း
+#### Retrieving An Item And Forgetting It
 
 	$value = Session::pull('key', 'default');
 
-#### Session မှ value များအားလုံး ခေါ်ယူခြင်း
+#### Retrieving All Data From The Session
 
 	$data = Session::all();
 
-#### Session မှ item ရှိမရှိ စစ်ဆေးခြင်း
+#### Determining If An Item Exists In The Session
 
 	if (Session::has('users'))
 	{
 		//
 	}
 
-#### Session မှ item တစ်ခုကို ထုတ်ပယ်ခြင်း
+#### Removing An Item From The Session
 
 	Session::forget('key');
 
-#### Session တစ်ခုလုံး ရှင်းပစ်ခြင်း
+#### Removing All Items From The Session
 
 	Session::flush();
 
-#### Session ID အသစ်ထုတ်ယူခြင်း
+#### Regenerating The Session ID
 
 	Session::regenerate();
 
 <a name="flash-data"></a>
 ## Flash Data
 
-တခါတရံ  တစ်ချို  ့သော data များကို နောက်ထပ် request တစ်ခါစာသာ သိမ်းဆည်းလိုပေမည်။ ထိုသို ့ပြုလုပ်နိုင်ရန် `Session::flash` method ကို အသုံးပြုနိုင်သည်။
+Sometimes you may wish to store items in the session only for the next request. You may do so using the `Session::flash` method:
 
 	Session::flash('key', 'value');
 
-#### နောက်ထပ် request တစ်ခုစာ သက်တမ်းတိုးခြင်း
+#### Reflashing The Current Flash Data For Another Request
 
 	Session::reflash();
 
-#### နောက်ထပ် request တစ်ခုစာ သက်တမ်းတိုးခြင်း  (ရွေးချယ်ထားသော data များသာ) 
+#### Reflashing Only A Subset Of Flash Data
 
 	Session::keep(array('username', 'email'));
 
 <a name="database-sessions"></a>
 ## Database Sessions
 
-
-`database` session driver ကို အသုံးပြုပါက Session item များကို သိမ်းဆည်းရန် table တစ်ခု တည်ဆောက်ရန်လိုပေမည်။ အောက်တွင်  table အတွက် `Schema` တည်ဆောက်ပုံကို ဖော်ပြထားပါသည်။
+When using the `database` session driver, you will need to setup a table to contain the session items. Below is an example `Schema` declaration for the table:
 
 	Schema::create('sessions', function($table)
 	{
@@ -95,9 +92,7 @@ Session နှင့်ပတ်သတ်သည့် အချက်အလက�
 		$table->integer('last_activity');
 	});
 
-	
-Table ကို အသုံးပြုထားသောကြောင့် `session:table` ဟူသည့် Artisan command ကို အသုံးပြုပြီး migration ပြုလုပ်နိုင်သည်။
-
+Of course, you may use the `session:table` Artisan command to generate this migration for you!
 
 	php artisan session:table
 
@@ -108,14 +103,12 @@ Table ကို အသုံးပြုထားသောကြောင့် 
 <a name="session-drivers"></a>
 ## Session Drivers
 
-session "driver" မှ session data များ မည်သည့်နေရာတွင်း သိမ်းဆည်းမည်ကို သတ်မှတ်ထားသည်။  Laravel အနေဖြင့် အတော်လေးကောင်းမွန်သော driver အမျိုးအစားများကို ပံပိုးထားသည်။
+The session "driver" defines where session data will be stored for each request. Laravel ships with several great drivers out of the box:
 
-- `file` - sessions သည် `app/storage/sessions` တွင် သိမ်းဆည်းထားမည်။
-- `cookie` - sessions သည် encrypted cookies အနေဖြင့် သိမ်းဆည်းထားမည် ဖြစ်သည်။
-- `database` session သည့် application ၏ database ထဲတွင် သိမ်းဆည်းထားမည် ဖြစ်သည်။
-- `memcached` / `redis` တို ့သည် မြန်ဆန်သွက်လက်သည့် cache based session engine များဖြစ်ကြသည်။
-- `array` - sessions သည် PHP array အဖြစ် သိမ်းဆည်းမည်ဖြစ်ပြီး နောက်ထပ် request များအတွက် သိမ်းဆည်းထားနိုင်မည် မဟုတ်ပေ။
+- `file` - sessions will be stored in `app/storage/sessions`.
+- `cookie` - sessions will be stored in secure, encrypted cookies.
+- `database` - sessions will be stored in a database used by your application.
+- `memcached` / `redis` - sessions will be stored in one of these fast, cached based stores.
+- `array` - sessions will be stored in a simple PHP array and will not be persisted across requests.
 
-
-> **မှတ်ချက်:**  array driver သည် [unit tests](testing.md) အတွက် အသုံးပြုခြင်း ဖြစ်ပြီး တကယ့် session data အတွက် အသုံးပြုခြင်း မဟုတ်ပေ။
-
+> **Note:** The array driver is typically used for running [unit tests](/docs/testing), so no session data will be persisted.

@@ -1,4 +1,4 @@
-﻿# Templates
+# Templates
 
 - [Controller Layouts](#controller-layouts)
 - [Blade Templating](#blade-templating)
@@ -8,9 +8,9 @@
 <a name="controller-layouts"></a>
 ## Controller Layouts
 
-Laravel မှာအသုံးပြုသော templates ပုံစံများထဲကတစ်ခုကတော့ controller layouts ကနေအသုံးပြုတဲ့ပုံစံဖြစ်ပါတယ်။ `layout` property ကို controller မှာသတ်မှတ်လိုက်တာနဲ့ view ဖိုဒါထဲမှာ ကြိုတင်သတ်မှတ်ပြင်ဆင်ထားတဲ့ view ဖိုင်ကို သင့်အတွက်ယူဆောင်ပေးပါလိမ့်မယ်။ ပြီးရင်တော့ controller ကနေညွှန်ကြားလာတဲ့တဲ့ ညွှန်ကြားချက်တွကို လက်ခံဆောင်ရွက်ပေးမှာဖြစ်ပါတယ်။
+One method of using templates in Laravel is via controller layouts. By specifying the `layout` property on the controller, the view specified will be created for you and will be the assumed response that should be returned from actions.
 
-#### Controller တွင် Layout ကိုသတ်မှတ်ခြင်း
+#### Defining A Layout On A Controller
 
 	class UserController extends BaseController {
 
@@ -32,9 +32,9 @@ Laravel မှာအသုံးပြုသော templates ပုံစံမ�
 <a name="blade-templating"></a>
 ## Blade Templating
 
-Laravel မှာပါတဲ့ template ပုံစံနောက်တစ်ခုဖြစ်တဲ့ Blade ဆိုတာကတော့ ရိုးရှင်းပြီး၊ စွမ်းဆောင်ရည်ပြည့်ဝတဲ့ လုပ်ဆောင်ချက်တွေအများကြီးပါတဲ့ template engine တစ်ခုဖြစ်ပါတယ်။ Blade ရဲ့ပုံစံက ပင်မ _template_ မှာတည်ဆောက်ထားတဲ့ပုံစံကို ထပ်ပွားယူပြီး(_inheritance_) အပြောင်းအလဲလုပ်ချင်တဲ့နေရာတွေထဲကို (_section_) လိုအပ်သလို ပြုပြင်ပြောင်းလဲနိုင်တဲ့ ပုံစံဖြစ်ပါတယ်။ Blade template ကိုအသုံးပြုချင်ရင်တော့ `.blade.php` extension နဲ့အသုံးပြုရမှာပါ။ 
+Blade is a simple, yet powerful templating engine provided with Laravel. Unlike controller layouts, Blade is driven by _template inheritance_ and _sections_. All Blade templates should use the `.blade.php` extension.
 
-#### Blade ပုံစံသတ်မှတ်ခြင်း
+#### Defining A Blade Layout
 
 	<!-- Stored in app/views/layouts/master.blade.php -->
 
@@ -50,7 +50,7 @@ Laravel မှာပါတဲ့ template ပုံစံနောက်တစ�
 		</body>
 	</html>
 
-#### Blade ပုံစံကို အသုံးပြုခြင်း
+#### Using A Blade Layout
 
 	@extends('layouts.master')
 
@@ -64,46 +64,46 @@ Laravel မှာပါတဲ့ template ပုံစံနောက်တစ�
 		<p>This is my body content.</p>
 	@stop
 
-အပေါ်မှာပြထားတဲ့ဥပမာမှာ ပင်မ template ပုံစံကို `extend` လုပ်ယူပြီး ပင်မ layout ထဲက section နေရာကို ထပ်ထည့်ထားတာကို သတိပြုပါ။ ပင်မ layout ထဲမှာ ကြိုတင်သတ်မှတ်ထားတဲ့ အချက်အလက်တွေကို chile view ထဲမှာ ထပ်သုံးချင်ရင် `@parent` ဆိုတဲ့ ညွှန်ကြားချက်ကိုအသုံးပြုနိုင်ပါတယ်။ Sidebar နဲ့ footer ကဲ့သို့သော အပိုင်းတွေအတွက် လိုအပ်တဲ့ အချက်အလက်တွေကို ထပ်ထည့်နိုင်တဲ့ လုပ်ဆောင်ချက်တစ်ခုဖြစ်ပါတယ်။ 
+Note that views which `extend` a Blade layout simply override sections from the layout. Content of the layout can be included in a child view using the `@parent` directive in a section, allowing you to append to the contents of a layout section such as a sidebar or footer.
 
-တစ်ခါတစ်ရံ `@section` သတ်မှတ်ထား / မထား မသေချာဘူး `@yield` နဲ့ဆွဲယူထားတဲ့ နေရာထဲကိုလဲ default value တစ်ခု ထည့်ချင်တယ်ဆိုရင် ဒုတိယ argument အနေနဲ့ ထည့်ပေးလိုက်ရင် ရပါတယ်။ 
+Sometimes, such as when you are not sure if a section has been defined, you may wish to pass a default value to the `@yield` directive. You may pass the default value as the second argument:
 
 	@yield('section', 'Default Content');
 
 <a name="other-blade-control-structures"></a>
-## Blade တွင်အသုံးပြုနိုင်သော အခြား control structures များ
+## Other Blade Control Structures
 
-#### အချက်အလက်ထုတ်ပြခြင်း
+#### Echoing Data
 
 	Hello, {{{ $name }}}.
 
 	The current UNIX timestamp is {{{ time() }}}.
 
-#### အချက်အလက် ရှိ/မရှိ စစ်ဆေးပြီးမှ ထုတ်ပြခြင်း 
+#### Echoing Data After Checking For Existence
 
-တစ်ခါတစ်ရံမှာ အချက်အလက်တစ်ခုကိုထုတ်ပြချင်သော်လည်း အဲ့ဒီ အချက်အလက်ထည့်ထားတဲ့ variable ကို အသုံးပြုထားခြင်း ရှိ/မရှိ မသေချာတဲ့ အခြေအနေမျိုးမှာ ပုံမှန်ဆိုရင် အောက်ပါအတိုင်း အသုံးပြုကြပါတယ်။
+Sometimes you may wish to echo a variable, but you aren't sure if the variable has been set. Basically, you want to do this:
 
 	{{{ isset($name) ? $name : 'Default' }}}
 
-အဲ့ဒီပုံစံကို Blade နဲ့လွယ်လွယ်ကူကူပဲရေးနိုင်ပါတယ်... အောက်မှာရေးထားတဲ့ပုံစံကိုကြည့်လိုက်ပါ။
+However, instead of writing a ternary statement, Blade allows you to use the following convenient short-cut:
 
 	{{{ $name or 'Default' }}}
 
-#### တွန့်ကွင်း (Curly Braces) နှင့်အုပ်ထားသော စာသားများအတိုင်း ထုတ်ပြခြင်း
+#### Displaying Raw Text With Curly Braces
 
-တွန့်ကွင်း (curly braces) အုပ်ထားတဲ့ စာသားများကို ထုတ်ပြဖို့ လိုအပ်လျှင်တော့ blade ပုံစံကို ရှေ့မှာ `@` သင်္ကေတ နဲ့ခံပြီး အသုံးပြုနိုင်ပါတယ်။
+If you need to display a string that is wrapped in curly braces, you may escape the Blade behavior by prefixing your text with an `@` symbol:
 
 	@{{ This will not be processed by Blade }}
 
-အသုံးပြုသူဆီက ဝင်လာမဲ့ အချက်အလက်တွေကို escape သို့မဟုတ် purified လုပ်သင့်ပါတယ်။ အဲ့လိုပြုလုပ်ဖို့အတွက် တွန့်ကွင်းသုံးခု (triple curly brace) ကိုအသုံးပြုနိုင်ပါတယ်။ 
+Of course, all user supplied data should be escaped or purified. To escape the output, you may use the triple curly brace syntax:
 
 	Hello, {{{ $name }}}.
 
-အကယ်၍ escape မလုပ်ချင်ဘူးဆိုရင်တော့ တွန့်ကွင်း နှစ်ခု (double curly braces) ကိုအသုံးပြုနိုင်ပါတယ်။
+If you don't want the data to be escaped, you may use double curly-braces:
 
 	Hello, {{ $name }}.
 
-> **သတိပြုရန်:** Application ကိုအသုံးပြုသူဆီကလာမဲ့ အချက်အလက်တွေကိုထုတ်ပြတဲ့ကိစ္စကို အထူးဂရုစိုက်ဖို့ လိုအပ်ပါတယ်။ အဲ့ဒါကြောင့် HTML entities တွေကို escape ပြုလုပ်ဖို့အတွက် တွန့်ကွင်းသုံးခု (triple curly brace) ကိုအမြဲတမ်းအသုံးပြုသင့်ပါတယ်။
+> **Note:** Be very careful when echoing content that is supplied by users of your application. Always use the triple curly brace syntax to escape any HTML entities in the content.
 
 #### If Statements
 
@@ -129,6 +129,12 @@ Laravel မှာပါတဲ့ template ပုံစံနောက်တစ�
 		<p>This is user {{ $user->id }}</p>
 	@endforeach
 
+	@forelse($users as $user)
+	  	<li>{{ $user->name }}</li>
+	@empty
+	  	<p>No users</p>
+	@endforelse
+
 	@while (true)
 		<p>I'm looping forever.</p>
 	@endwhile
@@ -137,13 +143,13 @@ Laravel မှာပါတဲ့ template ပုံစံနောက်တစ�
 
 	@include('view.name')
 
-Include လုပ်ထားတဲ့ view တွေဆီကိုလဲ အချက်အလက်တွေကို passing လုပ်လို့ရပါတယ်။
+You may also pass an array of data to the included view:
 
 	@include('view.name', array('some'=>'data'))
 
 #### Overwriting Sections
 
-ပုံမှန်ဆိုရင် sections ဟာ ယခင်ရှိပီးသား အချက်အလက်တွေနဲ့အတူ နောက်ထပ် ထပ်ထည့်လာတဲ့ အချက်အလက်တွေကို ပေါင်းထည့်လိုက်တာဖြစ်ပါတယ်။ အကယ်၍ ယခင်အချက်အလက်တွေကို ဖျက်ပြစ်ပီး နောက်ထပ် ထပ်ထည့်လိုက်တဲ့ အချက်အလက်ကိုပဲ အသုံးပြုချင်ရင်တော့ `overwrite` ကိုအသုံးပြုနိုင်ပါတယ်။
+By default, sections are appended to any previous content that exists in the section. To overwrite a section entirely, you may use the `overwrite` statement:
 
 	@extends('list.item.container')
 
@@ -164,17 +170,17 @@ Include လုပ်ထားတဲ့ view တွေဆီကိုလဲ အ�
 <a name="extending-blade"></a>
 ## Extending Blade
 
-Blade ကိုအသုံးပြုပြီး စိတ်ကြိုက် control structure တွေကိုပြုလုပ်နိုင်ပါတယ်။ blade file ကို compile လုပ်ပီးတဲ့အခါ၊ သတ်မှတ်ထားတဲ့ စိတ်ကြိုက် control structure တွေကို view အတွက် အချက်အလက်တွေနဲ့အတူ ခေါ်ယူသုံးစွဲပါတယ်။ ရိုးရှင်းလွယ်ကူတဲ့ `str_replace` လိုကိစ္စတွေတင်မက ပိုပြီးရှုပ်ထွေးတဲ့ ကိစ္စတွေအထိ ကိုင်တွယ်ဖြေရှင်းနိုင်ပါတယ်။
+Blade even allows you to define your own custom control structures. When a Blade file is compiled, each custom extension is called with the view contents, allowing you to do anything from simple `str_replace` manipulations to more complex regular expressions.
 
-Blade compiler မှာ `createMatcher` နဲ့ `create:lainMatcher` ဆိုပြီး helper methods နှစ်ခု ရှိပါတယ်။ အဲ့ဒီ methods တွေကနေ စိတ်ကြိုက် control structure တွေပြုလုပ်ဖို့ လိုအပ်တဲ့ အရာတွေကိုပြုလုပ်ပေးပါတယ်။ 
+The Blade compiler comes with the helper methods `createMatcher` and `createPlainMatcher`, which generate the expression you need to build your own custom directives.
 
-`createPlainMatcher` method ကို `@endif` တို့ `@stop` တို့လို arguments တွေမပါတာအတွက် အသုံးပြုပြီး၊ `createMatcher` method ကိုတော့ arguments ပါတာတွေပြုလုပ်ဖို့အတွက် အသုံးပြုပါတယ်။
+The `createPlainMatcher` method is used for directives with no arguments like `@endif` and `@stop`, while `createMatcher` is used for directives with arguments.
 
-အောက်ပါ ဥပမာကတော့ `@datatime($var)` ကို ပြုလုပ်ထားတာပါ။ အဲ့ဒီ directive မှာပါတဲ့ `$var` ရဲ့ တန်ဖိုးကို `->format()` အသုံးပြုပြီး အလွယ်တကူ ခေါ်သုံးနိုင်ပါတယ်။ 
+The following example creates a `@datetime($var)` directive which simply calls `->format()` on `$var`:
 
 	Blade::extend(function($view, $compiler)
 	{
 		$pattern = $compiler->createMatcher('datetime');
 
-		return preg_replace($pattern, '$1<?php echo $2->format('m/d/Y H:i'); ?>', $view);
+		return preg_replace($pattern, '$1<?php echo $2->format(\'m/d/Y H:i\'); ?>', $view);
 	});

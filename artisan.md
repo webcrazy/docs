@@ -1,39 +1,36 @@
-﻿## Artisan CLI
+# Artisan CLI
 
-- [မိတ်ဆက်](#introduction)
-- [အသုံးပြုပုံ](#အသုံးပြုပုံ)
+- [Introduction](#introduction)
+- [Usage](#usage)
 
 <a name="introduction"></a>
-## မိတ်ဆက်
+## Introduction
 
-Artisan သည် laravel တွင်အသုံးပြုသည့် command line interface တစ်ခုဖြစ်သည်။ ၄င်းတွင် application develop ပြုလုပ်ရာတွင် အလွန်အသုံးဝင်လှသော commands များစွာပါဝင်သည်။ ၄င်းမှာ Symfony ၏ console component မှဆင်းသက်လာခြင်း ဖြစ်သည်။
-
+Artisan is the name of the command-line interface included with Laravel. It provides a number of helpful commands for your use while developing your application. It is driven by the powerful Symfony Console component.
 
 <a name="usage"></a>
-## အသုံးပြုပုံ
+## Usage
 
-#### အသုံးပြုနိုင်သည့် Command များကို စီရီပြသခြင်း
+#### Listing All Available Commands
 
-Artisan တွင်ပါဝင်သည့် Command အကုန်လုံးကို list အနေဖြင့် ပြသလိုပါက `list` ဟုသည့် command ကို အသုံးပြုနိုင်သည်။
+To view a list of all available Artisan commands, you may use the `list` command:
 
 	php artisan list
 
-#### Command  တစ်ခုချင်း၏ အသုံးပြုခြင်း လမ်းညွန်မှုကို ကြည့်ရှုခြင်း 
+#### Viewing The Help Screen For A Command
 
-Command တိုင်းလိုလို တွင် “help” ဟု အပိုဆောင်း ရိုက်ခြင်း ဖြင့် မိမိတို ့ အသုံးပြုမည့် Command တွင် ထည့်သွင်းရမည့် arguments များနှင့် ရွေးချယ်စရာများကို သိရှိနိုင်ပါသည်။
+Every command also includes a "help" screen which displays and describes the command's available arguments and options. To view a help screen, simply precede the name of the command with `help`:
 
 	php artisan help migrate
 
-#### Configuration Environment ကို သတ်မှတ်ခြင်း
+#### Specifying The Configuration Environment
 
-မိမိတို ့ အသုံးပြုလိုသည် Configuration Environment ကို —env ဟုသော  switch ဖြင့် ရွေးချယ်သတ်မှတ်နိုင်သည်။ 
-
+You may specify the configuration environment that should be used while running a command using the `--env` switch:
 
 	php artisan migrate --env=local
 
-#### လက်ရှိ အသုံးပြုနေသည့် Laravel version ကိုဖော်ပြခြင်း
+#### Displaying Your Current Laravel Version
 
-မိမိတို ့လက်ရှိအသုံးပြုနေသည့် Laravel version ကို သိရှိလိုပါက —switch ကို အသုံးပြုပြီး  သိရှိနိုင်ပါသည်။ 
- 
+You may also view the current version of your Laravel installation using the `--version` option:
 
 	php artisan --version

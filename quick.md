@@ -1,70 +1,90 @@
-﻿# Laravel Quickstart
+# Laravel Quickstart
 
 - [Installation](#installation)
+- [Local Development Environment](#local-development-environment)
 - [Routing](#routing)
 - [Creating A View](#creating-a-view)
 - [Creating A Migration](#creating-a-migration)
 - [Eloquent ORM](#eloquent-orm)
 - [Displaying Data](#displaying-data)
+- [Deploying Your Application](#deploying-your-application)
 
 <a name="installation"></a>
 ## Installation
 
-### Laravel Installer ကို အသုံးပြုခြင်း
+### Via Laravel Installer
 
-ရှေးဦးစွာ [Laravel installer PHAR archive](http://laravel.com/laravel.phar) ကို ဒေါင်းပါ။  အဆင်ပြေစေရန်အတွက် ထို  file ကို `laravel` ဟု အမည်ပေးပြီး `/usr/local/bin` ထဲသို ့ပြောင်းရွေ  ့လိုက်ပါ။ ထိုနောက် `laravel new` command ဖြင့် သင်ထားရှိထားသော directory ပေါ်တွင် laravel installation အလိုအလျောက် ပြလုပ်သွားမည် ဖြစ်သည်။  ဥပမာ `laravel new blog` ဆိုသည့် command ကိုအသုံးပြပါက `blog` အမည်ရှိ folder တစ်ခုကို တည်ဆောက်ပေးပြီး လိုအပ်သည့် package များကိုပါ တခါတည်း ဒေါင်းလုပ်လုပ်ကာ စုစည်းပေးသွားမည် ဖြစ်သည်။ ၄င်းသို ့ install ပြုလုပ်ခြင်းသည် Composer မှ install လုပ်ခြင်းထက် ပို၍ လျင်မြန်ပါလိမ့်မည်။
+First, download the Laravel installer using Composer.
 
-### Composer ကို အသုံးပြုခြင်း
+	composer global require "laravel/installer=~1.1"
 
-Laravel framework ကို [Composer](http://getcomposer.org) မှလည်း installation နှင့် လိုအပ်သည့် package များကို ထည့်သွင်းနိုင်သည်။ Composer မသွင်းရသေးပါက  [Composer ထည့်သွင်းခြင်းနည်းလမ်း](http://getcomposer.org/doc/00-intro.md) ကိုကြည့်၍ ထည့်သွင်းနိုင်ပါသည်။
+Make sure to place the `~/.composer/vendor/bin` directory in your PATH so the `laravel` executable is found when you run the `laravel` command in your terminal.
 
-ထိုနောက် သင့်အနေဖြင့် terminal မှ အောက်ပါ command ကို ရိုက်သွင်းခြင်းဖြင့် Laravel ကို install ပြုလုပ်နိုင်မည် ဖြစ်သည်။
+Once installed, the simple `laravel new` command will create a fresh Laravel installation in the directory you specify. For instance, `laravel new blog` would create a directory named `blog` containing a fresh Laravel installation with all dependencies installed. This method of installation is much faster than installing via Composer.
+
+### Via Composer
+
+The Laravel framework utilizes [Composer](http://getcomposer.org) for installation and dependency management. If you haven't already, start by [installing Composer](http://getcomposer.org/doc/00-intro.md).
+
+Now you can install Laravel by issuing the following command from your terminal:
 
 	composer create-project laravel/laravel your-project-name --prefer-dist
 
-၄င်း command မှ laravel အသစ်စက်စက် ကို သင့်`your-project-name` folder အတွင်းတွင် တည်ရှိနေမည်ကို တွေ ့ရပါမည်။
+This command will download and install a fresh copy of Laravel in a new `your-project-name` folder within your current directory.
 
-ထိုတင်မက သင့် အနေဖြင့် [Laravel repository from Github](https://github.com/laravel/laravel/archive/master.zip) မှ ဒေါင်းလော့ ပြုလုပ်ပြီး directory ထဲတွင် `composer install` run ၍လည်း install ပြုလုပ်နိုင်ပါသည်။ ထို command မှ framework တွင် လိုအပ်သော package များကို အလိုအလျောက် download ပြုလုပ်ပြီး install သွားမည် ဖြစ်သည်။
+If you prefer, you can alternatively download a copy of the [Laravel repository from Github](https://github.com/laravel/laravel/archive/master.zip) manually. Next run the `composer install` command in the root of your manually created project directory. This command will download and install the framework's dependencies.
 
 ### Permissions
 
-Laravel ကို install ပြုလုပ်ပြီးပါက သင့်အနေဖြင့် web server ၏ write permission ဖြင့်ပတ်သတ်၍ `app/storage` ထဲတွင် ပြင်ဆင်ရန် လိုအပ်ကောင်း လိုအပ်ပေမည်။ အသေးစိတ် အချက်အလက်ကို  [Installation](installation.md) တွင် ကြည့်ရှုနိုင်ပါသည်။
+After installing Laravel, you may need to grant the web server write permissions to the `app/storage` directories. See the [Installation](/docs/installation) documentation for more details on configuration.
 
 ### Serving Laravel
 
-အကြမ်းအားဖြင့် Apache သို ့မဟုတ် Nginx ပေါ်တွင် laravel application ကို တင်ထားနိုင်သည်။  သင့် အသုံးပြုသော PHP version မှာ 5.4 အထက်ဖြစ်ပြီး PHP တွင်ပါဝင်သော default server ကို အသုံးပြုလိုပါက သင့်အနေဖြင့် Artisan command ဖြစ်သည့် `serve` ကို အသုံးပြုနိုင်သည်။
+Typically, you may use a web server such as Apache or Nginx to serve your Laravel applications. If you are on PHP 5.4+ and would like to use PHP's built-in development server, you may use the `serve` Artisan command:
 
 	php artisan serve
 
 <a name="directories"></a>
 ### Directory Structure
 
-Framework ကို install ပြုလုပ်ပြီးနောက် သင့် အနေဖြင့် directory structure ဖြင့် ရင်းနှီးနေရန် လိုပေမည်။ `app` directory ထဲတွင် `views`, `controllers`, and `models` အစရှိသည့် folder များ တည်ရှိနေသည်ကို တွေ ့ ရမည် ဖြစ်သည်။ သင့် application ၏ code များကို ထိုထဲတွင် ရေးသားရမည် ဖြစ်သည်။ သင့်အနေဖြင့် လိုအပ်မည့် configuration နှင့် ပတ်သတ်၍ `app/config` အမည်ရှိ directory ထဲတွင်ကြည့်ရှုရမည် ဖြစ်သည်။
+After installing the framework, take a glance around the project to familiarize yourself with the directory structure. The `app` directory contains folders such as `views`, `controllers`, and `models`. Most of your application's code will reside somewhere in this directory. You may also wish to explore the `app/config` directory and the configuration options that are available to you.
+
+<a name="local-development-environment"></a>
+## Local Development Environment
+
+In the past, configuring a local PHP development environment on your machine was a headache. Installing the proper version of PHP, required extensions, and other needed components is time consuming and confusing. Instead, consider using [Laravel Homestead](/docs/homestead). Homestead is a simple virtual machine designed for Laravel and [Vagrant](http://vagrantup.com). Since the Homestead Vagrant box is pre-packaged with all of the software you need to build robust PHP applications, you can create a virtualized, isolated development environment in seconds. Here is a list of some of the goodies included with Homestead:
+
+- Nginx
+- PHP 5.5
+- MySQL
+- Redis
+- Memcached
+- Beanstalk
+
+Don't worry, even though "virtualized" sounds complicated, it's painless. VirtualBox and Vagrant, which are Homestead's two dependencies, both include simple, graphical installers for all popular operating systems. Check out the [Homestead documentation](/docs/homestead) to get started.
 
 <a name="routing"></a>
 ## Routing
 
-ရှေးဦးစွာ Route တစ်ခုကို တည်ဆောက်ကြပါစို ့။  Laravel တွင် အရိုးရှင်းဆုံး route မှာ route to Closure ဖြစ်သည်။ `app/routes.php` ကိုဖွင့်ပြီး အောက်ပါ code ကိုထည့်သွင်းကြည့်ပါ။ 
+To get started, let's create our first route. In Laravel, the simplest route is a route to a Closure. Pop open the `app/routes.php` file and add the following route to the bottom of the file:
 
 	Route::get('users', function()
 	{
 		return 'Users!';
 	});
 
-ထိုနောက် web browser ပေါ်တွင် `/users` ဟူသော route ဖြင့် စမ်းကြည့်ပါက သင့်အနေဖြင့် `Users!` တုံ ့ပြန်သည်ကို မြင်တွေ ့ရမည် ဖြစ်သည်။ 
-ကောင်းလေစွ! သင့်အနေဖြင့် ပထမဦးစွာ route တစ်ခုကို ဖန်တီးလိုက်ပြီ ဖြစ်သည်။
+Now, if you hit the `/users` route in your web browser, you should see `Users!` displayed as the response. Great! You've just created your first route.
 
-
-Route များမှာ controller များနှင့်လည်း ချိတ်ဆက် အလုပ်လုပ်နိုင်သည်။ ဥပမာ
+Routes can also be attached to controller classes. For example:
 
 	Route::get('users', 'UserController@getIndex');
 
-အဆိုပါ route တွင် 	`/users` ဟုခေါ်ယူလိုက်ပါက `UserController` class အတွင်းရှိ `getIndex` method  ကို အလုပ်လုပ်မည် ဖြစ်သည်။ Controller routing နှင့် ပတ်သတ်၍ အသေးစိတ်ကို [controller documentation](controllers.md) တွင်ကြည့်ရှုနိုင်သည်။
+This route informs the framework that requests to the `/users` route should call the `getIndex` method on the `UserController` class. For more information on controller routing, check out the [controller documentation](/docs/controllers).
 
 <a name="creating-a-view"></a>
-## View တစ်ခု တည်ဆောက်ခြင်း
+## Creating A View
 
-ထိုနောက် user data များကို ဖော်ပြရန် ရိုးရှင်းသည့် view တစ်ခုကို တည်ဆောက်ရန် လိုပေမည်။  view file များသည် `app/views` directory  ထဲတွင် တည်ရှိမည် ဖြစ်သည်။  View တွင် သင့် application တွင် ဖော်ပြလိုသည့်  HTML ဖြင့် ဖော်ပြသွားမည် ဖြစ်သည်။  `layout.blade.php` နှင့် `users.blade.php` ဟု၍ file နှစ်ခုကို တည်ဆောက်လိုက်ပါ။ `layout.blade.php` ဟုသည့် file တွင် အောက်ပါ အတိုင်း ရေးသားလိုက်ပါ။
+Next, we'll create a simple view to display our user data. Views live in the `app/views` directory and contain the HTML of your application. We're going to place two new views in this directory: `layout.blade.php` and `users.blade.php`. First, let's create our `layout.blade.php` file:
 
 	<html>
 		<body>
@@ -74,7 +94,7 @@ Route များမှာ controller များနှင့်လည်း �
 		</body>
 	</html>
 
-ထိုနောက် `users.blade.php` ဟုသော view တစ်ခုကို တည်ဆောက် လတ္တံ ့။ 
+Next, we'll create our `users.blade.php` view:
 
 	@extends('layout')
 
@@ -82,34 +102,31 @@ Route များမှာ controller များနှင့်လည်း �
 		Users!
 	@stop
 
-တချို  ့သော syntax များမှ သင့်အတွက် နည်းနည်း စိမ်းနေမည် ဖြစ်သည်။ အဘယ်ကြောင့်ဆိုသော် ယခု အသုံးပြုထားသည်မှာ Laravel ၏ templating system ဖြစ်သည့် Blade ကို အသုံးပြုထားခြင်း ကြောင့် ဖြစ်သည်။ Blade သည် အလွန်မြန်ဆန် လှပေသည်။ အကြောင်းမှာ ရိုးရှင်းလွယ်ကူ regular expression များကို အသုံးပြုကာ PHP အဖြစ်သို ့ compile ပြုလုပ်ထားခြင်းကြောင့်ဖြစ်သည်။ Blade အနေဖြင့် အလွန်တရာ စွမ်းအင်ကြီးမားလှသော template inheritance ကဲ့သို ့သော feature များကို support ပေးရုံသာမက  PHP တွင် ရေးသားနိုင်သည့် `if` နှင့် `for` သို ့သော Conditional statement များကိုပါ သေသပ်လှပစွာ ရေးသားနိုင်သောကြောင့်ဖြစ်သည်။ အသေးစိတ်ကို  [Blade documentation](templates.md) ကြည့်ရှုနိုင်ပေမည်။ 
+Some of this syntax probably looks quite strange to you. That's because we're using Laravel's templating system: Blade. Blade is very fast, because it is simply a handful of regular expressions that are run against your templates to compile them to pure PHP. Blade provides powerful functionality like template inheritance, as well as some syntax sugar on typical PHP control structures such as `if` and `for`. Check out the [Blade documentation](/docs/templates) for more details.
 
-ယခု ကျွန်တော်တို ့ views အပိုင်းကို ဖန်တီးပြီး ဖြစ်၍ `/users` ဟုသော route ဘက်ကို ပြန်လှည့်ကြပါစို ့။ Route မှ `Users!` ဟု return ပြန်ခြင်းထက် 
-view ကို ပြန်ပေးဖို ့လိုပေမည်။ 
+Now that we have our views, let's return it from our `/users` route. Instead of returning `Users!` from the route, return the view instead:
 
 	Route::get('users', function()
 	{
 		return View::make('users');
 	});
 
-အံသြဖွယ်ကောင်းလေစွ။ သင့်အနေဖြင့် layout တစ်ခုကို extends ပြုလုပ်ထားသော view တစ်ခုကို တည်ဆောက်ပြီးပေသည်။ ဆက်၍ database layer တွင် ဆက်၍ လှုပ်ရှားကြပါစို ့။
+Wonderful! Now you have setup a simple view that extends a layout. Next, let's start working on our database layer.
 
 <a name="creating-a-migration"></a>
-## Migration တစ်ခုဖန်တီးခြင်း
+## Creating A Migration
 
-Table တစ်ခုတည်ဆောက်ပြီး data တွေကို handle နိုင်ရန် Laravel migration system ကို အသုံးပြုရန်လိုပေမည်။ Migration အနေဖြင့် သင့် database ၏ modification ကို အလွယ်တကူ သတ်မှတ်နိုင်ပြီး သင့်အဖွဲ  ့သားများနှင့် မျှဝေနိုင်ပေမည်။
+To create a table to hold our data, we'll use the Laravel migration system. Migrations let you expressively define modifications to your database, and easily share them with the rest of your team.
 
-ရှေးဦးစွာ database နှင့် ချိတ်ဆက်ရန် လိုပေမည်။ database ဖြင့်ချိတ်ဆက်ရန် အတွက် `app/config/database.php` တွင် ပြင်ဆင်ရန်လိုပေမည်။ ပုံမှန်အားဖြင့် Laravel သည် MySQL ဖြင့် အသုံးပြုရန် သတ်မှတ်ထားသည်။ သင့်အနေဖြင့် လိုအပ်သော credential များကို config file တွင် ဖြည့်သွင်းရန်လိုပေမည်။ သင့်အနေဖြင့် အလိုရှိပါက စိတ်ကြိုက် `driver` option ကို `sqlite` ဖြစ်စေပြောင်းလဲနိုင်ပြီ။ ၄င်းအနေဖြင့် `app/database` directory အောက်တွင် တည်ရှိမည့် SQLite database ကို အလုပ်လုပ်မည် ဖြစ်သည်။
+First, let's configure a database connection. You may configure all of your database connections from the `app/config/database.php` file. By default, Laravel is configured to use MySQL, and you will need to supply connection credentials within the database configuration file. If you wish, you may change the `driver` option to `sqlite` and it will use the SQLite database included in the `app/database` directory.
 
-ထိုနောက် migration တစ်ခု ဖန်တီးရန် [Artisan CLI](artisan.md) ကို အသုံးပြုမည် ဖြစ်သည်။ project ၏ root တွင် အောက်ပါ အတိုင်း terminal မှ run ရန် လိုပေမည်။
+Next, to create the migration, we'll use the [Artisan CLI](/docs/artisan). From the root of your project, run the following from your terminal:
 
 	php artisan migrate:make create_users_table
 
-ဆက်၍ `app/database/migrations` တည်ရှိသည့် migration file ကို ရှာရန် လိုပေမည်။ ထိုထဲတွင် `up` နှင့်`down`ဟူသော method နှစ်ခုပါဝင်မည် ဖြစ်သည်။
+Next, find the generated migration file in the `app/database/migrations` folder. This file contains a class with two methods: `up` and `down`. In the `up` method, you should make the desired changes to your database tables, and in the `down` method you simply reverse them.
 
-
-`up` method တွင် database တွင် ပြောင်းလဲချင်သည်များကို ထည့်သွင်းရေးသား၍  `down` method ပြောင်းပြန်ရေးသားရမည် ဖြစ်သည်။
-အောက်ပါအတိုင်း migration ကို တည်ဆောက်လိုက်ပါ။
+Let's define a migration that looks like this:
 
 	public function up()
 	{
@@ -127,27 +144,26 @@ Table တစ်ခုတည်ဆောက်ပြီး data တွေကိ�
 		Schema::drop('users');
 	}
 
-ဆက်၍ migrate ပြုလုပ်လိုပါက terminal တွင်`migrate` ဟုရိုက်ရန်လိုပေမည်။ 
+Next, we can run our migrations from our terminal using the `migrate` command. Simply execute this command from the root of your project:
 
 	php artisan migrate
 
-migration တစ်ခုကို rollback (နောက်ပြန်လှည့်) လိုပါက သင့်အနေဖြင့် `migrate:rollback` ဟူ၍  ရိုက်ရုံသာ ဖြစ်သည်။ ယခု database table ရှိပြီ ဖြစ်၍ 
-data လေးနည်းနည်းဖြင့် စလိုက်ကြပါစို ့။
+If you wish to rollback a migration, you may issue the `migrate:rollback` command. Now that we have a database table, let's start pulling some data!
 
 <a name="eloquent-orm"></a>
 ## Eloquent ORM
 
-Eloquent ORM သည် Laravel ၏ အလှတရား တစ်ရပ်ပင်ဖြစ်သည်။ သင့်အနေဖြင့် Ruby on Rails framework ကို အသုံးပြုဖူးပါက ၄င်းကဲ့သို ့ database interaction ပြုလုပ်ရာတွင် ActiveRecord ORM style သုံးထားသာ Eloquent နှင့်ရင်းနှီးနေမည် ဖြစ်သည်။  
+Laravel ships with a superb ORM: Eloquent. If you have used the Ruby on Rails framework, you will find Eloquent familiar, as it follows the ActiveRecord ORM style of database interaction.
 
-ပထမဦးဆုံး model တစ်ခုကို သတ်မှတ်ကြပါစို ့။ Eloquent model တစ်ခုသည် ဆက်စပ်နေသော database table များ၏ query ကိုပါ အသုံးပြုနိုင်သည်။ သိပ်များ နားရှုပ်သွားသလား မသိ။ အခုလာမယ့် အပိုင်းမှာ တဖြည်းဖြည်း နားလည်လာမှာပါ။ Model တွေဟာ `app/models` ဆိုတဲ့ directory အတွင်းမှာ တည်ရှိပါတယ်။ အဆိုပါ directory ထဲမှာ အောက်ပါအတိုင်း `User.php` ဆိုတဲ့ model တစ်ခုကို တည်ဆောက်လိုက်ပါ။
+First, let's define a model. An Eloquent model can be used to query an associated database table, as well as represent a given row within that table. Don't worry, it will all make sense soon! Models are typically stored in the `app/models` directory. Let's define a `User.php` model in that directory like so:
 
 	class User extends Eloquent {}
 
-သတိပြုရမည်မှာ ကျွန်တော်တို ့အနေဖြင့် Eloquent ကို မည်သည့် table အသုံးပြုရန် မညွန်းဆိုရသေးချေ။ Eloquent တွင် အသုံးပြုနည်း များစွာ ရှိသည့် အနက်တစ်ခုမှာ Model အမည်၏ အများကိန်းမှာ database table အဖြစ် အလိုအလျောက် သိရှိနေမည် ဖြစ်သည်။ အဆင်ပြေလေစွ!
+Note that we do not have to tell Eloquent which table to use. Eloquent has a variety of conventions, one of which is to use the plural form of the model name as the model's database table. Convenient!
 
-သင့်အနေဖြင့် ကြိုက်သည့် database administration tool ကို အသုံးပြုပြီး `users` table တွင် row အနည်းငယ် data သွင်းလိုက်ပါ။  ထိုနောက် Eloquent ကို အသုံးပြု၍  data များကို ထုတ်ယူပြီး view သို ့လွဲပြောင်းပေးလိုက်မည်။
+Using your preferred database administration tool, insert a few rows into your `users` table, and we'll use Eloquent to retrieve them and pass them to our view.
 
-ယခု `/users` route ကို အောက်ပါပုံစံပြောင်းလဲလိုက်ပါ။
+Now let's modify our `/users` route to look like this:
 
 	Route::get('users', function()
 	{
@@ -156,14 +172,14 @@ Eloquent ORM သည် Laravel ၏ အလှတရား တစ်ရပ်ပ�
 		return View::make('users')->with('users', $users);
 	});
 
-အထက်ပါ route ကိုကြည့်ပါ။ ရှေးဦးစွာ `User` model မှ `all` method မှာ `users` table မှ rows အားလုံးကို ထုတ်ပေးမည် ဖြစ်သည်။ ထိုနောက် ထို record များကို `with` method အသုံးပြု၍ view သို ့ passing ပေးလိုက်ခြင်း ဖြစ်သည်။ ထို `with` method  သည် key နှင့် value အနေဖြင့် data များကို လက်ခံမည် ဖြစ်သည်။ ထိုအခါ view သို ့ data များရောက်သွားမည် ဖြစ်သည်။
+Let's walk through this route. First, the `all` method on the `User` model will retrieve all of the rows in the `users` table. Next, we're passing these records to the view via the `with` method. The `with` method accepts a key and a value, and is used to make a piece of data available to a view.
 
-ကောင်းလေးစွ။ ယခု ကျွန်တော်တို ့ user ကို data များ ပြသနိုင်ရန် အဆင်သင့်ဖြစ်ချေပြီ။
+Awesome. Now we're ready to display the users in our view!
 
 <a name="displaying-data"></a>
-## Data များ ပြသခြင်း
+## Displaying Data
 
-ယခုအခါ `users` ကို view တွင် မြင်သာစေရန် ပြုလုပ်ပြီးပြီဖြစ်သည်။ ကျွန်တော်တို ့ အောက်ပါ အတိုင်း ပြသနိုင်လေပြီ။
+Now that we have made the `users` available to our view, we can display them like so:
 
 	@extends('layout')
 
@@ -173,6 +189,13 @@ Eloquent ORM သည် Laravel ၏ အလှတရား တစ်ရပ်ပ�
 		@endforeach
 	@stop
 
-သင့်အနေဖြင့် `echo` statements ကိုရှာနေလား မသိ။ Blade ကို အသုံးပြုရာတွင် data များကို တွန် ့ကွင်း နှစ်ခု အကြား ထည့်သွင်းခြင်းဖြင့် data များကို echo အစား ပြသပေးနိုင်သည်။ ဘယ်လောက်များ လွယ်ကူပေသလဲ။ ယခုအခါ သင့်အနေဖြင့် `/users` route ကို လှမ်းခေါ်လိုက်ခြင်းဖြင့် သင့် users များကို ပြသနိုင်လေပြီ။
+You may be wondering where to find our `echo` statements. When using Blade, you may echo data by surrounding it with double curly braces. It's a cinch. Now, you should be able to hit the `/users` route and see the names of your users displayed in the response.
 
-အထက်ပါ ဥပမာဟာ အစသာရှိပါသေးသည်။ ထို tutorial တွင် သင့်အနေဖြင့် laravel ၏ အခြေခံကို တွေ ့မြင်နိုင်မည် ဖြစ်သည်။ သို ့သော်လည်း ပိုမို၍ စိတ်လှုပ်ရှားစရာ အချက်များစွာ စီတန်း၍ လေ့လာရန် ကျန်ရှိနေပါသေးသည်။ documentation ကို ဖတ်ရှုခြင်းဖြင့်  စွမ်းအားကြီးမားလှသည့်  [Eloquent](eloquent) နှင့် [Blade](/docs/templates) ကဲ့သို ့သော သို ့မဟုတ် သင့်ပိုစိတ်ဝင်စားနိုင်သည့်  [Queues](/docs/queues) နှင့် [Unit Testing](/docs/testing) ကဲ့သို ့သော အကြောင်းအရာများကို လေ့လာနိုင်သည်။ ထပ်၍ သင့် application ၏ architecture ကို သက်တောင့်သက်သာ ဖြစ်စေမည့်  [IoC Container](/docs/ioc.md) များလည်း ပါဝင်ပါသေးသည်။ ရွေးချယ်ပါလော့။
+This is just the beginning. In this tutorial, you've seen the very basics of Laravel, but there are so many more exciting things to learn. Keep reading through the documentation and dig deeper into the powerful features available to you in [Eloquent](/docs/eloquent) and [Blade](/docs/templates). Or, maybe you're more interested in [Queues](/docs/queues) and [Unit Testing](/docs/testing). Then again, maybe you want to flex your architecture muscles with the [IoC Container](/docs/ioc). The choice is yours!
+
+<a name="deploying-your-application"></a>
+## Deploying Your Application
+
+One of Laravel's goals is to make PHP application development enjoyable from download to deploy, and [Laravel Forge](https://forge.laravel.com) provides a simple way to deploy your Laravel applications onto blazing fast servers. Forge can configure and provision servers on DigitalOcean, Linode, Rackspace, and Amazon EC2. Like Homestead, all of the latest goodes are included: Nginx, PHP 5.5, MySQL, Postgres, Redis, Memcached, and more. Forge "Quick Deploy" can even deploy your code for you each time you push changes out to Github or Bitbucket!
+
+On top of that, Forge can help you configure queue workers, SSL, Cron jobs, sub-domains, and more. For more information, visit the [Forge website](https://forge.laravel.com).

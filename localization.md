@@ -1,32 +1,32 @@
-﻿# Localization
+# Localization
 
-- [မိတ်ဆက်](#introduction)
+- [Introduction](#introduction)
 - [Language Files](#language-files)
-- [အခြေခံအသုံးပြုခြင်း](#basic-usage)
-- [အများကိန်းပြုခြင်း](#pluralization)
+- [Basic Usage](#basic-usage)
+- [Pluralization](#pluralization)
 - [Validation Localization](#validation)
 - [Overriding Package Language Files](#overriding-package-language-files)
 
 <a name="introduction"></a>
-## မိတ်ဆက်
+## Introduction
 
-Laravel မှာပါတဲ့ `Lang` class ဟာ languages ဖိုင်တွေထဲမှာသတ်မှတ်ထားတဲ့ စကားစုတွေကို လွယ်ကူ အဆင်ပြေသော နည်းလမ်းတွေနဲ့ လက်ခံဆောင်ရွက်ပေးနိုင်ပါတယ်။ သင့် application အတွက် ဘာသာစကားမျိုးစုံကို လွယ်ကူစွာ အသုံးပြုနိုင်အောင်အထောက်အပံ့ပေးထားပါတယ်။ 
+The Laravel `Lang` class provides a convenient way of retrieving strings in various languages, allowing you to easily support multiple languages within your application.
 
 <a name="language-files"></a>
 ## Language Files
 
-`app/lang` လမ်းကြောင်းအောက်မှာ ဘာသာစကား စကားစုတွေကို သိမ်းဆည်းပါတယ်။ အဲ့ဒီလမ်းကြောင်းအောက်မှာတော့ သတ်မှတ်ချင်တဲ့ ဘာသာစကားတစ်ခုချင်းစီအတွက် ဖိုဒါတစ်ခုချင်းစီ ဆောက်ပြီးအသုံးပြုရမှာပါ။
+Language strings are stored in files within the `app/lang` directory. Within this directory there should be a subdirectory for each language supported by the application.
 
 	/app
 		/lang
 			/en
 				messages.php
-			/mm
+			/es
 				messages.php
 
 #### Example Language File
 
-ဘာသာစကားသတ်မှတ်ထားတဲ့ ဖိုင်ဆီကနေ keyed strings တွေပါတဲ့ array return ပြန်လာပါတယ်။ ဥပမာ -
+Language files simply return an array of keyed strings. For example:
 
 	<?php
 
@@ -36,38 +36,38 @@ Laravel မှာပါတဲ့ `Lang` class ဟာ languages ဖိုင်�
 
 #### Changing The Default Language At Runtime
 
-Application ရဲ့ ပုံမှန် ဘာသာစကားကိုတော့ `app/config/app.php` configuration ဖိုင်ထဲမှာ သတ်မှတ်ထားပါတယ်။ ဘာသာစကားများ တစ်ခုနဲ့တစ်ခု ပြောင်းလဲ အသုံးပြုချင်ရင်တော့ `App::setLocale` method ကိုအသုံးပြုနိုင်ပါတယ်။ 
+The default language for your application is stored in the `app/config/app.php` configuration file. You may change the active language at any time using the `App::setLocale` method:
 
-	App::setLocale('mm');
+	App::setLocale('es');
 
 #### Setting The Fallback Language
 
-"fallback language" အတွက်လည်း ပြင်ဆင်ထားနိုင်ပါတယ်။ "fallback language" ဆိုတာကတော့ လက်ရှိ သတ်မှတ်ထားတဲ့ ဘာသာစကား (language) ဖိုင်မှာ လိုအပ်နေတဲ့ စကားစု (language line) မပါလာတဲ့ အခြေအနေမျိုးမှာ အသုံးပြုဖို့အတွက်ဖြစ်ပါတယ်။ ပုံမှန်သတ်မှတ်နေကျအတိုင်းပဲ "fallback language" ကို `app/config/app.php` configuration ဖိုင်ထဲမှာသတ်မှတ်နိုင်ပါတယ်။ 
+You may also configure a "fallback language", which will be used when the active language does not contain a given language line. Like the default language, the fallback language is also configured in the `app/config/app.php` configuration file:
 
 	'fallback_locale' => 'en',
 
 <a name="basic-usage"></a>
-## အခြေခံအသုံးပြုနည်း
+## Basic Usage
 
-#### ဘာသာစကားသတ်မှတ်ထားသော ဖိုင်မှ စကားစုများ ရယူခြင်း
+#### Retrieving Lines From A Language File
 
 	echo Lang::get('messages.welcome');
 
-`get`method ထဲကို passed လုပ်ထားတဲ့ string နှစ်ခုထဲမှ ပထမတစ်ခုကတော့ ဘာသာစကား (language) သတ်မှတ်ထားတဲ့ ဖိုင်ရဲ့ အမည်ဖြစ်ပြီး၊ ဒုတိယ တစ်ခုကတော့ array ထဲမှာသတ်မှတ်ထား စကားစုတွေရဲ့ key ဖြစ်ပါတယ်။ 
+The first segment of the string passed to the `get` method is the name of the language file, and the second is the name of the line that should be retrieved.
 
-> **သတိပြုရန်**: အကယ်၍ `get` နဲ့ ယူထားတဲ့ key အတွက် စကားစုဟာ ရှိမနေဘူးဆိုရင်တော့ key တစ်ခုပဲ return ပြန်လာပါလိမ့်မယ်။
+> **Note**: If a language line does not exist, the key will be returned by the `get` method.
 
-`trans` ဆိုတဲ့ helper function ကိုလည်း အသုံးပြုနိုင်ပါတယ်။ အဲ့ဒီ function ကတော့ `Lang::get` ဆိုတဲ့ method ကိုပဲ နာမည်ပြောင်းပြီးထပ်လုပ်ထားတာပါ။ 
+You may also use the `trans` helper function, which is an alias for the `Lang::get` method.
 
 	echo trans('messages.welcome');
 
-#### စကားစုများ အစားထိုး ပြုလုပ်ခြင်း
+#### Making Replacements In Lines
 
-စကားစုတွေမှာ အစားထိုးဖို့ စကားလုံးတွေအတွက် place-holders လဲသတ်မှတ်နိုင်ပါသေးတယ်။
+You may also define place-holders in your language lines:
 
 	'welcome' => 'Welcome, :name',
 
-ပြီးရင်တော့ `Lang::get` method ရဲ့ ဒုတိယ argument မှာ အစားထိုးချင်တဲ့ စကားလုံးကို passing ပေးလိုက်ပါ။ 
+Then, pass a second argument of replacements to the `Lang::get` method:
 
 	echo Lang::get('messages.welcome', array('name' => 'Dayle'));
 
@@ -79,21 +79,21 @@ Application ရဲ့ ပုံမှန် ဘာသာစကားကိုတ
 	}
 
 <a name="pluralization"></a>
-## အများကိန်းပြုလုပ်ခြင်း
+## Pluralization
 
-အများကိန်းပြုလုပ်ခြင်းကိစ္စ ဟာ နည်းနည်းတော့ ရှုပ်ထွေးပါတယ်။ မတူညီတဲ့ languages တွေအတွက် မတူညီတဲ့ အများကိန်းပြုလုပ်နည်းတွေ ရှိပါတယ်။ Laravel မှာတော့ အများကိန်းပြုလုပ်ဖို့အတွက် "pipe" character ကို အနည်းကိန်းအတွက် ပြုလုပ်ထားတဲ့ စကားစုနဲ့ အများကိန်းအတွက်သတ်မှတ်မဲ့ စကားစုကြားမှာ ခံပြီးအသုံးပြုနိုင်ပါတယ်။ အများကိန်းပြုလုပ်တာကိုနားလည်ဖို့အတွက် အောက်ပါ ဥပမာကိုကြည့်ပါ။ 
+Pluralization is a complex problem, as different languages have a variety of complex rules for pluralization. You may easily manage this in your language files. By using a "pipe" character, you may separate the singular and plural forms of a string:
 
 	'apples' => 'There is one apple|There are many apples',
 
-စကားစုတွေကို ယူသုံးဖို့အတွက်တော့ `Lang::choice` mehtod ကိုအသုံးပြုနိုင်ပါတယ်။
+You may then use the `Lang::choice` method to retrieve the line:
 
 	echo Lang::choice('messages.apples', 10);
 
-Local အတွက်သတ်မှတ်ထားတဲ့ စကားလုံးကိုလဲ သတ်မှတ်ပေးလိုက်နိုင်ပါတယ်။ ဥပမာ - Russian (ru) language ကိုအသုံးပြုချင်တယ်ဆိုရင် -
+You may also supply a locale argument to specify the language. For example, if you want to use the Russian (ru) language:
 
 	echo Lang::choice('товар|товара|товаров', $count, array(), 'ru');
 
-Laravel translator ဟာ Symfony Translation component ကိုအသုံးပြုထားတဲ့အတွက်ကြောင့် သင့်အနေနဲ့ ပိုပြီး ရှင်းလင်းတိကျတဲ့ အများကိန်းပြုနည်း သတ်မှတ်ချက်ကို ပြုလုပ်နိုင်ပါတယ်။ 
+Since the Laravel translator is powered by the Symfony Translation component, you may also create more explicit pluralization rules easily:
 
 	'apples' => '{0} There are none|[1,19] There are some|[20,Inf] There are many',
 
@@ -101,9 +101,9 @@ Laravel translator ဟာ Symfony Translation component ကိုအသုံး
 <a name="validation"></a>
 ## Validation
 
-Localization အတွက် အသုံးပြုနိုင်တဲ့ validation errors နဲ့ messages တွေကိုတော့ အသုံးပြုနည်း လမ်းညွှန်ရဲ့<a href="/docs/validation#localization">Validation</a> မှာ ကြည့်နိုင်ပါတယ်။
+For localization for validation errors and messages, take a look at the <a href="/docs/validation#localization">documentation on Validation</a>.
 
 <a name="overriding-package-language-files"></a>
 ## Overriding Package Language Files
 
-Laravel နဲ့အတူ တွဲစပ်အသုံးပြုနိုင်တဲ့ packages တွေမှာ သူတို့ရဲ့ ကိုယ်ပိုင် ဘာသာစကားဖိုင်တွေတစ်ပါတည်းပါလာပါတယ်။ အဲ့ဒီဖိုင်တွေကို change ဖို့ packages တွေရဲ့ မူရင်းဖိုင်တွေကို သွားပြင်နေမဲ့အစား `app/lang/packages/{locale}/{package}` လမ်းကြောင်းအောက်ကနေတစ်ဆင့် override ပြုလုပ်နိုင်ပါတယ်။ ဥပမာ `skyrim/hearthfire` လို့ အမည်တွင်တဲ့ package အတွက် `messages.php` ဖိုင်ထဲမှာရှိတဲ့ English Language ကို override လုပ်ချင်တယ်ဆိုရင် `app/lang/packages/en/hearthfire/messages.php` ဖိုင်ကနေတစ်ဆင့် ပြုလုပ်နိုင်ပါတယ်။ Override လုပ်ဖို့လိုအပ်တဲ့ စကားစုတွေကိုပဲ အဲ့ဒီဖိုင်ထဲမှာသတ်မှတ်ထားဖို့လိုအပ်ပါတယ်။ ကျန်တဲ့စကားစုအားလုံးကိုတော့ package ရဲ့ language ဖိုင်ထဲက နေပဲ အလုပ်လုပ်သွားမှာဖြစ်ပါတယ်။ 
+Many packages ship with their own language lines. Instead of hacking the package's core files to tweak these lines, you may override them by placing files in the `app/lang/packages/{locale}/{package}` directory. So, for example, if you need to override the English language lines in `messages.php` for a package named `skyrim/hearthfire`, you would place a language file at: `app/lang/packages/en/hearthfire/messages.php`. In this file you would define only the language lines you wish to override. Any language lines you don't override will still be loaded from the package's language files.

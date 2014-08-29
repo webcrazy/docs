@@ -1,4 +1,4 @@
-﻿# အကူ Function များ
+# Helper Functions
 
 - [Arrays](#arrays)
 - [Paths](#paths)
@@ -11,7 +11,7 @@
 
 ### array_add
 
-`array_add` function သည် အကယ်၍ ပထမ argument array တွင်ထပ်မံပေး လိုက်သော key နှင့် တန်ဖိုး အတွဲ ရှိပြီးသား မဟုတ်ခဲ့ပါက ထို key နှင့် တန်ဖိုးအတွဲအား ထပ်မံပေါင်းထည့်ပေးပါသည်။
+The `array_add` function adds a given key / value pair to the array if the given key doesn't already exist in the array.
 
 	$array = array('foo' => 'bar');
 
@@ -19,7 +19,7 @@
 
 ### array_divide
 
-`array_divide` function သည် မူလ array အား key များပါဝင်သော array နှင့် တန်ဖိုးများ ပါ ဝင်သော array နှစ်ခု ပါဝင်သော array အဖြစ် return ပြန်ပေးပါသည်။
+The `array_divide` function returns two arrays, one containing the keys, and the other containing the values of the original array.
 
 	$array = array('foo' => 'bar');
 
@@ -27,23 +27,23 @@
 
 ### array_dot
 
-`array_dot` function သည် dimension တစ်ခုထက်ပို၍ ပါဝင်သော array တစ်ခုကို "." သင်္ကေတသုံးရေးနည်းဖြင့် အဆင့်ဆင့်ခေါ်ယူနိုင်သော dimension တစ်ခုတည်း ရှိ array တစ်ခု အဖြစ်ပြောင်းလဲပေးပါသည်။
+The `array_dot` function flattens a multi-dimensional array into a single level array that uses "dot" notation to indicate depth.
 
 	$array = array('foo' => array('bar' => 'baz'));
-္ခ
+
 	$array = array_dot($array);
 
 	// array('foo.bar' => 'baz');
 
 ### array_except
 
-`array_except` method သည် ပေးလိုက်သော key နှင့် တန်ဖိုး အတွဲကို ပထမ argument array ထံမှ ဖယ်ရှားပေးပါသည်။
+The `array_except` method removes the given key / value pairs from the array.
 
 	$array = array_except($array, array('keys', 'to', 'remove'));
 
 ### array_fetch
 
-`array_fetch` method သည် ပထမ argument array အတွင်းတွင် အဆင့်ဆင့် ညှပ်သုံးထားသော ပေးထားသည့် ဒုတိယ argument နှင့် ကိုက်ညီသည့် nested array element များအား တစ်ဆင့်တည်း flattened လုပ်ထားသော array အဖြစ်ဖြင့် return ပြန်ပေးပါသည်။ 
+The `array_fetch` method returns a flattened array containing the selected nested element.
 
 	$array = array(
 		array('developer' => array('name' => 'Taylor')),
@@ -56,7 +56,7 @@
 
 ### array_first
 
-`array_first` method သည် ပေးထားသော array အတွင်း မှ ပေးထားသော truth test ကို ပြေလည် စေ မည့်  ပထမဆုံး element အား return ပြန်ပေးပါသည်။
+The `array_first` method returns the first element of an array passing a given truth test.
 
 	$array = array(100, 200, 300);
 
@@ -65,13 +65,13 @@
 		return $value >= 150;
 	});
 
-default တန်ဖိုးတစ်ခုကို လည်း တတိယ parameter အဖြစ် ထည့်သွင်းပေးနိုင်ပါသည်။
+A default value may also be passed as the third parameter:
 
 	$value = array_first($array, $callback, $default);
 
 ### array_last
 
-`array_last` method သည် ပေးထားသော array အတွင်းမှ ပေးထားသော truth test ကို ပြေလည်စေမည့် နောက်ဆုံး element အား return ပြန်ပေးပါသည်။
+The `array_last` method returns the last element of an array passing a given truth test.
 
 	$array = array(350, 400, 500, 300, 200, 100);
 
@@ -82,13 +82,13 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 	// 500
 
-default တန်ဖိုးတစ်ခုကို လည်း တတိယ parameter အဖြစ် ထည့်သွင်းပေးနိုင်ပါသည်။
+A default value may also be passed as the third parameter:
 
 	$value = array_last($array, $callback, $default);
 
 ### array_flatten
 
-`array_flatten` method သည် ပေးထားသော dimension တစ်ခုထက်ပိုသည့် array တစ်ခုကို တစ်ဆင့်တည်း ရှိသော array တစ်ခု အဖြစ် return ပြန်ပေးပါသည်။
+The `array_flatten` method will flatten a multi-dimensional array into a single level.
 
 	$array = array('name' => 'Joe', 'languages' => array('PHP', 'Ruby'));
 
@@ -98,7 +98,7 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### array_forget
 
-`array_forget` method သည် အဆင့်ဆင့်နက်နဲစွာ ညှပ်ထားသော deeply nested array တစ်ခုမှ  "." သင်္ကေတသုံးရေးနည်းကို အသုံးပြု၍ ရေးထားသော ပေးရင်း key နှင့် တန်ဖိုး အတွဲကို ဖယ်ရှားပေးပါသည်။
+The `array_forget` method will remove a given key / value pair from a deeply nested array using "dot" notation.
 
 	$array = array('names' => array('joe' => array('programmer')));
 
@@ -106,17 +106,17 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### array_get
 
-`array_get` method သည် အဆင့်ဆင့်နက်နဲစွာ ညှပ်ထားသော deeply nested array တစ်ခုမှ  "." သင်္ကေတသုံးရေးနည်းကို အသုံးပြု၍ ရေးထားသော ပေးရင်း key နှင့် တန်ဖိုး အတွဲကို ထုတ်ယူပေးပါသည်။
+The `array_get` method will retrieve a given value from a deeply nested array using "dot" notation.
 
 	$array = array('names' => array('joe' => array('programmer')));
 
 	$value = array_get($array, 'names.joe');
 
->**မှတ်ချက်** အကယ်၍ `array_get` ၏ အလုပ်လုပ်ပုံမျ  ိုး ကို object များတွင် သုံးလိုပါက `object_get` အားသုံးနိုင်ပါသည်။
+> **Note:** Want something like `array_get` but for objects instead? Use `object_get`.
 
 ### array_only
 
-`array_only` method သည် ပထမ argument array အတွင်းမှ ပေးထားသော key သို့မဟုတ် တန်ဖိုးများ ပါဝင်သည့် အတွဲများကိုသာ return ပြန်ပေးပါသည်။
+The `array_only` method will return only the specified key / value pairs from the array.
 
 	$array = array('name' => 'Joe', 'age' => 27, 'votes' => 1);
 
@@ -124,7 +124,7 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### array_pluck
 
-`array_pluck` method သည် ပထမ argument array ထံမှ ပေးထားသော key သို့ မဟုတ် တန်ဖိုး ပါဝင်သည့် အတွဲကိုသာ return ပြန်ပေးပါသည်။
+The `array_pluck` method will pluck a list of the given key / value pairs from the array.
 
 	$array = array(array('name' => 'Taylor'), array('name' => 'Dayle'));
 
@@ -134,7 +134,7 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### array_pull
 
-`array_pull` method သည် ပထမ argument array ထံမှ ပေးထားသော key သို့ မဟုတ် တန်ဖိုးပါဝင်သည့် အတွဲ ကို return ပြန်ပြီး ထို အတွဲအား မူလ array ထံမှလည်း ဖယ်ရှားပေးပါသည်။
+The `array_pull` method will return a given key / value pair from the array, as well as remove it.
 
 	$array = array('name' => 'Taylor', 'age' => 27);
 
@@ -142,7 +142,7 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### array_set
 
-`array_set` method သည် အဆင့်ဆင့်နက်နဲစွာ ညှပ်ထားသော array တစ်ခုအတွင်းမှ  "." သင်္ကေတသုံးရေးနည်းကို အသုံးပြု၍ ရေးထားသော ဒုတိယ argument နှင့်ကိုက်ညီသည့် တန်ဖိုးအား ပြု ပြင်ထည့်သွင်းပေးပါသည်။
+The `array_set` method will set a value within a deeply nested array using "dot" notation.
 
 	$array = array('names' => array('programmer' => 'Joe'));
 
@@ -150,7 +150,7 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### array_sort
 
-`array_sort` method သည် ပေးထားသော array အား ပေးထားသော Closure function ၏ ရလဒ်ကို အသုံးပြု ၍ စီပေးပါသည်။
+The `array_sort` method sorts the array by the results of the given Closure.
 
 	$array = array(
 		array('name' => 'Jill'),
@@ -164,7 +164,7 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### array_where
 
-`array_where` သည် ပေးထားသော array အား ပေးထားသော Closure function တစ်ခုဖြင့် filter လုပ်ပေးပါသည်။
+Filter the array using the given Closure.
 
 	$array = array(100, '200', 300, '400', 500);
 
@@ -177,13 +177,13 @@ default တန်ဖိုးတစ်ခုကို လည်း တတိယ 
 
 ### head
 
-array တစ်ခု၏ ပထမဆုံး element ကို return ပြန်ပေးပါသည်။ PHP 5.3.x တွင် အသုံးပြုနိုင်သော method chaining အတွက် အသုံးဝင်ပါသည်။
+Return the first element in the array. Useful for method chaining in PHP 5.3.x.
 
 	$first = head($this->returnsArray('foo'));
 
 ### last
 
-array တစ်ခု၏ နောက်ဆုံး element ကို return ပြန်ပေးပါသည်။ method chaining အတွက် အသုံးဝင်ပါသည်။
+Return the last element in the array. Useful for method chaining.
 
 	$last = last($this->returnsArray('foo'));
 
@@ -192,28 +192,28 @@ array တစ်ခု၏ နောက်ဆုံး element ကို return �
 
 ### app_path
 
-`app` directory၏ path အပြည့်အစုံကို ပေးပါသည်။
+Get the fully qualified path to the `app` directory.
 
 	$path = app_path();
 
 ### base_path
 
-application ကို install လုပ်ထားသော root directory ၏ path အပြည့်အစုံကို ပေးပါသည်။
+Get the fully qualified path to the root of the application install.
 
 ### public_path
 
-`public` directory ၏ path အပြည့်အစုံကို ပေးပါသည်။
+Get the fully qualified path to the `public` directory.
 
 ### storage_path
 
-`app/storage` directory ၏ path အပြည့်အစုံကို ပေးပါသည်။
+Get the fully qualified path to the `app/storage` directory.
 
 <a name="strings"></a>
 ## Strings
 
 ### camel_case
 
-ပေးထားသော string အား `camelCase` ရေးဟန်သို့ ပြောင်းလဲပေးပါသည်။
+Convert the given string to `camelCase`.
 
 	$camel = camel_case('foo_bar');
 
@@ -221,7 +221,7 @@ application ကို install လုပ်ထားသော root directory ၏ 
 
 ### class_basename
 
-ပေးထားသော class ၏  အမည်ကို namespace အမည်များ မပါဝင်ပဲ ပေးပါသည်။
+Get the class name of the given class, without any namespace names.
 
 	$class = class_basename('Foo\Bar\Baz');
 
@@ -229,19 +229,19 @@ application ကို install လုပ်ထားသော root directory ၏ 
 
 ### e
 
-`htmlentities` function အား ပေးထားသော string ဖြင့် run ပါသည်။ UTF-8 support ပါဝင်ပါသည်။
+Run `htmlentities` over the given string, with UTF-8 support.
 
 	$entities = e('<html>foo</html>');
 
 ### ends_with
 
-ပထမ argument တွင် ပေးထားသော string တစ်ခုသည် ပေးထားသော string နှင့် အဆုံးသတ်ခြင်းရှိမရှိ ဆုံးဖြတ်ပေးပါသည်။
+Determine if the given haystack ends with a given needle.
 
 	$value = ends_with('This is my name', 'name');
 
 ### snake_case
 
-ပေးထားသော string အား `snake_case` ရေးဟန် သို့ ပြောင်းလဲပေးပါသည်။
+Convert the given string to `snake_case`.
 
 	$snake = snake_case('fooBar');
 
@@ -249,11 +249,11 @@ application ကို install လုပ်ထားသော root directory ၏ 
 
 ### str_limit
 
-string တစ်ခု အတွင်းရှိ အက္ခရာအရေအတွက်ကို ကန့်သတ်ပေးပါသည်။
+Limit the number of characters in a string.
 
 	str_limit($value, $limit = 100, $end = '...')
 
-ဥပမာ
+Example:
 
 	$value = str_limit('The PHP framework for web artisans.', 7);
 
@@ -261,19 +261,19 @@ string တစ်ခု အတွင်းရှိ အက္ခရာအရေ�
 
 ### starts_with
 
-ပထမ argument တွင် ပေးထားသော string တစ်ခုသည် ပေးထားသော string နှင့် စတင်ခြင်းရှိမရှိ ဆုံးဖြတ်ပေးပါသည်။
+Determine if the given haystack begins with the given needle.
 
 	$value = starts_with('This is my name', 'This');
 
 ### str_contains
 
-ပထမ argument တွင် ပေးထားသော string တွင် ပေးထားသော string ပါဝင်ခြင်းရှိမရှိ ဆုံးဖြတ်ပေးပါသည်။
+Determine if the given haystack contains the given needle.
 
 	$value = str_contains('This is my name', 'my');
 
 ### str_finish
 
-ပထမ argument တွင်ပေးထားသော string ၏ အဆုံးတွင် ပေးထားသော string အားပေါင်းထည့်ပေးပါသည်။
+Add a single instance of the given needle to the haystack. Remove any extra instances.
 
 	$string = str_finish('this/string', '/');
 
@@ -281,31 +281,31 @@ string တစ်ခု အတွင်းရှိ အက္ခရာအရေ�
 
 ### str_is
 
-ပေးထားသော pattern တစ်ခုသည် ပေးထားသော string နှင့် ကိုက်ညီ မကိုက်ညီ ဆုံးဖြတ်ပေးပါသည်။ ခရေပွင့်အက္ခရာ "*" များအား wildcard အက္ခရာအဖြစ်သုံးနိုင်ပါသည်။
+Determine if a given string matches a given pattern. Asterisks may be used to indicate wildcards.
 
 	$value = str_is('foo*', 'foobar');
 
 ### str_plural
 
-ပေးထားသော string တစ်ခုအား English ဘာသာ ဖြင့် အများကိန်း (plural) ပုံစံသို့ ပြောင်းလဲပေးပါသည်။
+Convert a string to its plural form (English only).
 
 	$plural = str_plural('car');
 
 ### str_random
 
-ပေးထားသော အရေအတွက်အတိုင်း အတိအကျ ရှိသည့် ကျပန်း string တစ်ခုကို ထုတ်ပေးပါသည်။
+Generate a random string of the given length.
 
 	$string = str_random(40);
 
 ### str_singular
 
-ပေးထားသော string တစ်ခုအား English ဘာသာ ဖြင့် အနည်းကိန်း (singular) ပုံစံသို့ ပြောင်းလဲပေးပါသည်။
+Convert a string to its singular form (English only).
 
 	$singular = str_singular('cars');
 
 ### studly_case
 
-ပေးထားသော string အား `StudlyCase` ရေးဟန်သို့ ပြောင်းလဲပေးပါသည်။
+Convert the given string to `StudlyCase`.
 
 	$value = studly_case('foo_bar');
 
@@ -313,13 +313,13 @@ string တစ်ခု အတွင်းရှိ အက္ခရာအရေ�
 
 ### trans
 
-ပေးထားသော string တစ်ကြောင်းအား ဘာသာပြန်ပေးပါသည်။ `Lang::get` method ၏ အမည်ပြောင်း method တစ်ခုဖြစ်ပါသည်။
+Translate a given language line. Alias of `Lang::get`.
 
 	$value = trans('validation.required'):
 
 ### trans_choice
 
-ပေးထားသော string တစ်ကြောင်းအား ပေးထားသော နံပါတ် အလိုက် ဘာသာပြန် message ကို အသုံးပြု၍ ဘာသာပြန်ပေးပါသည်။ `Lang::choice` method ၏ အမည်ပြောင်း method တစ်ခုဖြစ်ပါသည်။
+Translate a given language line with inflection. Alias of `Lang::choice`.
 
 	$value = trans_choice('foo.bar', $count);
 
@@ -328,61 +328,61 @@ string တစ်ခု အတွင်းရှိ အက္ခရာအရေ�
 
 ### action
 
-ပေးထားသော controller action တစ်စုံအတွက် URL တစ်ခု ထုတ်ပေးပါသည်။
+Generate a URL for a given controller action.
 
 	$url = action('HomeController@getIndex', $params);
 
 ### route
 
-ပေးထားသော အမည်ရှိ လမ်းကြောင်း တစ်ခုအတွက် URL တစ်ခု ထုတ်ပေးပါသည်။
+Generate a URL for a given named route.
 
 	$url = route('routeName', $params);
 
 ### asset
 
-ပေးထားသော asset အတွက် URL တစ်ခု ထုတ်ပေးပါသည်။
+Generate a URL for an asset.
 
 	$url = asset('img/photo.jpg');
 
 ### link_to
 
-ပေးထားသော URL အတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
+Generate a HTML link to the given URL.
 
 	echo link_to('foo/bar', $title, $attributes = array(), $secure = null);
 
 ### link_to_asset
 
-ပေးထားသော asset အတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
+Generate a HTML link to the given asset.
 
 	echo link_to_asset('foo/bar.zip', $title, $attributes = array(), $secure = null);
 
 ### link_to_route
 
-ပေးထားသော လမ်းကြောင်း တစ်ခု အတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
+Generate a HTML link to the given route.
 
 	echo link_to_route('route.name', $title, $parameters = array(), $attributes = array());
 
 ### link_to_action
 
-ပေးထားသော controller action တစ်စုံအတွက် HTML link တစ်ခု ထုတ်ပေးပါသည်။
+Generate a HTML link to the given controller action.
 
 	echo link_to_action('HomeController@getIndex', $title, $parameters = array(), $attributes = array());
 
 ### secure_asset
 
-ပေးထားသော asset အတွက် HTTPS သုံးထားသော HTML link တစ်ခု ထုတ်ပေးပါသည်။
+Generate a HTML link to the given asset using HTTPS.
 
 	echo secure_asset('foo/bar.zip', $title, $attributes = array());
 
 ### secure_url
 
-ပေးထားသော path တစ်ခု အတွက် URL အပြည့်အစုံ တစ်ခု ထုတ်ပေးပါသည်။
+Generate a fully qualified URL to a given path using HTTPS.
 
 	echo secure_url('foo/bar', $parameters = array());
 
 ### url
 
-ပေးထားသော path တစ်ခု အတွက် URL အပြည့်အစုံ ထုတ်ပေးပါသည်။
+Generate a fully qualified URL to the given path.
 
 	echo url('foo/bar', $parameters = array(), $secure = null);
 
@@ -391,24 +391,24 @@ string တစ်ခု အတွင်းရှိ အက္ခရာအရေ�
 
 ### csrf_token
 
-လက်ရှိ CSRF token တန်ဖိုးကို ပေးပါသည်။
+Get the value of the current CSRF token.
 
 	$token = csrf_token();
 
 ### dd
 
-ပေးထားသော variable ကို dump လုပ်၍ script execution ကို ရပ်စေပါသည်။
+Dump the given variable and end execution of the script.
 
 	dd($value);
 
 ### value
 
-ပေးထားသော တန်ဖိုးသည် `Closure` တစ်ခု ဖြစ်ပါက `Closure` မှတစ်ဆင့် return ပြန်လာသော value ကို return ပြန်ပေး၍ `Closure` မဟုတ်ပါက တန်ဖိုးအတိုင်း return ပြန်ပေးပါသည်။
+If the given value is a `Closure`, return the value returned by the `Closure`. Otherwise, return the value.
 
 	$value = value(function() { return 'bar'; });
 
 ### with
 
-ပေးထားသော object ကို return ပြန်ပေးပါသည်။ PHP 5.3.x တွင် method chaining constructor များ အတွက် အသုံးဝင်ပါသည်။
+Return the given object. Useful for method chaining constructors in PHP 5.3.x.
 
 	$value = with(new Foo)->doWork();

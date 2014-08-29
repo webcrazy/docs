@@ -1,16 +1,17 @@
-﻿# Eloquent ORM
+# Eloquent ORM
 
-- [အကြမ်းဖျင်း](#အကြမ်းဖျင်း)
-- [အခြေခံအသုံးပြုပုံ](#အခြေခံအသုံးပြုပုံ)
+- [Introduction](#introduction)
+- [Basic Usage](#basic-usage)
 - [Mass Assignment](#mass-assignment)
-- [ထည့်သွင်း ၊ ပြင်ဆင် ၊ ဖျက်ပစ်](#insert-update-delete)
+- [Insert, Update, Delete](#insert-update-delete)
 - [Soft Deleting](#soft-deleting)
 - [Timestamps](#timestamps)
 - [Query Scopes](#query-scopes)
+- [Global Scopes](#global-scopes)
 - [Relationships](#relationships)
 - [Querying Relations](#querying-relations)
 - [Eager Loading](#eager-loading)
-- [ဆက်စပ်နေသည့် Model များတွင် data ထည့်သွင်းခြင်း](#inserting-related-models)
+- [Inserting Related Models](#inserting-related-models)
 - [Touching Parent Timestamps](#touching-parent-timestamps)
 - [Working With Pivot Tables](#working-with-pivot-tables)
 - [Collections](#collections)
@@ -18,160 +19,153 @@
 - [Date Mutators](#date-mutators)
 - [Model Events](#model-events)
 - [Model Observers](#model-observers)
-- [Arrays နှင့် JSON သို ့ပြောင်းလဲခြင်း](#converting-to-arrays-or-json)
+- [Converting To Arrays / JSON](#converting-to-arrays-or-json)
 
 <a name="introduction"></a>
-## အကြမ်းဖျင်း
+## Introduction
 
-Laravel တွင်ပါဝင်သည့် ရိုးရှင်းပြီး လှပသပ်ရပ်သော Eloquent ORM သည်  သင့် Database ကို ActiveRecord ဖြင့် အခြေခံထား သဖြင့် အလွယ်တကူပင် အသုံးပြုနိုင်မည် ဖြစ်သည်။ Database မှ Table တစ်ခုတိုင်းကို Model တစ်ခု အနေဖြင့် သတ်မှတ်ကာ အသုံးပြုရမည် ဖြစ်သည်။ 
+The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding "Model" which is used to interact with that table.
 
-အသုံးမပြုခင် ပထမဆုံး အနေဖြင့် `app/config/database.php` သို ့သွားရောက်ကာ ကြိုတင် ပြင်ဆင်ရမည် ဖြစ်သည်။ 
+Before getting started, be sure to configure a database connection in `app/config/database.php`.
 
 <a name="basic-usage"></a>
-## အခြေခံအသုံးပြုပုံ
+## Basic Usage
 
-စတင် အသုံးပြုရန် Eloquent model တစ်ခုကို တည်ဆောက်ရမည် ဖြစ်သည်။ ပုံမှန်အားဖြင့် Models file များမှာ `app/models` အမည်ရှိသည့် Folder ထဲတွင် တည်ရှိမည် ဖြစ်သော်လည်း အလျဉ်းသင့်သလို ပြင်ဆင်နိုင်မည်ဖြစ်သည်။ ထိုသို ့ပြင်ဆင်နိုင်ရန် အတွက် `composer.json` ထဲတွင် မိမိတို ့  autoload လုပ်ချင်သည့် file ၏ အမည်နှင့် တည်နေရာကို ထည့်သွင်းထားရမည် ဖြစ်သည်။ 
+To get started, create an Eloquent model. Models typically live in the `app/models` directory, but you are free to place them anywhere that can be auto-loaded according to your `composer.json` file.
 
+#### Defining An Eloquent Model
 
-#### Eloquent Model တစ်ခု Define ပြုလုပ်ခြင်း
+	class User extends Eloquent {}
 
-class User extends Eloquent {}
+Note that we did not tell Eloquent which table to use for our `User` model. The lower-case, plural name of the class will be used as the table name unless another name is explicitly specified. So, in this case, Eloquent will assume the `User` model stores records in the `users` table. You may specify a custom table by defining a `table` property on your model:
 
-Eloquent Model တွင် မည့်သည့် table ကို အသုံးပြုမည်ကို မကြေညာ ထားပါက Model အမည်၏ အများကိန်း ကို အသုံးပြုမည် ဖြစ်သည်။ ဥပမာ User.php ဟု ကြေညာထားပါက Users table ဟု အလိုအလျောက် သတ်မှတ်မည် ဖြစ်သည်။ သို ့မဟုတ်ပဲ မိမိ စိတ်ကြိုက် အသုံးပြုလိုပါက အောက်ပါ အတိုင်း သတ်မှတ်နိုင်မည် ဖြစ်သည်။ 
+	class User extends Eloquent {
 
-class User extends Eloquent {
+		protected $table = 'my_users';
 
-protected $table = 'my_users';
+	}
 
-}
+> **Note:** Eloquent will also assume that each table has a primary key column named `id`. You may define a `primaryKey` property to override this convention. Likewise, you may define a `connection` property to override the name of the database connection that should be used when utilizing the model.
 
-> **မှတ်ချက်:** Eloquent အနေဖြင့် Primary Key column ဟု `id` ဟု အလိုအလျောက် သတ်မှတ်ဖြစ်သော်လည်း အထက်က ကဲ့သို ့ပင် မိမိစိတ်ကြိုက် column ကို သတ်မှတ်နိုင်သည်။ ထိုကဲ့သို ့ Database Connection ကို `connection` ဟုသည် property ကို အသုံးပြု ထပ်မံ သတ်မှတ်နိုင်မည် ဖြစ်သည်။ 
+Once a model is defined, you are ready to start retrieving and creating records in your table. Note that you will need to place `updated_at` and `created_at` columns on your table by default. If you do not wish to have these columns automatically maintained, set the `$timestamps` property on your model to `false`.
 
-Model ကို သတ်မှတ်ပြီးသည်နှင့် မိမိတို ့ အလိုရှိသည့် record များကို စတင် တည်ဆောက်ခြင်း ၊ ထုတ်ယူခြင်းများ ပြုလုပ်နိုင်ပြီ ဖြစ်သည်။  သတိပြုရမည့် တစ်ချက်မှာ `updated_at` နှင့် `created_at` ဆိုသည့် columns များမှာ သင့် table တွင် အလိုအလျောက် ပါဝင်မည်ဖြစ်သည်။ သင့် အနေဖြင့် အလိုမရှိပါက model အတွင်းရှိ `$timestamps`ဟုသည် property ကို `false` ဟု ပေးထားရန် လိုပေမည်။
+#### Retrieving All Models
 
-#### Model အတွင်းမှ record အားလုံး ထုတ်ယူခြင်း
+	$users = User::all();
 
-$users = User::all();
+#### Retrieving A Record By Primary Key
 
-#### Model အတွင်း record များအား primary key ကို အသုံးပြုကာ ထုတ်ယူခြင်း
+	$user = User::find(1);
 
-$user = User::find(1);
+	var_dump($user->name);
 
-var_dump($user->name);
+> **Note:** All methods available on the [query builder](/docs/queries) are also available when querying Eloquent models.
 
-> **Note:**  [query builder] တွင် အသုံးပြုနိုင်သည့် method များ အားလုံး (queries.md) Eloquent models တွင်လည်း ဆက်လက် အသုံးပြုနိုင်မည် ဖြစ်သည်။ 
+#### Retrieving A Model By Primary Key Or Throw An Exception
 
-#### Model အတွင်း record များအား primary key ကို အသုံးပြုကာ ထုတ်ယူပြီး မရှိပါက Exception ဖြင့် ပြသခြင်း
+Sometimes you may wish to throw an exception if a model is not found, allowing you to catch the exceptions using an `App::error` handler and display a 404 page.
 
-တခါတရံ သင့် အနေဖြင့် Model မှ data များ ရှာမတွေ ့ပါက Exception အနေဖြင့် ပြသချင်မည် ဖြစ်သည်။ ထိုသို ့ ပြုလုပ်နိုင်ရန် `App::error` ဟုသော handler ကို အသုံးပြုပြီး 404 page ကို လွဲပြောင်းပြသနိုင်မည် ဖြစ်သည်။
+	$model = User::findOrFail(1);
 
-$model = User::findOrFail(1);
-
-$model = User::where('votes', '>', 100)->firstOrFail();
+	$model = User::where('votes', '>', 100)->firstOrFail();
 
 To register the error handler, listen for the `ModelNotFoundException`
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+	use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-App::error(function(ModelNotFoundException $e)
-{
-return Response::make('Not Found', 404);
-});
+	App::error(function(ModelNotFoundException $e)
+	{
+		return Response::make('Not Found', 404);
+	});
 
-#### Querying Using Eloquent Models ကို အသုံးပြုကာ Query များရေးသားခြင်း
+#### Querying Using Eloquent Models
 
-$users = User::where('votes', '>', 100)->take(10)->get();
+	$users = User::where('votes', '>', 100)->take(10)->get();
 
-foreach ($users as $user)
-{
-var_dump($user->name);
-}
+	foreach ($users as $user)
+	{
+		var_dump($user->name);
+	}
 
-#### Eloquent ကို ပေါင်းစပ် အသုံးပြုခြင်း 
+#### Eloquent Aggregates
 
+Of course, you may also use the query builder aggregate functions.
 
-သင့်အနေဖြင့်  Query Builder function များဖြင့် Eloquent ကို ပေါင်းစပ် အသုံးပြုနိုင်သည်။
-
-$count = User::where('votes', '>', 100)->count();
-
+	$count = User::where('votes', '>', 100)->count();
 
 If you are unable to generate the query you need via the fluent interface, feel free to use `whereRaw`:
 
-$users = User::whereRaw('age > ? and votes = 100', array(25))->get();
+	$users = User::whereRaw('age > ? and votes = 100', array(25))->get();
 
-#### Results များကို ခွဲထုတ်ခြင်း
+#### Chunking Results
 
-သင့်အနေဖြင့် ထောင်ပေါင်းများစွာသော Eloquent records များကို ထုတ်ယူလိုပါက  `chunk` ဟုသော method ကို အသုံးပြု၍ Memory အသုံးပြုမှုကို လျော့ချနိုင်ပါသည်။ 
+If you need to process a lot (thousands) of Eloquent records, using the `chunk` command will allow you to do without eating all of your RAM:
 
+	User::chunk(200, function($users)
+	{
+		foreach ($users as $user)
+		{
+			//
+		}
+	});
 
-User::chunk(200, function($users)
-{
-foreach ($users as $user)
-{
-//
-}
-});
+The first argument passed to the method is the number of records you wish to receive per "chunk". The Closure passed as the second argument will be called for each chunk that is pulled from the database.
 
-ပထမဆုံး argument   အနေဖြင့် မိမိတို ့ ပိုင်းထုတ်လိုသည့် အရေအတွက်ကို ထည့်သွင်း ပေးရမည် ဖြစ်သည်။ ဒုတိယ argument အနေဖြင့် closure ပါဝင်မည်ဖြစ်ပြီး ထိုထဲတွင် ထွက်ပေါ်လာသော record တိုင်းတွင် ဖြစ်ပေါ်စေလိုသည့်  Instruction များ ရေးသားနိုင်သည်။ 
+#### Specifying The Query Connection
 
-#### Query Connection သတ်မှတ်အသုံးပြုခြင်း
+You may also specify which database connection should be used when running an Eloquent query. Simply use the `on` method:
 
-မိမိတို ့ အသုံးပြုလိုသည် Database connection အပေါ်မူတည်၍ `on` method ကို အသုံးပြုကာ ပြောင်းလဲ အသုံးပြုနိုင်ပါသည်။
-
-$user = User::on('connection-name')->find(1);
+	$user = User::on('connection-name')->find(1);
 
 <a name="mass-assignment"></a>
-## အမြောက်အများ ထည့်သွင်းခြင်း
+## Mass Assignment
 
+When creating a new model, you pass an array of attributes to the model constructor. These attributes are then assigned to the model via mass-assignment. This is convenient; however, can be a **serious** security concern when blindly passing user input into a model. If user input is blindly passed into a model, the user is free to modify **any** and **all** of the model's attributes. For this reason, all Eloquent models protect against mass-assignment by default.
 
-Model အသစ်ကို တည်ဆောက်ပြီးပါက Constructor အနေဖြင့် ပါဝင်မည့် attribute များကို array အနေဖြင့် ထည့်သွင်းနိုင်ပါသည်။  
-ထိုကဲ့သို ့ attribute များ ကို Model များမှ တဆင့် အမြောက်အများ ထည့်သွင်းနိုင်ခြင်းသည် အဆင်ပြေသော်လည်း User Input ကို မစစ်မဆေးပဲ အမြောက်အများထည့်သွင်းပါက လုံခြုံရေး ဆိုင်ရာ **ပြဿနာ** များရှိနိုင်ပါသည်။ ထိုကြောင့် default အနေဖြင့် Eloquent Model များအားလုံးတွင် ထိုသို ့
-ပြုလုပ်ခြင်းကို ဖွင့်မပေးထားပါ။ သို ့သော် ထို ့သို ့ပြုလုပ်ချင်ပါက `fillable` သို ့မဟုတ် `guarded`  အစရှိသည့် attribute များကို သတ်မှတ်ထားရန် လိုပေမည်။
+To get started, set the `fillable` or `guarded` properties on your model.
 
 #### Defining Fillable Attributes On A Model
 
 The `fillable` property specifies which attributes should be mass-assignable. This can be set at the class or instance level.
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-protected $fillable = array('first_name', 'last_name', 'email');
+		protected $fillable = array('first_name', 'last_name', 'email');
 
-}
+	}
 
-အထက်က ဥပမာတွင် array တွင်ထည့်သွင်းထားသည့် attribute များသည် အမြောက်အများ ထည့်သွင်းနိုင်သည်။
+In this example, only the three listed attributes will be mass-assignable.
 
-#### Model တွင် တားမြစ် attribute များအား သတ်မှတ်ခြင်း
+#### Defining Guarded Attributes On A Model
 
+The inverse of `fillable` is `guarded`, and serves as a "black-list" instead of a "white-list":
 
-`fillable` ၏ ပြောင်းပြန်မှာ `guarded` ဖြစ်င်္ပြီး phone တစ်လုံး၏  "black-list" ကဲ့သို ့ အလုပ်လုပ်သည်။
+	class User extends Eloquent {
 
-class User extends Eloquent {
+		protected $guarded = array('id', 'password');
 
-protected $guarded = array('id', 'password');
-
-}
+	}
 
 > **Note:** When using `guarded`, you should still never pass `Input::get()` or any raw array of user controlled input into a `save` or `update` method, as any column that is not guarded may be updated.
 
-#### အမြောက်အများ ထည့်သွင်းခြင်းမှ တားမြစ်ခြင်း
+#### Blocking All Attributes From Mass Assignment
 
-အပေါ်မှ ဥပမာတွင် `id` နှင့် `password` field များမှာ အမြောက်အများ ထည့်သွင်းနိုင်မည် မဟုတ်ပေ။ အခြား attribute များမှာမူ အမြောက်အများ ထည့်သွင်းနိုင်မည် ဖြစ်သည်။ အကယ်၏ field အားလုံးကို တားမြစ်လိုပါက 
+In the example above, the `id` and `password` attributes may **not** be mass assigned. All other attributes will be mass assignable. You may also block **all** attributes from mass assignment using the guard property:
 
-protected $guarded = array('*');
+	protected $guarded = array('*');
 
 <a name="insert-update-delete"></a>
-## ထည့်သွင်း ၊ ပြင်ဆင် ၊ ဖျက်ပစ်
+## Insert, Update, Delete
 
-Model မှ record အသစ်ကို တည်ဆောက်လိုပါက model instance တစ်ခုကို တည်ဆောက်ပြီး  `save` method ကို အသုံးပြုနိုင်သည်။
+To create a new record in the database from a model, simply create a new model instance and call the `save` method.
 
+#### Saving A New Model
 
-#### Model တွင် record များ ထည့်သွင်းခြင်း
+	$user = new User;
 
-$user = new User;
+	$user->name = 'John';
 
-$user->name = 'John';
-
-$user->save();
+	$user->save();
 
 > **Note:** Typically, your Eloquent models will have auto-incrementing keys. However, if you wish to specify your own keys, set the `incrementing` property on your model to `false`.
 
@@ -179,216 +173,275 @@ You may also use the `create` method to save a new model in a single line. The i
 
 After saving or creating a new model that uses auto-incrementing IDs, you may retrieve the ID by accessing the object's `id` attribute:
 
-$insertedId = $user->id;
+	$insertedId = $user->id;
 
 #### Setting The Guarded Attributes On The Model
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-protected $guarded = array('id', 'account_id');
+		protected $guarded = array('id', 'account_id');
 
-}
+	}
 
 #### Using The Model Create Method
 
-// Create a new user in the database...
-$user = User::create(array('name' => 'John'));
+	// Create a new user in the database...
+	$user = User::create(array('name' => 'John'));
 
-// Retrieve the user by the attributes, or create it if it doesn't exist...
-$user = User::firstOrCreate(array('name' => 'John'));
+	// Retrieve the user by the attributes, or create it if it doesn't exist...
+	$user = User::firstOrCreate(array('name' => 'John'));
 
-// Retrieve the user by the attributes, or instantiate a new instance...
-$user = User::firstOrNew(array('name' => 'John'));
+	// Retrieve the user by the attributes, or instantiate a new instance...
+	$user = User::firstOrNew(array('name' => 'John'));
 
-#### Model တစ်ခုအား Update ပြုလုပ်ခြင်း
+#### Updating A Retrieved Model
 
-Model အား update ပြုလုပ်လိုပါက ရှေးဦးစွာ ပြုလုပ်လိုသည် record ကို retrieve ပြုလုပ်ရပါမည်။ ထိုနောက် attribute အား မိမိတို ့ထည့်သွင်းလိုသည့်နှင့်
-ပြောင်းလဲ သတ်မှတ်ပြီး `save` method ကို အသုံးပြုကာ update ပြုလုပ်နိုင်ပါသည်။
+To update a model, you may retrieve it, change an attribute, and use the `save` method:
 
-$user = User::find(1);
+	$user = User::find(1);
 
-$user->email = 'john@foo.com';
+	$user->email = 'john@foo.com';
 
-$user->save();
+	$user->save();
 
-#### Model နှင့် ၄င်း၏ Relationship များတွင် save ပြုလုပ်ခြင်း
+#### Saving A Model And Relationships
 
-တခါတရံ  သင့်အနေဖြင့် လက်ရှိ အသုံးပြုနေသည့် model တွင်သာ မက ၄င်းနှင့် relationship ပြုလုပ်ထားသော Model များတွင်ပါ save လုပ်လိုသည့် အခါများရှိပေမည်။ ထိုသို ့ ပြုလုပ်လိုပါက `push` method ကို အသုံးပြုနိုင်သည်။ 
+Sometimes you may wish to save not only a model, but also all of its relationships. To do so, you may use the `push` method:
 
-$user->push();
-
+	$user->push();
 
 You may also run updates as queries against a set of models:
 
-$affectedRows = User::where('votes', '>', 100)->update(array('status' => 2));
+	$affectedRows = User::where('votes', '>', 100)->update(array('status' => 2));
 
 > **Note:** No model events are fired when updating a set of models via the Eloquent query builder.
 
-#### Model မှ record များအား ဖျက်ပစ်ခြင်း
+#### Deleting An Existing Model
 
-record တစ်ခုအား ဖျက်ပစ်လိုပါက `delete` ဟုသော method ကို အသုံးပြုနိုင်သည်။
+To delete a model, simply call the `delete` method on the instance:
 
-$user = User::find(1);
+	$user = User::find(1);
 
-$user->delete();
+	$user->delete();
 
-#### Model မှ record များအား key အလိုက် ဖျက်ပစ်ခြင်း
+#### Deleting An Existing Model By Key
 
-User::destroy(1);
+	User::destroy(1);
 
-User::destroy(array(1, 2, 3));
+	User::destroy(array(1, 2, 3));
 
-User::destroy(1, 2, 3);
+	User::destroy(1, 2, 3);
 
-သင့်အနေဖြင့် query လုပ်ပြီးမှလည်း ဖျက်ပစ်နိုင်ပါသည်။
+Of course, you may also run a delete query on a set of models:
 
-$affectedRows = User::where('votes', '>', 100)->delete();
+	$affectedRows = User::where('votes', '>', 100)->delete();
 
-####  Model ၏ Timestamps ကိုသာ update ပြုလုပ်ခြင်း
+#### Updating Only The Model's Timestamps
 
-Model ၏ Timestamps ကိုသာ update ပြုလုပ်လိုပါက `touch` ကို အသုံးပြုနိုင်သည်။
+If you wish to simply update the timestamps on a model, you may use the `touch` method:
 
-$user->touch();
+	$user->touch();
 
 <a name="soft-deleting"></a>
-## Soft Deleting  
+## Soft Deleting
 
-Soft delete ပြုလုပ်ပါက တကယ်ဖျက်ပစ်လိုက်ခြင်း မဟုတ်ပဲ  သင့် record ထဲတွင်  `deleted_at` ဟု timestamp တွင် သင့်ဖျက်ပစ်လိုက်သည့် အချိန်ကို မှတ်သားထားမည် ဖြစ်သည်။ Soft delete ကို ထည့်သွင်းလိုပါက `SoftDeletingTrait` ကိုပါ ထည့်သွင်းရမည် ဖြစ်သည်။
+When soft deleting a model, it is not actually removed from your database. Instead, a `deleted_at` timestamp is set on the record. To enable soft deletes for a model, apply the `SoftDeletingTrait` to the model:
 
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+	use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-use SoftDeletingTrait;
+		use SoftDeletingTrait;
 
-protected $dates = ['deleted_at'];
+		protected $dates = ['deleted_at'];
 
-}
+	}
 
-`deleted_at` ဟုသည့် column ကို သင့်၏ table တွင် ထည့်သွင်းလိုပါက migration တွင် `softDeletes` ဟုသည့် method ကို အသုံးပြုနိုင်ပါသည်။
+To add a `deleted_at` column to your table, you may use the `softDeletes` method from a migration:
 
-$table->softDeletes();
+	$table->softDeletes();
 
-ထိုသို ့ပြုလုပ်ပြီး `delete` method ကို ခေါ်ယူပါက အမှန်တကယ် ဖျက်ပစ်မည် မဟုတ်ပဲ `deleted_at` ဟု column တွင် လက်ရှိ timestamp ကိုမှတ်သားထားမည် ဖြစ်သည်။ Model တစ်ခုတွင် soft delete ကို အသုံးပြုထားပါက query ပြုလုပ်သော အခါတိုင်းတွင် deleted record များမှာ ပါဝင်မည် မဟုတ်ပေ။
+Now, when you call the `delete` method on the model, the `deleted_at` column will be set to the current timestamp. When querying a model that uses soft deletes, the "deleted" models will not be included in query results.
 
-#### Soft Deleted record များပါ ရောစပ်ထုတ်ယူခြင်း
+#### Forcing Soft Deleted Models Into Results
 
+To force soft deleted models to appear in a result set, use the `withTrashed` method on the query:
 
-soft deleted record များပါ ပေါင်းစပ် ထုတ်ယူလိုပါက `withTrashed` ကို query တွင်ထည့်သွင်း အသုံးပြုရမည် ဖြစ်သည်။
+	$users = User::withTrashed()->where('account_id', 1)->get();
 
-$users = User::withTrashed()->where('account_id', 1)->get();
+The `withTrashed` method may be used on a defined relationship:
 
-`withTrashed` method ကို relationship ပြုလုပ်ထားသော model တွင်လည်း အသုံးပြုနိုင်ပါသည်။
+	$user->posts()->withTrashed()->get();
 
-$user->posts()->withTrashed()->get();
+If you wish to **only** receive soft deleted models in your results, you may use the `onlyTrashed` method:
 
-ှSoft deleted ပြုလုပ်ထားသော results များသာ တွေ  ့မြင်လိုပါက `onlyTrashed` ဟုသော method ကို အသုံးပြုနိုင်သည်။
+	$users = User::onlyTrashed()->where('account_id', 1)->get();
 
-$users = User::onlyTrashed()->where('account_id', 1)->get();
+To restore a soft deleted model into an active state, use the `restore` method:
 
-soft deleted ပြုလုပ်ထားသော record များကို restore ပြုလုပ်လိုပါက `restore` method ကို အသုံးပြုနိုင်သည်။
+	$user->restore();
 
-$user->restore();
+You may also use the `restore` method on a query:
 
-`restore` method ကို query ပြုလုပ်နေသည့် အတောအတွင်းလည်း အသုံးပြုနိုင်သည်။
+	User::withTrashed()->where('account_id', 1)->restore();
 
-User::withTrashed()->where('account_id', 1)->restore();
+Like with `withTrashed`, the `restore` method may also be used on relationships:
 
+	$user->posts()->restore();
 
-`withTrashed` ကဲ့သို ့ပင် `restore` method ကိုလည်း relationship များကြားထဲအတွင်း အသုံးပြုနိုင်သည်။
+If you wish to truly remove a model from the database, you may use the `forceDelete` method:
 
-$user->posts()->restore();
+	$user->forceDelete();
 
-Record တစ်ခုကို အမှန်တကယ် database ထဲမှ ဖျက်ပစ်လိုပါက `forceDelete` method ကို အသုံးပြုနိုင်သည်။
+The `forceDelete` method also works on relationships:
 
-$user->forceDelete();
+	$user->posts()->forceDelete();
 
-`forceDelete` method မှာလည်း relationship များအကြား အသုံးပြုနိုင်သည်။
+To determine if a given model instance has been soft deleted, you may use the `trashed` method:
 
-$user->posts()->forceDelete();
-
-soft delted ပြုလုပ်ထားခြင်း ဟုတ်မဟုတ် စစ်ဆေးနိုင်ရန်  `trashed` method ကို အသုံးပြုနိုင်သည်။ 
-
-if ($user->trashed())
-{
-//
-}
+	if ($user->trashed())
+	{
+		//
+	}
 
 <a name="timestamps"></a>
 ## Timestamps
 
-ပုံမှန်အားဖြင့် Eloquent အနေဖြင့် `timestamp` attribute ကိုထည့်သွင်းပေးသည်နှင့် `created_at` and `updated_at` ကို အလိုအလျောက် ကိုင်တွယ်ပေးမည် ဖြစ်သည်။ သင့်အနေနှင့် မလိုချင်ပါက အောက်ပါအတိုင်း ပြောင်းလဲ သတ်မှတ်နိုင်သည်။
+By default, Eloquent will maintain the `created_at` and `updated_at` columns on your database table automatically. Simply add these `timestamp` columns to your table and Eloquent will take care of the rest. If you do not wish for Eloquent to maintain these columns, add the following property to your model:
 
-#### အလိုအလျောက် Timestamps ပြုလုပ်ခြင်းမှ ဖယ်ရှားခြင်း
+#### Disabling Auto Timestamps
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-protected $table = 'users';
+		protected $table = 'users';
 
-public $timestamps = false;
+		public $timestamps = false;
 
-}
+	}
 
-#### စိတ်ကြိုက် Timestamp တစ်ခုသတ်မှတ်ခြင်း
+#### Providing A Custom Timestamp Format
 
-Timestamp တစ်ခုကို စိတ်ကြိုက်သတ်မှတ်လိုပါက model အတွင်းရှိ `getDateFormat` ကို အသုံးပြု၍ သတ်မှတ်နိုင်သည်။
+If you wish to customize the format of your timestamps, you may override the `getDateFormat` method in your model:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-protected function getDateFormat()
-{
-return 'U';
-}
+		protected function getDateFormat()
+		{
+			return 'U';
+		}
 
-}
+	}
 
 <a name="query-scopes"></a>
 ## Query Scopes
 
-#### Query Scope တစ်ခုအား သတ်မှတ်ခြင်း
+#### Defining A Query Scope
 
-Scope များမှာ သင့်၏ query logic များကို ထပ်ခါထပ်ခါ အသုံးပြုနိုင်ခြင်း ဖြင့် သက်သာစေသည်။  Scope တစ်ခုကို ဖန်တီးနိုင်ရင် `scope` ဟုပါဝင်သည့် 
-method တစ်ခုကို ဖန်တီးရန် လိုပေမည်။
+Scopes allow you to easily re-use query logic in your models. To define a scope, simply prefix a model method with `scope`:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-public function scopePopular($query)
-{
-return $query->where('votes', '>', 100);
-}
+		public function scopePopular($query)
+		{
+			return $query->where('votes', '>', 100);
+		}
 
-public function scopeWomen($query)
-{
-return $query->whereGender('W');
-}
+		public function scopeWomen($query)
+		{
+			return $query->whereGender('W');
+		}
 
-}
+	}
 
-#### Query Scope တစ်ခုအား အသုံးပြုခြင်း 
+#### Utilizing A Query Scope
 
-$users = User::popular()->women()->orderBy('created_at')->get();
+	$users = User::popular()->women()->orderBy('created_at')->get();
 
-#### Scopes အရှင်များ ဖန်တီးခြင်း
+#### Dynamic Scopes
 
-တခါတရံ သင့်အနေဖြင့် parameter များလက်ခံသော scope အရှင်များကို ဖန်တီးလိုပေမည်။ ထိုသို ့ပြုလုပ်နိုင်ရန် သင့်၏ scope function အတွင်းတွင်
+Sometimes You may wish to define a scope that accepts parameters. Just add your parameters to your scope function:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-public function scopeOfType($query, $type)
-{
-return $query->whereType($type);
-}
+		public function scopeOfType($query, $type)
+		{
+			return $query->whereType($type);
+		}
 
-}
+	}
 
-ထိုနောက် scope တွင် parameter ကို ထည့်သွင်း အသုံးပြုနိုင်သည်။
+Then pass the parameter into the scope call:
 
-$users = User::ofType('member')->get();
+	$users = User::ofType('member')->get();
+
+<a name="global-scopes"></a>
+## Global Scopes
+
+Sometimes you may wish to define a scope that applies to all queries performed on a model. In essence, this is how Eloquent's own "soft delete" feature works. Global scopes are defined using a combination of PHP traits and an implementation of `Illuminate\Database\Eloquent\ScopeInterface`.
+
+First, let's define a trait. For this example, we'll use the `SoftDeletingTrait` that ships with Laravel:
+
+	trait SoftDeletingTrait {
+
+		/**
+		 * Boot the soft deleting trait for a model.
+		 *
+		 * @return void
+		 */
+		public static function bootSoftDeletingTrait()
+		{
+			static::addGlobalScope(new SoftDeletingScope);
+		}
+
+	}
+
+If an Eloquent model uses a trait that has a method matching the `bootNameOfTrait` naming convention, that trait method will be called when the Eloquent model is booted, giving you an opportunity to register a global scope, or do anything else you want. A scope must implement `ScopeInterface`, which specifies two methods: `apply` and `remove`.
+
+The `apply` method receives an `Illuminate\Database\Eloquent\Builder` query builder object, and is responsible for adding any additional `where` clauses that the scope wishes to add. The `remove` method also receives a `Builder` object and is responsible for reversing the action taken by `apply`. In other words, `remove` should remove the `where` clause (or any other clause) that was added. So, for our `SoftDeletingScope`, the methods look something like this:
+
+	/**
+	 * Apply the scope to a given Eloquent query builder.
+	 *
+	 * @param  \Illuminate\Database\Eloquent\Builder  $builder
+	 * @return void
+	 */
+	public function apply(Builder $builder)
+	{
+		$model = $builder->getModel();
+
+		$builder->whereNull($model->getQualifiedDeletedAtColumn());
+	}
+
+	/**
+	 * Remove the scope from the given Eloquent query builder.
+	 *
+	 * @param  \Illuminate\Database\Eloquent\Builder  $builder
+	 * @return void
+	 */
+	public function remove(Builder $builder)
+	{
+		$column = $builder->getModel()->getQualifiedDeletedAtColumn();
+
+		$query = $builder->getQuery();
+
+		foreach ((array) $query->wheres as $key => $where)
+		{
+			// If the where clause is a soft delete date constraint, we will remove it from
+			// the query and reset the keys on the wheres. This allows this developer to
+			// include deleted model in a relationship result set that is lazy loaded.
+			if ($this->isSoftDeleteConstraint($where, $column))
+			{
+				unset($query->wheres[$key]);
+
+				$query->wheres = array_values($query->wheres);
+			}
+		}
+	}
 
 <a name="relationships"></a>
 ## Relationships
 
-Database table များမှာ တခါတရံ တစ်ခုနှင့် တစ်ခု ဆက်စပ်ပြီး တည်ရှိနိုင်ပေသည်။ ဥပမာ Blog post တစ်ခုတွင် comment များစွာ ပါဝင်သကဲ့သို ့  Order တစ်ခုတွင်လည်း User တစ်ယောက်နှင့် ဆက်စပ်နိုင် ပေသည်။ Laravel အနေဖြင့် ဆက်စပ်မှု မျိုးစုံကို ဆောင်ရွက်နိုင်အောင် ကူညီပေးထားပါသည်။
+Of course, your database tables are probably related to one another. For example, a blog post may have many comments, or an order could be related to the user who placed it. Eloquent makes managing and working with these relationships easy. Laravel supports many types of relationships:
 
 - [One To One](#one-to-one)
 - [One To Many](#one-to-many)
@@ -400,569 +453,568 @@ Database table များမှာ တခါတရံ တစ်ခုနှင
 <a name="one-to-one"></a>
 ### One To One
 
-#### One To One Relation တစ်ခုကို တည်ဆောက်ခြင်း
+#### Defining A One To One Relation
 
-one-to-one relationship မှာ အလွန်ပင် အခြေခံကျသော relation ဖြစ်သည်။  ဥပမာ User တစ်ယောက်တွင် Phone တစ်လုံး ရှိရမည့် အနေအထားမျိုး။ 
-ထိုသို ့သော relation မျိုးကို Eloquent တွင် ဖန်တီးနိုင်ပေသည်။
+A one-to-one relationship is a very basic relation. For example, a `User` model might have one `Phone`. We can define this relation in Eloquent:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-public function phone()
-{
-return $this->hasOne('Phone');
-}
+		public function phone()
+		{
+			return $this->hasOne('Phone');
+		}
 
-}
+	}
 
+The first argument passed to the `hasOne` method is the name of the related model. Once the relationship is defined, we may retrieve it using Eloquent's [dynamic properties](#dynamic-properties):
 
-`hasOne` တွင်ထည့်သွင်းရမည့် argument မှာ ဆက်စပ်နေသည့် Model ၏ အမည်ပင်ဖြစ်သည်။ relationship တည်ဆောက်ပြီးသည်နှင့် Eloquent ၏ [dynamic properties](#dynamic-properties): ကို အသုံးပြုပြီး အချက်အလက်များကို ထုတ်ယူနိုင်သည်။
+	$phone = User::find(1)->phone;
 
-$phone = User::find(1)->phone;
+The SQL performed by this statement will be as follows:
 
-အထက်ပါ statement အတွက် run သွားမည့် SQL မှာ အောက်ပါ အတိုင်းဖြစ်သည်။
+	select * from users where id = 1
 
-select * from users where id = 1
+	select * from phones where user_id = 1
 
-select * from phones where user_id = 1
+Take note that Eloquent assumes the foreign key of the relationship based on the model name. In this case, `Phone` model is assumed to use a `user_id` foreign key. If you wish to override this convention, you may pass a second argument to the `hasOne` method. Furthermore, you may pass a third argument to the method to specify which local column that should be used for the association:
 
-Eloquent အနေဖြင့် model name များကို အခြေခံပြီး Forigen key များကို သတ်မှတ်သွားမည်ကို သတိပြုရမည်။ အထက်က `Phone` model တွင် `user_id` ကို foreign key အနေဖြင့် အလိုအလျောက် သတ်မှတ်မည် ဖြစ်သည်။  မိမိတို ့ စိတ်ကြိုက်ပြောင်းလဲလိုပါက `hasOne` method တွင် ဒုတိယ argument အဖြစ်သွင်းပေးရန် လိုပေမည်။  ထိုထက်ပို၍ တတိယ argument အနေဖြင့် ထည့်သွင်းပါက မည်သည့် local column ကို ပူးပေါင်းမည်ကိုပါ သတ်မှတ်နိုင်သည်။
+	return $this->hasOne('Phone', 'foreign_key');
 
-return $this->hasOne('Phone', 'foreign_key');
+	return $this->hasOne('Phone', 'foreign_key', 'local_key');
 
-return $this->hasOne('Phone', 'foreign_key', 'local_key');
+#### Defining The Inverse Of A Relation
 
-#### Relation ပြောင်းပြန်သတ်မှတ်ခြင်း
+To define the inverse of the relationship on the `Phone` model, we use the `belongsTo` method:
 
-`Phone` model မှ Relation ကို ပြောင်းပြန်အနေဖြင့် သတ်မှတ်လိုပါက `belongsTo` ဟုသည့် method ကို အသုံးပြုနိုင်သည်။
+	class Phone extends Eloquent {
 
-class Phone extends Eloquent {
+		public function user()
+		{
+			return $this->belongsTo('User');
+		}
 
-public function user()
-{
-return $this->belongsTo('User');
-}
+	}
 
-}
+In the example above, Eloquent will look for a `user_id` column on the `phones` table. If you would like to define a different foreign key column, you may pass it as the second argument to the `belongsTo` method:
 
-အထက်က ဥပမာတွင် Eloquent အနေဖြင့် `phones` table မှ `user_id` column ကို အသုံးပြုမည် ဖြစ်သည်။ `hasMany` ကဲ့သို ့ပင် Foriegn Key ကို သတ်မှတ်လိုပါက ဒုတိယ argument ကို ထည့်သွင်းပေးနိုင်သည်။
+	class Phone extends Eloquent {
 
+		public function user()
+		{
+			return $this->belongsTo('User', 'local_key');
+		}
 
-class Phone extends Eloquent {
+	}
 
-public function user()
-{
-return $this->belongsTo('User', 'local_key');
-}
+Additionally, you pass a third parameter which specifies the name of the associated column on the parent table:
 
-}
+	class Phone extends Eloquent {
 
-ထိုအပြင် parent table နှင့်ဆက်စပ်နေသည့်  column ကို တတိယ parameter အဖြစ် ထည့်သွင်းနိုင်သည်။
+		public function user()
+		{
+			return $this->belongsTo('User', 'local_key', 'parent_key');
+		}
 
-class Phone extends Eloquent {
-
-public function user()
-{
-return $this->belongsTo('User', 'local_key', 'parent_key');
-}
-
-}
+	}
 
 <a name="one-to-many"></a>
 ### One To Many
 
-one-to-many relation ၏ ဥပမာမှာ blog post တစ်ခုတွင် comment များစွာ ရှိသကဲ့သို ့ပင် ဖြစ်သည်။ ထိုသို ့ relation ကို အောက်ပါအတိုင်း model တွင်
-သတ်မှတ်နိုင်သည်။
+An example of a one-to-many relation is a blog post that "has many" comments. We can model this relation like so:
 
-class Post extends Eloquent {
+	class Post extends Eloquent {
 
-public function comments()
-{
-return $this->hasMany('Comment');
-}
+		public function comments()
+		{
+			return $this->hasMany('Comment');
+		}
 
-}
+	}
 
-ထိုအခါ post comments များကို [dynamic property](#dynamic-properties) ကို အသုံးပြု၍ ထုတ်ယူနိုင်ပါပြီ။
+Now we can access the post's comments through the [dynamic property](#dynamic-properties):
 
-$comments = Post::find(1)->comments;
+	$comments = Post::find(1)->comments;
 
-ထိုထဲမှ  ထုတ်ယူလိုသည့် comment များကို စစ်ယူလိုပါက `comments` method နောက်တွင် method များကို စီတန်း အသုံးပြုနိုင်ပါသေးသည်။
+If you need to add further constraints to which comments are retrieved, you may call the `comments` method and continue chaining conditions:
 
-$comments = Post::find(1)->comments()->where('title', '=', 'foo')->first();
+	$comments = Post::find(1)->comments()->where('title', '=', 'foo')->first();
 
-၄င်းတွင်လည်း `hasOne` ကဲ့သို ့ foriegn key ကို  `hasMany` method  နောက်တွင် second argument အနေဖြင့်နှင့်  third argument ကို local key အနေဖြင့် ထည့်သွင်းနိုင်ပေသည်။
+Again, you may override the conventional foreign key by passing a second argument to the `hasMany` method. And, like the `hasOne` relation, the local column may also be specified:
 
-return $this->hasMany('Comment', 'foreign_key');
+	return $this->hasMany('Comment', 'foreign_key');
 
-return $this->hasMany('Comment', 'foreign_key', 'local_key');
+	return $this->hasMany('Comment', 'foreign_key', 'local_key');
 
-#### ပြောင်းပြန် relation သတ်မှတ်ခြင်း
+#### Defining The Inverse Of A Relation
 
-`Comment` model ပြောင်းပြန် သတ်မှတ်နိုင်ရန်  `belongsTo` ဟုသည့် method ကို အသုံးပြုနိုင်သည်။
+To define the inverse of the relationship on the `Comment` model, we use the `belongsTo` method:
 
-class Comment extends Eloquent {
+	class Comment extends Eloquent {
 
-public function post()
-{
-return $this->belongsTo('Post');
-}
+		public function post()
+		{
+			return $this->belongsTo('Post');
+		}
 
-}
+	}
 
 <a name="many-to-many"></a>
 ### Many To Many
 
+Many-to-many relations are a more complicated relationship type. An example of such a relationship is a user with many roles, where the roles are also shared by other users. For example, many users may have the role of "Admin". Three database tables are needed for this relationship: `users`, `roles`, and `role_user`. The `role_user` table is derived from the alphabetical order of the related model names, and should have `user_id` and `role_id` columns.
 
-Many-to-many relations မှာ ပိုမိုရှုပ်ထွေးသည့် relation ဖြစ်သည်။ ဥပမာ User တစ်ယောက်မှာ တာဝန်များစွာ ရှိပြီး တာဝန်တစ်ခုကိုလည်း User များစွာ ခွဲဝေပေးအပ်ထားသည် ဆိုပါစို ့။  User များစွာ  "Admin" တာဝန်ကို ယူထားနိုင်သည့် အခြေအနေတွင်ရှိပေမည်။  ထိုသို ့သော အခြေအနေတွင် Database 
-Table သုံးခု လိုအပ်မည် ဖြစ်သည်။ ၄င်းတို ့မှာ `users` ၊ `roles` နှင့် `role_user` တို ့ဖြစ်ကြသည်။ `role_user` table မှာ ဆက်စပ်နေသည့် model အမည်များကို ဆက်စပ်ပေးမည် ဖြစ်ပြီး ၄င်းတွင် `user_id` နှင့် `role_id` ဟူသော columns နှစ်ခု ပါဝင်မည် ဖြစ်သည်။
+We can define a many-to-many relation using the `belongsToMany` method:
 
+	class User extends Eloquent {
 
-many-to-many relation  ကို  `belongsToMany` method ကို အသုံးပြု၍ ရေးသားနိုင်သည်။
+		public function roles()
+		{
+			return $this->belongsToMany('Role');
+		}
 
-class User extends Eloquent {
+	}
 
-public function roles()
-{
-return $this->belongsToMany('Role');
-}
+Now, we can retrieve the roles through the `User` model:
 
-}
+	$roles = User::find(1)->roles;
 
-ထိုအခါ `User` မှ role ကို အောက်ပါ အတိုင်း ထုတ်ယူနိုင်မည် ဖြစ်သည်။
+If you would like to use an unconventional table name for your pivot table, you may pass it as the second argument to the `belongsToMany` method:
 
-$roles = User::find(1)->roles;
+	return $this->belongsToMany('Role', 'user_roles');
 
-မိမိ၏ ကြားခံ table ၏ အမည်ကို စိတ်ကြိုက် သတ်မှတ်လိုပါက `belongsToMany` method ၏ ဒုတိယ argument မှ သွင်း၍ စိတ်ကြိုက် သတ်မှတ်နိုင်သည်။
+You may also override the conventional associated keys:
 
-return $this->belongsToMany('Role', 'user_roles');
+	return $this->belongsToMany('Role', 'user_roles', 'user_id', 'foo_id');
 
-ထိုအပြင် ပါဝင်ပတ်သတ်နေသော Keys များကိုလည်း စိတ်ကြိုက် သတ်မှတ်နိုင်သည်။
+Of course, you may also define the inverse of the relationship on the `Role` model:
 
-return $this->belongsToMany('Role', 'user_roles', 'user_id', 'foo_id');
+	class Role extends Eloquent {
 
-ထိုအပြင် `Role` model မှလည်း ပြောင်းပြန်သတ်မှတ် ၍လည်း ဖြစ်ပါသည်။
+		public function users()
+		{
+			return $this->belongsToMany('User');
+		}
 
-class Role extends Eloquent {
-
-public function users()
-{
-return $this->belongsToMany('User');
-}
-
-}
+	}
 
 <a name="has-many-through"></a>
 ### Has Many Through
 
- "has many through"  ဝေးကွာနေသည့် relation များမှ record များကို access လုပ်နိုင်ရန် အလွယ်တကူ ကြားဖြတ်ဆောင်ရွက်ပေးသော method ဇြစ်သည်။ ဥပမာ  `Country` model မှာ  `Posts` ဖြင့် ချိတ်ဆက်ထားခြင်း မရှိသော်လည်း `Users` model ဖြင့်မူ ချိတ်ဆက်ထားပါက တဆင့်ကျော်၍ access လုပ်နိုင်သည်။  ထို table များ၏  relationship မှာ အောက်ပါအတိုင်း ဆိုပါစို ့
+The "has many through" relation provides a convenient short-cut for accessing distant relations via an intermediate relation. For example, a `Country` model might have many `Posts` through a `Users` model. The tables for this relationship would look like this:
 
-countries
-id - integer
-name - string
+	countries
+		id - integer
+		name - string
 
-users
-id - integer
-country_id - integer
-name - string
+	users
+		id - integer
+		country_id - integer
+		name - string
 
-posts
-id - integer
-user_id - integer
-title - string
+	posts
+		id - integer
+		user_id - integer
+		title - string
 
-`posts` table တွင် `country_id` column မပါဝင်သော်လည်း `hasManyThrough` relation ဖြင့် `$country->posts` ဟု၍ accessible ဖြစ်အောင် စွမ်းဆောင်နိုင်ပေသည်။ 
+Even though the `posts` table does not contain a `country_id` column, the `hasManyThrough` relation will allow us to access a country's posts via `$country->posts`. Let's define the relationship:
 
-class Country extends Eloquent {
+	class Country extends Eloquent {
 
-public function posts()
-{
-return $this->hasManyThrough('Post', 'User');
-}
+		public function posts()
+		{
+			return $this->hasManyThrough('Post', 'User');
+		}
 
-}
+	}
 
-relationship key များကို စိတ်ကြိုက်သတ်မှတ်လိုပါက တတိယနှင့် စတုတ္ထ parameter အများအဖြစ် ထည့်သွင်းနိုင်ပေသည်။
+If you would like to manually specify the keys of the relationship, you may pass them as the third and fourth arguments to the method:
 
-class Country extends Eloquent {
+	class Country extends Eloquent {
 
-public function posts()
-{
-return $this->hasManyThrough('Post', 'User', 'country_id', 'user_id');
-}
+		public function posts()
+		{
+			return $this->hasManyThrough('Post', 'User', 'country_id', 'user_id');
+		}
 
-}
+	}
 
 <a name="polymorphic-relations"></a>
 ### Polymorphic Relations
 
-Polymorphic relations ကို အသုံးပြုခြင်းဖြင့် အခြား Model တစ်ခုထက်ပို၍ associate ပြုလုပ်ထားသော record များကို ထုတ်ယူနိုင်သည်။ ဥပမာ သင့်တွင် 
-staff ဟုသော model နှင့် order ဟုသော model နှစ်ခုလုံးနှင့် ပတ်သတ်နေသည့် photo ဟုသော model ရှိသည် ဆိုပါစို ့။
+Polymorphic relations allow a model to belong to more than one other model, on a single association. For example, you might have a photo model that belongs to either a staff model or an order model. We would define this relation like so:
 
+	class Photo extends Eloquent {
 
-class Photo extends Eloquent {
+		public function imageable()
+		{
+			return $this->morphTo();
+		}
 
-public function imageable()
-{
-return $this->morphTo();
-}
+	}
 
-}
+	class Staff extends Eloquent {
 
-class Staff extends Eloquent {
+		public function photos()
+		{
+			return $this->morphMany('Photo', 'imageable');
+		}
 
-public function photos()
-{
-return $this->morphMany('Photo', 'imageable');
-}
+	}
 
-}
+	class Order extends Eloquent {
 
-class Order extends Eloquent {
+		public function photos()
+		{
+			return $this->morphMany('Photo', 'imageable');
+		}
 
-public function photos()
-{
-return $this->morphMany('Photo', 'imageable');
-}
+	}
 
-}
+#### Retrieving A Polymorphic Relation
 
-#### Polymorphic Relation ကို အသုံးပြုခြင်း
+Now, we can retrieve the photos for either a staff member or an order:
 
-အောက်ပါ အတိုင်း photo များကို Staff member များမှသော်လည်းကောင်း  Order မှသော်လည်းကောင်း ထုတ်ယူနိုင်သည်။
+	$staff = Staff::find(1);
 
-$staff = Staff::find(1);
+	foreach ($staff->photos as $photo)
+	{
+		//
+	}
 
-foreach ($staff->photos as $photo)
-{
-//
-}
+#### Retrieving The Owner Of A Polymorphic Relation
 
-#### Polymorphic Relation မှ Owner ၏ record များကို ထုတ်ယူခြင်း
+However, the true "polymorphic" magic is when you access the staff or order from the `Photo` model:
 
-သို ့သော် တကယ့် "polymorphic" အလှတရားမှာ `Photo` model မှ staff ဖြစ်စေ ၊ order ဖြစ်စေ ထုတ်ယူနိုင်ခြင်း ဖြစ်သည်။
+	$photo = Photo::find(1);
 
+	$imageable = $photo->imageable;
 
-$photo = Photo::find(1);
-
-$imageable = $photo->imageable;
-
-`Photo` model မှ `imageable` relation  မှာ `Staff` မှဖြစ်စေ `Order` instance ဖြစ်စေ ပိုင်ဆိုင်သည့် model ပေါ်မူတည်၍ ထုတ်ပေးသွားမည် ဖြစ်သည်။
+The `imageable` relation on the `Photo` model will return either a `Staff` or `Order` instance, depending on which type of model owns the photo.
 
 #### Polymorphic Relation Table Structure
 
-မည်သို ့မည်ပုံ အလုပ်လုပ်ဆောင်သွားသည်ကို သိရှိနိုင်ရန် အောက်ပါ database structure ကို ကြည့်ရှုနိုင်ပါသည်။
+To help understand how this works, let's explore the database structure for a polymorphic relation:
 
-staff
-id - integer
-name - string
+	staff
+		id - integer
+		name - string
 
-orders
-id - integer
-price - integer
+	orders
+		id - integer
+		price - integer
 
-photos
-id - integer
-path - string
-imageable_id - integer
-imageable_type - string
+	photos
+		id - integer
+		path - string
+		imageable_id - integer
+		imageable_type - string
 
-Key field အနေဖြင့်  `photos` table မှ `imageable_id` နှင့် `imageable_type` တို ့ကို မှတ်သားထားရပါမည် ဖြစ်သည်။ ID မှာ Order သို ့မဟုတ် 
-Staff တို ့၏  ID နှင့် ချိတ်ဆက်ထားမည် ဖြစ်သည်။  ORM အနေဖြင့် မည်သည့် model ကိုပြန်ရမည် ဆိုသည်ကို `imageable` ၏ relation ကို ထောက်ရှု၍ လုပ်ဆောင် သွားမည် ဖြစ်သည်။
+The key fields to notice here are the `imageable_id` and `imageable_type` on the `photos` table. The ID will contain the ID value of, in this example, the owning staff or order, while the type will contain the class name of the owning model. This is what allows the ORM to determine which type of owning model to return when accessing the `imageable` relation.
 
 <a name="many-to-many-polymorphic-relations"></a>
 ### Many To Many Polymorphic Relations
 
-#### Polymorphic Many To Many Relation Table Structure  
+#### Polymorphic Many To Many Relation Table Structure
 
-သမရိုးကျ polymorphic relations တစ်ခုသာမက many-to-many polymorphic relations များကိုပါ တည်ဆောက်နိုင်သည်။ ဥပမာ blog တစ်ခု၏ database structure ဖြစ်သော  `Post` နှင့် `Video` model တို ့တွင် `Tag` model ကို တူညီစွာ polymorphic relation အနေဖြင့် ချိတ်ဆက်ရန် လိုပေမည်။ ရှေဦးစွာ table structure ကိုကြည့်လိုက်ပါ။
+In addition to traditional polymorphic relations, you may also specify many-to-many polymorphic relations. For example, a blog `Post` and `Video` model could share a polymorphic relation to a `Tag` model. First, let's examine the table structure:
 
-posts
-id - integer
-name - string
+	posts
+		id - integer
+		name - string
 
-videos
-id - integer
-name - string
+	videos
+		id - integer
+		name - string
 
-tags
-id - integer
-name - string
+	tags
+		id - integer
+		name - string
 
-taggables
-tag_id - integer
-taggable_id - integer
-taggable_type - string
+	taggables
+		tag_id - integer
+		taggable_id - integer
+		taggable_type - string
 
-အထက်ပါ table အတွက် relationship များကို model တွင် အောက်ပါအတိုင်း တည်ဆောက်ရမည်ဖြစ်သည်။ `Post` နှင့် `Video` model တို ့နှစ်ခုလုံးတွင်
-`tags` method မှ `morphToMany` relationship ကို ကြေညာပေးရမည် ဖြစ်သည်။
+Next, we're ready to setup the relationships on the model. The `Post` and `Video` model will both have a `morphToMany` relationship via a `tags` method:
 
-class Post extends Eloquent {
+	class Post extends Eloquent {
 
-public function tags()
-{
-return $this->morphToMany('Tag', 'taggable');
-}
+		public function tags()
+		{
+			return $this->morphToMany('Tag', 'taggable');
+		}
 
-}
+	}
 
-`Tag` model အနေဖြင့် ၄င်း၏ relationships ကို အောက်ပါ အတိုင်း သတ်မှတ်နိုင်သည်။ 
+The `Tag` model may define a method for each of its relationships:
 
-class Tag extends Eloquent {
+	class Tag extends Eloquent {
 
-public function posts()
-{
-return $this->morphedByMany('Post', 'taggable');
-}
+		public function posts()
+		{
+			return $this->morphedByMany('Post', 'taggable');
+		}
 
-public function videos()
-{
-return $this->morphedByMany('Video', 'taggable');
-}
+		public function videos()
+		{
+			return $this->morphedByMany('Video', 'taggable');
+		}
 
-}
+	}
 
 <a name="querying-relations"></a>
-## Relation များကို Query ပြုလုပ်ခြင်း
+## Querying Relations
 
-#### Relations များတွင် Select ကို အသုံးပြုခြင်း
+#### Querying Relations When Selecting
 
-Model များမှ record များကို access ပြုလုပ်ရာတွင် ၊  result များကို စစ်ဆေးပြီးမှ ထုတ်ယူလိုသည့် အနေအထားမျိုးတွင် ရှိပေနိုင်သည်။ ဥပမာ သင့်အနေဖြင့် Comment တစ်ခု အနည်းဆုံး ရှိသည့် blog post များကို ဆွဲထုတ်လိုသည် ဆိုပါစို ့။  သင့်အနေနဲ ့ `has` method ကို အသုံးပြုရမည် ဖြစ်သည်။
+When accessing the records for a model, you may wish to limit your results based on the existence of a relationship. For example, you wish to pull all blog posts that have at least one comment. To do so, you may use the `has` method:
 
-$posts = Post::has('comments')->get();
+	$posts = Post::has('comments')->get();
 
-has method တွင် သင့်အနေဖြင့် operator များ နှင့်  ထုတ်ယူလိုသည့် အရေအတွက်ကို သတ်မှတ်နိုင်သည်။
+You may also specify an operator and a count:
 
-$posts = Post::has('comments', '>=', 3)->get();
+	$posts = Post::has('comments', '>=', 3)->get();
 
-သင့်အနေဖြင့် ပို၍ အသေးစိတ်ကျပြီး "where" conditions များကို `has` queries အတွင်း စစ်ဆေးလိုပါက `whereHas` နှင့် `orWhereHas` method များကိုအသုံးပြုနိုင်သည်။
+If you need even more power, you may use the `whereHas` and `orWhereHas` methods to put "where" conditions on your `has` queries:
 
-$posts = Post::whereHas('comments', function($q)
-{
-$q->where('content', 'like', 'foo%');
+	$posts = Post::whereHas('comments', function($q)
+	{
+		$q->where('content', 'like', 'foo%');
 
-})->get();
+	})->get();
 
 <a name="dynamic-properties"></a>
 ### Dynamic Properties
 
+Eloquent allows you to access your relations via dynamic properties. Eloquent will automatically load the relationship for you, and is even smart enough to know whether to call the `get` (for one-to-many relationships) or `first` (for one-to-one relationships) method.  It will then be accessible via a dynamic property by the same name as the relation. For example, with the following model `$phone`:
 
-Eloquent တွင် သင့်အနေဖြင့် relations များမှ properties များကို dynamic properties အနေဖြင့် ဆွဲယူနိုင်သည်။ Eloquent အနေဖြင့် သင့်၏ relationship အလိုအလျောက်အနေဖြင့် relations ကို အလိုအလျောက် load လုပ်ကာ ခေါ်ယူမည် ဖြစ်ပြီး  `get` ( one-to-many relationships) ပေလော၊ `first` (for one-to-one relationships) method ပေလော ကိုပင် ခွဲခြားလုပ်ဆောင်ပေးမည် ဖြစ်သည်။ ထိုနောက် တူညီသော အမည်မှ တဆင့်
-dynamic property ကို အလွယ်တကူ ခေါ်ဆို နိုင်ပေမည်။ ဥပမာ `$phone` ဟုသည့် model မှ တဆင့်
+	class Phone extends Eloquent {
 
-class Phone extends Eloquent {
+		public function user()
+		{
+			return $this->belongsTo('User');
+		}
 
-public function user()
-{
-return $this->belongsTo('User');
-}
+	}
 
-}
-
-$phone = Phone::find(1);
+	$phone = Phone::find(1);
 
 Instead of echoing the user's email like this:
 
-echo $phone->user()->first()->email;
+	echo $phone->user()->first()->email;
 
 It may be shortened to simply:
 
-echo $phone->user->email;
+	echo $phone->user->email;
 
-> **Note:** Relationships များကို return ပြန်သော result များကို အလုပ်လုပ်သွားသော method မှာ `Illuminate\Database\Eloquent\Collection` class မှ instance များကို ပြန်ခြင်းဖြစ်သည်။
+> **Note:** Relationships that return many results will return an instance of the `Illuminate\Database\Eloquent\Collection` class.
 
 <a name="eager-loading"></a>
 ## Eager Loading
 
+Eager loading exists to alleviate the N + 1 query problem. For example, consider a `Book` model that is related to `Author`. The relationship is defined like so:
 
-Eager loading exists to N+1 query ကဲ့သို ့သော Query များကို ပို ့၍ ပေါ့ပါးစွာ အသုံးပြုနိုင်ရန် ဖြစ်သည်။ ဥပမာ `Author` model နှင့် `Book` model တို ့ ဆက်စပ်နေသည် ဆိုပါစို ့။ ၄င်းတို ့၏ relationship ကို အောက်ပါ အတိုင်း သတ်မှတ်နိုင်ပါသည်။ 
+	class Book extends Eloquent {
 
-class Book extends Eloquent {
+		public function author()
+		{
+			return $this->belongsTo('Author');
+		}
 
-public function author()
-{
-return $this->belongsTo('Author');
-}
+	}
 
-}
+Now, consider the following code:
 
-ထိုနောက် အောက်ပါ code ကို ကြည့်ကြည့်ပါ။
+	foreach (Book::all() as $book)
+	{
+		echo $book->author->name;
+	}
 
-foreach (Book::all() as $book)
-{
-echo $book->author->name;
-}
+This loop will execute 1 query to retrieve all of the books on the table, then another query for each book to retrieve the author. So, if we have 25 books, this loop would run 26 queries.
 
-ထို loop မှာ Book မှ ရှိသမျှ စာအုပ်တိုင်းကို ခေါ်ယူမည် ဖြစ်သည်။ ထိုနောက် ထိုနောက် ထိုနောက် နောက် query တစ်ခုအနေဖြင့် စာအုပ်တစ်ခုချင်းဆီ၏ 
-author ကို  ဖော်ပြသွားမည် ဖြစ်သည်။ အကယ်၍ စာအုပ် ၂၅ အုပ် ရှိသည် ဆိုပါစို ့ ၊ query ၂၆ ကြောင်း run ဖြစ်သည်။ သို ့ပင်သော်ညား eager loading ၏ အကျိုးကျေးဇူးကြောင့် မလိုအပ်သော query များကို လျှော့ချနိုင်သည်။ ထို relationship တွင် `with` method အသုံးပြု၍ eager load ပြုလုပ်နိုင်သည်။
+Thankfully, we can use eager loading to drastically reduce the number of queries. The relationships that should be eager loaded may be specified via the `with` method:
 
+	foreach (Book::with('author')->get() as $book)
+	{
+		echo $book->author->name;
+	}
 
-foreach (Book::with('author')->get() as $book)
-{
-echo $book->author->name;
-}
+In the loop above, only two queries will be executed:
 
-အထက်ပါ loop တွင်မူ query နှစ်ကြောင်းသာ execute ပြုလုပ်မည် ဖြစ်သည်။
+	select * from books
 
-select * from books
+	select * from authors where id in (1, 2, 3, 4, 5, ...)
 
-select * from authors where id in (1, 2, 3, 4, 5, ...)
+Wise use of eager loading can drastically increase the performance of your application.
 
-Eager loading ကို အသုံးပြုခြင်း အားဖြင့် သင့် application ၏ performance ကို သိသိသာသာ မြင့်တက်စေမည် ဖြစ်သည်။
+Of course, you may eager load multiple relationships at one time:
 
-ထိုအပြင် တစ်ခုထက်ပိုသော relation များတွင် တချိန်တည်းတွင် eager load အသုံးပြုနိုင်မည် ဖြစ်သည်။
+	$books = Book::with('author', 'publisher')->get();
 
-$books = Book::with('author', 'publisher')->get();
+You may even eager load nested relationships:
 
-Nested relationship များတွင်လည်း eager load အသုံးပြုနိုင်သည်။
+	$books = Book::with('author.contacts')->get();
 
-$books = Book::with('author.contacts')->get();
+In the example above, the `author` relationship will be eager loaded, and the author's `contacts` relation will also be loaded.
 
-အထက် ဥပမာ တွင် `author` နှင့် ပတ်သတ်နေသည်များကို eager load ပြုလုပ်ပြီး author ၏ `contacts` relation ပါ load သွားမည် ဖြစ်သည်။
+### Eager Load Constraints
 
-### Eager Load အကန် ့အသတ်များ 
+Sometimes you may wish to eager load a relationship, but also specify a condition for the eager load. Here's an example:
 
-ထခါတရံ condition များ စစ်ဆေးပြီးမှ relationship များကို eager load ပြုလုပ်လိုမည် အချိန်ကာလ လည်း ရှိပေမည်။ အောက်က ဥပမာတွင် ဆိုပါစို ့
+	$users = User::with(array('posts' => function($query)
+	{
+		$query->where('title', 'like', '%first%');
 
-$users = User::with(array('posts' => function($query)
-{
-$query->where('title', 'like', '%first%');
+	}))->get();
 
-}))->get();
+In this example, we're eager loading the user's posts, but only if the post's title column contains the word "first".
 
-ထို ဥပမာ တွင် user's post တွင်းမှ  "first"  စကာလုံး နှင့်စတင်သည်များကိုသာ eager load လုပ်သွားမည် ဖြစ်သည်။ Closure များ အတွင်းတွင်မူ အကန့် အသတ်မရှိပေ။  သင့်အနေဖြင့် အောက်က အတိုင်း order အလိုက် စီရီနိုင်ပေဦးမည်။
+Of course, eager loading Closures aren't limited to "constraints". You may also apply orders:
 
-$users = User::with(array('posts' => function($query)
-{
-$query->orderBy('created_at', 'desc');
+	$users = User::with(array('posts' => function($query)
+	{
+		$query->orderBy('created_at', 'desc');
 
-}))->get();
+	}))->get();
 
 ### Lazy Eager Loading
 
-တည်ရှိနေပြီးသော model collection များထဲမှ eager load နှင့် ဆက်စပ်နေသော model များကို တိုက်ရိုက် ခေါ်ယူ၍လည်း ဖြစ်နိုင်ပေသည်။ ထိုသို ့ပြုလုပ်ခြင်း Model များကို Load လုပ်ရာတွင် load လုပ်မည် မလုပ်မည်ကို dynamically စဉ်းစားဆုံးဖြတ်ရာတွင် သော်လည်းကောင်း ၊ caching ဖြင့် ပူးပေါင်း အသုံးပြုရာတွင်သော်လည်းကောင်း အသုံးဝင်သည်။
+It is also possible to eagerly load related models directly from an already existing model collection. This may be useful when dynamically deciding whether to load related models or not, or in combination with caching.
 
-$books = Book::all();
+	$books = Book::all();
 
-$books->load('author', 'publisher');
+	$books->load('author', 'publisher');
 
 <a name="inserting-related-models"></a>
-## ဆက်စပ်နေသည့် Model များတွင် data ထည့်သွင်းခြင်း
+## Inserting Related Models
 
-#### ဆက်စပ်နေသည့် Model ဖြင့် ချိတ်ဆက်ခြင်း
+#### Attaching A Related Model
 
-တခါတရံ ဆက်စပ်နေသည့် model များအား insert ပြုလုပ်ရန်လည်း လိုပေမည်။ ဥပမာ သင့်အနေဖြင့် post တစ်ခုတွင် comment တစ်ခုကို ထည့်သွင်းမည် ဆိုပါစို ့။  Model တစ်ခု၏ `post_id` foreign key ကို manually ထည့်သွင်းနေမည့် အစား `Post` model ဖက်မှ တိုက်ရိုက်ထည့်သွင်း၍လည်း ရပေသည်။
+You will often need to insert new related models. For example, you may wish to insert a new comment for a post. Instead of manually setting the `post_id` foreign key on the model, you may insert the new comment from its parent `Post` model directly:
 
-$comment = new Comment(array('message' => 'A new comment.'));
+	$comment = new Comment(array('message' => 'A new comment.'));
 
-$post = Post::find(1);
+	$post = Post::find(1);
 
-$comment = $post->comments()->save($comment);
+	$comment = $post->comments()->save($comment);
 
-အထက်က ဥပမာတွင် `post_id` field ကို အလိုအလျောက် ထည့်သွင်းသွားမည် ဖြစ်သည်။
+In this example, the `post_id` field will automatically be set on the inserted comment.
 
-### Models များ ဆက်စပ်ခြင်း(Belongs To)
+If you need to save multiple related models:
 
-`belongsTo` relationship ဖြင့် Method များကို data များ update လုပ်စေလိုပါက `associate` method ကို အသုံးပြုနိုင်သည်။ ထို method သည် လက်အောက်ခံ model ၏ foregin key ကိုပါ ထည့်သွင်းပေးသွားမည် ဖြစ်သည်။
+	$comments = array(
+		new Comment(array('message' => 'A new comment.')),
+		new Comment(array('message' => 'Another comment.')),
+		new Comment(array('message' => 'The latest comment.'))
+	);
 
-$account = Account::find(10);
+	$post = Post::find(1);
 
-$user->account()->associate($account);
+	$post->comments()->saveMany($comments);
 
-$user->save();
+### Associating Models (Belongs To)
 
-### ဆက်စပ်နေသည့် Model တွင် data ထည့်သွင်းခြင်း (Many To Many)
+When updating a `belongsTo` relationship, you may use the `associate` method. This method will set the foreign key on the child model:
 
-သင့်အနေဖြင့် many-to-many relations ရှိနေသည့် model များတွင်လည်း data ဖြည့်သွင်းလိုပေမည်။  ထုံးစံ ဥပမာ တစ်ခုဖြစ်သည့် `User` နှင့် `Role` model များဖြင့် ရှေ  ့ဆက်ကြစို ့။ user ၏ roles များကို `attach` method ဖြင့် ချိတ်ဆက်နိုင်သည်။
+	$account = Account::find(10);
+
+	$user->account()->associate($account);
+
+	$user->save();
+
+### Inserting Related Models (Many To Many)
+
+You may also insert related models when working with many-to-many relations. Let's continue using our `User` and `Role` models as examples. We can easily attach new roles to a user using the `attach` method:
 
 #### Attaching Many To Many Models
 
-$user = User::find(1);
+	$user = User::find(1);
 
-$user->roles()->attach(1);
+	$user->roles()->attach(1);
 
 You may also pass an array of attributes that should be stored on the pivot table for the relation:
 
-$user->roles()->attach(1, array('expires' => $expires));
+	$user->roles()->attach(1, array('expires' => $expires));
 
 Of course, the opposite of `attach` is `detach`:
 
-$user->roles()->detach(1);
+	$user->roles()->detach(1);
 
 #### Using Sync To Attach Many To Many Models
 
 You may also use the `sync` method to attach related models. The `sync` method accepts an array of IDs to place on the pivot table. After this operation is complete, only the IDs in the array will be on the intermediate table for the model:
 
-$user->roles()->sync(array(1, 2, 3));
+	$user->roles()->sync(array(1, 2, 3));
 
 #### Adding Pivot Data When Syncing
 
 You may also associate other pivot table values with the given IDs:
 
-$user->roles()->sync(array(1 => array('expires' => true)));
+	$user->roles()->sync(array(1 => array('expires' => true)));
 
 Sometimes you may wish to create a new related model and attach it in a single command. For this operation, you may use the `save` method:
 
-$role = new Role(array('name' => 'Editor'));
+	$role = new Role(array('name' => 'Editor'));
 
-User::find(1)->roles()->save($role);
+	User::find(1)->roles()->save($role);
 
 In this example, the new `Role` model will be saved and attached to the user model. You may also pass an array of attributes to place on the joining table for this operation:
 
-User::find(1)->roles()->save($role, array('expires' => $expires));
+	User::find(1)->roles()->save($role, array('expires' => $expires));
 
 <a name="touching-parent-timestamps"></a>
 ## Touching Parent Timestamps
 
 When a model `belongsTo` another model, such as a `Comment` which belongs to a `Post`, it is often helpful to update the parent's timestamp when the child model is updated. For example, when a `Comment` model is updated, you may want to automatically touch the `updated_at` timestamp of the owning `Post`. Eloquent makes it easy. Just add a `touches` property containing the names of the relationships to the child model:
 
-class Comment extends Eloquent {
+	class Comment extends Eloquent {
 
-protected $touches = array('post');
+		protected $touches = array('post');
 
-public function post()
-{
-return $this->belongsTo('Post');
-}
+		public function post()
+		{
+			return $this->belongsTo('Post');
+		}
 
-}
+	}
 
 Now, when you update a `Comment`, the owning `Post` will have its `updated_at` column updated:
 
-$comment = Comment::find(1);
+	$comment = Comment::find(1);
 
-$comment->text = 'Edit to this comment!';
+	$comment->text = 'Edit to this comment!';
 
-$comment->save();
+	$comment->save();
 
 <a name="working-with-pivot-tables"></a>
 ## Working With Pivot Tables
 
 As you have already learned, working with many-to-many relations requires the presence of an intermediate table. Eloquent provides some very helpful ways of interacting with this table. For example, let's assume our `User` object has many `Role` objects that it is related to. After accessing this relationship, we may access the `pivot` table on the models:
 
-$user = User::find(1);
+	$user = User::find(1);
 
-foreach ($user->roles as $role)
-{
-echo $role->pivot->created_at;
-}
+	foreach ($user->roles as $role)
+	{
+		echo $role->pivot->created_at;
+	}
 
 Notice that each `Role` model we retrieve is automatically assigned a `pivot` attribute. This attribute contains a model representing the intermediate table, and may be used as any other Eloquent model.
 
 By default, only the keys will be present on the `pivot` object. If your pivot table contains extra attributes, you must specify them when defining the relationship:
 
-return $this->belongsToMany('Role')->withPivot('foo', 'bar');
+	return $this->belongsToMany('Role')->withPivot('foo', 'bar');
 
 Now the `foo` and `bar` attributes will be accessible on our `pivot` object for the `Role` model.
 
 If you want your pivot table to have automatically maintained `created_at` and `updated_at` timestamps, use the `withTimestamps` method on the relationship definition:
 
-return $this->belongsToMany('Role')->withTimestamps();
+	return $this->belongsToMany('Role')->withTimestamps();
 
 #### Deleting Records On A Pivot Table
 
 To delete all records on the pivot table for a model, you may use the `detach` method:
 
-User::find(1)->roles()->detach();
+	User::find(1)->roles()->detach();
 
 Note that this operation does not delete records from the `roles` table, but only from the pivot table.
 
@@ -970,16 +1022,16 @@ Note that this operation does not delete records from the `roles` table, but onl
 
 Sometimes you may need to update your pivot table, but not detach it. If you wish to update your pivot table in place you may use `updateExistingPivot` method like so:
 
-User::find(1)->roles()->updateExistingPivot($roleId, $attributes);
+	User::find(1)->roles()->updateExistingPivot($roleId, $attributes);
 
 #### Defining A Custom Pivot Model
 
 Laravel also allows you to define a custom Pivot model. To define a custom model, first create your own "Base" model class that extends `Eloquent`. In your other Eloquent models, extend this custom base model instead of the default `Eloquent` base. In your base model, add the following function that returns an instance of your custom Pivot model:
 
-public function newPivot(Model $parent, array $attributes, $table, $exists)
-{
-return new YourCustomPivot($parent, $attributes, $table, $exists);
-}
+	public function newPivot(Model $parent, array $attributes, $table, $exists)
+	{
+		return new YourCustomPivot($parent, $attributes, $table, $exists);
+	}
 
 <a name="collections"></a>
 ## Collections
@@ -990,75 +1042,75 @@ All multi-result sets returned by Eloquent, either via the `get` method or a `re
 
 For example, we may determine if a result set contains a given primary key using the `contains` method:
 
-$roles = User::find(1)->roles;
+	$roles = User::find(1)->roles;
 
-if ($roles->contains(2))
-{
-//
-}
+	if ($roles->contains(2))
+	{
+		//
+	}
 
 Collections may also be converted to an array or JSON:
 
-$roles = User::find(1)->roles->toArray();
+	$roles = User::find(1)->roles->toArray();
 
-$roles = User::find(1)->roles->toJson();
+	$roles = User::find(1)->roles->toJson();
 
 If a collection is cast to a string, it will be returned as JSON:
 
-$roles = (string) User::find(1)->roles;
+	$roles = (string) User::find(1)->roles;
 
 #### Iterating Collections
 
 Eloquent collections also contain a few helpful methods for looping and filtering the items they contain:
 
-$roles = $user->roles->each(function($role)
-{
-//
-});
+	$roles = $user->roles->each(function($role)
+	{
+		//
+	});
 
 #### Filtering Collections
 
 When filtering collections, the callback provided will be used as callback for [array_filter](http://php.net/manual/en/function.array-filter.php).
 
-$users = $users->filter(function($user)
-{
-return $user->isAdmin();
-});
+	$users = $users->filter(function($user)
+	{
+		return $user->isAdmin();
+	});
 
 > **Note:** When filtering a collection and converting it to JSON, try calling the `values` function first to reset the array's keys.
 
 #### Applying A Callback To Each Collection Object
 
-$roles = User::find(1)->roles;
+	$roles = User::find(1)->roles;
 
-$roles->each(function($role)
-{
-//
-});
-
-#### Sorting A Collection By A Value
-
-$roles = $roles->sortBy(function($role)
-{
-return $role->created_at;
-});
+	$roles->each(function($role)
+	{
+		//
+	});
 
 #### Sorting A Collection By A Value
 
-$roles = $roles->sortBy('created_at');
+	$roles = $roles->sortBy(function($role)
+	{
+		return $role->created_at;
+	});
+
+#### Sorting A Collection By A Value
+
+	$roles = $roles->sortBy('created_at');
 
 #### Returning A Custom Collection Type
 
 Sometimes, you may wish to return a custom Collection object with your own added methods. You may specify this on your Eloquent model by overriding the `newCollection` method:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-public function newCollection(array $models = array())
-{
-return new CustomCollection($models);
-}
+		public function newCollection(array $models = array())
+		{
+			return new CustomCollection($models);
+		}
 
-}
+	}
 
 <a name="accessors-and-mutators"></a>
 ## Accessors & Mutators
@@ -1067,14 +1119,14 @@ return new CustomCollection($models);
 
 Eloquent provides a convenient way to transform your model attributes when getting or setting them. Simply define a `getFooAttribute` method on your model to declare an accessor. Keep in mind that the methods should follow camel-casing, even though your database columns are snake-case:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-public function getFirstNameAttribute($value)
-{
-return ucfirst($value);
-}
+		public function getFirstNameAttribute($value)
+		{
+			return ucfirst($value);
+		}
 
-}
+	}
 
 In the example above, the `first_name` column has an accessor. Note that the value of the attribute is passed to the accessor.
 
@@ -1082,35 +1134,35 @@ In the example above, the `first_name` column has an accessor. Note that the val
 
 Mutators are declared in a similar fashion:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-public function setFirstNameAttribute($value)
-{
-$this->attributes['first_name'] = strtolower($value);
-}
+		public function setFirstNameAttribute($value)
+		{
+			$this->attributes['first_name'] = strtolower($value);
+		}
 
-}
+	}
 
 <a name="date-mutators"></a>
 ## Date Mutators
 
-By default, Eloquent will convert the `created_at`, `updated_at`, and `deleted_at` columns to instances of [Carbon](https://github.com/briannesbitt/Carbon), which provides an assortment of helpful methods, and extends the native PHP `DateTime` class.
+By default, Eloquent will convert the `created_at` and `updated_at` columns to instances of [Carbon](https://github.com/briannesbitt/Carbon), which provides an assortment of helpful methods, and extends the native PHP `DateTime` class.
 
 You may customize which fields are automatically mutated, and even completely disable this mutation, by overriding the `getDates` method of the model:
 
-public function getDates()
-{
-return array('created_at');
-}
+	public function getDates()
+	{
+		return array('created_at');
+	}
 
 When a column is considered a date, you may set its value to a UNIX timestamp, date string (`Y-m-d`), date-time string, and of course a `DateTime` / `Carbon` instance.
 
 To totally disable date mutations, simply return an empty array from the `getDates` method:
 
-public function getDates()
-{
-return array();
-}
+	public function getDates()
+	{
+		return array();
+	}
 
 <a name="model-events"></a>
 ## Model Events
@@ -1123,25 +1175,25 @@ Whenever a new item is saved for the first time, the `creating` and `created` ev
 
 If `false` is returned from the `creating`, `updating`, `saving`, or `deleting` events, the action will be cancelled:
 
-User::creating(function($user)
-{
-if ( ! $user->isValid()) return false;
-});
+	User::creating(function($user)
+	{
+		if ( ! $user->isValid()) return false;
+	});
 
 #### Setting A Model Boot Method
 
 Eloquent models also contain a static `boot` method, which may provide a convenient place to register your event bindings.
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-public static function boot()
-{
-parent::boot();
+		public static function boot()
+		{
+			parent::boot();
 
-// Setup event bindings...
-}
+			// Setup event bindings...
+		}
 
-}
+	}
 
 <a name="model-observers"></a>
 ## Model Observers
@@ -1150,81 +1202,80 @@ To consolidate the handling of model events, you may register a model observer. 
 
 So, for example, a model observer might look like this:
 
-class UserObserver {
+	class UserObserver {
 
-public function saving($model)
-{
-//
-}
+		public function saving($model)
+		{
+			//
+		}
 
-public function saved($model)
-{
-//
-}
+		public function saved($model)
+		{
+			//
+		}
 
-}
+	}
 
 You may register an observer instance using the `observe` method:
 
-User::observe(new UserObserver);
+	User::observe(new UserObserver);
 
 <a name="converting-to-arrays-or-json"></a>
-## Arrays နှင့် JSON သို ့ပြောင်းလဲခြင်း
+## Converting To Arrays / JSON
 
-#### Model တစ်ခုကို Array သို ့ပြောင်းလဲခြင်း
+#### Converting A Model To An Array
 
-JSON APIs များ တည်ဆောက်ရာတွင် ၊ သင့် အနေဖြင့် model နှင့် ဆက်စပ်ပတ်သတ်သည်များကို array အနေဖြင့်သော လည်းကောင်း JSON အနေဖြင့်သော် လည်းကောင်း ထုတ်ပေးလိုသည့် အချိန်ကာလ များ ရှိပေမည်။ Eloquent အနေဖြင့် ထိုသို ့ပြုလုပ်နိုင်ရန် ထောက်ပံ့ပေးသော method များလည်း ရှိပေသည်။ ထိုသို ့ ၄င်းနှင့် တကွ ဆက်စပ်ပတ်သတ်နေသည်များကိုပါက array အဖြစ်ပြောင်းလဲ နိုင်ရန် `toArray` method ကို အသုံးပြုနိုင်သည်။
+When building JSON APIs, you may often need to convert your models and relationships to arrays or JSON. So, Eloquent includes methods for doing so. To convert a model and its loaded relationship to an array, you may use the `toArray` method:
 
-$user = User::with('roles')->first();
+	$user = User::with('roles')->first();
 
-return $user->toArray();
+	return $user->toArray();
 
-Models connection တစ်ခုလုံးပါ array အဖြစ် ပြောင်းလဲသွားသည်ကို သတိပြုရမည်။ 
+Note that entire collections of models may also be converted to arrays:
 
-return User::all()->toArray();
+	return User::all()->toArray();
 
-#### Model တစ်ခုကို JSON သို ့ ပြောင်းလဲခြင်း
+#### Converting A Model To JSON
 
-Model တစ်ခုကို JSON အနေဖြင့် ပြောင်းလဲလိုပါက `toJson` method ကို အသုံးပြုနိုင်သည်။
+To convert a model to JSON, you may use the `toJson` method:
 
-return User::find(1)->toJson();
+	return User::find(1)->toJson();
 
-#### Route တစ်ခုမှ Model ကို return ပြန်ခြင်း  
+#### Returning A Model From A Route
 
-Model သို ့မဟုတ် collection တစ်ခုသည် string အဖြစ်သို ့ cast အလုပ်ခံရပါက အလိုအလျောက် JSON အဖြစ်သို ့ပြောင်းလဲသွားမည် ဖြစ်သည်။ 
-ထို ့ကြောင့် သင့် application route မှ တိုက်ရိုက် return ပြန်၍လည်း ရနိုင်သည်။
+Note that when a model or collection is cast to a string, it will be converted to JSON, meaning you can return Eloquent objects directly from your application's routes!
 
-Route::get('users', function()
-{
-return User::all();
-});
+	Route::get('users', function()
+	{
+		return User::all();
+	});
 
-#### Array သို ့မဟုတ် JSON သို ့ပြောင်းလဲရာတွင် Attribute တစ်ချို  ့ကို ဖျောက်ထားခြင်း
+#### Hiding Attributes From Array Or JSON Conversion
 
-တခါတရံ သင့်အနေဖြင့် တချို  ့သော attribute များကို array သို ့မဟုတ် JSON သို ့ပြောင်းလဲရာတွင် ပါမလာ စေချင်သည့် attribute များ (ဥပမာ password များကဲ့သို ့သော ) ရှိပေမည်။ ထိုသို ့ပြုလုပ်နိုင်ရန် model အတွင်းတွင် `hidden` ဟူသော property တစ်ခုအဖြစ် ကြေညာပေးရန် လိုပေမည်။
+Sometimes you may wish to limit the attributes that are included in your model's array or JSON form, such as passwords. To do so, add a `hidden` property definition to your model:
 
-class User extends Eloquent {
+	class User extends Eloquent {
 
-protected $hidden = array('password');
+		protected $hidden = array('password');
 
-}
+	}
 
 > **Note:** When hiding relationships, use the relationship's **method** name, not the dynamic accessor name.
 
-အပြန်အလှန်အားဖြင့် သင့်အနေဖြင့် ထုတ်ချင်သည်များကိုသာ ဖော်ပြနိုင်ရန် `visible` ဟုသည် property တစ်ခု ကြေညာနိုင်ပေသည်။
+Alternatively, you may use the `visible` property to define a white-list:
 
-protected $visible = array('first_name', 'last_name');
+	protected $visible = array('first_name', 'last_name');
 
 <a name="array-appends"></a>
 Occasionally, you may need to add array attributes that do not have a corresponding column in your database. To do so, simply define an accessor for the value:
 
-public function getIsAdminAttribute()
-{
-return $this->attributes['admin'] == 'yes';
-}
+	public function getIsAdminAttribute()
+	{
+		return $this->attributes['admin'] == 'yes';
+	}
 
 Once you have created the accessor, just add the value to the `appends` property on the model:
 
-protected $appends = array('is_admin');
+	protected $appends = array('is_admin');
 
 Once the attribute has been added to the `appends` list, it will be included in both the model's array and JSON forms.

@@ -1,11 +1,8 @@
-MIT လိုင်စင်(MIT)
+The MIT License (MIT)
 Copyright © Taylor Otwell
 
-အသုံးျပဳပုိင္ခြင္ ့မွာ ေအာက္ပါ အတုိင္း ျဖစ္သည္။ မည္သည့္ ပုဂၢိဳလ္ မဆုိ လက္ဝယ္ ရရွိထားသည့္ အဆုိပါ Software ႏွင့္ ဆက္စပ္ ေနသည့္ documentation file မ်ား (ထုိ softwareတစ္ခုလုံး) ကုိ အသုံးျပဳ၊ ကူးယူ ၊ ျပင္ဆင္၊ စာအျဖစ္ ေရးသား ျခင္း၊ ေပါင္းစပ္ျခင္း၊ ျဖန္ ့ျဖဴးျခင္း၊ လုိင္စင္ ထပ္မံ ခ်ထားျခင္း  ႏွင့္ ထုိ Software ကုိေရာင္းခ်ျခင္း ႏွင့္ပတ္သတ္၍ Software အသုံးျပဳျခင္း တစ္ဦးတစ္ေယာက္ခ်င္း စီကုိ ေအာက္ပါ အတုိင္း အခ်က္မ်ားကုိ လုိက္နာရမည္ ျဖစ္သည္။
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-အထက္ပါ Copyright သတိေပးခ်က္ႏွင့္ ကန္ ့သတ္ခ်က္မွာ ထုိ software ၏ တစိတ္တပုိင္း ကုိ အသုံးျပဳသည္ျဖစ္ေစ ၊ တစ္ခုလုံးကုိ အသုံးျပဳသည္ ျဖစ္ေစ ပါဝင္ရမည္ျဖစ္သည္။
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-
-ထို Software ကုိ လက္ရွိ စီမံထားသည့္ အတုိင္းမွာ ေရာင္းဝယ္ေဖာက္ကားျခင္း ဆုိင္ရာ အာမခံခ်က္မ်ား၊ ဆီေလ်ာ္ေသာ ရည္ရြယ္ခ်က္ ႏွင့္ က်ဴးလြန္ေဖာက္ျပားျခင္း မရွိေသာ အေျခအေနမွ အပ၊  မည္သုိ ့ေသာ အာမခံခ်က္ သုိ ့မဟုတ္  အလားတူ ေဖာ္ျပခ်က္ ကန္ ့သတ္ထားျခင္း မရွိေစရ။ ထုိသက္ေရာက္မႈသည္ မည္သူမဆုိ ( ေရးသားသူႏွင့္ အျခား COPYRIGHT ကုိ္ ပိုင္ဆုိင္သူမ်ားပင္) ၊ အျခားအေၾကာင္းရင္းမ်ား ၊ ( စာခ်ဳပ္ခ်ဳပ္ဆုိျခင္း၊ အျခားသူမ်ား၏ အက်ိဳးစီးပြားပ်က္ျပားေစျခင္း ) ေၾကာင့္ Software ကုိ ပတ္သတ္ ဆက္စပ္ေနသူမ်ား ႏွင့္ ၊  Software ကုိ အသုံးျပဳသူမ်ား ႏွင့္ အျခားေသာ အေၾကာင္းအခ်က္မ်ားေၾကာင့္ အက်ိဳးစီးပြားကုိ ထိခိုက္နစ္နာ ေစျခင္း အလ်င္းမရွိေစရ။
-
-   
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,138 +1,138 @@
-﻿# Cache
+# Cache
 
-- [ပြင်ဆင်ခြင်း](#configuration)
-- [Cache အသုံးပြုသည့်ပုံစံ](#cache-usage)
-- [တန်ဖိုး ထပ်တိုးခြင်း နှင့် လျော့ချခြင်း](#increments-and-decrements)
-- [Cache များအား အုပ်စုဖွဲ့ခြင်း](#cache-tags)
+- [Configuration](#configuration)
+- [Cache Usage](#cache-usage)
+- [Increments & Decrements](#increments-and-decrements)
+- [Cache Tags](#cache-tags)
 - [Database Cache](#database-cache)
 
 <a name="configuration"></a>
-## ပြင်ဆင်ခြင်း
+## Configuration
 
-Caching ပြုလုပ်နည်းပုံစံမျိုးစုံတွက် Laravel မှ API ထုတ်ပေးပြီးသားဖြစ်ပါတယ်။ Cache configuration အတွက် `app/config/cache.php` ဖိုင်ထဲမှာသွားပြင်ရမှာပါ။ Application တစ်ခုလုံးအတွက်အသုံးပြုမဲ့ cache driver ကို အဲ့ဒီဖိုင်ထဲမှာ သတ်မှတ်ပေးရမှာပါ။  [Memcached](http://memcached.org) နှင့် [Redis](http://redis.io) ကဲ့သိုသော လူသုံးများပြီး popular ဖြစ်တဲ့ caching methods တွေကို laravel မှာ အထောက်အပံ့ပေးထားပါတယ်။ 
+Laravel provides a unified API for various caching systems. The cache configuration is located at `app/config/cache.php`. In this file you may specify which cache driver you would like used by default throughout your application. Laravel supports popular caching backends like [Memcached](http://memcached.org) and [Redis](http://redis.io) out of the box.
 
-အဲ့ဒီ cache configuration ဖိုင်ထဲမှာ ကျန်တဲ့ options တွေလဲ အများကြီးရှိပါသေးတယ်။ အဲ့ဒီအတွက်လဲ ဖိုင်ထဲမှာ တစ်ခါတည်း လမ်းညွှန်ချက်ရေးပေးထားပြီးသားပါ။ အကယ်၍ အဲ့ဒီ options တွေကိုအသုံးပြုမယ်ဆိုရင်တော့ option နဲ့ပတ်သက်တဲ့လမ်းညွှန်ချက်ကို သေသေချာချာဖတ်ပြီးမှ အသုံးပြုဖို့လိုအပ်ပါတယ်။ ပုံမှန်အတိုင်းဆိုရင်တော့ laravel ဟာ `file` cache driver အတွက် ပြင်ဆင်ပေးထားပါတယ်။ အဲ့ဒီ cache ဖိုင် objects တွေကို နံပါတ်စဉ်အတိုင်း filesystem ထဲမှာသွားသိမ်းထားပါတယ်။ Application အကြီးတွေအတွက်ဆိုရင်တော့ Memcached သို့မဟုတ် APC (Alternative PHP Cache) ကဲ့သို့သော in-memory cache တွေကိုအသုံးပြုသင့်ပါတယ်။ 
+The cache configuration file also contains various other options, which are documented within the file, so make sure to read over these options. By default, Laravel is configured to use the `file` cache driver, which stores the serialized, cached objects in the filesystem. For larger applications, it is recommended that you use an in-memory cache such as Memcached or APC.
 
 <a name="cache-usage"></a>
-## Cache အသုံးပြုသည့်ပုံစံ
+## Cache Usage
 
-#### အချက်အလက်ကို Cache ထဲတွင်သိမ်းဆည်းခြင်း
+#### Storing An Item In The Cache
 
 	Cache::put('key', 'value', $minutes);
 
-#### အချိန်ကန့်သတ်ဖို့အတွက် Carbon Objects အသုံးပြုခြင်း
+#### Using Carbon Objects To Set Expire Time
 
 	$expiresAt = Carbon::now()->addMinutes(10);
 
 	Cache::put('key', 'value', $expiresAt);
 
-#### အချက်အလက်သည် Cache ထဲတွင် ရှိမနေလျှင် ထပ်ထည့်ခြင်း
+#### Storing An Item In The Cache If It Doesn't Exist
 
 	Cache::add('key', 'value', $minutes);
 
-အကယ်၍ အချက်အလက်ဟာ cache ထဲမှာ **ရှိနေလျှင်** `add` method ဟာ `true` return ပြန်မှာဖြစ်ပြီး၊ အဲ့လိုမဟုတ်ရင်တော့ `false` return ပြန်မှာဖြစ်ပါတယ်။
+The `add` method will return `true` if the item is actually **added** to the cache. Otherwise, the method will return `false`.
 
-#### Cache ရှိမရှိ စစ်ဆေးခြင်း
+#### Checking For Existence In Cache
 
 	if (Cache::has('key'))
 	{
 		//
 	}
 
-#### Cache ထဲမှ အချက်အလက်ကို ရယူခြင်း
+#### Retrieving An Item From The Cache
 
 	$value = Cache::get('key');
 
-#### အချက်အလက်ရယူခြင်း (သို့မဟုတ်) Default Value တစ်ခု return ပြန်ခြင်း
+#### Retrieving An Item Or Returning A Default Value
 
 	$value = Cache::get('key', 'default');
 
 	$value = Cache::get('key', function() { return 'default'; });
 
-#### အချက်အလက်ကို Cache ထဲသို့ အကန့်မသတ်မရှိသိမ်းဆည်းခြင်း
+#### Storing An Item In The Cache Permanently
 
 	Cache::forever('key', 'value');
 
-တစ်ခါတစ်ရံမှာ cache ထဲက အချက်အလက်ကိုလဲ ယူချင်တယ်၊ အကယ်၍ အဲ့ဒီအချက်အလက်ရှိမနေဘူးဆိုရင်လည်း cache ထဲကို default value တစ်ခု ထည့်ထားခဲ့ချင်တဲ့ အခြေအနေတွေရှိလာနိုင်ပါတယ်။ အဲ့ဒီလို အခြေအနေမျိုးအတွက် `Cache::remember` method ကိုအသုံးပြုနိုင်ပါတယ်။   
+Sometimes you may wish to retrieve an item from the cache, but also store a default value if the requested item doesn't exist. You may do this using the `Cache::remember` method:
 
 	$value = Cache::remember('users', $minutes, function()
 	{
 		return DB::table('users')->get();
 	});
 
-`remember` နဲ့ `forever` method နှစ်ခုလုံးကို ပေါင်းစပ်ပြီး အသုံးပြုနိုင်ပါသေးတယ်။
+You may also combine the `remember` and `forever` methods:
 
 	$value = Cache::rememberForever('users', function()
 	{
 		return DB::table('users')->get();
 	});
 
-Cache ထဲမှာသိမ်းဆည်းလိုက်တဲ့ အချက်အလက်တွေဟာ နံပါတ်စဉ်အလိုက်သိမ်းဆည်းတာဖြစ်တဲ့အတွက် သင့်အနေနဲ့ ဘယ်လို အချက်အလက်အမျိုးအစားကိုမဆို လွတ်လပ်စွာ သိမ်းဆည်းနိုင်ကြောင်း သတိပြုပါလေ။
+Note that all items stored in the cache are serialized, so you are free to store any type of data.
 
-#### Cache ထဲရှိ အချက်အလက်ကို ဆွဲထုတ်ခြင်း
+#### Pulling An Item From The Cache
 
-Cache ထဲမှ အချက်အလက်ကို ရယူအသုံးပြုပြီးတာနဲ့ ဖျက်ပြစ်လိုက်ချင်တယ်ဆိုရင်တော့၊ `pull` method ကိုအသုံးပြုနိုင်ပါတယ်။
+If you need to retrieve an item from the cache and then delete it, you may use the `pull` method:
 
 	$value = Cache::pull('key');
 
-#### Cache ထဲမှ အချက်အလက်ကို ပယ်ဖျက်ခြင်း
+#### Removing An Item From The Cache
 
 	Cache::forget('key');
 
 <a name="increments-and-decrements"></a>
-## တန်ဖိုး ထပ်တိုးခြင်း နှင့် လျော့ချခြင်း
+## Increments & Decrements
 
-`file` နဲ့ `database` driver မှလွဲ၍ ကျန်တဲ့ cache drivers တွေအားလုံးကို `increment` နဲ့ `decrement`လုပ်ဆောင်ချက်တွေအတွက် အထောက်အပံ့ပေးထားပါတယ်။
+All drivers except `file` and `database` support the `increment` and `decrement` operations:
 
-#### အချက်အလက်တန်ဖိုး ထပ်တိုးခြင်း
+#### Incrementing A Value
 
 	Cache::increment('key');
 
 	Cache::increment('key', $amount);
 
-#### အချက်အလက်တန်ဖိုးလျော့ချခြင်း
+#### Decrementing A Value
 
 	Cache::decrement('key');
 
 	Cache::decrement('key', $amount);
 
 <a name="cache-tags"></a>
-## Cache များအား အုပ်စုဖွဲ့ခြင်း
+## Cache Tags
 
-> **သတိပြုရန်:** `file` သို့မဟုတ် `database` cache driver သုံးထားရင်တော့ Cache tags ကို အထောက်အပံ့ပေးမှာမဟုတ်ပါဘူး။ ၎င်းအပြင် cache ကို tags တွေနဲ့တွဲသုံးမယ်ဆိုရင် အဲ့ဒီ cache ကို အမြဲတမ်းသိမ်းဆည်းထားမှာဖြစ်တဲ့အတွက် `memcached` ကဲသို့သော driver ကိုအသုံးပြုမှသာ permormance အတွက်ပိုပြီးအဆင်ပြေစေမှာပါ။ အဲ့ဒီတော့မှ အသုံးမလိုတော့တဲ့ အချက်အလက်တွေကို အလိုအလျှောက် ပယ်ဖျက်ပေးမှာဖြစ်ပါတယ်။
+> **Note:** Cache tags are not supported when using the `file` or `database` cache drivers. Furthermore, when using multiple tags with caches that are stored "forever", performance will be best with a driver such as `memcached`, which automatically purges stale records.
 
-#### Cache များအား အုပ်စုဖွဲ့ခြင်း
+#### Accessing A Tagged Cache
 
-Cache ထဲမှာရှိတဲ့ ဆက်စပ်နေတဲ့ အချက်အလက်တွေကို အတူတကွအုပ်စုဖွဲ့ပေးခြင်းကို cache tags ကပြုလုပ်ပေးနိုင်ပါတယ်။ ပြီးရင်တော့ ပေးထားခဲ့တဲနာမည်အတိုင်းပြန်ပြီး လွယ်လွယ်ကူကူပဲ ပြန်လည်ပယ်ဖျက်နိုင်ပါတယ်။  Cache တွေကို တစ်ခုတစည်းထဲ အုပ်စုဖွဲ့ထားဖို့အတွက် `tags` method ကိုအသုံးပြုရပါမယ်။
+Cache tags allow you to tag related items in the cache, and then flush all caches tagged with a given name. To access a tagged cache, use the `tags` method.
 
-Cache တွေကို တွဲစပ်ဖို့အတွက် `tags` method ထဲသို့ အမည်များကို `,` ခံ၍သော်လည်းကောင်း၊ array အနေနှင့် passing ပေး၍သော်လည်းကောင်း သိမ်းဆည်းနိုင်ပါတယ်။
+You may store a tagged cache by passing in an ordered list of tag names as arguments, or as an ordered array of tag names:
 
 	Cache::tags('people', 'authors')->put('John', $john, $minutes);
 
 	Cache::tags(array('people', 'artists'))->put('Anne', $anne, $minutes);
 
-Cache တွေကိုတစ်ခုတစည်းထဲ အုပ်စုဖွဲ့ထားဖို့အတွက် နှစ်သက်ရာ caching method ကိုအသုံးပြုနိုင်ပါတယ်။ `remember`, `forever` နှင့် `rememberForever` စတာတွေအပါအဝင်ပေါ့။ `increment` နဲ့ `decrement` method တွေကိုတော့ အသုံးပြုလို့ရမှာမဟုတ်ပါဘူး။
+You may use any cache storage method in combination with tags, including `remember`, `forever`, and `rememberForever`. You may also access cached items from the tagged cache, as well as use the other cache methods such as `increment` and `decrement`.
 
-#### အုပ်စုဖွဲ့ထားသော Cache ထဲမှ အချက်အလက်ကို ရယူခြင်း
+#### Accessing Items In A Tagged Cache
 
-အုပ်စုဖွဲ့ထားသော cache ထဲမှ အချက်အလက်ကို ပြန်လည်ရယူဖို့အတွက် အုပ်စုဖွဲ့ခြင်းပြုလုပ်စဉ်က ပေးထားခဲ့သော အမည်များအတိုင်းအစဉ်လိုက်ပြန်လည် passing ပေးပြီး ရယူနိုင်ပါတယ်။ 
+To access a tagged cache, pass the same ordered list of tags used to save it.
 
 	$anne = Cache::tags('people', 'artists')->get('Anne');
 
 	$john = Cache::tags(array('people', 'authors'))->get('John');
 
-ပြန်လည်ပယ်ဖျက်ချင်တယ်ဆိုလျင်လဲ အုပ်စုဖွဲ့ခြင်းပြုလုပ်စဉ်ကပေးထားခဲ့သော နာမည်တစ်ခု သို့မဟုတ် တစ်ခုထက်ပိုသော အမည်များကို အသုံးပြုပြီးပယ်ဖျက်နိုင်ပါတယ်။ အောက်မှာပေးထားတဲ့ ဥပမာကို ကြည့်မယ်ဆိုရင် `people` အုပ်စုကော `author` အုပ်စုကိုကော ပယ်ဖျက်လိုက်တာဖြစ်ပါတယ်။ အဲ့ဒီအတွက် အဲ့ဒီအုပ်စုနှစ်ခုထဲမှာပါတဲ့ "Anne" နဲ့ "John" ကို cache ထဲကနေ ဖျက်သွားမှာဖြစ်ပါတယ်။ 
+You may flush all items tagged with a name or list of names. For example, this statement would remove all caches tagged with either `people`, `authors`, or both. So, both "Anne" and "John" would be removed from the cache:
 
 	Cache::tags('people', 'authors')->flush();
 
-အောက်မှာပြထားတဲ့ ဥပမာအရဆိုရင် `authors` အုပ်စုကိုပဲပယ်ဖျက်လိုက်တာဖြစ်ပါတယ်။ အဲ့ဒါကြောင့် `authors` အုပ်စုထဲမှာပါတဲ့ "John" ကိုပဲဖျက်သွားမှာဖြစ်ပြီး "Anne" ကိုဖျက်သွားမှာမဟုတ်ပါဘူး။ အပေါ်ကဥပမာနဲ့ အောက်က ဥပမာကို ယှဉ်ကြည့်ပါ။ 
+In contrast, this statement would remove only caches tagged with `authors`, so "John" would be removed, but not "Anne".
 
 	Cache::tags('authors')->flush();
 
 <a name="database-cache"></a>
 ## Database Cache
 
-`database` cache driver ကိုအသုံးပြုမယ်ဆိုရင်တော့ cache အချက်အလက်တွေကိုသိမ်းဆည်းဖို့အတွက် table တစ်ခုပြုလုပ်ပေးဖို့ လိုပါတယ်။ အောက်မှာ `Schema` နဲ့ cache table ပြုလုပ်ထားပုံကို ဥပမာအနေနဲ့ပြပေးထားပါတယ်။ 
+When using the `database` cache driver, you will need to setup a table to contain the cache items. You'll find an example `Schema` declaration for the table below:
 
 	Schema::create('cache', function($table)
 	{

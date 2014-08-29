@@ -1,4 +1,4 @@
-﻿# Requests နှင့် Input များအကြောင်း
+# Requests & Input
 
 - [Basic Input](#basic-input)
 - [Cookies](#cookies)
@@ -11,35 +11,32 @@
 
 You may access all user input with a few simple methods. You do not need to worry about the HTTP verb used for the request, as input is accessed in the same way for all verbs.
 
-Http verb တွေအားလုံးက input ဆီကို ဝင်ရောက်လာတဲ့အချိန်မှာ Simple methods တွေနဲ့ users အားလုံးရဲ့ input တွေကို access လုပ်နိုင်ပါတယ်။ Request တွေအတွက် HTTP verb တွေကိုစိုးရိမ်စရာမလိုပါဘူး။
-
-#### Input Value တစ်ခုကိုပြန်လည်ရချင်ရင်
+#### Retrieving An Input Value
 
 	$name = Input::get('name');
 
-#### Input မှာ Value မရှိသေးဘဲ Default Value ပြချင်ရင် -
+#### Retrieving A Default Value If The Input Value Is Absent
 
 	$name = Input::get('name', 'Sally');
 
-#### Input Value ရှိတာကိုဆုံးဖြတ်ဖို့-
+#### Determining If An Input Value Is Present
 
 	if (Input::has('name'))
 	{
 		//
 	}
 
-#### Input အားလုံးရဲ့ Request ကိုရချင်ရင်-
+#### Getting All Input For The Request
 
 	$input = Input::all();
 
-#### Input တစ်ချို့ရဲ့ Request အားလုံးကိုရချင်ရင်-
+#### Getting Only Some Of The Request Input
 
 	$input = Input::only('username', 'password');
 
 	$input = Input::except('credit_card');
 
 When working on forms with "array" inputs, you may use dot notation to access the arrays:
-Form တွေကို arrays input တွေနဲ့အသုံးပြုတဲ့အခါမှာ arrays တွေကို access လုပ်ဖို့ "." သင်္ကေတကိုအသုံးပြုရပါမယ်။
 
 	$input = Input::get('products.0.name');
 
@@ -48,20 +45,21 @@ Form တွေကို arrays input တွေနဲ့အသုံးပြု�
 <a name="cookies"></a>
 ## Cookies
 
-Cookies အားလုံးကို Laravel Framework က authernication code နဲ့ encrypted လုပ်ထားပါတယ်၊ ဒါကဘာကိုဆိုလိုတာလဲဆိုရင် cookie တွေကို client ကပြောင်းလိုက်ပြီဆိုရင် သူတို့တရားမဝင်တာကိုနားလည်လိမ့်မယ်။
+All cookies created by the Laravel framework are encrypted and signed with an authentication code, meaning they will be considered invalid if they have been changed by the client.
 
-#### Cookie တစ်ခုရဲ့ Value ကိုရချင်ရင်
+#### Retrieving A Cookie Value
 
 	$value = Cookie::get('name');
 
-#### Response တစ်ခုဆီကို Cookie အသစ်တစ်ခု attach လုပ်ချင်ရင် -
+#### Attaching A New Cookie To A Response
 
 	$response = Response::make('Hello World');
 
 	$response->withCookie(Cookie::make('name', 'value', $minutes));
 
-#### နောက် Response တစ်ခုအတွက် Cookie တစ်ခုကို Queue လုပ်ခြင်း
-Response မလုပ်ခင်မှာ cookie တစ်ခုကို set ချင်တယ်ဆို့င်ရင် `Cookie::queue()` method ကိုသုံးပါ။ သင့် application မှ နောက်ဆုံး response ကို cookie က အလိုလို attach လုပ်သွားပါလိမ့်မယ်။
+#### Queueing A Cookie For The Next Response
+
+If you would like to set a cookie before a response has been created, use the `Cookie::queue()` method. The cookie will automatically be attached to the final response from your application.
 
 	Cookie::queue($name, $value, $minutes);
 
@@ -72,7 +70,7 @@ Response မလုပ်ခင်မှာ cookie တစ်ခုကို set �
 <a name="old-input"></a>
 ## Old Input
 
-သင့်အနေနဲ့ request တစ်ခုကနေ တစ်ခု အကူးအပြောင်းအထိ input တွေကိုထိမ်းသိမ်းထားချင်ပါလိမ့်မယ်... ဥပမာ သင့်အနေနဲ့ form input တွေကို validation လုပ်ပြီး errors message နဲ့အတူ input တွေကိုပြန်ပြတဲ့ အချိန်မျိုးပေါ့။
+You may need to keep input from one request until the next request. For example, you may need to re-populate a form after checking it for validation errors.
 
 #### Flashing Input To The Session
 
@@ -90,20 +88,20 @@ Since you often will want to flash input in association with a redirect to the p
 
 	return Redirect::to('form')->withInput(Input::except('password'));
 
-> **Note:** You may flash other data across requests using the [Session](session.md) class.
+> **Note:** You may flash other data across requests using the [Session](/docs/session) class.
 
-#### Input Data အဟောင်းတွေကိုပြန်ကြည့်ချင်ရင် -
+#### Retrieving Old Data
 
 	Input::old('username');
 
 <a name="files"></a>
 ## Files
 
-#### File Upload တစ်ခုကိုပြန်ကြည့်ချင်ရင် -
+#### Retrieving An Uploaded File
 
 	$file = Input::file('photo');
 
-#### File upload လုပ်သွားလား မသွားလား ဆုံးဖြတ်ခြင်ရင်
+#### Determining If A File Was Uploaded
 
 	if (Input::hasFile('photo'))
 	{
@@ -112,36 +110,36 @@ Since you often will want to flash input in association with a redirect to the p
 
 The object returned by the `file` method is an instance of the `Symfony\Component\HttpFoundation\File\UploadedFile` class, which extends the PHP `SplFileInfo` class and provides a variety of methods for interacting with the file.
 
-#### File Upload လုပ်တာမှားလားစစ်ချင်ရင် -
+#### Determining If An Uploaded File Is Valid
 
 	if (Input::file('photo')->isValid())
 	{
 		//
 	}
 
-#### Upload File ကို Move လုပ်ချင်ရင်
+#### Moving An Uploaded File
 
 	Input::file('photo')->move($destinationPath);
 
 	Input::file('photo')->move($destinationPath, $fileName);
 
-#### File Upload လုပ်သွားတဲ့ လမ်းကြောင်းရချင်ရင် -
+#### Retrieving The Path To An Uploaded File
 
 	$path = Input::file('photo')->getRealPath();
 
-#### Upload File ရဲ့ မူလအမည်ကိုရချင်ရင် -
+#### Retrieving The Original Name Of An Uploaded File
 
 	$name = Input::file('photo')->getClientOriginalName();
 
-#### Upload File ရဲ့ extension ကိုသိချင်ရင်
+#### Retrieving The Extension Of An Uploaded File
 
 	$extension = Input::file('photo')->getClientOriginalExtension();
 
-#### Upload လုပ်လိုက်တဲ့ File Size ကိုသိချင်ရင်
+#### Retrieving The Size Of An Uploaded File
 
 	$size = Input::file('photo')->getSize();
 
-#### Upload File ရဲ့ MIME Type ကိုသိချင်ရင်
+#### Retrieving The MIME Type Of An Uploaded File
 
 	$mime = Input::file('photo')->getMimeType();
 
@@ -150,11 +148,11 @@ The object returned by the `file` method is an instance of the `Symfony\Componen
 
 The `Request` class provides many methods for examining the HTTP request for your application and extends the `Symfony\Component\HttpFoundation\Request` class. Here are some of the highlights.
 
-#### Request URI ရဲ့ လမ်းကြောင်းကိုသိချင်ရင်
+#### Retrieving The Request URI
 
 	$uri = Request::path();
 
-#### Request Method ကို retrieving လုပ်ချင်ရင်
+#### Retrieving The Request Method
 
 	$method = Request::method();
 
@@ -163,22 +161,22 @@ The `Request` class provides many methods for examining the HTTP request for you
 		//
 	}
 
-#### Request လမ်းကြောင်းက pattern တစ်ခုနဲ့ mathces ဖြစ်လားဆိုတာကိုဆုံးဖြတ်ချင်ရင် -
+#### Determining If The Request Path Matches A Pattern
 
 	if (Request::is('admin/*'))
 	{
 		//
 	}
 
-#### Request URL ကိုရယူခြင်ရင်
+#### Get The Request URL
 
 	$url = Request::url();
 
-#### Request URI segment ကို retrieve လုပ်ချင်ရင်
+#### Retrieve A Request URI Segment
 
 	$segment = Request::segment(1);
 
-#### Request Header ကိုရချင်ရင် -
+#### Retrieving A Request Header
 
 	$value = Request::header('Content-Type');
 
@@ -186,35 +184,35 @@ The `Request` class provides many methods for examining the HTTP request for you
 
 	$value = Request::server('PATH_INFO');
 
-#### Request က HTTPS ကလားဆိုတာကိုစစ်ချင်ရင် -
+#### Determining If The Request Is Over HTTPS
 
 	if (Request::secure())
 	{
 		//
 	}
 
-#### Request က AJAX သုံးထားလားဆိုတာကိုစစ်ချင်ရင်
+#### Determine If The Request Is Using AJAX
 
 	if (Request::ajax())
 	{
 		//
 	}
 
-#### Request မှာ JSON Content Type ရှိလားဆိုတာကိုစစ်ချင်ရင်
+#### Determine If The Request Has JSON Content Type
 
 	if (Request::isJson())
 	{
 		//
 	}
 
-#### Request က JSON ကို တောင်းလားဆိုတာကိုစစ်ချင်ရင်
+#### Determine If The Request Is Asking For JSON
 
 	if (Request::wantsJson())
 	{
 		//
 	}
 
-#### Request ရဲ့ Response ကို Check လုပ်ချင်ရင်
+#### Checking The Requested Response Format
 
 The `Request::format` method will return the requested response format based on the HTTP Accept header:
 

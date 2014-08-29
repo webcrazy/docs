@@ -1,4 +1,4 @@
-﻿# Artisan Development
+# Artisan Development
 
 - [Introduction](#introduction)
 - [Building A Command](#building-a-command)
@@ -8,63 +8,60 @@
 <a name="introduction"></a>
 ## Introduction
 
-သင့် application အတွက် ကိုယ်ပိုင် commands တွေကို Artisan နဲ့ ထပ်ပြီးပေါင်းထည့်နိုင်ဖို့စီစဉ်ထားပါတယ်။ သင့်ရဲ့ ကိုယ်ပိုင် command တွေကို `app/commands` မှာထက်ထည့်နိုင်ပါတယ်၊ သို့သော်လည်းသင့်ရဲ့ကိုယ်ပိုင် command တွေကို  သင်ကြိုက်တဲ့ storage location မှာ ထည့်နိုင်ပါတယ် သင့်ရဲ့ commands တွေကို သင့်ရဲ့ `composer.json` settings မှာအခြေခံပြီး autoload လုပ်နိုင်ပါတယ်။
+In addition to the commands provided with Artisan, you may also build your own custom commands for working with your application. You may store your custom commands in the `app/commands` directory; however, you are free to choose your own storage location as long as your commands can be autoloaded based on your `composer.json` settings.
 
 <a name="building-a-command"></a>
 ## Building A Command
 
 ### Generating The Class
 
-command တစ်ခုအသစ် create လုပ်ရန်အတွက် - သင့်အနေနဲ့  `command:make` Artisan command ကိုသုံးနိုင်ပါတယ်၊  အဲ့ဒါကသင်စတင်ဖို့ command stub တစ်ခုကို generate ထုတ်ပေးပါလိမ့်မယ်:
+To create a new command, you may use the `command:make` Artisan command, which will generate a command stub to help you get started:
 
 #### Generate A New Command Class
 
 	php artisan command:make FooCommand
 
-Default အရ generate လုပ်လိုက်တဲ့ commands တွေက `app/commands` မှာ  သိမ်းဆည်းထားမှာပါ... သို့သော်လည်း သင့်ကိုယ်ပိုင် path ဒါမှမဟုတ် namespace တစ်ခု သတ်မှတ်ထားလို့လည်းရပါတယ်:
+By default, generated commands will be stored in the `app/commands` directory; however, you may specify custom path or namespace:
 
 	php artisan command:make FooCommand --path=app/classes --namespace=Classes
 
-command create လုပ်တဲ့အချိန်မှာ `--command` option ကို terminal command name အဖြစ် assign လုပ်ရန်အသုံးပြုပါလိမ့်မယ်:
+When creating the command, the `--command` option may be used to assign the terminal command name:
 
 	php artisan command:make AssignUsers --command=users:assign
 
 ### Writing The Command
 
-သင့်ရဲ့  command generate လုပ်ပြီးသွားတဲ့အချိန်မှာ သင့်အနေနဲ့ `name` နဲ့ `description` တွေရဲ့ class properties တွေကို ဖြည့်စွတ်သင့်ပါတယ်၊ အဲဒါတွေက သင့်ရဲ့ command တွေကို `list` နဲ့ screen မှာထုတ်ပြတဲ့အချိန်မှာ အသုံးပြုမှာပါ။
+Once your command is generated, you should fill out the `name` and `description` properties of the class, which will be used when displaying your command on the `list` screen.
 
-သင့် command excute ဖြစ်သွားပြီဆိုရင် `fire` method ကိုခေါ်ပါ့မယ်။ ဒီ method မှာသင်ကြိုက်တဲ့ command logic ကိုထည့်နိုင်တယ်။
+The `fire` method will be called when your command is executed. You may place any command logic in this method.
 
 ### Arguments & Options
 
-The `getArguments` and `getOptions` methods are where you may define any arguments or options your command receives. 
+The `getArguments` and `getOptions` methods are where you may define any arguments or options your command receives. Both of these methods return an array of commands, which are described by a list of array options.
 
-`getArguments` နဲ့ `getOptions` methods တွေကို သင့် command ကနေလက်ခံရရှိတဲ့ မည်သည့် arguments ဒါမှမဟုတ် options မဆို  သတ်မှတ်နိုင်ပါတယ်။ ဒီ methods နှစ်ခုက commands တွေကို array တစ်ခု return ပြန်ပါတယ်၊ အဲ့ဒီ့ array က array options တွေကို list တစ်ခုပုံစံနဲ့ ဖော်ပြထားပါတယ်။
-
-`arguments` တွေကို defining လုပ်တဲ့အချိန်မှာ array definition values တွေကို အောက်မှာပြထားသလိုကိုယ်စားပြုပါတယ် -
+When defining `arguments`, the array definition values represent the following:
 
 	array($name, $mode, $description, $defaultValue)
 
-argument `mode` တွေက `InputArgument::REQUIRED` or `InputArgument::OPTIONAL` တစ်ခုခုဖြစ်လိမ့်မယ်။
+The argument `mode` may be any of the following: `InputArgument::REQUIRED` or `InputArgument::OPTIONAL`.
 
-`options` တွေကိုသတ်မှတ်တဲ့အချိန်မှာ array definition values တွေကို အောက်မှာပြထားသလိုကိုယ်စားပြုပါတယ် -
+When defining `options`, the array definition values represent the following:
 
 	array($name, $shortcut, $mode, $description, $defaultValue)
 
-options အတွက်... argument `mode` က `InputOption::VALUE_REQUIRED`, `InputOption::VALUE_OPTIONAL`, `InputOption::VALUE_IS_ARRAY`, `InputOption::VALUE_NONE` တွေဖြစ်လိမ့်မယ်။
+For options, the argument `mode` may be: `InputOption::VALUE_REQUIRED`, `InputOption::VALUE_OPTIONAL`, `InputOption::VALUE_IS_ARRAY`, `InputOption::VALUE_NONE`.
 
-`VALUES_IS_ARRAY` mode ကဘာကိုပြောတာလဲဆိုရင် command ကိုခေါ်တဲ့အချိန်မှာ နှစ်ကြိမ်သုံးလို့ရတယ်ဆိုတာကိုပြတာပါ -
+The `VALUE_IS_ARRAY` mode indicates that the switch may be used multiple times when calling the command:
 
 	php artisan foo --option=bar --option=baz
 
 The `VALUE_NONE` option indicates that the option is simply used as a "switch":
-`VALUE_NONE` ကဘာကိုပြောတာလဲဆိုရင် သင့်ရဲ့ option ကို "switch" အဖြစ်ရိုးရှင်းစွာ သုံးလို့ရတယ်ဆိုတာကိုပြတာပါ -
 
 	php artisan foo --option
 
 ### Retrieving Input
 
-ဘာလို့ သင့်ရဲ့ command က execute ဖြစ်တာလည်း၊ သင်သေချာပေါက် arguments နဲ့ options တွေကို  application က accept လုပ်လိုက် တဲ့ values access လုပ်ဖို့လိုပါမယ် လို့ပါမယ် ဒါကိုလုပ်ဖို့ဆိုရင် သင့်အနေနဲ့ `argument` နဲ့ `option` method  တွေကိုသုံးဖို့လိုပါလိမ့်မယ်။
+While your command is executing, you will obviously need to access the values for the arguments and options accepted by your application. To do so, you may use the `argument` and `option` methods:
 
 #### Retrieving The Value Of A Command Argument
 
@@ -86,8 +83,6 @@ The `VALUE_NONE` option indicates that the option is simply used as a "switch":
 
 To send output to the console, you may use the `info`, `comment`, `question` and `error` methods. Each of these methods will use the appropriate ANSI colors for their purpose.
 
-Console ဆီကို output send ဖို့ရာအတွက်  သင့်အနေနဲ့  `info`, `comment`, `question` နဲ့ `error` methods တွေကိုအသုံးပြုဖို့လိုပါလိမ့်မယ်။ ဒီ methods တစ်ခုချင်းဆီက သူတို့ရည်ရွယ်ချက်နဲ့သင့်လျော်တဲ့ ANSI colors တွေကို အသုံးပြုပါလိမ့်မယ်။
-
 #### Sending Information To The Console
 
 	$this->info('Display this on the screen');
@@ -98,7 +93,7 @@ Console ဆီကို output send ဖို့ရာအတွက်  သင်
 
 ### Asking Questions
 
-user input prompt အတွက် သင့်အနေနဲ့ `ask` နဲ့ `confirm` methods တွေကို အသုံးပြုနိုင်ပါတယ် -
+You may also use the `ask` and `confirm` methods to prompt the user for input:
 
 #### Asking The User For Input
 
@@ -115,7 +110,7 @@ user input prompt အတွက် သင့်အနေနဲ့ `ask` နဲ့
 		//
 	}
 
-သင့်အနေနဲ့ default value ကို `confirm` method အဖြစ် သတ်မှတ်ထားနိုင်ပါတယ်၊ ဒါက `true` or `false` ဖြစ်သင့်ပါတယ်:
+You may also specify a default value to the `confirm` method, which should be `true` or `false`:
 
 	$this->confirm($question, true);
 
@@ -124,19 +119,28 @@ user input prompt အတွက် သင့်အနေနဲ့ `ask` နဲ့
 
 #### Registering An Artisan Command
 
-သင်ရဲ့ command ကပြီးသွားပြီ ဆိုရင် သင့်အနေနဲ့ Artisan နဲ့ register လုပ်ရပါမယ် ဒါမှ အသုံးပြုလို့ရမှာပါ။ ဒါကိုလည်း ထုံးစံအတိုင်းဘဲ `app/start/artisan.php` file မှာ လုပ်ရမှာပါ။ ဒီ file ထဲမှာ command ကို register လုပ်ဖို့ရာအတွက် `Artisan::add` method ကို အသုံးပြုသင့်ပါတယ် -
+Once your command is finished, you need to register it with Artisan so it will be available for use. This is typically done in the `app/start/artisan.php` file. Within this file, you may use the `Artisan::add` method to register the command:
 
 	Artisan::add(new CustomCommand);
 
 #### Registering A Command That Is In The IoC Container
 
-သင့် ရဲ့ command က application ရဲ့  [IoC container](ioc.md) ထဲမှာ Register လုပ်ထားတယ်ဆိုရင်... Arisan ကနေခေါ်နိုင်အောင် သင့်အနေဲ့ `Artisan::resolve` method ကို အသုံးပြုရပါ့မယ် - 
+If your command is registered in the application [IoC container](/docs/ioc), you may use the `Artisan::resolve` method to make it available to Artisan:
 
 	Artisan::resolve('binding.name');
+
+#### Registering Commands In A Service Provider
+
+If you need to register commands from within a service provider, you should call the `commands` method from the provider's `boot` method, passing the [IoC container](/docs/ioc) binding for the command:
+
+	public function boot()
+	{
+		$this->commands('command.binding');
+	}
 
 <a name="calling-other-commands"></a>
 ## Calling Other Commands
 
-တစ်ခါတစ်လေသင့် command ကနေအခြား command တစ်ခုခုကိုခေါ်ချင်မှာပေါ့... ဒါလည်းရပါတယ်  `call` method နဲ့ခေါ်လိုက်ရုံပါဘဲ -
+Sometimes you may wish to call other commands from your command. You may do so using the `call` method:
 
 	$this->call('command:name', array('argument' => 'foo', '--option' => 'bar'));

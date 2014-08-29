@@ -1,165 +1,173 @@
-# Version မြင့်တင်ခြင်း
+# Upgrade Guide
 
-- [version 4.1 မှ 4.2 သို့ မြင့်တင်ခြင်း](#upgrade-4.2)
-- [version 4.1.x မှ 4.1.29 သို့ မြင့်တင်ခြင်း](#upgrade-4.1.29)
-- [version 4.1.25 မှ 4.1.26 သို့ မြင့်တင်ခြင်း](#upgrade-4.1.26)
-- [version 4.0 မှ 4.1 သို့ မြင့်တင်ခြင်း](#upgrade-4.1)
+- [Upgrading To 4.2 From 4.1](#upgrade-4.2)
+- [Upgrading To 4.1.29 From <= 4.1.x](#upgrade-4.1.29)
+- [Upgrading To 4.1.26 From <= 4.1.25](#upgrade-4.1.26)
+- [Upgrading To 4.1 From 4.0](#upgrade-4.1)
 
 <a name="upgrade-4.2"></a>
-## version 4.1 မှ 4.2 သို့ မြင့်တင်ခြင်း
+## Upgrading To 4.2 From 4.1
 
 ### PHP 5.4+
 
-Laravel 4.2 ကို သုံးပြုဖို့အတွက် php version 5.4.0 နှင့် အထက်မှာ ဖြစ်ရပါမယ်။
+Laravel 4.2 requires PHP 5.4.0 or greater.
 
 ### Encryption Defaults
 
-'app/config/app.php' ထဲတွင် 'cipher'(စကားဝှက်ရေးနည်း) အသစ်ထည့်ပါ။ စကားဝှက်ရေးနည်းအတွက် value ကိုတော့ `MCRYPT_RIJNDAEL_256' ထည့်ပေးပါမယ်။
+Add a new `cipher` option in your `app/config/app.php` configuration file. The value of this option should be `MCRYPT_RIJNDAEL_256`.
 
-'cipher' => MCRYPT_RIJNDAEL_256
+	'cipher' => MCRYPT_RIJNDAEL_256
 
-အခုထည့်လိုက်တဲ့ စကားဝှက်ရေးနည်းက laravel ရဲ့ စကားဝှက်တွေ ထုတ်တဲ့အခါကျရင် သုံးပြုသွားပါလိမ့်မယ်။
+This setting may be used to control the default cipher used by the Laravel encryption facilities.
 
-### ယာယီဖျက်သိမ်းတဲ့ model တွေအတွက် Traits ကိုသုံးပြုနိုင်ပါပြီ
+> **Note:** In Laravel 4.2, the default cipher is `MCRYPT_RIJNDAEL_128` (AES), which is considered to be the most secure cipher. Changing the cipher back to `MCRYPT_RIJNDAEL_256` is required to decrypt cookies/values that were encrypted in Laravel <= 4.1
 
-ယာယီဖျက်သိမ်းနိုင်တဲ့ models တွေရေးပြီးဆိုရင် ဟိုအရင်တုန်းက 'SoftDeltes' ဆိုတဲ့ function သုံးခဲ့ပါတယ်။ အခုဆိုရင်တော့ 'SoftDeleteingTrait' ဆိုတဲ့ function ကို အောက်ကပုံစံအတိုင်းသုံးပြုရပါမယ်။
+### Soft Deleting Models Now Use Traits
 
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+If you are using soft deleting models, the `softDeletes` property has been removed. You must now use the `SoftDeletingTrait` like so:
 
-class User extends Eloquent {
-use SoftDeletingTrait;
-}
+	use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-ဒီလိုမျိုးသုံးလိုက်ပြီဆိုရင်တော့ 'deleted_at' column ကို 'dataes'မှာ အောက်ကပုံစံအတိုင်းထည့်ပေးသင့်ပါတယ်။
+	class User extends Eloquent {
+		use SoftDeletingTrait;
+	}
 
-class User extends Eloquent {
-use SoftDeletingTrait;
+You must also manually add the `deleted_at` column to your `dates` property:
 
-protected $dates = ['deleted_at'];
-}
+	class User extends Eloquent {
+		use SoftDeletingTrait;
 
-Soft delete လုပ်လုပ်ဖို့အတွက် API တွေမှာလဲ အပေါ်က နည်းအတိုင်းသာ သုံးပြုရမှာဖြစ်ပါသည်။
+		protected $dates = ['deleted_at'];
+	}
 
-### View / Pagination အတွက် Enviornment ရဲ့ နာမည်တွေ ပြောင်းလိုက်ပြီ
-တကယ်လို့ `Illuminate\View\Environment` class သို ့မဟုတ် `Illuminate\Pagination\Environment`တွေသုံးခဲ့တယ်ဆိုရင်တော့ အဲဒီနှစ်ခုနေရာမှာ `Illuminate\View\Factory` နဲ့ `Illuminate\Pagination\Factory ကို အစားထိုးထည့်သုံးရပါလိမ့်မယ်။အခုလိုမျိုး နာမည်ပြောင်းလိုက်တာက သူ ့တို့ရဲ့ function နဲ့ ပိုမိုထိရောက်သော နာမည်တွေဖြစ်သွားအောင်ဖြစ်ပါတယ်။
+The API for all soft delete operations remains the same.
 
-### Pagination class မှာ parameter အသစ်ထည့်ခြင်း
+> **Note:** The `SoftDeletingTrait` can not be applied on a base model. It must be used on an actual model class.
 
-တကယ်လို ့`Illuminate\Pagination\Presenter`class ကို ထပ်ချဲ့ ပြီးအသုံးပြုခဲ့ရင်တော့ အရင်သုံးခဲ့တဲ့ `getPageLinkWrapper` ဆိုတဲ့ abstract method မှာ 'rel' ဆိုတဲ့ parameter လေးကို အောက်ကပုံစံအတိုင်းထပ်ထည့်ပေးရပါတယ်။
+### View / Pagination Environment Renamed
 
-abstract public function getPageLinkWrapper($url, $page, $rel = null);
+If you are directly referencing the `Illuminate\View\Environment` class or `Illuminate\Pagination\Environment` class, update your code to reference `Illuminate\View\Factory` and `Illuminate\Pagination\Factory` instead. These two classes have been renamed to better reflect their function.
+
+### Additional Parameter On Pagination Presenter
+
+If you are extending the `Illuminate\Pagination\Presenter` class, the abstract method `getPageLinkWrapper` signature has changed to add the `rel` argument:
+
+	abstract public function getPageLinkWrapper($url, $page, $rel = null);
+
+### Iron.Io Queue Encryption
+
+If you are using the Iron.io queue driver, you will need to add a new `encrypt` option to your queue configuration file:
+
+    'encrypt' => true
 
 <a name="upgrade-4.1.29"></a>
-## version 4.1.x မှ 4.1.29 သို့ မြင့်တင်ခြင်း
+## Upgrading To 4.1.29 From <= 4.1.x
 
-Laravel 4.1.29 မှာတော့ lavael မှာသုံးပြုထားတဲ့ database drivers တွေရဲ့ columnကိုးကားတွေမူ တွေကို မြင့်တင်ပေးထားတာဖြစ်ပါတယ်။ အဲဒီလိုလုပ်လိုက်တဲ့အတွက် model ထဲမှာ 'filable' property တွေ မသတ်မှတ်ထားတဲ့အခါမှာ mass assignment အတွက်ဖြင့်ပေါ်လာမည့် လုံးခြံရေးဆိုင်ရာယိုပေါက်တွေကို ကာကွယ်ပေးသွားပါလိမ့်မည်။အဲဒါအခါကျရင် 
-ကိုယ့်ရဲ့ application က အတိုင်းတာတခုထိတော့ လုံခြုံရေးကောင်းသွားမှာပါ။ဘယ်လိုပဲဖြစ်ဖြစ် 'guarded'သုံးပြုထားပြီး user ဘက်က လာတဲ့ data passing(ဥပမာ update/save) ပိုင်းပါလာရင်တော့ ကိုယ့်ရဲ့ application မှာ mass assignment ကြောင့် ဖြစ်လာနိုင်တဲ့ပြသနာတွေကို ကာကွယ်ဖို ့အတွက် version 4.1.28 သို ့ ချက်ခြင်းပဲမြင့်တင်သင့်ပါတယ်။
+Laravel 4.1.29 improves the column quoting for all database drivers. This protects your application from some mass assignment vulnerabilities when **not** using the `fillable` property on models. If you are using the `fillable` property on your models to protect against mass assignment, your application is not vulnerable. However, if you are using `guarded` and are passing a user controlled array into an "update" or "save" type function, you should upgrade to `4.1.29` immediately as your application may be at risk of mass assignment.
 
-Laravel 4.1.28 ကို မြင့်တင်ဖို့ ကတော့ terminal မှ တစ်ဆင့် 'composer update' လေးလုပ်လိုက်ရုံဖြင့် မြင့်တင်လို့ရပါတယ်။ 
+To upgrade to Laravel 4.1.29, simply `composer update`. No breaking changes are introduced in this release.
 
 <a name="upgrade-4.1.26"></a>
-## version 4.1.25 မှ 4.1.26 သို့ မြင့်တင်ခြင်း
+## Upgrading To 4.1.26 From <= 4.1.25
 
-Laravel 4.1.26 ကတော့ 'remember me' cookies အတွက် security အတွက် ထုတ်ပေးထားတဲ့ version ဖြစ်ပါတယ်။အရင်တုန်းကဆိုရင် user browserမှတဆင့် remember cookie ကို တိုက်ခိုက်သူတယောက်ယောက်ရသွားပြီဆိုရင် user က အကောင့်ရဲ့ password ပြောင်းတာသို ့မဟုတ် logged ou ပြုလုပ်ခဲ့ရင်တောင်မှ အဲဒီ cookie ရဲ့ သက်တမ်းတခုထိကို တိုက်ခိုက်သူက သုံးပြုနိုင်မှာဖြစ်ပါတယ်။
+Laravel 4.1.26 introduces security improvements for "remember me" cookies. Before this update, if a remember cookie was hijacked by another malicious user, the cookie would remain valid for a long period of time, even after the true owner of the account reset their password, logged out, etc.
 
-အဲဒီကာကွယ်မူအတွက် 'remember_token' ဆိုတဲ့ column ကို 'users' table မှာထည့်ပေးရပါတယ်။အဲဒီလိုထည့်လိုက်ပြီဆိုရင်တော့ user login ပြုလုပ်တိုင်း ဝင်လိုက်တဲ့ account အတွက် token အသစ်တွေထုတ်ပေးသွားပါလိမ့်မယ်။ User က logs out လုပ်လိုက်ရင်လဲ token အသစ်ထုတ်ပေးသွားပါလိမ့်မယ်။အခုလိုမျိုး ပြုလုပ်လိုက်တဲ့အတွက် user ရဲ့ cookie ပါသွားရင်တောင်မှ အကောင့်ကို logs out လိုက်ရုံဖြင့် တိုက်ခိုက်သူရထားတဲ့ cookie က အလုပ်လုပ်မှာမဟုတ်တော့ပါဘူး။
+This change requires the addition of a new `remember_token` column to your `users` (or equivalent) database table. After this change, a fresh token will be assigned to the user each time they login to your application. The token will also be refreshed when the user logs out of the application. The implications of this change are: if a "remember me" cookie is hijacked, simply logging out of the application will invalidate the cookie.
 
 ### Upgrade Path
 
-ပထမဆုံး 'remember_token'(VARCHAR(100), TEXT,) ကို 'users' tale ထဲကိုထည့်ပေးပါ။
+First, add a new, nullable `remember_token` of VARCHAR(100), TEXT, or equivalent to your `users` table.
 
-ပြီးရင်တော့ သင်က Eloquent ရဲ ့authentication driver သုံးပြုတယ်ဆိုရင်တော့ အောက်ကပုံစံအတိုင်း 'User' class ကို ပြင်ပေးဖို့လိုပါတယ်။
+Next, if you are using the Eloquent authentication driver, update your `User` class with the following three methods:
 
-public function getRememberToken()
-{
-return $this->remember_token;
-}
+	public function getRememberToken()
+	{
+		return $this->remember_token;
+	}
 
-public function setRememberToken($value)
-{
-$this->remember_token = $value;
-}
+	public function setRememberToken($value)
+	{
+		$this->remember_token = $value;
+	}
 
-public function getRememberTokenName()
-{
-return 'remember_token';
-}
+	public function getRememberTokenName()
+	{
+		return 'remember_token';
+	}
 
-> **မှတ်ချက်** အပေါ်ကလိုမျိုး "remember token" ထည့်လိုက်ပြီဆိုရင်တော့ လက်ရှိအလုပ်လုပ်နေတဲ့ 'remember me' sessions တွေအားလုံးအလုပ်လုပ်မှာမဟုတ်တော့ပါဘူး။ ဒါကြောင့် useraccount အကောင့်တွေ အကုန်လုံး login ပြန်လုပ်ပေးဖို ့လိုအပ်ပါတယ်။
+> **Note:** All existing "remember me" sessions will be invalidated by this change, so all users will be forced to re-authenticate with your application.
 
 ### Package Maintainers
 
-`Illuminate\Auth\UserProviderInterface` interface ကို ညွန်ကြားချက်(method)နှစ်ခုထည့်ပေးဖို့လိုပါတယ်။သာမန်သုံးပြုပုံတွေကိုတော့ default drivers တွေမှာတွေ့နိုင်ပါတယ်။
+Two new methods were added to the `Illuminate\Auth\UserProviderInterface` interface. Sample implementations may be found in the default drivers:
 
-public function retrieveByToken($identifier, $token);
+	public function retrieveByToken($identifier, $token);
 
-public function updateRememberToken(UserInterface $user, $token);
+	public function updateRememberToken(UserInterface $user, $token);
 
-`Illuminate\Auth\UserInterface` မှာလဲ "upgrade path' မှာဖော်ပြထားတဲ့ method သုံးခုကို လက်ခံရရှိမှာဖြစ်ပါတယ်။
+The `Illuminate\Auth\UserInterface` also received the three new methods described in the "Upgrade Path".
 
 <a name="upgrade-4.1"></a>
-## version 4.0 မှ 4.1 သို့ မြင့်တင်ခြင်း
+## Upgrading To 4.1 From 4.0
 
 ### Upgrading Your Composer Dependency
 
-laravel 4.1 ကိုမြင့်တင်ဖို့အတွက် 'composer.json' ဖိုင်ထဲက'larave/framework' version ကို '4.1.*' ပြောင်းပေးရပါမယ်။
+To upgrade your application to Laravel 4.1, change your `laravel/framework` version to `4.1.*` in your `composer.json` file.
 
 ### Replacing Files
 
-'public/index.php' ဖိုင်ကို [ဒီလင့်မှာသွားကြည့်ပြီးအကုန်ကူးထည့်ပါ။](https://github.com/laravel/laravel/blob/master/public/index.php).
+Replace your `public/index.php` file with [this fresh copy from the repository](https://github.com/laravel/laravel/blob/master/public/index.php).
 
-'artisan' ဖိုင်ကိုလဲ [ဒီလင့်မှာသွားကြည့်ပြီးကူးထည့်ပါ။](https://github.com/laravel/laravel/blob/master/artisan).
-
+Replace your `artisan` file with [this fresh copy from the repository](https://github.com/laravel/laravel/blob/master/artisan).
 
 ### Adding Configuration Files & Options
 
-'app/config/app.php' ထဲက 'aliases' နဲ့ 'providers'ကို update လုပ်ပေးဖို့လဲလိုပါတယ်။ update ပြုလုပ်ဖို့အတွက် [ဒီလင့်မှာသွားကြည့်ပြီးကူးထည့်ပါ။](https://github.com/laravel/laravel/blob/master/app/config/app.php). သတိတစ်ခုထားရမှာက အရင် app.php ထဲက provider နဲ့ alias တွေကို ပြန်ထည့်ဖို့ မမေ့ဖို့ပါ။
+Update your `aliases` and `providers` arrays in your `app/config/app.php` configuration file. The updated values for these arrays can be found [in this file](https://github.com/laravel/laravel/blob/master/app/config/app.php). Be sure to add your custom and package service providers / aliases back to the arrays.
 
-'app/config' ထဲမှာ remote.php ဆိုတဲ့ဖိုင်တစ်ခုဆောက်ပါ။ပြီးရင် [ဒီလင့်မှာ](https://github.com/laravel/laravel/blob/master/app/config/remote.php) သွားကြည့်ပြီး အကုန်ကူးထည့်ပါ။
+Add the new `app/config/remote.php` file [from the repository](https://github.com/laravel/laravel/blob/master/app/config/remote.php).
 
-ပြီးရင်တော့ 'app/config/session.php' ထဲမှာ 'expire_on_close' ဆိုတဲ့ key တစ်ခုထည့်ပါ။ သူ ့ရဲ့ value ကိုတော့ 'false' ပဲပေးထားပါ။
+Add the new `expire_on_close` configuration option to your `app/config/session.php` file. The default value should be `false`.
 
-နောက်တစ်ခုကတော့ 'app/config/queue.php' ထဲမှာ 'failed' ဆိုတဲ့ key နဲ့ value ကို အောက်ကပုံစံအတိုင်းထည့်ပါ။
+Add the new `failed` configuration section to your `app/config/queue.php` file. Here are the default values for the section:
 
-'failed' => array(
-'database' => 'mysql', 'table' => 'failed_jobs',
-),
+	'failed' => array(
+		'database' => 'mysql', 'table' => 'failed_jobs',
+	),
 
-နောက်တစ်ခုအနေနဲ့ 'app/config/view.php' ထဲက 'pagination' ရဲ့ value ကို `pagination::slider-3` သို ့ပြောင်းထည့်ပါ။
+**(Optional)** Update the `pagination` configuration option in your `app/config/view.php` file to `pagination::slider-3`.
 
 ### Controller Updates
 
-တကယ်လို့ 'app./controllers/BaseController.php' ထဲမှာ 'use' သုံးပြုထားရင်တော့ `use Illuminate\Routing\Controllers\Controller;` ကို `use Illuminate\Routing\Controller;`သို ့ပြောင်းပေးရပါမယ်။
+If `app/controllers/BaseController.php` has a `use` statement at the top, change `use Illuminate\Routing\Controllers\Controller;` to `use Illuminate\Routing\Controller;`.
 
 ### Password Reminders Updates
-Password reminders အတွက်ကတော့ ပိုပြီး ဆင်ပြေလွယ်ကူဖို့အတွက် ပြန်ဆင်ပေးထားပါတယ်။ 'php artisan auth:reminders-controller' ဆိုတဲ့ Artisan command သုံးပြီး စမ်းသပ်နိုင်ပါတယ်။ laravel ရဲ့ documentation ကိုလဲ [ဒီမှာ](/docs/security#password-reminders-and-reset)သွားလေ့လာပြီး ကိုယ့်application ကို လိုအပ်သလို ထပ်ထည့်နိုင်ပါတယ်။
 
-'app/lang/en' ထဲက reminders.php ဖိုင်ကိုလဲ [ဒီလင့်မှာ](https://github.com/laravel/laravel/blob/master/app/lang/en/reminders.php) သွားဖတ်ပြီး ပြင်ထည့်လိုက်ပါ။
+Password reminders have been overhauled for greater flexibility. You may examine the new stub controller by running the `php artisan auth:reminders-controller` Artisan command. You may also browse the [updated documentation](/docs/security#password-reminders-and-reset) and update your application accordingly.
 
+Update your `app/lang/en/reminders.php` language file to match [this updated file](https://github.com/laravel/laravel/blob/master/app/lang/en/reminders.php).
 
 ### Environment Detection Updates
 
-Application ရဲ ့လုံခြံုရေးပိုင်းဆိုင်ရာအတွက် URL domains သုံးပြုပြီး application enviornment စစ်ဆေးခြင်းကို ရပ်ဆိုင်းလိုက်ပါတယ်။အဲဒီလိုသုံးပြုချင်းက တိုက်ခိုက်သူတွေအတွက် request ရဲ ့ enviornment ကိုပြောင်းလဲနိုင်ခြင်း သို ့မဟုတ် အလွယ်တကူ ပြောင်းလဲနိုင်ခြင်းကြောင့် ရပ်ဆိုင်းရခြင်းဖြစ်ပါတယ်။ enviornment စစ်ဆေးခြင်းအတွက် user သုံးပြုနေတဲ့ စက်ရဲ ့hostnameကိုသုံးပြု ပြီးစစ်ဆေးသင့်ပါတယ်။ ( MAC, Linux, Windows တွေမှာ 'hostname' command သုံးပြုပါတယ်)
-
+For security reasons, URL domains may no longer be used to detect your application environment. These values are easily spoofable and allow attackers to modify the environment for a request. You should convert your environment detection to use machine host names (`hostname` command on Mac, Linux, and Windows).
 
 ### Simpler Log Files
 
-Laravek မှာ 'app/storage/logs/laravel.log' ထဲမှာ log ဖိုင်တွေထုတ်ပေးပါတယ်။ဘယ်လိုပဲဖြစ်ဖြစ် 'app/start' ထဲက 'global.php' ထဲမှာ လိုအပ်တဲ့ နေရာကိုပြောင်းလဲသုံးပြုနိုင်ပါသည်။
+Laravel now generates a single log file: `app/storage/logs/laravel.log`. However, you may still configure this behavior in your `app/start/global.php` file.
 
 ### Removing Redirect Trailing Slash
 
-'bootstrap/start.php' ထဲမှာ `$app->redirectIfTrailingSlash()' ဆိုတဲ့ method ကို ဖြုတ်ပစ်လိုက်ပါ။ အဲဒီအဆင့်က ဒီ ဗားရှင်းမှာ မလိုအပ်တော့ပါဘူး။ ဘာလို့လဲဆိုတော့ သူ့အလုပ်လုပ်တဲ့ အတိုင်းတာကို .htaccess က အလုပ်လုပ်ပေးသွားလို့ဖြစ်ပါတယ်။
+In your `bootstrap/start.php` file, remove the call to `$app->redirectIfTrailingSlash()`. This method is no longer needed as this functionality is now handled by the `.htaccess` file included with the framework.
 
-ပြီးရင်တော့ 'public' ဖိုဒါထဲက .htaccess ထဲက စာတွေအကုန်ဖျက်ပြီး [ဒီလင့်](https://github.com/laravel/laravel/blob/master/public/.htaccess)ကစာတွေ ပြန်ကူးထည့်ပြီး သိမ်းပါ။
+Next, replace your Apache `.htaccess` file with [this new one](https://github.com/laravel/laravel/blob/master/public/.htaccess) that handles trailing slashes.
 
 ### Current Route Access
 
-The current route ကို သုံးပြုဖို့အတွက် အရင်ကဆိုရင် `Route::getCurrentRoute()` သုံးပြုပေမယ့်နေရာမှာ ဒီဗားရှင်းမှာတော့ `Route::current()` ကို သုံးပြု ရပါတယ်။
+The current route is now accessed via `Route::current()` instead of `Route::getCurrentRoute()`.
 
 ### Composer Update
 
-အားလုံးပြီးသွားရင်တော့ 'composer update' ကွန်မန်းကို run လိုက်လို ့ရပါပြီ။ တကယ်လို ့error တစ်ခုခုပြရင်တော့ `composer update --no-scripts` ကို သုံးပြီး update ပြုလုပ်ရင် ဆင်ပြေသွားပါပြီ။
+Once you have completed the changes above, you can run the `composer update` function to update your core application files! If you receive class load errors, try running the `update` command with the `--no-scripts` option enabled like so: `composer update --no-scripts`.
 
 ### Wildcard Event Listeners
 
-The Wilecard event listenets က တော့ ဒီဗားရှင်းမှာ event handler functions parametersတွေ နဲ့ တွဲဖက်အလုပ်မလုပ်တော့ပါဘူး။တကယ်လို ့ဖျက်သိမ်းသွားတဲ့ eventsတွေဖမ်းချင်ရင်တော့ `Event::firing()` ကိုသုံးပြီး ဖမ်းနိုင်ပါတယ်။	
+The wildcard event listeners no longer append the event to your handler functions parameters. If you require finding the event that was fired you should use `Event::firing()`.

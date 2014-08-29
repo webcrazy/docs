@@ -1,25 +1,26 @@
-﻿# Laravel Framework မိတ်ဆက်
+# Introduction
 
- - [ဘယ်ကနေစမလဲ](#where-to-start)
- - [Laravel သဘောတရား](#laravel-philosophy)
+- [Where To Start](#where-to-start)
+- [Laravel Philosophy](#laravel-philosophy)
 
-## ဘယ်ကနေစမလဲ
+<a name="where-to-start"></a>
+## Where To Start
 
-Framework အသစ်တစ်ခုကို လေ့လာရတာကိုလန့်နေနိုင်ပါတယ်၊ ဒါပေမယ့် ဒါဟာ ရင်ခုန်ဖို့အရမ်းကောင်းပါတယ်။ သင့်ရဲ့ အကူးအပြောင်းကိုအဆင်ပြေဖို့၊ ကျွန်တော်တို့က ကျစ်လျစ်ပြည့်စုံပြီး အရှင်းဆုံးဖြစ်အောင်ကြိုးပမ်းပြီးတော့ Laravel Documentation ကို ပြုလုပ်ထားပါတယ်။ဒီမှာအရင်ဖတ်သင့်တာတွေကို ဖော်ပြထားပါတယ်:
+Learning a new framework can be daunting, but it's also exciting. To smooth your transition, we've attempted to create very clear, concise documentation for Laravel. Here are some recommendations for what to read first:
 
- - [Installation](installation.md) and
-   [Configuration](configuration.md)
- - [Routing](routing.md)
- - [Requests & Input](requests.md)
- - [Views & Responses](responses.md)
- - [Controllers](controllers.md)
+- [Installation](/docs/installation) and [Configuration](/docs/configuration)
+- [Routing](/docs/routing)
+- [Requests & Input](/docs/requests)
+- [Views & Responses](/docs/responses)
+- [Controllers](/docs/controllers)
 
-အပေါ်က Documention Link တွေကိုဖတ်ပြီးပြီဆိုရင် သင့် အနေနဲ့ Laravel ရဲ့ request/response တွေကို ကောင်းကောင်း ကိုယ်တွယ်ဖြေရှင်းနိုင်သင့်ပါတယ်။ နောက်ပြီး သင်အနေနဲ့ [Database Configuration](database) / [Eloquent ORM](/docs/eloquent) ဖတ်ဖို့ဆုတောင်းကောင်းဆုတောင်းနေမယ်လို့ထင်ပါတယ် အဲ့ဒီလိုမှမဟုတ်ဘူးဆိုရင် [authentication and security](/docs/security.md) ကိုပေါ့ ဒါမှလူတွေကို သင့်ရဲ့ application ထဲကို  sign in ဝင်ခိုင်းလို့ရမှာကိုး။
-
+After reading through these documents, you should have a good grasp on basic request / response handling in Laravel. Next, you may wish to read about [configuring your database](/docs/database), the [fluent query builder](/docs/queries), and the [Eloquent ORM](/docs/eloquent). Or, you may wish to read about [authentication and security](/docs/security) so you can start signing people into your application.
 
 <a name="laravel-philosophy"></a>
-## Laravel သဘောတရား
+## Laravel Philosophy
 
-Laravel က ရိုးရှင်းသပ်ရပ်၊ မဟာဆန်ပြီး လှပနေတဲ့ syntax တွေနဲ ့ ရေးသားထားတဲ့  Web Application Framework တစ်ခုဖြစ်ပါတယ်၊ ကျွန်တော်တို့ Development က ပျော်စရာ ကောင်းရမယ် ဆိုတာကိုယုံကြည်ပါတယ်။ ဖန်တီးမှု တွေကိုလည်း စိတ်ချမ်းသာမူ အပြည့်အဝ ပေးမယ်လို့ယုံကြည်ပါတယ်။ Laravel က Web projects တွေရဲ့အဓိကအလုပ်တွေဖြစ်တဲ့ authernication, routing, sessions, နဲ့ caching တွေကို တက်နိုင်သမျှ လျှော့ချဖို့ ကြိုးစားနေပါတယ်။
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
 
-Laravel ကနားလည်လွယ်တယ်၊ ဟုတ်ပါတယ် powerful လည်းဖြစ်တယ်၊ နောက် ကြီးမားရှုပ်ထွေးတဲ့ Projects တွေအတွက်လည်း အကောင်းဆုံး tools တွေကိုထောက်ပံ့နေပါတယ်။ ထိပ်တန်း  ခွဲစိတ်မှူတစ်ခု control container,expressive migration system နဲ့ tightly integrated unit testing support tools တွေကိုသင့်ကိုပေးထားပါတယ် သင် Create လုပ်ချင်တဲ့ Application ကိုသင်စိတ်ကြိုက်လုပ်နိုင်ပါတယ်။
+Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+
+Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.

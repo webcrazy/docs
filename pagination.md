@@ -1,36 +1,38 @@
-﻿# Pagination
+# Pagination
 
-- [ပြင်ဆင်ခြင်း](#configuration)
-- [အသုံးအနှုန်း](#usage)
+- [Configuration](#configuration)
+- [Usage](#usage)
 - [Appending To Pagination Links](#appending-to-pagination-links)
 - [Converting To JSON](#converting-to-json)
 - [Custom Presenters](#custom-presenters)
 
 <a name="configuration"></a>
-## ပြင်ဆင်ခြင်း
+## Configuration
 
-Frameworks တော်တော်များများအတွက်တော့ pagination ပြုလုပ်ဖို့အတွက် စိတ်ပျက်စရာ ကိစ္စတွေ ကြုံတွေ့နိုင်ပါတယ်။ Laravel ကတော့ ဒီကိစ္စကို လွယ်လွယ်ကူကူ ပဲပြုလုပ်နိုင်အောင် အဆင်သင့် ပြင်ဆင်ထားပေးပါတယ်။`app/config/view.php` ဖိုင်ထဲမှာ pagination အတွက် option တစ်ခု ပါရှိပါတယ်။ အဲ့ဒီ `pagination` option မှာ pagination links တွေအတွက် ဘယ် view ကိုအသုံးပြုသင့်တယ်ဆိုတာကို သတ်မှတ်ပေးထားနိုင်ပါတယ်။ ပုံမှန်အတိုင်းဆိုရင်တော့ Laravel မှာ pagination အတွက် view နှစ်ခုကို သတ်မှတ်ပေးထားပါတယ်။ 
+In other frameworks, pagination can be very painful. Laravel makes it a breeze. There is a single configuration option in the `app/config/view.php` file. The `pagination` option specifies which view should be used to create pagination links. By default, Laravel includes two views.
 
-`pagination::slider` ကိုအသုံးပြုမယ်ဆိုရင် လက်ရှိ view မှာဖော်ပြထားတဲ့ items အရေအတွက်ကိုအခြေခံပီးတော့ links တွေထုတ်ပေးပါတယ်။ `pagination::simple` view ကတော့ "previous" နဲ့ "next" button နှစ်ခုထုတ်ပေးပါတယ်။ အဲ့ဒီ view နှစ်ခုစလုံးဟာ Twitter Bootstrap နဲ့ အဆင်ပြေပြေတွဲဖက်အသုံးပြုနိုင်ပါတယ်။ 
+The `pagination::slider` view will show an intelligent "range" of links based on the current page, while the `pagination::simple` view will simply show "previous" and "next" buttons. **Both views are compatible with Twitter Bootstrap out of the box.**
 
 <a name="usage"></a>
-## အသုံးအနှုန်း
+## Usage
 
-အချက်အလက်တွေကို paginate လုပ်လုပ်ဖို့အတွက် နည်းနည်းတွေ အများကြီးရှိပါတယ်။ အဲ့ဒီအထဲကမှ `paginate` method ကို Laravel ရဲ့ Query Builder သို့မဟုတ် Eloquent Model တွေနဲ့တဲသုံးတဲ့နည်းကတော့ အရိုးရှင်းဆုံးနည်းလမ်းဖြစ်ပါတယ်။ 
+There are several ways to paginate items. The simplest is by using the `paginate` method on the query builder or an Eloquent model.
 
 #### Paginating Database Results
 
 	$users = DB::table('users')->paginate(15);
 
+> **Note:** Currently, pagination operations that use a `groupBy` statement cannot be executed efficiently by Laravel. If you need to use a `groupBy` with a paginated result set, it is recommended that you query the database manually and use `Paginator::make`.
+
 #### Paginating An Eloquent Model
 
-[Eloquent](eloquent.md) models တွေကိုလည်း paginate လုပ်နိုင်ပါတယ် -
+You may also paginate [Eloquent](/docs/eloquent) models:
 
 	$allUsers = User::paginate(15);
 
 	$someUsers = User::where('votes', '>', 100)->paginate(15);
 
-`paginate` method ကို passing ပေးလိုက်တဲ့ argument(number) ဟာ စာမျက်နှာတစ်ခုပေါ်မှာ အချက်အလက် ဘယ်လောက်ပေါ်မယ်ဆိုတဲ့ အရေအတွက်ဖြစ်ပါတယ်။ Pagination links တွေကို view မှာပြန်ပြဖို့အတွက်တော့ `links` method ကိုအသုံးပြုနိုင်ပါတယ်။ 
+The argument passed to the `paginate` method is the number of items you wish to display per page. Once you have retrieved the results, you may display them on your view, and create the pagination links using the `links` method:
 
 	<div class="container">
 		<?php foreach ($users as $user): ?>
@@ -40,13 +42,13 @@ Frameworks တော်တော်များများအတွက်တေ
 
 	<?php echo $users->links(); ?>
 
-လက်ရှိ စာမျက်နှာနဲ့ပတ်သက်ပြီး framework ကို ဘာပြင်ဆင်မှုမှ မလုပ်ခဲ့တာကို သတိပြုမိမှာပါ။ အဲ့ဒီအတွက် laravel က အလိုအလျောက်ဆုံးဖြတ်ပေးပါတယ်။ 
+This is all it takes to create a pagination system! Note that we did not have to inform the framework of the current page. Laravel will determine this for you automatically.
 
-Pagination အတွက် custom view ကိုအသုံးပြုချင်ရင်တော့ `links` method ထဲမှာ view ကို passing ပေးလိုက်ရုံပါပဲ။
+If you would like to specify a custom view to use for pagination, you may pass a view to the `links` method:
 
 	<?php echo $users->links('view.name'); ?>
 
-Pagination information တွေကိုလဲ အောက်ပါ methods တွေကိုအသုံးပြုပြီး ရယူနိုင်ပါတယ်။ 
+You may also access additional pagination information via the following methods:
 
 - `getCurrentPage`
 - `getLastPage`
@@ -59,58 +61,58 @@ Pagination information တွေကိုလဲ အောက်ပါ methods �
 
 #### "Simple Pagination"
 
-အကယ်၍ pagination view မှာ "next" နဲ့ "previous" links တွေကိုပဲပြချင်ရင်တော့ ပိုပြီးအဆင်ပြေတဲ့ query ကိုပြုလုပ်ပေးနိုင်တဲ့ `simplePaginate` method ကိုအသုံးပြုနိုင်ပါတယ်။ view မှာ page numbers တွေအတိအကျဖော်ပြစရာမလိုတဲ့အတွက် data တွေအများကြီးကို paginate လုပ်ရာမှာ ပိုမို အဆင်ပြေစေပါတယ်။ 
+If you are only showing "Next" and "Previous" links in your pagination view, you have the option of using the `simplePaginate` method to perform a more efficient query. This is useful for larger datasets when you do not require the display of exact page numbers on your view:
 
 	$someUsers = User::where('votes', '>', 100)->simplePaginate(15);
 
 #### Creating A Paginator Manually
 
-အကယ်၍ pagination ကို manually ပြုလုပ်ချင်ရင် `Paginator::make` method ကိုအသုံးပြုနိုင်ပါတယ်။ 
+Sometimes you may wish to create a pagination instance manually, passing it an array of items. You may do so using the `Paginator::make` method:
 
 	$paginator = Paginator::make($items, $totalItems, $perPage);
 
 #### Customizing The Paginator URI
 
-Paginator ကအသုံးပြုတဲ့ URI ကိုလဲ `setBaseUrl` method ကိုအသုံးပြုပြီး ပြင်ဆင်နိုင်ပါတယ်။ 
+You may also customize the URI used by the paginator via the `setBaseUrl` method:
 
 	$users = User::paginate();
 
 	$users->setBaseUrl('custom/url');
 
-အပေါ်မှာပြထားတဲ့ ဥပမာအရဆိုရင် pagination URLs ဟာ http://example.com/custom/url?page=2 ပုံစံဖြစ်သွားမှာပါ။
+The example above will create URLs like the following: http://example.com/custom/url?page=2
 
 <a name="appending-to-pagination-links"></a>
 ## Appending To Pagination Links
 
-သင့်အနေနဲ့ `appends` method ကိုအသုံးပြုပြီး query string တွေကို pagination links တွေဆီကို ထပ်ပေါင်းထည့်လို့ရပါတယ်။
+You can add to the query string of pagination links using the `appends` method on the Paginator:
 
 	<?php echo $users->appends(array('sort' => 'votes'))->links(); ?>
 
-အပေါ်မှာရေးထားတဲ့ အတိုင်းဆိုရင် URLs ဟာ အောက်ပါပုံစံနဲ့ထွက်လာမှာပါ။
+This will generate URLs that look something like this:
 
 	http://example.com/something?page=2&sort=votes
 
-Paginator's URLs မှာ "hash fragment" ထပ်ပေါင်းထည့်ချင်ရင်တော့ `fragment` method ကိုအသုံးပြုနိုင်ပါတယ်။ 
+If you wish to append a "hash fragment" to the paginator's URLs, you may use the `fragment` method:
 
 	<?php echo $users->fragment('foo')->links(); ?>
 
-အပေါ်က mehtod call ဟာ URLs ကို အောက်ပါအတိုင်းထုတ်ပေးပါလိမ့်မယ်။
+This method call will generate URLs that look something like this:
 
 	http://example.com/something?page=2#foo
 
 <a name="converting-to-json"></a>
 ## Converting To JSON
 
-The `Paginator` class implements the `Illuminate\Support\Contracts\JsonableInterface` contract and exposes the `toJson` method. You can may also convert a `Paginator` instance to JSON by returning it from a route. The JSON'd form of the instance will include some "meta" information such as `total`, `current_page`, `last_page`, `from`, and `to`. The instance's data will be available via the `data` key in the JSON array.
+The `Paginator` class implements the `Illuminate\Support\Contracts\JsonableInterface` contract and exposes the `toJson` method. You may also convert a `Paginator` instance to JSON by returning it from a route. The JSON'd form of the instance will include some "meta" information such as `total`, `current_page`, `last_page`, `from`, and `to`. The instance's data will be available via the `data` key in the JSON array.
 
 <a name="custom-presenters"></a>
 ## Custom Presenters
 
-Pagination ရဲ့ UI style ဟာ default အနေအထားမှာ Bootstrap Frontend Framework က pagination ပုံစံအတိုင်းပြုလုပ်ပေးထားပါတယ်။ သင့်အနေနဲ့ customize presenter နဲ့ အသုံးပြုချင်တယ်ဆိုရင်လဲ အသုံးပြုလို့ရနိုင်ပါတယ်။ 
+The default pagination presenter is Bootstrap compatible out of the box; however, you may customize this with a presenter of your choice.
 
 ### Extending The Abstract Presenter
 
-`Illuminate\Pagination\Presenter` class ကို extend လုပ်ပြီး အဲ့ဒီ class ရဲ့ abstract methods တွေကို implement ပြုလုပ်ပြီးပြောငး်လဲ အသုံးပြုနိုင်ပါတယ်။ အောက်မှာ ပြထားတဲ့ ဥပမာကတော့ Zurb Foundation ရဲ့ ပုံစံကိုပြောင်းလဲ အသုံးပြုထားတာဖြစ်ပါတယ်။ 
+Extend the `Illuminate\Pagination\Presenter` class and implement its abstract methods. An example presenter for Zurb Foundation might look like this:
 
     class ZurbPresenter extends Illuminate\Pagination\Presenter {
 
@@ -133,7 +135,7 @@ Pagination ရဲ့ UI style ဟာ default အနေအထားမှာ Boot
 
 ### Using The Custom Presenter
 
-ပထမဦးဆုံး custom presenter ပြုလုပ်လို့တဲ့ view ဖိုင်ကို `app/views` အောက်မှာ ပြုလုပ်ပေးလိုက်ပါ။ ပြီးရင် `app/config/view.php` အောက်မှာရှိတဲ့ `pagination` `pagination::slider-3` နေရာမှာ အသစ်လုပ်ထားတဲ့ view file ရဲ့ name နဲ့အစားထိုးလိုက်ပါ။ အပေါ်မှာပြထားတဲ့ Zurb Foundation အတိုင်းဆိုရင် သင့်ရဲ့ view ဖိုင်အသစ်ဟာ အောက်ပါ ပုံစံအတိုင်းဖြစ်ရမှာပါ။ 
+First, create a view in your `app/views` directory that will server as your custom presenter. Then, replace `pagination` option in the `app/config/view.php` configuration file with the new view's name. Finally, the following code would be placed in your custom presenter view:
 
     <ul class="pagination">
         <?php echo with(new ZurbPresenter($paginator))->render(); ?>
