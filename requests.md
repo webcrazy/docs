@@ -1,4 +1,4 @@
-﻿# Requests နှင့် Input များအကြောင်း
+# Requests နှင့် Input များအကြောင်း 
 
 - [Basic Input](#basic-input)
 - [Cookies](#cookies)
@@ -9,9 +9,8 @@
 <a name="basic-input"></a>
 ## Basic Input
 
-You may access all user input with a few simple methods. You do not need to worry about the HTTP verb used for the request, as input is accessed in the same way for all verbs.
 
-Http verb တွေအားလုံးက input ဆီကို ဝင်ရောက်လာတဲ့အချိန်မှာ Simple methods တွေနဲ့ users အားလုံးရဲ့ input တွေကို access လုပ်နိုင်ပါတယ်။ Request တွေအတွက် HTTP verb တွေကိုစိုးရိမ်စရာမလိုပါဘူး။
+Http အချက်အလက် တွေအားလုံးက input ဆီကို ဝင်ရောက်လာတဲ့အချိန်မှာ ရိုးရှင်းလွယ်ကူလှတဲ့ method တွေကို အသုံးပြုပြီး users အားလုံးရဲ့ input တွေကို access လုပ်နိုင်ပါတယ်။ Request တွေအတွက် HTTP အချက်အလက်များကိုစိုးရိမ်စရာမလိုပါဘူး။
 
 #### Input Value တစ်ခုကိုပြန်လည်ရချင်ရင်
 
@@ -38,12 +37,12 @@ Http verb တွေအားလုံးက input ဆီကို ဝင်ရ�
 
 	$input = Input::except('credit_card');
 
-When working on forms with "array" inputs, you may use dot notation to access the arrays:
 Form တွေကို arrays input တွေနဲ့အသုံးပြုတဲ့အခါမှာ arrays တွေကို access လုပ်ဖို့ "." သင်္ကေတကိုအသုံးပြုရပါမယ်။
 
 	$input = Input::get('products.0.name');
 
-> **Note:** Some JavaScript libraries such as Backbone may send input to the application as JSON. You may access this data via `Input::get` like normal.
+> **သတိပြုရန်:** တချို့  JavaScript library များ  (ဥပမာ Backbone) application သို့ JSON အနေဖြင့် အချက်အလက်များကို ပို့ဆောင် မည်ဖြစ်သည်။ သင့်အနေဖြင့်  အဆိုပါ အချက်အလက်များကိုလည်း နဂိုအတိုင်း  `Input::get` ကို အသုံးပြု၍ ထုတ်ယူနိုင်သည်။
+
 
 <a name="cookies"></a>
 ## Cookies
@@ -61,11 +60,12 @@ Cookies အားလုံးကို Laravel Framework က authernication code
 	$response->withCookie(Cookie::make('name', 'value', $minutes));
 
 #### နောက် Response တစ်ခုအတွက် Cookie တစ်ခုကို Queue လုပ်ခြင်း
+
 Response မလုပ်ခင်မှာ cookie တစ်ခုကို set ချင်တယ်ဆို့င်ရင် `Cookie::queue()` method ကိုသုံးပါ။ သင့် application မှ နောက်ဆုံး response ကို cookie က အလိုလို attach လုပ်သွားပါလိမ့်မယ်။
 
 	Cookie::queue($name, $value, $minutes);
 
-#### Creating A Cookie That Lasts Forever
+#### Cookie တစ်ခုကို အချိန်အကန့် အသတ်မရှိ ဖန်တီးခြင်း 
 
 	$cookie = Cookie::forever('name', 'value');
 
@@ -84,13 +84,13 @@ Response မလုပ်ခင်မှာ cookie တစ်ခုကို set �
 
 	Input::flashExcept('password');
 
-Since you often will want to flash input in association with a redirect to the previous page, you may easily chain input flashing onto a redirect.
+တခါတရံ သင့်အနေဖြင့်  flash input များကို ယခင် page ဖြင့် ချိတ်ဆက် လုပ်ဆောင်လိုသည်များ ရှိပေမည်။ ထိုသို့ အခြေအနေများတွင် သင့် အနေဖြင့်  အလွယ်တကူ ချိတ်ဆက် အသုံးပြုနိုင်သည်။
 
 	return Redirect::to('form')->withInput();
 
 	return Redirect::to('form')->withInput(Input::except('password'));
 
-> **Note:** You may flash other data across requests using the [Session](session.md) class.
+> **သတိပြုရန်:** သင့်အနေဖြင့် [Session](session.md) ကိုအသုံးပြုပြီး flash မည်သို့ မည်ပုံပြုလုပ်သွားသည်ကို သိရှိလိုပေမည်။  
 
 #### Input Data အဟောင်းတွေကိုပြန်ကြည့်ချင်ရင် -
 
@@ -110,7 +110,9 @@ Since you often will want to flash input in association with a redirect to the p
 		//
 	}
 
-The object returned by the `file` method is an instance of the `Symfony\Component\HttpFoundation\File\UploadedFile` class, which extends the PHP `SplFileInfo` class and provides a variety of methods for interacting with the file.
+
+
+The object returned by the `file` method မှပြန်လာသည့် object မှာ `Symfony\Component\HttpFoundation\File\UploadedFile` ၏ instance ဖြစ်ပြီး  PHP မှ `SplFileInfo` class ကို extend လုပ်ထားခြင်း ဖြစ်၍  file နဲ့ပတ်သတ်သည့်  method အတော်များများကို ထောက်ပံ့ပေးနိုင်သည်။ 
 
 #### File Upload လုပ်တာမှားလားစစ်ချင်ရင် -
 
@@ -146,9 +148,11 @@ The object returned by the `file` method is an instance of the `Symfony\Componen
 	$mime = Input::file('photo')->getMimeType();
 
 <a name="request-information"></a>
-## Request Information
+## Request အချက်အလက်များ 
 
-The `Request` class provides many methods for examining the HTTP request for your application and extends the `Symfony\Component\HttpFoundation\Request` class. Here are some of the highlights.
+
+`Request` class သည် HTTP request များနှင့်ပတ်သတ်သည့် method များကို ထောက်ပံ့ပေးထားပြီး  `Symfony\Component\HttpFoundation\Request` မှ extend လုပ်ထားခြင်း ဖြစ်သည်။ ၎င်းတို့ အနက်မှ အောက်ပါတို့ကို hightlight လုပ်ထားပါသည်။
+
 
 #### Request URI ရဲ့ လမ်းကြောင်းကိုသိချင်ရင်
 
@@ -216,9 +220,11 @@ The `Request` class provides many methods for examining the HTTP request for you
 
 #### Request ရဲ့ Response ကို Check လုပ်ချင်ရင်
 
-The `Request::format` method will return the requested response format based on the HTTP Accept header:
+
+`Request::format` method မှ HTTP Accept header ၏ ပုံစံကို return ပြန်လာမည် ဖြစ်သည်။  
 
 	if (Request::format() == 'json')
 	{
 		//
 	}
+ Save Copy
