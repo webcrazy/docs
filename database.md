@@ -1,4 +1,4 @@
-# Database အသုုံးျပဳပုုံ အေျခခံ
+# Database အသုုံးပြုပုုံ အခြေခံ
 
 - [Configuration](#configuration)
 - [Read / Write Connections](#read-write-connections)
@@ -10,13 +10,13 @@
 <a name="configuration"></a>
 ## Configuration
 
-Laravel တြင္ Database ႏွင့္ ခ်ိိတ္ဆက္ အသုုံးျပဳရွာတြင္ အင္မတန္ လြယ္ကူ ေအာင္ ျပဳလုုပ္ထားသည္။ Database Configuration file ကိုု `app/config/database.php` တြင္ ေတြ ့ႏုုိင္မည္ ျဖစ္သည္။ ထုုိ ဖုုိင္ထဲတြင္ သင့္ ခ်ိိတ္ဆက္လုုိေသာ database connection ကိုု ထည့္သြင္း ႏုုိင္သလုုိ မည္သည့္ connection ကိုု ပုုံေသ အသုုံးျပဳမည္ကုုိပါ သတ္မွတ္ႏုုိင္သည္။ Support လုုပ္သည့္ database system မ်ားႏွင့္ အစမ္း အေနျဖင့္ ခ်ိတ္ဆက္ထားသည့္ ပုုံစံမ်ားကိုု ထည့္သြင္းထားသျဖင့္ ၾကည့္ရႈျပီး လုုိအပ္သလုုိ ေျပာင္းလဲ ႏုုိင္မည္ ျဖစ္သည္။ လက္ရွိတြင္ Laravel အေနျဖင့္ MySQL,Postgres, SQLite ႏွင့္ SQL Server တုုိ ့ကုုို support လုုပ္သည္။
+Laravel တွင် Database နှင့် ချိိတ်ဆက် အသုုံးပြုရှာတွင် အင်မတန် လွယ်ကူ အောင် ပြုလုုပ်ထားသည်။ Database Configuration file ကိုု `app/config/database.php` တွင် တွေ ့နုုိင်မည် ဖြစ်သည်။ ထုုိ ဖုုိင်ထဲတွင် သင့် ချိိတ်ဆက်လုုိသော database connection ကိုု ထည့်သွင်း နုုိင်သလုုိ မည်သည့် connection ကိုု ပုုံသေ အသုုံးပြုမည်ကုုိပါ သတ်မှတ်နုုိင်သည်။ Support လုုပ်သည့် database system များနှင့် အစမ်း အနေဖြင့် ချိတ်ဆက်ထားသည့် ပုုံစံများကိုု ထည့်သွင်းထားသဖြင့် ကြည့်ရှုပြီး လုုိအပ်သလုုိ ပြောင်းလဲ နုုိင်မည် ဖြစ်သည်။ လက်ရှိတွင် Laravel အနေဖြင့် MySQL,Postgres, SQLite နှင့် SQL Server တုုိ ့ကုုို support လုုပ်သည်။
  
 
 <a name="read-write-connections"></a>
 ## Read / Write Connections
 
-တခါတရံ သင့္အေနျဖင့္ database တစ္ခုုကိုု SELECT ကဲ့သုုိ ့ statement မ်ား အသုုံးျပဳျပီး က်န္ အျခားတစ္ခုုကိုု INSERT, UPDATE, ႏွင့္ DELETE statement မ်ားကုုိ အသုုံးျပဳလုုိသည့္ အခါမ်ားလည္း ရွိေပမည္။ ထုုိသုုိ ့ ျပဳျပင္ရာတြင္ Laravel တြင္ ေလညင္းေလး တုုိက္ခတ္သကဲ့သုုိ ့  ျငိမ့္ေညာင္းသာယာစြာ အလြယ္တကူ ျပင္ဆင္ အသုုံးျပဳႏုုိင္သည္။ ထုုိ Connection မ်ားကုုိ Raw Query အသုုံးျပဳရာတြင္ ျဖစ္ေစ ၊ Query Builder ျဖင့္ ေရးသာသည္ ျဖစ္ေစ ၊ Eloquent ORM ကိုု အသုုံးျပဳသည္ ျဖစ္ေစ အသုုံးျပဳႏုုိင္မည္ ျဖစ္သည္။ 
+တခါတရံ သင့်အနေဖြင့် database တစ်ခုုကိုု SELECT ကဲ့သုုိ ့ statement များ အသုုံးပြုပြီး ကျန် အခြားတစ်ခုုကိုု INSERT, UPDATE, နှင့် DELETE statement များကုုိ အသုုံးပြုလုုိသည့် အခါများလည်း ရှိပေမည်။ ထုုိသုုိ ့ ပြုပြင်ရာတွင် Laravel တွင် လေညင်းလေး တုုိက်ခတ်သကဲ့သုုိ ့  ငြိမ့်ညောင်းသာယာစွာ အလွယ်တကူ ပြင်ဆင် အသုုံးပြုနုုိင်သည်။ ထုုိ Connection များကုုိ Raw Query အသုုံးပြုရာတွင် ဖြစ်စေ ၊ Query Builder ဖြင့် ရေးသာသည် ဖြစ်စေ ၊ Eloquent ORM ကိုု အသုုံးပြုသည် ဖြစ်စေ အသုုံးပြုနုုိင်မည် ဖြစ်သည်။ 
 
 
 To see how read / write connections should be configured, let's look at this example:
@@ -37,40 +37,40 @@ To see how read / write connections should be configured, let's look at this exa
 'prefix'    => '',
 ),
 
-သင့္ အေနျဖင့္ Key အသစ္ ႏွစ္ခုုျဖစ္ေသာ `read` ႏွင့္ `write` ကုုိ configuration array ထဲတြင္ ထည့္သြင္းထားသည္ကိုု သတိျပဳမိေပမည္။ ၄င္း key ႏွစ္ခုုလုုံးတြင္`host` ဟုုေသာ key သည္ value အေနျဖင့္ တည္ရွိေနမည္ ျဖစ္သည္။ Read ႏွင့္ Write Connections မ်ားအတြက္ အဓိက `mysql` array မွ လုုပ္ေဆာင္သြားမည္ျဖစ္သည္။ ထုုိေၾကာင့္ မိမိတုုိ ့အေနျဖင့္ ထုုိ `read` ႏွင့္ `write` အတြင္းမွ တန္ဖုုိးမ်ားကုုိ ေျပာင္းလဲျခင္း ျဖင့္ မိမိတုုိ ့ စိတ္ၾကိဳက္ ျပင္ဆင္ႏုုိင္သည္။ ထုုိေၾကာင့္ “read” connection အတြက္ 192.168.1.1 ကိုု အသုုံးျပဳထားျပီး 192.168.1.2 ကုုိ “write” connection ကုုိ အသုုံးျပဳထားသည္။ database credentials မ်ား၊ prefix ႏွင့္ character set မ်ားႏွင့္ အျခား option မ်ားမွာ connections ႏွစ္ခုုလုုံး အတူတူပင္ ျဖစ္မည္။ 
+သင့် အနေဖြင့် Key အသစ် နှစ်ခုုဖြစ်သော `read` နှင့် `write` ကုုိ configuration array ထဲတွင် ထည့်သွင်းထားသည်ကိုု သတိပြုမိပေမည်။ ၄င်း key နှစ်ခုုလုုံးတွင်`host` ဟုုသော key သည် value အနေဖြင့် တည်ရှိနေမည် ဖြစ်သည်။ Read နှင့် Write Connections များအတွက် အဓိက `mysql` array မှ လုုပ်ဆောင်သွားမည်ဖြစ်သည်။ ထုုိကြောင့် မိမိတုုိ ့အနေဖြင့် ထုုိ `read` နှင့် `write` အတွင်းမှ တန်ဖုုိးများကုုိ ပြောင်းလဲခြင်း ဖြင့် မိမိတုုိ ့ စိတ်ကြိုက် ပြင်ဆင်နုုိင်သည်။ ထုုိကြောင့် “read” connection အတွက် 192.168.1.1 ကိုု အသုုံးပြုထားပြီး 192.168.1.2 ကုုိ “write” connection ကုုိ အသုုံးပြုထားသည်။ database credentials များ၊ prefix နှင့် character set များနှင့် အခြား option များမှာ connections နှစ်ခုုလုုံး အတူတူပင် ဖြစ်မည်။ 
 
 <a name="running-queries"></a>
-## Query မ်ား အသုုံးျပဳျခင္း
+## Query များ အသုုံးပြုခြင်း
 
-database connection ကုုိ အေျခခ်ျပီးသည္ႏွင့္ `DB` ကုုိ အသုုံးျပဳႏိုုင္ျပီး query မ်ား run ႏုုိင္ျပီ ျဖစ္သည္။
+database connection ကုုိ အခြေချပြီးသည်နှင့် `DB` ကုုိ အသုုံးပြုနိုုင်ပြီး query များ run နုုိင်ပြီ ဖြစ်သည်။
 
-####  Select Query ကုုိ အသုုံးျပဳျခင္း
+####  Select Query ကုုိ အသုုံးပြုခြင်း
 
 $results = DB::select('select * from users where id = ?', array(1));
 
-`select` method မွာ ရလဒ္မ်ားကုုိ အျမဲတမ္း `array` အေနျဖင့္ ထုုတ္ေပးမည္ ျဖစ္သည္။
+`select` method မှာ ရလဒ်များကုုိ အမြဲတမ်း `array` အနေဖြင့် ထုုတ်ပေးမည် ဖြစ်သည်။
 
-#### Insert Statement ကုုိ အသုုံးျပဳျခင္း
+#### Insert Statement ကုုိ အသုုံးပြုခြင်း
 
 DB::insert('insert into users (id, name) values (?, ?)', array(1, 'Dayle'));
 
-#### Update Statement ကုုိ အသုုံးျပဳျခင္း
+#### Update Statement ကုုိ အသုုံးပြုခြင်း
 
 DB::update('update users set votes = 100 where name = ?', array('John'));
 
-#### Delete Statement ကုုိ အသုုံးျပဳျခင္း
+#### Delete Statement ကုုိ အသုုံးပြုခြင်း
 
 DB::delete('delete from users');
 
-> **သတိျပဳရန္:**  `update` ႏွင့္ `delete` statement မ်ားမွာ သက္ေရာက္မႈရွိေသာ rows ကုုိ return ျပန္ေပးမည္ ျဖစ္သည္။
+> **သတိပြုရန်:**  `update` နှင့် `delete` statement များမှာ သက်ရောက်မှုရှိသော rows ကုုိ return ပြန်ပေးမည် ဖြစ်သည်။
 
-#### အျခား Statement မ်ား အသုုံးျပဳျခင္း
+#### အခြား Statement များ အသုုံးပြုခြင်း
 
 DB::statement('drop table users');
 
-#### Query Events မ်ားကုုိ ေစာင့္ဖမ္းျခင္း
+#### Query Events များကုုိ စောင့်ဖမ်းခြင်း
 
-query events မ်ားကုုိ `DB::listen` method အသုုံးျပဳျပီး ေစာင့္ဖမ္းကာ ခ်ိတ္ဆက္ ေရးသားႏုုိင္ေသးသည္။
+query events များကုုိ `DB::listen` method အသုုံးပြုပြီး စောင့်ဖမ်းကာ ချိတ်ဆက် ရေးသားနုုိင်သေးသည်။
 
 DB::listen(function($sql, $bindings, $time)
 {
@@ -80,7 +80,7 @@ DB::listen(function($sql, $bindings, $time)
 <a name="database-transactions"></a>
 ## Database Transactions
 
-Database transaction မ်ားကုုိ အသုုံးျပဳလုုိပါက `transaction` method ကုုိ အသုုံးျပဳႏုုိင္သည္။
+Database transaction များကုုိ အသုုံးပြုလုုိပါက `transaction` method ကုုိ အသုုံးပြုနုုိင်သည်။
 
 DB::transaction(function()
 {
@@ -89,47 +89,47 @@ DB::table('users')->update(array('votes' => 1));
 DB::table('posts')->delete();
 });
 
-> **သတိျပဳရန္:** `transaction` closure အတြင္းတြင္ ျဖစ္ေပၚလာေသာ exception တုုိင္းသည္  transaction ကုုိ အလုုိအေလ်ာက္ roll back လုုပ္သြားမည္ ျဖစ္သည္။
+> **သတိပြုရန်:** `transaction` closure အတွင်းတွင် ဖြစ်ပေါ်လာသော exception တုုိင်းသည်  transaction ကုုိ အလုုိအလျောက် roll back လုုပ်သွားမည် ဖြစ်သည်။
 
-တခါတရံ ကုုိယ့္ဖာသာကိုုယ္ transactions ေရးသားရန္ လုုိေပမည္။
+တခါတရံ ကုုိယ့်ဖာသာကိုုယ် transactions ရေးသားရန် လုုိပေမည်။
 
 DB::beginTransaction();
 
-ျပီးလ်င္ `rollback` method ကုုိ အသုုံးျပဳျပီး ေနာက္သုုိ ့ျပန္သြားႏုုိင္သည္။
+ပြီးလျင် `rollback` method ကုုိ အသုုံးပြုပြီး နောက်သုုိ ့ပြန်သွားနုုိင်သည်။
 
 DB::rollback();
 
-ေနာက္ဆုုံး အေနျဖင့္  transaction တစ္ခုုကုုိ  `commit` method ကုုိ အသုုံးျပဳႏုုိင္ေသးသည္။
+နောက်ဆုုံး အနေဖြင့်  transaction တစ်ခုုကုုိ  `commit` method ကုုိ အသုုံးပြုနုုိင်သေးသည်။
 
 DB::commit();
 
 <a name="accessing-connections"></a>
 ## Accessing Connections
 
-Connection မ်ားစြာျဖင့္ အသုုံးျပဳေနရပါက `DB::connection` method ကုုိ အသုုံးျပဳႏုုိင္သည္။
+Connection များစွာဖြင့် အသုုံးပြုနေရပါက `DB::connection` method ကုုိ အသုုံးပြုနုုိင်သည်။
 
 $users = DB::connection('foo')->select(...);
 
-Raw အတိုုင္း access ျပဳလုုပ္ႏုုိင္သလုုိ၊ PDO instance ကုုိလည္း ရႏုုိင္ပါေသးသည္။
+Raw အတိုုင်း access ပြုလုုပ်နုုိင်သလုုိ၊ PDO instance ကုုိလည်း ရနုုိင်ပါသေးသည်။
 
 $pdo = DB::connection()->getPdo();
 
-တျခာတရံ database တစ္ခုုကုုိပဲ  ထပ္မံျပီး reconnect လုုပ္ရေသာ အခါမ်ိဳး ရွိႏုုိင္ေသးသည္။
+တခြာတရံ database တစ်ခုုကုုိပဲ  ထပ်မံပြီး reconnect လုုပ်ရသော အခါမျိုး ရှိနုုိင်သေးသည်။
 
 DB::reconnect('foo’);    
 
-Database တစ္ခုုကုုိ PDO instance တစ္ခုု၏ `max_connections` limit ထက္မ်ားလာျပီး ျဖတ္ေတာက္ ေပးရႏ္ လုုိအပ္လာပါက `disconnect` method ကုုိ အသုုံးျပဳႏုုိင္သည္။
+Database တစ်ခုုကုုိ PDO instance တစ်ခုု၏ `max_connections` limit ထက်များလာပြီး ဖြတ်တောက် ပေးရန် လုုိအပ်လာပါက `disconnect` method ကုုိ အသုုံးပြုနုုိင်သည်။
 
 DB::disconnect('foo');
 
 <a name="query-logging"></a>
 ## Query Logging
 
-default အေနျဖင့္ laravel သည္ query တုုိင္း၏ log ကိုု လက္ရွိ run မည့္ request ၏ memory တြင္မွတ္ထားေလ့ ရွိသည္။ သုုိ ့ေသာ္လည္း rows အေျမာက္အျမား ကုုိ insert ျပဳလုုပ္ျခင္းကဲ့သုုိ ့ေသာ အခါ  memory အလြန္အမင္း အသုုံးမ်ားႏုုိင္သည္။ ထုုိသုုိ ့ေသာ အခါ Log မွတ္ျခင္းကုုိ မျပဳလုုပ္လုုိပါက `disableQueryLog` method ကိုု အသုုံးျပဳႏုုိင္သည္။
+default အနေဖြင့် laravel သည် query တုုိင်း၏ log ကိုု လက်ရှိ run မည့် request ၏ memory တွင်မှတ်ထားလေ့ ရှိသည်။ သုုိ ့သော်လည်း rows အမြောက်အမြား ကုုိ insert ပြုလုုပ်ခြင်းကဲ့သုုိ ့သော အခါ  memory အလွန်အမင်း အသုုံးများနုုိင်သည်။ ထုုိသုုိ ့သော အခါ Log မှတ်ခြင်းကုုိ မပြုလုုပ်လုုိပါက `disableQueryLog` method ကိုု အသုုံးပြုနုုိင်သည်။
 
 
 DB::connection()->disableQueryLog();
 
-Executed Query မ်ား၏ array ကိုု ထုုတ္ယူလုုိပါက `getQueryLog` method ကုုိ အသုုံးျပဳႏုုိင္သည္။
+Executed Query များ၏ array ကိုု ထုုတ်ယူလုုိပါက `getQueryLog` method ကုုိ အသုုံးပြုနုုိင်သည်။
 
        $queries = DB::getQueryLog();
