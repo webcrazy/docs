@@ -1,7 +1,9 @@
 ရည်ရွယ်ချက်
 ---------
 
-ကျွန်တော်တို့ အခုမှစပြီး ဘာသာပြန်နေတုံးပါ၊ ရည်ရွယ်ချက် ကတော့ Laravel PHP Framework Documencation ကို မြန်မာလို ဖတ်ပြီး Laravel Framework ကို အလွယ်တကူ လေ့လာနိုင်ဖို့ပါ၊
+**မှတ်ချက်** အခုလောလောဆယ်ကျွန်တော်တို့ Laravel 5 documencation ဘာသာပြန်တဲ့အပိုင်းကိုခဏရပ်ထားပါ့မယ်... ဘာကြောင့်လည်းဆိုရင် Laravel 5 က development အခြေအနေမှာရှိနေသေးတဲ့အတွက် documencation တွေလည်းအပြောင်းအလည်းမြန်လို့ပါ။ ကျွန်တော်တို့အရင် Laravel 4 ကိုတော့ကူညီပြီးဘာသာပြန်ပေးနိုင်ပါတယ်။
+
+ရည်ရွယ်ချက် ကတော့ Laravel PHP Framework Documencation ကို မြန်မာလို ဖတ်ပြီး Laravel Framework ကို အလွယ်တကူ လေ့လာနိုင်ဖို့ပါ၊
 
 ဒီဘာသာပြန်မှုမှာ ဘယ်လို ဘာဝင်ကူညီနိုင်လဲ
 -----------------------------
@@ -13,4 +15,5 @@
 
 - [Laravel Myanmar Website](https://www.laravelmyanmar.com)
 - [Laravel Myanmar Facebook Group](https://www.facebook.com/groups/250409601822202/)
+- [Laravel Myanmar on Twitter](https://twitter.com/laravel_myanmar)
 
