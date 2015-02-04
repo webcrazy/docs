@@ -11,40 +11,41 @@
 <a name="introduction"></a>
 ## Introduction
 
-The Laravel inversion of control container is a powerful tool for managing class dependencies. Dependency injection is a method of removing hard-coded class dependencies. Instead, the dependencies are injected at run-time, allowing for greater flexibility as dependency implementations may be swapped easily.
 
-Understanding the Laravel IoC container is essential to building a powerful, large application, as well as for contributing to the Laravel core itself.
+The Laravel inversion of control container ဟာ class dependencies တွေကို စီမံဖို့အတွက် အစွမ်းထက်တဲ့ tool တစ်ခုပါ။ Dependency injection ဟာ hard-coded class dependencies တွေကို အစား ၊ run-time မှာ class dependencies မှာ inject လုပ်သွားခြင်းအားဖြင့် dependencies တွေကို ပြောင်းလဲရာမှာ ပိုပြီးတော့ ပြုလွယ်ပြင်လွယ် ရှိလာပါတယ်။
+
+Laravel ရဲ့ IoC container ကိုနားလည်ခြင်းအားဖြင့် application အကြီးစားတွေ ရေးနိုင်ရုံသာမက Laravel Core ကိုပါ ဝင်ရောင် contribute လုပ်နိုင်ပါတယ်။
 
 <a name="basic-usage"></a>
-## Basic Usage
+## အခြေခံအသုံးပြုပုံ
 
-#### Binding A Type Into The Container
+#### Type တစ်ခုကို Container ဖြင့်ချိတ်ဆက်ခြင်း
 
-There are two ways the IoC container can resolve dependencies: via Closure callbacks or automatic resolution. First, we'll explore Closure callbacks. First, a "type" may be bound into the container:
+IoC Container အနေနဲ့ dependencies ကို resolve နည်းလမ်းက နှစ်ခုရှိပါတယ်။ ပထမတစ်နည်းကတော့ Closure Callback တွေ အသုံးပြုပြီးတော့ ဖြစ်ပြီး နောက်တစ်နည်းကတော့ automatic resolution ပါ။ ပထမဆုံး closure callback တွေနဲ့ စမ်းလိုက်ရအောင်။  ပထမဆုံး type တစ်ခုဟာ container ထဲကို အောက်ကအတိုင်း ချိတ်ဆက်နိုင်ပါတယ်။
 
 	App::bind('foo', function($app)
 	{
 		return new FooBar;
 	});
 
-#### Resolving A Type From The Container
+#### Container မှ Type ကို ပြန်ထုတ်ယူခြင်း
 
 	$value = App::make('foo');
 
-When the `App::make` method is called, the Closure callback is executed and the result is returned.
+`App::make` method ကိုခေါ်သည့်အခါ Closure callback ကို execute လုပ်မှာဖြစ်ပြီး result ကို return ရမှာပါ။
 
-#### Binding A "Shared" Type Into The Container
+#### ဘုံသုံး Type တစ်ခုကို Container ဖြင့်ချိတ်ဆက်ခြင်း
 
-Sometimes, you may wish to bind something into the container that should only be resolved once, and the same instance should be returned on subsequent calls into the container:
+တခါတရံ သင့်အနေနဲ့ container ဖြင့် တခါသာ bind လုပ်ပြီး ထပ်ခါထပ်ခါ သုံးလိုသော အရာများလည်း ရှိပေမည်။ ထိုသို့သော အခါ မျိုးတွင် အောက်ပါအတိုင်း ခေါ်နိုင်ပါသည်။
 
 	App::singleton('foo', function()
 	{
 		return new FooBar;
 	});
 
-#### Binding An Existing Instance Into The Container
+#### ရှိပြီးသား instance တစ်ခုဖြင့် ချိတ်ဆက်ခြင်း
 
-You may also bind an existing object instance into the container using the `instance` method:
+တခါတရံ ရှိပြီးသား object ကို container ထဲတွင် ထည့်လို့သည့် အခါမျိုးလည်း ရှိကောင်းရှိနိုင်သည်။
 
 	$foo = new Foo;
 
