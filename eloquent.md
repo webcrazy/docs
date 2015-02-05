@@ -17,6 +17,7 @@
 - [Collections](#collections)
 - [Accessors & Mutators](#accessors-and-mutators)
 - [Date Mutators](#date-mutators)
+- [Attribute Casting](#attribute-casting)
 - [Model Events](#model-events)
 - [Model Observers](#model-observers)
 - [Converting To Arrays / JSON](#converting-to-arrays-or-json)
@@ -26,16 +27,20 @@
 
 The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding "Model" which is used to interact with that table.
 
-Before getting started, be sure to configure a database connection in `app/config/database.php`.
+Before getting started, be sure to configure a database connection in `config/database.php`.
 
 <a name="basic-usage"></a>
 ## Basic Usage
 
-To get started, create an Eloquent model. Models typically live in the `app/models` directory, but you are free to place them anywhere that can be auto-loaded according to your `composer.json` file.
+To get started, create an Eloquent model. Models typically live in the `app` directory, but you are free to place them anywhere that can be auto-loaded according to your `composer.json` file.
 
 #### Defining An Eloquent Model
 
 	class User extends Eloquent {}
+
+You may also generate Eloquent models using the `make:model` command:
+
+	php artisan make:model User
 
 Note that we did not tell Eloquent which table to use for our `User` model. The lower-case, plural name of the class will be used as the table name unless another name is explicitly specified. So, in this case, Eloquent will assume the `User` model stores records in the `users` table. You may specify a custom table by defining a `table` property on your model:
 
@@ -116,6 +121,10 @@ The first argument passed to the method is the number of records you wish to rec
 You may also specify which database connection should be used when running an Eloquent query. Simply use the `on` method:
 
 	$user = User::on('connection-name')->find(1);
+
+If you are using [read / write connections](/docs/5.0/database#read-write-connections), you may force the query to use the "write" connection with the following method:
+
+	$user = User::onWriteConnection()->find(1);
 
 <a name="mass-assignment"></a>
 ## Mass Assignment
@@ -245,13 +254,13 @@ If you wish to simply update the timestamps on a model, you may use the `touch` 
 <a name="soft-deleting"></a>
 ## Soft Deleting
 
-When soft deleting a model, it is not actually removed from your database. Instead, a `deleted_at` timestamp is set on the record. To enable soft deletes for a model, apply the `SoftDeletingTrait` to the model:
+When soft deleting a model, it is not actually removed from your database. Instead, a `deleted_at` timestamp is set on the record. To enable soft deletes for a model, apply the `SoftDeletes` to the model:
 
-	use Illuminate\Database\Eloquent\SoftDeletingTrait;
+	use Illuminate\Database\Eloquent\SoftDeletes;
 
 	class User extends Eloquent {
 
-		use SoftDeletingTrait;
+		use SoftDeletes;
 
 		protected $dates = ['deleted_at'];
 
@@ -359,7 +368,7 @@ Scopes allow you to easily re-use query logic in your models. To define a scope,
 
 #### Dynamic Scopes
 
-Sometimes You may wish to define a scope that accepts parameters. Just add your parameters to your scope function:
+Sometimes you may wish to define a scope that accepts parameters. Just add your parameters to your scope function:
 
 	class User extends Eloquent {
 
@@ -379,16 +388,16 @@ Then pass the parameter into the scope call:
 
 Sometimes you may wish to define a scope that applies to all queries performed on a model. In essence, this is how Eloquent's own "soft delete" feature works. Global scopes are defined using a combination of PHP traits and an implementation of `Illuminate\Database\Eloquent\ScopeInterface`.
 
-First, let's define a trait. For this example, we'll use the `SoftDeletingTrait` that ships with Laravel:
+First, let's define a trait. For this example, we'll use the `SoftDeletes` that ships with Laravel:
 
-	trait SoftDeletingTrait {
+	trait SoftDeletes {
 
 		/**
 		 * Boot the soft deleting trait for a model.
 		 *
 		 * @return void
 		 */
-		public static function bootSoftDeletingTrait()
+		public static function bootSoftDeletes()
 		{
 			static::addGlobalScope(new SoftDeletingScope);
 		}
@@ -461,7 +470,7 @@ A one-to-one relationship is a very basic relation. For example, a `User` model 
 
 		public function phone()
 		{
-			return $this->hasOne('Phone');
+			return $this->hasOne('App\Phone');
 		}
 
 	}
@@ -478,9 +487,9 @@ The SQL performed by this statement will be as follows:
 
 Take note that Eloquent assumes the foreign key of the relationship based on the model name. In this case, `Phone` model is assumed to use a `user_id` foreign key. If you wish to override this convention, you may pass a second argument to the `hasOne` method. Furthermore, you may pass a third argument to the method to specify which local column that should be used for the association:
 
-	return $this->hasOne('Phone', 'foreign_key');
+	return $this->hasOne('App\Phone', 'foreign_key');
 
-	return $this->hasOne('Phone', 'foreign_key', 'local_key');
+	return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
 
 #### Defining The Inverse Of A Relation
 
@@ -490,7 +499,7 @@ To define the inverse of the relationship on the `Phone` model, we use the `belo
 
 		public function user()
 		{
-			return $this->belongsTo('User');
+			return $this->belongsTo('App\User');
 		}
 
 	}
@@ -501,7 +510,7 @@ In the example above, Eloquent will look for a `user_id` column on the `phones` 
 
 		public function user()
 		{
-			return $this->belongsTo('User', 'local_key');
+			return $this->belongsTo('App\User', 'local_key');
 		}
 
 	}
@@ -512,7 +521,7 @@ Additionally, you pass a third parameter which specifies the name of the associa
 
 		public function user()
 		{
-			return $this->belongsTo('User', 'local_key', 'parent_key');
+			return $this->belongsTo('App\User', 'local_key', 'parent_key');
 		}
 
 	}
@@ -526,7 +535,7 @@ An example of a one-to-many relation is a blog post that "has many" comments. We
 
 		public function comments()
 		{
-			return $this->hasMany('Comment');
+			return $this->hasMany('App\Comment');
 		}
 
 	}
@@ -541,9 +550,9 @@ If you need to add further constraints to which comments are retrieved, you may 
 
 Again, you may override the conventional foreign key by passing a second argument to the `hasMany` method. And, like the `hasOne` relation, the local column may also be specified:
 
-	return $this->hasMany('Comment', 'foreign_key');
+	return $this->hasMany('App\Comment', 'foreign_key');
 
-	return $this->hasMany('Comment', 'foreign_key', 'local_key');
+	return $this->hasMany('App\Comment', 'foreign_key', 'local_key');
 
 #### Defining The Inverse Of A Relation
 
@@ -553,7 +562,7 @@ To define the inverse of the relationship on the `Comment` model, we use the `be
 
 		public function post()
 		{
-			return $this->belongsTo('Post');
+			return $this->belongsTo('App\Post');
 		}
 
 	}
@@ -569,7 +578,7 @@ We can define a many-to-many relation using the `belongsToMany` method:
 
 		public function roles()
 		{
-			return $this->belongsToMany('Role');
+			return $this->belongsToMany('App\Role');
 		}
 
 	}
@@ -580,11 +589,11 @@ Now, we can retrieve the roles through the `User` model:
 
 If you would like to use an unconventional table name for your pivot table, you may pass it as the second argument to the `belongsToMany` method:
 
-	return $this->belongsToMany('Role', 'user_roles');
+	return $this->belongsToMany('App\Role', 'user_roles');
 
 You may also override the conventional associated keys:
 
-	return $this->belongsToMany('Role', 'user_roles', 'user_id', 'foo_id');
+	return $this->belongsToMany('App\Role', 'user_roles', 'user_id', 'foo_id');
 
 Of course, you may also define the inverse of the relationship on the `Role` model:
 
@@ -592,7 +601,7 @@ Of course, you may also define the inverse of the relationship on the `Role` mod
 
 		public function users()
 		{
-			return $this->belongsToMany('User');
+			return $this->belongsToMany('App\User');
 		}
 
 	}
@@ -600,7 +609,7 @@ Of course, you may also define the inverse of the relationship on the `Role` mod
 <a name="has-many-through"></a>
 ### Has Many Through
 
-The "has many through" relation provides a convenient short-cut for accessing distant relations via an intermediate relation. For example, a `Country` model might has many `Post` through a `User` model. The tables for this relationship would look like this:
+The "has many through" relation provides a convenient short-cut for accessing distant relations via an intermediate relation. For example, a `Country` model might have many `Post` through a `User` model. The tables for this relationship would look like this:
 
 	countries
 		id - integer
@@ -622,7 +631,7 @@ Even though the `posts` table does not contain a `country_id` column, the `hasMa
 
 		public function posts()
 		{
-			return $this->hasManyThrough('Post', 'User');
+			return $this->hasManyThrough('App\Post', 'User');
 		}
 
 	}
@@ -633,7 +642,7 @@ If you would like to manually specify the keys of the relationship, you may pass
 
 		public function posts()
 		{
-			return $this->hasManyThrough('Post', 'User', 'country_id', 'user_id');
+			return $this->hasManyThrough('App\Post', 'User', 'country_id', 'user_id');
 		}
 
 	}
@@ -656,7 +665,7 @@ Polymorphic relations allow a model to belong to more than one other model, on a
 
 		public function photos()
 		{
-			return $this->morphMany('Photo', 'imageable');
+			return $this->morphMany('App\Photo', 'imageable');
 		}
 
 	}
@@ -665,7 +674,7 @@ Polymorphic relations allow a model to belong to more than one other model, on a
 
 		public function photos()
 		{
-			return $this->morphMany('Photo', 'imageable');
+			return $this->morphMany('App\Photo', 'imageable');
 		}
 
 	}
@@ -741,7 +750,7 @@ Next, we're ready to setup the relationships on the model. The `Post` and `Video
 
 		public function tags()
 		{
-			return $this->morphToMany('Tag', 'taggable');
+			return $this->morphToMany('App\Tag', 'taggable');
 		}
 
 	}
@@ -752,12 +761,12 @@ The `Tag` model may define a method for each of its relationships:
 
 		public function posts()
 		{
-			return $this->morphedByMany('Post', 'taggable');
+			return $this->morphedByMany('App\Post', 'taggable');
 		}
 
 		public function videos()
 		{
-			return $this->morphedByMany('Video', 'taggable');
+			return $this->morphedByMany('App\Video', 'taggable');
 		}
 
 	}
@@ -774,6 +783,10 @@ When accessing the records for a model, you may wish to limit your results based
 You may also specify an operator and a count:
 
 	$posts = Post::has('comments', '>=', 3)->get();
+
+Nested `has` statements may also be constructed using "dot" notation:
+
+	$posts = Post::has('comments.votes')->get();
 
 If you need even more power, you may use the `whereHas` and `orWhereHas` methods to put "where" conditions on your `has` queries:
 
@@ -792,7 +805,7 @@ Eloquent allows you to access your relations via dynamic properties. Eloquent wi
 
 		public function user()
 		{
-			return $this->belongsTo('User');
+			return $this->belongsTo('App\User');
 		}
 
 	}
@@ -818,7 +831,7 @@ Eager loading exists to alleviate the N + 1 query problem. For example, consider
 
 		public function author()
 		{
-			return $this->belongsTo('Author');
+			return $this->belongsTo('App\Author');
 		}
 
 	}
@@ -981,7 +994,7 @@ When a model `belongsTo` another model, such as a `Comment` which belongs to a `
 
 		public function post()
 		{
-			return $this->belongsTo('Post');
+			return $this->belongsTo('App\Post');
 		}
 
 	}
@@ -1010,13 +1023,13 @@ Notice that each `Role` model we retrieve is automatically assigned a `pivot` at
 
 By default, only the keys will be present on the `pivot` object. If your pivot table contains extra attributes, you must specify them when defining the relationship:
 
-	return $this->belongsToMany('Role')->withPivot('foo', 'bar');
+	return $this->belongsToMany('App\Role')->withPivot('foo', 'bar');
 
 Now the `foo` and `bar` attributes will be accessible on our `pivot` object for the `Role` model.
 
 If you want your pivot table to have automatically maintained `created_at` and `updated_at` timestamps, use the `withTimestamps` method on the relationship definition:
 
-	return $this->belongsToMany('Role')->withTimestamps();
+	return $this->belongsToMany('App\Role')->withTimestamps();
 
 #### Deleting Records On A Pivot Table
 
@@ -1172,6 +1185,43 @@ To totally disable date mutations, simply return an empty array from the `getDat
 		return array();
 	}
 
+<a name="attribute-casting"></a>
+## Attribute Casting
+
+If you have some attributes that you want to always convert to another data-type, you may add the attribute to the `casts` property of your model. Otherwise, you will have to define a mutator for each of the attributes, which can be time consuming. Here is an example of using the `casts` property:
+
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'is_admin' => 'boolean',
+	];
+
+Now the `is_admin` attribute will always be cast to a boolean when you access it, even if the underlying value is stored in the database as an integer. Other supported cast types are: `integer`, `real`, `float`, `double`, `string`, `boolean`, and `array`.
+
+The `array` cast is particularly useful for working with columns that are stored as serialized JSON. For example, if your database has a TEXT type field that contains serialized JSON, adding the `array` cast to that attribute will automatically deserialize the attribute to a PHP array when you access it on your Eloquent model:
+
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'options' => 'array',
+	];
+
+Now, when you utilize the Eloquent model:
+
+	$user = User::find(1);
+
+	// $options is an array...
+	$options = $user->options;
+
+	// options is automatically serialized back to JSON...
+	$user->options = ['foo' => 'bar'];
+
 <a name="model-events"></a>
 ## Model Events
 
@@ -1188,19 +1238,24 @@ If `false` is returned from the `creating`, `updating`, `saving`, or `deleting` 
 		if ( ! $user->isValid()) return false;
 	});
 
-#### Setting A Model Boot Method
+#### Where To Register Event Listeners
 
-Eloquent models also contain a static `boot` method, which may provide a convenient place to register your event bindings.
+Your `EventServiceProvider` serves as a convenient place to register your model event bindings. For example:
 
-	class User extends Eloquent {
+	/**
+	 * Register any other events for your application.
+	 *
+	 * @param  \Illuminate\Contracts\Events\Dispatcher  $events
+	 * @return void
+	 */
+	public function boot(DispatcherContract $events)
+	{
+		parent::boot($events);
 
-		public static function boot()
+		User::creating(function($user)
 		{
-			parent::boot();
-
-			// Setup event bindings...
-		}
-
+			//
+		});
 	}
 
 <a name="model-observers"></a>
