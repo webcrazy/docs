@@ -27,22 +27,23 @@ Command တိုင်းတွင် “help” suffix ပါဝင်ပြ�
 
 php artisan help migrate
 
-#### Specifying The Configuration Environment
+#### Configuration Environment အားသတ်မှတ်ခြင်း
 
-You may specify the configuration environment that should be used while running a command using the `--env` switch:
+သင့်အနေဖြင့် `--env` switch ကိုအသုံးပြုကာ မိမိတို့ run နေသည့် command ၏ သက်ရောက်လိုသော environment ကို ရွေးချယ်သတ်မှတ်နိုင်သည်။
 
 php artisan migrate --env=local
 
-#### Displaying Your Current Laravel Version
+#### လက်ရှိအသုံးပြုနေသည့် Laravel Version အား ဖော်ပြခြင်း
 
-You may also view the current version of your Laravel installation using the `--version` option:
+မိမိတို့ လက်ရှိ အသုံးပြုနေသည့် Laravel version   `--version` option ကိုအသုံးပြုပြီး သိရှိနိုင်သည်။
 
 php artisan --version
 
 <a name="calling-commands-outside-of-cli"></a>
-## Calling Commands Outside Of CLI
+## CLI မှ မဟုတ်ပဲ artisan ကို အသုံးပြုခြင်း
 
-Sometimes you may wish to execute an Artisan command outside of the CLI. For example, you may wish to fire an Artisan command from an HTTP route. Just use the `Artisan` facade:
+တခါတရံ သင့်အနေဖြင့် CLI ကို အသုံးမပြုပဲ Artisan ကို ခေါ်ယူလိုသည့် အခါမျိုးလည်း ရှိကောင်းရှိပေမည်။ ဥပမာ သင့်အနေဖြင့် HTTP route အတွင်းတွင် Artisan ကို run လိုသည့်အခါမျိုးတွင် သင့်အနေဖြင့် `Artisan` facade ကို အသုံးပြုနိုင်သည်။ 
+
 
 Route::get('/foo', function()
 {
@@ -51,7 +52,7 @@ $exitCode = Artisan::call('command:name', ['--option' => 'foo']);
 //
 });
 
-You may even queue Artisan commands so they are processed in the background by your [queue workers](/docs/5.0/queues):
+ထိုအပြင် သင့်၏ Artisan Command များကို  [queue workers](/docs/5.0/queues) အသုံးပြပြီး queue လုပ်ထားနိုင်သေးသည်။
 
 Route::get('/foo', function()
 {
@@ -61,21 +62,24 @@ Artisan::queue('command:name', ['--option' => 'foo']);
 });
 
 <a name="scheduling-artisan-commands"></a>
-## Scheduling Artisan Commands
+## Artisan Command များအား schedule ပြုလုပ်ခြင်း 
 
-In the past, developers have generated a Cron entry for each console command they wished to schedule. However, this is a headache. Your console schedule is no longer in source control, and you must SSH into your server to add the Cron entries. Let's make our lives easier. The Laravel command scheduler allows you to fluently and expressively define your command schedule within Laravel itself, and only a single Cron entry is needed on your server.
 
-Your command schedule is stored in the `app/Console/Kernel.php` file. Within this class you will see a `schedule` method. To help you get started, a simple example is included with the method. You are free to add as many scheduled jobs as you wish to the `Schedule` object. The only Cron entry you need to add to your server is this:
+အရင် developer များအနေဖြင့် ၎င်းတို့ schedule ပြုလုပ်လိုသော Cron entry များကို  တစ်ခုချင်းစီ generate ပြုလုပ်ခဲ့ရပါသည်။ ထိုသို့ပြုလုပ်ရခြင်းသည် အတော်လေး ခေါင်းကိုက်စရာ ဖြစ်ပါသည်။
+Console schedule များသည် source control အတွင်းမပါရှိသဖြင့် Server သို့ SSH အသုံးပြုကာ ဝင်ရောက်ပြီး Cron entries များကို ထည့်သွင်းခဲ့ရပါသည်။ အခု ပိုပြီးလွယ်အောင် လုပ်ကြရအောင်။ Laravel command scheduler အနေဖြင့် Laravel အတွင်းမှပင် သင် define ပြုလုပ်လိုသော Cron entry များကို အလွယ်တကူ စီမံနိုင်ပြီ ဖြစ်သဖြင့် သင့်အနေဖြင့် Cron entry တစ်ခုသာ လိုအပ်တော့မည် ဖြစ်သည်။
+
+သင်၏ command schedule များသည်  `app/Console/Kernel.php`  တွင်တည်ရှိမည် ဖြစ်သည်။  ထို class အတွင်းတွင် `schedule` method ကိုတွေ့ရှိမည် ဖြစ်သည်။  အစပျိုးရန် အတွက် လွယ်ကူ ရှင်းလင်းသည့် example ကိုလည်း ထို method ထဲတွင် တွေ့ရှိရမည် ဖြစ်သည်။  သင့်အနေဖြင့် `Schedule` object ကို အသုံးပြုပြီး schedule ပြုလုပ်နိုင်သည်။ သင့် server ပေါ်တွင် ထည့်သွင်းရန်လိုမည့် Cron entry အောက်ပါ တစ်ခုသာ ဖြစ်သည်။ 
+
 
 * * * * * php /path/to/artisan schedule:run 1>> /dev/null 2>&1
 
-This Cron will call the Laravel command scheduler every minute. Then, Laravel evalutes your scheduled jobs and runs the jobs that are due. It couldn't be easier!
+ထို Cron သည်  Laravel command scheduler ကို မိနစ်တိုင်း ခေါ်ယူမည် ဖြစ်သည်။. ထိုနောက် Larvel အနေဖြင့် သင့် scheduled job များကို schedule ထဲက အတိုင်း လုပ်ဆောင်ပေးမည် ဖြစ်မည်။ ထိုထက် လွယ်ကူရှင်းလင်းရန် မရှိပေ။ 
 
-### More Scheduling Examples
+### Scheduling Examples များ
 
-Let's look at a few more scheduling examples:
+အောက်က ဥပမာများကို တချက်ကြည့်လိုက်ရအောင်။ 
 
-#### Scheduling Closures
+#### Closures ထဲတွင် schedule ပြုလုပ်ခြင်း
 
 $schedule->call(function()
 {
@@ -83,7 +87,7 @@ $schedule->call(function()
 
 })->hourly();
 
-#### Scheduling Terminal Commands
+####  Terminal Commands များကို Schedule ပြုလုပ်ခြင်း 
 
 $schedule->exec('composer self-update')->daily();
 
@@ -91,7 +95,7 @@ $schedule->exec('composer self-update')->daily();
 
 $schedule->command('foo')->cron('* * * * *');
 
-#### Frequent Jobs
+#### ကြိမ်ဖန်များစွာ ပြုလုပ်သည့် Job များ
 
 $schedule->command('foo')->everyFiveMinutes();
 
@@ -99,42 +103,42 @@ $schedule->command('foo')->everyTenMinutes();
 
 $schedule->command('foo')->everyThirtyMinutes();
 
-#### Daily Jobs
+####နေစဉ် ပြုလုပ်သည့် Job များ
 
 $schedule->command('foo')->daily();
 
-#### Daily Jobs At A Specific Time (24 Hour Time)
+#### နာရီ သတ်မှတ်ထားသော နေစဉ်ပြုလုပ်သည့် Job များ (၂၄ နာရီ စည်းမျဉ်းဖြင့်)
 
 $schedule->command('foo')->dailyAt('15:00');
 
-#### Twice Daily Jobs
+#### တစ်နေ့ နှစ်ခါ ပြုလုပ်မည့် Job များ
 
 $schedule->command('foo')->twiceDaily();
 
-#### Job That Runs Every Weekday
+#### ရုံးဖွင့်ရက်တိုင်း run မည့် Job များ
 
 $schedule->command('foo')->weekdays();
 
-#### Weekly Jobs
+#### အပတ်စဉ် Job များ
 
 $schedule->command('foo')->weekly();
 
 // Schedule weekly job for specific day (0-6) and time...
 $schedule->command('foo')->weeklyOn(1, '8:00');
 
-#### Monthly Jobs
+#### လစဉ် Job များ
 
 $schedule->command('foo')->monthly();
 
-#### Limit The Environment The Jobs Should Run In
+####  Jobs များ run မည့် Environment ကို တင်ကြိုသတ်မှတ်ခြင်း 
 
 $schedule->command('foo')->monthly()->environments('production');
 
-#### Indicate The Job Should Run Even When Application Is In Maintenance Mode
+#### Maintenance Mode တွင်ပင် run မည့် Job များ 
 
 $schedule->command('foo')->monthly()->evenInMaintenanceMode();
 
-#### Only Allow Job To Run When Callback Is True
+#### Callback True ဖြစ်မှသာ run မည့် Job 
 
 $schedule->command('foo')->monthly()->when(function()
 {
