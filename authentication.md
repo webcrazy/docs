@@ -9,7 +9,7 @@
 - [Social Authentication](#social-authentication)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ်ဆက်
 
 Laravel makes implementing authentication very simple. In fact, almost everything is configured for you out of the box. The authentication configuration file is located at `config/auth.php`, which contains several well documented options for tweaking the behavior of the authentication services.
 
