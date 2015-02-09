@@ -1,38 +1,41 @@
 # Collections
 
-- [Introduction](#introduction)
-- [Basic Usage](#basic-usage)
+- [အစပျိုး](#introduction)
+- [အခြေခံအသုံးပြုပုံ](#basic-usage)
 
 <a name="introduction"></a>
-## Introduction
+## အစပျိုး
 
-The `Illuminate\Support\Collection` class provides a fluent, convenient wrapper for working with arrays of data. For example, check out the following code. We'll use the `collect` helper to create a new collection instance from the array:
-
-	$collection = collect(['taylor', 'abigail', null])->map(function($name)
-	{
-		return strtoupper($name);
-	})
-	->reject(function($name)
-	{
-		return is_null($value);
-	});
+Array တွေနဲ့ ပိုမိုအဆင်ပြေစွာ အလုပ်လုပ်နိုင်အောင် `Illuminate\Support\Collection` class ဆိုတဲ့ wrapper တစ်ခုပါဝင်ပါတယ်။ ဥပမာ အောက်က Code တွေကို တချက်ကြည့်ရအောင်။ ကျွန်တော်တို့ `collect` helper ကို အသုံးပြုပြီး array မှာ collection instance တစ်ခုကို အသစ်ပြုလုပ်မှာ ဖြစ်ပါတယ်။ 
 
 
-As you can see, the `Collection` class allows you to chain its methods to perform fluent mapping and reducing of the underlying array. In general, every `Collection` method returns an entirely new `Collection` instance. To dig in further, keep reading!
+$collection = collect(['taylor', 'abigail', null])->map(function($name)
+{
+return strtoupper($name);
+})
+->reject(function($name)
+{
+return is_null($value);
+});
+
+အထက်က Code မှာ မြင်သည့်အတိုင်း `Collection` class ကိုအသုံးပြုပြီး mapping နဲ့ reducing တို့ကို chain method တွေနဲ့ အသုံးပြုနိုင်ပါတယ်။ အသေးစိတ်ကို သိရှိလိုပါက ဆက်လက်ဖတ်ရှုပါရန်။ 
 
 <a name="basic-usage"></a>
-## Basic Usage
+## အခြေခံအသုံးပြုပုံ
 
-#### Creating Collections
+#### Collection တစ်ခု အသစ်ပြုလုပ်ခြင်း
 
-As mentioned above, the `collect` helper will return a new `Illuminate\Support\Collection` instance for the given array. You may also use the `make` command on the `Collection` class:
+ခုနက ဖော်ပြခဲ့သလို `collect` helper သည် `Illuminate\Support\Collection` instance အသစ်တစ်ခုကို return ပြန်လာမည် ဖြစ်သည်။ သင့်အနေဖြင့် `Collection` class မှ `make` command ကို အသုံးပြုနိုင်ပါသေးသည်။ 
 
-	$collection = collect([1, 2, 3]);
+$collection = collect([1, 2, 3]);
 
-	$collection = Collection::make([1, 2, 3]);
+$collection = Collection::make([1, 2, 3]);
 
-Of course, collections of [Eloquent](/docs/5.0/eloquent) objects are always returned as `Collection` instances; however, you should feel free to use the `Collection` class wherever it is convenient for your application.
+[Eloquent](/docs/5.0/eloquent) 
 
-#### Explore The Collection
+objects  များဟာလည်း ယခုအခါ `Collection` instance များ အဖြစ်သာ return ပြန်လာပြီ ဖြစ်ပြီး သို့သော် သင့် အသုံးတည့်သလို `Collection` class ကို အသုံးပြုနိုင်ပါသည်။ 
 
-Instead of listing all of the methods (there are a lot) the Collection makes available, check out the [API documentation for the class](http://laravel.com/api/master/Illuminate/Support/Collection.html)!
+#### Collection အကြောင်းဖတ်ရှုရန် 
+
+ဒီနေရာမှာ Collection ၏ မြောက်များလှသော method များကို ဖော်ပြမည့်အစား API documentation ကို [အောက်ပါလင့်](http://laravel.com/api/master/Illuminate/Support/Collection.html)! 
+တွင် ဖတ်ရှုနိုင်ပါသည်။ 
