@@ -1,27 +1,27 @@
 # HTTP Routing
 
-- [Basic Routing](#basic-routing)
-- [CSRF Protection](#csrf-protection)
+- [Routing အခြေခံ](#basic-routing)
+- [CSRF ကာကွယ်မှု](#csrf-protection)
 - [Method Spoofing](#method-spoofing)
 - [Route Parameters](#route-parameters)
 - [Named Routes](#named-routes)
 - [Route Groups](#route-groups)
 - [Route Model Binding](#route-model-binding)
-- [Throwing 404 Errors](#throwing-404-errors)
+- [404 error များ ထုတ်လွှတ်ခြင်း](#throwing-404-errors)
 
 <a name="basic-routing"></a>
-## Basic Routing
+## Routing အခြေခံ
 
-You will define most of the routes for your application in the `app/Http/routes.php` file, which is loaded by the `App\Providers\RouteServiceProvider` class. The most basic Laravel routes simply accept a URI and a `Closure`:
+သင့် application ရဲ့ routes တော်တော်များများကို `app/Http/routes.php` မှာသတ်မှတ်ရပါလိမ့်မယ်၊ အဲ့ဒီဖိုင်ကို `App\Providers\routes.php` class က load လုပ်ပါလိမ့်မယ်။ Laravel ရဲ့ အခြေခံ အကျဆုံး routes တွေကို URI တစ်ခုနဲ့ `Closure` တစ်ခုရှိရုံနဲ့ တည်ဆောက်လို့ရပါမယ်။
 
-#### Basic GET Route
+#### အခြေခံ GET Route
 
 	Route::get('/', function()
 	{
 		return 'Hello World';
 	});
 
-#### Other Basic Routes Route
+#### အခြားအခြေခံ routes များ
 
 	Route::post('foo/bar', function()
 	{
@@ -38,49 +38,49 @@ You will define most of the routes for your application in the `app/Http/routes.
 		//
 	});
 
-#### Registering A Route For Multiple Verbs
+#### တစ်ခုထက်ပိုသော method များအတွက် route တစ်ခု register လုပ်ခြင်း
 
 	Route::match(['get', 'post'], '/', function()
 	{
 		return 'Hello World';
 	});
 
-#### Registering A Route That Responds To Any HTTP Verb
+#### Routes တစ်ခုအားမည်သည့် HTTP method ဖြင့်မဆိုလက်ခံနိုင်ရန်အတွက် Registering လုပ်ခြင်း
 
 	Route::any('foo', function()
 	{
 		return 'Hello World';
 	});
 
-Often, you will need to generate URLs to your routes, you may do so using the `url` helper:
+URL ကနေပြီးတော့ route ကိုသင့်အနေနဲ့ခဏခဏ generate ထုတ်ဖို့လိုပါလိမ့်မယ်၊ အဲ့လိုအချိန်မှာဆိုလို့ရှိရင် သင့်အနေနဲ့ `url` helper ကိုအသုံးပြုနိုင်ပါတယ်။
 
 	$url = url('foo');
 
 <a name="csrf-protection"></a>
-## CSRF Protection
+## CSRF ကာကွယ်မှု
 
-Laravel makes it easy to protect your application from [cross-site request forgeries](http://en.wikipedia.org/wiki/Cross-site_request_forgery). Cross-site request forgeries are a type of malicious exploit whereby unauthorized commands are performed on behalf of the authenticated user.
+Laravel ကသင့်အပလီကေးရှင်းကို [cross-site request forgeries](http://en.wikipedia.org/wiki/Cross-site_request_forgery) ကနေကာကွယ်ဖို့လွယ်ကူစွာပြုလုပ်ပေးထားပါတယ်။  Cross-site request forgeries ဆိုတာက authenticated ပြုလုပ်ပြီးသား user လိုအယောင်ဆောင်ပြီး တရားမဝင် command များလုပ်ဆောင်နိုင်တဲ့ အန္တရာယ်ပေးတတ်တဲ့တိုက်ခိုက်မှူပြုလုပ်နိုင်တဲ့ attacking တစ်ခုဖြစ်ပါတယ်။
 
-Laravel automatically generates a CSRF "token" for each active user session managed by the application. This token is used to verify that the authenticated user is the one actually making the requests to the application.
+Laravel က CRF "token" တွေကို application က manage လုပ်တဲ့ active user တိုင်းအတွက် auto generate ထုတ်ပေးပါတယ်။ အဲ့ဒီ့ token က authenticated ဖြစ်တဲ့ user က application ဆီလုပ်တဲ့ request ဟုတ်မဟုတ်ကို verify လုပ်လိုက်ပါတယ်။
 
-#### Insert The CSRF Token Into A Form
+#### Form တစ်ခုအတွင်းမှာ CSRF Token ထည့်သွင်းခြင်း
 
     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
-Of course, using the Blade [templating engine](/docs/5.0/templates):
+ဒါပေါ့  Blade [templating engine](/docs/5.0/templates) သုံးရင်လည်းရတာပေါ့
 
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-You do not need to manually verify the CSRF token on POST, PUT, or DELETE requests. The `VerifyCsrfToken` [HTTP middleware](/docs/5.0/middleware) will verify token in the request input matches the token stored in the session.
+သင့်အနေနဲ့ CSRF token ကို POST, PUT, နဲ့ DELETE requests တွေမှာ  CSRF token ကို manually verify လုပ်စရာမလိုပါဘူး။ `VerifyCsrfToken`[HTTP middleware](/docs/5.0/middleware)  က request input ထဲက token နဲ့ session ထဲမှာ store လုပ်ထားတဲ့ token နဲ့ကိုက်ညီမှူရှိမရှိကို verify လုပ်ပေးပါလိမ့်မယ်။
 
-In addition to looking for the CSRF token as a "POST" parameter, the middleware will also check for the `X-XSRF-TOKEN` request header, which is commonly used by JavaScript frameworks.
+ဒါ့အပြင် CSRF Token ကို "POST" parameter မှာကြည့်မယ်ဆိုလို့ရှိရင် , middleware က `X-XSRF-TOKEN` request header ကိုပါ check တာကိုတွေ့ရပါ့မယ်၊ အဲ့ဒါကများသောအားဖြင့် JavaScript framework တွေမှာအသုံးများတာတွေ့ရပါလိမ့်မယ်။
 
 <a name="method-spoofing"></a>
-## Method Spoofing
+## Method လှည့်စားမှုများ
 
-HTML forms do not support `PUT` or `DELETE` actions. So, when defining `PUT` or `DELETE` routes that are called from an HTML form, you will need to add a hidden `_method` field to the form.
+HTML Form တွေက `PUT` ဒါမှမဟုတ် `DELETE` action တွေကို support မလုပ်ပါဘူး။ ဒါကြောင့် `PUT` တို့ `DELETE` rouets တွေကို define လုပ်တဲ့အချိန်မှာ routes တွေက HTML form တွေကိုခေါ်ပြီးအလုပ်လုပ်ပါတယ်၊ ဒါကြောင့် hidden `_method` field တွေကို form မှာထည့်ပေးရပါ့မယ်။
 
-The value sent with the `_method` field will be used as the HTTP request method. For example:
+`_method` field value နဲ့ပို့လိုက်တာတွေကို HTTP request method အဖြစ်အသုံးပြုသွားတာဖြစ်ပါတယ်။ဉပမာအားဖြင့်
 
 	<form action="/foo/bar" method="POST">
 		<input type="hidden" name="_method" value="PUT">
@@ -88,32 +88,32 @@ The value sent with the `_method` field will be used as the HTTP request method.
     </form>
 
 <a name="route-parameters"></a>
-## Route Parameters
+## Route Parameters များ
 
-Of course, you can capture segments of the request URI within your route:
+သင့်အနေနဲ့ သင့် route အတွင်းမှာရှိတဲ့ URI request တွေရဲ့ segments တွေကို capture လုပ်နိုင်ပါတယ်
 
-#### Basic Route Parameter
+#### အခြေခံ Route Parameter များ
 
 	Route::get('user/{id}', function($id)
 	{
 		return 'User '.$id;
 	});
 
-#### Optional Route Parameters
+#### မလုပ်မနေရ မဟုတ်သော Route Parameters များ
 
 	Route::get('user/{name?}', function($name = null)
 	{
 		return $name;
 	});
 
-#### Optional Route Parameters With Default Value
+#### မလုပ်မနေရ မဟုတ်သော parameters များနှင့် Default Value 
 
 	Route::get('user/{name?}', function($name = 'John')
 	{
 		return $name;
 	});
 
-#### Regular Expression Parameter Constraints
+#### Regular Expression များဖြင့် လမ်းကြောင်းထိန်းကွပ်ကိန်းများအား ကန့်သတ်ခြင်း
 
 	Route::get('user/{name}', function($name)
 	{
@@ -127,7 +127,7 @@ Of course, you can capture segments of the request URI within your route:
 	})
 	->where('id', '[0-9]+');
 
-#### Passing An Array Of Constraints
+#### Where အကန့်အသတ်များအား Array အဖြစ်ဖြင့် ပေးပို့ခြင်း
 
 	Route::get('user/{id}/{name}', function($id, $name)
 	{
@@ -135,22 +135,22 @@ Of course, you can capture segments of the request URI within your route:
 	})
 	->where(['id' => '[0-9]+', 'name' => '[a-z]+'])
 
-#### Defining Global Patterns
+#### Global Patterns သတ်မှတ်ခြင်း
 
-If you would like a route parameter to always be constrained by a given regular expression, you may use the `pattern` method. You should define these patterns in the `before` method of your `RouteServiceProvider`:
+သင့်အနေနဲ့ route parameter တစ်ခုကို ပေးထားတဲ့ regular expression ကိုအမြဲတမ်း constrained ဖြစ်စေချင်တယ်ဆိုရင် သင့်အနေနဲ့ `pattern` method ကိုအသုံးပြုသင့်ပါတယ်။ သင့်အနေနဲ့ ဒီ pattern ကို define လုပ်တဲ့အချိန်မှာ `RouteServiceProvider` မတိုင်ခင်မှာ သတ်မှတ် create လုပ်သင့်ပါတယ်။
 
 	$router->pattern('id', '[0-9]+');
 
-Once the pattern has been defined, it is applied to all routes using that parameter:
+သင့် pattern ကိုသတ်မှတ်ပြီးသွားပြီဆိုလို့ရှိရင် အဲ့ဒီ့ pattern က အဲ့ဒီ့ parameter ကိုသုံးထားတဲ့ route အားလုံးကို apply ဖြစ်ပါတယ်
 
 	Route::get('user/{id}', function($id)
 	{
 		// Only called if {id} is numeric.
 	});
 
-#### Accessing A Route Parameter Value
+#### Route Parameter Value တစ်ခုကို ရယူခြင်း
 
-If you need to access a route parameter value outside of a route, use the `input` method:
+သင့်အနေနဲ့ route parameter value တစ်ခုကို route တစ်ခုရဲ့အပြင်ဘက်ကနေခေါ်ချင်ရင် `input` method ကိုသုံးပါ
 
 	if ($route->input('id') == 1)
 	{
@@ -158,6 +158,8 @@ If you need to access a route parameter value outside of a route, use the `input
 	}
 
 You may also access the current route parameters via the `Illuminate\Http\Request` instance. The request instance for the current request may be accessed via the `Request` facade, or by type-hinting the `Illuminate\Http\Request` where dependencies are injected:
+
+`Illuminate\Http\Request` instance ကနေပြီးတော့ current route parameters တွေကို access လုပ်နိုင်ပါတယ်။ Request လုပ်လိုက်တဲ့
 
 	use Illuminate\Http\Request;
 
@@ -170,7 +172,7 @@ You may also access the current route parameters via the `Illuminate\Http\Reques
 	});
 
 <a name="named-routes"></a>
-## Named Routes
+## အမည်ရှိ လမ်းကြောင်းများ
 
 Named routes allow you to conveniently generate URLs or redirects for a specific route. You may specify a name for a route with the `as` array key:
 
@@ -196,7 +198,7 @@ The `currentRouteName` method returns the name of the route handling the current
 	$name = Route::currentRouteName();
 
 <a name="route-groups"></a>
-## Route Groups
+## လမ်းကြောင်း အုပ်စုများ
 
 Sometimes you may need to apply filters to a group of routes. Instead of specifying the filter on each route, you may use a route group:
 
@@ -223,11 +225,11 @@ You may use the `namespace` parameter within your `group` array to specify the n
 > **Note:** By default, the `RouteServiceProvider` includes your `routes.php` file within a namespace group, allowing you to register controller routes without specifying the full namespace.
 
 <a name="sub-domain-routing"></a>
-### Sub-Domain Routing
+### Sub-Domain များ အသုံးပြု ၍ လမ်းကြောင်းပေးခြင်း
 
 Laravel routes also handle wildcard sub-domains, and will pass your wildcard parameters from the domain:
 
-#### Registering Sub-Domain Routes
+#### Sub-domain လမ်းကြောင်းများ မှတ်ပုံတင်ခြင်း
 
 	Route::group(['domain' => '{account}.myapp.com'], function()
 	{
@@ -240,7 +242,7 @@ Laravel routes also handle wildcard sub-domains, and will pass your wildcard par
 	});
 
 <a name="route-prefixing"></a>
-### Route Prefixing
+### လမ်းကြောင်းရှေ့ ဆွယ်ပေးခြင်း
 
 A group of routes may be prefixed by using the `prefix` option in the attributes array of a group:
 
@@ -255,13 +257,13 @@ A group of routes may be prefixed by using the `prefix` option in the attributes
 	});
 
 <a name="route-model-binding"></a>
-## Route Model Binding
+## လမ်းကြောင်း နှင့် Model ချိတ်တွယ်ခြင်း
 
 Laravel model binding provides a convenient way to inject class instances into your routes. For example, instead of injecting a user's ID, you can inject the entire User class instance that matches the given ID.
 
 First, use the router's `model` method to specify the class for a given parameter. You should define your model bindings in the `RouteServiceProvider::boot` method:
 
-#### Binding A Parameter To A Model
+#### Binding A Parameter To A Model 
 
 	public function boot(Router $router)
 	{
@@ -296,7 +298,7 @@ If you wish to use your own resolution logic, you should use the `Router::bind` 
 	});
 
 <a name="throwing-404-errors"></a>
-## Throwing 404 Errors
+## 404 error များ ထုတ်လွှတ်ခြင်း
 
 There are two ways to manually trigger a 404 error from a route. First, you may use the `abort` helper:
 
