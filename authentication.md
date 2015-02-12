@@ -11,13 +11,13 @@
 <a name="introduction"></a>
 ## မိတ်ဆက်
 
-Laravel makes implementing authentication very simple. In fact, almost everything is configured for you out of the box. The authentication configuration file is located at `config/auth.php`, which contains several well documented options for tweaking the behavior of the authentication services.
+Laravel ဟာ authentication အပိုင်းအတွက် ရိုးရှင်းလွယ်ကူအောင်ပြင်ဆင်ပေးထားပါတယ်။ Configuration setting တွေကို `config/auth.php` ထဲမှာကြိုတင်ပြင်ဆင်ပေးထားပြီးသားဖြစ်ပါတယ်။ အဲ့ဒီဖိုင်ထဲမှာ authentication options တွေကို လိုအပ်သလိုပြင်ဆင်နိုင်ဖို့အတွက် ပြည်စုံတဲ့ညွှန်ကြားချက်တွေနဲ့အတူ authentication service တစ်ခုချင်းစီရဲ့အလုပ်လုပ်တဲ့ပုံစံတွေကို သေသေချာချာရှင်းပြထားပေးပါတယ်။
 
-By default, Laravel includes an `App\User` model in your `app` directory. This model may be used with the default Eloquent authentication driver.
+Laravel မှာပုံသေအနေနဲ့ `app` ဖိုဒါအောက်မှာ `App\User` ဆိုတဲ့ model ရှိပါတယ်။ အဲ့ဒီ model ကို ပုံသေ authentication driver ဖြစ်အသုံးပြုပါတယ်။ 
 
-Remember: when building the database schema for this model, make the password column at least 60 characters. Also, before getting started, make sure that your `users` (or equivalent) table contains a nullable, string `remember_token` column of 100 characters. This column will be used to store a token for "remember me" sessions being maintained by your application. This can be done by using `$table->rememberToken();` in a migration. Of course, Laravel 5 ships migrations for these columns out of the box!
+သတိပြုရမှာက အဲ့ဒီ`App\User` model အတွက် database schema ပြုလုပ်တဲ့အခါ password column အတွက် အနည်းဆုံးစာလုံးရေ ၆၀ သတ်မှတ်ပေးရပါမယ်။ အဲ့ဒါအပြင် အဲဒီ table (users or some name) မှာ `remember_token` column ကို အနည်းဆုံး စာလုံးရေ ၁၀၀ နဲ့ nullable option ထည့်ပြီးသတ်မှတ်ပေးရပါမယ်။ အဲ့ဒီ column ကို "remember me" sessions အတွက် token ကိုသိမ်းဖို့အတွက် အသုံးပြုမှာဖြစ်ပါတယ်။ တစ်ခုချင်းပြုလုပ်နေစရာမလိုပဲ `$table->rememberToken();` ကို migration ဖိုင်မှာအသုံးပြုပြီး အလွယ်တကူ ပြုလုပ်နိုင်ပါတယ်။Laravel 5 မှာတော့ `users` table အတွက် migration ဖိုင်ဟာအသင့်ပါလာပြီးသားဖြစ်ပါတယ်။ 
 
-If your application is not using Eloquent, you may use the `database` authentication driver which uses the Laravel query builder.
+အကယ်၍  Eloquent ကိုအသုံးမပြုဘူးဆိုရင် Laravel query builder ကိုအသုံးပြုထားတဲ့  `database`  authentication driver ကိုအသုံးပြုနိုင်ပါတယ်။ 
 
 <a name="authenticating-users"></a>
 ## Authenticating Users
