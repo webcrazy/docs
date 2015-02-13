@@ -1,3 +1,4 @@
 # Contribution Guidelines
 
-If you are submitting documentation for the **current stable release**, submit it to the corresponding branch. For example, documentation for Laravel 4.2 would be submitted to the `4.2` branch. Documentation intended for the next release of Laravel should be submitted to the `master` branch.
+
+သင်ဟာ **current stable release** တစ်ခုခုရဲ့ documentation ကို submit ပြုလုပ်ပါက သက်ဆိုင်ရာ branch ပေါ်မှာသာ တင်ပါ။ ဥပမာ Laravel 4.2 ၏ documentation ကို `4.2` branch ပေါ်တွင်သာ တင်သင့်သည်။ နောက် release အတွက် Documentation ကိုမူ `master` branch ပေါ်တွင် တင်နိုင်သည်။ 
