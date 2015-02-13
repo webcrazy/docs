@@ -1,77 +1,80 @@
 # HTTP Middleware
 
-- [Introduction](#introduction)
-- [Defining Middleware](#defining-middleware)
-- [Registering Middleware](#registering-middleware)
+- [မိတ်ဆက်](#introduction)
+- [Middleware တစ်ခု ဖန်တီးခြင်း](#defining-middleware)
+- [Middleware တစ်ခု register လုပ်ခြင်း](#registering-middleware)
 - [Terminable Middleware](#terminable-middleware)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ်ဆက်.
 
-HTTP middleware provide a convenient mechanism for filtering HTTP requests entering your application. For example, Laravel includes a middleware that verifies the user of your application is authenticated. If the user is not authenticated, the middleware will redirect the user to the login screen. However, if the user is authenticated, the middleware will allow the request to proceed further into the application.
+HTTP middleware တစ်ခုသည်　သင့်　application ထံ　ဝင်ရောက်လာသော　HTTP request　များအား　စိစစ်စီမံရာတွင်　အဆင်ပြေပြေ　အသုံးပြုနိုင်စေရန်　အထောက်အပံ့ပေးထားသည့်နည်းလမ်းတစ်ခု　ဖြစ်ပါသည်။ဥပမာ သင့်　application အားအသုံးပြုသူတစ်ယောက်ကို　authenticated ဖြစ်မဖြစ်　စိစစ်ပေးသည့်　middleware တစ်ခု　Laravel တွင်ပါရှိပါသည်။အကယ်၍　အသုံးပြုသူသည်　authenticate လုပ်ပြီးသားမဟုတ်ပါက　middleware မှ　အသုံးပြုသူအား　log in screen သို့　redirect လုပ်ပေးသွားမည်　ဖြစ်သည်။သို့သော်　user သည်　authenticate လုပ်ပြီးသားဖြစ်ပါက　middleware မှ　အဆိုပါ　request အား　သင့်　application အတွင်းထပ်မံခရီးဆက်ခွင့်　ပြုလိုက်မည်ဖြစ်သည်။
 
-Of course, middleware can be written to perform a variety of tasks besides authentication. A CORS middleware might be responsible for adding the proper headers to all responses leaving your application. A logging middleware might log all incoming requests to your application.
+Authentication မှမဟုတ်ပါ၊　အခြားလုပ်ဆောင်ချက်အထွေထွေကိုလည်း　middleware တစ်ခုအဖြစ်　ဖန်တီးရေးသားနိုင်ပါသည်။ပမာဆိုရလျှင် CORS middleware တစ်ခုက　သင့်　application မှထွက်ခွာမည့်　response အားလုံးကို　သက်ဆိုင်ရာ　header များထည့်ပေးခြင်းအတွက်တာဝန်ယူနိုင်သလို　logging middleware တစ်ခုက　သင့်　application ထံဝင်ရောက်လာမည့်　request အားလုံးကို log ထုတ်ပေးရန်　တာဝန်ယူနိုင်ပါသည်။
 
-There are several middleware included in the Laravel framework, including middleware for maintenance, authentication, CSRF protection, and more. All of these middleware are located in the `app/Http/Middleware` directory.
+
+Laravel framework　အတွင်းတွင်　maintenance, authentication, CSRF protection အစရှိဖြင့်　middleware များစွာထည့်သွင်းပေးထားပါသည်။　ထို　middleware အားလုံးသည်　`app/Http/Middleware` directoryတွင်　တည်ရှိပါသည်။
 
 <a name="defining-middleware"></a>
-## Defining Middleware
+##Middleware တစ်ခု ဖန်တီးခြင်း
 
 To create a new middleware, use the `make:middleware` Artisan command:
+middleware　တစ်ခုဖန်တီးရန်　`make:middleware`　Artisan commandကိုသုံးပါ။
 
-	php artisan make:middleware OldMiddleware
+php artisan make:middleware OldMiddleware
 
-This command will place a new `OldMiddleware` class within your `app/Http/Middleware` directory. In this middleware, we will only allow access to the route if the supplied `age` is greater than 200. Otherwise, we will redirect the users back to the "home" URI.
+၎င်း command က OldMiddleware class အသစ်တစ်ခုကို　သင့်　`app/Http/Middleware`　directory အတွင်းတွင်　ဖန်တီးပေးမည်ဖြစ်သည်။　အဆိုပါ　middleware တွင်　ပေးပို့လာသော　အသက် `age` သည် 200 ထက်ကြီးမှသာ　လျှင်　route ကို　ပေး၀င်ပြီး　သို့မဟုတ်ပါက　အသုံးပြုသူများကို　မူလစာမျက်နှာသို့သာ　ပို့ဆောင်ပေးမည်ဆိုပါစို့။　　
 
-	<?php namespace App\Http\Middleware;
+<?php namespace App\Http\Middleware;
 
-	class OldMiddleware {
+class OldMiddleware {
 
-		/**
-		 * Run the request filter.
-		 *
-		 * @param  \Illuminate\Http\Request  $request
-		 * @param  \Closure  $next
-		 * @return mixed
-		 */
-		public function handle($request, Closure $next)
+	/**
+	* Run the request filter.
+	*
+	* @param  \Illuminate\Http\Request  $request
+	* @param  \Closure  $next
+	* @return mixed
+	*/
+	public function handle($request, Closure $next)
+	{
+		if ($request->input('age') < 200)
 		{
-			if ($request->input('age') < 200)
-			{
-				return redirect('home');
-			}
-
-			return $next($request);
+			return redirect('home');
 		}
 
+		return $next($request);
 	}
 
-As you can see, if the given `age` is less than `200`, the middleware will return an HTTP redirect to the client; otherwise, the request will be passed further into the application. To pass the request deeper into the application (allowing the middleware to "pass"), simply call the `$next` callback with the `$request`.
+}
 
-It's best to envision middleware as a series of "layers" HTTP requests must pass through before they hit your application. Each layer can examine the request and even reject it entirely.
+သင်မြင်သည့်အတိုင်း　အကယ်၍　ပေးထားသောအသက်`age`　သည်　 `200`　ထက်ငယ်ခဲ့ပါက middleware မှ　HTTP redirect ပြုလုပ်မည်ဖြစ်သည်။　သို့မဟုတ်ပါက　request သည်　application အတွင်း　ထပ်မံခရီးဆက်၀င်ရောက်နိုင်မည်ဖြစ်သည်။　ထိုသို့　ခရီးဆက်စေရန်　(တစ်နည်းအားဖြင့်　middleware ကို　ဖြတ်သန်းသွားလာနိုင်စေရန်)　`$next` callback အား　`$request` object　ဖြင့်ရိုးရှင်းစွာ　call လိုက်ရုံပင်ဖြစ်သည်။　
+
+
+middleware များအား　HTTP request များ　သင့် application ထံမရောက်မီ　အဆင့်ဆင့်　ဖြတ်သန်းရသော　အလွှာအထပ်ထပ်　အဖြစ်မြင်ယောင်ကြည့်နိုင်ပါသည်။　အလွှာတစ်ခုချင်းစီက　request ကိုစိစစ်ပြီး　လိုအပ်လျှင်　ငြင်းပယ်ခြင်းကိုပါလုပ်ဆောင်နိုင်မည်ဖြစ်သည်။
 
 <a name="registering-middleware"></a>
-## Registering Middleware
+## Middleware တစ်ခု register လုပ်ခြင်း
 
 ### Global Middleware
 
-If you want a middleware to be run during every HTTP request to your application, simply list the middleware class in the `$middleware` property of your `app/Http/Kernel.php` class.
+အကယ်၍　သင်သည်　middleware　တစ်ခုအား　HTTP request　တိုင်းအတွက်　run စေချင်လျှင်　အဆိုပါ　middleware class အား `app/Http/Kernel.php`class　၏　`$middleware` property တွင်ထည့်သွင်းလိုက်ရုံပင်။　
 
-### Assigning Middleware To Routes
+### Middleware များအား　Route များဖြင့်　တွဲဖက်ခြင်း
 
-If you would like to assign middleware to specific routes, you should first assign the middleware a short-hand key in your `app/Http/Kernel.php` file. By default, the `$routeMiddleware` property of this class contains entries for the middleware included with Laravel. To add your own, simply append it to this list and assign it a key of your choosing.
+အကယ်၍　သင်သည်　middleware　တစ်ခုအား　သီးသန့်　route တစ်ခုဖြင့်　တွဲဖက်ပေးချင်လျှင်　သင့်အနေနှင့်　ပထမဦးစွာ　ထို　middleware　အတွက်　`app/Http/Kernel.php` file တွင်　အတိုကောက်ကီးတစ်ခုအား သတ်မှတ်ပေးသင့်ပါသည်။ Default အားဖြင့်　အဆိုပါ　class ၏`$routeMiddleware`　property တွင်　Laravel　တွင်ထည့်သွင်းထားသော　middleware များပါ၀င်ပါသည်။　သင့်ကိုယ်ပိုင်　middleware ကိုထည့်သွင်းရန်　၎င်း list တွင်　append လုပ်၍　သင်နှစ်သက်ရာ　ကီးတစ်ခု　သတ်မှတ်ပေးရုံပင်　ဖြစ်သည်။　
 
-Once the middleware has been defined in the HTTP kernel, you may use the `middleware` key in the route options array:
+middleware　အား　HTTP kernel　အတွင်းတွင်　သတ်မှတ်ပြီးသွားလျှင်　သင့်အနေဖြင့်　route options array တွင်　`middleware` key ကို　အသုံးပြုပြီး　တွဲဖက်ပေးနိုင်ပါပြီ။　　
 
-	Route::get('admin/profile', ['middleware' => 'auth', function()
-	{
-		//
+Route::get('admin/profile', ['middleware' => 'auth', function()
+{
+	//
 	}]);
 
-<a name="terminable-middleware"></a>
-## Terminable Middleware
+	<a name="terminable-middleware"></a>
+	## Terminable Middleware
 
-Sometimes a middleware may need to do some work after the HTTP response has already been sent to the browser. For example, the "session" middleware included with Laravel writes the session data to storage _after_ the response has been sent to the browser. To accomplish this, you may define the middleware as "terminable".
+	တစ်ခါတစ်ရံ　middleware　တစ်ခုအနေဖြင့် Browser ထံသို့　 HTTP response　ပြန်ပြီးခါမှ　အလုပ်လုပ်ရန်လိုအပ်တာမျိုးရှိတတ်သည်။　ဥပမာ　Laravel အတွင်း၌　ပါ၀င်သော　"session" middleware သည်　session data အား　 Browser ထံသို့　 HTTP response　ပြန်ပြီးခါမှ　storage သို့　ရေးသားခြင်းဖြစ်သည်။　ထိုသို့လုပ်ဆောင်နိုင်စေရန်　သင့်အနေဖြင့်　middleware တစ်ခုအား　"terminable"　အဖြစ်သတ်မှတ်နိုင်သည်။　　
 
 	use Illuminate\Contracts\Routing\TerminableMiddleware;
 
@@ -89,4 +92,5 @@ Sometimes a middleware may need to do some work after the HTTP response has alre
 
 	}
 
-As you can see, in addition to defining a `handle` method, `TerminableMiddleware` define a `terminate` method. This method receives both the request and the response. Once you have defined a terminable middleware, you should add it to the list of global middlewares in your HTTP kernel.
+	သင်မြင်နိုင်သည့်အတိုင်းပင်　`TerminableMiddleware`　၌　`handle` method တစ်ခုထပ်မံသတ်မှတ်ခြင်းအပြင် `terminate` method　ကိုပါ　သတ်မှတ်ပေးရသည်။　`TerminableMiddleware` တစ်ခု　သတ်မှတ်ပြီးလျှင်　သင့်အနေနှင့်　၎င်း　middleware အား　သင့်　HTTP kernel ၏　Global middleware စာရင်းအတွင်းသို့　ထည့်သွင်းပေးသင့်သည်။　　
+	
