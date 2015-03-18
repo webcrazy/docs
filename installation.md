@@ -60,6 +60,7 @@ Laravel မှာ တစ်ခြားသော Configuration တွေမလ�
 Laravel ကို install လုပ်ပြီးပြီဆိုတာနဲ့ [သင့်ရဲ့ local environment ကို ဖွဲစည်းပေးသင့်ပါတယ်။](/docs/5.0/configuration#environment-configuration)
 
 > **သတိပြုရန်:** `app.debug` ကို Production application မှာ `true` လို့သတ်မှတ်မပေးသင့်ပါဘူး
+
 <a name=“permissions”></a>
 ### Permissions
 

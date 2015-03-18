@@ -159,7 +159,7 @@ HTML Form တွေက `PUT` ဒါမှမဟုတ် `DELETE` action တွ�
 
 You may also access the current route parameters via the `Illuminate\Http\Request` instance. The request instance for the current request may be accessed via the `Request` facade, or by type-hinting the `Illuminate\Http\Request` where dependencies are injected:
 
-`Illuminate\Http\Request` instance ကနေပြီးတော့ current route parameters တွေကို access လုပ်နိုင်ပါတယ်။ Request လုပ်လိုက်တဲ့
+`Illuminate\Http\Request` instance ကနေပြီးတော့ current route parameters တွေကို access လုပ်နိုင်ပါတယ်။ လက်ရှိ Request ရဲ့ Instance ကို `Request` facade ကနေရနိုင်သလို `Illuminate\Http\Request` ကို Type-hinting ပေးခြင်းဖြင့်လည်း ရနိုင်ပါတယ။
 
 	use Illuminate\Http\Request;
 
@@ -174,33 +174,33 @@ You may also access the current route parameters via the `Illuminate\Http\Reques
 <a name="named-routes"></a>
 ## အမည်ရှိ လမ်းကြောင်းများ
 
-Named routes allow you to conveniently generate URLs or redirects for a specific route. You may specify a name for a route with the `as` array key:
+အမည်ပေးထားတဲ့ Route တွေကို URL တွေကို ထုတ်တဲ့အခါမှာပဲဖြစ်ဖြစ် Route တစ်ခုကနေ နောက်တစ်ခုကို ညွှန်းတဲ့အခါမှာ လွယ်လွယ်ကူကူသုံးနိုင်ပါတယ်။ Route ကိုနာမည်သတ်မှတ်ပေးဖို့အတွက် `as` array key ကို အောက်ကအတိုင်းသုံးပေးရပါမယ။
 
 	Route::get('user/profile', ['as' => 'profile', function()
 	{
 		//
 	}]);
 
-You may also specify route names for controller actions:
+Controller action တွေအတွက်လဲ Route နာမည်တွေသတ်မှတ်ပေးလို့ရပါတယ်
 
 	Route::get('user/profile', [
         'as' => 'profile', 'uses' => 'UserController@showProfile'
 	]);
 
-Now, you may use the route's name when generating URLs or redirects:
+URL တွေ (သို့မဟုတ်) Redirect လုပ်တဲ့အခါ Route ရဲ့ နာမည်ကိုသုံးလို့ရပါတယ်
 
 	$url = route('profile');
 
 	$redirect = redirect()->route('profile');
 
-The `currentRouteName` method returns the name of the route handling the current request:
+`currentRouteName` method ကိုအောက်ကအတိုင်း သုံးပြီးတော့ လက်ရှိ Request ရဲ့ Route နာမည်ကိုထုတ်ယူလို့ရပါတယ်။
 
 	$name = Route::currentRouteName();
 
 <a name="route-groups"></a>
 ## လမ်းကြောင်း အုပ်စုများ
 
-Sometimes you may need to apply filters to a group of routes. Instead of specifying the filter on each route, you may use a route group:
+တစ်ခါတစ်ရံမှာ Routes အုပ်စုတစ်ခုလုံးကို Filter လုပ်ချင်တဲ့အခါမျိုးလဲ ရှိတက်ပါတယ်။ Route တစ်ခုချင်းစီကို Filter တွေလိုက်သတ်မှတ်မည့်အစား Route Group ကိုသုံးလို့ရပါတယ်။
 
 	Route::group(['before' => 'auth'], function()
 	{
@@ -215,19 +215,18 @@ Sometimes you may need to apply filters to a group of routes. Instead of specify
 		});
 	});
 
-You may use the `namespace` parameter within your `group` array to specify the namespace for all controllers within the group:
+`group` array ထဲမှာ `namespace` parameter ကိုသုံးပြီး Controller တွေအကုန်လုံးအတွက် Namespace သတ်မှတ်ပေးနိုင်ပါတယ်။
 
 	Route::group(['namespace' => 'Admin'], function()
 	{
 		//
 	});
 
-> **Note:** By default, the `RouteServiceProvider` includes your `routes.php` file within a namespace group, allowing you to register controller routes without specifying the full namespace.
+> **မှတ်ချက်** ပုံမှန်အားဖြင့်တော့ `RouteServiceProvider` က namespace group ထဲမှာ `routes.php` ဖိုင်ကို ထည့်ပေးထားလို့ Controller routes တွေကို Register လုပ်တဲ့အခါ namespace အပြည့်အစုံကို ဖော်ပြပေးဖို့မလိုပါဘူး။
 
 <a name="sub-domain-routing"></a>
 ### Sub-Domain များ အသုံးပြု ၍ လမ်းကြောင်းပေးခြင်း
-
-Laravel routes also handle wildcard sub-domains, and will pass your wildcard parameters from the domain:
+Latavel routes တွေက wildcard sub-domains တွေကိုလဲ လုပ်ဆောင်ပေးနိုင်ပြီးတော့ domain ကနေပြီး wildcard parameter တွေကို ရယူပေးပါတယ်။
 
 #### Sub-domain လမ်းကြောင်းများ မှတ်ပုံတင်ခြင်း
 
@@ -244,7 +243,7 @@ Laravel routes also handle wildcard sub-domains, and will pass your wildcard par
 <a name="route-prefixing"></a>
 ### လမ်းကြောင်းရှေ့ ဆွယ်ပေးခြင်း
 
-A group of routes may be prefixed by using the `prefix` option in the attributes array of a group:
+Routes group တစ်ခုကို `prefix` option နဲ့အောက်ကအတိုင်း prefix ခံလို့ရပါတယ်။
 
 	Route::group(['prefix' => 'admin'], function()
 	{
@@ -259,9 +258,9 @@ A group of routes may be prefixed by using the `prefix` option in the attributes
 <a name="route-model-binding"></a>
 ## လမ်းကြောင်း နှင့် Model ချိတ်တွယ်ခြင်း
 
-Laravel model binding provides a convenient way to inject class instances into your routes. For example, instead of injecting a user's ID, you can inject the entire User class instance that matches the given ID.
+Routes တွေထဲကို Class instance တွေ ထိုးထည့်ဖို့အတွက် Laravel model binding ကလွယ်လွယ်ကူကူဖြစ်အောင် လုပ်ပေးပါတယ်။ ဥပမာ user ID ကို ထိုးထည့်မည့်အစား အဲ့ဒီ့ User id နဲ့ကိုက်ညီတဲ့ User class တစ်ခုလုံးကို ထည့်ပေးလိုက်လို့ရပါတယ်။
 
-First, use the router's `model` method to specify the class for a given parameter. You should define your model bindings in the `RouteServiceProvider::boot` method:
+ပထမဦးဆုံး router ရဲ့ `model` method ကို ပေးထားတဲ့ Parameter အတွက် Class ကို သတ်မှတ်ဖို့အတွက်သုံးနိုင်ပါတယ်။ model binding တွေကို `RouteServiceProvider::boot` method နဲ့ သတ်မှတ်ပေးပါ။
 
 #### Binding A Parameter To A Model 
 
@@ -272,25 +271,25 @@ First, use the router's `model` method to specify the class for a given paramete
 		$router->model('user', 'App\User');
 	}
 
-Next, define a route that contains a `{user}` parameter:
+နောက်တစ်ဆင့်အနေနဲ့ `{user}` parameter ပါတဲ့ Route ကို အောက်ကအတိုင်းသတ်မှတ်ပါ။
 
 	Route::get('profile/{user}', function(App\User $user)
 	{
 		//
 	});
 
-Since we have bound the `{user}` parameter to the `App\User` model, a `User` instance will be injected into the route. So, for example, a request to `profile/1` will inject the `User` instance which has an ID of 1.
+`{user}` parameter ကို `App\User` model ထဲမှာ တွဲပေးလိုက်တဲ့အတွက် ၊ `User` instance အနေနဲ့ Route ထဲကို ထိုးထည့်ပေးပါလိမ့်မယ်။ ဒီတော့ ၊ ဥပမာ  ID 1 ရှိတဲ့ `profile/1` Request က `User` ရဲ့ Instance ထဲကို ထိုးထည့်ပါမယ်။
 
-> **Note:** If a matching model instance is not found in the database, a 404 error will be thrown.
+> **မှတ်ချက်** ကိုက်ညီထားတဲ့ Model instance ကို ရှာလို့မတွေဘူးဆိုရင် 404 error ပြပါလိမ့်မယ်။
 
-If you wish to specify your own "not found" behavior, pass a Closure as the third argument to the `model` method:
+သီးသန့် `not found` ပုံစံလုပ်ပေးချင်ရင်တော့ `model` method ထဲကို Third argument အနေနဲ့ Closure ပုံစံမျိုးဖော်ပြပေးရပါမယ်။
 
 	Route::model('user', 'User', function()
 	{
 		throw new NotFoundHttpException;
 	});
 
-If you wish to use your own resolution logic, you should use the `Router::bind` method. The Closure you pass to the `bind` method will receive the value of the URI segment, and should return an instance of the class you want to be injected into the route:
+ကိုယ်ပိုင် Resolution logic သုံးချင်တဲ့အခါ `Router::bind` method ကိုသုံးသင့်ပါတယ်။ `bind` method ကို ထည့်ပေးလိုက်တဲ့ Closure အနေနဲ့ URI segment ရဲ့ Value ကို လက်ခံရရှိပါလိမ့်မယ်။ ပြီးတော့ class ရဲ့ instance တစ်ခုကို return ပြန်သင့်ပါတယ်။
 
 	Route::bind('user', function($value)
 	{
@@ -300,12 +299,12 @@ If you wish to use your own resolution logic, you should use the `Router::bind` 
 <a name="throwing-404-errors"></a>
 ## 404 error များ ထုတ်လွှတ်ခြင်း
 
-There are two ways to manually trigger a 404 error from a route. First, you may use the `abort` helper:
+Route ကနေ 404 error ကို manually ဖမ်းဖို့အတွက် နည်းလမ်း ၂ခု ရှိပါတယ်။ ပထမတစ်ခုကတော့ `abort` helper ကိုသုံးပါ။
 
 	abort(404);
 
-The `abort` helper simply throws a `Symfony\Component\HttpFoundation\Exception\HttpException` with the specified status code.
+`abort` helper က သတ်ဆိုင်ရာ status code နဲ့အတူ `Symfony\Component\HttpFoundation\Exception\HttpException` ကို throw လုပ်ပါတယ်။
 
-Secondly, you may manually throw an instance of `Symfony\Component\HttpKernel\Exception\NotFoundHttpException`.
+ဒုတိယနည်းလမ်းကတော့ ၊ `Symfony\Component\HttpKernel\Exception\NotFoundHttpException` `Symfony\Component\HttpKernel\Exception\NotFoundHttpException`ကို manually throw လုပ်ဖို့ပဲ ဖြစ်ပါတယ်။
 
-More information on handling 404 exceptions and using custom responses for these errors may be found in the [errors](/docs/5.0/errors#http-exceptions) section of the documentation.
+404 exception တွေကိုထိန်းချုပ်ဖို့အတွက် ပြည့်ပြည့်စုံစုံသိဖို့ [errors](/docs/5.0/errors#http-exceptions) ဆိုတဲ့ အပိုင်းမှာ လေ့လာနိုင်ပါတယ်။

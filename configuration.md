@@ -8,125 +8,124 @@
 - [Maintenance Mode](#maintenance-mode)
 - [Pretty URLs](#pretty-urls)
 
-<a name="introduction"></a>
+<a name=“introduction”></a>
 ## Introduction
 
-All of the configuration files for the Laravel framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+Laravel ရဲ့ Configuration ဖိုင်တွေအားလုံး `config` directory ထဲမှာ ရှိပါတယ်။ Option တစ်ခုချင်းစီကို ရှင်းပြထားတဲ့အတွက် Option နဲ့ရင်းနီးအောင်လုပ်ပြီး အသုံးဝင်မယ့် Option တွေကို လေ့လာကြည့်ပါ။
 
-<a name="after-installation"></a>
+<a name=“after-installation”></a>
 ## After Installation
 
 ### Naming Your Application
+Laravel ကို Install လုပ်ပြီးတဲ့အခါမှာ ၊ သင့် Application ကို နာမည်ပေးချင်ပေးနိုင်ပါတယ်။ ပုံမှန်ကတော့ `app` Directory က `App` Namespace နဲ့ [PSR-4 autoloading standard](http://www.php-fig.org/psr/psr-4/) ကိုသုံးပြီး Composer က Autoload လုပ်ပေးထားပါတယ်။ ဒါပေမယ့် namespace ကို သင့် application နဲ့ ကိုက်အောင်လို့ `app:name` Artisan command နဲ့ ပြောင်းလဲသတ်မှတ်ပေးလို့ရပါတယ်။
 
-After installing Laravel, you may wish to "name" your application. By default, the `app` directory is namespaced under `App`, and autoloaded by Composer using the [PSR-4 autoloading standard](http://www.php-fig.org/psr/psr-4/). However, you may change the namespace to match the name of your application, which you can easily do via the `app:name` Artisan command.
-
-For example, if your application is named "Horsefly", you could run the following command from the root of your installation:
+ဥပမာ သင့် Application နာမည်က “Horsefly” ဆိုရင် Application ရဲ့ Root Directory ကနေ အောက်ကအတိုင်း Run လိုက်ပါ။
 
 	php artisan app:name Horsefly
 
-Renaming your application is entirely optional, and you are free to keep the `App` namespace if you wish.
+ဒီလို Application ကို နာမည်ပြောင်းပေးတာက မလုပ်လဲရပါတယ်။ `App` namespace အတိုင်းပဲထားလဲ အဆင်ပြေပါတယ်။
 
 ### Other Configuration
 
-Laravel needs very little configuration out of the box. You are free to get started developing! However, you may wish to review the `config/app.php` file and its documentation. It contains several options such as `timezone` and `locale` that you may wish to change according to your location.
+Laravel မှာ တစ်ခြားသော Configuration တွေမလိုအပ်ဘဲ Development ကိုစတင်နိုင်ပါတယ်။ ဒါပေမယ့်လဲ `config/app.php` ဖိုင်နဲ့ သူ့ရဲ့ Documentation ကို တစ်ချက်လောက် လိုက်ကြည့်သင့်ပါတယ်။ အဲ့ထဲမှာ `timezone` နဲ့ `locale` အစရှိတဲ့ Option တွေပါဝင်ပါတယ်။
 
-Once Laravel is installed, you should also [configure your local environment](/docs/5.0/configuration#environment-configuration).
+Laravel ကို install လုပ်ပြီးပြီဆိုတာနဲ့ [သင့်ရဲ့ local environment ကို ဖွဲစည်းပေးသင့်ပါတယ်။](/docs/5.0/configuration#environment-configuration)
 
-> **Note:** You should never have the `app.debug` configuration option set to `true` for a production application.
+> **သတိပြုရန်:** `app.debug` ကို Production application မှာ `true` လို့သတ်မှတ်မပေးသင့်ပါဘူး
 
-<a name="permissions"></a>
+<a name=“permissions”></a>
 ### Permissions
 
 Laravel may require one set of permissions to be configured: folders within `storage` require write access by the web server.
 
-<a name="accessing-configuration-values"></a>
+<a name=“accessing-configuration-values”></a>
 ## Accessing Configuration Values
 
-You may easily access your configuration values using the `Config` facade:
+Configuration ရဲ့ Value တွေကို `Config` facade ကိုသုံးပြီးတော့ အောက်ကအတိုင်းရနိုင်ပါတယ်။
 
-	$value = Config::get('app.timezone');
+	$value = Config::get(‘app.timezone’);
 
-	Config::set('app.timezone', 'America/Chicago');
+	Config::set(‘app.timezone’, ‘America/Chicago’);
 
-You may also use the `config` helper function:
+`config` helper function ကိုလည်း သုံးနိုင်ပါတယ်
 
-	$value = config('app.timezone');
+	$value = config(‘app.timezone’);
 
-<a name="environment-configuration"></a>
+<a name=“environment-configuration”></a>
 ## Environment Configuration
 
-It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver locally than you do on your production server. It's easy using environment based configuration.
+Application run နေတဲ့ Environment ပေါ်မတူတည်ပြီးတော့ မတူညီတဲ့ Configuration values တွေရှိနေရင် တော်တော်လေးအသုံးဝင်ပါတယ်။ ဥပမာ - Product server ပေါ်မှာနဲ့မတူတဲ့ Cache Driver ကိုသုံးချင် သုံးပါလိမ့်မယ်။ Environment ပေါ်မူတည်ပြီး Configuration ကိုသုံးရတာ လွယ်ကူပါတယ်။
 
-To make this a cinch, Laravel utilizes the [DotEnv](https://github.com/vlucas/phpdotenv) PHP library by Vance Lucas. In a fresh Laravel installation, the root directory of your application will contain a `.env.example` file. If you install Laravel via Composer, this file will automatically be renamed to `.env`. Otherwise, you should rename the file manually.
+ဒီလိုလုပ်တဲ့အခါမှာ ပိုပြီးလွယ်ကူအောင်လို့ ၊ Laravel မှာ Vance Lucas ရေးထားတဲ့  [DotEnv](https://github.com/vlucas/phpdotenv) လို့ခေါ်တဲ့ PHP Library ကိုသုံးထားပါတယ်။ အသစ် Install လုပ်ထားတဲ့ Laravel ရဲ့ Root directory မှာ .env.example ဆိုတဲ့ ဖိုင်ပါဝင်ပါလိမ့်မယ်။ Laravel ကို Composer ကနေ Install လုပ်ထားတာဆိုရင်တော့ ၊ အဲဒီဖိုင်ကို `.env` ဆိုပြီးတော့ နာမည်ပြန်ပြောင်းပေးပါလိမ့်မယ်။ အဲလိုမှမဟုတ်ရင်တော့ သင်ကိုယ်တိုင် ပြောင်းပေးသင့်ပါတယ်။
 
-All of the variables listed in this file will be loaded into the `$_ENV` PHP super-global when your application receives a request. You may use the `env` helper to retrieve values from these variables. In fact, if you review the Laravel configuration files, you will notice several of the options already using this helper!
+Request တစ်ခုလာတာနဲ့ ၊ အဲ့ဒီဖိုင်ထဲမှာ ပါဝင်တဲ့ Variable တွေအားလုံးကို `$_ENV` PHP super-global ထဲမှာ ထည့်ပေးထားမှာဖြစ်ပါတယ်။ အဲဒီ variable တွေရဲ့ value ကိုလိုချင်တယ်ဆိုရင်တော့ `env` helper function ကိုအသုံးပြုနိုင်ပါတယ်။ Laravel configuration file တွေကို သင်သေချာကြည့်မယ်ဆိုရင် Option တော်တော်များများကို အဲဒီ helper function ကိုသုံးပြီး ခေါ်ထားတာတွေ့ရပါလိမ့်မယ်။
 
-Feel free to modify your environment variables as needed for your own local server, as well as your production environment. However, your `.env` file should not be committed to your application's source control, since each developer / server using your application could require a different environment configuration.
+Production environment အတွက်သာမက သင့် Local server အတွက်မှာပါ environment variable တွေကို ပြောင်းပြီးသုံးနိုင်ပါတယ်။ ဒါပေမယ့် သင့် Application ကို သုံးတဲ့ Developer တိုင်းက သူ့ Server နဲ့သူရှိနေတဲ့အတွက် ၊ `.env` ဖိုင်ကို Application ရဲ့ Source Control ထဲမှာ ထည့်ပေးမထားသင့်ပါဘူး။
 
-If you are developing with a team, you may wish to continue including a `.env.example` file with your application. By putting place-holder values in the example configuration file, other developers on your team can clearly see which environment variables are needed to run your application.
+သင့်အနေနဲ့ အဖွဲ့လိုက် Develop လုပ်နေတာဆိုရင် `.env.example` ဖိုင်ကို ထည့်ထားပေးလို့ရပါတယ်။ ဒီ example configuration ဖိုင်ထဲမှာ Value တွေကို ဥပမာအနေနဲ့ ထည့်ပေးထားမယ်ဆိုရင် ၊ အခြား Developer တွေအနေနဲ့ အဲဒီ Application ကို Run ဖို့အတွက် ဘယ် environment variable တွေလိုအပ်တယ်ဆိုတာ အလွယ်တကူသိနိုင်ပါတယ်။
 
 #### Accessing The Current Application Environment
 
-You may access the current application environment via the `environment` method on the `Application` instance:
+`Application` ထဲက `environment` method ကိုသုံးပြီးတော့ လက်ရှိ Application environment နာမည်ကို ထုတ်ယူနိုင်ပါတယ်။
 
 	$environment = $app->environment();
 
-You may also pass arguments to the `environment` method to check if the environment matches a given value:
+`environment` method ထဲမှာ Argument ထည့်ပေးပြီးတော့ အောက်ကအတိုင်း မိမိပေးထားတဲ့ Value နဲ့ သူ့ဖက်က Value တူမတူ တိုက်စစ်နိုင်ပါတယ်။
 
-	if ($app->environment('local'))
+	if ($app->environment(‘local’))
 	{
 		// The environment is local
 	}
 
-	if ($app->environment('local', 'staging'))
+	if ($app->environment(‘local’, ‘staging’))
 	{
-		// The environment is either local OR staging...
+		// The environment is either local OR staging…
 	}
 
-To obtain an instance of the application, resolve the `Illuminate\Contracts\Foundation\Application` contract via the [service container](/docs/5.0/container). Of course, if you are within a [service provider](/docs/5.0/providers), the application instance is available via the `$this->app` instance variable.
+[Service Container](/docs/5.0/container) ကနေတစ်ဆင့် `Illuminate\Contracts\Foundation\Application` contract ကို Resolve လုပ်ပြီးတော့ Application ရဲ့ instance တစ်ခုကိုရရှိနိုင်ပါတယ်။ [Service Provider](/docs/5.0/providers) ထဲမှာဆိုရင်တော့ ၊ `$this->app` instance variable ကနေတစ်ဆင့် Application instance ကိုရရှိနိုင်ပါတယ်။
 
-An application instance may also be accessed via the `app` helper of the `App` facade:
+Application instance ကို `App` facade ရဲ့ `app` helper function ကနေလဲ ရနိုင်ပါတယ်။
 
 	$environment = app()->environment();
 
 	$environment = App::environment();
 
-<a name="configuration-caching"></a>
+<a name=“configuration-caching”></a>
 ## Configuration Caching
 
-To give your application a little speed boost, you may cache all of your configuration files into a single file using the `config:cache` Artisan command. This will combine all of the configuration options for your application into a single file which can be loaded quickly by the framework.
+သင့် Application ရဲ့ Speed ကို အနည်းငယ်မြင့်တင်နိုင်ဖို့အတွက် ၊ သင့် Configuration ဖိုင်တွေအားလုံးကို `config:cache` Artisan command ကိုသုံးပြီး ဖိုင်တစ်ခုတည်းအဖြစ်နဲ့ Cache လုပ်ထားနိုင်ပါတယ်။ ဒီလိုဆိုရင် Framework ကနေပြီးတော့ Configuration option တွေအားလုံးကိုအလွယ်တကူ ရယူနိုင်ပါတယ်။
 
-You should typically run the `config:cache` command as part of your deployment routine.
+`config:cache` command ကို Development mode မှာ မကြာခန Run ပေးသင့်ပါတယ်။
 
-<a name="maintenance-mode"></a>
+<a name=“maintenance-mode”></a>
 ## Maintenance Mode
 
-When your application is in maintenance mode, a custom view will be displayed for all requests into your application. This makes it easy to "disable" your application while it is updating or when you are performing maintenance. A maintenance mode check is included in the default middleware stack for your application. If the application is in maintenance mode, an `HttpException` will be thrown with a status code of 503.
+သင့် Application က Maintenance mode ရောက်နေတဲ့အခါ သီးသန့် View တစ်ခုကို ဖော်ပြပေးပါလိမ့်မယ်။ Maintenance mode စစ်ဆေးတဲ့အချက်က မူလ middleware မှာပါဝင်ပါတယ်။ သင့် Application က Maintenance mode ဖြစ်နေမယ်ဆိုရင် Status code 503 အဖြစ်နဲ့ `HttpException` ဖြစ်သွားပါလိမ့်မယ်။
 
-To enable maintenance mode, simply execute the `down` Artisan command:
+Maintenance mode သတ်မှတ်ပေးဖို့အတွက် `down` Artisan command ကို Run လိုက်ယုံပါပဲ။
 
 	php artisan down
-
-To disable maintenance mode, use the `up` command:
+  
+Maintenance mode ပိတ်ဖို့အတွက် `up` command ကိုသုံးပါ။
 
 	php artisan up
 
 ### Maintenance Mode Response Template
 
-The default template for maintenance mode responses is located in `resources/views/errors/503.blade.php`.
+Maintenance mode response တွေအတွက် မူလ Template က `resources/views/errors/503.blade.php` ဖြစ်ပါတယ်။
 
 ### Maintenance Mode & Queues
 
-While your application is in maintenance mode, no [queued jobs](/docs/5.0/queues) will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.
+သင့် Application က Maintenance mode မှာဆိုရင် ၊ [queued jobs](/docs/5.0/queues) တွေက အလုပ်မလုပ်ပါဘူး။ Maintenance mode မဟုတ်မှသာ ပုံမှန်အတိုင်း လုပ်ဆောင်ပါလိမ့်မယ်။
 
-<a name="pretty-urls"></a>
+<a name=“pretty-urls”></a>
 ## Pretty URLs
 
 ### Apache
 
-The framework ships with a `public/.htaccess` file that is used to allow URLs without `index.php`. If you use Apache to serve your Laravel application, be sure to enable the `mod_rewrite` module.
+ဒီ Framework မှာ `index.php` မပါဘဲ အလုပ်လုပ်အောင်လို့ `public/.htaccess` ဖိုင်ကိုသုံးပါတယ်။ သင့် Application idk Apache နဲ့ Run တာဆိုရင်တော့ `mod_rewrite` module ကို ဖွင့်ပေးထားဖို့ လိုအပ်ပါတယ်။
 
-If the `.htaccess` file that ships with Laravel does not work with your Apache installation, try this one:
+Laravel မှာပါပြီးသား `.htaccess` ဖိုင်က သင့် Apache မှာ အလုပ်မလုပ်ဘူးဆိုရင် အောင်ကအတိုင်းထည့်ပြီး Run ကြည့်ပါ
 
 	Options +FollowSymLinks
 	RewriteEngine On
@@ -137,10 +136,11 @@ If the `.htaccess` file that ships with Laravel does not work with your Apache i
 
 ### Nginx
 
-On Nginx, the following directive in your site configuration will allow "pretty" URLs:
+Nginx မှာဆိုရင်တော့ အောက်ကအတိုင်း ထည့်ပြီးသုံးနိုင်ပါတယ်။
+
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
-Of course, when using [Homestead](/docs/5.0/homestead), pretty URLs will be configured automatically.
+[Homestead](/docs/5.0/homestead) ကိုသုံးတာဆိုရင်တော့ ၊ Configuration အလိုအလျောက် လုပ်ပေးပါလိမ့်မယ်။
