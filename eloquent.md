@@ -23,18 +23,18 @@
 - [Converting To Arrays / JSON](#converting-to-arrays-or-json)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ်ဆက်
 
-The Eloquent ORM included with Laravel provides a beautiful, simple ActiveRecord implementation for working with your database. Each database table has a corresponding "Model" which is used to interact with that table.
+Laravel တွင်ပါဝင်သည့် ရိုးရှင်းပြီး လှပသပ်ရပ်သော Eloquent ORM သည် သင့် Database ကို ActiveRecord ဖြင့် အခြေခံထား သဖြင့် အလွယ်တကူပင် အသုံးပြုနိုင်မည် ဖြစ်သည်။ Database မှ Table တစ်ခုတိုင်းကို Model တစ်ခု အနေဖြင့် သတ်မှတ်ကာ အသုံးပြုရမည် ဖြစ်သည်။
 
-Before getting started, be sure to configure a database connection in `config/database.php`.
+အသုံးမပြုခင် ပထမဆုံး အနေဖြင့် `app/config/database.php` သို ့သွားရောက်ကာ ကြိုတင် ပြင်ဆင်ရမည် ဖြစ်သည်။
 
 <a name="basic-usage"></a>
-## Basic Usage
+## အခြေခံအသုံးပြုပုံ
 
-To get started, create an Eloquent model. Models typically live in the `app` directory, but you are free to place them anywhere that can be auto-loaded according to your `composer.json` file.
+စတင် အသုံးပြုရန် Eloquent model တစ်ခုကို တည်ဆောက်ရမည် ဖြစ်သည်။ ပုံမှန်အားဖြင့် Models file များမှာ `app/models` အမည်ရှိသည့် Folder ထဲတွင် တည်ရှိမည် ဖြစ်သော်လည်း အလျဉ်းသင့်သလို ပြင်ဆင်နိုင်မည်ဖြစ်သည်။ ထိုသို ့ပြင်ဆင်နိုင်ရန် အတွက် `composer.json` ထဲတွင် မိမိတို ့ autoload လုပ်ချင်သည့် file ၏ အမည်နှင့် တည်နေရာကို ထည့်သွင်းထားရမည် ဖြစ်သည်။
 
-#### Defining An Eloquent Model
+#### Eloquent Model တစ်ခု Define ပြုလုပ်ခြင်း
 
 	class User extends Eloquent {}
 
@@ -50,7 +50,7 @@ Note that we did not tell Eloquent which table to use for our `User` model. The 
 
 	}
 
-> **Note:** Eloquent will also assume that each table has a primary key column named `id`. You may define a `primaryKey` property to override this convention. Likewise, you may define a `connection` property to override the name of the database connection that should be used when utilizing the model.
+> **မှတ်ချက်:** Eloquent အနေဖြင့် Primary Key column ဟု id ဟု အလိုအလျောက် သတ်မှတ်ဖြစ်သော်လည်း အထက်က ကဲ့သို ့ပင် မိမိစိတ်ကြိုက် column ကို သတ်မှတ်နိုင်သည်။ ထိုကဲ့သို ့ Database Connection ကို connection ဟုသည် property ကို အသုံးပြု ထပ်မံ သတ်မှတ်နိုင်မည် ဖြစ်သည်။
 
 Once a model is defined, you are ready to start retrieving and creating records in your table. Note that you will need to place `updated_at` and `created_at` columns on your table by default. If you do not wish to have these columns automatically maintained, set the `$timestamps` property on your model to `false`.
 
