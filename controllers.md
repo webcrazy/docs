@@ -1,4 +1,4 @@
-# HTTP Controllers
+# HTTP Controllers များအကြောင်း
 
 - [Introduction](#introduction)
 - [Basic Controllers](#basic-controllers)
@@ -16,7 +16,7 @@ Instead of defining all of your request handling logic in a single `routes.php` 
 <a name="basic-controllers"></a>
 ## Basic Controllers
 
-Here is an example of a basic controller class:
+အခြေခံအားဖြင့် Controller Class တခုရဲ့ ပုံစံက အောက်ပါအတိုင်းရေးသားပါတယ်:
 
 	<?php namespace App\Http\Controllers;
 
@@ -37,7 +37,7 @@ Here is an example of a basic controller class:
 
 	}
 
-We can route to the controller action like so:
+ကျွန်တော်တို့ အဲ့ဒီ့ controller action ကိုအောက်ဖော်ပြပါအတိုင်း route လုပ်နိုင်ပါတယ်
 
 	Route::get('user/{id}', 'UserController@showProfile');
 
