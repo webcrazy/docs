@@ -7,9 +7,9 @@
 <a name="laravel-5.0"></a>
 ## Laravel 5.0
 
-Laravel 5.0 introduces a fresh application structure to the default Laravel project. This new structure serves as a better foundation for building robust application in Laravel, as well as embraces new auto-loading standards (PSR-4) throughout the application. First, let's examine some of the major changes:
+Laravel 5.0 က default Laravel project structure ကိုမိတ်ဆက်ပေးလိုက်ပါတယ်။ ဒီ structure အသစ်က ရှုတ်ထွေးတဲ့ application တွေကို Laravel မှာ develop လုပ်တဲ့အခါမှာပိုအဆင်ပြေစေရန်နဲ့ auto-loading standards (SR-4) ကိုလိုက်နာထားပါတယ်။ ပထမဆုံး အဓိကပြောင်းလဲမှုတွေကို စစ်ဆေးကြည့်ရှု့လိုက်ရအောင်။
 
-### New Folder Structure
+### Folder Structure အသစ်
 
 The old `app/models` directory has been entirely removed. Instead, all of your code lives directly within the `app` folder, and, by default, is organized to the `App` namespace. This default namespace can be quickly changed using the new `app:name` Artisan command.
 
