@@ -11,7 +11,7 @@ Laravel 5.0 က default Laravel project structure ကိုမိတ်ဆက်
 
 ### Folder Structure အသစ်
 
-The old `app/models` directory has been entirely removed. Instead, all of your code lives directly within the `app` folder, and, by default, is organized to the `App` namespace. This default namespace can be quickly changed using the new `app:name` Artisan command.
+အရင် `app/models` directory ကလုံးဝ remove လုပ်လိုက်ပါပြီ။ အဲ့ဒီ့ `app/models` အစားသင့် code တွေက `app` folder directory ထဲနဲ့အတူတည်ရှိနေမှာပါ။ နောက်ပြီးတော့ `App` namespace တွေနဲ့တည်ဆောက်ထားမှာပါ။ အဲ့ဒီ့ default namespace ကို `app:name` artisan command နဲ့လွယ်လွယ်ကူကူ change နိုင်ပါတယ်။
 
 Controllers, middleware, and requests (a new type of class in Laravel 5.0) are now grouped under the `app/Http` directory, as they are all classes related to the HTTP transport layer of your application. Instead of a single, flat file of route filters, all middleware are now broken into their own class files.
 
