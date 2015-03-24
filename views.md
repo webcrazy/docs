@@ -1,14 +1,14 @@
-# Views
+# Views များ
 
-- [Basic Usage](#basic-usage)
-- [View Composers](#view-composers)
+- [အခြေခံအသုံးပြုနည်း](#basic-usage)
+- [View Composers များ](#view-composers)
 
 <a name="basic-usage"></a>
-## Basic Usage
+## အခြေခံအသုံးပြုနည်း
 
 Views contain the HTML served by your application, and serve as a convenient method of separating your controller and domain logic from your presentation logic. Views are stored in the `resources/views` directory.
 
-A simple view looks like this:
+အခြေခံ view တစ်ခုကအောက်ဖော်ပြပါအတိုင်းပါဘဲ:
 
 	<!-- View stored in resources/views/greeting.php -->
 
@@ -31,7 +31,7 @@ Of course, views may also be nested within sub-directories of the `resources/vie
 
 	return view('admin.profile', $data);
 
-#### Passing Data To Views
+#### Data တွေကို Views ဆီပေးပို့ခြင်း
 
 	// Using conventional approach
 	$view = view('greeting')->with('name', 'Victoria');
@@ -45,15 +45,15 @@ If you wish, you may pass an array of data as the second parameter to the `view`
 
 	$view = view('greetings', $data);
 
-#### Sharing Data With All Views
+#### Data ကို Views အားလုံးကို sharing လုပ်ခြင်း
 
 Occasionally, you may need to share a piece of data with all views that are rendered by your application. You have several options: the `view` helper, the `Illuminate\Contracts\View\Factory` [contract](/docs/5.0/contracts), or a wildcard [view composer](#view-composers).
 
-For example, using the `view` helper:
+ `view` helper ကိုအသုံးပြုနည်းဉပမာ
 
 	view()->share('data', [1, 2, 3]);
 
-You may also use the `View` facade:
+သင့်အနေနဲ့ `View` facade ကိုလည်းအသုံးပြုနိုင်ပါတယ်:
 
 	View::share('data', [1, 2, 3]);
 
@@ -61,7 +61,7 @@ Typically, you would place calls to the `share` method within a service provider
 
 > **Note:** When the `view` helper is called without arguments, it returns an implementation of the `Illuminate\Contracts\View\Factory` contract.
 
-#### Determining If A View Exists
+#### View တစ်ခုရှိမရှိဆုံးဖြတ်ခြင်း
 
 If you need to determine if a view exists, you may use the `exists` method:
 
@@ -70,18 +70,18 @@ If you need to determine if a view exists, you may use the `exists` method:
 		//
 	}
 
-#### Returning A View From A File Path
+#### View တစ်ခုကို File Path တစ်ခုမှ return ပြန်ခြင်း
 
 If you wish, you may generate a view from a fully-qualified file path:
 
 	return view()->file($pathToFile, $data);
 
 <a name="view-composers"></a>
-## View Composers
+## View Composers များ
 
 View composers are callbacks or class methods that are called when a view is rendered. If you have data that you want to be bound to a view each time that view is rendered, a view composer organizes that logic into a single location.
 
-#### Defining A View Composer
+#### View Composer တစ်ခု define လုပ်ခြင်း
 
 Let's organize our view composers within a [service provider](/docs/5.0/providers). We'll use the `View` facade to access the underlying `Illuminate\Contracts\View\Factory` contract implementation:
 
@@ -173,7 +173,7 @@ You may also attach a view composer to multiple views at once:
 
 	View::composer(['profile', 'dashboard'], 'App\Http\ViewComposers\MyViewComposer');
 
-#### Defining Multiple Composers
+#### Multiple Composers များသတ်မှတ်ခြင်း
 
 You may use the `composers` method to register a group of composers at the same time:
 
@@ -183,7 +183,7 @@ You may use the `composers` method to register a group of composers at the same 
 		'App\Http\ViewComposers\ProductComposer' => 'product'
 	]);
 
-### View Creators
+### View Creators များ
 
 View **creators** work almost exactly like view composers; however, they are fired immediately when the view is instantiated. To register a view creator, use the `creator` method:
 

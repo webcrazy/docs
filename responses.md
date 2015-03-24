@@ -10,14 +10,14 @@
 
 #### Returning Strings From Routes
 
-The most basic response from a Laravel route is a string:
+Laravel route တစ်ခုကနေ အခြေခံ response တစ်ခုပြန်ချင်တယ်ဆိုရင်:
 
 	Route::get('/', function()
 	{
 		return 'Hello World';
 	});
 
-#### Creating Custom Responses
+#### ကိုယ်ပိုင် Response တည်ဆောက်ခြင်း
 
 However, for most routes and controller actions, you will be returning a full `Illuminate\Http\Response` instance or a [view](/docs/5.0/views). Returning a full `Response` instance allows you customize the response's HTTP status code and headers. A `Response` instance inherits from the `Symfony\Component\HttpFoundation\Response` class, providing a variety of methods for building HTTP responses:
 
@@ -51,7 +51,7 @@ Keep in mind that most `Response` methods are chainable, allowing for the fluent
                      ->withCookie(cookie('name', 'value'));
 
 <a name="redirects"></a>
-## Redirects
+## ပြန်လည်လမ်းကြောင်းညွှန်ကြားမှူ့
 
 Redirect responses are typically instances of the `Illuminate\Http\RedirectResponse` class, and contain the proper headers needed to redirect the user to another URL.
 
@@ -67,7 +67,7 @@ Redirecting to a new URL and [flashing data to the session](/docs/5.0/session) a
 
 	return redirect('user/login')->with('message', 'Login Failed');
 
-#### Redirecting To The Previous URL
+#### အရင် URL ကို Redirect လုပ်ချင်တယ်ဆိုရင်
 
 You may wish to redirect the user to their previous location, for example, after a form submission. You can do so by using the `back` method:
 
