@@ -13,7 +13,7 @@ Laravel 5.0 က default Laravel project structure ကိုမိတ်ဆက်
 
 အရင် `app/models` directory ကလုံးဝ remove လုပ်လိုက်ပါပြီ။ အဲ့ဒီ့ `app/models` အစားသင့် code တွေက `app` folder directory ထဲနဲ့အတူတည်ရှိနေမှာပါ။ နောက်ပြီးတော့ `App` namespace တွေနဲ့တည်ဆောက်ထားမှာပါ။ အဲ့ဒီ့ default namespace ကို `app:name` artisan command နဲ့လွယ်လွယ်ကူကူ change နိုင်ပါတယ်။
 
-Controllers, middleware, and requests (a new type of class in Laravel 5.0) are now grouped under the `app/Http` directory, as they are all classes related to the HTTP transport layer of your application. Instead of a single, flat file of route filters, all middleware are now broken into their own class files.
+Controller တွ middleware တွေနဲ့ requests (a new typf of class in Laravel 5.0) တွေက `app/Http` folder ထဲမှာပါ၊  ဘာကြောင့်လည်းဆိုရင်အဲ့ဒီ့ class တွေအကုန်လုံးက သင့် application ရဲ့ HTTP transport layer တွေနဲ့စပ်စမ်နေလို့ပါ။ File တစ်ခုတည်းဖြစ်မယ့်အစား route filers file တွေနဲ့ middleware တွေကသူတို့ကိုယ်ပိုင် class files တွေအဖြစ်ခွဲခြားတည်ရှိနေပါတယ်။
 
 A new `app/Providers` directory replaces the `app/start` files from previous versions of Laravel 4.x. These service providers provide various bootstrapping functions to your application, such as error handling, logging, route loading, and more. Of course, you are free to create additional service providers for your application.
 
