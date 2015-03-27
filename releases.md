@@ -17,7 +17,7 @@ Controller တွ middleware တွေနဲ့ requests (a new typf of class in
 
 Laravel 4.x တုန်းက `app/start` file ကို အခု `app/Providers` directory အသစ်နဲ့အစားထိုးလိုက်ပါတယ်။ အဲ့ဒီ့ providers တွေကအမျိုးမျိုးသော bootstrapping function တွေကိုသင့် application အတွက်အထောက်အပံ့ပေးနေပါတယ်၊ ဉပမာ error handling၊ route loading နဲ့ အခြား functions တွေကောပေါ့။ ဒါပေါ့သင့် application အတွက်ကိုယ်ပိုင် service providers တွေကိုသင်စိတ်ကြိုက်ဖန်တီးနိုင်တာပေါ့။
 
-Application language files and views have been moved to the `resources` directory.
+Application language files တွေနဲ့ views တွေကတော့ `resources` directory ထဲမှာပါ။
 
 ### Contracts
 
