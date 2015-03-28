@@ -35,9 +35,9 @@ Laravel 4 style route "filters" တွေကိုဖြည့်စွက်ပ
 
 Middleware အကြောင်းအသေးစိတ်ဖတ်ချင်တယ်ဆိုရင်တော့ [documencation](/docs/5.0/middleware) မှာဖတ်နိုင်ပါတယ်။
 
-### Controller Method Injection
+### Controller Method Injection များ
 
-In addition to the existing constructor injection, you may now type-hint dependencies on controller methods. The [IoC container](/docs/5.0/container) will automatically inject the dependencies, even if the route contains other parameters:
+ရှိပြီးသား constructor injection တွေကိုထပ်ပေါင်းထည့်တဲ့အနေနဲ့ ၊ သင့်အနေနဲ့ controller method ပေါ်က dependencies တွေကို type-hint လုပ်နိုင်ပြီ။ တခြား parameters မ​​ျားပါရှိသည်အချိန်မှာတောင်မှ [IoC container](/docs/5.0/container) က dependencies တွေကို အလိုအလျောက် inject လုပ်ပါလိမ့်မယ်။
 
 	public function createPost(Request $request, PostRepository $posts)
 	{
