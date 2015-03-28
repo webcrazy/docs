@@ -27,7 +27,7 @@ contracts အကြောင်းပြည့်ပြည့်စုံစု�
 
 ### Route Cache
 
-If your application is made up entirely of controller routes, you may utilize the new `route:cache` Artisan command to drastically speed up the registration of your routes. This is primarily useful on applications with 100+ routes and will **drastically** speed up this portion of your application.
+သင့် application က controller routes တွေနဲ့တည်ဆောက်ထားရင် သင့် routes တွေရဲ့ registration ကိုအကြီးအကြယ်လျှင်မြန်စေမယ့် `route:cache` Artisan command ကိုသင်အသုံးချချင်ပါလိမ့်မယ်။ သင့် application မှာ routes ပေါင်း ၁၀၀ နဲ့အထက်မှာရှိပြီးတော့ `route:cache` artisan command ကအဲ့ဒီ့အပိုင်းမှာ **အကြီးအကြယ်** လျှင်မြန်အောင်ပြုလုပ်ပေးတဲ့အပိုင်းမှာအဓိကအသုံးဝင်ပါလိမ့်မယ်။
 
 ### Route Middleware
 
