@@ -31,9 +31,9 @@ contracts အကြောင်းပြည့်ပြည့်စုံစု�
 
 ### Route Middleware
 
-In addition to Laravel 4 style route "filters", Laravel 5 now supports HTTP middleware, and the included authentication and CSRF "filters" have been converted to middleware. Middleware provides a single, consistent interface to replace all types of filters, allowing you to easily inspect, and even reject, requests before they enter your application.
+Laravel 4 style route "filters" တွေကိုဖြည့်စွက်ပြီးတော့ Laravel 5 မှာ HTTP middleware ကို support လုပ်ပြီးတော့ authentication နဲ့ CSR "filters" တွေကိုပါ middleware ကို convert လုပ်လိုက်ပါတယ်။ filters အမျိုးမျိုးကို replace လုပ်ဖို့ရန်အတွက် Middleware တွေက single, consistent interface ကိုထောက်ပံ့ပြီးတော့  သင့်ကိုအလွယ်တကူကြည့်ရှုစစ်ဆေးခွင့်ပြုထားပါတယ် နောက် သင့် application ထဲမဝင်ခင် reject နဲ့ requests တွေကိုသင့် application ထဲမဝင်ခင်ပြုလုပ်နိုင်ပါတယ်။
 
-For more information on middleware, check out [the documentation](/docs/5.0/middleware).
+Middleware အကြောင်းအသေးစိတ်ဖတ်ချင်တယ်ဆိုရင်တော့ [documencation](/docs/5.0/middleware) မှာဖတ်နိုင်ပါတယ်။
 
 ### Controller Method Injection
 
