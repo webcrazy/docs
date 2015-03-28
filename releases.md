@@ -21,9 +21,9 @@ Application language files တွေနဲ့ views တွေကတော့ `re
 
 ### Contracts
 
-All major Laravel components implement interfaces which are located in the `illuminate/contracts` repository. This repository has no external dependencies. Having a convenient, centrally located set of interfaces you may use for decoupling and dependency injection will serve as an easy alternative option to Laravel Facades.
+`illuminate/contracts` repository ထဲမှာတည်ရှိတဲ့ အဓိက Laravel components တွေက implement interfaces ပြုလုပ်ပါတယ်။ အဲ့ဒီ့ repository မှာ အခြား external dependencies မရှိပါဘူး။ Having a convenient, centrally located set of interfaces you may use for decoupling and dependency injection will serve as an easy alternative option to Laravel Facades.
 
-For more information on contracts, consult the [full documentation](/docs/5.0/contracts).
+contracts အကြောင်းပြည့်ပြည့်စုံစုံသိချင်ရင်တော့ [documencation](/docs/5.0/contracts) မှာဖတ်ကြည့်နိုင်ပါတယ်။
 
 ### Route Cache
 
