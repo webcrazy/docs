@@ -51,31 +51,31 @@ VirtualBox နဲ့ Vagrant ကို install လုပ်ပြီးပြီ
 
 ### Installing Homestead
 
-#### Manually Via Git (No Local PHP)
+#### Git ကနေ Manual install လုပ်ခြင်း (No Local PHP)
 
-Alternatively, if you do not want to install PHP on your local machine, you may install Homestead manually by simply cloning the repository. Consider cloning the repository into a `Homestead` folder within your "home" directory, as the Homestead box will serve as the host to all of your Laravel (and PHP) projects:
+သင့်အနေနဲ့ PHP ကိုသင့်စက်ထဲမှာ install လုပ်မထားချင်ဘူး  Homestead repo ကို manually clone လုပ်ပြီးတော့ Homestead ကို install လုပ်ချင်တယ်ဆိုရင်တော့ Homestead repo ကို clone လုပ်လိုက်ပါ၊ ( Homestead repo ကို install လုပ်တဲ့နေရာက Home directory ထဲမှာလို့မှတ်ယူပါ့မယ်။) Homestead box က သင့်ရဲ့ laravel နဲ့ PHP projects တွေကို serve လုပ်ပါလိမ့်မယ်:
 
 	git clone https://github.com/laravel/homestead.git Homestead
 
-Once you have installed the Homestead CLI tool, run the `bash init.sh` command to create the `Homestead.yaml` configuration file:
+သင့်အနေနဲ့ Homestead CLI tool ကို install လုပ်ပြီးသွားပြီဆိုရင်တော့ `bash init.sh` ဆိုတဲ့ command ကို run လိုက်ရင် `Homestead.yaml` configuration ကို create လုပ်ပေးပါလိမ့်မယ်
 
 	bash init.sh
 
-The `Homestead.yaml` file will be placed in your `~/.homestead` directory.
+`Homestead.yaml` file က `~/.homestead` directory မှာ ရှိနေပါလိမ့်မယ်
 
-#### With Composer + PHP Tool
+#### Composer နဲ့ PHP Tool
 
-Once the box has been added to your Vagrant installation, you are ready to install the Homestead CLI tool using the Composer `global` command:
+သင့် vagrant installation မှာ box added ပြီးပြီဆိုရင်တော့ Homestead CLI tool ကို Composer `global` command သုံးပြီးတော့ install လုပ်ဖို့အဆင်သင့်ဖြစ်ပါပြီ
 
 	composer global require "laravel/homestead=~2.0"
 
-Make sure to place the `~/.composer/vendor/bin` directory in your PATH so the `homestead` executable is found when you run the `homestead` command in your terminal.
+သင် `homestead` command ကို terminal ကနေမ run ခင် သင့်ရဲ့ `~/.composer/vendor/bin` directory PATH က `homestead`  လို့ခေါ်လို့ရအောင်အရင်လုပ်ထားရပါ့မယ်
 
-Once you have installed the Homestead CLI tool, run the `init` command to create the `Homestead.yaml` configuration file:
+သင် Homestead CLI tool ကို Install လုပ်ထားပြီးပြီဆိုရင် `Homestead.yaml` file create လုပ်ဖို့ရာအတွက် `init` command ကို run ပေးရပါမယ်:
 
 	homestead init
 
-The `Homestead.yaml` file will be placed in the `~/.homestead` directory. If you're using a Mac or Linux system, you may edit `Homestead.yaml` file by running the `homestead edit` command in your terminal:
+`Homestead.yaml` က `~/.homestead` directory ထဲမှာတည်ရှိရမှာပါ။ သင်က Mac ဒါမှမဟုတ် Linux system ကိုသုံးတယ်ဆိုလို့ရှိရင် `Homestead.yaml` file ကိုပြင်ဆင်ချင်တယ်ဆိုရင် terminal ကနေ`homestead edit` command ကို run ပြီးပြင်ဆင်နိုင်ပါတယ်
 
 	homestead edit
 
