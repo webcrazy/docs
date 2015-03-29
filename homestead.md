@@ -92,9 +92,9 @@ Windows မှာဆိုရင် သင်အနေနဲ့ [Git](http://git
 
 သင် SSH Key ကို create လုပ်ပြီးပြီဆိုရင် `Homestead.yaml ` file ထဲက authorize ဆိုတဲ့ လမ်းကြောင်းထဲမှာ သင့်ရဲ့ SSH Key ရဲ့ path ကိုသတ်မှတ်လိုက်ပါ။
 
-### Configure Your Shared Folders
+### သင့် Shar လုပ်ထားတဲ့ Folders များကို Configure လုပ်ခြင်း
 
-The `folders` property of the `Homestead.yaml` file lists all of the folders you wish to share with your Homestead environment. As files within these folders are changed, they will be kept in sync between your local machine and the Homestead environment. You may configure as many shared folders as necessary!
+`Homestead.yaml` file ထဲမှာ သင် share လုပ်ထားတဲ့ `folders` တွေအကုန်လုံးကို list တစ်ခုလိုတွေ့ရမှာဖြစ်ပါတယ်။ အဲ့ဒီ့ folder ထဲက Files တွေပြောင်းသွားရင် သင့် local machine နဲ့ Homestead environment ကိုအဲ့ဒါတွေက sync လုပ်ပေးပါလိမ့်မယ်။ သင့်အနေနဲ့ share folders တွေကိုလိုအပ်သလောက်ထက်မံ configure လုပ်နိုင်ပါတယ်။
 
 ### Configure Your Nginx Sites
 
