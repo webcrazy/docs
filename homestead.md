@@ -121,7 +121,7 @@ To destroy the machine, you may use the `vagrant destroy --force` command.
 
 	192.168.10.10  homestead.app
 
-Make sure the IP address listed is the one you set in your `Homestead.yaml` file. Once you have added the domain to your `hosts` file, you can access the site via your web browser!
+သင့် Ip နဲ့ `Homestead.yaml` file ထဲက IP နဲ့ညီညီသေချာအောင်လုပ်ပါ။ သင့် domain ကို`hosts` file မှာပေါင်းထည့်ပြီးပြီဆိုရင်, site ကိုသင့် browser ကနေ access လုပ်လို့ရပါပြီ!
 
 	http://homestead.app
 
@@ -132,13 +132,14 @@ Make sure the IP address listed is the one you set in your `Homestead.yaml` file
 
 ### SSH ကို connect လုပ်ခြင်း
 
-To connect to your Homestead environment via SSH, issue the `vagrant ssh` command from your Homestead directory.
 
-Since you will probably need to SSH into your Homestead machine frequently, consider creating an "alias" on your host machine:
+သင့်ရဲ့ Homestead environment ကို SSH ကနေ connect လုပ်ချင်တယ်ဆိုရင် သင့် Homestead directory ကနေ `vagrant ssh` command ကို run လိုက်ပါ
+
+သင့် Homestead machine ဆီကိုသင်ခဏခဏဝင်ရပါလိမ့်မယ် ဒါ့ကြောင့် သင့် host machine မှာ "alias" ဘယ်လို create လုပ်လဲဆိုတာအောက်မှာကြည့်လိုက်ပါ...
 
 	alias vm="ssh vagrant@127.0.0.1 -p 2222"
 
-Once you create this alias, you can simply use the "vm" command to SSH into your Homestead machine from anywhere on your system.
+သင်ဒီ alias ကို create လုပ်ပြီးသွားပြီဆိုလို့ရှိရင် vm လို့ terminal ကနေရိုက်လိုက်လို့ရှိရင် သင့် Homestead machine ထဲကို သင့် system ရဲ့မည်သည့်နေရာကမဆိုဝင်နိုင်ပါလိမ့်မယ်။
 
 ### သင့်ရဲ့ Databases များကို connect လုပ်ခြင်း
 
