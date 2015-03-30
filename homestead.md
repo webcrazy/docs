@@ -100,7 +100,7 @@ Windows မှာဆိုရင် သင်အနေနဲ့ [Git](http://git
 
 Nginx နဲ့သိပ်မရင်းနှီးဘူးမဟုတ်လား ပြသနာမရှိပါဘူး။ `sites` တွေကသင့်ရဲ့ Homestead environment က Folders တွေကို "domain" ဆီကိုလွယ်ကူစွာ map ပေးပါလိမ့်မယ်။ Site configuration တစ်ခုကို Homestead.yaml မှာတွေ့နိုင်ပါတယ်။ သင့်အနေနဲ့ sites အများကြီးကိုသင့်ရဲ့ Homestead မှာထည့်ချင်ပါလိမ့်မယ်၊ Homestad က သင့်virtualized Laravel Projects တွေရဲ့ environment တွေကို အဆင်ပြေစေပါလိမ့်မယ်။
 
-You can make any Homestead site use [HHVM](http://hhvm.com) by setting the `hhvm` option to `true`:
+သင့်အနေနဲ့ Homestead နဲ့ run သမျှ site အကုန်လုံးကို [HHVM](http://hhvm.com) ကိုအသုံးပြုစေချင်ရင် `hhvm` option ကို `true` ပေးထားလိုက်ပါ:
 
 	sites:
 	    - map: homestead.app
@@ -109,7 +109,7 @@ You can make any Homestead site use [HHVM](http://hhvm.com) by setting the `hhvm
 
 ### Bash Aliases
 
-To add Bash aliases to your Homestead box, simply add to the `aliases` file in the root of the `~/.homestead` directory.
+သင့် Homestead box မှာ Bash a`liases` တွေထက်ထည့်ချင်ရင် `~/.homestead` directory ထဲက `aliases` file မှာထက်ထည့်နိုင်ပါတယ်
 
 ### VagrantBox ကိုစတင်ခြင်း
 
