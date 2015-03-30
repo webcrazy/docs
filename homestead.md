@@ -143,9 +143,9 @@ To destroy the machine, you may use the `vagrant destroy --force` command.
 
 ### သင့်ရဲ့ Databases များကို connect လုပ်ခြင်း
 
-A `homestead` database is configured for both MySQL and Postgres out of the box. For even more convenience, Laravel's `local` database configuration is set to use this database by default.
+`homestead` database တစ်ခုက MySQL နဲ့ Postgres နှစ်ခုရွေးချယ်စရာရှိဖို့ရန် configure လုပ်ထားပါတယ်။ ဒါ့ထက်ပိုအဆင်ပြေဖို့ရာအတွက် Laravel ရဲ့ `local` database ကို default အနေနဲ့ configurate လုပ်ထားပေးပါတယ်။
 
-To connect to your MySQL or Postgres database from your main machine via Navicat or Sequel Pro, you should connect to `127.0.0.1` and port 33060 (MySQL) or 54320 (Postgres). The username and password for both databases is `homestead` / `secret`.
+သင့် MySQl ဒါမှမဟုတ် Postgres database ကိုသင့် main machine ကို Navicat ဒါမှမဟုတ် Seque Pro ကနေ ချိတ်ဆက်ရန်အတွက် MySQL မှာဆို `172.0.0.1` port 33060 ကနေချိတ်ဆက်သင့်ပြီးတော့  Postgres အတွက်ကတော့ port 54320ကနေချိတ်ဆက်သင့်ပါတယ်။
 
 > **Note:** You should only use these non-standard ports when connecting to the databases from your main machine. You will use the default 3306 and 5432 ports in your Laravel database configuration file since Laravel is running _within_ the Virtual Machine.
 
