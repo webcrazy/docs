@@ -151,9 +151,9 @@ To destroy the machine, you may use the `vagrant destroy --force` command.
 
 ### နောက်ထက်ဆိုက်တစ်ခု ထပ်ထည့်ခြင်း
 
-Once your Homestead environment is provisioned and running, you may want to add additional Nginx sites for your Laravel applications. You can run as many Laravel installations as you wish on a single Homestead environment. There are two ways to do this: First, you may simply add the sites to your `Homestead.yaml` file and then run `vagrant provision`.
+သင့် Homestead environment ကိုပြင်ဆင်ပြီးပြီဆိုရင် သင့် Laravel application site အတွက် Nginx site ထက်ထည့်ချင်ပါလိမ့်မယ်။ သင့် Homestead environment တစ်ခုမှာသင် Laravel application ကြိုက်သလောက် run လို့ရပါတယ်။ အဲ့လိုလုပ်ဖို့ရာနည်းနှစ်နည်းရှိပါတယ်... ပထမတစ်ခုက `Homestead.yaml` file ထဲမှာ sites တွေကိုထက်ထည့်ပြီးတော့ `vagrant provision` ဆိုပြီး terminal ကနေ run ပါတဲ့။
 
-Alternatively, you may use the `serve` script that is available on your Homestead environment. To use the `serve` script, SSH into your Homestead environment and run the following command:
+နောက်တစ်နည်းအနေနဲ့ သင်က `serve` script ကို သင့် Homestead environment မှာအသုံးပြုချင်ပါလိမ့်မယ်။ `serve` script ကိုအသုံးပြုမယ်ဆိုရင် Homstead environment ထဲကို ssh နဲ့ဝင်ပြီး အောက်ဖော်ပြပါ command ကို run လိုက်ပါ။
 
 	serve domain.app /home/vagrant/Code/path/to/public/directory
 
