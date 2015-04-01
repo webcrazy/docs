@@ -1,6 +1,6 @@
 # HTTP Controllers များအကြောင်း
 
-- [Introduction](#introduction)
+- [မိတ်ဆက်](#introduction)
 - [Basic Controllers](#basic-controllers)
 - [Controller Middleware](#controller-middleware)
 - [Implicit Controllers](#implicit-controllers)
@@ -9,9 +9,9 @@
 - [Route Caching](#route-caching)
 
 <a name="introduction"></a>
-## Introduction
+## မိတ်ဆက်
 
-Instead of defining all of your request handling logic in a single `routes.php` file, you may wish to organize this behavior using Controller classes. Controllers can group related HTTP request handling logic into a class. Controllers are typically stored in the `app/Http/Controllers` directory.
+သင့်အနေနဲ့ Request handling logic တွေအကုန်လုံးကို `routes.php` ထဲမှာအကုန် define လုပ်မယ့်အစား Controller classes တွေထဲမှာ organize လုပ်ချင်မှာပေါ့။  ဆက်စပ်နေတဲ့ HTTP request Handling logic တွေကို Controller တွေက Group လုပ်ထားနိုင်ပါတယ်။ Controllers တွေက `app/Http/Controllers` directory ထဲမှာရှိပါတယ်။
 
 <a name="basic-controllers"></a>
 ## Basic Controllers
