@@ -1,7 +1,7 @@
 # HTTP Controllers များအကြောင်း
 
 - [မိတ်ဆက်](#introduction)
-- [Basic Controllers](#basic-controllers)
+- [Controllers အခြေခံ](#basic-controllers)
 - [Controller Middleware](#controller-middleware)
 - [Implicit Controllers](#implicit-controllers)
 - [RESTful Resource Controllers](#restful-resource-controllers)
@@ -14,7 +14,7 @@
 သင့်အနေနဲ့ Request handling logic တွေအကုန်လုံးကို `routes.php` ထဲမှာအကုန် define လုပ်မယ့်အစား Controller classes တွေထဲမှာ organize လုပ်ချင်မှာပေါ့။  ဆက်စပ်နေတဲ့ HTTP request Handling logic တွေကို Controller တွေက Group လုပ်ထားနိုင်ပါတယ်။ Controllers တွေက `app/Http/Controllers` directory ထဲမှာရှိပါတယ်။
 
 <a name="basic-controllers"></a>
-## Basic Controllers
+## Controllers အခြေခံ
 
 အခြေခံအားဖြင့် Controller Class တခုရဲ့ ပုံစံက အောက်ပါအတိုင်းရေးသားပါတယ်:
 
@@ -41,23 +41,24 @@
 
 	Route::get('user/{id}', 'UserController@showProfile');
 
-> **Note:** All controllers should extend the base controller class.
+> **မှတ်ချက်**  Controllers တွေအကုန်လုံး Base controller class ကို extend လုပ်သင့်ပါတယ်
 
-#### Controllers & Namespaces
+#### Controllers နှင့် Namespaces
 
-It is very important to note that we did not need to specify the full controller namespace, only the portion of the class name that comes after the `App\Http\Controllers` namespace "root". By default, the `RouteServiceProvider` will load the `routes.php` file within a route group containing the root controller namespace.
+ကျွန်တော်တို့ Full Controller namespace တစ်ခုလုံးဖော်ပြဖို့မလိုဘူးဆိုတာသိထားဖို့အလွန်အရေးကြီးပါတယ်၊  `App\Http\Controllers` namespace "root" ၏ class name ၏အပိုင်းမှာသာလိုတာပါ။ default အနေနဲ့ `RouteServiceProvider` ကနေ root controller namespace ပါတဲ့ route group ထဲကမှ `routes.php` file ကို load လုပ်ပါလိမ့်မယ်။
 
-If you choose to nest or organize your controllers using PHP namespaces deeper into the `App\Http\Controllers` directory, simply use the specific class name relative to the `App\Http\Controllers` root namespace. So, if your full controller class is `App\Http\Controllers\Photos\AdminController`, you would register a route like so:
+သင့် Controller တွေကို nest ဒါမှမဟုတ် organize လုပ်ဖို့ PHP namespaces ထဲကမှ `App\Http\AdminController` directory ရွေးချယ်ခဲ့တယ်ဆိုရင် specific class name နဲ့သတ်ဆိုင်တဲ့ `App\Http\Controllers` root namespace ကိုဘဲရိုးရှင်းစွာသုံးလိုက်ပါ။ ဒါကြောင့် သင့် controller class က `App\Http\Controllers\Photos\AdminControllers`  ဆိုရင် သင့်ရဲ့ route ကိုအောက်ဖော်ပြပါအတိုင်း register လုပ်သင့်ပါတယ်
+
 
 	Route::get('foo', 'Photos\AdminController@method');
 
-#### Naming Controller Routes
+#### Controller Route အမည်ပေးခြင်း
 
-Like Closure routes, you may specify names on controller routes:
+သင့်အနေနဲ့ Closure routes တွေလိုဘဲ controller routes တွေကိုသတ်မှတ်ချင်တယ်ဆိုရင်
 
 	Route::get('foo', ['uses' => 'FooController@method', 'as' => 'name']);
 
-#### URLs To Controller Actions
+#### URLs မှ Controller Action တွေဆီသို့
 
 To generate a URL to a controller action, use the `action` helper method:
 
