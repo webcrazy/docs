@@ -5,7 +5,7 @@
 - [Controller Middleware များ](#controller-middleware)
 - [သွယ်ဝိုက် Controllers](#implicit-controllers)
 - [RESTful Resource Controller များ](#restful-resource-controllers)
-- [Dependency Injection & Controllers](#dependency-injection-and-controllers)
+- [Dependency Injection နှင့် Controller များ](#dependency-injection-and-controllers)
 - [Route Caching](#route-caching)
 
 <a name="introduction"></a>
@@ -160,9 +160,9 @@ GET       | /resource/{resource}/edit   | edit         | resource.edit
 PUT/PATCH | /resource/{resource}        | update       | resource.update
 DELETE    | /resource/{resource}        | destroy      | resource.destroy
 
-#### Customizing Resource Routes
+#### Resource Routes တွေကို Customize လုပ်ခြင်း
 
-Additionally, you may specify only a subset of actions to handle on the route:
+နောက်ထက်အနေနဲ့ actions တွေရဲ့ subset တွေကို route မှာသတ်မှတ်နိုင်ပါတယ်:
 
 	Route::resource('photo', 'PhotoController',
 					['only' => ['index', 'show']]);
@@ -170,18 +170,18 @@ Additionally, you may specify only a subset of actions to handle on the route:
 	Route::resource('photo', 'PhotoController',
 					['except' => ['create', 'store', 'update', 'destroy']]);
 
-By default, all resource controller actions have a route name; however, you can override these names by passing a `names` array with your options:
+default အနေနဲ့ကတော့ resource controllers actions တွေက route name တစ်ခုရှိပါ့မယ် သို့ပေမယ့်လည်း အဲ့ဒီ့အမည်တွေကို `names` array pass ပြီးတော့ သင့်ကိုယ်ပိုင် options တွေနဲ့ override လုပ်နိုင်ပါတယ်:
 
 	Route::resource('photo', 'PhotoController',
 					['names' => ['create' => 'photo.build']]);
 
-#### Handling Nested Resource Controllers
+#### Nested Resource Controller များကို Handle လုပ်ခြင်း
 
-To "nest" resource controllers, use "dot" notation in your route declaration:
+resource controller တွေကို "nest" လုပ်ရန်အတွက် "dot" အမှတ်အသားကို route ကြေငြာတဲ့အချိန်မှာအသုံးပြုနိုင်ပါတယ်:
 
 	Route::resource('photos.comments', 'PhotoCommentController');
 
-This route will register a "nested" resource that may be accessed with URLs like the following: `photos/{photos}/comments/{comments}`.
+အထက်ဖော်ပြပါ route က "nested" resource အဖြစ် register လုပ်ပါလိမ့်မယ်... အဲ့ဒါကို `photos/{photos}/comments/{comments}` ဆိုပြီးတော့ URL ကနေ access လုပ်ရပါလိမ့်မယ်။
 
 	class PhotoCommentController extends Controller {
 
@@ -199,20 +199,20 @@ This route will register a "nested" resource that may be accessed with URLs like
 
 	}
 
-#### Adding Additional Routes To Resource Controllers
+#### Resource Controller တွေမှာ Routes တွေထက်ထည့်ခြင်း
 
-If it becomes necessary to add additional routes to a resource controller beyond the default resource routes, you should define those routes before your call to `Route::resource`:
+Default resource controller တွေမှာ နောက်ထက် route တွေထက်ထည့်ချင်တယ်ဆိုရင် `Route::resource` မခေါ်ခင်မှာ သင်ထက်ထည့်ချင်တဲ့ routes တွေကို ကြေငြာသင့်ပါတယ်:
 
 	Route::get('photos/popular');
 
 	Route::resource('photos', 'PhotoController');
 
 <a name="dependency-injection-and-controllers"></a>
-## Dependency Injection & Controllers
+## Dependency Injection နှင့် Controller များ
 
 #### Constructor Injection
 
-The Laravel [service container](/docs/5.0/container) is used to resolve all Laravel controllers. As a result, you are able to type-hint any dependencies your controller may need in its constructor:
+Laravel [service container](/docs/5.0/container) တွေက Laravel controllers တွေကို resolve လုပ်ဖို့ရာအတွက်အသုံးပြုရပါတယ်။ Result တစ်ခုအနေနဲ့ မည်သည့် dependencie မဆို type-hint လုပ်နိုင်ပြီးတော့ သင့် controller ကလည်းအဲ့ဒီ့ constructor တွေကိုလိုအပ်ပါလိမ့်မယ် :
 
 	<?php namespace App\Http\Controllers;
 
@@ -239,11 +239,11 @@ The Laravel [service container](/docs/5.0/container) is used to resolve all Lara
 
 	}
 
-Of course, you may also type-hint any [Laravel contract](/docs/5.0/contracts). If the container can resolve it, you can type-hint it.
+ဒါပေါ့ သင့်အနေနဲ့ မည်သည့် [laravel contract](/docs/5.0/contracts) ကိုမဆို type-hint လုပ်နိုင်ပါတယ်။ container ကအဲ့ဒါကို resolve လုပ်နိုင်တယ်ဆိုရင်သင် type-hint နိုင်ပါပြီ။
 
 #### Method Injection
 
-In addition to constructor injection, you may also type-hint dependencies on your controller's methods. For example, let's type-hint the `Request` instance on one of our methods:
+constructor injection တွေကိုထက်ပေါင်းရလျှင် သင့် controller ၏ methods တွေကိုလည်းဘဲ သင် type-hint dependencies လုပ်ချင်ပါလိမ့်မယ်။ ဉပမာအနေနဲ့ ကျွန်တော်တို့ method တစ်ခုပေါ်မှာ `Request` instacne တစ်ခု type-hint လုပ်လိုက်ကြရအောင်
 
 	<?php namespace App\Http\Controllers;
 
@@ -267,7 +267,7 @@ In addition to constructor injection, you may also type-hint dependencies on you
 
 	}
 
-If your controller method is also expecting input from a route parameter, simply list your route arguments after your other dependencies:
+သင့် controller method က route parameter က input ကို expect ဖြစ်ပြီးတော့ သင့် တစ်ခြား dependencies တွေပြီးတဲ့အခါ route arguments တွေကို ရိုးရိုးဘဲ list လုပ်လိုက်ပါ:
 
 	<?php namespace App\Http\Controllers;
 
@@ -290,17 +290,17 @@ If your controller method is also expecting input from a route parameter, simply
 
 	}
 
-> **Note:** Method injection is fully compatible with [model binding](/docs/5.0/routing#route-model-binding). The container will intelligently determine which arguments are model bound and which arguments should be injected.
+> **သတိပြုရန်:**  Method injection က [model binding](/docs/5.0/routing#route-model-binding) နဲ့လုံးဝအဆင်ပြေပါတယ်။ container ကဘယ် arguments တွေက model bound ဖြစ်ပြီးတော့ ဘယ် arguments တွေကို inject လုပ်သင့်တယ်ဆိုတာကို intelligently ဆုံးဖြတ်ပါလိမ့်မယ်။
 
 <a name="route-caching"></a>
 ## Route Caching
 
-If your application is exclusively using controller routes, you may take advantage of Laravel's route cache. Using the route cache will drastically decrease the amount of time it take to register all of your application's routes. In some cases, your route registration may even be up to 100x faster! To generate a route cache, just execute the `route:cache` Artisan command:
+သင့် application က controller routes တွေပါဝင်တယ်ဆိုရင် သင့်အနေနဲ့ Laravel ရဲ့ route cache ရဲ့အသုံးဝင်ပုံကိုတွေ့ရပါလိမ့်မယ်။ Route cache ကိုအသုံးပြုလို့ရှိရင် သင့် application ရဲ့ routes တွေကို register လုပ်ဖို့စောင့်စရာမလိုတာကြောင့် အရင်ကထက်ပိုမြန်ပါလိမ့်မယ်။တစ်ချို့ case တွေမှာသင့် Route registration တွေကအဆ ၁၀၀ လောက်ထိမြန်သွားပါလိမ့်မယ်။ Route cache တစ်ခုကို generate လုပ်ဖို့ရာအတွက် `route:cache` Artisan command ကိုသုံးရပါ့မယ်:
 
 	php artisan route:cache
 
-That's all there is to it! Your cached routes file will now be used instead of your `app/Http/routes.php` file. Remember, if you add any new routes you will need to generate a fresh route cache. Because of this, you may wish to only run the `route:cache` command during your project's deployment.
+သင့် routes cached တွေကို `app/Http/routes.php` file တွေအစားအသုံးပြုပါလိမ့်မယ်။ မှတ်ထားရမှာက သင် route အသစ်ထက်ထည့်တိုင်း `route:cache` command ကို ပြန် run ပေးရပါမယ့်။ ဘာလို့အဲ့လိုဖြစ်နေတာလည်းဆိုရင် သင့်အနေနဲ့ `route:cache` command ကို သင့် project deployment မှာမှ  run ချင်မလားလို့ပါ။
 
-To remove the cached routes file without generating a new cache, use the `route:clear` command:
+Cache အသစ်တစ်ထပ် generate မလုပ်ဘဲနဲ့ Cached လုပ်ထားတဲ့ routes တွေကိုဖျက်ဖို့ရာအတွက် `route:clear` command ကိုသုံးနိုင်ပါတယ်:
 
 	php artisan route:clear
