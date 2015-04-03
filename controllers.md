@@ -2,8 +2,8 @@
 
 - [မိတ်ဆက်](#introduction)
 - [Controllers အခြေခံ](#basic-controllers)
-- [Controller Middleware](#controller-middleware)
-- [Implicit Controllers](#implicit-controllers)
+- [Controller Middleware များ](#controller-middleware)
+- [သွယ်ဝိုက် Controllers](#implicit-controllers)
 - [RESTful Resource Controllers](#restful-resource-controllers)
 - [Dependency Injection & Controllers](#dependency-injection-and-controllers)
 - [Route Caching](#route-caching)
@@ -16,7 +16,7 @@
 <a name="basic-controllers"></a>
 ## Controllers အခြေခံ
 
-အခြေခံအားဖြင့် Controller Class တခုရဲ့ ပုံစံက အောက်ပါအတိုင်းရေးသားပါတယ်:
+အခြေခံအားဖြင့် Controller Class တစ်ခုရဲ့ ပုံစံက အောက်ပါအတိုင်းရေးသားပါတယ်:
 
 	<?php namespace App\Http\Controllers;
 
@@ -47,8 +47,7 @@
 
 ကျွန်တော်တို့ Full Controller namespace တစ်ခုလုံးဖော်ပြဖို့မလိုဘူးဆိုတာသိထားဖို့အလွန်အရေးကြီးပါတယ်၊  `App\Http\Controllers` namespace "root" ၏ class name ၏အပိုင်းမှာသာလိုတာပါ။ default အနေနဲ့ `RouteServiceProvider` ကနေ root controller namespace ပါတဲ့ route group ထဲကမှ `routes.php` file ကို load လုပ်ပါလိမ့်မယ်။
 
-သင့် Controller တွေကို nest ဒါမှမဟုတ် organize လုပ်ဖို့ PHP namespaces ထဲကမှ `App\Http\AdminController` directory ရွေးချယ်ခဲ့တယ်ဆိုရင် specific class name နဲ့သတ်ဆိုင်တဲ့ `App\Http\Controllers` root namespace ကိုဘဲရိုးရှင်းစွာသုံးလိုက်ပါ။ ဒါကြောင့် သင့် controller class က `App\Http\Controllers\Photos\AdminControllers`  ဆိုရင် သင့်ရဲ့ route ကိုအောက်ဖော်ပြပါအတိုင်း register လုပ်သင့်ပါတယ်
-
+သင့် Controller တွေကို nest ဒါမှမဟုတ် organize လုပ်ဖို့ PHP namespaces ထဲကမှ `App\Http\AdminController` directory ရွေးချယ်ခဲ့တယ်ဆိုရင်သတ်မှတ်ထားတဲ့ class name နဲ့သတ်ဆိုင်တဲ့ `App\Http\Controllers` root namespace ကိုဘဲရိုးရှင်းစွာသုံးလိုက်ပါ။ ဒါကြောင့် သင့် controller class က `App\Http\Controllers\Photos\AdminControllers`  ဆိုရင် သင့်ရဲ့ route ကိုအောက်ဖော်ပြပါအတိုင်း register လုပ်သင့်ပါတယ်
 
 	Route::get('foo', 'Photos\AdminController@method');
 
@@ -60,31 +59,31 @@
 
 #### URLs မှ Controller Action တွေဆီသို့
 
-To generate a URL to a controller action, use the `action` helper method:
+URL ကနေပြီးတော့ Controller action တွေကို generate လုပ်ချင်တယ်ဆိုရင်တော့ `action` helper method ကိုအသုံးပြုလိုက်ပါ
 
 	$url = action('App\Http\Controllers\FooController@method');
 
-If you wish to generate a URL to a controller action while using only the portion of the class name relative to your controller namespace, register the root controller namespace with the URL generator:
+သင့်ရဲ့ controller ကို namespace မှ Class name relative ကိုဘဲသုံးပြီးတော့   URL ကနေ controller action ကို generate လုပ်ချင်တယ်ဆိုရင်:
 
 	URL::setRootControllerNamespace('App\Http\Controllers');
 
 	$url = action('FooController@method');
 
-You may access the name of the controller action being run using the `currentRouteAction` method:
+သင့်အနေနဲ့ Controller action name ကို access လုပ်ချင်တယ်ဆိုရင်တော့ `currentRouteAction` method ကို အသုံးပြုနိုင်ပါတယ်:
 
 	$action = Route::currentRouteAction();
 
 <a name="controller-middleware"></a>
-## Controller Middleware
+## Controller Middleware များ
 
-[Middleware](/docs/5.0/middleware) may be specified on controller routes like so:
+Controller routes တွေမှာ [Middleware](/docs/5.0/middleware) တွေကိုအောက်ဖော်ပြပါအတိုင်းသတ်မှတ်နိုင်ပါတယ်
 
 	Route::get('profile', [
 		'middleware' => 'auth',
 		'uses' => 'UserController@showProfile'
 	]);
 
-Additionally, you may specify middleware within your controller's constructor:
+နောက်တစ်နည်းအနေနဲ့ Controller constructor တွေမှာလည်းအောက်ဖော်ပြပါတိုင်းသတ်မှတ်နိုင်ပါတယ်
 
 	class UserController extends Controller {
 
@@ -103,7 +102,7 @@ Additionally, you may specify middleware within your controller's constructor:
 	}
 
 <a name="implicit-controllers"></a>
-## Implicit Controllers
+## သွယ်ဝိုက် Controller များ
 
 Laravel allows you to easily define a single route to handle every action in a controller. First, define the route using the `Route::controller` method:
 
