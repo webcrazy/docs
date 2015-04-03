@@ -138,17 +138,17 @@ Laravel မှာ Controller တစ်ခုကနေပြီးတော့ ac
 <a name="restful-resource-controllers"></a>
 ## RESTful Resource Controller များ
 
-Resource controllers make it painless to build RESTful controllers around resources. For example, you may wish to create a controller that handles HTTP requests regarding "photos" stored by your application. Using the `make:controller` Artisan command, we can quickly create such a controller:
+Resource controllers တွေက RESTful controllers တွေဖန်တီးဖို့အလွယ်ကူဆုံးဖြစ်အောင်လုပ်ဆောင်ပေးပါတယ်။ ဉပမာအနေနဲ့ သင့် application မှာ "photos"  stored လုပ်ထားတဲ့ controller တစ်ခု create လုပ်ချင်တယ်ဆိုရင် `make:controller` Artisan command သုံးပြီးတော့ အဲ့ဒီ့ controller ကို ဖန်တီးနိုင်ပါတယ်:
 
 	php artisan make:controller PhotoController
 
-Next, we register a resourceful route to the controller:
+နောက် resourceful route ကို register လုပ်လိုက်ပါ:
 
 	Route::resource('photo', 'PhotoController');
 
-This single route declaration creates multiple routes to handle a variety of RESTful actions on the photo resource. Likewise, the generated controller will already have methods stubbed for each of these actions, including notes informing you which URIs and verbs they handle.
+ဒီ Single Route ကြေညာထားမှူက multiple routes ဖြေရှင်းရန်အတွက်ဖန်တီးထားပြီးတော့ Restful action photo resource  တွေကို handle လုပ်သွားပါတယ်။ ဘယ်လိုမျိုးလည်းဆိုရင် generate လုပ်လိုက်တဲ့ controller က action တစ်ခုချင်းဆီအတွက်stubb လုပ်ထားတဲ့ methods တွေရှိပြီးသားပါ၊ နောက်ဘယ် URI တွေနဲ့ verbs တွေက ဘာတွေကို handle လုပ်မလဲဆိုတာရောပေါ့။
 
-#### Actions Handled By Resource Controller
+#### Resource Controller မှ Actions တွေဖြေရှင်းပုံ
 
 Verb      | Path                        | Action       | Route Name
 ----------|-----------------------------|--------------|---------------------
