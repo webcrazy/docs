@@ -4,7 +4,7 @@
 - [Controllers အခြေခံ](#basic-controllers)
 - [Controller Middleware များ](#controller-middleware)
 - [သွယ်ဝိုက် Controllers](#implicit-controllers)
-- [RESTful Resource Controllers](#restful-resource-controllers)
+- [RESTful Resource Controller များ](#restful-resource-controllers)
 - [Dependency Injection & Controllers](#dependency-injection-and-controllers)
 - [Route Caching](#route-caching)
 
@@ -104,11 +104,11 @@ Controller routes တွေမှာ [Middleware](/docs/5.0/middleware) တွ�
 <a name="implicit-controllers"></a>
 ## သွယ်ဝိုက် Controller များ
 
-Laravel allows you to easily define a single route to handle every action in a controller. First, define the route using the `Route::controller` method:
+Laravel မှာ Controller တစ်ခုကနေပြီးတော့ action တွေအားလုံးကို  Route တစ်ခုထဲကနေပြီးတော့ define လုပ်နိုင်ပါတယ်။ ပထမဆုံး route ကို `Route::controller` method သုံးပြီးတော့ define လုပ်လိုက်ပါ:
 
 	Route::controller('users', 'UserController');
 
-The `controller` method accepts two arguments. The first is the base URI the controller handles, while the second is the class name of the controller. Next, just add methods to your controller, prefixed with the HTTP verb they respond to:
+`controller` method က argument နှစ်ခုလက်ခံပါတယ်။  ပထမတစ်ခုက Controller Handle လုပ်တဲ့ base URI ဖြစ်ပါတယ်၊ ဒုတိယကတော့ controller class name ဖြစ်ပါတယ်။ သင့် Controller ကို methods တွေပေါင်းထည့်ပါ၊ HTTP 	verb နှင့်အတူ prefixed လုပ်ခဲ့ပါ
 
 	class UserController extends BaseController {
 
@@ -129,14 +129,14 @@ The `controller` method accepts two arguments. The first is the base URI the con
 
 	}
 
-The `index` methods will respond to the root URI handled by the controller, which, in this case, is `users`.
+`index` methods တွေက Controller က Handle လုပ်တဲ့ root URI တွေကို respond လုပ်ပါလိမ့်မယ်၊ ဘယ်သူကလုပ်မှာလဲဆိုရင် `users` တွေကလုပ်မှာဘဲဖြစ်ပါတယ်။
 
-If your controller action contains multiple words, you may access the action using "dash" syntax in the URI. For example, the following controller action on our `UserController` would respond to the `users/admin-profile` URI:
+သင့် controller action တွေမှာ စကားလုံးနှစ်ခုပါတယ်ဆိုရင် သင့် action name ကို accept လုပ်ချင်တယ်ဆိုရင် URI ကနေပြီးတော့ "dash" syntax နဲ့ခေါ်ပေးရပါ့မယ်: ဉပမာအနေနဲ့ အောက်ဖော်ပြပါ `UserController` က `user/admin-profile` URI ကို respond လုပ်ပါလိမ့်မယ်
 
 	public function getAdminProfile() {}
 
 <a name="restful-resource-controllers"></a>
-## RESTful Resource Controllers
+## RESTful Resource Controller များ
 
 Resource controllers make it painless to build RESTful controllers around resources. For example, you may wish to create a controller that handles HTTP requests regarding "photos" stored by your application. Using the `make:controller` Artisan command, we can quickly create such a controller:
 
