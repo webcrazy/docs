@@ -12,11 +12,11 @@
 
 ### Via Facade
 
-The `Request` facade will grant you access to the current request that is bound in the container. For example:
+`Request` facade ကသင်လိုချင်တဲ့ current request ကို container ထဲမှာ bound လုပ်ပြီးသင် access လုပ်နိုင်မှာဖြစ်ပါတယ်။ example အနေနဲ့ အ​ောက်မှာကြည့်နိုင်ပါတယ်။
 
 	$name = Request::input('name');
 
-Remember, if you are in a namespace, you will have to import the `Request` facade using a `use Request;` statement at the top of your class file.
+သင့် namespace ထဲမှာဆိုရင် `Request` facade ကို `use Request;` ဆိုပြီးသင့်ရဲ့ class file ရဲ့ statement အပ​ေါ်မှာထည့်သွင်းပေးရပါ့မယ်။ 
 
 ### Via Dependency Injection
 
