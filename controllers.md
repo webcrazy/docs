@@ -1,306 +1,347 @@
-# HTTP Controllers များအကြောင်း
+# HTTP Controllers
 
-- [မိတ်ဆက်](#introduction)
-- [Controllers အခြေခံ](#basic-controllers)
-- [Controller Middleware များ](#controller-middleware)
-- [သွယ်ဝိုက် Controllers](#implicit-controllers)
-- [RESTful Resource Controller များ](#restful-resource-controllers)
-- [Dependency Injection နှင့် Controller များ](#dependency-injection-and-controllers)
+- [Introduction](#introduction)
+- [Basic Controllers](#basic-controllers)
+- [Controller Middleware](#controller-middleware)
+- [RESTful Resource Controllers](#restful-resource-controllers)
+    - [Partial Resource Routes](#restful-partial-resource-routes)
+    - [Naming Resource Routes](#restful-naming-resource-routes)
+    - [Nested Resources](#restful-nested-resources)
+    - [Supplementing Resource Controllers](#restful-supplementing-resource-controllers)
+- [Implicit Controllers](#implicit-controllers)
+- [Dependency Injection & Controllers](#dependency-injection-and-controllers)
 - [Route Caching](#route-caching)
 
 <a name="introduction"></a>
-## မိတ်ဆက်
+## Introduction
 
-သင့်အနေနဲ့ Request handling logic တွေအကုန်လုံးကို `routes.php` ထဲမှာအကုန် define လုပ်မယ့်အစား Controller classes တွေထဲမှာ organize လုပ်ချင်မှာပေါ့။  ဆက်စပ်နေတဲ့ HTTP request Handling logic တွေကို Controller တွေက Group လုပ်ထားနိုင်ပါတယ်။ Controllers တွေက `app/Http/Controllers` directory ထဲမှာရှိပါတယ်။
+Instead of defining all of your request handling logic in a single `routes.php` file, you may wish to organize this behavior using Controller classes. Controllers can group related HTTP request handling logic into a class. Controllers are typically stored in the `app/Http/Controllers` directory.
 
 <a name="basic-controllers"></a>
-## Controllers အခြေခံ
+## Basic Controllers
 
-အခြေခံအားဖြင့် Controller Class တစ်ခုရဲ့ ပုံစံက အောက်ပါအတိုင်းရေးသားပါတယ်:
+Here is an example of a basic controller class. All Laravel controllers should extend the base controller class included with the default Laravel installation:
 
-	<?php namespace App\Http\Controllers;
+    <?php
 
-	use App\Http\Controllers\Controller;
+    namespace App\Http\Controllers;
 
-	class UserController extends Controller {
+    use App\User;
+    use App\Http\Controllers\Controller;
 
-		/**
-		 * Show the profile for the given user.
-		 *
-		 * @param  int  $id
-		 * @return Response
-		 */
-		public function showProfile($id)
-		{
-			return view('user.profile', ['user' => User::findOrFail($id)]);
-		}
+    class UserController extends Controller
+    {
+        /**
+         * Show the profile for the given user.
+         *
+         * @param  int  $id
+         * @return Response
+         */
+        public function showProfile($id)
+        {
+            return view('user.profile', ['user' => User::findOrFail($id)]);
+        }
+    }
 
-	}
+We can route to the controller action like so:
 
-ကျွန်တော်တို့ အဲ့ဒီ့ controller action ကိုအောက်ဖော်ပြပါအတိုင်း route လုပ်နိုင်ပါတယ်
+    Route::get('user/{id}', 'UserController@showProfile');
 
-	Route::get('user/{id}', 'UserController@showProfile');
+Now, when a request matches the specified route URI, the `showProfile` method on the `UserController` class will be executed. Of course, the route parameters will also be passed to the method.
 
-> **မှတ်ချက်**  Controllers တွေအကုန်လုံး Base controller class ကို extend လုပ်သင့်ပါတယ်
+#### Controllers & Namespaces
 
-#### Controllers နှင့် Namespaces
+It is very important to note that we did not need to specify the full controller namespace when defining the controller route. We only defined the portion of the class name that comes after the `App\Http\Controllers` namespace "root". By default, the `RouteServiceProvider` will load the `routes.php` file within a route group containing the root controller namespace.
 
-ကျွန်တော်တို့ Full Controller namespace တစ်ခုလုံးဖော်ပြဖို့မလိုဘူးဆိုတာသိထားဖို့အလွန်အရေးကြီးပါတယ်၊  `App\Http\Controllers` namespace "root" ၏ class name ၏အပိုင်းမှာသာလိုတာပါ။ default အနေနဲ့ `RouteServiceProvider` ကနေ root controller namespace ပါတဲ့ route group ထဲကမှ `routes.php` file ကို load လုပ်ပါလိမ့်မယ်။
+If you choose to nest or organize your controllers using PHP namespaces deeper into the `App\Http\Controllers` directory, simply use the specific class name relative to the `App\Http\Controllers` root namespace. So, if your full controller class is `App\Http\Controllers\Photos\AdminController`, you would register a route like so:
 
-သင့် Controller တွေကို nest ဒါမှမဟုတ် organize လုပ်ဖို့ PHP namespaces ထဲကမှ `App\Http\AdminController` directory ရွေးချယ်ခဲ့တယ်ဆိုရင်သတ်မှတ်ထားတဲ့ class name နဲ့သတ်ဆိုင်တဲ့ `App\Http\Controllers` root namespace ကိုဘဲရိုးရှင်းစွာသုံးလိုက်ပါ။ ဒါကြောင့် သင့် controller class က `App\Http\Controllers\Photos\AdminControllers`  ဆိုရင် သင့်ရဲ့ route ကိုအောက်ဖော်ပြပါအတိုင်း register လုပ်သင့်ပါတယ်
+    Route::get('foo', 'Photos\AdminController@method');
 
-	Route::get('foo', 'Photos\AdminController@method');
+#### Naming Controller Routes
 
-#### Controller Route အမည်ပေးခြင်း
+Like Closure routes, you may specify names on controller routes:
 
-သင့်အနေနဲ့ Closure routes တွေလိုဘဲ controller routes တွေကိုသတ်မှတ်ချင်တယ်ဆိုရင်
+    Route::get('foo', ['uses' => 'FooController@method', 'as' => 'name']);
 
-	Route::get('foo', ['uses' => 'FooController@method', 'as' => 'name']);
+Once you have assigned a name to the controller route, you can easily generate URLs to the action. To generate a URL to a controller action, use the `action` helper method. Again, we only need to specify the part of the controller class name that comes after the base `App\Http\Controllers` namespace:
 
-#### URLs မှ Controller Action တွေဆီသို့
+    $url = action('FooController@method');
 
-URL ကနေပြီးတော့ Controller action တွေကို generate လုပ်ချင်တယ်ဆိုရင်တော့ `action` helper method ကိုအသုံးပြုလိုက်ပါ
+You may also use the `route` helper to generate a URL to a named controller route:
 
-	$url = action('App\Http\Controllers\FooController@method');
-
-သင့်ရဲ့ controller ကို namespace မှ Class name relative ကိုဘဲသုံးပြီးတော့   URL ကနေ controller action ကို generate လုပ်ချင်တယ်ဆိုရင်:
-
-	URL::setRootControllerNamespace('App\Http\Controllers');
-
-	$url = action('FooController@method');
-
-သင့်အနေနဲ့ Controller action name ကို access လုပ်ချင်တယ်ဆိုရင်တော့ `currentRouteAction` method ကို အသုံးပြုနိုင်ပါတယ်:
-
-	$action = Route::currentRouteAction();
+    $url = route('name');
 
 <a name="controller-middleware"></a>
-## Controller Middleware များ
+## Controller Middleware
 
-Controller routes တွေမှာ [Middleware](/docs/5.0/middleware) တွေကိုအောက်ဖော်ပြပါအတိုင်းသတ်မှတ်နိုင်ပါတယ်
+[Middleware](/docs/{{version}}/middleware) may be assigned to the controller's routes like so:
 
-	Route::get('profile', [
-		'middleware' => 'auth',
-		'uses' => 'UserController@showProfile'
-	]);
+    Route::get('profile', [
+        'middleware' => 'auth',
+        'uses' => 'UserController@showProfile'
+    ]);
 
-နောက်တစ်နည်းအနေနဲ့ Controller constructor တွေမှာလည်းအောက်ဖော်ပြပါတိုင်းသတ်မှတ်နိုင်ပါတယ်
+However, it is more convenient to specify middleware within your controller's constructor. Using the `middleware` method from your controller's constructor, you may easily assign middleware to the controller. You may even restrict the middleware to only certain methods on the controller class:
 
-	class UserController extends Controller {
+    class UserController extends Controller
+    {
+        /**
+         * Instantiate a new UserController instance.
+         *
+         * @return void
+         */
+        public function __construct()
+        {
+            $this->middleware('auth');
 
-		/**
-		 * Instantiate a new UserController instance.
-		 */
-		public function __construct()
-		{
-			$this->middleware('auth');
+            $this->middleware('log', ['only' => ['fooAction', 'barAction']]);
 
-			$this->middleware('log', ['only' => ['fooAction', 'barAction']]);
-
-			$this->middleware('subscribed', ['except' => ['fooAction', 'barAction']]);
-		}
-
-	}
-
-<a name="implicit-controllers"></a>
-## သွယ်ဝိုက် Controller များ
-
-Laravel မှာ Controller တစ်ခုကနေပြီးတော့ action တွေအားလုံးကို  Route တစ်ခုထဲကနေပြီးတော့ define လုပ်နိုင်ပါတယ်။ ပထမဆုံး route ကို `Route::controller` method သုံးပြီးတော့ define လုပ်လိုက်ပါ:
-
-	Route::controller('users', 'UserController');
-
-`controller` method က argument နှစ်ခုလက်ခံပါတယ်။  ပထမတစ်ခုက Controller Handle လုပ်တဲ့ base URI ဖြစ်ပါတယ်၊ ဒုတိယကတော့ controller class name ဖြစ်ပါတယ်။ သင့် Controller ကို methods တွေပေါင်းထည့်ပါ၊ HTTP 	verb နှင့်အတူ prefixed လုပ်ခဲ့ပါ
-
-	class UserController extends BaseController {
-
-		public function getIndex()
-		{
-			//
-		}
-
-		public function postProfile()
-		{
-			//
-		}
-
-		public function anyLogin()
-		{
-			//
-		}
-
-	}
-
-`index` methods တွေက Controller က Handle လုပ်တဲ့ root URI တွေကို respond လုပ်ပါလိမ့်မယ်၊ ဘယ်သူကလုပ်မှာလဲဆိုရင် `users` တွေကလုပ်မှာဘဲဖြစ်ပါတယ်။
-
-သင့် controller action တွေမှာ စကားလုံးနှစ်ခုပါတယ်ဆိုရင် သင့် action name ကို accept လုပ်ချင်တယ်ဆိုရင် URI ကနေပြီးတော့ "dash" syntax နဲ့ခေါ်ပေးရပါ့မယ်: ဉပမာအနေနဲ့ အောက်ဖော်ပြပါ `UserController` က `user/admin-profile` URI ကို respond လုပ်ပါလိမ့်မယ်
-
-	public function getAdminProfile() {}
+            $this->middleware('subscribed', ['except' => ['fooAction', 'barAction']]);
+        }
+    }
 
 <a name="restful-resource-controllers"></a>
-## RESTful Resource Controller များ
+## RESTful Resource Controllers
 
-Resource controllers တွေက RESTful controllers တွေဖန်တီးဖို့အလွယ်ကူဆုံးဖြစ်အောင်လုပ်ဆောင်ပေးပါတယ်။ ဉပမာအနေနဲ့ သင့် application မှာ "photos"  stored လုပ်ထားတဲ့ controller တစ်ခု create လုပ်ချင်တယ်ဆိုရင် `make:controller` Artisan command သုံးပြီးတော့ အဲ့ဒီ့ controller ကို ဖန်တီးနိုင်ပါတယ်:
+Resource controllers make it painless to build RESTful controllers around resources. For example, you may wish to create a controller that handles HTTP requests regarding "photos" stored by your application. Using the `make:controller` Artisan command, we can quickly create such a controller:
 
-	php artisan make:controller PhotoController
+    php artisan make:controller PhotoController
 
-နောက် resourceful route ကို register လုပ်လိုက်ပါ:
+The Artisan command will generate a controller file at `app/Http/Controllers/PhotoController.php`. The controller will contain a method for each of the available resource operations.
 
-	Route::resource('photo', 'PhotoController');
+Next, you may register a resourceful route to the controller:
 
-ဒီ Single Route ကြေညာထားမှူက multiple routes ဖြေရှင်းရန်အတွက်ဖန်တီးထားပြီးတော့ Restful action photo resource  တွေကို handle လုပ်သွားပါတယ်။ ဘယ်လိုမျိုးလည်းဆိုရင် generate လုပ်လိုက်တဲ့ controller က action တစ်ခုချင်းဆီအတွက်stubb လုပ်ထားတဲ့ methods တွေရှိပြီးသားပါ၊ နောက်ဘယ် URI တွေနဲ့ verbs တွေက ဘာတွေကို handle လုပ်မလဲဆိုတာရောပေါ့။
+    Route::resource('photo', 'PhotoController');
 
-#### Resource Controller မှ Actions တွေဖြေရှင်းပုံ
+This single route declaration creates multiple routes to handle a variety of RESTful actions on the photo resource. Likewise, the generated controller will already have methods stubbed for each of these actions, including notes informing you which URIs and verbs they handle.
 
-Verb      | Path                        | Action       | Route Name
-----------|-----------------------------|--------------|---------------------
-GET       | /resource                   | index        | resource.index
-GET       | /resource/create            | create       | resource.create
-POST      | /resource                   | store        | resource.store
-GET       | /resource/{resource}        | show         | resource.show
-GET       | /resource/{resource}/edit   | edit         | resource.edit
-PUT/PATCH | /resource/{resource}        | update       | resource.update
-DELETE    | /resource/{resource}        | destroy      | resource.destroy
+#### Actions Handled By Resource Controller
 
-#### Resource Routes တွေကို Customize လုပ်ခြင်း
+Verb      | Path                  | Action       | Route Name
+----------|-----------------------|--------------|---------------------
+GET       | `/photo`              | index        | photo.index
+GET       | `/photo/create`       | create       | photo.create
+POST      | `/photo`              | store        | photo.store
+GET       | `/photo/{photo}`      | show         | photo.show
+GET       | `/photo/{photo}/edit` | edit         | photo.edit
+PUT/PATCH | `/photo/{photo}`      | update       | photo.update
+DELETE    | `/photo/{photo}`      | destroy      | photo.destroy
 
-နောက်ထက်အနေနဲ့ actions တွေရဲ့ subset တွေကို route မှာသတ်မှတ်နိုင်ပါတယ်:
+<a name="restful-partial-resource-routes"></a>
+#### Partial Resource Routes
 
-	Route::resource('photo', 'PhotoController',
-					['only' => ['index', 'show']]);
+When declaring a resource route, you may specify a subset of actions to handle on the route:
 
-	Route::resource('photo', 'PhotoController',
-					['except' => ['create', 'store', 'update', 'destroy']]);
+    Route::resource('photo', 'PhotoController',
+                    ['only' => ['index', 'show']]);
 
-default အနေနဲ့ကတော့ resource controllers actions တွေက route name တစ်ခုရှိပါ့မယ် သို့ပေမယ့်လည်း အဲ့ဒီ့အမည်တွေကို `names` array pass ပြီးတော့ သင့်ကိုယ်ပိုင် options တွေနဲ့ override လုပ်နိုင်ပါတယ်:
+    Route::resource('photo', 'PhotoController',
+                    ['except' => ['create', 'store', 'update', 'destroy']]);
 
-	Route::resource('photo', 'PhotoController',
-					['names' => ['create' => 'photo.build']]);
+<a name="restful-naming-resource-routes"></a>
+#### Naming Resource Routes
 
-#### Nested Resource Controller များကို Handle လုပ်ခြင်း
+By default, all resource controller actions have a route name; however, you can override these names by passing a `names` array with your options:
 
-resource controller တွေကို "nest" လုပ်ရန်အတွက် "dot" အမှတ်အသားကို route ကြေငြာတဲ့အချိန်မှာအသုံးပြုနိုင်ပါတယ်:
+    Route::resource('photo', 'PhotoController',
+                    ['names' => ['create' => 'photo.build']]);
 
-	Route::resource('photos.comments', 'PhotoCommentController');
+<a name="restful-nested-resources"></a>
+#### Nested Resources
 
-အထက်ဖော်ပြပါ route က "nested" resource အဖြစ် register လုပ်ပါလိမ့်မယ်... အဲ့ဒါကို `photos/{photos}/comments/{comments}` ဆိုပြီးတော့ URL ကနေ access လုပ်ရပါလိမ့်မယ်။
+Sometimes you may need to define routes to a "nested" resource. For example, a photo resource may have multiple "comments" that may be attached to the photo. To "nest" resource controllers, use "dot" notation in your route declaration:
 
-	class PhotoCommentController extends Controller {
+    Route::resource('photos.comments', 'PhotoCommentController');
 
-		/**
-		 * Show the specified photo comment.
-		 *
-		 * @param  int  $photoId
-		 * @param  int  $commentId
-		 * @return Response
-		 */
-		public function show($photoId, $commentId)
-		{
-			//
-		}
+This route will register a "nested" resource that may be accessed with URLs like the following: `photos/{photos}/comments/{comments}`.
 
-	}
+    <?php
 
-#### Resource Controller တွေမှာ Routes တွေထက်ထည့်ခြင်း
+    namespace App\Http\Controllers;
 
-Default resource controller တွေမှာ နောက်ထက် route တွေထက်ထည့်ချင်တယ်ဆိုရင် `Route::resource` မခေါ်ခင်မှာ သင်ထက်ထည့်ချင်တဲ့ routes တွေကို ကြေငြာသင့်ပါတယ်:
+    use App\Http\Controllers\Controller;
 
-	Route::get('photos/popular');
+    class PhotoCommentController extends Controller
+    {
+        /**
+         * Show the specified photo comment.
+         *
+         * @param  int  $photoId
+         * @param  int  $commentId
+         * @return Response
+         */
+        public function show($photoId, $commentId)
+        {
+            //
+        }
+    }
 
-	Route::resource('photos', 'PhotoController');
+<a name="restful-supplementing-resource-controllers"></a>
+#### Supplementing Resource Controllers
+
+If it becomes necessary to add additional routes to a resource controller beyond the default resource routes, you should define those routes before your call to `Route::resource`; otherwise, the routes defined by the `resource` method may unintentionally take precedence over your supplemental routes:
+
+    Route::get('photos/popular', 'PhotoController@method');
+
+    Route::resource('photos', 'PhotoController');
+
+<a name="implicit-controllers"></a>
+## Implicit Controllers
+
+Laravel allows you to easily define a single route to handle every action in a controller class. First, define the route using the `Route::controller` method. The `controller` method accepts two arguments. The first is the base URI the controller handles, while the second is the class name of the controller:
+
+    Route::controller('users', 'UserController');
+
+ Next, just add methods to your controller. The method names should begin with the HTTP verb they respond to followed by the title case version of the URI:
+
+    <?php
+
+    namespace App\Http\Controllers;
+
+    class UserController extends Controller
+    {
+        /**
+         * Responds to requests to GET /users
+         */
+        public function getIndex()
+        {
+            //
+        }
+
+        /**
+         * Responds to requests to GET /users/show/1
+         */
+        public function getShow($id)
+        {
+            //
+        }
+
+        /**
+         * Responds to requests to GET /users/admin-profile
+         */
+        public function getAdminProfile()
+        {
+            //
+        }
+
+        /**
+         * Responds to requests to POST /users/profile
+         */
+        public function postProfile()
+        {
+            //
+        }
+    }
+
+As you can see in the example above, `index` methods will respond to the root URI handled by the controller, which, in this case, is `users`.
+
+#### Assigning Route Names
+
+If you would like to [name](/docs/{{version}}/routing#named-routes) some of the routes on the controller, you may pass an array of names as the third argument to the `controller` method:
+
+    Route::controller('users', 'UserController', [
+        'getShow' => 'user.show',
+    ]);
 
 <a name="dependency-injection-and-controllers"></a>
-## Dependency Injection နှင့် Controller များ
+## Dependency Injection & Controllers
 
 #### Constructor Injection
 
-Laravel [service container](/docs/5.0/container) တွေက Laravel controllers တွေကို resolve လုပ်ဖို့ရာအတွက်အသုံးပြုရပါတယ်။ Result တစ်ခုအနေနဲ့ မည်သည့် dependencie မဆို type-hint လုပ်နိုင်ပြီးတော့ သင့် controller ကလည်းအဲ့ဒီ့ constructor တွေကိုလိုအပ်ပါလိမ့်မယ် :
+The Laravel [service container](/docs/{{version}}/container) is used to resolve all Laravel controllers. As a result, you are able to type-hint any dependencies your controller may need in its constructor. The dependencies will automatically be resolved and injected into the controller instance:
 
-	<?php namespace App\Http\Controllers;
+    <?php
 
-	use Illuminate\Routing\Controller;
-	use App\Repositories\UserRepository;
+    namespace App\Http\Controllers;
 
-	class UserController extends Controller {
+    use Illuminate\Routing\Controller;
+    use App\Repositories\UserRepository;
 
-		/**
-		 * The user repository instance.
-		 */
-		protected $users;
+    class UserController extends Controller
+    {
+        /**
+         * The user repository instance.
+         */
+        protected $users;
 
-		/**
-		 * Create a new controller instance.
-		 *
-		 * @param  UserRepository  $users
-		 * @return void
-		 */
-		public function __construct(UserRepository $users)
-		{
-			$this->users = $users;
-		}
+        /**
+         * Create a new controller instance.
+         *
+         * @param  UserRepository  $users
+         * @return void
+         */
+        public function __construct(UserRepository $users)
+        {
+            $this->users = $users;
+        }
+    }
 
-	}
-
-ဒါပေါ့ သင့်အနေနဲ့ မည်သည့် [laravel contract](/docs/5.0/contracts) ကိုမဆို type-hint လုပ်နိုင်ပါတယ်။ container ကအဲ့ဒါကို resolve လုပ်နိုင်တယ်ဆိုရင်သင် type-hint နိုင်ပါပြီ။
+Of course, you may also type-hint any [Laravel contract](/docs/{{version}}/contracts). If the container can resolve it, you can type-hint it.
 
 #### Method Injection
 
-constructor injection တွေကိုထက်ပေါင်းရလျှင် သင့် controller ၏ methods တွေကိုလည်းဘဲ သင် type-hint dependencies လုပ်ချင်ပါလိမ့်မယ်။ ဉပမာအနေနဲ့ ကျွန်တော်တို့ method တစ်ခုပေါ်မှာ `Request` instacne တစ်ခု type-hint လုပ်လိုက်ကြရအောင်
+In addition to constructor injection, you may also type-hint dependencies on your controller's action methods. For example, let's type-hint the `Illuminate\Http\Request` instance on one of our methods:
 
-	<?php namespace App\Http\Controllers;
+    <?php
 
-	use Illuminate\Http\Request;
-	use Illuminate\Routing\Controller;
+    namespace App\Http\Controllers;
 
-	class UserController extends Controller {
+    use Illuminate\Http\Request;
+    use Illuminate\Routing\Controller;
 
-		/**
-		 * Store a new user.
-		 *
-		 * @param  Request  $request
-		 * @return Response
-		 */
-		public function store(Request $request)
-		{
-			$name = $request->input('name');
+    class UserController extends Controller
+    {
+        /**
+         * Store a new user.
+         *
+         * @param  Request  $request
+         * @return Response
+         */
+        public function store(Request $request)
+        {
+            $name = $request->input('name');
 
-			//
-		}
+            //
+        }
+    }
 
-	}
+If your controller method is also expecting input from a route parameter, simply list your route arguments after your other dependencies. For example, if your route is defined like so:
 
-သင့် controller method က route parameter က input ကို expect ဖြစ်ပြီးတော့ သင့် တစ်ခြား dependencies တွေပြီးတဲ့အခါ route arguments တွေကို ရိုးရိုးဘဲ list လုပ်လိုက်ပါ:
+    Route::put('user/{id}', 'UserController@update');
 
-	<?php namespace App\Http\Controllers;
+You may still type-hint the `Illuminate\Http\Request` and access your route parameter `id` by defining your controller method like the following:
 
-	use Illuminate\Http\Request;
-	use Illuminate\Routing\Controller;
+    <?php
 
-	class UserController extends Controller {
+    namespace App\Http\Controllers;
 
-		/**
-		 * Store a new user.
-		 *
-		 * @param  Request  $request
-		 * @param  int  $id
-		 * @return Response
-		 */
-		public function update(Request $request, $id)
-		{
-			//
-		}
+    use Illuminate\Http\Request;
+    use Illuminate\Routing\Controller;
 
-	}
-
-> **သတိပြုရန်:**  Method injection က [model binding](/docs/5.0/routing#route-model-binding) နဲ့လုံးဝအဆင်ပြေပါတယ်။ container ကဘယ် arguments တွေက model bound ဖြစ်ပြီးတော့ ဘယ် arguments တွေကို inject လုပ်သင့်တယ်ဆိုတာကို intelligently ဆုံးဖြတ်ပါလိမ့်မယ်။
+    class UserController extends Controller
+    {
+        /**
+         * Update the specified user.
+         *
+         * @param  Request  $request
+         * @param  int  $id
+         * @return Response
+         */
+        public function update(Request $request, $id)
+        {
+            //
+        }
+    }
 
 <a name="route-caching"></a>
 ## Route Caching
 
-သင့် application က controller routes တွေပါဝင်တယ်ဆိုရင် သင့်အနေနဲ့ Laravel ရဲ့ route cache ရဲ့အသုံးဝင်ပုံကိုတွေ့ရပါလိမ့်မယ်။ Route cache ကိုအသုံးပြုလို့ရှိရင် သင့် application ရဲ့ routes တွေကို register လုပ်ဖို့စောင့်စရာမလိုတာကြောင့် အရင်ကထက်ပိုမြန်ပါလိမ့်မယ်။တစ်ချို့ case တွေမှာသင့် Route registration တွေကအဆ ၁၀၀ လောက်ထိမြန်သွားပါလိမ့်မယ်။ Route cache တစ်ခုကို generate လုပ်ဖို့ရာအတွက် `route:cache` Artisan command ကိုသုံးရပါ့မယ်:
+If your application is exclusively using controller based routes, you may take advantage of Laravel's route cache. Using the route cache will drastically decrease the amount of time it takes to register all of your application's routes. In some cases, your route registration may even be up to 100x faster! To generate a route cache, just execute the `route:cache` Artisan command:
 
-	php artisan route:cache
+    php artisan route:cache
 
-သင့် routes cached တွေကို `app/Http/routes.php` file တွေအစားအသုံးပြုပါလိမ့်မယ်။ မှတ်ထားရမှာက သင် route အသစ်ထက်ထည့်တိုင်း `route:cache` command ကို ပြန် run ပေးရပါမယ့်။ ဘာလို့အဲ့လိုဖြစ်နေတာလည်းဆိုရင် သင့်အနေနဲ့ `route:cache` command ကို သင့် project deployment မှာမှ  run ချင်မလားလို့ပါ။
+That's all there is to it! Your cached routes file will now be used instead of your `app/Http/routes.php` file. Remember, if you add any new routes you will need to generate a fresh route cache. Because of this, you may wish to only run the `route:cache` command during your project's deployment.
 
-Cache အသစ်တစ်ထပ် generate မလုပ်ဘဲနဲ့ Cached လုပ်ထားတဲ့ routes တွေကိုဖျက်ဖို့ရာအတွက် `route:clear` command ကိုသုံးနိုင်ပါတယ်:
+To remove the cached routes file without generating a new cache, use the `route:clear` command:
 
-	php artisan route:clear
+    php artisan route:clear
