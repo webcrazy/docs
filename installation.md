@@ -1,4 +1,4 @@
-# Installation
+# Install ပြုလုပ်ခြင်း
 
 - [Installation](#installation)
 - [Configuration](#configuration)
@@ -10,11 +10,11 @@
 - [Maintenance Mode](#maintenance-mode)
 
 <a name="installation"></a>
-## Installation
+## Install ပြုလုပ်ခြင်း
 
-### Server Requirements
+### Requirements လိုအပ်ချက်များ
 
-The Laravel framework has a few system requirements. Of course, all of these requirements are satisfied by the [Laravel Homestead](/docs/{{version}}/homestead) virtual machine:
+Laravel framework system လိုအပ်ချက်တစ်ချို့ရှိပါတယ်။ ဒါပေါ့ အဲ့ဒီ့လိုအပ်ချက်တွေအကုန်လုံးကို [Laravel Homestead](/docs/{{version}}/homestead) virtual machine မှာရနိုင်ပါတယ် 
 
 <div class="content-list" markdown="1">
 - PHP >= 5.5.9
@@ -25,25 +25,26 @@ The Laravel framework has a few system requirements. Of course, all of these req
 </div>
 
 <a name="install-laravel"></a>
-### Installing Laravel
+### Laravel ကို install လုပ်ခြင်း
 
-Laravel utilizes [Composer](http://getcomposer.org) to manage its dependencies. So, before using Laravel, make sure you have Composer installed on your machine.
+Laravel က dependencies တွေကိုအသုံးပြုဖို့ရာအတွက် [Composer](http://getcomposer.org) ကိုအသုံးပြုပါတယ် ဒါကြောင့် Laravel ကိုအသုံးမပြုခင် သင့်စက်မှာ Composer ကိုအရင်ဆုံး install လုပ်ထားဖို့လိုပါလိမ့်မယ်။
 
-#### Via Laravel Installer
+#### Laravel Installer မှတစ်ဆင့်
 
-First, download the Laravel installer using Composer:
+ပထမဉီးစွာ Composer အသုံးပြုပြီးတော့ Laravel installer ကို download လုပ်လိုက်ပါ။
 
     composer global require "laravel/installer=~1.1"
 
-Make sure to place the `~/.composer/vendor/bin` directory in your PATH so the `laravel` executable can be located by your system.
+`~/.composer/vendor/bin` directory ကို PATCH directory ထဲမှာထည့်ထားရပါ့မယ် ဒါမှ `laravel` ဆိုပြီးခေါ်နိုင်ဖို့ရာအတွက် system ကသိမှာဖြစ်ပါတယ်။
 
-Once installed, the simple `laravel new` command will create a fresh Laravel installation in the directory you specify. For instance, `laravel new blog` will create a directory named `blog` containing a fresh Laravel installation with all of Laravel's dependencies already installed. This method of installation is much faster than installing via Composer:
+Install လုပ်ပြီးသွားပြီဆိုရင် `laravel new` command ကိုသုံးပြီးတော့ သင်ကြိုက်တဲ့ directory မှာ Laravel ကို install လုပ်လို့ရပါပြီ။ ဥပမာအားဖြင့် `laravel new blog` က `blog` လို့အမည်ပေးထားတဲ့ folder ထဲမှာ Laravel ရဲ့ dependencies တွေကို install လုပ်ထားမှာဖြစ်ပါတယ်။ ဒီနည်းနဲ့ install လုပ်ခြင်းက Composer နဲ့နည်းထက်ပိုမြန်ပါတယ်။
 
     laravel new blog
 
-#### Via Composer Create-Project
+#### Composer Create-Project မှတစ်ဆင့်
 
 You may also install Laravel by issuing the Composer `create-project` command in your terminal:
+သင့်အနေနဲ့ Laravel ကို terminal ကနေ`create-proect` command run ပြီးတော့ install လုပ်နိုင်ပါတယ်။
 
     composer create-project laravel/laravel --prefer-dist
 
@@ -51,38 +52,38 @@ You may also install Laravel by issuing the Composer `create-project` command in
 ## Configuration
 
 <a name="basic-configuration"></a>
-### Basic Configuration
+### အခြေခံ Configuration
 
-All of the configuration files for the Laravel framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+Laravel framework ရဲ့ configuration files တွေအကုန်လုံးက `config` ဆိုတဲ့ directory မှာပါ၊  option တစ်ခုခြင်းဆီအတွက် document လုပ်ထားပါတယ်၊ ဒါကြောင့် အဲ့ files တွေကိုကြည့်ပြီးတော့ options တွေနဲ့ရင်းနှီးနိုင်ပါတယ်။
 
 #### Directory Permissions
 
-After installing Laravel, you may need to configure some permissions. Directories within the `storage` and the `bootstrap/cache` directories should be writable by your web server. If you are using the [Homestead](/docs/{{version}}/homestead) virtual machine, these permissions should already be set.
+Laravel ကို install လုပ်ပြီးတဲ့အခါ permission တစ်ချို့ကို configure လုပ်ဖို့လိုပါတယ်။ `storage` နဲ့ `bootstrap/cache` directory တွေက server က writable ဖြစ်ဖို့လိုပါတယ်။ သင်က [Homestead](/docs/{{ version }}/homestead) virtual machine သုံးတယ်ဆိုရင်ဒီ permission တွေကတစ်ခါတည်း set လုပ်ပြီးသားပါ။
 
 #### Application Key
 
-The next thing you should do after installing Laravel is set your application key to a random string. If you installed Laravel via Composer or the Laravel installer, this key has already been set for you by the `key:generate` command. Typically, this string should be 32 characters long. The key can be set in the `.env` environment file. If you have not renamed the `.env.example` file to `.env`, you should do that now. **If the application key is not set, your user sessions and other encrypted data will not be secure!**
+Laravel install လုပ်ပြီးရင်နောက်တစ်ခုလုပ်သင့်တာကတော့ application key ပါဘဲ။ သင်က Laravel ကို Composer ဒါမှမဟုတ် Laravel installer ကနေတစ်ဆင့် install လုပ်ထားတယ်ဆိုရင်တော့ ဒီ key တွေက `key:generate` command ကိုသုံးပြီးတစ်ခါတည်း set လုပ်ပြီးပါပြီ။ ပုံမှန်အားဖြင့် အဲ့ဒီ့ string က ၃၂ နှစ်လုံးရှိတဲ့စကားလုံးတွေပါ။ key ကို `.env` environment file မှာလည်း set လုပ်နိုင်ပါတယ်။ `.env.example` ကို `.env` လို့အမည်မပြောင်းရသေးရင် သင့်အနေနဲ့အခုဘဲပြောင်းသင့်ပါတယ်။ **တကယ်လို့ application key က set လုပ်မထားဘူးဆိုရင် sessions နဲ့ အခြား encrypted data တွေကလုံခြုံမှာရှိမှာမဟုတ်ပါဘူး**
 
 #### Additional Configuration
 
-Laravel needs almost no other configuration out of the box. You are free to get started developing! However, you may wish to review the `config/app.php` file and its documentation. It contains several options such as `timezone` and `locale` that you may wish to change according to your application.
+Laravel ကအခြား configuration တွေမလိုပါဘူး။ သင့် developly လုပ်ချင်ရင်လုပ်နိုင်ပါပြီ။ သို့ရာတွင်လည်း သင့်အနေနဲ့ `config/app.php` file နဲ့ သူ့ documencation ကို review လုပ်ချင်ပါလိမ့်မယ်။ အဲဒီ့မှာ `timezone` နဲ့ `locale` options တွေများစွာပါဝင်ပါတယ်၊ သင့် application လိုအပ်ချက်အရအဲ့ဒါတွေကပြောင်းလဲရနိုင်ပါတယ်။
 
-You may also want to configure a few additional components of Laravel, such as:
+သင့်အနေနဲ့အခြား Laravel ရဲ့ components တွေကို configure လုပ်ချင်ပါလိမ့်မယ်။ ဉပမာအားဖြင့်
 
 - [Cache](/docs/{{version}}/cache#configuration)
 - [Database](/docs/{{version}}/database#configuration)
 - [Session](/docs/{{version}}/session#configuration)
 
-Once Laravel is installed, you should also [configure your local environment](/docs/{{version}}/installation#environment-configuration).
+သင့်အနေနဲ့ Laravel install လုပ်ပြီးသွားပြီဆိုရင် [local environment](/docs/{{version}}/installation#environment-configuration) ကို configure လုပ်သင့်ပါတယ်။
 
 <a name="pretty-urls"></a>
-#### Pretty URLs
+#### လှလှပပ URL များ
 
-**Apache**
+**Apache မှာဆိုရင်**
 
-The framework ships with a `public/.htaccess` file that is used to allow URLs without `index.php`. If you use Apache to serve your Laravel application, be sure to enable the `mod_rewrite` module.
+Framework က `public/.htaccess`file နဲ့ URLs တွေကို `index.php` မပါဘဲခေါ်နိုင်အောင်လုပ်နိုင်ပါတယ်။ သင် Apache သုံးပြီး Laravel application ကို serve လုပ်ရင် `mod_rewrite` module ကို enable လုပ်ဖို့မမေ့ပါနဲ့။
 
-If the `.htaccess` file that ships with Laravel does not work with your Apache installation, try this one:
+တကယ်လို့ `.htaccess` file ကသင့် Apache installation နဲ့အလုပ်မလုပ်ဘူးဆိုရင် အောက်ဖော်ပြပါတစ်ခုကိုစမ်းပါ
 
     Options +FollowSymLinks
     RewriteEngine On
@@ -91,22 +92,23 @@ If the `.htaccess` file that ships with Laravel does not work with your Apache i
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-**Nginx**
+**Nginx မှာဆိုရင်**
 
-On Nginx, the following directive in your site configuration will allow "pretty" URLs:
+Nignx မှာဆိုရင် အောက်ဖော်ပြပါ directive က "pretty" URLs လုပ်ပါလိမ့်မယ်
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
-Of course, when using [Homestead](/docs/{{version}}/homestead), pretty URLs will be configured automatically.
+ဒါပေါ့ သင်က [Homestead](/docs/{{version}}/homestead) သုံးတယ်ဆိုရင်တော့ pretty URLs တွေက automatically configure လုပ်ပြီးသားပါ။
 
 <a name="environment-configuration"></a>
 ### Environment Configuration
 
-It is often helpful to have different configuration values based on the environment the application is running in. For example, you may wish to use a different cache driver locally than you do on your production server. It's easy using environment based configuration.
+မတူညီတဲ့ configuration values တွေက မတူညီတဲ့ environment application တွေ run နေတဲ့အခါ အဲ့ဒါတွေကတော်တော်အသုံးဝင်ပါလိမ့်မယ်။ ဉပမာ သင့်အနေနဲ့ cache driver ကို သင့်စက်မှာတစ်ခုသုံးပေမယ့် production မှာတစ်ခုသုံးချင်ရင်သုံးချင်မှာပေါ့။ အဲ့လိုလုပ်ချင်ရင် environment based configuration ကလွယ်ကူစေပါလိမ့်မယ်။
 
 To make this a cinch, Laravel utilizes the [DotEnv](https://github.com/vlucas/phpdotenv) PHP library by Vance Lucas. In a fresh Laravel installation, the root directory of your application will contain a `.env.example` file. If you install Laravel via Composer, this file will automatically be renamed to `.env`. Otherwise, you should rename the file manually.
+
 
 All of the variables listed in this file will be loaded into the `$_ENV` PHP super-global when your application receives a request. You may use the `env` helper to retrieve values from these variables. In fact, if you review the Laravel configuration files, you will notice several of the options already using this helper!
 
@@ -180,6 +182,6 @@ To disable maintenance mode, use the `up` command:
 
 The default template for maintenance mode responses is located in `resources/views/errors/503.blade.php`.
 
-### Maintenance Mode & Queues
+### Maintenance Mode နဲ့ Queues
 
 While your application is in maintenance mode, no [queued jobs](/docs/{{version}}/queues) will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.
