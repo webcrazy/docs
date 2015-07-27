@@ -1,190 +1,202 @@
-# Views များ
+# Views
 
-- [အခြေခံအသုံးပြုနည်း](#basic-usage)
-- [View Composers များ](#view-composers)
+- [Basic Usage](#basic-usage)
+    - [Passing Data To Views](#passing-data-to-views)
+    - [Sharing Data With All Views](#sharing-data-with-all-views)
+- [View Composers](#view-composers)
 
 <a name="basic-usage"></a>
-## အခြေခံအသုံးပြုနည်း
+## Basic Usage
 
-Views contain the HTML served by your application, and serve as a convenient method of separating your controller and domain logic from your presentation logic. Views are stored in the `resources/views` directory.
+Views contain the HTML served by your application and separate your controller / application logic from your presentation logic. Views are stored in the `resources/views` directory.
 
-အခြေခံ view တစ်ခုကအောက်ဖော်ပြပါအတိုင်းပါဘဲ:
+A simple view might look something like this:
 
-	<!-- View stored in resources/views/greeting.php -->
+    <!-- View stored in resources/views/greeting.php -->
 
-	<html>
-		<body>
-			<h1>Hello, <?php echo $name; ?></h1>
-		</body>
-	</html>
+    <html>
+        <body>
+            <h1>Hello, <?php echo $name; ?></h1>
+        </body>
+    </html>
 
-The view may be returned to the browser like so:
+Since this view is stored at `resources/views/greeting.php`, we may return it using the global `view` helper function like so:
 
-	Route::get('/', function()
-	{
-		return view('greeting', ['name' => 'James']);
-	});
+    Route::get('/', function ()    {
+        return view('greeting', ['name' => 'James']);
+    });
 
-As you can see, the first argument passed to the `view` helper corresponds to the name of the view file in the `resources/views` directory. The second argument passed to helper is an array of data that should be made available to the view.
+As you can see, the first argument passed to the `view` helper corresponds to the name of the view file in the `resources/views` directory. The second argument passed to helper is an array of data that should be made available to the view. In this case, we are passing the `name` variable, which is displayed in the view by simply executing `echo` on the variable.
 
-Of course, views may also be nested within sub-directories of the `resources/views` directory. For example, if your view is stored at `resources/views/admin/profile.php`, it should be returned like so:
+Of course, views may also be nested within sub-directories of the `resources/views` directory. "Dot" notation may be used to reference nested views. For example, if your view is stored at `resources/views/admin/profile.php`, you may reference it like so:
 
-	return view('admin.profile', $data);
+    return view('admin.profile', $data);
 
-#### Data တွေကို Views ဆီပေးပို့ခြင်း
+#### Determining If A View Exists
 
-	// Using conventional approach
-	$view = view('greeting')->with('name', 'Victoria');
+If you need to determine if a view exists, you may use the `exists` method after calling the `view` helper with no arguments. This method will return `true` if the view exists on disk:
 
-	// Using Magic Methods
-	$view = view('greeting')->withName('Victoria');
+    if (view()->exists('emails.customer')) {
+        //
+    }
 
-In the example above, the variable `$name` is made accessible to the view and contains `Victoria`.
+When the `view` helper is called without arguments, an instance of `Illuminate\Contracts\View\Factory` is returned, giving you access to any of the factory's methods.
 
-If you wish, you may pass an array of data as the second parameter to the `view` helper:
+<a name="view-data"></a>
+### View Data
 
-	$view = view('greetings', $data);
+<a name="passing-data-to-views"></a>
+#### Passing Data To Views
 
-#### Data ကို Views အားလုံးကို sharing လုပ်ခြင်း
+As you saw in the previous examples, you may easily pass an array of data to views:
 
-Occasionally, you may need to share a piece of data with all views that are rendered by your application. You have several options: the `view` helper, the `Illuminate\Contracts\View\Factory` [contract](/docs/5.0/contracts), or a wildcard [view composer](#view-composers).
+    return view('greetings', ['name' => 'Victoria']);
 
- `view` helper ကိုအသုံးပြုနည်းဉပမာ
+When passing information in this manner, `$data` should be an array with key/value pairs. Inside your view, you can then access each value using it's corresponding key, such as `<?php echo $key; ?>`. As an alternative to passing a complete array of data to the `view` helper function, you may use the `with` method to add individual pieces of data to the view:
 
-	view()->share('data', [1, 2, 3]);
+    $view = view('greeting')->with('name', 'Victoria');
 
-သင့်အနေနဲ့ `View` facade ကိုလည်းအသုံးပြုနိုင်ပါတယ်:
+<a name="sharing-data-with-all-views"></a>
+#### Sharing Data With All Views
 
-	View::share('data', [1, 2, 3]);
+Occasionally, you may need to share a piece of data with all views that are rendered by your application. You may do so using the view factory's `share` method. Typically, you would place calls to `share` within a service provider's `boot` method. You are free to add them to the `AppServiceProvider` or generate a separate service provider to house them:
 
-Typically, you would place calls to the `share` method within a service provider's `boot` method. You are free to add them to the `AppServiceProvider` or generate a separate service provider to house them.
+    <?php
 
-> **Note:** When the `view` helper is called without arguments, it returns an implementation of the `Illuminate\Contracts\View\Factory` contract.
+    namespace App\Providers;
 
-#### View တစ်ခုရှိမရှိဆုံးဖြတ်ခြင်း
+    class AppServiceProvider extends ServiceProvider
+    {
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            view()->share('key', 'value');
+        }
 
-If you need to determine if a view exists, you may use the `exists` method:
-
-	if (view()->exists('emails.customer'))
-	{
-		//
-	}
-
-#### View တစ်ခုကို File Path တစ်ခုမှ return ပြန်ခြင်း
-
-If you wish, you may generate a view from a fully-qualified file path:
-
-	return view()->file($pathToFile, $data);
+        /**
+         * Register the service provider.
+         *
+         * @return void
+         */
+        public function register()
+        {
+            //
+        }
+    }
 
 <a name="view-composers"></a>
-## View Composers များ
+## View Composers
 
-View composers are callbacks or class methods that are called when a view is rendered. If you have data that you want to be bound to a view each time that view is rendered, a view composer organizes that logic into a single location.
+View composers are callbacks or class methods that are called when a view is rendered. If you have data that you want to be bound to a view each time that view is rendered, a view composer can help you organize that logic into a single location.
 
-#### View Composer တစ်ခု define လုပ်ခြင်း
+Let's register our view composers within a [service provider](/docs/{{version}}/providers). We'll use the `view` helper to access the underlying `Illuminate\Contracts\View\Factory` contract implementation. Remember, Laravel does not include a default directory for view composers. You are free to organize them however you wish. For example, you could create an `App\Http\ViewComposers` directory:
 
-Let's organize our view composers within a [service provider](/docs/5.0/providers). We'll use the `View` facade to access the underlying `Illuminate\Contracts\View\Factory` contract implementation:
+    <?php
 
-	<?php namespace App\Providers;
+    namespace App\Providers;
 
-	use View;
-	use Illuminate\Support\ServiceProvider;
+    use Illuminate\Support\ServiceProvider;
 
-	class ComposerServiceProvider extends ServiceProvider {
+    class ComposerServiceProvider extends ServiceProvider
+    {
+        /**
+         * Register bindings in the container.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            // Using class based composers...
+            view()->composer(
+                'profile', 'App\Http\ViewComposers\ProfileComposer'
+            );
 
-		/**
-		 * Register bindings in the container.
-		 *
-		 * @return void
-		 */
-		public function boot()
-		{
-			// Using class based composers...
-			View::composer('profile', 'App\Http\ViewComposers\ProfileComposer');
+            // Using Closure based composers...
+            view()->composer('dashboard', function ($view) {
 
-			// Using Closure based composers...
-			View::composer('dashboard', function()
-			{
+            });
+        }
 
-			});
-		}
+        /**
+         * Register the service provider.
+         *
+         * @return void
+         */
+        public function register()
+        {
+            //
+        }
+    }
 
-	}
-
-> **Note:** Laravel does not include a default directory for view composers. You are free to organize them however you wish. For example, you could create an `App\Http\Composers` directory.
+Remember, if you create a new service provider to contain your view composer registrations, you will need to add the service provider to the `providers` array in the `config/app.php` configuration file.
 
 Now that we have registered the composer, the `ProfileComposer@compose` method will be executed each time the `profile` view is being rendered. So, let's define the composer class:
 
-	<?php namespace App\Http\Composers;
+    <?php
 
-	use Illuminate\Contracts\View\View;
-	use Illuminate\Users\Repository as UserRepository;
+    namespace App\Http\ViewComposers;
 
-	class ProfileComposer {
+    use Illuminate\Contracts\View\View;
+    use Illuminate\Users\Repository as UserRepository;
 
-		/**
-		 * The user repository implementation.
-		 *
-		 * @var UserRepository
-		 */
-		protected $users;
+    class ProfileComposer
+    {
+        /**
+         * The user repository implementation.
+         *
+         * @var UserRepository
+         */
+        protected $users;
 
-		/**
-		 * Create a new profile composer.
-		 *
-		 * @param  UserRepository  $users
-		 * @return void
-		 */
-		public function __construct(UserRepository $users)
-		{
-			// Dependencies automatically resolved by service container...
-			$this->users = $users;
-		}
+        /**
+         * Create a new profile composer.
+         *
+         * @param  UserRepository  $users
+         * @return void
+         */
+        public function __construct(UserRepository $users)
+        {
+            // Dependencies automatically resolved by service container...
+            $this->users = $users;
+        }
 
-		/**
-		 * Bind data to the view.
-		 *
-		 * @param  View  $view
-		 * @return void
-		 */
-		public function compose(View $view)
-		{
-			$view->with('count', $this->users->count());
-		}
-
-	}
+        /**
+         * Bind data to the view.
+         *
+         * @param  View  $view
+         * @return void
+         */
+        public function compose(View $view)
+        {
+            $view->with('count', $this->users->count());
+        }
+    }
 
 Just before the view is rendered, the composer's `compose` method is called with the `Illuminate\Contracts\View\View` instance. You may use the `with` method to bind data to the view.
 
-> **Note:** All view composers are resolved via the [service container](/docs/5.0/container), so you may type-hint any dependencies you need within a composer's constructor.
-
-#### Wildcard View Composers
-
-The `composer` method accepts the `*` character as a wildcard, so you may attach a composer to all views like so:
-
-	View::composer('*', function()
-	{
-		//
-	});
+> **Note:** All view composers are resolved via the [service container](/docs/{{version}}/container), so you may type-hint any dependencies you need within a composer's constructor.
 
 #### Attaching A Composer To Multiple Views
 
-You may also attach a view composer to multiple views at once:
+You may attach a view composer to multiple views at once by passing an array of views as the first argument to the `composer` method:
 
-	View::composer(['profile', 'dashboard'], 'App\Http\ViewComposers\MyViewComposer');
+    view()->composer(
+        ['profile', 'dashboard'],
+        'App\Http\ViewComposers\MyViewComposer'
+    );
 
-#### Multiple Composers များသတ်မှတ်ခြင်း
+The `composer` method accepts the `*` character as a wildcard, allowing you to attach a composer to all views:
 
-You may use the `composers` method to register a group of composers at the same time:
+    view()->composer('*', function ($view) {
+        //
+    });
 
-	View::composers([
-		'App\Http\ViewComposers\AdminComposer' => ['admin.index', 'admin.profile'],
-		'App\Http\ViewComposers\UserComposer' => 'user',
-		'App\Http\ViewComposers\ProductComposer' => 'product'
-	]);
+### View Creators
 
-### View Creators များ
+View **creators** are very similar to view composers; however, they are fired immediately when the view is instantiated instead of waiting until the view is about to render. To register a view creator, use the `creator` method:
 
-View **creators** work almost exactly like view composers; however, they are fired immediately when the view is instantiated. To register a view creator, use the `creator` method:
-
-	View::creator('profile', 'App\Http\ViewCreators\ProfileCreator');
+    view()->creator('profile', 'App\Http\ViewCreators\ProfileCreator');
