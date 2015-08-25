@@ -1,13 +1,13 @@
 # Laravel Elixir
 
 - [Introduction](#introduction)
-- [စတင္ျခင္း](#introduction)
+- [စတင်ြခင်း](#introduction)
 - [Installation & Setup](#installation)
 - [Installation နွင့္ Setup လုပ္ျခင္း](#installation)
 - [Running Elixir](#running-elixir)
-- [Elixir အားအသံုးျပုျခင္း](#running-elixir)
+- [Elixir အား အသံုးျပုျခင္း](#running-elixir)
 - [Working With Stylesheets](#working-with-stylesheets)
-- [Stylesheets မ်ားနွင့္အလုပ္လုပ္ျခင္း](#working-with-stylesheets)
+- [Stylesheets များနှင့် အလုပ်လုပ်ြခင်း](#working-with-stylesheets)
     - [Less](#less)
     - [Sass](#sass)
     - [Plain CSS](#plain-css)
@@ -18,9 +18,9 @@
     - [Babel](#babel)
     - [Scripts](#javascript)
 - [Versioning / Cache Busting](#versioning-and-cache-busting)
-- [Version သတ္မွတ္ျခင္း / Cache အျမန္လုပ္ျခင္း](#versioning-and-chache-busting)
+- [Version သတ္မွတ္ျခင္း နွင့္ Cache အျမန္လုပ္ျခင္း](#versioning-and-chache-busting)
 - [Calling Existing Gulp Tasks](#calling-existing-gulp-tasks)
-- [ရွိျပီးသား Gulp လုပ္ေဆာင္ခ်က္မ်ားကို ရယူအသံုးျပုျခင္း](#calling-existig-gulp-tasks)
+- [ရွိျပီးသား Gulp လုပ္ေဆာင္ခ ်က္မ ်ားကို ရယူအသံုးျပုျခင္း](#calling-existig-gulp-tasks)
 - [Writing Elixir Extensions](#writing-elixir-extensions)
 - [Elixir Extension ေရးသားျခင္း](#writing-elixir-extensions)
 
@@ -29,7 +29,7 @@
 ## စတင္ျခင္း
 
 Laravel Elixir provides a clean, fluent API for defining basic [Gulp](http://gulpjs.com) tasks for your Laravel application. Elixir supports several common CSS and JavaScript pre-processors, and even testing tools. Using method chaining, Elixir allows you to fluently define your asset pipeline. For example:
-Laravel Elixir ဟာ သင့္ရဲ့ Laravel application အတြက္ အေျခခံ [Gulp](http://gulpjs.com) လုပ္ေဆာင္ခ်က္ေတြ သတ္မွတ္ျခင္းအတြက္ ရွင္းလင္း ျပီး အသံုး၀င္တဲ့ API ကို အေထာက္အပံ့ေပးထားပါတယ္။Elixir ဟာ CSS နဲ့ JavaScript pre-processor ေတာ္ေတာ္မ်ားမ်ားကို အျပင္ testing tool  ေတြအထိ အေထာက္အပံ့ေပးထားပါတယ္။ method chaining ကို အသံုးျပုျပီး asset pipeline ေတြကို လြယ္ကူထိေရာက္စြာ သတ္မွတ္နိုင္ပါတယ္။ ဥပမာ
+Laravel Elixir ဟာသင့္ရဲ့ Laravel Application အတြက္ အေျခခံ [Gulp](http://gulpjs.com) လုပ္ေဆာင္ခ ်က္ေတြသတ္မွတ္ျခင္းအတြက္ ရွင္းလင္းျပီး အသံုးဝင္တဲ့ API ကို အေထာက္အပံ့ ေပးထားပါတယ္။ Elixir ဟာ CSS နဲ့ Javascript pre-processor ေတာ္ေတာ္မ ်ားမ ်ားကို အေထာက္အပံ့ ေပးထားသည့္ အျပင္ testing tool ေတြအထိ အေထာက္အပံ့ေပးထားပါတယ္။ method chaining ကိုအသံုးျပုျပီး asset pipeline ေတြကို လြယ္ကူထိေရာက္စြာ သတ္မွတ္နိုင္ပါတယ္။ ဥပမာ...
 
 ```javascript
 elixir(function(mix) {
